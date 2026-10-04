@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಜಾವಾಸ್ಕ್ರಿಪ್ಟ್ (JavaScript) - 35 ಅಧ್ಯಾಯಗಳ ನೋಟ್ಸ್</title>
+    
+    <!-- ಗೂಗಲ್ ಫಾಂಟ್ಸ್: ಸಾಂಪ್ರದಾಯಿಕ ಮತ್ತು ವೃತ್ತಿಪರ ಅಕ್ಷರಶೈಲಿ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Kannada:wght@400;500;600&family=Tiro+Kannada&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* 
+         * ಸಾಂಪ್ರದಾಯಿಕ ಬಣ್ಣಗಳು (Traditional Theme)
+         * ಕಡುಗೆಂಪು, ಕಡುಹಸಿರು ಮತ್ತು ಸುವರ್ಣ ಬಣ್ಣಗಳ ಸಂಯೋಜನೆ
+         */
+        :root {
+            --primary: #7B1E38;          /* ಕಡುಗೆಂಪು / ರಕ್ತವರ್ಣ (Deep Maroon) */
+            --secondary: #1F4E3D;        /* ಕಡು ಹಸಿರು (Forest Green) */
+            --accent: #C5A059;           /* ಸುವರ್ಣ / ಚಿನ್ನದ ಬಣ್ಣ (Muted Gold) */
+            
+            --bg-page: #FBF8F1;          /* ಹಳೆಯ ಪುಸ್ತಕದ ಹಾಳೆಯ ಬಣ್ಣ (Parchment) */
+            --card-bg: #FFFFFF;
+            
+            --text-main: #2C231F;        /* ಕಡು ಕಂದು-ಕಪ್ಪು (Dark Brownish Black) */
+            --text-light: #5E5047;       /* ವಿವರಣೆಗಳಿಗೆ (Soft Brown) */
+            
+            --border-color: #E6D7C3;     /* ಸಾಂಪ್ರದಾಯಿಕ ಬಾರ್ಡರ್ ಬಣ್ಣ */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Anek Kannada', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            min-height: 100vh;
+            line-height: 1.8;
+            border-top: 6px solid var(--primary);
+        }
+
+        /* ಸಾಂಪ್ರದಾಯಿಕ ಶೀರ್ಷಿಕೆ ಫಾಂಟ್ */
+        h1, h2, h3, .chapter-badge, .classic-font {
+            font-family: 'Tiro Kannada', serif;
+        }
+
+        /* ಕ್ಲಾಸಿಕ್ ನ್ಯಾವಿಗೇಶನ್ */
+        header {
+            background: var(--bg-page);
+            padding: 20px 5%;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: var(--primary);
+        }
+
+        header h1 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ಮುಖ್ಯ ವಿಭಾಗ */
+        .main-container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .hero-section h2 {
+            font-size: 2.4rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* ಶೀರ್ಷಿಕೆ ಕೆಳಗಿನ ಸಾಂಪ್ರದಾಯಿಕ ಗೆರೆ */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 15px;
+        }
+        
+        .divider::before, .divider::after {
+            content: '';
+            height: 1px;
+            width: 80px;
+            background-color: var(--accent);
+        }
+
+        .hero-section p {
+            color: var(--text-light);
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ಸಾಂಪ್ರದಾಯಿಕ ಕಾರ್ಡ್ ವಿನ್ಯಾಸ */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .course-card {
+            background: var(--card-bg);
+            padding: 35px 30px;
+            position: relative;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 0 4px var(--card-bg), 0 0 0 5px var(--border-color), 0 8px 20px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 0 4px var(--card-bg), 0 0 0 5px var(--primary), 0 15px 30px rgba(123, 30, 56, 0.1);
+        }
+
+        .chapter-badge {
+            display: inline-block;
+            background: var(--bg-page);
+            color: var(--primary);
+            padding: 5px 15px;
+            font-size: 1rem;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .course-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--text-main);
+            line-height: 1.4;
+        }
+
+        .course-card p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+            min-height: 60px;
+        }
+
+        /* ಕ್ಲಾಸಿಕ್ ಬಟನ್‌ಗಳು */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 20px;
+        }
+
+        .btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid;
+        }
+
+        .btn i, .btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ಓದಲು (Notes) ಬಟನ್ - ಕಡುಗೆಂಪು */
+        .btn-notes {
+            background: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-notes:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* ಅಭ್ಯಾಸ (Quiz) ಬಟನ್ - ಕಡುಹಸಿರು */
+        .btn-quiz {
+            background: transparent;
+            color: var(--secondary);
+            border-color: var(--secondary);
+        }
+
+        .btn-quiz:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* ಫೂಟರ್ */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 60px;
+            background-color: var(--card-bg);
+        }
+
+        /* ಮೊಬೈಲ್ ರೆಸ್ಪಾನ್ಸಿವ್ */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero-section h2 {
+                font-size: 2rem;
+            }
+            .course-card {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ಹೆಡರ್ -->
+    <header>
+        <a href="index.html" class="back-btn">
+            <i data-lucide="arrow-left"></i> <span>ಹಿಂದಕ್ಕೆ</span>
+        </a>
+        <h1>
+            <i data-lucide="library"></i> 
+            <span>ಜಾವಾಸ್ಕ್ರಿಪ್ಟ್ (JavaScript)</span>
+        </h1>
+    </header>
+
+    <div class="main-container">
+        
+        <!-- ಹೀರೋ ಸೆಕ್ಷನ್ -->
+        <div class="hero-section">
+            <h2>ಅಧ್ಯಾಯವಾರು ಸಮಗ್ರ ಮಾಹಿತಿ</h2>
+            <div class="divider">
+                <i data-lucide="book-open" style="color: var(--accent); width: 24px; height: 24px;"></i>
+            </div>
+            <p>ಪರೀಕ್ಷಾ ದೃಷ್ಟಿಯಿಂದ ಮತ್ತು ಪ್ರಾಯೋಗಿಕ ಕಲಿಕೆಗಾಗಿ ಸಿದ್ಧಪಡಿಸಿದ ಅಧಿಕೃತ ನೋಟ್ಸ್ ಹಾಗೂ ಜ್ಞಾನವನ್ನು ಒರೆಗಲ್ಲಿಗೆ ಹಚ್ಚುವ ರಸಪ್ರಶ್ನೆಗಳು. ಅಧ್ಯಯನವನ್ನು ಈಗಲೇ ಪ್ರಾರಂಭಿಸಿ.</p>
+        </div>
+
+        <!-- ಕೋರ್ಸ್ ಗ್ರಿಡ್ (ಒಟ್ಟು 35 ಅಧ್ಯಾಯಗಳ ಕಾರ್ಡ್‌ಗಳು) -->
+        <div class="course-grid">
+            
+            <!-- ಅಧ್ಯಾಯ 1 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೧</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ಅಧ್ಯಾಯದಲ್ಲಿ ಬರುವ ಪ್ರಮುಖ ಪರಿಕಲ್ಪನೆಗಳು, ಕೋಡ್ ಸಿಂಟ್ಯಾಕ್ಸ್ ಮತ್ತು ಪ್ರಾಯೋಗಿಕ ಉದಾಹರಣೆಗಳ ಆಳವಾದ ವಿವರಣೆ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter1.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter1.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 2 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೨</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ವಿಷಯದ ಕುರಿತಾದ ನಿಖರ ನಿಯಮಗಳು, ಸೂತ್ರಗಳು ಮತ್ತು ನೆನಪಿಡಬೇಕಾದ ಪ್ರಮುಖ ಪಾಯಿಂಟ್ಸ್‌ಗಳ ಸಮಗ್ರ ಪಟ್ಟಿ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter2.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter2.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 3 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೩</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಹಿಂದಿನ ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳಲ್ಲಿ ಮತ್ತು ಸಂದರ್ಶನಗಳಲ್ಲಿ ಕೇಳಲಾದ ಪ್ರಮುಖ ಅಂಶಗಳ ಆಧಾರದ ಮೇಲೆ ಸಿದ್ಧಪಡಿಸಿದ ಮಾಹಿತಿ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter3.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter3.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 4 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೪</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಮೂಲಭೂತ ಹಂತದಿಂದ ಸುಧಾರಿತ ಹಂತದವರೆಗಿನ ಪರಿಕಲ್ಪನೆಗಳು ಮತ್ತು ಸುಲಭವಾಗಿ ಅರ್ಥವಾಗುವ ಕನ್ನಡ ವಿವರಣೆ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter4.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter4.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 5 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೫</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ಅಧ್ಯಾಯದ ಪ್ರಮುಖ ವ್ಯಾಖ್ಯಾನಗಳು, ಕಾರ್ಯನಿರ್ವಹಿಸುವ ವಿಧಾನ ಮತ್ತು ಪರೀಕ್ಷಾ ದೃಷ್ಟಿಯಿಂದ ಮುಖ್ಯವಾದ ನೋಟ್ಸ್.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter5.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter5.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 6 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೬</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ಅಧ್ಯಾಯದಲ್ಲಿ ಬರುವ ಪ್ರಮುಖ ಪರಿಕಲ್ಪನೆಗಳು, ಕೋಡ್ ಸಿಂಟ್ಯಾಕ್ಸ್ ಮತ್ತು ಪ್ರಾಯೋಗಿಕ ಉದಾಹರಣೆಗಳ ಆಳವಾದ ವಿವರಣೆ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter6.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter6.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 7 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೭</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ವಿಷಯದ ಕುರಿತಾದ ನಿಖರ ನಿಯಮಗಳು, ಸೂತ್ರಗಳು ಮತ್ತು ನೆನಪಿಡಬೇಕಾದ ಪ್ರಮುಖ ಪಾಯಿಂಟ್ಸ್‌ಗಳ ಸಮಗ್ರ ಪಟ್ಟಿ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter7.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter7.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 8 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೮</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಹಿಂದಿನ ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳಲ್ಲಿ ಮತ್ತು ಸಂದರ್ಶನಗಳಲ್ಲಿ ಕೇಳಲಾದ ಪ್ರಮುಖ ಅಂಶಗಳ ಆಧಾರದ ಮೇಲೆ ಸಿದ್ಧಪಡಿಸಿದ ಮಾಹಿತಿ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter8.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter8.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 9 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೯</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಮೂಲಭೂತ ಹಂತದಿಂದ ಸುಧಾರಿತ ಹಂತದವರೆಗಿನ ಪರಿಕಲ್ಪನೆಗಳು ಮತ್ತು ಸುಲಭವಾಗಿ ಅರ್ಥವಾಗುವ ಕನ್ನಡ ವಿವರಣೆ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter9.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter9.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 10 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೧೦</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ಅಧ್ಯಾಯದ ಪ್ರಮುಖ ವ್ಯಾಖ್ಯಾನಗಳು, ಕಾರ್ಯನಿರ್ವಹಿಸುವ ವಿಧಾನ ಮತ್ತು ಪರೀಕ್ಷಾ ದೃಷ್ಟಿಯಿಂದ ಮುಖ್ಯವಾದ ನೋಟ್ಸ್.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter10.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter10.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 11 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೧೧</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ಅಧ್ಯಾಯದಲ್ಲಿ ಬರುವ ಪ್ರಮುಖ ಪರಿಕಲ್ಪನೆಗಳು, ಕೋಡ್ ಸಿಂಟ್ಯಾಕ್ಸ್ ಮತ್ತು ಪ್ರಾಯೋಗಿಕ ಉದಾಹರಣೆಗಳ ಆಳವಾದ ವಿವರಣೆ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter11.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter11.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 12 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೧೨</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ವಿಷಯದ ಕುರಿತಾದ ನಿಖರ ನಿಯಮಗಳು, ಸೂತ್ರಗಳು ಮತ್ತು ನೆನಪಿಡಬೇಕಾದ ಪ್ರಮುಖ ಪಾಯಿಂಟ್ಸ್‌ಗಳ ಸಮಗ್ರ ಪಟ್ಟಿ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter12.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter12.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 13 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೧೩</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಹಿಂದಿನ ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳಲ್ಲಿ ಮತ್ತು ಸಂದರ್ಶನಗಳಲ್ಲಿ ಕೇಳಲಾದ ಪ್ರಮುಖ ಅಂಶಗಳ ಆಧಾರದ ಮೇಲೆ ಸಿದ್ಧಪಡಿಸಿದ ಮಾಹಿತಿ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter13.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter13.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 14 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೧೪</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಮೂಲಭೂತ ಹಂತದಿಂದ ಸುಧಾರಿತ ಹಂತದವರೆಗಿನ ಪರಿಕಲ್ಪನೆಗಳು ಮತ್ತು ಸುಲಭವಾಗಿ ಅರ್ಥವಾಗುವ ಕನ್ನಡ ವಿವರಣೆ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter14.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter14.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 15 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೧೫</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ಅಧ್ಯಾಯದ ಪ್ರಮುಖ ವ್ಯಾಖ್ಯಾನಗಳು, ಕಾರ್ಯನಿರ್ವಹಿಸುವ ವಿಧಾನ ಮತ್ತು ಪರೀಕ್ಷಾ ದೃಷ್ಟಿಯಿಂದ ಮುಖ್ಯವಾದ ನೋಟ್ಸ್.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter15.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter15.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 16 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೧೬</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ಅಧ್ಯಾಯದಲ್ಲಿ ಬರುವ ಪ್ರಮುಖ ಪರಿಕಲ್ಪನೆಗಳು, ಕೋಡ್ ಸಿಂಟ್ಯಾಕ್ಸ್ ಮತ್ತು ಪ್ರಾಯೋಗಿಕ ಉದಾಹರಣೆಗಳ ಆಳವಾದ ವಿವರಣೆ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter16.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter16.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 17 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೧೭</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ವಿಷಯದ ಕುರಿತಾದ ನಿಖರ ನಿಯಮಗಳು, ಸೂತ್ರಗಳು ಮತ್ತು ನೆನಪಿಡಬೇಕಾದ ಪ್ರಮುಖ ಪಾಯಿಂಟ್ಸ್‌ಗಳ ಸಮಗ್ರ ಪಟ್ಟಿ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter17.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter17.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 18 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೧೮</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಹಿಂದಿನ ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳಲ್ಲಿ ಮತ್ತು ಸಂದರ್ಶನಗಳಲ್ಲಿ ಕೇಳಲಾದ ಪ್ರಮುಖ ಅಂಶಗಳ ಆಧಾರದ ಮೇಲೆ ಸಿದ್ಧಪಡಿಸಿದ ಮಾಹಿತಿ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter18.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter18.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 19 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೧೯</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಮೂಲಭೂತ ಹಂತದಿಂದ ಸುಧಾರಿತ ಹಂತದವರೆಗಿನ ಪರಿಕಲ್ಪನೆಗಳು ಮತ್ತು ಸುಲಭವಾಗಿ ಅರ್ಥವಾಗುವ ಕನ್ನಡ ವಿವರಣೆ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter19.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter19.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 20 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೨೦</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ಅಧ್ಯಾಯದ ಪ್ರಮುಖ ವ್ಯಾಖ್ಯಾನಗಳು, ಕಾರ್ಯನಿರ್ವಹಿಸುವ ವಿಧಾನ ಮತ್ತು ಪರೀಕ್ಷಾ ದೃಷ್ಟಿಯಿಂದ ಮುಖ್ಯವಾದ ನೋಟ್ಸ್.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter20.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter20.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 21 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೨೧</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ಅಧ್ಯಾಯದಲ್ಲಿ ಬರುವ ಪ್ರಮುಖ ಪರಿಕಲ್ಪನೆಗಳು, ಕೋಡ್ ಸಿಂಟ್ಯಾಕ್ಸ್ ಮತ್ತು ಪ್ರಾಯೋಗಿಕ ಉದಾಹರಣೆಗಳ ಆಳವಾದ ವಿವರಣೆ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter21.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter21.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 22 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೨೨</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ವಿಷಯದ ಕುರಿತಾದ ನಿಖರ ನಿಯಮಗಳು, ಸೂತ್ರಗಳು ಮತ್ತು ನೆನಪಿಡಬೇಕಾದ ಪ್ರಮುಖ ಪಾಯಿಂಟ್ಸ್‌ಗಳ ಸಮಗ್ರ ಪಟ್ಟಿ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter22.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter22.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 23 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೨೩</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಹಿಂದಿನ ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳಲ್ಲಿ ಮತ್ತು ಸಂದರ್ಶನಗಳಲ್ಲಿ ಕೇಳಲಾದ ಪ್ರಮುಖ ಅಂಶಗಳ ಆಧಾರದ ಮೇಲೆ ಸಿದ್ಧಪಡಿಸಿದ ಮಾಹಿತಿ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter23.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter23.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 24 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೨೪</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಮೂಲಭೂತ ಹಂತದಿಂದ ಸುಧಾರಿತ ಹಂತದವರೆಗಿನ ಪರಿಕಲ್ಪನೆಗಳು ಮತ್ತು ಸುಲಭವಾಗಿ ಅರ್ಥವಾಗುವ ಕನ್ನಡ ವಿವರಣೆ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter24.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter24.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 25 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೨೫</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ಅಧ್ಯಾಯದ ಪ್ರಮುಖ ವ್ಯಾಖ್ಯಾನಗಳು, ಕಾರ್ಯನಿರ್ವಹಿಸುವ ವಿಧಾನ ಮತ್ತು ಪರೀಕ್ಷಾ ದೃಷ್ಟಿಯಿಂದ ಮುಖ್ಯವಾದ ನೋಟ್ಸ್.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter25.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter25.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 26 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೨೬</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ಅಧ್ಯಾಯದಲ್ಲಿ ಬರುವ ಪ್ರಮುಖ ಪರಿಕಲ್ಪನೆಗಳು, ಕೋಡ್ ಸಿಂಟ್ಯಾಕ್ಸ್ ಮತ್ತು ಪ್ರಾಯೋಗಿಕ ಉದಾಹರಣೆಗಳ ಆಳವಾದ ವಿವರಣೆ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter26.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter26.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 27 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೨೭</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ವಿಷಯದ ಕುರಿತಾದ ನಿಖರ ನಿಯಮಗಳು, ಸೂತ್ರಗಳು ಮತ್ತು ನೆನಪಿಡಬೇಕಾದ ಪ್ರಮುಖ ಪಾಯಿಂಟ್ಸ್‌ಗಳ ಸಮಗ್ರ ಪಟ್ಟಿ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter27.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter27.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 28 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೨೮</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಹಿಂದಿನ ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳಲ್ಲಿ ಮತ್ತು ಸಂದರ್ಶನಗಳಲ್ಲಿ ಕೇಳಲಾದ ಪ್ರಮುಖ ಅಂಶಗಳ ಆಧಾರದ ಮೇಲೆ ಸಿದ್ಧಪಡಿಸಿದ ಮಾಹಿತಿ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter28.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter28.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 29 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೨೯</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಮೂಲಭೂತ ಹಂತದಿಂದ ಸುಧಾರಿತ ಹಂತದವರೆಗಿನ ಪರಿಕಲ್ಪನೆಗಳು ಮತ್ತು ಸುಲಭವಾಗಿ ಅರ್ಥವಾಗುವ ಕನ್ನಡ ವಿವರಣೆ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter29.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter29.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 30 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೩೦</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ಅಧ್ಯಾಯದ ಪ್ರಮುಖ ವ್ಯಾಖ್ಯಾನಗಳು, ಕಾರ್ಯನಿರ್ವಹಿಸುವ ವಿಧಾನ ಮತ್ತು ಪರೀಕ್ಷಾ ದೃಷ್ಟಿಯಿಂದ ಮುಖ್ಯವಾದ ನೋಟ್ಸ್.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter30.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter30.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 31 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೩೧</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ಅಧ್ಯಾಯದಲ್ಲಿ ಬರುವ ಪ್ರಮುಖ ಪರಿಕಲ್ಪನೆಗಳು, ಕೋಡ್ ಸಿಂಟ್ಯಾಕ್ಸ್ ಮತ್ತು ಪ್ರಾಯೋಗಿಕ ಉದಾಹರಣೆಗಳ ಆಳವಾದ ವಿವರಣೆ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter31.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter31.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 32 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೩೨</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಈ ವಿಷಯದ ಕುರಿತಾದ ನಿಖರ ನಿಯಮಗಳು, ಸೂತ್ರಗಳು ಮತ್ತು ನೆನಪಿಡಬೇಕಾದ ಪ್ರಮುಖ ಪಾಯಿಂಟ್ಸ್‌ಗಳ ಸಮಗ್ರ ಪಟ್ಟಿ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter32.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter32.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 33 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೩೩</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಹಿಂದಿನ ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳಲ್ಲಿ ಮತ್ತು ಸಂದರ್ಶನಗಳಲ್ಲಿ ಕೇಳಲಾದ ಪ್ರಮುಖ ಅಂಶಗಳ ಆಧಾರದ ಮೇಲೆ ಸಿದ್ಧಪಡಿಸಿದ ಮಾಹಿತಿ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter33.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter33.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 34 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೩೪</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ಮೂಲಭೂತ ಹಂತದಿಂದ ಸುಧಾರಿತ ಹಂತದವರೆಗಿನ ಪರಿಕಲ್ಪನೆಗಳು ಮತ್ತು ಸುಲಭವಾಗಿ ಅರ್ಥವಾಗುವ ಕನ್ನಡ ವಿವರಣೆ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter34.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter34.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+            <!-- ಅಧ್ಯಾಯ 35 -->
+            <div class="course-card">
+                <div class="chapter-badge classic-font">ಅಧ್ಯಾಯ ೩೫</div>
+                <h3>[ಅಧ್ಯಾಯದ ಶೀರ್ಷಿಕೆ ಬರೆಯಿರಿ]</h3>
+                <p>ವಿಷಯದ ಮುಕ್ತಾಯದ ಹಂತದ ಪರಿಕಲ್ಪನೆಗಳು ಮತ್ತು ಪರೀಕ್ಷೆಯಲ್ಲಿ ಕೇಳಬಹುದಾದ ಸಂಭವನೀಯ ಪ್ರಶ್ನೆಗಳ ವಿಶ್ಲೇಷಣೆ.</p>
+                <div class="action-buttons">
+                    <a href="notes/chapter35.html" class="btn btn-notes"><i data-lucide="scroll-text"></i> ಓದಿ</a>
+                    <a href="quiz/chapter35.html" class="btn btn-quiz"><i data-lucide="pen-tool"></i> ರಸಪ್ರಶ್ನೆ</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 ನಿಮ್ಮ ವೆಬ್‌ಸೈಟ್ ಹೆಸರು. ಎಲ್ಲ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.</p>
+    </footer>
+
+    <!-- Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

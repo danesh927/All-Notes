@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Variables - Complete Notes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@300;400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --primary-color: #f7df1e;
+            --primary-dark: #d4b800;
+            --sidebar-bg: #2c3e50;
+            --sidebar-text: #ecf0f1;
+            --code-bg: #1e1e1e;
+            --code-text: #d4d4d4;
+            --border-color: #ddd;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --sidebar-bg: #1a1a1a;
+            --sidebar-text: #f7df1e;
+            --code-bg: #000000;
+            --border-color: #333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', 'Noto Sans Kannada', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            transition: all 0.3s ease;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: #000;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-size: 1.5rem; font-weight: 700; }
+
+        .theme-btn {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .theme-btn:hover { background: #333; }
+
+        /* Layout */
+        .container {
+            display: flex;
+            max-width: 1300px;
+            margin: 20px auto;
+            gap: 20px;
+            padding: 0 15px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 300px;
+            background: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            border-radius: 8px;
+            padding: 20px;
+            position: sticky;
+            top: 80px;
+            height: calc(100vh - 100px);
+            overflow-y: auto;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .sidebar h3 { margin-bottom: 15px; border-bottom: 2px solid var(--primary-color); padding-bottom: 5px; }
+        
+        .sidebar ul { list-style: none; }
+        .sidebar ul li { margin-bottom: 10px; }
+        .sidebar ul li a {
+            color: var(--sidebar-text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: block;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .sidebar ul li a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--primary-color);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+        }
+
+        .section-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        h2 { color: #d4b800; margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; margin-top: 10px;}
+        h3 { margin: 20px 0 10px; color: #007bff; font-size: 1.2rem;}
+        [data-theme="dark"] h3 { color: #4da3ff; }
+        p { margin-bottom: 12px; }
+        
+        ul { margin-left: 20px; margin-bottom: 15px; }
+        li { margin-bottom: 8px; }
+
+        .highlight { font-weight: bold; color: #e74c3c; }
+        .success { font-weight: bold; color: #27ae60; }
+        [data-theme="dark"] .highlight { color: #ff7675; }
+        [data-theme="dark"] .success { color: #2ecc71; }
+
+        /* Code Blocks */
+        .code-container {
+            position: relative;
+            margin: 15px 0 25px 0;
+        }
+
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 15px 15px 15px 45px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: var(--primary-color);
+            color: #000;
+            border: none;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .copy-btn:hover { background: var(--primary-dark); }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: var(--card-bg);
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: left;
+        }
+        th { background-color: var(--sidebar-bg); color: #fff; }
+        
+        .level-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .beginner { background: #e8f5e9; color: #2e7d32; }
+        .intermediate { background: #fff8e1; color: #f57f17; }
+        .advanced { background: #ffebee; color: #c62828; }
+        [data-theme="dark"] .beginner { background: #1b5e20; color: #c8e6c9; }
+        [data-theme="dark"] .intermediate { background: #f57f17; color: #fff8e1; }
+        [data-theme="dark"] .advanced { background: #b71c1c; color: #ffcdd2; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: static; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>JavaScript Variables Notes 🚀</h1>
+        <button class="theme-btn" onclick="toggleTheme()">🌙 Dark Mode</button>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <h3>ಪರಿವಿಡಿ (Index)</h3>
+            <ul>
+                <li><a href="#intro">1. ವೇರಿಯೇಬಲ್ ಎಂದರೇನು?</a></li>
+                <li><a href="#naming-rules">2. ಹೆಸರಿಸುವ ನಿಯಮಗಳು</a></li>
+                <li><a href="#complete-info">3. var, let, const ಸಂಪೂರ್ಣ ಮಾಹಿತಿ</a></li>
+                <li><a href="#beginner">🟢 ಹಂತ 1: ಮೂಲಭೂತ ಪರಿಕಲ್ಪನೆಗಳು</a></li>
+                <li><a href="#intermediate">🟡 ಹಂತ 2: ಸ್ಕೋಪ್ ಅಥವಾ ಮಿತಿ</a></li>
+                <li><a href="#advanced">🔴 ಹಂತ 3: ಪ್ರೊ ಹಂತದ ಪರಿಕಲ್ಪನೆಗಳು</a></li>
+                <li><a href="#golden-rules">🏆 4: ಸುವರ್ಣ ನಿಯಮಗಳು</a></li>
+                <li><a href="#shorts">🚀 5: ಕ್ವಿಕ್ ರಿವಿಷನ್ ನೋಟ್ಸ್</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Section 1 -->
+            <section id="intro" class="section-card">
+                <h2>1. ಜಾವಾಸ್ಕ್ರಿಪ್ಟ್ ವೇರಿಯೇಬಲ್ (Variables) ಎಂದರೇನು?</h2>
+                <p><strong>ಚಿಕ್ಕಮಕ್ಕಳಿಗೆ ಅರ್ಥವಾಗುವ ಉದಾಹರಣೆ:</strong></p>
+                <p>ವೇರಿಯೇಬಲ್ ಎಂದರೆ ನಿಮ್ಮ ಮನೆಯಲ್ಲಿರುವ ಒಂದು 'ಪ್ಲಾಸ್ಟಿಕ್ ಡಬ್ಬಿ' (Box) ಇದ್ದಂತೆ. ಆ ಡಬ್ಬಿಗೆ ನೀವು ಒಂದು ಹೆಸರು ಬರೆಯುತ್ತೀರಿ (ಉದಾಹರಣೆಗೆ: "ಸಕ್ಕರೆ ಡಬ್ಬಿ", "ಖಾರದ ಪುಡಿ ಡಬ್ಬಿ"). ನಂತರ ಆ ಡಬ್ಬಿಯೊಳಗೆ ಆ ವಸ್ತುಗಳನ್ನು ಹಾಕಿಡುತ್ತೀರಿ. ನಿಮಗೆ ಯಾವಾಗ ಬೇಕಾದರೂ ಆ ಡಬ್ಬಿಯನ್ನು ತೆರೆದು ಅದರೊಳಗಿರುವ ವಸ್ತುವನ್ನು ಬಳಸಬಹುದು ಅಥವಾ ಆ ವಸ್ತುವನ್ನು ತೆಗೆದು ಬೇರೆ ವಸ್ತುವನ್ನು ಹಾಕಬಹುದು.</p>
+                <p>ಕಂಪ್ಯೂಟರ್ ಪ್ರೋಗ್ರಾಮಿಂಗ್‌ನಲ್ಲೂ ಅಷ್ಟೇ! ವೇರಿಯೇಬಲ್ ಎಂದರೆ ಡೇಟಾ ಅಥವಾ ಮಾಹಿತಿಯನ್ನು ಶೇಖರಿಸಿಡಲು ಕಂಪ್ಯೂಟರ್ ಮೆಮೊರಿಯಲ್ಲಿ (Memory) ರಚಿಸುವ ಒಂದು ಜಾಗ (Container).</p>
+                <p>ಉದಾಹರಣೆ:</p>
+                
+                <div class="code-container">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>let age = 25;</code></pre>
+                </div>
+                
+                <p>ಇಲ್ಲಿ:</p>
+                <ul>
+                    <li><strong>let</strong> ಎಂದರೆ ಡಬ್ಬಿ ತಯಾರು ಮಾಡಲು ಕೊಡುವ ಸೂಚನೆ.</li>
+                    <li><strong>age</strong> ಎಂದರೆ ಆ ಡಬ್ಬಿಯ ಹೆಸರು.</li>
+                    <li><strong>25</strong> ಎಂದರೆ ಆ ಡಬ್ಬಿಯ ಒಳಗೆ ನಾವು ಇಟ್ಟಿರುವ ಮಾಹಿತಿ (ಬೆಲೆ/Value).</li>
+                </ul>
+            </section>
+
+            <!-- Section 2 -->
+            <section id="naming-rules" class="section-card">
+                <h2>2. ವೇರಿಯೇಬಲ್ ಹೆಸರು ಬರೆಯಲು ಇರುವ ನಿಯಮಗಳು (Naming Rules)</h2>
+                
+                <h3>1. ಬಳಸಬಹುದಾದ ಅಕ್ಷರಗಳು ಮತ್ತು ಚಿಹ್ನೆಗಳು</h3>
+                <p>ವೇರಿಯೇಬಲ್ ಹೆಸರಿನಲ್ಲಿ ಇವುಗಳನ್ನು ಮಾತ್ರ ಬಳಸಲು ಅನುಮತಿಯಿದೆ:</p>
+                <ul>
+                    <li>ಇಂಗ್ಲಿಷ್ ಅಕ್ಷರಗಳು (A-Z ಮತ್ತು a-z)</li>
+                    <li>ಅಂಕಿಗಳು (0-9)</li>
+                    <li>ಅಂಡರ್‌ಸ್ಕೋರ್ (_)</li>
+                    <li>ಡಾಲರ್ ಚಿಹ್ನೆ ($)</li>
+                </ul>
+                <p>ಗಮನಿಸಿ: ಇವುಗಳನ್ನು ಬಿಟ್ಟು ಬೇರೆ ಯಾವುದೇ ವಿಶೇಷ ಚಿಹ್ನೆಗಳನ್ನು (@, #, %, !, -, &) ಬಳಸುವಂತಿಲ್ಲ.</p>
+                <ul>
+                    <li><span class="success">✅ ಸರಿ:</span> myAge, price_100, $totalAmount</li>
+                    <li><span class="highlight">❌ ತಪ್ಪು:</span> my@email, total-price</li>
+                </ul>
+
+                <h3>2. ಅಂಕಿಯಿಂದ (Number) ಶುರುವಾಗುವಂತಿಲ್ಲ</h3>
+                <p>ಹೆಸರು ಯಾವಾಗಲೂ ಅಕ್ಷರ, _ ಅಥವಾ $ ನಿಂದಲೇ ಶುರುವಾಗಬೇಕು. ಯಾವುದೇ ಕಾರಣಕ್ಕೂ ಅಂಕಿಯಿಂದ ಶುರುವಾಗುವಂತಿಲ್ಲ. ಅಂಕಿಗಳನ್ನು ಹೆಸರಿನ ಮಧ್ಯದಲ್ಲಿ ಅಥವಾ ಕೊನೆಯಲ್ಲಿ ಬಳಸಬಹುದು.</p>
+                <ul>
+                    <li><span class="success">✅ ಸರಿ:</span> player1, _score, $discount</li>
+                    <li><span class="highlight">❌ ತಪ್ಪು:</span> 1player, 3rdPlace (ಇದು ಎರ್‍ರರ್/Error ಕೊಡುತ್ತದೆ)</li>
+                </ul>
+
+                <h3>3. ಖಾಲಿ ಜಾಗ (Space) ಬಿಡುವಂತಿಲ್ಲ</h3>
+                <p>ವೇರಿಯೇಬಲ್ ಹೆಸರಿನ ಮಧ್ಯೆ ಜಾಗ (Space) ಬಿಡುವಂತಿಲ್ಲ. ಜಾಗ ಬಿಟ್ಟರೆ ಕಂಪ್ಯೂಟರ್ ಅದನ್ನು ಎರಡು ಬೇರೆ ಬೇರೆ ಪದಗಳು ಎಂದು ಗೊಂದಲಕ್ಕೀಡಾಗುತ್ತದೆ. ಪದಗಳನ್ನು ಸೇರಿಸಲು ಕ್ಯಾಮೆಲ್ ಕೇಸ್ (Camel Case) ಅಥವಾ ಅಂಡರ್‌‌ಸ್ಕೋರ್ ಬಳಸಬೇಕು.</p>
+                <ul>
+                    <li><span class="success">✅ ಸರಿ:</span> myFirstName, my_first_name</li>
+                    <li><span class="highlight">❌ ತಪ್ಪು:</span> my first name</li>
+                </ul>
+
+                <h3>4. ಕಾಯ್ದಿರಿಸಿದ ಪದಗಳನ್ನು (Reserved Keywords) ಬಳಸುವಂತಿಲ್ಲ</h3>
+                <p>ಜಾವಾಸ್ಕ್ರಿಪ್ಟ್ ತನ್ನ ಸ್ವಂತ ಕೆಲಸಗಳಿಗೆ ಕೆಲವು ಪದಗಳನ್ನು ಮೀಸಲಿಟ್ಟಿದೆ. ಉದಾಹರಣೆಗೆ: let, var, const, function, if, else, return, class. ಈ ಪದಗಳನ್ನು ನೀವು ನಿಮ್ಮ ವೇರಿಯೇಬಲ್ ಹೆಸರಾಗಿ ಬಳಸುವಂತಿಲ್ಲ.</p>
+                <ul>
+                    <li><span class="success">✅ ಸರಿ:</span> myFunction, isConditionTrue</li>
+                    <li><span class="highlight">❌ ತಪ್ಪು:</span> let let = 10;, const function = "Hello";</li>
+                </ul>
+
+                <h3>5. ದೊಡ್ಡ ಮತ್ತು ಸಣ್ಣ ಅಕ್ಷರಗಳ ವ್ಯತ್ಯಾಸ (Case Sensitive)</h3>
+                <p>ಜಾವಾಸ್ಕ್ರಿಪ್ಟ್ ದೊಡ್ಡ ಅಕ್ಷರ (Uppercase) ಮತ್ತು ಸಣ್ಣ ಅಕ್ಷರಗಳನ್ನು (Lowercase) ಬೇರೆ ಬೇರೆಯಾಗಿ ನೋಡುತ್ತದೆ.</p>
+                <ul>
+                    <li>ಉದಾಹರಣೆಗೆ: score, Score, ಮತ್ತು SCORE - ಈ ಮೂರೂ ಪದಗಳು ನಮಗೆ ಒಂದೇ ಎನಿಸಿದರೂ, ಜಾವಾಸ್ಕ್ರಿಪ್ಟ್ ಪ್ರಕಾರ ಇವು ಮೂರು ಬೇರೆ ಬೇರೆ ವೇರಿಯೇಬಲ್‌ಗಳು! ಆದ್ದರಿಂದ ಅಕ್ಷರಗಳ ಬಗ್ಗೆ ಗಮನವಿರಲಿ.</li>
+                </ul>
+
+                <h3>6. ಹೆಸರಿಸುವ ಶೈಲಿಗಳು (Naming Conventions):</h3>
+                <ul>
+                    <li><strong>ಕ್ಯಾಮೆಲ್ ಕೇಸ್ (Camel Case):</strong> myBankBalance
+                        <ul>
+                            <li>ಮೊದಲ ಪದದ ಅಕ್ಷರ ಸಣ್ಣದು, ನಂತರದ ಪದಗಳ ಮೊದಲ ಅಕ್ಷರ ದೊಡ್ಡದು.</li>
+                            <li>ಬಳಕೆ: ವೇರಿಯೇಬಲ್ಸ್ ಮತ್ತು ಫಂಕ್ಷನ್‌ಗಳಿಗೆ (ಅತಿ ಹೆಚ್ಚು ಬಳಸುವ ಶೈಲಿ).</li>
+                        </ul>
+                    </li>
+                    <li><strong>ಪಾಸ್ಕಲ್ ಕೇಸ್ (Pascal Case):</strong> MyBankBalance
+                        <ul>
+                            <li>ಪ್ರತಿಯೊಂದು ಪದದ ಮೊದಲನೇ ಅಕ್ಷರವೂ ದೊಡ್ಡದು.</li>
+                            <li>ಬಳಕೆ: ಕ್ಲಾಸ್‌ಗಳು (Classes) ಮತ್ತು ಕಾಂಪೊನೆಂಟ್‌ಗಳಿಗೆ ಮಾತ್ರ.</li>
+                        </ul>
+                    </li>
+                    <li><strong>ಸ್ನೇಕ್ ಕೇಸ್ (Snake / Underscore):</strong> MAX_SPEED_LIMIT
+                        <ul>
+                            <li>ಎಲ್ಲಾ ಅಕ್ಷರಗಳು ದೊಡ್ಡದು, ಪದಗಳ ಮಧ್ಯೆ ಅಂಡರ್‌ಸ್ಕೋರ್ (_) ಇರುತ್ತದೆ.</li>
+                            <li>ಬಳಕೆ: ಎಂದಿಗೂ ಬದಲಾಗದ ಜಾಗತಿಕ ಸ್ಥಿರ ಮೌಲ್ಯಗಳಿಗೆ (Global Constants).</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>💡 ವೃತ್ತಿಪರ ಡೆವಲಪರ್‌ಗಳ ಉತ್ತಮ ಅಭ್ಯಾಸಗಳು (Best Practices)</h3>
+                <p>ನಿಯಮಗಳಲ್ಲದಿದ್ದರೂ, ಐಟಿ ಕಂಪನಿಗಳಲ್ಲಿ ಕೆಲಸ ಮಾಡುವಾಗ ಎಲ್ಲರೂ ಪಾಲಿಸುವ ಪದ್ಧತಿಗಳಿವು:</p>
+                <ul>
+                    <li><strong>ಅರ್ಥಗರ್ಭಿತ ಹೆಸರು (Meaningful Names):</strong> ವೇರಿಯೇಬಲ್ ಹೆಸರನ್ನು ನೋಡಿದ ತಕ್ಷಣ ಅದರೊಳಗೆ ಏನಿದೆ ಎಂದು ತಿಳಿಯುವಂತಿರಬೇಕು. a, b, x, y ಎಂದು ಚಿಕ್ಕದಾಗಿ ಹೆಸರು ಇಡುವ ಬದಲು totalPrice, studentName ಎಂದು ಅರ್ಥ ಬರುವಂತೆ ಇಡಬೇಕು.</li>
+                    <li><strong>ಕ್ಯಾಮೆಲ್ ಕೇಸ್ (Camel Case):</strong> ಜಾವಾಸ್ಕ್ರಿಪ್ಟ್‌ನಲ್ಲಿ ವೇರಿಯೇಬಲ್ ಹೆಸರಿಸಲು ಯಾವಾಗಲೂ ಕ್ಯಾಮೆಲ್ ಕೇಸ್ ಬಳಸುವುದು ಅಂತರರಾಷ್ಟ್ರೀಯ ಪದ್ಧತಿ. (ಉದಾ: userBankAccoutNumber).</li>
+                </ul>
+            </section>
+
+            <!-- Section 3 -->
+            <section id="complete-info" class="section-card">
+                <h2>3. var, let, ಮತ್ತು const ಬಗ್ಗೆ ಸಂಪೂರ್ಣ ಮಾಹಿತಿ</h2>
+                
+                <div id="beginner">
+                    <span class="level-tag beginner">🟢 ಹಂತ 1: ಮೂಲಭೂತ ಪರಿಕಲ್ಪನೆಗಳು (Beginner Level)</span>
+                    <p>ವೇರಿಯೇಬಲ್ ಎಂದರೆ ಡೇಟಾವನ್ನು ಸೇವ್ ಮಾಡಿಡಲು ಬಳಸುವ ಡಬ್ಬಿ (Container). ಇದರಲ್ಲಿ 3 ವಿಧ:</p>
+                    
+                    <h3>1. var (ಹಳೆಯ ಪದ್ಧತಿ)</h3>
+                    <ul><li>ನಿಯಮ: ಮೌಲ್ಯವನ್ನು ಬದಲಾಯಿಸಬಹುದು (Reassign) ಮತ್ತು ಒಂದೇ ಹೆಸರಿನಲ್ಲಿ ಮತ್ತೆ ಹೊಸ ಡಬ್ಬಿ ಮಾಡಬಹುದು (Redeclare).</li></ul>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>var playerName = "ರಾಹುಲ್";
+playerName = "ವಿರಾಟ್"; // 1. ಮೌಲ್ಯ ಬದಲಾಯಿಸಿದೆವು (ಸರಿ)
+var playerName = "ಧೋನಿ"; // 2. ಮತ್ತೆ ಅದೇ ಹೆಸರಿನಲ್ಲಿ ಘೋಷಿಸಿದೆವು (ಸರಿ)
+
+console.log(playerName); // ಔಟ್‌ಪುಟ್: ಧೋನಿ</code></pre>
+                    </div>
+
+                    <h3>2. let (ಆಧುನಿಕ ಪದ್ಧತಿ)</h3>
+                    <ul><li>ನಿಯಮ: ಮೌಲ್ಯವನ್ನು ಬದಲಾಯಿಸಬಹುದು, ಆದರೆ ಮತ್ತೆ ಅದೇ ಹೆಸರಿನಲ್ಲಿ ಹೊಸ ವೇರಿಯೇಬಲ್ ಘೋಷಿಸುವಂತಿಲ್ಲ.</li></ul>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>let score = 50;
+score = 100; // 1. ಮೌಲ್ಯ ಬದಲಾಯಿಸಿದೆವು (ಸರಿ)
+
+// let score = 150; // ❌ ERROR: Identifier 'score' has already been declared
+console.log(score); // ಔಟ್‌ಪುಟ್: 100</code></pre>
+                    </div>
+
+                    <h3>3. const (ಸ್ಥಿರ ಪದ್ಧತಿ)</h3>
+                    <ul><li>ನಿಯಮ: ಮೌಲ್ಯವನ್ನು ಬದಲಾಯಿಸುವಂತೆಯೂ ಇಲ್ಲ, ಮತ್ತೆ ಘೋಷಿಸುವಂತೆಯೂ ಇಲ್ಲ.</li></ul>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>const birthYear = 2000;
+
+// birthYear = 2001; // ❌ TypeError: Assignment to constant variable.
+// const birthYear = 2005; // ❌ ERROR: Cannot redeclare block-scoped variable
+
+console.log(birthYear); // ಔಟ್‌ಪುಟ್: 2000</code></pre>
+                    </div>
+                </div>
+
+                <div id="intermediate">
+                    <span class="level-tag intermediate" style="margin-top: 20px;">🟡 ಹಂತ 2: ಸ್ಕೋಪ್ ಅಥವಾ ಮಿತಿ (Intermediate Level)</span>
+                    <p>ಸ್ಕೋಪ್ ಎಂದರೆ ಒಂದು ವೇರಿಯೇಬಲ್ ಅನ್ನು ಎಲ್ಲೆಲ್ಲಿ ಬಳಸಬಹುದು ಎಂಬ ಮಿತಿ.</p>
+
+                    <h3>1. Function Scope (var ನ ಸಮಸ್ಯೆ)</h3>
+                    <p>var ಕೇವಲ ಫಂಕ್ಷನ್ ಒಳಗೆ ಮಾತ್ರ ಕಂಟ್ರೋಲ್‌ನಲ್ಲಿರುತ್ತದೆ. if ಅಥವಾ for ಬ್ಲಾಕ್ { } ಒಳಗೆ ಬರೆದರೆ ಅದು ಹೊರಗಡೆ ಸೋರಿಕೆಯಾಗುತ್ತದೆ (Leak).</p>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>if (true) {
+    var myCity = "ಬೆಂಗಳೂರು"; // ಬ್ಲಾಕ್ ಒಳಗೆ ಬರೆದಿದ್ದೇವೆ
+}
+
+// ಹೊರಗಡೆಯಿಂದ ಪ್ರಿಂಟ್ ಮಾಡಿದರೂ ಸಿಗುತ್ತದೆ (ಇದು ಬಗ್ಸ್ / ತಪ್ಪುಗಳಿಗೆ ಕಾರಣವಾಗುತ್ತದೆ)
+console.log(myCity); // ಔಟ್‌ಪುಟ್: ಬೆಂಗಳೂರು</code></pre>
+                    </div>
+
+                    <h3>2. Block Scope (let ಮತ್ತು const ನ ಶಕ್ತಿ)</h3>
+                    <p>ಇವು ಕಟ್ಟುನಿಟ್ಟಾಗಿ ಬ್ರಾಕೆಟ್ { } ನಿಯಮವನ್ನು ಪಾಲಿಸುತ್ತವೆ. ಬ್ಲಾಕ್‌ನಿಂದ ಹೊರಗೆ ಇವು ಸಿಗುವುದಿಲ್ಲ.</p>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>if (true) {
+    let myAge = 25;
+    const myCountry = "India";
+}
+
+// console.log(myAge); // ❌ ReferenceError: myAge is not defined
+// console.log(myCountry); // ❌ ReferenceError: myCountry is not defined</code></pre>
+                    </div>
+                </div>
+
+                <div id="advanced">
+                    <span class="level-tag advanced" style="margin-top: 20px;">🔴 ಹಂತ 3: ಪ್ರೊ ಹಂತದ ಪರಿಕಲ್ಪನೆಗಳು (Advanced / Interview Level)</span>
+                    
+                    <h3>1. Hoisting (ಮೇಲೇರುವಿಕೆ) ಮತ್ತು TDZ</h3>
+                    <p>ಜಾವಾಸ್ಕ್ರಿಪ್ಟ್ ಕೋಡ್ ರನ್ ಆಗುವ ಮುನ್ನ ಎಲ್ಲಾ ವೇರಿಯೇಬಲ್ ಹೆಸರುಗಳನ್ನು ಮೆಮೊರಿಯ ಮೇಲ್ಭಾಗಕ್ಕೆ ಕೊಂಡೊಯ್ಯುತ್ತದೆ.</p>
+                    
+                    <p><strong>A. var ನ Hoisting:</strong> (Error ಬರುವುದಿಲ್ಲ, undefined ಬರುತ್ತದೆ)</p>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>console.log(company); // ಔಟ್‌ಪುಟ್: undefined
+var company = "Google";</code></pre>
+                    </div>
+
+                    <p><strong>B. let/const ನ Hoisting ಮತ್ತು TDZ (Temporal Dead Zone):</strong></p>
+                    <p>ಇವು ಕೂಡ Hoist ಆಗುತ್ತವೆ, ಆದರೆ ಮೌಲ್ಯ ಕೊಡುವವರೆಗೆ ಅವುಗಳನ್ನು ಬಳಸಲು ಹೋದರೆ Error ಬರುತ್ತದೆ. ಆ ಸಮಯವನ್ನು TDZ ಎನ್ನುತ್ತಾರೆ.</p>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>// console.log(salary); // ❌ ReferenceError: Cannot access 'salary' before initialization
+let salary = 50000;
+console.log(salary); // ಔಟ್‌ಪುಟ್: 50000</code></pre>
+                    </div>
+
+                    <h3>2. const ನ ಒಳಗಿನ ಗುಟ್ಟು (Mutation vs Reassignment)</h3>
+                    <p>const ಬಳಸಿ Array ಅಥವಾ Object ಮಾಡಿದಾಗ, ಇಡೀ ಡಬ್ಬಿಯನ್ನು ಬೇರೆಯದಕ್ಕೆ ಬದಲಿಸುವಂತಿಲ್ಲ. ಆದರೆ ಒಳಗಿರುವ ವಸ್ತುಗಳನ್ನು (Elements/Properties) ಬದಲಾಯಿಸಬಹುದು.</p>
+                    
+                    <p>Array ಉದಾಹರಣೆ:</p>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>const colors = ["Red", "Green"];
+
+colors.push("Blue"); // ಡಬ್ಬಿಯೊಳಗೆ ಹೊಸ ವಸ್ತು ಹಾಕಿದೆವು (ಸರಿ)
+console.log(colors); // ಔಟ್‌ಪುಟ್: ["Red", "Green", "Blue"]
+
+// colors = ["Yellow"]; // ❌ TypeError (ಇಡೀ ಡಬ್ಬಿಯನ್ನು ಬದಲಿಸುವಂತಿಲ್ಲ)</code></pre>
+                    </div>
+
+                    <p>Object ಉದಾಹರಣೆ:</p>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>const car = { brand: "Tata", model: "Nexon" };
+
+car.model = "Harrier"; // ಒಳಗಿನ ಪ್ರಾಪರ್ಟಿ ಬದಲಾಯಿಸಿದೆವು (ಸರಿ)
+console.log(car.model); // ಔಟ್‌ಪುಟ್: Harrier</code></pre>
+                    </div>
+
+                    <h3>3. Global Object (Window) ನಡವಳಿಕೆ</h3>
+                    <p>ಬ್ರೌಸರ್‌ನಲ್ಲಿ ರನ್ ಮಾಡುವಾಗ:</p>
+                    <ul>
+                        <li>var ನಿಂದ ಮಾಡಿದ ವೇರಿಯೇಬಲ್ ನೇರವಾಗಿ window ಆಬ್ಜೆಕ್ಟ್‌ಗೆ ಸೇರಿಕೊಳ್ಳುತ್ತದೆ.</li>
+                        <li>let ಮತ್ತು const ಸೇರಿಕೊಳ್ಳುವುದಿಲ್ಲ (ಇದು ಹೆಚ್ಚು ಸುರಕ್ಷಿತ).</li>
+                    </ul>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>var a = 10;
+let b = 20;
+
+console.log(window.a); // ಔಟ್‌ಪುಟ್: 10 (window ಗೆ ಅಂಟಿಕೊಂಡಿದೆ)
+console.log(window.b); // ಔಟ್‌ಪುಟ್: undefined (ಸುರಕ್ಷಿತವಾಗಿದೆ)</code></pre>
+                    </div>
+
+                    <h3>4. Variable Shadowing (ಮರೆಮಾಡುವುದು)</h3>
+                    <p>ಹೊರಗೆ ಮತ್ತು ಒಳಗೆ ಒಂದೇ ಹೆಸರಿನ ವೇರಿಯೇಬಲ್ ಇದ್ದಾಗ, ಒಳಗಿನ ವೇರಿಯೇಬಲ್ ಹೊರಗಿನದನ್ನು ತನ್ನ ಬ್ಲಾಕ್ ಒಳಗೆ ಮರೆಮಾಡುತ್ತದೆ.</p>
+                    
+                    <p><strong>Legal Shadowing (ಸರಿಯಾದ ವಿಧಾನ):</strong></p>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>let testScore = 100; // ಹೊರಗಿನ ವೇರಿಯೇಬಲ್
+
+if (true) {
+    let testScore = 50; // ಒಳಗಿನ ವೇರಿಯೇಬಲ್
+    console.log("ಬ್ಲಾಕ್ ಒಳಗೆ: ", testScore); // ಔಟ್‌ಪುಟ್: 50
+}
+
+console.log("ಬ್ಲಾಕ್ ಹೊರಗೆ: ", testScore); // ಔಟ್‌ಪುಟ್: 100</code></pre>
+                    </div>
+
+                    <p><strong>Illegal Shadowing (ತಪ್ಪು ವಿಧಾನ):</strong></p>
+                    <p>ಹೊರಗೆ let ಬಳಸಿ, ಒಳಗೆ ಅದೇ ಹೆಸರಿಗೆ var ಬಳಸುವಂತಿಲ್ಲ.</p>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>let name = "Ravi";
+if (true) {
+    // var name = "Kumar"; // ❌ SyntaxError: Identifier 'name' has already been declared
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4 -->
+            <section id="golden-rules" class="section-card">
+                <h2>🏆 ಹಂತ 4: ವೃತ್ತಿಪರರ ಸುವರ್ಣ ನಿಯಮಗಳು (Golden Rules Checklist)</h2>
+                <p>ಯಾವಾಗ ಯಾವುದನ್ನು ಬಳಸಬೇಕು?</p>
+                <ul>
+                    <li>🥇 <strong>ಯಾವಾಗಲೂ const ಬಳಸಿ:</strong> ನಿಮ್ಮ ಕೋಡ್ ಬರೆಯುವಾಗ ಮೊದಲ ಆಯ್ಕೆ const ಆಗಿರಲಿ. (ಉದಾ: Arrays, Objects, Functions, ಕಾನ್ಸ್ಟಂಟ್ ಮೌಲ್ಯಗಳು).</li>
+                    <li>🥈 <strong>ಅನಿವಾರ್ಯವಿದ್ದರೆ ಮಾತ್ರ let ಬಳಸಿ:</strong> ಒಂದು ಮೌಲ್ಯ ಮುಂದೆ ಬದಲಾಗುತ್ತದೆ ಎಂದು ಖಚಿತವಿದ್ದರೆ ಮಾತ್ರ (ಉದಾ: For Loop ಲೆಕ್ಕಾಚಾರಗಳು, ಸ್ಕೋರ್ ಬೋರ್ಡ್, ಟೈಮರ್) let ಬಳಸಿ.</li>
+                    <li>🚫 <strong>var ಬಳಸುವುದನ್ನು ನಿಲ್ಲಿಸಿ:</strong> ಆಧುನಿಕ ಡೆವಲಪ್ಮೆಂಟ್‌ನಲ್ಲಿ var ಗೆ ಜಾಗವಿಲ್ಲ. ಹಳೆಯ ಪ್ರಾಜೆಕ್ಟ್ ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಮಾತ್ರ ಇದರ ಬಗ್ಗೆ ತಿಳಿದಿರಲಿ.</li>
+                </ul>
+            </section>
+
+            <!-- Section 5 -->
+            <section id="shorts" class="section-card">
+                <h2>🚀 ಜಾವಾಸ್ಕ್ರಿಪ್ಟ್ Variables - ಕ್ವಿಕ್ ರಿವಿಷನ್ ನೋಟ್ಸ್</h2>
+                
+                <h3>📌 1. ವೇರಿಯೇಬಲ್ ಎಂದರೇನು?</h3>
+                <ul>
+                    <li>ಡೇಟಾವನ್ನು ಶೇಖರಿಸಿಡುವ 'ಮೆಮೊರಿ ಡಬ್ಬಿ' (Container).</li>
+                </ul>
+
+                <h3>📌 2. ಹೆಸರಿಸುವ ನಿಯಮಗಳು (Naming Rules)</h3>
+                <ul>
+                    <li>✅ ಬಳಸಬಹುದಾದವು: A-Z, a-z, 0-9, _, $.</li>
+                    <li>❌ ಬಳಸಬಾರದವು: ಅಂಕಿಯಿಂದ ಶುರುವಾಗುವಂತಿಲ್ಲ (ಉದಾ: 1name), ಜಾಗ (Space) ಬಿಡುವಂತಿಲ್ಲ, ವಿಶೇಷ ಚಿಹ್ನೆಗಳಿಲ್ಲ (@, #, -).</li>
+                    <li>❌ Reserved Words: let, const, if ಬಳಸುವಂತಿಲ್ಲ.</li>
+                    <li>⚠️ Case Sensitive: score ಮತ್ತು Score ಎರಡು ಬೇರೆ ಬೇರೆ!</li>
+                    <li>💡 Best Practice: ಯಾವಾಗಲೂ camelCase ಬಳಸಿ (ಉದಾ: myBankBalance).</li>
+                </ul>
+
+                <h3>📌 3. var, let, const - ತ್ವರಿತ ಹೋಲಿಕೆ</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ಗುಣಲಕ್ಷಣ</th>
+                            <th>var (ಹಳೆಯದು 👴)</th>
+                            <th>let (ಹೊಸದು 🧑)</th>
+                            <th>const (ಸ್ಥಿರ 🗿)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ಮೌಲ್ಯ ಬದಲಾವಣೆ (Reassign)</strong></td>
+                            <td>✅ ಹೌದು</td>
+                            <td>✅ ಹೌದು</td>
+                            <td>❌ ಇಲ್ಲ (Error)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ಮತ್ತೆ ಘೋಷಣೆ (Redeclare)</strong></td>
+                            <td>✅ ಹೌದು</td>
+                            <td>❌ ಇಲ್ಲ (Error)</td>
+                            <td>❌ ಇಲ್ಲ (Error)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ಮಿತಿ (Scope)</strong></td>
+                            <td>Function Scope</td>
+                            <td>Block Scope { }</td>
+                            <td>Block Scope { }</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Window ಆಬ್ಜೆಕ್ಟ್‌ಗೆ ಸೇರುತ್ತಾ?</strong></td>
+                            <td>✅ ಹೌದು (ಅಸುರಕ್ಷಿತ)</td>
+                            <td>❌ ಇಲ್ಲ (ಸುರಕ್ಷಿತ)</td>
+                            <td>❌ ಇಲ್ಲ (ಸುರಕ್ಷಿತ)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>📌 4. ಪ್ರೊ ಲೆವೆಲ್ ಕಾನ್ಸೆಪ್ಟ್‌ಗಳು (Pro Concepts)</h3>
+                <ul>
+                    <li>🔍 <strong>Scope (ಮಿತಿ):</strong> 
+                        <ul>
+                            <li>var ಬ್ಲಾಕ್ { } ನಿಂದ ಹೊರಗೆ ಲೀಕ್ ಆಗುತ್ತದೆ.</li>
+                            <li>let/const ಬ್ಲಾಕ್‌ನಿಂದ ಹೊರಬರುವುದಿಲ್ಲ (ಸುರಕ್ಷಿತ).</li>
+                        </ul>
+                    </li>
+                    <li>⬆️ <strong>Hoisting (ಮೇಲೇರುವಿಕೆ):</strong>
+                        <ul>
+                            <li>var ಮೇಲೇರಿ undefined ಆಗುತ್ತದೆ.</li>
+                            <li>let/const ಮೇಲೇರಿದರೂ ಮೌಲ್ಯ ಕೊಡುವವರೆಗೆ TDZ (Temporal Dead Zone) ನಲ್ಲಿರುತ್ತವೆ (ಮುಟ್ಟಿದರೆ Error ಬರುತ್ತದೆ).</li>
+                        </ul>
+                    </li>
+                    <li>🔓 <strong>const Mutation (ಒಳಗಿನ ಗುಟ್ಟು):</strong>
+                        <ul>
+                            <li>const ನಲ್ಲಿ ಇಡೀ Array/Object ಬದಲಾಯಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ. ಆದರೆ ಒಳಗಿರುವ ವಸ್ತುಗಳನ್ನು (Properties) ಬದಲಾಯಿಸಬಹುದು!</li>
+                            <li>(ಉದಾ: car.brand = "New" ✅)</li>
+                        </ul>
+                    </li>
+                    <li>👥 <strong>Shadowing (ಮರೆಮಾಡುವುದು):</strong>
+                        <ul>
+                            <li>ಬ್ಲಾಕ್ ಒಳಗಿನ ವೇರಿಯೇಬಲ್, ಹೊರಗಿನ ಅದೇ ಹೆಸರಿನ ವೇರಿಯೇಬಲ್ ಅನ್ನು ಮರೆಮಾಡುತ್ತದೆ. (ಆದರೆ ಹೊರಗೆ let, ಒಳಗೆ var ಬಳಸಿದರೆ Illegal Shadowing / Error ಬರುತ್ತದೆ).</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>🏆 5. ವೃತ್ತಿಪರರ 3 ಸುವರ್ಣ ನಿಯಮಗಳು</h3>
+                <ol>
+                    <li>🥇 ಡಿಫಾಲ್ಟ್ ಆಗಿ ಯಾವಾಗಲೂ const ಬಳಸಿ.</li>
+                    <li>🥈 ಮೌಲ್ಯ ಮುಂದೇ ಬದಲಾಗುತ್ತದೆ ಎಂದು ಖಚಿತವಿದ್ದರೆ ಮಾತ್ರ (ಉದಾ: ಲೂಪ್, ಸ್ಕೋರ್) let ಬಳಸಿ.</li>
+                    <li>🚫 ಹೊಸ ಕೋಡ್‌ನಲ್ಲಿ var ಬಳಸಲೇಬೇಡಿ!</li>
+                </ol>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // 1. Dark Mode Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.querySelector('.theme-btn');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                btn.textContent = '🌙 Dark Mode';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                btn.textContent = '☀️ Light Mode';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Check local storage for theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+            document.querySelector('.theme-btn').textContent = '☀️ Light Mode';
+        }
+
+        // 2. Copy Code Functionality
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling.innerText;
+            
+            navigator.clipboard.writeText(codeBlock).then(() => {
+                button.textContent = 'Copied! ✅';
+                button.style.background = '#2ecc71';
+                button.style.color = '#fff';
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.style.background = 'var(--primary-color)';
+                    button.style.color = '#000';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

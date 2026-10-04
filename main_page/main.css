@@ -1,0 +1,260 @@
+/* General Setup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4ecd8;
+    background-image: radial-gradient(#e8dcb8 1px, transparent 1px);
+    background-size: 20px 20px;
+    font-family: 'Lora', 'Noto Serif Kannada', serif;
+    color: #3e2723;
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+/* Header Section */
+header {
+    background: #3e2723;
+    color: #f4ecd8;
+    text-align: center;
+    padding: 3rem 1rem;
+    position: relative;
+    border-bottom: 8px solid #b8860b;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+header::before {
+    content: "❦ ════ •⊰❂⊱• ════ ❦";
+    display: block;
+    color: #b8860b;
+    font-size: 1.2rem;
+    margin: 10px 0;
+    opacity: 0.8;
+}
+
+header::after {
+    content: "Created By Daneshwar Yallatti";
+    display: block;
+    color: #f3e9ce;
+    font-size: 1.2rem;
+    margin: 10px 0;
+    opacity: 0.8;
+    text-align: end;
+}
+
+header h1 {
+    font-size: 2.8rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+header p {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #d4af37;
+}
+
+header p:nth-child(2) {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #d4af37;
+}
+
+#dynamic-greeting {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #e8dcb8;
+    font-weight: bold;
+}
+
+/* Main Container */
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: #5d4037;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: #b8860b;
+    margin: 10px auto 0;
+}
+
+/* Responsive Grid System */
+.subjects-grid {
+    display: grid;
+    /* ಇದು ಲ್ಯಾಪ್‌ಟಾಪ್‌ನಲ್ಲಿ ಅಕ್ಕಪಕ್ಕ ಹಾಗೂ ಮೊಬೈಲ್‌ನಲ್ಲಿ ಒಂದರ ಕೆಳಗೊಂದು ಬರುವಂತೆ ಮಾಡುತ್ತದೆ */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+/* Card Design (Book Style) */
+.card {
+    background: #fffdf7;
+    border-radius: 5px 15px 15px 5px;
+    padding: 35px 20px 25px;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.1), inset 2px 0 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
+    border: 1px solid #e0d4b8;
+    border-left: 15px solid #5d4037;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+/* Bookmark Ribbon */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 25px;
+    width: 20px;
+    height: 45px;
+    background: #b8860b;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+    transition: height 0.3s ease;
+}
+
+/* Hover Effects */
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 8px 15px 25px rgba(0, 0, 0, 0.15);
+    border-left-color: #b8860b;
+}
+
+.card:hover::before {
+    height: 60px;
+}
+
+/* Icon Container */
+.icon-box {
+    font-size: 3.5rem;
+    color: #8d6e63;
+    margin-bottom: 15px;
+    transition: all 0.4s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+}
+
+.card:hover .icon-box {
+    color: #b8860b;
+    transform: scale(1.1);
+}
+
+/* Custom Kannada Logo inside Icon Box */
+.kannada-logo {
+    font-family: 'Noto Serif Kannada', serif;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.card h2 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    color: #3e2723;
+    border-bottom: 1px dashed #d7ccc8;
+    padding-bottom: 8px;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: #5d4037;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 25px 15px;
+    margin-top: 50px;
+    background-color: #3e2723;
+    color: #e8dcb8;
+    border-top: 5px solid #b8860b;
+    font-size: 0.95rem;
+}
+
+/* Card Animation Class */
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================
+           MOBILE & TABLET RESPONSIVE QUERIES
+           ========================================= */
+
+/* Tablets & Smaller Laptops */
+@media (max-width: 992px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    .subjects-grid {
+        gap: 25px;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+    header {
+        padding: 2rem 1rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header::before,
+    header::after {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    /* ಮೊಬೈಲ್‌ನಲ್ಲಿ ಕಾರ್ಡ್‌ಗಳ ವಿನ್ಯಾಸ */
+    .subjects-grid {
+        grid-template-columns: 1fr;
+        /* ಒಂದರ ಕೆಳಗೊಂದು ಬರುತ್ತದೆ */
+        gap: 20px;
+    }
+
+    .card {
+        padding: 25px 15px 20px;
+        border-left-width: 12px;
+        /* ಮೊಬೈಲ್‌ನಲ್ಲಿ ಬೆನ್ನುಪುಟದ ದಪ್ಪ ಕಡಿಮೆ */
+    }
+
+    /* ಮೊಬೈಲ್‌ನಲ್ಲಿ ಬುಕ್‌ಮಾರ್ಕ್ ಸ್ವಲ್ಪ ಸಣ್ಣದು */
+    .card::before {
+        right: 15px;
+        width: 15px;
+        height: 35px;
+    }
+
+    .card:hover::before {
+        height: 45px;
+    }
+}
