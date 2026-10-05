@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KEA & KPSC FDA/SDA ಕಂಪ್ಯೂಟರ್ ಮಾಸ್ಟರ್ ಕ್ವಿಜ್ | Eye-Care Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Default Theme: Soft Sage & Warm Parchment (Zero Eye Strain) */
+            --bg-primary: #F4F6F0;
+            --bg-secondary: #EAEee3;
+            --bg-card: #FFFFFF;
+            --bg-subtle: #F8FAF5;
+            --text-main: #1E2923;
+            --text-secondary: #435349;
+            --text-muted: #6B7D72;
+            --border-color: #DCE3D5;
+            --accent-primary: #2D6A4F;
+            --accent-hover: #1B4332;
+            --accent-light: #E6F2EC;
+            --highlight-amber: #D97706;
+            --highlight-amber-bg: #FEF3C7;
+            --correct-green: #15803D;
+            --correct-bg: #DCFCE7;
+            --wrong-red: #B91C1C;
+            --wrong-bg: #FEE2E2;
+            --shadow-soft: 0 4px 20px rgba(30, 41, 35, 0.06);
+            --font-scale: 1;
+        }
+
+        /* Theme 2: Warm Sepia Book Mode */
+        body.theme-sepia {
+            --bg-primary: #FBF7F0;
+            --bg-secondary: #F2E9DC;
+            --bg-card: #FFFDF9;
+            --bg-subtle: #F7F1E6;
+            --text-main: #2C221E;
+            --text-secondary: #54433A;
+            --text-muted: #7D685D;
+            --border-color: #E6D9C6;
+            --accent-primary: #8C4A27;
+            --accent-hover: #6E371B;
+            --accent-light: #F7EBE3;
+            --highlight-amber: #B45309;
+            --highlight-amber-bg: #FDE68A;
+            --correct-green: #166534;
+            --correct-bg: #DCFCE7;
+            --wrong-red: #991B1B;
+            --wrong-bg: #FEE2E2;
+            --shadow-soft: 0 4px 20px rgba(44, 34, 30, 0.06);
+        }
+
+        /* Theme 3: Low-Blue-Light Slate Night Mode */
+        body.theme-slate {
+            --bg-primary: #161D24;
+            --bg-secondary: #1E2730;
+            --bg-card: #222D37;
+            --bg-subtle: #1A232B;
+            --text-main: #E2E8F0;
+            --text-secondary: #CBD5E1;
+            --text-muted: #94A3B8;
+            --border-color: #334155;
+            --accent-primary: #38BDF8;
+            --accent-hover: #0284C7;
+            --accent-light: rgba(56, 189, 248, 0.14);
+            --highlight-amber: #FBBF24;
+            --highlight-amber-bg: rgba(251, 191, 36, 0.15);
+            --correct-green: #4ADE80;
+            --correct-bg: rgba(74, 222, 128, 0.15);
+            --wrong-red: #F87171;
+            --wrong-bg: rgba(248, 113, 113, 0.15);
+            --shadow-soft: 0 6px 24px rgba(0, 0, 0, 0.35);
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: background-color 0.25s ease, color 0.2s ease, border-color 0.25s ease;
+        }
+
+        body {
+            font-family: 'Noto Sans Kannada', 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-size: calc(1rem * var(--font-scale));
+            line-height: 1.75;
+            margin: 0;
+            padding: 0;
+        }
+
+        .q-text-scaled {
+            font-size: calc(1.18rem * var(--font-scale));
+            line-height: 1.65;
+        }
+
+        .opt-text-scaled {
+            font-size: calc(1rem * var(--font-scale));
+        }
+
+        .card-surface {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
+            border-radius: 1rem;
+        }
+
+        .subtle-surface {
+            background-color: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-primary);
+            color: #FFFFFF;
+        }
+        body.theme-slate .btn-primary {
+            color: #0F172A;
+            font-weight: 700;
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Option Buttons */
+        .option-btn {
+            background-color: var(--bg-subtle);
+            border: 2px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 0.85rem;
+            padding: 0.9rem 1.15rem;
+            text-align: left;
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            cursor: pointer;
+            transition: transform 0.15s ease, border-color 0.2s ease, background-color 0.2s ease;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            border-color: var(--accent-primary);
+            background-color: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        .option-btn.selected-exam {
+            border-color: var(--accent-primary);
+            background-color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        .option-btn.correct-ans {
+            border-color: var(--correct-green) !important;
+            background-color: var(--correct-bg) !important;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .option-btn.wrong-ans {
+            border-color: var(--wrong-red) !important;
+            background-color: var(--wrong-bg) !important;
+            color: var(--text-main);
+        }
+
+        /* Question Palette Badges */
+        .palette-btn {
+            width: 2.35rem;
+            height: 2.35rem;
+            border-radius: 0.6rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1.5px solid var(--border-color);
+            background-color: var(--bg-subtle);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.18s ease;
+        }
+
+        .palette-btn:hover {
+            border-color: var(--accent-primary);
+            transform: scale(1.06);
+        }
+
+        .palette-btn.active-q {
+            outline: 2.5px solid var(--accent-primary);
+            outline-offset: 2px;
+            font-weight: 800;
+        }
+
+        .palette-btn.status-correct {
+            background-color: var(--correct-bg);
+            border-color: var(--correct-green);
+            color: var(--correct-green);
+        }
+
+        .palette-btn.status-wrong {
+            background-color: var(--wrong-bg);
+            border-color: var(--wrong-red);
+            color: var(--wrong-red);
+        }
+
+        .palette-btn.status-answered {
+            background-color: var(--accent-light);
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .palette-btn.status-review {
+            background-color: var(--highlight-amber-bg);
+            border-color: var(--highlight-amber);
+            color: var(--highlight-amber);
+        }
+
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade {
+            animation: fadeInSlide 0.3s ease forwards;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 99px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-opacity-90 border-b" style="background-color: var(--bg-card); border-color: var(--border-color);">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+            <!-- Brand Title -->
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl flex items-center justify-center shadow-sm" style="background-color: var(--accent-light); color: var(--accent-primary);">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                        <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                        <path d="M8 21h8M12 17v4"></path>
+                    </svg>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--accent-primary);">KEA • KPSC FDA/SDA • KAS • PDO</span>
+                        <span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background-color: var(--highlight-amber-bg); color: var(--highlight-amber);">👁️ Eye-Care Mode</span>
+                    </div>
+                    <h1 class="text-lg md:text-xl font-extrabold tracking-tight mt-0.5">ಕಂಪ್ಯೂಟರ್ ಮೂಲ ಪರಿಕಲ್ಪನೆ ಮತ್ತು EDP - ಡೈನಾಮಿಕ್ ಪರೀಕ್ಷಾ ಕ್ವಿಜ್</h1>
+                </div>
+            </div>
+
+            <!-- Eye-Comfort Controls & Font Scaler -->
+            <div class="flex flex-wrap items-center gap-2">
+                <!-- Theme Selector -->
+                <div class="flex items-center p-1 rounded-xl border" style="background-color: var(--bg-subtle); border-color: var(--border-color);" title="ಕಣ್ಣಿಗೆ ತಂಪಾದ ಹಿನ್ನೆಲೆ ಬದಲಿಸಿ">
+                    <button onclick="setEyeTheme('sage')" id="theme-btn-sage" class="px-2.5 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition" style="background-color: var(--accent-primary); color: #fff;">
+                        🌿 ಸೇಜ್ (Sage)
+                    </button>
+                    <button onclick="setEyeTheme('sepia')" id="theme-btn-sepia" class="px-2.5 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition" style="color: var(--text-secondary);">
+                        📜 ಸೆಪಿಯಾ (Sepia)
+                    </button>
+                    <button onclick="setEyeTheme('slate')" id="theme-btn-slate" class="px-2.5 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition" style="color: var(--text-secondary);">
+                        🌙 ಸ್ಲೇಟ್ (Night)
+                    </button>
+                </div>
+
+                <!-- Font Size Adjuster -->
+                <div class="flex items-center p-1 rounded-xl border" style="background-color: var(--bg-subtle); border-color: var(--border-color);" title="ಅಕ್ಷರದ ಗಾತ್ರ ಬದಲಿಸಿ">
+                    <button onclick="adjustFontSize(-0.08)" class="px-2.5 py-1 rounded-lg text-xs font-bold hover:opacity-80">A-</button>
+                    <button onclick="adjustFontSize(0)" class="px-2 py-1 rounded-lg text-xs font-semibold border-x" style="border-color: var(--border-color);">A</button>
+                    <button onclick="adjustFontSize(0.08)" class="px-2.5 py-1 rounded-lg text-xs font-bold hover:opacity-80">A+</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="max-w-7xl mx-auto w-full px-4 pt-5">
+        <div class="card-surface p-4 flex flex-wrap items-center justify-between gap-4">
+            <!-- Mode Toggle: Practice vs KEA Exam Simulation -->
+            <div class="flex flex-wrap items-center gap-2">
+                <span class="text-xs font-bold uppercase tracking-wider" style="color: var(--text-muted);">ಮೋಡ್ ಆಯ್ಕೆ:</span>
+                <div class="inline-flex rounded-xl p-1 border" style="background-color: var(--bg-subtle); border-color: var(--border-color);">
+                    <button id="mode-practice-btn" onclick="switchQuizMode('practice')" class="px-3.5 py-1.5 rounded-lg text-xs md:text-sm font-bold transition" style="background-color: var(--accent-primary); color: #fff;">
+                        📖 ಅಭ್ಯಾಸ ಮೋಡ್ (ತಕ್ಷಣ ಉತ್ತರ & ವಿವರಣೆ)
+                    </button>
+                    <button id="mode-exam-btn" onclick="switchQuizMode('exam')" class="px-3.5 py-1.5 rounded-lg text-xs md:text-sm font-bold transition" style="color: var(--text-secondary);">
+                        ⏱️ KEA FDA ಪರೀಕ್ಷಾ ಮೋಡ್ (Timer)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Topic Filter -->
+            <div class="flex items-center gap-2 flex-wrap">
+                <label for="topic-filter" class="text-xs font-bold" style="color: var(--text-muted);">ವಿಷಯ ಫಿಲ್ಟರ್:</label>
+                <select id="topic-filter" onchange="filterByCategory(this.value)" class="text-xs md:text-sm font-semibold rounded-xl px-3 py-2 border outline-none cursor-pointer" style="background-color: var(--bg-subtle); border-color: var(--border-color); color: var(--text-main);">
+                    <option value="ALL">ಎಲ್ಲಾ ಪ್ರಶ್ನೆಗಳು (All 25 Questions)</option>
+                    <option value="DEF">1. ಮೂಲ ವ್ಯಾಖ್ಯಾನ, ಪದದ ಮೂಲ & ವಿಸ್ತರಣೆ</option>
+                    <option value="IPOS">2. ಕಾರ್ಯನಿರ್ವಹಣೆಯ 4 ಹಂತಗಳು (IPOS) & CPU</option>
+                    <option value="HIST">3. ಕಂಪ್ಯೂಟರ್ ಪಿತಾಮಹರು & ಪ್ರಮುಖ ಅಂಶಗಳು</option>
+                    <option value="CHAR">4. ಕಂಪ್ಯೂಟರ್ ಲಕ್ಷಣಗಳು, ವೇಗ & GIGO ನಿಯಮ</option>
+                    <option value="EDP">5. EDP ಹಂತಗಳು, ಡೇಟಾ vs ಮಾಹಿತಿ</option>
+                    <option value="BOOKMARK">⭐ ಬುಕ್‌ಮಾರ್ಕ್ ಮಾಡಿದ ಪ್ರಶ್ನೆಗಳು</option>
+                </select>
+            </div>
+
+            <!-- Live Metrics: Timer, Score, Streak -->
+            <div class="flex items-center gap-3 flex-wrap">
+                <div class="subtle-surface px-3 py-1.5 flex items-center gap-2 text-xs md:text-sm font-bold">
+                    <span>⏱️ ಸಮಯ:</span>
+                    <span id="timer-display" class="font-mono text-base" style="color: var(--accent-primary);">00:00</span>
+                </div>
+                <div class="subtle-surface px-3 py-1.5 flex items-center gap-2 text-xs md:text-sm font-bold">
+                    <span>🎯 ಅಂಕ:</span>
+                    <span id="live-score-badge" style="color: var(--correct-green);">0 / 25</span>
+                </div>
+                <div class="subtle-surface px-3 py-1.5 flex items-center gap-1.5 text-xs md:text-sm font-bold" title="ಸತತ ಸರಿಯಾದ ಉತ್ತರಗಳು">
+                    <span>🔥 ಸ್ಟ್ರೀಕ್:</span>
+                    <span id="streak-badge" style="color: var(--highlight-amber);">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overall Progress Bar -->
+        <div class="mt-3 w-full h-2.5 rounded-full overflow-hidden" style="background-color: var(--border-color);">
+            <div id="progress-bar-fill" class="h-full transition-all duration-300 rounded-full" style="width: 4%; background-color: var(--accent-primary);"></div>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto w-full px-4 py-6 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+        <!-- Left / Center Column: Active Question Arena (8 Cols) -->
+        <div id="quiz-arena-col" class="lg:col-span-8 flex flex-col gap-5">
+
+            <!-- Question Card -->
+            <div id="question-card" class="card-surface p-5 md:p-7 animate-fade">
+                <!-- Question Top Meta Bar -->
+                <div class="flex flex-wrap items-center justify-between gap-2 pb-4 mb-4 border-b" style="border-color: var(--border-color);">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span id="q-number-badge" class="px-3 py-1 rounded-lg text-sm font-extrabold" style="background-color: var(--accent-primary); color: #fff;">
+                            ಪ್ರಶ್ನೆ 1 / 25
+                        </span>
+                        <span id="q-category-badge" class="px-2.5 py-1 rounded-lg text-xs font-bold" style="background-color: var(--accent-light); color: var(--accent-primary);">
+                            ಮೂಲ ವ್ಯಾಖ್ಯಾನ
+                        </span>
+                        <span id="q-exam-tag" class="px-2.5 py-1 rounded-lg text-xs font-semibold" style="background-color: var(--highlight-amber-bg); color: var(--highlight-amber);">
+                            KEA FDA / SDA
+                        </span>
+                    </div>
+
+                    <!-- Bookmark & Mark for Review Buttons -->
+                    <div class="flex items-center gap-2">
+                        <button onclick="toggleReviewMark()" id="btn-mark-review" class="subtle-surface px-3 py-1.5 text-xs font-bold flex items-center gap-1 hover:opacity-80" title="ಮರುಪರಿಶೀಲನೆಗೆ ಗುರುತಿಸಿ">
+                            <span>🚩</span> <span id="review-btn-text">ಪರಿಶೀಲನೆಗೆ ಗುರುತಿಸಿ</span>
+                        </button>
+                        <button onclick="toggleBookmark()" id="btn-bookmark" class="subtle-surface px-3 py-1.5 text-xs font-bold flex items-center gap-1 hover:opacity-80" title="ಪ್ರಮುಖ ಪ್ರಶ್ನೆಯಾಗಿ ಉಳಿಸಿ">
+                            <span id="bookmark-icon">☆</span> <span>ಬುಕ್‌ಮಾರ್ಕ್</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question Text -->
+                <h2 id="question-text" class="q-text-scaled font-bold mb-6 whitespace-pre-line">
+                    ಪ್ರಶ್ನೆ ಲೋಡ್ ಆಗುತ್ತಿದೆ...
+                </h2>
+
+                <!-- Options Container -->
+                <div id="options-container" class="flex flex-col gap-3.5">
+                    <!-- Populated dynamically via JS -->
+                </div>
+
+                <!-- Instant Explanation Box (Shown in Practice Mode or Post-Submit Review) -->
+                <div id="explanation-panel" class="hidden mt-6 p-5 rounded-2xl border-l-4 animate-fade" style="background-color: var(--bg-subtle); border-color: var(--accent-primary);">
+                    <div class="flex items-center gap-2 font-extrabold text-sm md:text-base mb-2" style="color: var(--accent-primary);">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                            <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                        <span id="exp-header-title">ವಿವರಣಾತ್ಮಕ ವಿಶ್ಲೇಷಣೆ ಮತ್ತು ಪರೀಕ್ಷಾ ಸುಳಿವು (Exam Explanation):</span>
+                    </div>
+                    <p id="explanation-text" class="text-sm md:text-base leading-relaxed" style="color: var(--text-secondary);"></p>
+                    <div id="memory-tip-box" class="mt-3 p-3 rounded-xl text-xs md:text-sm font-semibold flex items-start gap-2" style="background-color: var(--highlight-amber-bg); color: var(--highlight-amber);">
+                        <span>💡</span>
+                        <span id="memory-tip-text"></span>
+                    </div>
+                </div>
+
+                <!-- Bottom Navigation Bar inside Card -->
+                <div class="mt-7 pt-4 border-t flex flex-wrap items-center justify-between gap-3" style="border-color: var(--border-color);">
+                    <button id="prev-btn" onclick="navigateQuestion(-1)" class="subtle-surface px-4 py-2.5 text-sm font-bold flex items-center gap-2 hover:opacity-80 disabled:opacity-40">
+                        <span>←</span> <span>ಹಿಂದಿನ ಪ್ರಶ್ನೆ</span>
+                    </button>
+
+                    <div class="flex items-center gap-2">
+                        <button onclick="clearCurrentResponse()" id="clear-ans-btn" class="subtle-surface px-3.5 py-2.5 text-xs font-semibold hover:opacity-80 hidden">
+                            ಅಳಿಸಿ (Clear)
+                        </button>
+                        <button onclick="finishAndShowResults()" class="px-4 py-2.5 rounded-xl text-xs md:text-sm font-bold border transition" style="border-color: var(--accent-primary); color: var(--accent-primary); background-color: var(--accent-light);">
+                            📊 ಫಲಿತಾಂಶ ನೋಡಿ (Submit Quiz)
+                        </button>
+                    </div>
+
+                    <button id="next-btn" onclick="navigateQuestion(1)" class="btn-primary px-5 py-2.5 rounded-xl text-sm font-bold flex items-center gap-2 shadow-sm">
+                        <span>ಮುಂದಿನ ಪ್ರಶ್ನೆ</span> <span>→</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Concept Flash-Bar (Mini Revision of User Notes) -->
+            <div class="card-surface p-4 flex items-center justify-between gap-4 flex-wrap">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl">📘</span>
+                    <div>
+                        <h3 class="text-sm font-extrabold">ನಿಮ್ಮ ನೋಟ್ಸ್‌‌ನ ತ್ವರಿತ ಸ್ಮರಣಿಕೆ (Quick Concept Cheat-Sheet)</h3>
+                        <p class="text-xs" style="color: var(--text-muted);">GIGO = Accuracy | Computare = Latin (To Calculate) | EDP = Input ➔ Process ➔ Output | Zero IQ</p>
+                    </div>
+                </div>
+                <button onclick="toggleCheatSheetModal()" class="subtle-surface px-3.5 py-2 text-xs font-bold hover:opacity-80" style="color: var(--accent-primary);">
+                    📑 ಸಂಪೂರ್ಣ ನೋಟ್ಸ್ ಸಾರಾಂಶ ತೆರೆಯಿರಿ
+                </button>
+            </div>
+        </div>
+
+        <!-- Right Column: Question Palette & Live Accuracy Analytics (4 Cols) -->
+        <aside class="lg:col-span-4 flex flex-col gap-5">
+            <!-- Question Navigator Palette -->
+            <div class="card-surface p-5">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-sm md:text-base font-extrabold flex items-center gap-2">
+                        <span>🧭</span> <span>ಪ್ರಶ್ನೆ ಫಲಕ (Question Palette)</span>
+                    </h3>
+                    <span id="answered-counter" class="text-xs font-bold px-2.5 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--accent-primary);">
+                        0 / 25 ಉತ್ತರಿಸಲಾಗಿದೆ
+                    </span>
+                </div>
+
+                <!-- Legend -->
+                <div class="grid grid-cols-2 gap-2 text-xs mb-4 p-2.5 rounded-xl" style="background-color: var(--bg-subtle); color: var(--text-secondary);">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-sm inline-block" style="background-color: var(--correct-bg); border: 1.5px solid var(--correct-green);"></span>
+                        <span>ಸರಿ ಉತ್ತರ (<b id="stat-correct">0</b>)</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-sm inline-block" style="background-color: var(--wrong-bg); border: 1.5px solid var(--wrong-red);"></span>
+                        <span>ತಪ್ಪು ಉತ್ತರ (<b id="stat-wrong">0</b>)</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-sm inline-block" style="background-color: var(--highlight-amber-bg); border: 1.5px solid var(--highlight-amber);"></span>
+                        <span>ಪರಿಶೀಲನೆಗೆ (<b id="stat-review">0</b>)</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-sm inline-block" style="background-color: var(--bg-card); border: 1.5px solid var(--border-color);"></span>
+                        <span>ಉಳಿದಿರುವ (<b id="stat-unanswered">25</b>)</span>
+                    </div>
+                </div>
+
+                <!-- 25 Numbered Buttons Grid -->
+                <div id="palette-grid" class="grid grid-cols-5 gap-2.5">
+                    <!-- Generated by JS -->
+                </div>
+
+                <!-- Reset & Retry Controls -->
+                <div class="mt-5 pt-4 border-t flex flex-col gap-2" style="border-color: var(--border-color);">
+                    <button onclick="resetQuizAll()" class="subtle-surface w-full py-2 text-xs font-bold hover:opacity-80 flex items-center justify-center gap-1.5">
+                        🔄 ಕ್ವಿಜ್ ಮರುಪ್ರಾರಂಭಿಸಿ (Reset Quiz)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Live Accuracy & Exam Target Card -->
+            <div class="card-surface p-5">
+                <h3 class="text-sm font-extrabold mb-3 flex items-center gap-2">
+                    <span>📈</span> <span>ನೇರ ನಿಖರತೆ ವಿಶ್ಲೇಷಣೆ (Live Accuracy)</span>
+                </h3>
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-semibold" style="color: var(--text-muted);">ನಿಮ್ಮ ಪ್ರಸ್ತುತ ನಿಖರತೆ:</span>
+                    <span id="accuracy-pct" class="text-lg font-extrabold" style="color: var(--accent-primary);">0%</span>
+                </div>
+                <div class="w-full h-2 rounded-full overflow-hidden mb-3" style="background-color: var(--border-color);">
+                    <div id="accuracy-bar" class="h-full transition-all duration-300" style="width: 0%; background-color: var(--correct-green);"></div>
+                </div>
+                <p class="text-xs leading-relaxed" style="color: var(--text-muted);">
+                    💡 <strong>KEA FDA / SDA ಗುರಿ:</strong> ಕಂಪ್ಯೂಟರ್ ಸಾಕ್ಷರತಾ ವಿಭಾಗದಲ್ಲಿ 85% ಕ್ಕಿಂತ ಹೆಚ್ಚು ನಿಖರತೆ ಕಾಯ್ದುಕೊಳ್ಳುವುದು ಆಯ್ಕೆಪಟ್ಟಿಯಲ್ಲಿ ಸ್ಥಾನ ಪಡೆಯಲು ಅತ್ಯಂತ ಸಹಕಾರಿ.
+                </p>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Final Scorecard Modal -->
+    <div id="results-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black bg-opacity-60 backdrop-blur-sm">
+        <div class="card-surface max-w-2xl w-full p-6 md:p-8 max-h-[90vh] overflow-y-auto animate-fade">
+            <div class="flex items-center justify-between border-b pb-4 mb-5" style="border-color: var(--border-color);">
+                <div>
+                    <span class="text-xs font-bold uppercase px-2.5 py-1 rounded-full" style="background-color: var(--accent-light); color: var(--accent-primary);">KEA / KPSC FDA ಮೌಲ್ಯಮಾಪನ ವರದಿ</span>
+                    <h2 class="text-2xl font-extrabold mt-1">ನಿಮ್ಮ ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶ (Scorecard)</h2>
+                </div>
+                <button onclick="closeResultsModal()" class="subtle-surface w-9 h-9 flex items-center justify-center font-bold text-lg">✕</button>
+            </div>
+
+            <!-- Rank & Score Highlight -->
+            <div class="subtle-surface p-5 mb-6 text-center">
+                <div id="grade-badge" class="inline-block px-4 py-1 rounded-full text-sm font-extrabold mb-2" style="background-color: var(--correct-bg); color: var(--correct-green);">
+                    🏆 ಅತ್ಯುತ್ತಮ ಪ್ರದರ್ಶನ (FDA Topper Level)
+                </div>
+                <div class="text-4xl md:text-5xl font-black my-2" id="final-score-big" style="color: var(--accent-primary);">
+                    0 / 25
+                </div>
+                <p id="final-feedback-msg" class="text-sm" style="color: var(--text-secondary);">
+                    ನೀವು ಕಂಪ್ಯೂಟರ್ ಮೂಲ ಪರಿಕಲ್ಪನೆ ಮತ್ತು EDP ವಿಷಯವನ್ನು ಚೆನ್ನಾಗಿ ಅರ್ಥಮಾಡಿಕೊಂಡಿದ್ದೀರಿ!
+                </p>
+            </div>
+
+            <!-- 4 Metric Boxes -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6 text-center">
+                <div class="subtle-surface p-3">
+                    <div class="text-xs font-semibold" style="color: var(--text-muted);">ಸರಿ ಉತ್ತರಗಳು</div>
+                    <div id="modal-correct" class="text-xl font-extrabold mt-1" style="color: var(--correct-green);">0</div>
+                </div>
+                <div class="subtle-surface p-3">
+                    <div class="text-xs font-semibold" style="color: var(--text-muted);">ತಪ್ಪು ಉತ್ತರಗಳು</div>
+                    <div id="modal-wrong" class="text-xl font-extrabold mt-1" style="color: var(--wrong-red);">0</div>
+                </div>
+                <div class="subtle-surface p-3">
+                    <div class="text-xs font-semibold" style="color: var(--text-muted);">ಶೇಕಡಾವಾರು (%)</div>
+                    <div id="modal-pct" class="text-xl font-extrabold mt-1" style="color: var(--accent-primary);">0%</div>
+                </div>
+                <div class="subtle-surface p-3">
+                    <div class="text-xs font-semibold" style="color: var(--text-muted);">ತೆಗೆದುಕೊಂಡ ಸಮಯ</div>
+                    <div id="modal-time" class="text-xl font-extrabold mt-1" style="color: var(--highlight-amber);">00:00</div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center justify-end gap-3">
+                <button onclick="retryWrongQuestionsOnly()" id="btn-retry-wrong" class="subtle-surface px-4 py-2.5 text-xs md:text-sm font-bold hover:opacity-80" style="color: var(--wrong-red);">
+                    🎯 ತಪ್ಪಾದ ಪ್ರಶ್ನೆಗಳನ್ನು ಮಾತ್ರ ಮತ್ತೆ ಅಭ್ಯಾಸ ಮಾಡಿ
+                </button>
+                <button onclick="closeResultsModal()" class="subtle-surface px-4 py-2.5 text-xs md:text-sm font-bold">
+                    🔍 ಉತ್ತರಗಳ ವಿವರಣೆ ಪರಿಶೀಲಿಸಿ (Review Solutions)
+                </button>
+                <button onclick="resetQuizAll(); closeResultsModal();" class="btn-primary px-5 py-2.5 rounded-xl text-xs md:text-sm font-bold">
+                    🔄 ಹೊಸದಾಗಿ ಪ್ರಾರಂಭಿಸಿ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Revision Notes Cheat-Sheet Modal -->
+    <div id="cheatsheet-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black bg-opacity-60 backdrop-blur-sm">
+        <div class="card-surface max-w-3xl w-full p-6 md:p-7 max-h-[88vh] overflow-y-auto animate-fade">
+            <div class="flex items-center justify-between border-b pb-3 mb-4" style="border-color: var(--border-color);">
+                <h2 class="text-lg md:text-xl font-extrabold flex items-center gap-2">
+                    <span>📘</span> <span>ನಿಮ್ಮ ಸಂಪೂರ್ಣ ನೋಟ್ಸ್‌ನ ಪರೀಕ್ಷಾ ಸಾರಾಂಶ (One-Page Revision Sheet)</span>
+                </h2>
+                <button onclick="toggleCheatSheetModal()" class="subtle-surface w-8 h-8 flex items-center justify-center font-bold">✕</button>
+            </div>
+            <div class="space-y-4 text-sm leading-relaxed" style="color: var(--text-secondary);">
+                <div class="subtle-surface p-3.5">
+                    <h4 class="font-bold mb-1" style="color: var(--accent-primary);">1. ಮೂಲ ವ್ಯಾಖ್ಯಾನ & ಪದದ ಮೂಲ:</h4>
+                    <p>• <strong>ಕಂಪ್ಯೂಟರ್:</strong> ವಿದ್ಯುನ್ಮಾನ ಸಾಧನ (Electronic Device) — ಡೇಟಾವನ್ನು <strong>Input</strong> ಆಗಿ ಸ್ವೀಕರಿಸಿ, <strong>Process</strong> ಮಾಡಿ, <strong>Output</strong> (ಮಾಹಿತಿ) ನೀಡುತ್ತದೆ ಮತ್ತು <strong>Store</strong> ಮಾಡುತ್ತದೆ.<br>
+                    • <strong>ಪದದ ಮೂಲ:</strong> ಲ್ಯಾಟಿನ್ ಭಾಷೆಯ <strong>"Computare"</strong> (ಅರ್ಥ: ಲೆಕ್ಕಾಚಾರ ಮಾಡುವುದು / To Calculate).<br>
+                    • <strong>COMPUTER ವಿಸ್ತರಣೆ:</strong> <b>C</b>ommonly <b>O</b>perated <b>M</b>achine <b>P</b>articularly <b>U</b>sed for <b>T</b>echnical/Trade <b>E</b>ducation and <b>R</b>esearch.</p>
+                </div>
+                <div class="subtle-surface p-3.5">
+                    <h4 class="font-bold mb-1" style="color: var(--accent-primary);">2. ಕಾರ್ಯನಿರ್ವಹಣೆಯ 4 ಹಂತಗಳು & EDP:</h4>
+                    <p>• <strong>4 ಹಂತಗಳು (IPOS):</strong> 1. Input (ಕೀಬೋರ್ಡ್, ಮೌಸ್) ➔ 2. Processing (CPU) ➔ 3. Output (ಮಾನಿಟರ್, ಪ್ರಿಂಟರ್) ➔ 4. Storage (ಹಾರ್ಡ್ ಡಿಸ್ಕ್, ಮೆಮೊರಿ).<br>
+                    • <strong>EDP (Electronic Data Processing):</strong> ಕಚ್ಚಾ ದತ್ತಾಂಶವನ್ನು (Raw Data) ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಉಪಯುಕ್ತ ಮಾಹಿತಿಯನ್ನಾಗಿ (Useful Information) ಪರಿವರ್ತಿಸುವ ಪ್ರಕ್ರಿಯೆ. (3 ಹಂತಗಳು: Input, Processing, Output).</p>
+                </div>
+                <div class="subtle-surface p-3.5">
+                    <h4 class="font-bold mb-1" style="color: var(--accent-primary);">3. ಪ್ರಮುಖ ವ್ಯಕ್ತಿಗಳು & ಕಂಪ್ಯೂಟರ್ ಮೆದುಳು:</h4>
+                    <p>• <strong>ಕಂಪ್ಯೂಟರ್ ಪಿತಾಮಹ:</strong> ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ (Difference Engine - 1822, Analytical Engine - 1837).<br>
+                    • <strong>ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್ ವಿಜ್ಞಾನದ ಪಿತಾಮಹ:</strong> ಅಲಾನ್ ಟ್ಯೂರಿಂಗ್ (Turing Machine).<br>
+                    • <strong>ಮೊದಲ ಪ್ರೋಗ್ರಾಮರ್:</strong> ಲೇಡಿ ಅದಾ ಲವ್‌ಲೇಸ್. | <strong>ವಾಸ್ತುಶಿಲ್ಪದ ಪಿತಾಮಹ:</strong> ಜಾನ್ ವಾನ್ ನ್ಯೂಮನ್.<br>
+                    • <strong>ಮೆದುಳು (Brain):</strong> CPU (Central Processing Unit) — ಭಾಗಗಳು: ALU, CU, Registers.</p>
+                </div>
+                <div class="subtle-surface p-3.5">
+                    <h4 class="font-bold mb-1" style="color: var(--accent-primary);">4. ಪ್ರಮುಖ ಲಕ್ಷಣಗಳು (Characteristics):</h4>
+                    <p>• <strong>ವೇಗ (Speed):</strong> Nanoseconds (10⁻⁹ sec) ನಲ್ಲಿ ಲೆಕ್ಕಾಚಾರ (MIPS / FLOPS).<br>
+                    • <strong>ನಿಖರತೆ (Accuracy):</strong> 100% ನಿಖರ ಫಲಿತಾಂಶ — <strong>GIGO (Garbage In Garbage Out)</strong> ನಿಯಮದಡಿ.<br>
+                    • <strong>ಬಹುಮುಖಿ ಕಾರ್ಯ (Versatility):</strong> ಒಂದೇ ಸಮಯದಲ್ಲಿ ವಿವಿಧ ರೀತಿಯ ಕಾರ್ಯಗಳನ್ನು ನಿರ್ವಹಿಸುವ ಸಾಮರ್ಥ್ಯ.<br>
+                    • <strong>ದಣಿವರಿಯದ ದುಡಿಮೆ (Diligence):</strong> ಆಯಾಸ, ಬೇಸರವಿಲ್ಲದೆ ನಿರಂತರವಾಗಿ ಕೆಲಸ ಮಾಡುವುದು.<br>
+                    • <strong>ಮಿತಿಗಳು:</strong> ಸ್ವಂತ ಬುದ್ಧಿಮತ್ತೆ ಇಲ್ಲ (Zero IQ) ಮತ್ತು ಭಾವನೆಗಳಿಲ್ಲ.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const masterQuestions = [
+            {
+                id: 1,
+                category: "DEF",
+                catLabel: "ಮೂಲ ವ್ಯಾಖ್ಯಾನ",
+                examTag: "KEA FDA / SDA",
+                question: "ಕಂಪ್ಯೂಟರ್ (Computer) ಕುರಿತಾದ ಕೆಳಗಿನ ಮೂಲ ವ್ಯಾಖ್ಯಾನದಲ್ಲಿ ಖಾಲಿ ಬಿಟ್ಟ ಸ್ಥಳಗಳನ್ನು ಸರಿಯಾದ ಅನುಕ್ರಮದಲ್ಲಿ ಭರ್ತಿ ಮಾಡಿ:\n\"ಕಂಪ್ಯೂಟರ್ ಒಂದು ವಿದ್ಯುನ್ಮಾನ ಸಾಧನವಾಗಿದ್ದು, ಬಳಕೆದಾರರಿಂದ ದತ್ತಾಂಶವನ್ನು ________ ರೂಪದಲ್ಲಿ ಸ್ವೀಕರಿಸಿ, ಅದನ್ನು ________ ಮಾಡಿ, ಉಪಯುಕ್ತ ________ ಯನ್ನಾಗಿ ನೀಡುತ್ತದೆ ಹಾಗೂ ಭವಿಷ್ಯಕ್ಕಾಗಿ ಸಂಗ್ರಹಿಸಿ (Store) ಇಡುತ್ತದೆ.\"",
+                options: [
+                    "A) Output, Input, Process",
+                    "B) Input (ಇನ್‌ಪುಟ್), Process (ಸಂಸ್ಕರಿಸಿ), Output (ಮಾಹಿತಿ)",
+                    "C) Process, Storage, Input",
+                    "D) Information, Data, Input"
+                ],
+                correct: 1,
+                explanation: "ಕಂಪ್ಯೂಟರ್ ಬಳಕೆದಾರರಿಂದ ಕಚ್ಚಾ ದತ್ತಾಂಶವನ್ನು (Data) ಇನ್‌ಪುಟ್ (Input) ರೂಪದಲ್ಲಿ ಸ್ವೀಕರಿಸಿ, CPU ಮೂಲಕ ಸಂಸ್ಕರಿಸಿ (Process), ಉಪಯುಕ್ತ ಮಾಹಿತಿಯನ್ನಾಗಿ (Output) ನೀಡುತ್ತದೆ ಮತ್ತು ಭವಿಷ್ಯದ ಬಳಕೆಗಾಗಿ ಸಂಗ್ರಹಿಸಿ (Store) ಇಡುತ್ತದೆ.",
+                tip: "ಅನುಕ್ರಮ ಕೋಡ್ ನೆನಪಿಡಿ: I-P-O-S (Input ➔ Process ➔ Output ➔ Store)."
+            },
+            {
+                id: 2,
+                category: "DEF",
+                catLabel: "ಪದದ ಮೂಲ",
+                examTag: "KPSC KAS / FDA",
+                question: "'Computer' ಎಂಬ ಪದವು ಯಾವ ಭಾಷೆಯ 'Computare' (ಕಂಪ್ಯೂಟೇರ್) ಎಂಬ ಪದದಿಂದ ಹುಟ್ಟಿಕೊಂಡಿದೆ ಮತ್ತು ಅದರ ನಿಖರವಾದ ಅರ್ಥವೇನು?",
+                options: [
+                    "A) ಗ್ರೀಕ್ ಭಾಷೆ - 'ವೇಗವಾಗಿ ಬರೆಯುವುದು'",
+                    "B) ಲ್ಯಾಟಿನ್ ಭಾಷೆ - 'ಲೆಕ್ಕಾಚಾರ ಮಾಡುವುದು' (To Calculate)",
+                    "C) ಫ್ರೆಂಚ್ ಭಾಷೆ - 'ಮಾಹಿತಿ ಸಂಗ್ರಹಿಸುವುದು'",
+                    "D) ಜರ್ಮನ್ ಭಾಷೆ - 'ಯೋಚಿಸುವ ಯಂತ್ರ'"
+                ],
+                correct: 1,
+                explanation: "'Computer' ಎಂಬ ಪದವು ಲ್ಯಾಟಿನ್ ಭಾಷೆಯ 'Computare' (ಕಂಪ್ಯೂಟೇರ್) ಎಂಬ ಪದದಿಂದ ಹುಟ್ಟಿಕೊಂಡಿದೆ. ಇದರ ಅರ್ಥ 'ಲೆಕ್ಕಾಚಾರ ಮಾಡುವುದು' (To Calculate). ಆರಂಭದಲ್ಲಿ ಇದನ್ನು ಕೇವಲ ಲೆಕ್ಕಾಚಾರ ಮಾಡುವ ಯಂತ್ರವಾಗಿ ಬಳಸಲಾಗುತ್ತಿತ್ತು.",
+                tip: "Computare (ಲ್ಯಾಟಿನ್) = To Calculate (ಲೆಕ್ಕಾಚಾರ ಮಾಡುವುದು)."
+            },
+            {
+                id: 3,
+                category: "DEF",
+                catLabel: "COMPUTER ವಿಸ್ತರಣೆ",
+                examTag: "KEA Group-C / SDA",
+                question: "ಸ್ಪರ್ಧಾತ್ಮಕ ಪರೀಕ್ಷೆಗಳಲ್ಲಿ ಗುರುತಿಸಲಾಗುವ 'COMPUTER' ಪದದ ವಿಸ್ತೃತ ರೂಪದಲ್ಲಿ (Full Form) 'P', 'T' ಮತ್ತು 'R' ಅಕ್ಷರಗಳು ಕ್ರಮವಾಗಿ ಏನನ್ನು ಸೂಚಿಸುತ್ತವೆ?",
+                options: [
+                    "A) Power, Technology, Result",
+                    "B) Particularly, Technical/Trade, Research",
+                    "C) Personal, Typing, Reading",
+                    "D) Program, Terminal, Memory"
+                ],
+                correct: 1,
+                explanation: "COMPUTER ನ ವಿಸ್ತೃತ ರೂಪ: C - Commonly (ಸಾಮಾನ್ಯವಾಗಿ), O - Operated (ಚಾಲಿತವಾಗುವ), M - Machine (ಯಂತ್ರ), P - Particularly (ನಿರ್ದಿಷ್ಟವಾಗಿ), U - Used for (ಬಳಕೆಯಾಗುವ), T - Technical/Trade (ತಾಂತ್ರಿಕ/ವ್ಯಾಪಾರ), E - Education (ಶೈಕ್ಷಣಿಕ), R - Research (ಸಂಶೋಧನೆ).",
+                tip: "P = Particularly (ನಿರ್ದಿಷ್ಟವಾಗಿ), T = Technical/Trade, E = Education, R = Research."
+            },
+            {
+                id: 4,
+                category: "DEF",
+                catLabel: "COMPUTER ವಿಸ್ತರಣೆ",
+                examTag: "KPSC PDO / FDA",
+                question: "COMPUTER ಪದದ ವಿಸ್ತರಣೆಯಲ್ಲಿ 'Commonly Operated Machine Particularly Used for...' ಎಂಬಲ್ಲಿ 'O' ಮತ್ತು 'U' ಅಕ್ಷರಗಳ ಸರಿಯಾದ ಕನ್ನಡ ಅರ್ಥವೇನು?",
+                options: [
+                    "A) O - ಸಂಘಟಿತ (Organized), U - ಅನಿಯಮಿತ (Unlimited)",
+                    "B) O - ಚಾಲಿತವಾಗುವ (Operated), U - ಬಳಕೆಯಾಗುವ (Used for)",
+                    "C) O - ಆಪ್ಟಿಕಲ್ (Optical), U - ಘಟಕ (Unit)",
+                    "D) O - ಔಟ್‌ಪುಟ್ (Output), U - ಅಪ್‌ಡೇಟ್ (Update)"
+                ],
+                correct: 1,
+                explanation: "C - Commonly (ಸಾಮಾನ್ಯವಾಗಿ), O - Operated (ಚಾಲಿತವಾಗುವ), M - Machine (ಯಂತ್ರ), P - Particularly (ನಿರ್ದಿಷ್ಟವಾಗಿ), U - Used for (ಬಳಕೆಯಾಗುವ).",
+                tip: "Operated = ಚಾಲಿತವಾಗುವ, Used for = ಬಳಕೆಯಾಗುವ."
+            },
+            {
+                id: 5,
+                category: "IPOS",
+                catLabel: "ಕಾರ್ಯನಿರ್ವಹಣೆಯ ಹಂತಗಳು",
+                examTag: "KEA FDA",
+                question: "ಕಂಪ್ಯೂಟರ್ ಕಾರ್ಯನಿರ್ವಹಣೆಯ 4 ಪ್ರಮುಖ ಹಂತಗಳಲ್ಲಿ (Functions of Computer), ಕೀಬೋರ್ಡ್ ಮತ್ತು ಮೌಸ್ ಮೂಲಕ ದತ್ತಾಂಶವನ್ನು ಕಂಪ್ಯೂಟರ್‌ಗೆ ನೀಡುವ ಪ್ರಕ್ರಿಯೆಯನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?",
+                options: [
+                    "A) ಪ್ರೊಸೆಸಿಂಗ್ (Processing)",
+                    "B) ಇನ್‌ಪುಟ್ (Input)",
+                    "C) ಔಟ್‌ಪುಟ್ (Output)",
+                    "D) ಸ್ಟೋರೇಜ್ (Storage)"
+                ],
+                correct: 1,
+                explanation: "ಕೀಬೋರ್ಡ್, ಮೌಸ್, ಸ್ಕ್ಯಾನರ್ ಮುಂತಾದ ಇನ್‌ಪುಟ್ ಸಾಧನಗಳ ಮೂಲಕ ದತ್ತಾಂಶವನ್ನು (Data) ಕಂಪ್ಯೂಟರ್‌ಗೆ ನೀಡುವುದನ್ನು 'ಇನ್‌ಪುಟ್' (Input) ಎನ್ನುತ್ತಾರೆ.",
+                tip: "ಒಳಗೆ ನೀಡುವುದು = Input (ಕೀಬೋರ್ಡ್/ಮೌಸ್); ಹೊರಗೆ ಪಡೆಯುವುದು = Output (ಮಾನಿಟರ್/ಪ್ರಿಂಟರ್)."
+            },
+            {
+                id: 6,
+                category: "IPOS",
+                catLabel: "ಕಾರ್ಯನಿರ್ವಹಣೆಯ ಹಂತಗಳು",
+                examTag: "KPSC SDA / PSI",
+                question: "ಸಂಸ್ಕರಿಸಿದ ಮಾಹಿತಿಯನ್ನು ಮಾನಿಟರ್ ಅಥವಾ ಪ್ರಿಂಟರ್ ಮೂಲಕ ಬಳಕೆದಾರರಿಗೆ ಫಲಿತಾಂಶವಾಗಿ (Result) ನೀಡುವ ಹಂತ ಯಾವುದು ಹಾಗೂ ಅವುಗಳ ಪ್ರಕಾರಗಳೇನು?",
+                options: [
+                    "A) ಇನ್‌‌ಪುಟ್ ಹಂತ (Raw Data)",
+                    "B) ಪ್ರೊಸೆಸಿಂಗ್ ಹಂತ (CPU Execution)",
+                    "C) ಔಟ್‌ಪುಟ್ ಹಂತ (Output - ಮಾನಿಟರ್: Soft Copy, ಪ್ರಿಂಟರ್: Hard Copy)",
+                    "D) ಸ್ಟೋರೇಜ್ ಹಂತ (Memory Backup)"
+                ],
+                correct: 2,
+                explanation: "ಸಂಸ್ಕರಿಸಿದ ಮಾಹಿತಿಯನ್ನು ಮಾನಿಟರ್ ಅಥವಾ ಪ್ರಿಂಟರ್ ಮೂಲಕ ಫಲಿತಾಂಶವಾಗಿ (Result) ನೀಡುವುದನ್ನು ಔಟ್‌ಪುಟ್ (Output) ಎನ್ನುತ್ತಾರೆ. ಪರದೆಯ ಮೇಲಿನ ಫಲಿತಾಂಶ Soft Copy ಹಾಗೂ ಕಾಗದದ ಮೇಲಿನ ಮುದ್ರಿತ ಫಲಿತಾಂಶ Hard Copy ಆಗಿರುತ್ತದೆ.",
+                tip: "Monitor = Soft Copy Output | Printer = Hard Copy Output."
+            },
+            {
+                id: 7,
+                category: "IPOS",
+                catLabel: "ಸ್ಟೋರೇಜ್ & ಮೆಮೊರಿ",
+                examTag: "KEA FDA",
+                question: "ಪ್ರೊಸೆಸ್ ಆದ ಮಾಹಿತಿಯನ್ನು ಹಾರ್ಡ್ ಡಿಸ್ಕ್ (Hard Disk) ಅಥವಾ ಮೆಮೊರಿಯಲ್ಲಿ ಭವಿಷ್ಯದ ಬಳಕೆಗಾಗಿ ಶೇಖರಿಸಿಡುವ ಕಂಪ್ಯೂಟರ್‌ನ 4ನೇ ಪ್ರಮುಖ ಕಾರ್ಯ ಯಾವುದು?",
+                options: [
+                    "A) ಕಂಪೈಲಿಂಗ್ (Compiling)",
+                    "B) ಸ್ಟೋರೇಜ್ (Storage / ಸಂಗ್ರಹಣೆ)",
+                    "C) ಬೂಟಿಂಗ್ (Booting)",
+                    "D) ಸ್ಕ್ಯಾನಿಂಗ್ (Scanning)"
+                ],
+                correct: 1,
+                explanation: "ಪ್ರೊಸೆಸ್ ಆದ ಮಾಹಿತಿಯನ್ನು ಹಾರ್ಡ್ ಡಿಸ್ಕ್, SSD ಅಥವಾ ಮೆಮೊರಿಯಲ್ಲಿ ಶೇಖರಿಸಿಡುವುದನ್ನು ಸ್ಟೋರೇಜ್ (Storage) ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+                tip: "Storage = ಡೇಟಾವನ್ನು ಭವಿಷ್ಯದ ಬಳಕೆಗಾಗಿ ಉಳಿಸಿಡುವುದು."
+            },
+            {
+                id: 8,
+                category: "HIST",
+                catLabel: "ಕಂಪ್ಯೂಟರ್ ಪಿತಾಮಹ",
+                examTag: "KPSC KAS / FDA / SDA",
+                question: "'ಕಂಪ್ಯೂಟರ್‌ನ ಪಿತಾಮಹ' (Father of Computer) ಎಂದು ಯಾರನ್ನು ಕರೆಯಲಾಗುತ್ತದೆ ಮತ್ತು ಅವರು ಕಂಡುಹಿಡಿದ ಪ್ರಮುಖ ಯಂತ್ರ ಯಾವುದು?",
+                options: [
+                    "A) ಅಲಾನ್ ಟ್ಯೂರಿಂಗ್ - ಟ್ಯೂರಿಂಗ್ ಮಷಿನ್",
+                    "B) ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ (Charles Babbage) - ಅನಾಲಿಟಿಕಲ್ ಎಂಜಿನ್ (Analytical Engine)",
+                    "C) ಬ್ಲೇಸ್ ಪಾಸ್ಕಲ್ - ಪಾಸ್ಕಲೈನ್",
+                    "D) ಹರ್ಮನ್ ಹೊಲೆರಿತ್ - ಟ್ಯಾಬ್ಯುಲೇಟಿಂಗ್ ಮಷಿನ್"
+                ],
+                correct: 1,
+                explanation: "ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ (Charles Babbage) ಅವರನ್ನು ಕಂಪ್ಯೂಟರ್‌ನ ಪಿತಾಮಹ ಎನ್ನುತ್ತಾರೆ. ಇವರು 1822 ರಲ್ಲಿ 'ಡಿಫರೆನ್ಸ್ ಎಂಜಿನ್' ಮತ್ತು 1837 ರಲ್ಲಿ ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್‌ಗೆ ತಳಹದಿಯಾದ 'ಅನಾಲಿಟಿಕಲ್ ಎಂಜಿನ್' (Analytical Engine) ಕಂಡುಹಿಡಿದರು.",
+                tip: "Charles Babbage = Difference Engine (1822) + Analytical Engine (1837)."
+            },
+            {
+                id: 9,
+                category: "HIST",
+                catLabel: "ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್ ಪಿತಾಮಹ",
+                examTag: "UPSC / KAS / FDA",
+                question: "'ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್ ವಿಜ್ಞಾನದ ಪಿತಾಮಹ' (Father of Modern Computer Science) ಎಂದು ಯಾರನ್ನು ಕರೆಯುತ್ತಾರೆ?",
+                options: [
+                    "A) ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ (Charles Babbage)",
+                    "B) ಅಲಾನ್ ಟ್ಯೂರಿಂಗ್ (Alan Turing)",
+                    "C) ಬಿಲ್ ಗೇಟ್ಸ್ (Bill Gates)",
+                    "D) ಟಿಮ್ ಬರ್ನರ್ಸ್ ಲೀ (Tim Berners-Lee)"
+                ],
+                correct: 1,
+                explanation: "ಅಲಾನ್ ಟ್ಯೂರಿಂಗ್ (Alan Turing) ಅವರನ್ನು ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್ ವಿಜ್ಞಾನದ ಮತ್ತು ಕೃತಕ ಬುದ್ಧಿಮತ್ತೆಯ (AI) ಪಿತಾಮಹ ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ. ಕಂಪ್ಯೂಟರ್ ಕ್ಷೇತ್ರದ ಅತ್ಯುನ್ನತ ಪ್ರಶಸ್ತಿಯನ್ನು ಇವರ ಹೆಸರಿನಲ್ಲಿ 'ಟ್ಯೂರಿಂಗ್ ಪ್ರಶಸ್ತಿ' ಎಂದು ನೀಡಲಾಗುತ್ತದೆ.",
+                tip: "ಸಾಮಾನ್ಯ ಕಂಪ್ಯೂಟರ್ ಪಿತಾಮಹ = ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ | ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್ ವಿಜ್ಞಾನದ ಪಿತಾಮಹ = ಅಲಾನ್ ಟ್ಯೂರಿಂಗ್."
+            },
+            {
+                id: 10,
+                category: "HIST",
+                catLabel: "ಮೊದಲ ಪ್ರೋಗ್ರಾಮರ್",
+                examTag: "KEA FDA / PDO",
+                question: "ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ ಅವರ ಅನಾಲಿಟಿಕಲ್ ಎಂಜಿನ್‌ಗೆ ಪ್ರೋಗ್ರಾಂ ಬರೆಯುವ ಮೂಲಕ 'ಪ್ರಪಂಚದ ಮೊದಲ ಕಂಪ್ಯೂಟರ್ ಪ್ರೋಗ್ರಾಮರ್' ಎಂಬ ಕೀರ್ತಿಗೆ ಪಾತ್ರರಾದವರು ಯಾರು?",
+                options: [
+                    "A) ಗ್ರೇಸ್ ಹಾಪರ್ (Grace Hopper)",
+                    "B) ಲೇಡಿ ಅದಾ ಲವ್‌ಲೇಸ್ (Lady Ada Lovelace)",
+                    "C) ಮೇರಿ ಕ್ಯೂರಿ (Marie Curie)",
+                    "D) ಜಾನ್ ವಾನ್ ನ್ಯೂಮನ್ (John von Neumann)"
+                ],
+                correct: 1,
+                explanation: "ಲೇಡಿ ಅದಾ ಲವ್‌ಲೇಸ್ (Lady Ada Lovelace) ಜಗತ್ತಿನ ಮೊದಲ ಕಂಪ್ಯೂಟರ್ ಪ್ರೋಗ್ರಾಮರ್ ಆಗಿದ್ದಾರೆ. ಇವರು ಅನಾಲಿಟಿಕಲ್ ಎಂಜಿನ್‌ಗಾಗಿ ಮೊದಲ ಅಲ್ಗಾರಿದಮ್ ರೂಪಿಸಿದರು.",
+                tip: "First Programmer = Lady Ada Lovelace."
+            },
+            {
+                id: 11,
+                category: "IPOS",
+                catLabel: "ಕಂಪ್ಯೂಟರ್‌ನ ಮೆದುಳು (CPU)",
+                examTag: "KEA FDA / SDA",
+                question: "'ಕಂಪ್ಯೂಟರ್‌ನ ಮೆದುಳು' (Brain of Computer) ಎಂದು ಯಾವುದನ್ನು ಕರೆಯಲಾಗುತ್ತದೆ ಮತ್ತು ಅದರ ವಿಸ್ತೃತ ರೂಪವೇನು?",
+                options: [
+                    "A) RAM - Random Access Memory",
+                    "B) CPU - Central Processing Unit",
+                    "C) ALU - Arithmetic Logic Unit",
+                    "D) SMPS - Switched Mode Power Supply"
+                ],
+                correct: 1,
+                explanation: "ಸಿಪಿಯು (CPU - Central Processing Unit) ಅನ್ನು ಕಂಪ್ಯೂಟರ್‌ನ ಮೆದುಳು ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ. ಇದು ಎಲ್ಲಾ ಇನ್‌ಪುಟ್ ದತ್ತಾಂಶವನ್ನು ಸಂಸ್ಕರಿಸುವ ಮತ್ತು ನಿಯಂತ್ರಿಸುವ ಕೇಂದ್ರ ಘಟಕವಾಗಿದೆ.",
+                tip: "CPU = Central Processing Unit (ಕಂಪ್ಯೂಟರ್‌ನ ಮೆದುಳು)."
+            },
+            {
+                id: 12,
+                category: "IPOS",
+                catLabel: "CPU ಒಳರಚನೆ",
+                examTag: "KPSC KAS / FDA",
+                question: "ಕಂಪ್ಯೂಟರ್‌ನ ಮೆದುಳಾದ ಸಿಪಿಯು (CPU) ಒಳಗೊಂಡಿರುವ 3 ಪ್ರಮುಖ ಘಟಕಗಳು ಯಾವುವು?",
+                options: [
+                    "A) Keyboard, Mouse, Monitor",
+                    "B) ALU (Arithmetic Logic Unit), CU (Control Unit), Registers (ರಿಜಿಸ್ಟರ್‌ಗಳು)",
+                    "C) RAM, ROM, Hard Disk",
+                    "D) Hardware, Software, Firmware"
+                ],
+                correct: 1,
+                explanation: "CPU ನಲ್ಲಿ 3 ಪ್ರಮುಖ ಭಾಗಗಳಿವೆ: 1) ALU - ಗಣಿತೀಯ (+,-,×,÷) ಮತ್ತು ತಾರ್ಕಿಕ (<,>,=) ಕಾರ್ಯಗಳಿಗೆ, 2) CU (Control Unit) - ಎಲ್ಲಾ ಕಾರ್ಯಾಚರಣೆಗಳ ನಿಯಂತ್ರಣಕ್ಕೆ, 3) Registers - ಅತಿ ವೇಗದ ತಾತ್ಕಾಲಿಕ ಡೇಟಾ ಸಂಗ್ರಹಣೆಗೆ.",
+                tip: "CPU = ALU + CU + Registers."
+            },
+            {
+                id: 13,
+                category: "EDP",
+                catLabel: "ಡೇಟಾ vs ಮಾಹಿತಿ",
+                examTag: "KEA FDA / SDA",
+                question: "ಸಂಸ್ಕರಿಸದ ಕಚ್ಚಾ ಸಂಗತಿಗಳಿಗೆ (Unprocessed raw facts) ________ ಎನ್ನುತ್ತಾರೆ ಮತ್ತು ಪ್ರೊಸೆಸ್ ಆದ (ಸಂಸ್ಕರಿಸಲ್ಪಟ್ಟ) ಅರ್ಥಗರ್ಭಿತ ಡೇಟಾವನ್ನು ________ ಎನ್ನುತ್ತಾರೆ.",
+                options: [
+                    "A) ಮಾಹಿತಿ (Information), ಡೇಟಾ (Data)",
+                    "B) ಡೇಟಾ (Data), ಮಾಹಿತಿ (Information)",
+                    "C) ಪ್ರೋಗ್ರಾಂ (Program), ಸಾಫ್ಟ್‌ವೇರ್ (Software)",
+                    "D) ಔಟ್‌ಪುಟ್ (Output), ಇನ್‌ಪುಟ್ (Input)"
+                ],
+                correct: 1,
+                explanation: "ಡೇಟಾ (Data) ಎಂದರೆ ಸಂಸ್ಕರಿಸದ ಕಚ್ಚಾ ಮಾಹಿತಿ (Unprocessed raw facts). ಮಾಹಿತಿ (Information) ಎಂದರೆ CPU ನಿಂದ ಸಂಸ್ಕರಿಸಲ್ಪಟ್ಟ (Processed) ಅರ್ಥಗರ್ಭಿತ ಮತ್ತು ಉಪಯುಕ್ತ ಫಲಿತಾಂಶ.",
+                tip: "Raw / Unprocessed = Data (ಇನ್‌ಪುಟ್) | Processed / Meaningful = Information (ಔಟ್‌ಪುಟ್)."
+            },
+            {
+                id: 14,
+                category: "CHAR",
+                catLabel: "ವೇಗ (Speed)",
+                examTag: "KPSC FDA / PSI",
+                question: "ಕಂಪ್ಯೂಟರ್ ಲೆಕ್ಕಾಚಾರಗಳನ್ನು ನ್ಯಾನೊಸೆಕೆಂಡ್‌ಗಳಲ್ಲಿ (Nanoseconds) ಮಾಡುತ್ತದೆ. ಹಾಗಾದರೆ 1 ನ್ಯಾನೊಸೆಕೆಂಡ್ (1 Nanosecond) ಎಂದರೆ ಎಷ್ಟು ಸೆಕೆಂಡ್‌ಗೆ ಸಮ?",
+                options: [
+                    "A) 10⁻³ ಸೆಕೆಂಡ್ (ಸಾವಿರದ ಒಂದು ಭಾಗ)",
+                    "B) 10⁻⁶ ಸೆಕೆಂಡ್ (ದಶಲಕ್ಷದ ಒಂದು ಭಾಗ)",
+                    "C) 10⁻⁹ ಸೆಕೆಂಡ್ (ಶತಕೋಟಿಯ ಒಂದು ಭಾಗ / One Billionth of a Second)",
+                    "D) 10⁻¹² ಸೆಕೆಂಡ್ (ಟ್ರಿಲಿಯನ್‌ನ ಒಂದು ಭಾಗ)"
+                ],
+                correct: 2,
+                explanation: "ವೇಗದ ಘಟಕಗಳು: Millisecond = 10⁻³ sec, Microsecond = 10⁻⁶ sec, Nanosecond = 10⁻⁹ sec (ಶತಕೋಟಿಯ ಒಂದು ಭಾಗ), Picosecond = 10⁻¹² sec.",
+                tip: "Milli (-3), Micro (-6), Nano (-9), Pico (-12)."
+            },
+            {
+                id: 15,
+                category: "CHAR",
+                catLabel: "ನಿಖರತೆ & GIGO",
+                examTag: "KEA FDA / KAS",
+                question: "ಕಂಪ್ಯೂಟರ್‌ನ ನಿಖರತೆಗೆ (Accuracy) ಸಂಬಂಧಿಸಿದ 'GIGO' ನಿಯಮದ ವಿಸ್ತೃತ ರೂಪವೇನು ಮತ್ತು ಅದರ ಅರ್ಥವೇನು?",
+                options: [
+                    "A) Good Input Good Output - ಯಾವಾಗಲೂ ಒಳ್ಳೆಯ ಫಲಿತಾಂಶ",
+                    "B) Garbage In Garbage Out - ತಪ್ಪು ಡೇಟಾ ಇನ್‌ಪುಟ್ ನೀಡಿದರೆ ತಪ್ಪು ಫಲಿತಾಂಶವೇ ಬರುತ್ತದೆ",
+                    "C) Global Input Global Output - ಇಂಟರ್ನೆಟ್ ಡೇಟಾ ವರ್ಗಾವಣೆ",
+                    "D) Gigabit In Gigabit Out - ಮೆಮೊರಿ ವೇಗದ ಅಳತೆ"
+                ],
+                correct: 1,
+                explanation: "GIGO ಎಂದರೆ 'Garbage In Garbage Out'. ಕಂಪ್ಯೂಟರ್ ತಾನಾಗಿಯೇ ತಪ್ಪು ಮಾಡುವುದಿಲ್ಲ (100% ನಿಖರ). ಆದರೆ ಬಳಕೆದಾರನು ತಪ್ಪಾದ ಇನ್‌ಪುಟ್ (Garbage In) ನೀಡಿದರೆ, ಬರುವ ಔಟ್‌ಪುಟ್ ಕೂಡ ತಪ್ಪಾಗಿಯೇ (Garbage Out) ಇರುತ್ತದೆ.",
+                tip: "GIGO = Garbage In Garbage Out ➔ ಇದು 'ನಿಖರತೆ' (Accuracy) ಗುಣಲಕ್ಷಣಕ್ಕೆ ಸಂಬಂಧಿಸಿದೆ."
+            },
+            {
+                id: 16,
+                category: "CHAR",
+                catLabel: "ಬಹುಮುಖಿ ಕಾರ್ಯ vs ದಣಿವರಿಯದ ದುಡಿಮೆ",
+                examTag: "KPSC FDA / SDA",
+                question: "ಮನುಷ್ಯನಂತೆ ಆಯಾಸ (Fatigue), ಬೇಸರ ಅಥವಾ ಏಕಾಗ್ರತೆಯ ಕೊರತೆಯಿಲ್ಲದೆ ಗಂಟೆಗಟ್ಟಲೆ ನಿರಂತರವಾಗಿ ಒಂದೇ ವೇಗ ಮತ್ತು ನಿಖರತೆಯಲ್ಲಿ ಕೆಲಸ ಮಾಡುವ ಕಂಪ್ಯೂಟರ್‌ನ ಗುಣಲಕ್ಷಣವನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?",
+                options: [
+                    "A) Versatility (ಬಹುಮುಖಿ ಕಾರ್ಯ)",
+                    "B) Diligence (ದಣಿವರಿಯದ ದುಡಿಮೆ / ಶ್ರದ್ಧೆ)",
+                    "C) Automation (ಸ್ವಯಂಚಾಲಿತ)",
+                    "D) Storage (ಸಂಗ್ರಹಣಾ ಸಾಮರ್ಥ್ಯ)"
+                ],
+                correct: 1,
+                explanation: "ಆಯಾಸ ಮತ್ತು ಬೇಸರವಿಲ್ಲದೆ ನಿರಂತರವಾಗಿ ದುಡಿಯುವ ಗುಣವನ್ನು 'Diligence' (ದಣಿವರಿಯದ ದುಡಿಮೆ) ಎನ್ನುತ್ತಾರೆ. ಒಂದೇ ಸಮಯದಲ್ಲಿ ವಿವಿಧ ರೀತಿಯ ಕೆಲಸ ಮಾಡುವುದನ್ನು 'Versatility' (ಬಹುಮುಖಿ ಕಾರ್ಯ) ಎನ್ನುತ್ತಾರೆ.",
+                tip: "ಆಯಾಸವಿಲ್ಲದೆ ಕೆಲಸ = Diligence | ಏಕಕಾಲಕ್ಕೆ ಅನೇಕ ಬಗೆಯ ಕೆಲಸ = Versatility."
+            },
+            {
+                id: 17,
+                category: "CHAR",
+                catLabel: "ಬಹುಮುಖಿ ಕಾರ್ಯ (Versatility)",
+                examTag: "KEA Group-C",
+                question: "ಒಬ್ಬ ಬಳಕೆದಾರನು ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ ಒಂದೇ ಸಮಯದಲ್ಲಿ ಎಂಎಸ್ ವರ್ಡ್ ಟೈಪಿಂಗ್ ಮಾಡುತ್ತಾ, ಹಾಡು ಕೇಳುತ್ತಾ ಮತ್ತು ಇಂಟರ್ನೆಟ್‌ನಿಂದ ಫೈಲ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡುತ್ತಿದ್ದಾನೆ. ಇದು ಕಂಪ್ಯೂಟರ್‌ನ ಯಾವ ಲಕ್ಷಣಕ್ಕೆ ಉದಾಹರಣೆಯಾಗಿದೆ?",
+                options: [
+                    "A) Diligence (ದಣಿವರಿಯದ ದುಡಿಮೆ)",
+                    "B) Versatility (ಬಹುಮುಖಿ ಕಾರ್ಯ ಸಾಮರ್ಥ್ಯ)",
+                    "C) GIGO ನಿಯಮ",
+                    "D) High IQ (ಅಧಿಕ ಬುದ್ಧಿಮತ್ತೆ)"
+                ],
+                correct: 1,
+                explanation: "ಒಂದೇ ಸಮಯದಲ್ಲಿ ವಿವಿಧ ರೀತಿಯ ಕಾರ್ಯಗಳನ್ನು (Multitasking) ನಿರ್ವಹಿಸುವ ಸಾಮರ್ಥ್ಯವನ್ನು 'ಬಹುಮುಖಿ ಕಾರ್ಯ' (Versatility) ಎಂದು ಕರೆಯುತ್ತಾರೆ.",
+                tip: "Versatility = ಒಂದೇ ಸಮಯದಲ್ಲಿ ಹಲವು ಬಗೆಯ ಕಾರ್ಯಗಳ ನಿರ್ವಹಣೆ."
+            },
+            {
+                id: 18,
+                category: "CHAR",
+                catLabel: "ಕಂಪ್ಯೂಟರ್ ಮಿತಿಗಳು",
+                examTag: "KEA FDA / PDO",
+                question: "ಈ ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಕಂಪ್ಯೂಟರ್‌ನ ಗುಣಲಕ್ಷಣವಲ್ಲ (Not a characteristic of a computer)?",
+                options: [
+                    "A) ವೇಗ (Speed) ಮತ್ತು ನಿಖರತೆ (Accuracy)",
+                    "B) ಬಹುಮುಖಿ ಕಾರ್ಯ (Versatility)",
+                    "C) ಸ್ವಂತ ಬುದ್ಧಿಮತ್ತೆ (IQ) ಮತ್ತು ಭಾವನೆಗಳನ್ನು ಹೊಂದಿರುವುದು",
+                    "D) ದಣಿವರಿಯದ ದುಡಿಮೆ (Diligence)"
+                ],
+                correct: 2,
+                explanation: "ಕಂಪ್ಯೂಟರ್‌ಗೆ ಸ್ವಂತವಾಗಿ ಯೋಚಿಸುವ ಬುದ್ಧಿಮತ್ತೆ ಇಲ್ಲ (Zero IQ) ಹಾಗೂ ಮನುಷ್ಯನಂತೆ ಭಾವನೆಗಳು (Feelings/Emotions) ಇರುವುದಿಲ್ಲ. ಇದು ಬಳಕೆದಾರರು ನೀಡುವ ಸೂಚನೆಗಳ ಮೇಲೆಯೇ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ.",
+                tip: "ಕಂಪ್ಯೂಟರ್‌ನ IQ = ಸೊನ್ನೆ (Zero IQ)."
+            },
+            {
+                id: 19,
+                category: "EDP",
+                catLabel: "EDP ವಿಸ್ತೃತ ರೂಪ",
+                examTag: "KPSC FDA / SDA",
+                question: "ಕಂಪ್ಯೂಟರ್ ಒಂದು 'EDP' ಸಾಧನವಾಗಿದೆ. ಹಾಗಾದರೆ EDP ಯ ಸರಿಯಾದ ವಿಸ್ತೃತ ರೂಪ (Full Form) ಯಾವುದು?",
+                options: [
+                    "A) Electronic Digital Program",
+                    "B) Electronic Data Processing (ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಡೇಟಾ ಪ್ರೊಸೆಸಿಂಗ್)",
+                    "C) External Data Processing",
+                    "D) Electronic Device Part"
+                ],
+                correct: 1,
+                explanation: "EDP ಎಂದರೆ Electronic Data Processing (ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಡೇಟಾ ಪ್ರೊಸೆಸಿಂಗ್). ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಸಾಧನಗಳನ್ನು ಬಳಸಿಕೊಂಡು ಕಚ್ಚಾ ದತ್ತಾಂಶವನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಉಪಯುಕ್ತ ಮಾಹಿತಿಯನ್ನಾಗಿ ಪರಿವರ್ತಿಸುವ ಪ್ರಕ್ರಿಯೆಯೇ EDP.",
+                tip: "EDP = Electronic Data Processing."
+            },
+            {
+                id: 20,
+                category: "EDP",
+                catLabel: "EDP ಯ 3 ಹಂತಗಳು",
+                examTag: "KEA FDA / KAS",
+                question: "EDP (Electronic Data Processing) ಪ್ರಕ್ರಿಯೆಯ 3 ಪ್ರಮುಖ ಹಂತಗಳ ಸರಿಯಾದ ಅನುಕ್ರಮ ಯಾವುದು?",
+                options: [
+                    "A) Output ➔ Input ➔ Processing",
+                    "B) Input (ಇನ್‌ಪುಟ್) ➔ Processing (ಪ್ರೊಸೆಸಿಂಗ್) ➔ Output (ಔಟ್‌ಪುಟ್)",
+                    "C) Processing ➔ Storage ➔ Input",
+                    "D) Data ➔ Hardware ➔ Software"
+                ],
+                correct: 1,
+                explanation: "EDP ಯ 3 ಪ್ರಮುಖ ಹಂತಗಳು: 1. ಇನ್‌ಪುಟ್ (ಕಚ್ಚಾ ದತ್ತಾಂಶ ನೀಡುವುದು), 2. ಪ್ರೊಸೆಸಿಂಗ್ (CPU ಮೂಲಕ ಗಣಿತೀಯ ಮತ್ತು ತಾರ್ಕಿಕವಾಗಿ ಸಂಸ್ಕರಿಸುವುದು), 3. ಔಟ್‌ಪುಟ್ (ಅರ್ಥಗರ್ಭಿತ ಮಾಹಿತಿಯನ್ನು ಮಾನಿಟರ್/ಪ್ರಿಂಟರ್ ಮೂಲಕ ಪಡೆಯುವುದು).",
+                tip: "EDP 3 Stages = Input (Raw Data) ➔ Processing (CPU) ➔ Output (Useful Information)."
+            },
+            {
+                id: 21,
+                category: "HIST",
+                catLabel: "ವಾಸ್ತುಶಿಲ್ಪ ಮತ್ತು ಭಾರತೀಯ ಕಂಪ್ಯೂಟರ್",
+                examTag: "UPSC / KAS / FDA",
+                question: "ಡೇಟಾ ಮತ್ತು ಪ್ರೋಗ್ರಾಂಗಳನ್ನು ಒಂದೇ ಮೆಮೊರಿಯಲ್ಲಿ ಸಂಗ್ರಹಿಸುವ 'Stored Program Concept' ಪರಿಚಯಿಸಿದ ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್ ವಾಸ್ತುಶಿಲ್ಪದ ಪಿತಾಮಹ ಯಾರು?",
+                options: [
+                    "A) ಜಾನ್ ವಾನ್ ನ್ಯೂಮನ್ (John von Neumann)",
+                    "B) ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್",
+                    "C) ಜಾನ್ ನೇಪಿಯರ್",
+                    "D) ಡಾ. ವಿಜಯ್ ಭಟ್ಕರ್"
+                ],
+                correct: 0,
+                explanation: "ಜಾನ್ ವಾನ್ ನ್ಯೂಮನ್ (John von Neumann) ಅವರು 1945 ರಲ್ಲಿ 'Stored Program Concept' (ಡೇಟಾ ಮತ್ತು ಸೂಚನೆಗಳನ್ನು ಒಂದೇ ಮೆಮೊರಿಯಲ್ಲಿ ಇರಿಸುವ ವಿನ್ಯಾಸ) ನೀಡಿದರು. ಇಂದಿನ ಎಲ್ಲಾ ಕಂಪ್ಯೂಟರ್‌ಗಳು ವಾನ್ ನ್ಯೂಮನ್ ವಾಸ್ತುಶಿಲ್ಪವನ್ನೇ ಆಧರಿಸಿವೆ.",
+                tip: "Computer Architecture / Stored Program = John von Neumann."
+            },
+            {
+                id: 22,
+                category: "HIST",
+                catLabel: "ಭಾರತದ ಕಂಪ್ಯೂಟರ್ ಇತಿಹಾಸ",
+                examTag: "KEA FDA / PSI / PC",
+                question: "ಭಾರತದಲ್ಲಿ ತಯಾರಾದ ಮೊದಲ ಕಂಪ್ಯೂಟರ್ ಮತ್ತು ಭಾರತದ ಮೊದಲ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಜೋಡಿಯನ್ನು ಗುರುತಿಸಿ:",
+                options: [
+                    "A) ಆರ್ಯಭಟ ಮತ್ತು ಪರಮ್ ಶಿವಾಯ್",
+                    "B) ಸಿದ್ಧಾರ್ಥ (Siddhartha) ಮತ್ತು ಪರಮ್ 8000 (PARAM 8000)",
+                    "C) ಏಕ (EKA) ಮತ್ತು ಪ್ರತ್ಯೂಷ್",
+                    "D) ವಿಕ್ರಮ್ ಮತ್ತು ಅನುರಾಗ್"
+                ],
+                correct: 1,
+                explanation: "ಭಾರತದಲ್ಲಿ ನಿರ್ಮಿಸಲಾದ ಮೊದಲ ಸಾಮಾನ್ಯ ಕಂಪ್ಯೂಟರ್ 'ಸಿದ್ಧಾರ್ಥ' (Siddhartha). ಭಾರತದ ಮೊದಲ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ 'PARAM 8000' (1991 ರಲ್ಲಿ C-DAC ಪುಣೆಯಿಂದ ನಿರ್ಮಿಸಲ್ಪಟ್ಟಿತು, ಇದರ ಪಿತಾಮಹ ಡಾ. ವಿಜಯ್ ಪಿ. ಭಟ್ಕರ್).",
+                tip: "ಮೊದಲ ಕಂಪ್ಯೂಟರ್ = ಸಿದ್ಧಾರ್ಥ | ಮೊದಲ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ = PARAM 8000."
+            },
+            {
+                id: 23,
+                category: "CHAR",
+                catLabel: "ವೇಗದ ಮಾಪನ",
+                examTag: "KEA FDA / SDA",
+                question: "ಸಾಮಾನ್ಯ ಕಂಪ್ಯೂಟರ್‌ನ ಸಂಸ್ಕರಣಾ ವೇಗವನ್ನು 'MIPS' ನಲ್ಲಿ ಅಳೆದರೆ, ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌ನ ವೇಗವನ್ನು ಯಾವುದರಲ್ಲಿ ಅಳೆಯಲಾಗುತ್ತದೆ?",
+                options: [
+                    "A) DPI (Dots Per Inch)",
+                    "B) FLOPS (Floating Point Operations Per Second)",
+                    "C) RPM (Revolutions Per Minute)",
+                    "D) BPS (Bits Per Second)"
+                ],
+                correct: 1,
+                explanation: "ಸಾಮಾನ್ಯ ಕಂಪ್ಯೂಟರ್ ವೇಗವನ್ನು MIPS (Million Instructions Per Second) ನಲ್ಲಿ ಹಾಗೂ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ವೇಗವನ್ನು FLOPS (Floating Point Operations Per Second) ನಲ್ಲಿ ಅಳೆಯಲಾಗುತ್ತದೆ.",
+                tip: "CPU Speed = MIPS / GHz | Supercomputer Speed = FLOPS."
+            },
+            {
+                id: 24,
+                category: "EDP",
+                catLabel: "ಹೇಳಿಕೆ ಆಧಾರಿತ ಪ್ರಶ್ನೆ (KAS/FDA)",
+                examTag: "KPSC KAS / FDA Special",
+                question: "ಈ ಕೆಳಗಿನ ಹೇಳಿಕೆಗಳನ್ನು ಪರಿಶೀಲಿಸಿ ಸರಿಯಾದ ಉತ್ತರವನ್ನು ಆಯ್ಕೆಮಾಡಿ:\nಹೇಳಿಕೆ 1: ಕಚ್ಚಾ ದತ್ತಾಂಶವನ್ನು (Raw Data) CPU ತಾರ್ಕಿಕವಾಗಿ ಮತ್ತು ಗಣಿತೀಯವಾಗಿ ಸಂಸ್ಕರಿಸಿದ ನಂತರ ದೊರೆಯುವ ಅರ್ಥಗರ್ಭಿತ ಫಲಿತಾಂಶವೇ ಮಾಹಿತಿ (Information).\nಹೇಳಿಕೆ 2: ಕಂಪ್ಯೂಟರ್‌ನ Control Unit (CU) ಅನ್ನು ಕಂಪ್ಯೂಟರ್‌ನ ನರಮಂಡಲ (Central Nervous System) ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+                options: [
+                    "A) ಹೇಳಿಕೆ 1 ಮಾತ್ರ ಸರಿ",
+                    "B) ಹೇಳಿಕೆ 2 ಮಾತ್ರ ಸರಿ",
+                    "C) ಹೇಳಿಕೆ 1 ಮತ್ತು ಹೇಳಿಕೆ 2 ಎರಡೂ ಸರಿ",
+                    "D) ಎರಡೂ ಹೇಳಿಕೆಗಳು ತಪ್ಪು"
+                ],
+                correct: 2,
+                explanation: "ಎರಡೂ ಹೇಳಿಕೆಗಳು ಸಂಪೂರ್ಣವಾಗಿ ಸರಿಯಾಗಿವೆ. EDP ಪ್ರಕ್ರಿಯೆಯಲ್ಲಿ ಕಚ್ಚಾ ಡೇಟಾ ಸಂಸ್ಕರಿಸಲ್ಪಟ್ಟು ಮಾಹಿತಿಯಾಗುತ್ತದೆ ಹಾಗೂ CPU ಒಳಗಿರುವ Control Unit (CU) ಕಂಪ್ಯೂಟರ್‌ನ ಎಲ್ಲಾ ಭಾಗಗಳಿಗೂ ನಿರ್ದೇಶನ ನೀಡುವುದರಿಂದ ಅದನ್ನು ನರಮಂಡಲ ಎನ್ನುತ್ತಾರೆ.",
+                tip: "ALU = ಲೆಕ್ಕಾಚಾರ ಮಾಡುವ ಘಟಕ | CU = ನಿಯಂತ್ರಿಸುವ ನರಮಂಡಲ."
+            },
+            {
+                id: 25,
+                category: "HIST",
+                catLabel: "ಹೊಂದಿಸಿ ಬರೆಯಿರಿ & ಸಾಕ್ಷರತಾ ದಿನ",
+                examTag: "KEA FDA / SDA",
+                question: "ಪ್ರತಿ ವರ್ಷ 'ವಿಶ್ವ ಕಂಪ್ಯೂಟರ್ ಸಾಕ್ಷರತಾ ದಿನ'ವನ್ನು (World Computer Literacy Day) ಯಾವ ದಿನಾಂಕದಂದು ಆಚರಿಸಲಾಗುತ್ತದೆ?",
+                options: [
+                    "A) ಸೆಪ್ಟೆಂಬರ್ 15",
+                    "B) ಡಿಸೆಂಬರ್ 2 (December 2)",
+                    "C) ಮೇ 11",
+                    "D) ಫೆಬ್ರವರಿ 28"
+                ],
+                correct: 1,
+                explanation: "ಪ್ರತಿ ವರ್ಷ ಡಿಸೆಂಬರ್ 2 ರಂದು ವಿಶ್ವದಾದ್ಯಂತ ಡಿಜಿಟಲ್ ಮತ್ತು ಕಂಪ್ಯೂಟರ್ ಸಾಕ್ಷರತೆಯನ್ನು ಉತ್ತೇಜಿಸಲು 'ವಿಶ್ವ ಕಂಪ್ಯೂಟರ್ ಸಾಕ್ಷರತಾ ದಿನ'ವನ್ನು ಆಚರಿಸಲಾಗುತ್ತದೆ (2001 ರಿಂದ NIIT ಯಿಂದ ಪ್ರಾರಂಭವಾಯಿತು).",
+                tip: "ಡಿಸೆಂಬರ್ 2 = ವಿಶ್ವ ಕಂಪ್ಯೂಟರ್ ಸಾಕ್ಷರತಾ ದಿನ."
+            }
+        ];
+
+        let activeQuestions = [...masterQuestions];
+        let currentIndex = 0;
+        let quizMode = 'practice'; // 'practice' or 'exam'
+        let userAnswers = {};      // { questionId: selectedOptionIndex }
+        let reviewMarks = new Set();
+        let bookmarks = new Set();
+        let currentStreak = 0;
+        let timerSeconds = 0;
+        let timerInterval = null;
+        let examSubmitted = false;
+        let currentFontScale = 1;
+
+        window.onload = function () {
+            startTimer();
+            renderPalette();
+            renderCurrentQuestion();
+            updateStatsDashboard();
+        };
+
+        function setEyeTheme(themeName) {
+            document.body.classList.remove('theme-sepia', 'theme-slate');
+            const btns = ['sage', 'sepia', 'slate'];
+            btns.forEach(t => {
+                const el = document.getElementById(`theme-btn-${t}`);
+                el.style.backgroundColor = 'transparent';
+                el.style.color = 'var(--text-secondary)';
+            });
+
+            if (themeName === 'sepia') {
+                document.body.classList.add('theme-sepia');
+            } else if (themeName === 'slate') {
+                document.body.classList.add('theme-slate');
+            }
+
+            const activeBtn = document.getElementById(`theme-btn-${themeName}`);
+            activeBtn.style.backgroundColor = 'var(--accent-primary)';
+            activeBtn.style.color = themeName === 'slate' ? '#0F172A' : '#FFFFFF';
+        }
+
+        function adjustFontSize(delta) {
+            if (delta === 0) {
+                currentFontScale = 1;
+            } else {
+                currentFontScale = Math.min(1.25, Math.max(0.85, currentFontScale + delta));
+            }
+            document.documentElement.style.setProperty('--font-scale', currentFontScale);
+        }
+
+        function switchQuizMode(mode) {
+            quizMode = mode;
+            examSubmitted = false;
+            const pBtn = document.getElementById('mode-practice-btn');
+            const eBtn = document.getElementById('mode-exam-btn');
+
+            if (mode === 'practice') {
+                pBtn.style.backgroundColor = 'var(--accent-primary)';
+                pBtn.style.color = '#FFFFFF';
+                eBtn.style.backgroundColor = 'transparent';
+                eBtn.style.color = 'var(--text-secondary)';
+            } else {
+                eBtn.style.backgroundColor = 'var(--accent-primary)';
+                eBtn.style.color = '#FFFFFF';
+                pBtn.style.backgroundColor = 'transparent';
+                pBtn.style.color = 'var(--text-secondary)';
+            }
+            resetQuizAll();
+        }
+
+        function filterByCategory(catCode) {
+            if (catCode === 'ALL') {
+                activeQuestions = [...masterQuestions];
+            } else if (catCode === 'BOOKMARK') {
+                const bookmarkedList = masterQuestions.filter(q => bookmarks.has(q.id));
+                if (bookmarkedList.length === 0) {
+                    document.getElementById('topic-filter').value = 'ALL';
+                    activeQuestions = [...masterQuestions];
+                } else {
+                    activeQuestions = bookmarkedList;
+                }
+            } else {
+                activeQuestions = masterQuestions.filter(q => q.category === catCode);
+            }
+            currentIndex = 0;
+            renderPalette();
+            renderCurrentQuestion();
+            updateStatsDashboard();
+        }
+
+        function renderCurrentQuestion() {
+            const q = activeQuestions[currentIndex];
+            if (!q) return;
+
+            document.getElementById('q-number-badge').innerText = `ಪ್ರಶ್ನೆ ${currentIndex + 1} / ${activeQuestions.length}`;
+            document.getElementById('q-category-badge').innerText = q.catLabel;
+            document.getElementById('q-exam-tag').innerText = q.examTag;
+            document.getElementById('question-text').innerText = q.question;
+
+            // Update Bookmark & Review Button state
+            const bmIcon = document.getElementById('bookmark-icon');
+            bmIcon.innerText = bookmarks.has(q.id) ? '★' : '☆';
+            bmIcon.style.color = bookmarks.has(q.id) ? 'var(--highlight-amber)' : 'inherit';
+
+            const revBtnText = document.getElementById('review-btn-text');
+            revBtnText.innerText = reviewMarks.has(q.id) ? 'ಪರಿಶೀಲನೆಯಲ್ಲಿದೆ ✓' : 'ಪರಿಶೀಲನೆಗೆ ಗುರುತಿಸಿ';
+
+            // Progress Bar
+            const pct = ((currentIndex + 1) / activeQuestions.length) * 100;
+            document.getElementById('progress-bar-fill').style.width = `${pct}%`;
+
+            // Render Options
+            const optContainer = document.getElementById('options-container');
+            optContainer.innerHTML = '';
+
+            const hasAnswered = userAnswers.hasOwnProperty(q.id);
+            const selectedIdx = userAnswers[q.id];
+            const showImmediateFeedback = (quizMode === 'practice' && hasAnswered) || examSubmitted;
+
+            q.options.forEach((optText, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn opt-text-scaled';
+
+                let statusBadge = `<span class="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-extrabold shrink-0 border" style="border-color: var(--border-color); background-color: var(--bg-card);">${String.fromCharCode(65 + idx)}</span>`;
+
+                if (showImmediateFeedback) {
+                    btn.disabled = true;
+                    if (idx === q.correct) {
+                        btn.classList.add('correct-ans');
+                        statusBadge = `<span class="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-extrabold shrink-0" style="background-color: var(--correct-green); color: #fff;">✓</span>`;
+                    } else if (idx === selectedIdx && selectedIdx !== q.correct) {
+                        btn.classList.add('wrong-ans');
+                        statusBadge = `<span class="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-extrabold shrink-0" style="background-color: var(--wrong-red); color: #fff;">✕</span>`;
+                    }
+                } else if (quizMode === 'exam' && hasAnswered && idx === selectedIdx) {
+                    btn.classList.add('selected-exam');
+                }
+
+                btn.innerHTML = `
+                    ${statusBadge}
+                    <span class="flex-1">${optText.replace(/^[A-D]\)\s*/, '')}</span>
+                `;
+
+                btn.onclick = () => selectOption(q.id, idx);
+                optContainer.appendChild(btn);
+            });
+
+            // Clear button in Exam mode
+            const clearBtn = document.getElementById('clear-ans-btn');
+            if (quizMode === 'exam' && !examSubmitted && hasAnswered) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+
+            // Explanation Panel
+            const expPanel = document.getElementById('explanation-panel');
+            if (showImmediateFeedback) {
+                expPanel.classList.remove('hidden');
+                document.getElementById('explanation-text').innerText = q.explanation;
+                document.getElementById('memory-tip-text').innerText = `ನೆನಪಿಟ್ಟುಕೊಳ್ಳಲು ಸುಲಭ ಸೂತ್ರ: ${q.tip}`;
+            } else {
+                expPanel.classList.add('hidden');
+            }
+
+            // Navigation button disable states
+            document.getElementById('prev-btn').disabled = currentIndex === 0;
+            document.getElementById('next-btn').innerHTML = currentIndex === activeQuestions.length - 1
+                ? `<span>ಫಲಿತಾಂಶ ನೋಡಿ</span> <span>🏆</span>`
+                : `<span>ಮುಂದಿನ ಪ್ರಶ್ನೆ</span> <span>→</span>`;
+
+            renderPalette();
+        }
+
+        function selectOption(questionId, optionIdx) {
+            if (quizMode === 'practice' && userAnswers.hasOwnProperty(questionId)) return;
+            if (examSubmitted) return;
+
+            userAnswers[questionId] = optionIdx;
+            const q = masterQuestions.find(item => item.id === questionId);
+
+            if (quizMode === 'practice') {
+                if (optionIdx === q.correct) {
+                    currentStreak++;
+                } else {
+                    currentStreak = 0;
+                }
+            }
+
+            renderCurrentQuestion();
+            updateStatsDashboard();
+        }
+
+        function clearCurrentResponse() {
+            const q = activeQuestions[currentIndex];
+            if (q && userAnswers.hasOwnProperty(q.id)) {
+                delete userAnswers[q.id];
+                renderCurrentQuestion();
+                updateStatsDashboard();
+            }
+        }
+
+        function navigateQuestion(step) {
+            if (currentIndex + step >= activeQuestions.length) {
+                finishAndShowResults();
+                return;
+            }
+            if (currentIndex + step >= 0 && currentIndex + step < activeQuestions.length) {
+                currentIndex += step;
+                renderCurrentQuestion();
+            }
+        }
+
+        function toggleBookmark() {
+            const q = activeQuestions[currentIndex];
+            if (!q) return;
+            if (bookmarks.has(q.id)) {
+                bookmarks.delete(q.id);
+            } else {
+                bookmarks.add(q.id);
+            }
+            renderCurrentQuestion();
+        }
+
+        function toggleReviewMark() {
+            const q = activeQuestions[currentIndex];
+            if (!q) return;
+            if (reviewMarks.has(q.id)) {
+                reviewMarks.delete(q.id);
+            } else {
+                reviewMarks.add(q.id);
+            }
+            renderCurrentQuestion();
+            updateStatsDashboard();
+        }
+
+        function renderPalette() {
+            const grid = document.getElementById('palette-grid');
+            grid.innerHTML = '';
+
+            activeQuestions.forEach((q, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'palette-btn';
+                btn.innerText = idx + 1;
+
+                if (idx === currentIndex) {
+                    btn.classList.add('active-q');
+                }
+
+                const hasAns = userAnswers.hasOwnProperty(q.id);
+                if (reviewMarks.has(q.id)) {
+                    btn.classList.add('status-review');
+                } else if (hasAns) {
+                    if (quizMode === 'practice' || examSubmitted) {
+                        if (userAnswers[q.id] === q.correct) {
+                            btn.classList.add('status-correct');
+                        } else {
+                            btn.classList.add('status-wrong');
+                        }
+                    } else {
+                        btn.classList.add('status-answered');
+                    }
+                }
+
+                btn.onclick = () => {
+                    currentIndex = idx;
+                    renderCurrentQuestion();
+                };
+                grid.appendChild(btn);
+            });
+        }
+
+        function updateStatsDashboard() {
+            let correctCount = 0;
+            let wrongCount = 0;
+            let answeredCount = 0;
+
+            activeQuestions.forEach(q => {
+                if (userAnswers.hasOwnProperty(q.id)) {
+                    answeredCount++;
+                    if (userAnswers[q.id] === q.correct) {
+                        correctCount++;
+                    } else {
+                        wrongCount++;
+                    }
+                }
+            });
+
+            const unansweredCount = activeQuestions.length - answeredCount;
+            document.getElementById('answered-counter').innerText = `${answeredCount} / ${activeQuestions.length} ಉತ್ತರಿಸಲಾಗಿದೆ`;
+
+            if (quizMode === 'practice' || examSubmitted) {
+                document.getElementById('live-score-badge').innerText = `${correctCount} / ${activeQuestions.length}`;
+                document.getElementById('stat-correct').innerText = correctCount;
+                document.getElementById('stat-wrong').innerText = wrongCount;
+            } else {
+                document.getElementById('live-score-badge').innerText = `${answeredCount} ಗುರುತಿಸಲಾಗಿದೆ`;
+                document.getElementById('stat-correct').innerText = '-';
+                document.getElementById('stat-wrong').innerText = '-';
+            }
+
+            document.getElementById('stat-review').innerText = reviewMarks.size;
+            document.getElementById('stat-unanswered').innerText = unansweredCount;
+            document.getElementById('streak-badge').innerText = currentStreak;
+
+            const accuracy = answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
+            if (quizMode === 'practice' || examSubmitted) {
+                document.getElementById('accuracy-pct').innerText = `${accuracy}%`;
+                document.getElementById('accuracy-bar').style.width = `${accuracy}%`;
+            } else {
+                const completion = Math.round((answeredCount / activeQuestions.length) * 100);
+                document.getElementById('accuracy-pct').innerText = `${completion}% ಪೂರ್ಣ`;
+                document.getElementById('accuracy-bar').style.width = `${completion}%`;
+            }
+        }
+
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            timerSeconds = 0;
+            timerInterval = setInterval(() => {
+                timerSeconds++;
+                const mins = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+                const secs = String(timerSeconds % 60).padStart(2, '0');
+                document.getElementById('timer-display').innerText = `${mins}:${secs}`;
+            }, 1000);
+        }
+
+        function finishAndShowResults() {
+            examSubmitted = true;
+            renderCurrentQuestion();
+            updateStatsDashboard();
+
+            let correct = 0;
+            let wrong = 0;
+            activeQuestions.forEach(q => {
+                if (userAnswers.hasOwnProperty(q.id)) {
+                    if (userAnswers[q.id] === q.correct) correct++;
+                    else wrong++;
+                }
+            });
+
+            const total = activeQuestions.length;
+            const pct = Math.round((correct / total) * 100);
+
+            document.getElementById('final-score-big').innerText = `${correct} / ${total}`;
+            document.getElementById('modal-correct').innerText = correct;
+            document.getElementById('modal-wrong').innerText = wrong;
+            document.getElementById('modal-pct').innerText = `${pct}%`;
+            document.getElementById('modal-time').innerText = document.getElementById('timer-display').innerText;
+
+            const badge = document.getElementById('grade-badge');
+            const msg = document.getElementById('final-feedback-msg');
+
+            if (pct >= 85) {
+                badge.innerText = '🏆 ಅತ್ಯುತ್ತಮ ಪ್ರದರ್ಶನ (KEA / FDA Topper Level)';
+                msg.innerText = 'ಅಭಿನಂದನೆಗಳು! ಕಂಪ್ಯೂಟರ್ ಮೂಲ ಪರಿಕಲ್ಪನೆ ಮತ್ತು EDP ವಿಷಯದಲ್ಲಿ ನೀವು ಪರೀಕ್ಷೆಗೆ ಸಂಪೂರ್ಣ ಸಿದ್ಧರಾಗಿದ್ದೀರಿ.';
+            } else if (pct >= 60) {
+                badge.innerText = '🌟 ಉತ್ತಮ ಪ್ರಯತ್ನ (First Class Pass)';
+                msg.innerText = 'ಉತ್ತಮ ಅಂಕ! ತಪ್ಪಾದ ಪ್ರಶ್ನೆಗಳ ವಿವರಣೆಯನ್ನು ಒಮ್ಮೆ ಓದಿಕೊಂಡರೆ 100% ಅಂಕ ಪಡೆಯಬಹುದು.';
+            } else {
+                badge.innerText = '📘 ಇನ್ನಷ್ಟು ಅಭ್ಯಾಸ ಅಗತ್ಯವಿದೆ (Needs Revision)';
+                msg.innerText = 'ಕೆಳಗಿನ "ತಪ್ಪಾದ ಪ್ರಶ್ನೆಗಳನ್ನು ಮಾತ್ರ ಮತ್ತೆ ಅಭ್ಯಾಸ ಮಾಡಿ" ಬಟನ್ ಒತ್ತಿ ಹಾಗೂ ನೋಟ್ಸ್ ಸಾರಾಂಶವನ್ನು ಓದಿ.';
+            }
+
+            const retryWrongBtn = document.getElementById('btn-retry-wrong');
+            retryWrongBtn.style.display = wrong > 0 ? 'inline-block' : 'none';
+
+            const modal = document.getElementById('results-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeResultsModal() {
+            const modal = document.getElementById('results-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function retryWrongQuestionsOnly() {
+            const wrongList = activeQuestions.filter(q => userAnswers.hasOwnProperty(q.id) && userAnswers[q.id] !== q.correct);
+            if (wrongList.length > 0) {
+                wrongList.forEach(q => delete userAnswers[q.id]);
+                activeQuestions = wrongList;
+                currentIndex = 0;
+                examSubmitted = false;
+                closeResultsModal();
+                renderPalette();
+                renderCurrentQuestion();
+                updateStatsDashboard();
+            }
+        }
+
+        function resetQuizAll() {
+            userAnswers = {};
+            reviewMarks.clear();
+            currentStreak = 0;
+            examSubmitted = false;
+            currentIndex = 0;
+            document.getElementById('topic-filter').value = 'ALL';
+            activeQuestions = [...masterQuestions];
+            startTimer();
+            renderPalette();
+            renderCurrentQuestion();
+            updateStatsDashboard();
+        }
+
+        function toggleCheatSheetModal() {
+            const modal = document.getElementById('cheatsheet-modal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            } else {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+    </script>
+</body>
+</html>
