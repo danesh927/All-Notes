@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಭಾರತದ ಸಂವಿಧಾನದ ಐತಿಹಾಸಿಕ ಹಿನ್ನೆಲೆ (1773-1947) - 25 MCQs Master Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Default Eye-Friendly Warm Paper Theme */
+        :root {
+            --bg-main: #f4f1ea;
+            --bg-card: #fbf9f5;
+            --bg-opt: #efeae0;
+            --text-main: #2c2520;
+            --text-muted: #5c5346;
+            --primary: #1e4d3b;
+            --secondary: #8c4a27;
+            --border: #dcd3c2;
+            --correct-bg: #d8f3dc;
+            --correct-border: #2d6a4f;
+            --correct-text: #1b4332;
+            --wrong-bg: #ffe5e5;
+            --wrong-border: #c1121f;
+            --wrong-text: #780000;
+            --shadow: 0 4px 12px rgba(44, 37, 32, 0.06);
+        }
+
+        /* Soft Sage Green Eye-Care Theme */
+        [data-theme="sage"] {
+            --bg-main: #e6efe9;
+            --bg-card: #f3f8f5;
+            --bg-opt: #d8e6de;
+            --text-main: #1b2e25;
+            --text-muted: #466053;
+            --primary: #1b4332;
+            --secondary: #9c4221;
+            --border: #c2d6cc;
+        }
+
+        /* Soft Slate Dark Mode */
+        [data-theme="dark"] {
+            --bg-main: #12181f;
+            --bg-card: #1b242e;
+            --bg-opt: #24303d;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --primary: #6ee7b7;
+            --secondary: #fbbf24;
+            --border: #2f3e4e;
+            --correct-bg: rgba(16, 185, 129, 0.2);
+            --correct-border: #10b981;
+            --correct-text: #6ee7b7;
+            --wrong-bg: rgba(239, 68, 68, 0.2);
+            --wrong-border: #ef4444;
+            --wrong-text: #fca5a5;
+            --shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans Kannada', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.75;
+            padding-bottom: 60px;
+            transition: background-color 0.25s, color 0.25s;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1b4332, #2d3748, #5c3a21);
+            color: #ffffff;
+            padding: 25px 15px;
+            text-align: center;
+            border-bottom: 4px solid #d97706;
+        }
+
+        header h1 {
+            font-size: clamp(1.3rem, 4vw, 1.9rem);
+            margin-bottom: 6px;
+        }
+
+        header p {
+            font-size: clamp(0.88rem, 2.5vw, 1rem);
+            opacity: 0.92;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Sticky Score & Control Bar */
+        .sticky-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--bg-card);
+            border-bottom: 2px solid var(--border);
+            padding: 10px 14px;
+            box-shadow: var(--shadow);
+        }
+
+        .bar-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .score-pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .pill {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.84rem;
+            font-weight: 800;
+            background: var(--bg-opt);
+            border: 1px solid var(--border);
+        }
+
+        .pill.score {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+
+        [data-theme="dark"] .pill.score {
+            color: #0f172a;
+        }
+
+        .action-group {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 6px 12px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: var(--bg-opt);
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            border-color: var(--primary);
+        }
+
+        .btn.active-btn {
+            background: var(--secondary);
+            color: #fff;
+            border-color: var(--secondary);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1050px;
+            margin: 20px auto;
+            padding: 0 12px;
+        }
+
+        .filter-row {
+            margin-bottom: 18px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 220px;
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        /* Question Card */
+        .q-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .q-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .q-num {
+            background: var(--primary);
+            color: #fff;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        [data-theme="dark"] .q-num {
+            color: #0f172a;
+        }
+
+        .q-tag {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--secondary);
+            background: var(--bg-opt);
+            padding: 3px 10px;
+            border-radius: 10px;
+        }
+
+        .q-text {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            white-space: pre-line;
+        }
+
+        .opt-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        @media (max-width: 680px) {
+            .opt-grid {
+                grid-template-columns: 1fr;
+            }
+            .q-card {
+                padding: 15px;
+            }
+        }
+
+        .opt-btn {
+            background: var(--bg-opt);
+            border: 1.5px solid var(--border);
+            color: var(--text-main);
+            padding: 12px 14px;
+            border-radius: 10px;
+            text-align: left;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            line-height: 1.5;
+        }
+
+        .opt-btn:hover:not(:disabled) {
+            border-color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .opt-btn.correct {
+            background: var(--correct-bg) !important;
+            border-color: var(--correct-border) !important;
+            color: var(--correct-text) !important;
+            font-weight: 800;
+        }
+
+        .opt-btn.wrong {
+            background: var(--wrong-bg) !important;
+            border-color: var(--wrong-border) !important;
+            color: var(--wrong-text) !important;
+        }
+
+        .exp-box {
+            display: none;
+            margin-top: 14px;
+            padding: 14px;
+            background: var(--bg-opt);
+            border-left: 4px solid var(--correct-border);
+            border-radius: 8px;
+            font-size: 0.92rem;
+        }
+
+        .exp-box.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🏛️ ಭಾರತದ ಸಂವಿಧಾನದ ಐತಿಹಾಸಿಕ ಹಿನ್ನೆಲೆ (1773 – 1947)</h1>
+    <p>UPSC • KAS • FDA • SDA • PSI • PDO • KEA ಸ್ಪರ್ಧಾತ್ಮಕ ಪರೀಕ್ಷೆಗಳಿಗಾಗಿ 25 ಸಮಗ್ರ ಪ್ರಶ್ನೋತ್ತರಗಳ ಕ್ವಿಜ್</p>
+</header>
+
+<div class="sticky-bar">
+    <div class="bar-inner">
+        <div class="score-pills">
+            <span class="pill score" id="scoreText">🎯 ಅಂಕ: 0 / 25</span>
+            <span class="pill" id="attemptText">ಉತ್ತರಿಸಿದವು: 0 / 25</span>
+        </div>
+        <div class="action-group">
+            <button class="btn active-btn" onclick="revealAllAnswers()">👁️ ಎಲ್ಲಾ ಉತ್ತರ ತೋರಿಸಿ</button>
+            <button class="btn" onclick="resetQuiz()">🔄 ಮರುಪ್ರಾರಂಭಿಸಿ</button>
+            <button class="btn" onclick="setTheme('paper')">📜 ಪೇಪರ್</button>
+            <button class="btn" onclick="setTheme('sage')">🌿 ಸೇಜ್</button>
+            <button class="btn" onclick="setTheme('dark')">🌙 ನೈಟ್</button>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="filter-row">
+        <input type="text" id="searchInput" class="search-box" placeholder="🔍 ಪ್ರಶ್ನೆ ಅಥವಾ ಕಾಯ್ದೆ ಹುಡುಕಿ (ಉದಾ: 1833, 1919, ಕ್ಯಾನಿಂಗ್, ದ್ವಿಸರಕಾರ)..." oninput="filterQuestions()">
+    </div>
+
+    <div id="quizList"></div>
+</div>
+
+<script>
+    const questions = [
+        {
+            tag: "ಮೂಲ ಇತಿಹಾಸ (1765)",
+            q: "1. 1764ರ ಬಕ್ಸಾರ್ ಕದನದ ನಂತರ ಈಸ್ಟ್ ಇಂಡಿಯಾ ಕಂಪನಿಯು ಯಾವ ವರ್ಷದಲ್ಲಿ ಬಂಗಾಳ, ಬಿಹಾರ ಮತ್ತು ಒರಿಸ್ಸಾದ 'ದಿವಾನಿ ಹಕ್ಕುಗಳನ್ನು' (ಕಂದಾಯ ಮತ್ತು ನಾಗರಿಕ ನ್ಯಾಯದ ಹಕ್ಕು) ಪಡೆಯಿತು?",
+            opts: ["(a) 1600 ರಲ್ಲಿ", "(b) 1757 ರಲ್ಲಿ", "(c) 1765 ರಲ್ಲಿ", "(d) 1773 ರಲ್ಲಿ"],
+            ans: 2,
+            exp: "1764ರ ಬಕ್ಸಾರ್ ಕದನದ ನಂತರ 1765ರಲ್ಲಿ ಈಸ್ಟ್ ಇಂಡಿಯಾ ಕಂಪನಿಯು ಬಂಗಾಳ, ಬಿಹಾರ ಮತ್ತು ಒರಿಸ್ಸಾದ 'ದಿವಾನಿ ಹಕ್ಕುಗಳನ್ನು' ಪಡೆಯಿತು."
+        },
+        {
+            tag: "1773 ರ ರೆಗ್ಯುಲೇಟಿಂಗ್ ಕಾಯ್ದೆ",
+            q: "2. 1773ರ ರೆಗ್ಯುಲೇಟಿಂಗ್ ಕಾಯ್ದೆಯ ಮೂಲಕ ನೇಮಕಗೊಂಡ 'ಬಂಗಾಳದ ಮೊದಲ ಗವರ್ನರ್ ಜನರಲ್' ಯಾರು?",
+            opts: ["(a) ರಾಬರ್ಟ್ ಕ್ಲೈವ್", "(b) ಲಾರ್ಡ್ ವಾರನ್ ಹೇಸ್ಟಿಂಗ್ಸ್", "(c) ಲಾರ್ಡ್ ವಿಲಿಯಂ ಬೆಂಟಿಂಕ್", "(d) ಲಾರ್ಡ್ ಕಾರ್ನ್‌ವಾಲಿಸ್"],
+            ans: 1,
+            exp: "1773ರ ರೆಗ್ಯುಲೇಟಿಂಗ್ ಕಾಯ್ದೆಯಡಿ ಬಂಗಾಳದ ಗವರ್ನರ್ ಹುದ್ದೆಯನ್ನು 'ಬಂಗಾಳದ ಗವರ್ನರ್ ಜನರಲ್' ಎಂದು ಬದಲಾಯಿಸಲಾಯಿತು. ಮೊದಲ ಗವರ್ನರ್ ಜನರಲ್ ಲಾರ್ಡ್ ವಾರನ್ ಹೇಸ್ಟಿಂಗ್ಸ್. (ಬಂಗಾಳದ ಮೊದಲ ಗವರ್ನರ್ ರಾಬರ್ಟ್ ಕ್ಲೈವ್)."
+        },
+        {
+            tag: "1773 ರ ರೆಗ್ಯುಲೇಟಿಂಗ್ ಕಾಯ್ದೆ",
+            q: "3. 1773ರ ರೆಗ್ಯುಲೇಟಿಂಗ್ ಕಾಯ್ದೆಯ ಅಡಿಯಲ್ಲಿ 1774ರಲ್ಲಿ ಕಲ್ಕತ್ತಾದ ಫೋರ್ಟ್ ವಿಲಿಯಂನಲ್ಲಿ ಸ್ಥಾಪನೆಯಾದ ಸುಪ್ರೀಂ ಕೋರ್ಟ್‌ನ ಮೊದಲ ಮುಖ್ಯ ನ್ಯಾಯಾಧೀಶರು ಯಾರು?",
+            opts: ["(a) ಸರ್ ಎಲಿಜಾ ಇಂಪೇ (Sir Elijah Impey)", "(b) ಲಾರ್ಡ್ ಮೆಕಾಲೆ", "(c) ಸರ್ ಸಿರಿಲ್ ರಾಡ್‌ಕ್ಲಿಫ್", "(d) ಫಿಲಿಪ್ ಫ್ರಾನ್ಸಿಸ್"],
+            ans: 0,
+            exp: "1774ರಲ್ಲಿ ಕಲ್ಕತ್ತಾದಲ್ಲಿ ಸ್ಥಾಪನೆಯಾದ ಸುಪ್ರೀಂ ಕೋರ್ಟ್‌ನಲ್ಲಿ 1 ಮುಖ್ಯ ನ್ಯಾಯಾಧೀಶರು (ಸರ್ ಎಲಿಜಾ ಇಂಪೇ) ಮತ್ತು 3 ಇತರ ನ್ಯಾಯಾಧೀಶರು (ಚೇಂಬರ್ಸ್, ಲಿಮೆಸ್ಟರ್ ಮತ್ತು ಹೈಡ್) ಇದ್ದರು."
+        },
+        {
+            tag: "1781 ರ ತಿದ್ದುಪಡಿ ಕಾಯ್ದೆ",
+            q: "4. 1773ರ ರೆಗ್ಯುಲೇಟಿಂಗ್ ಕಾಯ್ದೆಯ ದೋಷಗಳನ್ನು ಸರಿಪಡಿಸಲು ಹಾಗೂ ಗವರ್ನರ್ ಜನರಲ್ ಮತ್ತು ಕಂದಾಯ ವಿಷಯಗಳನ್ನು ಸುಪ್ರೀಂ ಕೋರ್ಟ್ ವ್ಯಾಪ್ತಿಯಿಂದ ಹೊರಗಿಡಲು ಜಾರಿಗೆ ತಂದ ಕಾಯ್ದೆ ಯಾವುದು?",
+            opts: ["(a) 1784 ರ ಪಿಟ್ಸ್ ಇಂಡಿಯಾ ಕಾಯ್ದೆ", "(b) 1781 ರ ತಿದ್ದುಪಡಿ ಕಾಯ್ದೆ (Act of Settlement)", "(c) 1786 ರ ಕಾಯ್ದೆ", "(d) 1793 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ"],
+            ans: 1,
+            exp: "1781ರ ತಿದ್ದುಪಡಿ ಕಾಯ್ದೆಯನ್ನು 'Act of Settlement' ಅಥವಾ 'Declaratory Act of 1781' ಎನ್ನುತ್ತಾರೆ. ಇದು ಕಾರ್ಯಾಂಗವನ್ನು ನ್ಯಾಯಾಂಗದ ಹಸ್ತಕ್ಷೇಪದಿಂದ ರಕ್ಷಿಸಿದ ಮೊದಲ ಕಾಯ್ದೆಯಾಗಿದೆ."
+        },
+        {
+            tag: "1784 ರ ಪಿಟ್ಸ್ ಇಂಡಿಯಾ ಕಾಯ್ದೆ",
+            q: "5. ಈಸ್ಟ್ ಇಂಡಿಯಾ ಕಂಪನಿಯ ವಾಣಿಜ್ಯ (Court of Directors) ಮತ್ತು ರಾಜಕೀಯ (Board of Control) ಕಾರ್ಯಗಳನ್ನು ಬೇರ್ಪಡಿಸಿ 'ದ್ವಿಮುಖ ಸರ್ಕಾರ ಪದ್ಧತಿ' (Double Government) ಜಾರಿಗೆ ತಂದ ಕಾಯ್ದೆ ಯಾವುದು?",
+            opts: ["(a) 1773 ರ ರೆಗ್ಯುಲೇಟಿಂಗ್ ಕಾಯ್ದೆ", "(b) 1784 ರ ಪಿಟ್ಸ್ ಇಂಡಿಯಾ ಕಾಯ್ದೆ", "(c) 1813 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ", "(d) 1919 ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆ"],
+            ans: 1,
+            exp: "1784ರ ಪಿಟ್ಸ್ ಇಂಡಿಯಾ ಕಾಯ್ದೆಯು ವಾಣಿಜ್ಯ ವ್ಯವಹಾರಕ್ಕೆ Court of Directors ಮತ್ತು ರಾಜಕೀಯ ವ್ಯವಹಾರಕ್ಕೆ 6 ಸದಸ್ಯರ Board of Control ರಚಿಸಿ ದ್ವಿಮುಖ ಸರ್ಕಾರಕ್ಕೆ ನಾಂದಿ ಹಾಡಿತು."
+        },
+        {
+            tag: "1784 ರ ಪಿಟ್ಸ್ ಇಂಡಿಯಾ ಕಾಯ್ದೆ",
+            q: "6. ಭಾರತದಲ್ಲಿ ಕಂಪನಿಯ ವಶದಲ್ಲಿದ್ದ ಪ್ರದೇಶಗಳನ್ನು ಮೊದಲ ಬಾರಿಗೆ 'ಬ್ರಿಟಿಷ್ ವಶದಲ್ಲಿರುವ ಭಾರತದ ಪ್ರದೇಶಗಳು' (British Possessions in India) ಎಂದು ಯಾವ ಕಾಯ್ದೆಯಲ್ಲಿ ಕರೆಯಲಾಯಿತು?",
+            opts: ["(a) 1773 ರ ಕಾಯ್ದೆ", "(b) 1784 ರ ಪಿಟ್ಸ್ ಇಂಡಿಯಾ ಕಾಯ್ದೆ", "(c) 1833 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ", "(d) 1858 ರ ಕಾಯ್ದೆ"],
+            ans: 1,
+            exp: "1784ರ ಪಿಟ್ಸ್ ಇಂಡಿಯಾ ಕಾಯ್ದೆಯಲ್ಲಿ ಮೊದಲ ಬಾರಿಗೆ ಭಾರತದಲ್ಲಿ ಕಂಪನಿ ಗೆದ್ದ ಪ್ರದೇಶಗಳನ್ನು 'British Possessions in India' ಎಂದು ಕರೆಯಲಾಯಿತು ಮತ್ತು ಕಾರ್ಯಕಾರಿ ಮಂಡಳಿ ಸದಸ್ಯರನ್ನು 4 ರಿಂದ 3 ಕ್ಕೆ ಇಳಿಸಲಾಯಿತು."
+        },
+        {
+            tag: "1786 ರ ಕಾಯ್ದೆ",
+            q: "7. ವಿಶೇಷ ಸಂದರ್ಭಗಳಲ್ಲಿ ತನ್ನ ಮಂಡಳಿಯ ನಿರ್ಧಾರವನ್ನು ತಿರಸ್ಕರಿಸುವ (Overriding power) ಅಧಿಕಾರ ಮತ್ತು ದಂಡನಾಯಕನಾಗಿ (Commander-in-Chief) ಕಾರ್ಯನಿರ್ವಹಿಸುವ ಎರಡೂ ಅಧಿಕಾರಗಳನ್ನು 1786ರ ಕಾಯ್ದೆಯಡಿ ಪಡೆದ ಗವರ್ನರ್ ಜನರಲ್ ಯಾರು?",
+            opts: ["(a) ವಾರನ್ ಹೇಸ್ಟಿಂಗ್ಸ್", "(b) ಲಾರ್ಡ್ ಕಾರ್ನ್‌ವಾಲಿಸ್", "(c) ಲಾರ್ಡ್ ವೆಲ್ಲೆಸ್ಲಿ", "(d) ವಿಲಿಯಂ ಬೆಂಟಿಂಕ್"],
+            ans: 1,
+            exp: "ಲಾರ್ಡ್ ಕಾರ್ನ್‌ವಾಲಿಸ್ ಬಂಗಾಳದ ಗವರ್ನರ್ ಜನರಲ್ ಆಗಲು ಈ 2 ಷರತ್ತುಗಳನ್ನು ವಿಧಿಸಿದ್ದರು, ಅದಕ್ಕಾಗಿ 1786ರ ಕಾಯ್ದೆಯನ್ನು ಜಾರಿಗೆ ತರಲಾಯಿತು."
+        },
+        {
+            tag: "1793 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ",
+            q: "8. ಲಂಡನ್‌ನಲ್ಲಿದ್ದ 'ಬೋರ್ಡ್ ಆಫ್ ಕಂಟ್ರೋಲ್' ಸದಸ್ಯರು ಮತ್ತು ಸಿಬ್ಬಂದಿಯ ವೇತನವನ್ನು ಭಾರತೀಯ ಕಂದಾಯದಿಂದಲೇ (ಭಾರತದ ಬೊಕ್ಕಸದಿಂದ) ನೀಡಬೇಕೆಂದು ಆದೇಶಿಸಿದ ಕಾಯ್ದೆ ಯಾವುದು?",
+            opts: ["(a) 1784 ರ ಕಾಯ್ದೆ", "(b) 1793 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ", "(c) 1813 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ", "(d) 1833 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ"],
+            ans: 1,
+            exp: "1793ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆಯು ಬೋರ್ಡ್ ಆಫ್ ಕಂಟ್ರೋಲ್ ವೇತನವನ್ನು ಭಾರತದ ಬೊಕ್ಕಸದಿಂದ ನೀಡಲು ಆರಂಭಿಸಿತು (ಇದು 1919ರ ಕಾಯ್ದೆಯವರೆಗೆ ಮುಂದುವರಿಯಿತು)."
+        },
+        {
+            tag: "1813 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ",
+            q: "9. 1813ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆಗೆ ಸಂಬಂಧಿಸಿದಂತೆ ಕೆಳಗಿನ ಯಾವ ಹೇಳಿಕೆಯು ಸರಿಯಾಗಿದೆ?\n1. ಚಹಾ ವ್ಯಾಪಾರ ಮತ್ತು ಚೀನಾದೊಂದಿಗಿನ ವ್ಯಾಪಾರವನ್ನು ಹೊರತುಪಡಿಸಿ ಕಂಪನಿಯ ವ್ಯಾಪಾರ ಏಕಸ್ವಾಮ್ಯವನ್ನು ರದ್ದುಪಡಿಸಲಾಯಿತು.\n2. ಭಾರತದಲ್ಲಿ ಶಿಕ್ಷಣಕ್ಕಾಗಿ ವಾರ್ಷಿಕ 1 ಲಕ್ಷ ರೂಪಾಯಿಗಳನ್ನು ಮೀಸಲಿಡಲು ಆದೇಶಿಸಲಾಯಿತು.\n3. ಕ್ರಿಶ್ಚಿಯನ್ ಮಿಷನರಿಗಳಿಗೆ ಧರ್ಮ ಪ್ರಚಾರಕ್ಕೆ ಅಧಿಕೃತ ಅನುಮತಿ ನೀಡಲಾಯಿತು.",
+            opts: ["(a) 1 ಮತ್ತು 2 ಮಾತ್ರ ಸರಿ", "(b) 2 ಮತ್ತು 3 ಮಾತ್ರ ಸರಿ", "(c) 1 ಮತ್ತು 3 ಮಾತ್ರ ಸರಿ", "(d) 1, 2 ಮತ್ತು 3 ಮೂರೂ ಸರಿಯಾಗಿವೆ"],
+            ans: 3,
+            exp: "ಈ ಮೂರೂ ಅಂಶಗಳು 1813ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆಯ ಅತ್ಯಂತ ಪ್ರಮುಖ ವೈಶಿಷ್ಟ್ಯಗಳಾಗಿವೆ."
+        },
+        {
+            tag: "1833 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ",
+            q: "10. ಬ್ರಿಟಿಷ್ ಭಾರತದಲ್ಲಿ ಕೇಂದ್ರೀಕರಣದ ಅಂತಿಮ ಹೆಜ್ಜೆಯಾದ 1833ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆಯ (St. Helena Act) ಮೂಲಕ ನೇಮಕಗೊಂಡ 'ಭಾರತದ ಮೊದಲ ಗವರ್ನರ್ ಜನರಲ್' ಯಾರು?",
+            opts: ["(a) ಲಾರ್ಡ್ ವಿಲಿಯಂ ಬೆಂಟಿಂಕ್", "(b) ಲಾರ್ಡ್ ಕ್ಯಾನಿಂಗ್", "(c) ಲಾರ್ಡ್ ಡಾಲ್‌ಹೌಸಿ", "(d) ಲಾರ್ಡ್ ಮೌಂಟ್ ಬ್ಯಾಟನ್"],
+            ans: 0,
+            exp: "1833ರ ಕಾಯ್ದೆಯು ಬಂಗಾಳದ ಗವರ್ನರ್ ಜನರಲ್ ಹುದ್ದೆಯನ್ನು 'ಭಾರತದ ಗವರ್ನರ್ ಜನರಲ್' ಎಂದು ಬದಲಾಯಿಸಿತು ಮತ್ತು ಬಾಂಬೆ ಹಾಗೂ ಮದ್ರಾಸ್ ಗವರ್ನರ್‌ಗಳ ಶಾಸನ ರಚನೆಯ ಅಧಿಕಾರವನ್ನು ಕಸಿದುಕೊಂಡಿತು. ಮೊದಲ ಭಾರತದ ಗವರ್ನರ್ ಜನರಲ್ ಲಾರ್ಡ್ ವಿಲಿಯಂ ಬೆಂಟಿಂಕ್."
+        },
+        {
+            tag: "1833 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ",
+            q: "11. 1833ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆಯ ಅಡಿಯಲ್ಲಿ ಭಾರತೀಯ ಕಾನೂನುಗಳ ಕ್ರೋಢೀಕರಣಕ್ಕಾಗಿ 1834ರಲ್ಲಿ ರಚನೆಯಾದ 'ಮೊದಲ ಕಾನೂನು ಆಯೋಗದ' ಅಧ್ಯಕ್ಷರು ಯಾರು?",
+            opts: ["(a) ಸರ್ ಎಲಿಜಾ ಇಂಪೇ", "(b) ಲಾರ್ಡ್ ಮೆಕಾಲೆ (Lord Macaulay)", "(c) ಲಾರ್ಡ್ ಎಲೆನ್‌ಬರೋ", "(d) ಸರ್ ದಿನಕರ್ ರಾವ್"],
+            ans: 1,
+            exp: "ಗವರ್ನರ್ ಜನರಲ್ ಮಂಡಳಿಗೆ 4ನೇ ಸದಸ್ಯರಾಗಿ (ಕಾನೂನು ಸದಸ್ಯ) ಲಾರ್ಡ್ ಮೆಕಾಲೆ ಸೇರ್ಪಡೆಗೊಂಡರು ಮತ್ತು ಅವರ ಅಧ್ಯಕ್ಷತೆಯಲ್ಲಿಯೇ 1834ರಲ್ಲಿ ಮೊದಲ ಕಾನೂನು ಆಯೋಗ ರಚನೆಯಾಯಿತು."
+        },
+        {
+            tag: "1833 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ (UPSC ಟ್ರ್ಯಾಪ್)",
+            q: "12. ಯಾವ ಕಾಯ್ದೆಗಿಂತ ಹಿಂದೆ ಜಾರಿಗೆ ಬಂದ ಕಾನೂನುಗಳನ್ನು 'ನಿಬಂಧನೆಗಳು' (Regulations) ಎಂದೂ ಮತ್ತು ಆ ಕಾಯ್ದೆಯಿಂದ ಜಾರಿಗೆ ಬಂದ ಕಾನೂನುಗಳನ್ನು 'ಕಾಯ್ದೆಗಳು' (Acts) ಎಂದೂ ಕರೆಯಲಾಯಿತು?",
+            opts: ["(a) 1773 ರ ರೆಗ್ಯುಲೇಟಿಂಗ್ ಕಾಯ್ದೆ", "(b) 1813 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ", "(c) 1833 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ", "(d) 1853 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ"],
+            ans: 2,
+            exp: "1833ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆಗೂ ಹಿಂದಿನ ಕಾನೂನುಗಳನ್ನು 'Regulations' ಎಂದೂ, 1833ರ ಕಾಯ್ದೆಯಿಂದ ರಚನೆಯಾದ ಕಾನೂನುಗಳನ್ನು 'Acts' ಎಂದೂ ಕರೆಯಲಾಯಿತು."
+        },
+        {
+            tag: "1853 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ",
+            q: "13. ಕೆಳಗಿನ ಯಾವ ಕಾಯ್ದೆಯು ಗವರ್ನರ್ ಜನರಲ್ ಮಂಡಳಿಯ 'ಶಾಸಕಾಂಗ ಮತ್ತು ಕಾರ್ಯಾಂಗ' ಕಾರ್ಯಗಳನ್ನು ಮೊದಲ ಬಾರಿಗೆ ಬೇರ್ಪಡಿಸಿ 6 ಸದಸ್ಯರ 'ಕೇಂದ್ರ ವಿಧಾನ ಪರಿಷತ್' (ಮಿನಿ ಸಂಸತ್ತು) ಸ್ಥಾಪಿಸಿತು ಹಾಗೂ ICS ಮುಕ್ತ ಸ್ಪರ್ಧಾತ್ಮಕ ಪರೀಕ್ಷೆ ಜಾರಿಗೊಳಿಸಿತು?",
+            opts: ["(a) 1813 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ", "(b) 1833 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ", "(c) 1853 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ", "(d) 1858 ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆ"],
+            ans: 2,
+            exp: "1853ರ ಕೊನೆಯ ಚಾರ್ಟರ್ ಕಾಯ್ದೆಯು ಮಿನಿ ಸಂಸತ್ತು ಸ್ಥಾಪಿಸಿತು (ಇದರಲ್ಲಿ ಮದ್ರಾಸ್, ಬಾಂಬೆ, ಬಂಗಾಳ ಮತ್ತು ಆಗ್ರಾದಿಂದ 4 ಸ್ಥಳೀಯ ಪ್ರತಿನಿಧಿಗಳಿದ್ದರು) ಹಾಗೂ 1854ರ ಮೆಕಾಲೆ ಸಮಿತಿಯ ಮೂಲಕ ICS ಮುಕ್ತ ಪರೀಕ್ಷೆ ಜಾರಿಗೊಳಿಸಿತು (ಮೊದಲ ಭಾರತೀಯ ICS ಅಧಿಕಾರಿ: ಸತ್ಯೇಂದ್ರನಾಥ ಟ್ಯಾಗೋರ್ - 1864)."
+        },
+        {
+            tag: "1858 ರ ಕಾಯ್ದೆ",
+            q: "14. 1857ರ ಪ್ರಥಮ ಸ್ವಾತಂತ್ರ್ಯ ಸಂಗ್ರಾಮದ ನಂತರ ಜಾರಿಗೆ ಬಂದ '1858ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆ'ಗೆ ಸಂಬಂಧಿಸಿದಂತೆ ಕೆಳಗಿನ ಯಾವ ಹೇಳಿಕೆ ಸರಿಯಾಗಿದೆ?",
+            opts: [
+                "(a) ಇದು ಈಸ್ಟ್ ಇಂಡಿಯಾ ಕಂಪನಿ ರದ್ದುಪಡಿಸಿ ಭಾರತದ ಮೊದಲ ವೈಸರಾಯ್ ಆಗಿ ಲಾರ್ಡ್ ಕ್ಯಾನಿಂಗ್ ಅವರನ್ನು ನೇಮಿಸಿತು.",
+                "(b) 1784ರ ಬೋರ್ಡ್ ಆಫ್ ಕಂಟ್ರೋಲ್ ಮತ್ತು ಕೋರ್ಟ್ ಆಫ್ ಡೈರೆಕ್ಟರ್ಸ್ ಎರಡನ್ನೂ ರದ್ದುಪಡಿಸಿತು.",
+                "(c) ಭಾರತದ ರಾಜ್ಯ ಕಾರ್ಯದರ್ಶಿ (ಮೊದಲ SOS: ಲಾರ್ಡ್ ಸ್ಟಾನ್ಲಿ) ಮತ್ತು ಅವರಿಗೆ ಸಹಾಯ ಮಾಡಲು ಲಂಡನ್‌ನಲ್ಲಿ 15 ಸದಸ್ಯರ ಭಾರತ ಮಂಡಳಿ ಸೃಷ್ಟಿಸಿತು.",
+                "(d) ಮೇಲಿನ ಎಲ್ಲವೂ ಸರಿಯಾಗಿವೆ."
+            ],
+            ans: 3,
+            exp: "1858ರ ಕಾಯ್ದೆಯನ್ನು 'Act for the Good Government of India' ಎನ್ನುತ್ತಾರೆ. ಮೇಲಿನ ಎಲ್ಲಾ ಹೇಳಿಕೆಗಳೂ ಈ ಕಾಯ್ದೆಯ ಪ್ರಮುಖ ಅಂಶಗಳಾಗಿವೆ."
+        },
+        {
+            tag: "1861 ರ ಭಾರತೀಯ ಪರಿಷತ್ ಕಾಯ್ದೆ",
+            q: "15. 1861ರ ಭಾರತೀಯ ಪರಿಷತ್ ಕಾಯ್ದೆಯ ಅಡಿಯಲ್ಲಿ 1862ರಲ್ಲಿ ವೈಸರಾಯ್ ಲಾರ್ಡ್ ಕ್ಯಾನಿಂಗ್ ಅವರು ವಿಧಾನ ಪರಿಷತ್ತಿಗೆ ನಾಮನಿರ್ದೇಶನ ಮಾಡಿದ ಮೊದಲ ಮೂವರು ಭಾರತೀಯರು ಯಾರು?",
+            opts: [
+                "(a) ಬನಾರಸ್ ರಾಜ, ಪಟಿಯಾಲ ಮಹಾರಾಜ ಮತ್ತು ಸರ್ ದಿನಕರ್ ರಾವ್",
+                "(b) ಸತ್ಯೇಂದ್ರ ಪ್ರಸಾದ್ ಸಿನ್ಹಾ, ದಾದಾಭಾಯಿ ನವರೋಜಿ ಮತ್ತು ಸುರೇಂದ್ರನಾಥ ಬ್ಯಾನರ್ಜಿ",
+                "(c) ಸತ್ಯೇಂದ್ರನಾಥ ಟ್ಯಾಗೋರ್, ಗೋಪಾಲಕೃಷ್ಣ ಗೋಖಲೆ ಮತ್ತು ಫಿರೋಜ್ ಶಾ ಮೆಹ್ತಾ",
+                "(d) ಬನಾರಸ್ ರಾಜ, ಮೈಸೂರು ಮಹಾರಾಜ ಮತ್ತು ಸರ್ ಸೈಯದ್ ಅಹ್ಮದ್ ಖಾನ್"
+            ],
+            ans: 0,
+            exp: "1861ರ ಕಾಯ್ದೆಯಡಿ 1862ರಲ್ಲಿ ಲಾರ್ಡ್ ಕ್ಯಾನಿಂಗ್ ಅವರು 1. ಬನಾರಸ್ ರಾಜ, 2. ಪಟಿಯಾಲ ಮಹಾರಾಜ ಮತ್ತು 3. ಸರ್ ದಿನಕರ್ ರಾವ್ ಅವರನ್ನು ಶಾಸಕಾಂಗ ಪರಿಷತ್ತಿಗೆ ನಾಮನಿರ್ದೇಶನ ಮಾಡಿದರು."
+        },
+        {
+            tag: "1861 ರ ಕಾಯ್ದೆ (PODIN ಟ್ರಿಕ್)",
+            q: "16. ಬಾಂಬೆ ಮತ್ತು ಮದ್ರಾಸ್ ಪ್ರಾಂತ್ಯಗಳಿಗೆ ಶಾಸನ ರಚನೆಯ ಅಧಿಕಾರವನ್ನು ಮರಳಿ ನೀಡುವ ಮೂಲಕ 'ವಿಕೇಂದ್ರೀಕರಣ' ಪ್ರಾರಂಭಿಸಿದ, ಪೋರ್ಟ್‌ಫೋಲಿಯೊ ಪದ್ಧತಿಗೆ ಮನ್ನಣೆ ನೀಡಿದ ಹಾಗೂ ವೈಸರಾಯ್‌ಗೆ 6 ತಿಂಗಳ ಅವಧಿಯ ಸುಗ್ರೀವಾಜ್ಞೆ (Ordinance) ಅಧಿಕಾರ ನೀಡಿದ ಕಾಯ್ದೆ ಯಾವುದು?",
+            opts: ["(a) 1858 ರ ಕಾಯ್ದೆ", "(b) 1861 ರ ಭಾರತೀಯ ಪರಿಷತ್ ಕಾಯ್ದೆ", "(c) 1892 ರ ಭಾರತೀಯ ಪರಿಷತ್ ಕಾಯ್ದೆ", "(d) 1909 ರ ಮಾರ್ಲೆ-ಮಿಂಟೋ ಕಾಯ್ದೆ"],
+            ans: 1,
+            exp: "ನೆನಪಿನ ಕೋಡ್ 'PODIN': Portfolio, Ordinance (6 ತಿಂಗಳು), Decentralisation, Indians in Council (3 ಜನ), New Legislative Councils (ಬಂಗಾಳ-1862, NWFP-1886, ಪಂಜಾಬ್-1897) - ಇವೆಲ್ಲವೂ 1861ರ ಕಾಯ್ದೆಯ ಕೊಡುಗೆಗಳಾಗಿವೆ."
+        },
+        {
+            tag: "1892 ರ ಕಾಯ್ದೆ",
+            q: "17. ಶಾಸಕಾಂಗ ಸದಸ್ಯರಿಗೆ ಮೊದಲ ಬಾರಿಗೆ 'ಬಜೆಟ್ ಮೇಲೆ ಚರ್ಚಿಸುವ' ಮತ್ತು ಕಾರ್ಯಾಂಗಕ್ಕೆ ಪ್ರಶ್ನೆಗಳನ್ನು ಕೇಳುವ ಅಧಿಕಾರ ಹಾಗೂ ಸೀಮಿತ ಪರೋಕ್ಷ ಚುನಾವಣಾ ಪದ್ಧತಿಯನ್ನು ಪರಿಚಯಿಸಿದ ಕಾಯ್ದೆ ಯಾವುದು?",
+            opts: ["(a) 1861 ರ ಕಾಯ್ದೆ", "(b) 1892 ರ ಭಾರತೀಯ ಪರಿಷತ್ ಕಾಯ್ದೆ", "(c) 1909 ರ ಕಾಯ್ದೆ", "(d) 1919 ರ ಕಾಯ್ದೆ"],
+            ans: 1,
+            exp: "1885ರಲ್ಲಿ ಕಾಂಗ್ರೆಸ್ ಸ್ಥಾಪನೆಯಾದ ನಂತರ ಬಂದ 1892ರ ಕಾಯ್ದೆಯು ಬಜೆಟ್ ಚರ್ಚಿಸುವ ಹಕ್ಕು ಮತ್ತು ಪರೋಕ್ಷ ಚುನಾವಣೆಯ ತತ್ವವನ್ನು ಜಾರಿಗೆ ತಂದಿತು (ಆದರೆ ಪೂರಕ ಪ್ರಶ್ನೆ ಕೇಳುವ ಹಕ್ಕು ಇರಲಿಲ್ಲ)."
+        },
+        {
+            tag: "1909 ರ ಮಾರ್ಲೆ-ಮಿಂಟೋ ಕಾಯ್ದೆ",
+            q: "18. 1909ರ ಮಾರ್ಲೆ-ಮಿಂಟೋ ಸುಧಾರಣೆಗಳ ಕುರಿತು ಕೆಳಗಿನ ಯಾವ ಹೇಳಿಕೆಗಳು ಸರಿಯಾಗಿವೆ?\n1. ಮುಸ್ಲಿಮರಿಗೆ ಪ್ರತ್ಯೇಕ ಮತಕ್ಷೇತ್ರ ನೀಡುವ ಮೂಲಕ ಕೋಮುವಾದವನ್ನು ಕಾನೂನುಬದ್ಧಗೊಳಿಸಿತು (ಲಾರ್ಡ್ ಮಿಂಟೋ ಕೋಮುವಾರು ಮತಕ್ಷೇತ್ರಗಳ ಪಿತಾಮಹ).\n2. ಸತ್ಯೇಂದ್ರ ಪ್ರಸಾದ್ ಸಿನ್ಹಾ (S.P. Sinha) ವೈಸರಾಯ್ ಕಾರ್ಯಕಾರಿ ಮಂಡಳಿಗೆ ಕಾನೂನು ಸದಸ್ಯರಾಗಿ ಸೇರಿದ ಮೊದಲ ಭಾರತೀಯರಾದರು.\n3. ಕೇಂದ್ರ ವಿಧಾನ ಪರಿಷತ್ತಿನ ಸದಸ್ಯರ ಸಂಖ್ಯೆಯನ್ನು 16 ರಿಂದ 60 ಕ್ಕೆ ಹೆಚ್ಚಿಸಲಾಯಿತು ಮತ್ತು ಪೂರಕ ಪ್ರಶ್ನೆ ಕೇಳುವ ಹಕ್ಕು ನೀಡಲಾಯಿತು.",
+            opts: ["(a) 1 ಮತ್ತು 2 ಮಾತ್ರ", "(b) 2 ಮತ್ತು 3 ಮಾತ್ರ", "(c) 1 ಮತ್ತು 3 ಮಾತ್ರ", "(d) 1, 2 ಮತ್ತು 3 ಎಲ್ಲವೂ ಸರಿ"],
+            ans: 3,
+            exp: "ಈ ಮೂರೂ ಹೇಳಿಕೆಗಳು 1909ರ ಮಾರ್ಲೆ-ಮಿಂಟೋ ಸುಧಾರಣೆಯ ಅತ್ಯಂತ ಪ್ರಮುಖ ಪರೀಕ್ಷಾ ಅಂಶಗಳಾಗಿವೆ."
+        },
+        {
+            tag: "1919 ರ ಮಾಂಟೆಗ್ಯೂ-ಚೆಮ್ಸ್‌ಫರ್ಡ್ ಕಾಯ್ದೆ",
+            q: "19. ಭಾರತದಲ್ಲಿ ಮೊದಲ ಬಾರಿಗೆ ಕೇಂದ್ರದಲ್ಲಿ 'ದ್ವಿಸದನ ಶಾಸಕಾಂಗ' (Bicameralism), ನೇರ ಚುನಾವಣೆ ಮತ್ತು ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ 'ದ್ವಿಸರಕಾರ' (Dyarchy - ಜನಕ: ಲಿಯೋನೆಲ್ ಕರ್ಟಿಸ್) ಪದ್ಧತಿಯನ್ನು ಪರಿಚಯಿಸಿದ ಕಾಯ್ದೆ ಯಾವುದು?",
+            opts: ["(a) 1909 ರ ಕಾಯ್ದೆ", "(b) 1919 ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆ", "(c) 1935 ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆ", "(d) 1892 ರ ಕಾಯ್ದೆ"],
+            ans: 1,
+            exp: "1919ರ ಮಾಂಟೆಗ್ಯೂ-ಚೆಮ್ಸ್‌ಫರ್ಡ್ ಕಾಯ್ದೆಯು (1921ರಲ್ಲಿ ಜಾರಿ) ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ ದ್ವಿಸರಕಾರ (ಮೀಸಲು ಮತ್ತು ವರ್ಗಾಯಿತ ವಿಷಯಗಳು) ಹಾಗೂ ಕೇಂದ್ರದಲ್ಲಿ ದ್ವಿಸದನ ಪದ್ಧತಿಯನ್ನು ಜಾರಿಗೆ ತಂದಿತು."
+        },
+        {
+            tag: "1919 ರ ಕಾಯ್ದೆ (ದ್ವಿಸರಕಾರ)",
+            q: "20. 1919ರ ಕಾಯ್ದೆಯ ಪ್ರಾಂತೀಯ ದ್ವಿಸರಕಾರದಲ್ಲಿ, ಗವರ್ನರ್ ಭಾರತೀಯ ಮಂತ್ರಿಗಳ ಸಹಾಯದಿಂದ ನಿರ್ವಹಿಸುತ್ತಿದ್ದ ಮತ್ತು ಶಾಸಕಾಂಗಕ್ಕೆ ಜವಾಬ್ದಾರರಾಗಿದ್ದ 'ವರ್ಗಾಯಿತ ವಿಷಯಗಳ' (Transferred Subjects) ಗುಂಪನ್ನು ಗುರುತಿಸಿ:",
+            opts: [
+                "(a) ಹಣಕಾಸು, ಪೊಲೀಸ್, ಭೂಕಂದಾಯ ಮತ್ತು ನ್ಯಾಯ",
+                "(b) ಶಿಕ್ಷಣ, ಆರೋಗ್ಯ, ಕೃಷಿ ಮತ್ತು ಸ್ಥಳೀಯ ಸ್ವಯಂ ಸರ್ಕಾರ",
+                "(c) ರಕ್ಷಣೆ, ವಿದೇಶಾಂಗ ಮತ್ತು ರೈಲ್ವೆ",
+                "(d) ಕರೆನ್ಸಿ, ಬ್ಯಾಂಕಿಂಗ್ ಮತ್ತು ಸಂವಹನ"
+            ],
+            ans: 1,
+            exp: "ಶಿಕ್ಷಣ, ಆರೋಗ್ಯ, ಕೃಷಿ ಮತ್ತು ಸ್ಥಳೀಯ ಸಂಸ್ಥೆಗಳು 'ವರ್ಗಾಯಿತ ವಿಷಯ'ಗಳಾಗಿದ್ದವು (ಶಾಸಕಾಂಗಕ್ಕೆ ಜವಾಬ್ದಾರರು). ಹಣಕಾಸು, ಪೊಲೀಸ್, ಭೂಕಂದಾಯ ಮತ್ತು ನ್ಯಾಯ 'ಮೀಸಲು ವಿಷಯ'ಗಳಾಗಿದ್ದವು (ಶಾಸಕಾಂಗಕ್ಕೆ ಜವಾಬ್ದಾರರಲ್ಲ)."
+        },
+        {
+            tag: "1919 ರ ಕಾಯ್ದೆ",
+            q: "21. ಕೇಂದ್ರ ಬಜೆಟ್‌ನಿಂದ ಪ್ರಾಂತೀಯ ಬಜೆಟ್ ಅನ್ನು ಬೇರ್ಪಡಿಸಿದ, ಲಂಡನ್‌ನಲ್ಲಿ ಭಾರತದ ಹೈಕಮಿಷನರ್ ಹುದ್ದೆ ಸೃಷ್ಟಿಸಿದ ಹಾಗೂ ಲೀ ಆಯೋಗದ ಶಿಫಾರಸಿನಂತೆ 1926ರಲ್ಲಿ ಕೇಂದ್ರ ಲೋಕಸೇವಾ ಆಯೋಗ (CPSC) ಸ್ಥಾಪನೆಗೆ ಕಾರಣವಾದ ಕಾಯ್ದೆ ಯಾವುದು?",
+            opts: ["(a) 1909 ರ ಕಾಯ್ದೆ", "(b) 1919 ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆ", "(c) 1935 ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆ", "(d) 1947 ರ ಕಾಯ್ದೆ"],
+            ans: 1,
+            exp: "ಇವೆಲ್ಲವೂ 1919ರ ಕಾಯ್ದೆಯ ಪ್ರಮುಖ ಕೊಡುಗೆಗಳಾಗಿವೆ. ಅಲ್ಲದೆ ಸಿಖ್ಖರು, ಭಾರತೀಯ ಕ್ರಿಶ್ಚಿಯನ್ನರು, ಆಂಗ್ಲೋ-ಇಂಡಿಯನ್ನರು ಮತ್ತು ಯುರೋಪಿಯನ್ನರಿಗೆ ಪ್ರತ್ಯೇಕ ಮತಕ್ಷೇತ್ರ ವಿಸ್ತರಿಸಲಾಯಿತು."
+        },
+        {
+            tag: "1935 ರ ಕಾಯ್ದೆ (UPSC ಟ್ರ್ಯಾಪ್)",
+            q: "22. 321 ವಿಧಿಗಳು ಮತ್ತು 10 ಅನುಸೂಚಿಗಳನ್ನು ಹೊಂದಿದ್ದ 1935ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆಯಲ್ಲಿ ಫೆಡರಲ್ (59), ಪ್ರಾಂತೀಯ (54) ಮತ್ತು ಸಮವರ್ತಿ (36) ಪಟ್ಟಿಗಳಲ್ಲಿ ಇಲ್ಲದ 'ಶ್ರೇಷ್ಠ ಅಧಿಕಾರಗಳನ್ನು' (Residuary Powers) ಯಾರಿಗೆ ನೀಡಲಾಗಿತ್ತು?",
+            opts: ["(a) ಫೆಡರಲ್ ಶಾಸಕಾಂಗಕ್ಕೆ", "(b) ಪ್ರಾಂತೀಯ ಶಾಸಕಾಂಗಕ್ಕೆ", "(c) ವೈಸರಾಯ್ (ಗವರ್ನರ್ ಜನರಲ್) ಅವರಿಗೆ", "(d) ಫೆಡರಲ್ ಕೋರ್ಟ್‌ಗೆ"],
+            ans: 2,
+            exp: "UPSC ಟ್ರ್ಯಾಪ್: 1935ರ ಕಾಯ್ದೆಯಲ್ಲಿ ಶ್ರೇಷ್ಠ ಅಧಿಕಾರಗಳನ್ನು (Residuary Powers) ವೈಸರಾಯ್‌ಗೆ ನೀಡಲಾಗಿತ್ತು! (ಇಂದಿನ ಸಂವಿಧಾನದಲ್ಲಿ ಕೇಂದ್ರ ಸಂಸತ್ತಿನ ಬಳಿ ಇದೆ)."
+        },
+        {
+            tag: "1935 ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆ",
+            q: "23. 1935ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆಗೆ ಸಂಬಂಧಿಸಿದಂತೆ ಕೆಳಗಿನ ಯಾವ ಹೇಳಿಕೆ ಸರಿಯಾಗಿದೆ?\n1. ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ ದ್ವಿಸರಕಾರ ರದ್ದುಪಡಿಸಿ 'ಪ್ರಾಂತೀಯ ಸ್ವಾಯತ್ತತೆ' ನೀಡಿತು ಮತ್ತು 11 ರಲ್ಲಿ 6 ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ ದ್ವಿಸದನ ಶಾಸಕಾಂಗ ಪರಿಚಯಿಸಿತು.\n2. RBI (1935) ಮತ್ತು ಫೆಡರಲ್ ಕೋರ್ಟ್ (1937) ಸ್ಥಾಪನೆಗೆ ಕಾರಣವಾಯಿತು.\n3. 1858ರಲ್ಲಿ ಸ್ಥಾಪನೆಯಾಗಿದ್ದ ಲಂಡನ್‌ನ 15 ಸದಸ್ಯರ 'ಭಾರತ ಮಂಡಳಿ'ಯನ್ನು (Council of India) ರದ್ದುಪಡಿಸಿತು ಮತ್ತು ಬರ್ಮಾವನ್ನು ಭಾರತದಿಂದ ಬೇರ್ಪಡಿಸಿತು.",
+            opts: ["(a) 1 ಮತ್ತು 2 ಮಾತ್ರ", "(b) 2 ಮತ್ತು 3 ಮಾತ್ರ", "(c) 1 ಮತ್ತು 3 ಮಾತ್ರ", "(d) 1, 2 ಮತ್ತು 3 ಎಲ್ಲವೂ ಸರಿಯಾಗಿವೆ"],
+            ans: 3,
+            exp: "ಈ ಮೂರೂ ಹೇಳಿಕೆಗಳು ಸಂಪೂರ್ಣ ಸರಿಯಾಗಿವೆ. ಆದರೆ ದೇಶೀಯ ಸಂಸ್ಥಾನಗಳು ಸೇರಲು ನಿರಾಕರಿಸಿದ್ದರಿಂದ ಈ ಕಾಯ್ದೆ ಸೂಚಿಸಿದ್ದ 'ಅಖಿಲ ಭಾರತ ಒಕ್ಕೂಟ' (All-India Federation) ಎಂದಿಗೂ ಜಾರಿಗೆ ಬರಲೇ ಇಲ್ಲ."
+        },
+        {
+            tag: "ಐತಿಹಾಸಿಕ ಹೇಳಿಕೆಗಳು",
+            q: "24. 1935ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆಯನ್ನು 'ಗುಲಾಮಗಿರಿಯ ಹೊಸ ಸನ್ನದು' (New Charter of Slavery) ಮತ್ತು 'ಬ್ರೇಕ್‌ಗಳೇ ತುಂಬಿರುವ ಆದರೆ ಇಂಜಿನ್ ಇಲ್ಲದ ಕಾರು' ಎಂದು ಟೀಕಿಸಿದವರು ಯಾರು?",
+            opts: ["(a) ಮಹಾತ್ಮ ಗಾಂಧೀಜಿ", "(b) ಡಾ. ಬಿ.ಆರ್. ಅಂಬೇಡ್ಕರ್", "(c) ಜವಾಹರಲಾಲ್ ನೆಹರು", "(d) ಕೆ.ಎಂ. ಮುನ್ಷಿ"],
+            ans: 2,
+            exp: "ಜವಾಹರಲಾಲ್ ನೆಹರು ಅವರು 1935ರ ಕಾಯ್ದೆಯ ವಸಾಹತುಶಾಹಿ ನಿಯಂತ್ರಣಗಳನ್ನು ಕುರಿತು ಈ ಪ್ರಸಿದ್ಧ ಹೇಳಿಕೆ ನೀಡಿದ್ದರು. (ಕೆ.ಎಂ. ಮುನ್ಷಿ ಅವರು 1909ರ ಕಾಯ್ದೆಯು 'ಉದಯಿಸುತ್ತಿರುವ ಪ್ರಜಾಪ್ರಭುತ್ವವನ್ನು ಕೊಂದಿತು' ಎಂದಿದ್ದರು)."
+        },
+        {
+            tag: "1947 ರ ಭಾರತ ಸ್ವಾತಂತ್ರ್ಯ ಕಾಯ್ದೆ",
+            q: "25. ಮೌಂಟ್ ಬ್ಯಾಟನ್ ಯೋಜನೆ (ಜೂನ್ 3 ಯೋಜನೆ) ಆಧರಿಸಿದ 1947ರ ಭಾರತ ಸ್ವಾತಂತ್ರ್ಯ ಕಾಯ್ದೆಗೆ ಸಂಬಂಧಿಸಿದಂತೆ ಸರಿಯಾದ ಹೇಳಿಕೆಯನ್ನು ಗುರುತಿಸಿ:",
+            opts: [
+                "(a) ವೈಸರಾಯ್ ಮತ್ತು ಭಾರತದ ರಾಜ್ಯ ಕಾರ್ಯದರ್ಶಿ ಹುದ್ದೆಗಳನ್ನು ರದ್ದುಪಡಿಸಿತು ಹಾಗೂ ಬ್ರಿಟಿಷ್ ರಾಜನ 'ಭಾರತದ ಚಕ್ರವರ್ತಿ' ಬಿರುದನ್ನು ಕೈಬಿಟ್ಟಿತು.",
+                "(b) ಸಂವಿಧಾನ ಸಭೆಗೆ ಬ್ರಿಟಿಷ್ ಸಂಸತ್ತಿನ ಯಾವುದೇ ಕಾಯ್ದೆಯನ್ನು ರದ್ದುಪಡಿಸುವ ಸಂಪೂರ್ಣ ಸಾರ್ವಭೌಮ ಅಧಿಕಾರ ನೀಡಿತು.",
+                "(c) ಸ್ವತಂತ್ರ ಭಾರತದ ಮೊದಲ ಗವರ್ನರ್ ಜನರಲ್ ಲಾರ್ಡ್ ಮೌಂಟ್ ಬ್ಯಾಟನ್ ಮತ್ತು ಮೊದಲ ಭಾರತೀಯ ಗವರ್ನರ್ ಜನರಲ್ ಸಿ. ರಾಜಗೋಪಾಲಾಚಾರಿ ಆದರು.",
+                "(d) ಮೇಲಿನ ಎಲ್ಲವೂ ಸರಿಯಾಗಿವೆ."
+            ],
+            ans: 3,
+            exp: "ಮೇಲಿನ ಎಲ್ಲಾ ಹೇಳಿಕೆಗಳೂ ಸರಿಯಾಗಿವೆ. ಹೊಸ ಸಂವಿಧಾನ ಜಾರಿಗೆ ಬರುವವರೆಗೆ (26 ಜನವರಿ 1950) 1935ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆಯ ಅಡಿಯಲ್ಲೇ ಆಡಳಿತ ನಡೆಸಲು ಅವಕಾಶ ನೀಡಲಾಯಿತು."
+        }
+    ];
+
+    let score = 0;
+    let attempts = 0;
+
+    function renderQuiz() {
+        score = 0;
+        attempts = 0;
+        updateStats();
+
+        const container = document.getElementById('quizList');
+        container.innerHTML = questions.map((item, qIdx) => `
+            <div class="q-card" id="qcard-${qIdx}">
+                <div class="q-meta">
+                    <span class="q-num">ಪ್ರಶ್ನೆ ${qIdx + 1}</span>
+                    <span class="q-tag">📌 ${item.tag}</span>
+                </div>
+                <div class="q-text">${item.q}</div>
+                <div class="opt-grid">
+                    ${item.opts.map((opt, oIdx) => `
+                        <button class="opt-btn" id="opt-${qIdx}-${oIdx}" onclick="selectOption(${qIdx}, ${oIdx})">${opt}</button>
+                    `).join('')}
+                </div>
+                <div class="exp-box" id="exp-${qIdx}">
+                    💡 <strong>ಪರೀಕ್ಷಾ ವಿವರಣೆ:</strong> ${item.exp}
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function selectOption(qIdx, oIdx) {
+        const qItem = questions[qIdx];
+        const allBtns = document.querySelectorAll(`#qcard-${qIdx} .opt-btn`);
+        allBtns.forEach(b => b.disabled = true);
+
+        const clicked = document.getElementById(`opt-${qIdx}-${oIdx}`);
+        const correct = document.getElementById(`opt-${qIdx}-${qItem.ans}`);
+
+        attempts++;
+        if (oIdx === qItem.ans) {
+            clicked.classList.add('correct');
+            score++;
+        } else {
+            clicked.classList.add('wrong');
+            correct.classList.add('correct');
+        }
+
+        document.getElementById(`exp-${qIdx}`).classList.add('show');
+        updateStats();
+    }
+
+    function revealAllAnswers() {
+        questions.forEach((item, qIdx) => {
+            const allBtns = document.querySelectorAll(`#qcard-${qIdx} .opt-btn`);
+            allBtns.forEach(b => b.disabled = true);
+            document.getElementById(`opt-${qIdx}-${item.ans}`).classList.add('correct');
+            document.getElementById(`exp-${qIdx}`).classList.add('show');
+        });
+    }
+
+    function resetQuiz() {
+        renderQuiz();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateStats() {
+        document.getElementById('scoreText').innerText = `🎯 ಅಂಕ: ${score} / ${questions.length}`;
+        document.getElementById('attemptText').innerText = `ಉತ್ತರಿಸಿದವು: ${attempts} / ${questions.length}`;
+    }
+
+    function setTheme(mode) {
+        const body = document.body;
+        if (mode === 'paper') body.removeAttribute('data-theme');
+        else body.setAttribute('data-theme', mode);
+    }
+
+    function filterQuestions() {
+        const query = document.getElementById('searchInput').value.trim().toLowerCase();
+        questions.forEach((item, qIdx) => {
+            const card = document.getElementById(`qcard-${qIdx}`);
+            const text = card.innerText.toLowerCase();
+            card.style.display = (!query || text.includes(query)) ? 'block' : 'none';
+        });
+    }
+
+    window.onload = renderQuiz;
+</script>
+
+</body>
+</html>

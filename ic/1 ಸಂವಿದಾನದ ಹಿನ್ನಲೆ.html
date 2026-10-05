@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಭಾರತದ ಸಂವಿಧಾನದ ಐತಿಹಾಸಿಕ ಹಿನ್ನೆಲೆ (1773-1947) - ಸಂಪೂರ್ಣ ತೆರೆದ ಆವೃತ್ತಿ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Eye-Friendly Warm Paper Theme (Default) */
+        :root {
+            --bg-main: #f4f1ea;          /* ಕಣ್ಣಿಗೆ ತಂಪಾದ ಕ್ರೀಮ್ ಪೇಪರ್ ಬಣ್ಣ */
+            --bg-card: #fbf9f5;          /* ಮೃದುವಾದ ಕಾರ್ಡ್ ಹಿನ್ನೆಲೆ */
+            --bg-sub: #efeae0;           /* ಒಳಗಿನ ಬಾಕ್ಸ್‌‌ಗಳ ಬಣ್ಣ */
+            --text-main: #2c2520;        /* ಕಣ್ಣಿಗೆ ಚುಚ್ಚದ ಕಪ್ಪು-ಕಂದು ಅಕ್ಷರ */
+            --text-muted: #5c5346;
+            --primary: #1e4d3b;          /* ಕಣ್ಣಿಗೆ ಹಿತವಾದ ಗಾಢ ಹಸಿರು-ನೀಲಿ */
+            --primary-light: #2d6a4f;
+            --secondary: #6b4423;
+            --company-color: #b45309;
+            --crown-color: #9b2226;
+            --success: #2d6a4f;
+            --danger: #ae2012;
+            --border: #dcd3c2;
+            --shadow: 0 4px 14px rgba(44, 37, 32, 0.06);
+        }
+
+        /* Eye-Friendly Sage Green Theme */
+        [data-theme="sage"] {
+            --bg-main: #e8f0ec;
+            --bg-card: #f4f8f6;
+            --bg-sub: #dce7e1;
+            --text-main: #1b2e25;
+            --text-muted: #466053;
+            --primary: #1b4332;
+            --primary-light: #2d6a4f;
+            --secondary: #3a5a40;
+            --company-color: #b5651d;
+            --crown-color: #9e2a2b;
+            --border: #c5d6cd;
+        }
+
+        /* Eye-Friendly Soft Night Mode */
+        [data-theme="dark"] {
+            --bg-main: #12181f;
+            --bg-card: #1b242e;
+            --bg-sub: #232f3c;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --primary: #6ee7b7;
+            --primary-light: #34d399;
+            --secondary: #fbbf24;
+            --company-color: #f59e0b;
+            --crown-color: #f87171;
+            --border: #2e3c4d;
+            --shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans Kannada', 'Segoe UI', 'Nirmala UI', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.8;
+            font-size: 16px;
+            padding-bottom: 60px;
+            transition: background-color 0.25s, color 0.25s;
+        }
+
+        /* Hero Header */
+        header {
+            background: linear-gradient(135deg, #1b4332, #2d3748, #5c3a21);
+            color: #f8fafc;
+            padding: 28px 16px;
+            text-align: center;
+            border-bottom: 4px solid var(--company-color);
+        }
+
+        .hero-svg-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .hero-svg-wrap svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @keyframes dashFlow {
+            to { stroke-dashoffset: -40; }
+        }
+
+        .animated-path {
+            stroke-dasharray: 8 6;
+            animation: dashFlow 1.5s linear infinite;
+        }
+
+        header h1 {
+            font-size: clamp(1.35rem, 4vw, 2rem);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        header p {
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            opacity: 0.92;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        /* Sticky Mobile-Friendly Navigation */
+        .top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--bg-card);
+            border-bottom: 2px solid var(--border);
+            padding: 10px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .top-bar-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .nav-pills {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .nav-pills a {
+            text-decoration: none;
+            color: var(--text-main);
+            background: var(--bg-sub);
+            padding: 5px 12px;
+            border-radius: 18px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            border: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        .nav-pills a:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .controls {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .search-input {
+            padding: 7px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background: var(--bg-sub);
+            color: var(--text-main);
+            outline: none;
+            flex: 1;
+            min-width: 180px;
+            font-size: 0.88rem;
+        }
+
+        .theme-btns {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 6px 11px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.78rem;
+            background: var(--bg-sub);
+            color: var(--text-main);
+        }
+
+        .btn.active-theme {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 20px auto;
+            padding: 0 12px;
+        }
+
+        .section-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: clamp(1.15rem, 3vw, 1.4rem);
+            color: var(--primary);
+            border-left: 5px solid var(--company-color);
+            padding-left: 12px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .badge {
+            background: var(--primary-light);
+            color: #ffffff;
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 14px;
+            font-weight: 700;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 16px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .info-box {
+            background: var(--bg-sub);
+            padding: 16px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            border-top: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .info-box h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        /* Pre-Expanded Era Banner */
+        .era-banner {
+            padding: 14px 18px;
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin: 25px 0 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .era-company {
+            background: linear-gradient(135deg, #9c4221, #b45309);
+        }
+
+        .era-crown {
+            background: linear-gradient(135deg, #7f1d1d, #991b1b);
+        }
+
+        /* Pre-Opened Act Card */
+        .act-full-card {
+            background: var(--bg-sub);
+            border: 2px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: 1.65fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 820px) {
+            .act-full-card {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+        }
+
+        .act-header-title {
+            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .act-header-sub {
+            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 12px;
+            font-size: 0.92rem;
+        }
+
+        .act-points-list {
+            list-style: none;
+        }
+
+        .act-points-list li {
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed var(--border);
+            position: relative;
+            padding-left: 26px;
+            font-size: 0.96rem;
+        }
+
+        .act-points-list li::before {
+            content: "⚖️";
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        .act-visual-side {
+            background: var(--bg-card);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .svg-box {
+            background: var(--bg-sub);
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .tip-box {
+            padding: 12px;
+            background: rgba(180, 83, 9, 0.1);
+            border-left: 4px solid var(--company-color);
+            border-radius: 8px;
+            font-size: 0.88rem;
+        }
+
+        /* Pre-Opened Centralization Stages Grid */
+        .cent-stage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .cent-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .mini-bars {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 110px;
+            padding: 10px 6px 0;
+            background: var(--bg-sub);
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .m-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+        }
+
+        .m-bar {
+            width: 34px;
+            border-radius: 6px 6px 0 0;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 800;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 2px;
+        }
+
+        /* Open Personality Cards (No Click Needed) */
+        .person-card {
+            background: var(--bg-sub);
+            border: 1px solid var(--border);
+            border-top: 4px solid var(--primary);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .person-role {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--company-color);
+            margin-bottom: 4px;
+        }
+
+        .person-name {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        /* Responsive Tables */
+        .table-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 680px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid var(--border);
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background: var(--bg-sub);
+        }
+
+        /* Open Mind Map Box */
+        .mindmap-box {
+            background: var(--bg-sub);
+            border: 1px solid var(--border);
+            border-left: 5px solid var(--primary);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 14px;
+        }
+
+        .mindmap-box h4 {
+            color: var(--primary);
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+
+        .mindmap-box ul {
+            padding-left: 20px;
+        }
+
+        .mindmap-box li {
+            margin-bottom: 6px;
+        }
+
+        /* Pre-Opened Quiz Item */
+        .quiz-item {
+            background: var(--bg-sub);
+            padding: 18px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        @media (max-width: 650px) {
+            .quiz-options { grid-template-columns: 1fr; }
+            .section-card { padding: 15px; }
+        }
+
+        .quiz-opt-div {
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-main);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .quiz-opt-div.correct-ans {
+            background: rgba(45, 106, 79, 0.15);
+            border: 2px solid var(--success);
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .quiz-exp-open {
+            margin-top: 12px;
+            padding: 12px 15px;
+            background: rgba(45, 106, 79, 0.1);
+            border-left: 4px solid var(--success);
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        @media print {
+            .top-bar { display: none; }
+            .section-card, .act-full-card { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="hero-svg-wrap">
+        <svg width="360" height="90" viewBox="0 0 360 90">
+            <g>
+                <rect x="10" y="15" width="95" height="60" rx="10" fill="#d97706" stroke="#fff" stroke-width="2"/>
+                <text x="57" y="42" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">ಕಂಪನಿ ಆಳ್ವಿಕೆ</text>
+                <text x="57" y="60" fill="#fff" font-size="11" text-anchor="middle">(1773 - 1858)</text>
+            </g>
+            <path d="M 110 45 L 240 45" stroke="#fde047" stroke-width="3" class="animated-path" />
+            <circle cx="175" cy="45" r="18" fill="#dc2626" stroke="#fff" stroke-width="2"/>
+            <text x="175" y="49" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">1857</text>
+            <g>
+                <rect x="245" y="15" width="105" height="60" rx="10" fill="#dc2626" stroke="#fff" stroke-width="2"/>
+                <text x="297" y="42" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">ಕಿರೀಟದ ಆಳ್ವಿಕೆ</text>
+                <text x="297" y="60" fill="#fff" font-size="11" text-anchor="middle">(1858 - 1947)</text>
+            </g>
+        </svg>
+    </div>
+    <h1>🏛️ ಭಾರತದ ಸಂವಿಧಾನದ ಐತಿಹಾಸಿಕ ಹಿನ್ನೆಲೆ (1773 – 1947)</h1>
+    <p>ಬ್ರಿಟಿಷ್ ಆಳ್ವಿಕೆಯ ಸಮಗ್ರ ಕಾಯ್ದೆಗಳು | ಎಲ್ಲಾ ಮಾಹಿತಿಗಳು ಮೊದಲೇ ತೆರೆದಿರುವ ಕಣ್ಣಿಗೆ ತಂಪಾದ ಮೊಬೈಲ್ ಫ್ರೆಂಡ್ಲಿ ನೋಟ್ಸ್ (UPSC • KAS • PSI • FDA • SDA • PDO)</p>
+</header>
+
+<div class="top-bar">
+    <div class="nav-pills">
+        <a href="#sec1">1. ಮೂಲತತ್ವ</a>
+        <a href="#sec2">2. ಕಾಲಾನುಕ್ರಮ</a>
+        <a href="#sec3">3. ಎಲ್ಲಾ 15 ಕಾಯ್ದೆಗಳ ವಿವರಣೆ</a>
+        <a href="#secSim">🎨 ದೃಶ್ಯ ಹೋಲಿಕೆ</a>
+        <a href="#sec4">4. ಪ್ರಮುಖ ವ್ಯಕ್ತಿಗಳು</a>
+        <a href="#sec5">5. ಹೋಲಿಕೆ ಟೇಬಲ್</a>
+        <a href="#sec6">6. UPSC ಟ್ರ್ಯಾಪ್ಸ್</a>
+        <a href="#sec7">7. ಮೈಂಡ್ ಮ್ಯಾಪ್</a>
+        <a href="#sec8">8. ನೆನಪಿನ ಕೋಡ್ಸ್</a>
+        <a href="#sec9">9. ಪ್ರಶ್ನೋತ್ತರಗಳು</a>
+        <a href="#sec10">10. ಮುಖ್ಯ ಪರೀಕ್ಷೆ</a>
+    </div>
+    <div class="controls">
+        <input type="text" id="searchBox" class="search-input" placeholder="🔍 ಇಲ್ಲಿ ಪದ ಹುಡುಕಿ (ಉದಾ: 1833, Dyarchy)..." oninput="filterContent()">
+        <div class="theme-btns">
+            <button class="btn active-theme" id="t-paper" onclick="setTheme('paper')">📜 ಪೇಪರ್</button>
+            <button class="btn" id="t-sage" onclick="setTheme('sage')">🌿 ಸೇಜ್ ಗ್ರೀನ್</button>
+            <button class="btn" id="t-dark" onclick="setTheme('dark')">🌙 ನೈಟ್ ಮೋಡ್</button>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="mainContent">
+
+    <!-- 1. ZERO LEVEL BASICS -->
+    <section class="section-card" id="sec1">
+        <div class="section-title">
+            <span>1. ಪೀಠಿಕೆ ಮತ್ತು ಮೂಲ ಪರಿಕಲ್ಪನೆ (Zero Level Basics)</span>
+            <span class="badge">ಹಂತ 1 - ಅಡಿಪಾಯ</span>
+        </div>
+        <div class="grid-3">
+            <div class="info-box" style="border-left-color: var(--company-color);">
+                <h4>🚢 1. ಕಂಪನಿಯ ಆಳ್ವಿಕೆ (Company Rule: 1773 – 1858)</h4>
+                <p>1600ರ ಡಿಸೆಂಬರ್ 31ರಂದು ರಾಣಿ ಮೊದಲನೇ ಎಲಿಜಬೆತ್ ನೀಡಿದ ಸನ್ನದಿನ (Charter) ಮೂಲಕ ವ್ಯಾಪಾರಕ್ಕಾಗಿ ಬಂದ <strong>ಈಸ್ಟ್ ಇಂಡಿಯಾ ಕಂಪನಿ (EIC)</strong>, 1764ರ ಬಕ್ಸಾರ್ ಕದನದ ನಂತರ 1765ರಲ್ಲಿ ಬಂಗಾಳ, ಬಿಹಾರ ಮತ್ತು ಒರಿಸ್ಸಾದ <strong>'ದಿವಾನಿ ಹಕ್ಕುಗಳನ್ನು' (ಕಂದಾಯ ಮತ್ತು ನಾಗರಿಕ ನ್ಯಾಯದ ಹಕ್ಕು)</strong> ಪಡೆಯಿತು. ಕಂಪನಿಯ ಭ್ರಷ್ಟಾಚಾರ ನಿಯಂತ್ರಿಸಲು ಬ್ರಿಟಿಷ್ ಸಂಸತ್ತು 1773 ರಿಂದ 1853 ರವರೆಗೆ ಕಾಲಕಾಲಕ್ಕೆ ಕಾಯ್ದೆಗಳನ್ನು ಜಾರಿಗೊಳಿಸಿತು.</p>
+            </div>
+            <div class="info-box" style="border-left-color: var(--crown-color);">
+                <h4>👑 2. ಕಿರೀಟದ ಆಳ್ವಿಕೆ (Crown Rule: 1858 – 1947)</h4>
+                <p><strong>1857ರ ಸಿಪಾಯಿ ದಂಗೆಯ (ಪ್ರಥಮ ಸ್ವಾತಂತ್ರ್ಯ ಸಂಗ್ರಾಮ)</strong> ನಂತರ ಈಸ್ಟ್ ಇಂಡಿಯಾ ಕಂಪನಿಯನ್ನು ರದ್ದುಗೊಳಿಸಿ, ಭಾರತದ ಆಡಳಿತವನ್ನು ನೇರವಾಗಿ ಬ್ರಿಟಿಷ್ ರಾಣಿಯ (Crown) ವಶಕ್ಕೆ ತೆಗೆದುಕೊಳ್ಳಲಾಯಿತು. 1858 ರಿಂದ 1947ರ ಸ್ವಾತಂತ್ರ್ಯದವರೆಗೆ ಜಾರಿಯಾದ ಕಾಯ್ದೆಗಳು ಇಂದಿನ ನಮ್ಮ ಸಂವಿಧಾನದ <strong>ಶೇ. 60ಕ್ಕಿಂತ ಹೆಚ್ಚು</strong> ಆಡಳಿತಾತ್ಮಕ ಚೌಕಟ್ಟಿಗೆ ಬುನಾದಿ ಹಾಕಿದವು.</p>
+            </div>
+            <div class="info-box" style="border-left-color: var(--secondary);">
+                <h4>🎯 ಏಕೆ ಈ ಕಾಯ್ದೆಗಳನ್ನು ಓದಬೇಕು?</h4>
+                <p>ಇಂದಿನ ನಮ್ಮ ಸಂಸದೀಯ ವ್ಯವಸ್ಥೆ, ಸುಪ್ರೀಂ ಕೋರ್ಟ್, ಯುಪಿಎಸ್‌ಸಿ (UPSC), ಬಜೆಟ್, ಆರ್ಡಿನೆನ್ಸ್ (ಸುಗ್ರೀವಾಜ್ಞೆ), ರಾಜ್ಯಪಾಲರ ಹುದ್ದೆ ಮತ್ತು ಒಕ್ಕೂಟ ವ್ಯವಸ್ಥೆ (Federal System) ಎಲ್ಲವೂ ಒಂದೇ ದಿನದಲ್ಲಿ ಹುಟ್ಟಿದ್ದಲ್ಲ; ಅವು 1773 ರಿಂದ 1935 ರವರೆಗಿನ ಬ್ರಿಟಿಷ್ ಕಾಯ್ದೆಗಳ ಮೂಲಕ ಹಂತಹಂತವಾಗಿ ವಿಕಾಸಗೊಂಡಿವೆ.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. CHRONOLOGY & ORIGIN -->
+    <section class="section-card" id="sec2">
+        <div class="section-title">
+            <span>2. ಐತಿಹಾಸಿಕ ಹಿನ್ನೆಲೆ ಮತ್ತು ಕಾಲಾನುಕ್ರಮ (Origin & Complete Chronology)</span>
+            <span class="badge">ಹಂತ 2 - 1600 ರಿಂದ 1947</span>
+        </div>
+        <div class="grid-2">
+            <div class="info-box" style="border-left-color: var(--company-color);">
+                <h4 style="color: var(--company-color);">📦 ಭಾಗ A: ಈಸ್ಟ್ ಇಂಡಿಯಾ ಕಂಪನಿಯ ಆಳ್ವಿಕೆಯ ಕಾಯ್ದೆಗಳು (1773 – 1858)</h4>
+                <ol style="padding-left: 20px; margin-top: 8px;">
+                    <li><strong>1773 ರ ರೆಗ್ಯುಲೇಟಿಂಗ್ ಕಾಯ್ದೆ</strong> (ಮೊದಲ ನಿಯಂತ್ರಣ ಹೆಜ್ಜೆ)</li>
+                    <li><strong>1781 ರ ತಿದ್ದುಪಡಿ ಕಾಯ್ದೆ</strong> (Act of Settlement / Declaratory Act)</li>
+                    <li><strong>1784 ರ ಪಿಟ್ಸ್ ಇಂಡಿಯಾ ಕಾಯ್ದೆ</strong> (ದ್ವಿಮುಖ ಆಡಳಿತ - Double Government)</li>
+                    <li><strong>1786 ರ ಕಾಯ್ದೆ</strong> (ಲಾರ್ಡ್ ಕಾರ್ನ್‌ವಾಲಿಸ್ ವಿಶೇಷ ಬೇಡಿಕೆ)</li>
+                    <li><strong>1793 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ</strong> (20 ವರ್ಷಗಳ ವ್ಯಾಪಾರ ನವೀಕರಣ ಆರಂಭ)</li>
+                    <li><strong>1813 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ</strong> (ಚಹಾ & ಚೀನಾ ಹೊರತುಪಡಿಸಿ ಏಕಸ್ವಾಮ್ಯ ಅಂತ್ಯ)</li>
+                    <li><strong>1833 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ</strong> (ಕೇಂದ್ರೀಕರಣದ ತುತ್ತತುದಿ - ಭಾರತದ ಗವರ್ನರ್ ಜನರಲ್)</li>
+                    <li><strong>1853 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ</strong> (ಕೊನೆಯ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ - ಮಿನಿ ಸಂಸತ್ತು)</li>
+                </ol>
+            </div>
+            <div class="info-box" style="border-left-color: var(--crown-color);">
+                <h4 style="color: var(--crown-color);">👑 ಭಾಗ B: ಬ್ರಿಟಿಷ್ ಕಿರೀಟದ ನೇರ ಆಳ್ವಿಕೆಯ ಕಾಯ್ದೆಗಳು (1858 – 1947)</h4>
+                <ol style="padding-left: 20px; margin-top: 8px;">
+                    <li><strong>1858 ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆ</strong> (ಉತ್ತಮ ಆಡಳಿತದ ಕಾಯ್ದೆ - ವೈಸರಾಯ್ ಹುದ್ದೆ)</li>
+                    <li><strong>1861 ರ ಭಾರತೀಯ ಪರಿಷತ್ ಕಾಯ್ದೆ</strong> (ವಿಕೇಂದ್ರೀಕರಣ ಆರಂಭ & ಪೋರ್ಟ್‌ಫೋಲಿಯೊ)</li>
+                    <li><strong>1892 ರ ಭಾರತೀಯ ಪರಿಷತ್ ಕಾಯ್ದೆ</strong> (ಬಜೆಟ್ ಚರ್ಚೆ & ಪರೋಕ್ಷ ಚುನಾವಣೆ)</li>
+                    <li><strong>1909 ರ ಮಾರ್ಲೆ-ಮಿಂಟೋ ಸುಧಾರಣೆಗಳು</strong> (ಕೋಮುವಾರು ಮತಕ್ಷೇತ್ರಗಳ ಜನಕ)</li>
+                    <li><strong>1919 ರ ಮಾಂಟೆಗ್ಯೂ-ಚೆಮ್ಸ್‌ಫರ್ಡ್ ಸುಧಾರಣೆಗಳು</strong> (ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ ದ್ವಿಸರಕಾರ)</li>
+                    <li><strong>1935 ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆ</strong> (ಸಂವಿಧಾನದ ನೀಲನಕ್ಷೆ - ಅತಿ ದೊಡ್ಡ ಕಾಯ್ದೆ)</li>
+                    <li><strong>1947 ರ ಭಾರತ ಸ್ವಾತಂತ್ರ್ಯ ಕಾಯ್ದೆ</strong> (ಬ್ರಿಟಿಷ್ ಆಳ್ವಿಕೆಯ ಅಂತ್ಯ ಮತ್ತು ವಿಭಜನೆ)</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ALL 15 ACTS PRE-OPENED IN FULL DETAIL -->
+    <section class="section-card" id="sec3">
+        <div class="section-title">
+            <span>3. 360-ಡಿಗ್ರಿ ಆಳವಾದ ವಿಶ್ಲೇಷಣೆ: ಪ್ರತಿಯೊಂದು ಕಾಯ್ದೆಯ ಎಳೆಎಳೆಯಾದ ವಿವರಣೆ (ಎಲ್ಲವೂ ತೆರೆದಿವೆ)</span>
+            <span class="badge">ಹಂತ 3 - ಸಂಪೂರ್ಣ 15 ಕಾಯ್ದೆಗಳು</span>
+        </div>
+
+        <!-- ERA 1: COMPANY RULE -->
+        <div class="era-banner era-company">
+            <span>🏢 ಭಾಗ 1: ಈಸ್ಟ್ ಇಂಡಿಯಾ ಕಂಪನಿಯ ಆಳ್ವಿಕೆಯ ಕಾಯ್ದೆಗಳು (1773 – 1853)</span>
+            <span style="font-size: 0.85rem; opacity: 0.9;">ಒಟ್ಟು 7 ಪ್ರಮುಖ ಕಾಯ್ದೆಗಳ ಗುಂಪು</span>
+        </div>
+
+        <!-- Act 1: 1773 -->
+        <div class="act-full-card">
+            <div>
+                <div class="act-header-title">1. 1773 ರ ರೆಗ್ಯುಲೇಟಿಂಗ್ ಕಾಯ್ದೆ</div>
+                <div class="act-header-sub">ಬ್ರಿಟಿಷ್ ಸಂಸತ್ತು ಈಸ್ಟ್ ಇಂಡಿಯಾ ಕಂಪನಿಯನ್ನು ನಿಯಂತ್ರಿಸಲು ತಂದ ಮೊದಲ ಕಾಯ್ದೆ (ಪ್ರಧಾನಿ: ಲಾರ್ಡ್ ನಾರ್ತ್)</div>
+                <ul class="act-points-list">
+                    <li><strong>ಕೇಂದ್ರೀಕರಣಕ್ಕೆ ಅಡಿಪಾಯ:</strong> ಬಂಗಾಳದ ಗವರ್ನರ್ ಹುದ್ದೆಯನ್ನು <strong>'ಬಂಗಾಳದ ಗವರ್ನರ್ ಜನರಲ್' (Governor-General of Bengal)</strong> ಎಂದು ಬದಲಾಯಿಸಲಾಯಿತು. ಮೊದಲ ಗವರ್ನರ್ ಜನರಲ್: <strong>ಲಾರ್ಡ್ ವಾರನ್ ಹೇಸ್ಟಿಂಗ್ಸ್</strong>.</li>
+                    <li><strong>4 ಸದಸ್ಯರ ಕಾರ್ಯಕಾರಿ ಮಂಡಳಿ:</strong> ಗವರ್ನರ್ ಜನರಲ್‌ಗೆ ಸಹಾಯ ಮಾಡಲು 4 ಸದಸ್ಯರ ಮಂಡಳಿ ರಚನೆ (ಫಿಲಿಪ್ ಫ್ರಾನ್ಸಿಸ್, ಕ್ಲಾವರಿಂಗ್, ಮಾನ್ಸನ್, ಬಾರ್ವೆಲ್).</li>
+                    <li><strong>ಬಾಂಬೆ ಮತ್ತು ಮದ್ರಾಸ್ ಅಧೀನ:</strong> ಮೊದಲು ಸ್ವತಂತ್ರವಾಗಿದ್ದ ಬಾಂಬೆ ಮತ್ತು ಮದ್ರಾಸ್ ಗವರ್ನರ್‌ಗಳನ್ನು ಬಂಗಾಳದ ಗವರ್ನರ್ ಜನರಲ್ ಅಧೀನಕ್ಕೆ ತರಲಾಯಿತು.</li>
+                    <li><strong>ಕಲ್ಕತ್ತಾದಲ್ಲಿ ಸುಪ್ರೀಂ ಕೋರ್ಟ್ ಸ್ಥಾಪನೆ (1774):</strong> ಫೋರ್ಟ್ ವಿಲಿಯಂನಲ್ಲಿ 1 ಮುಖ್ಯ ನ್ಯಾಯಾಧೀಶರು (<strong>ಸರ್ ಎಲಿಜಾ ಇಂಪೇ</strong>) ಮತ್ತು 3 ಇತರ ನ್ಯಾಯಾಧೀಶರನ್ನು ಒಳಗೊಂಡ ಸುಪ್ರೀಂ ಕೋರ್ಟ್ ಸ್ಥಾಪನೆ.</li>
+                    <li><strong>ಭ್ರಷ್ಟಾಚಾರ ನಿಷೇಧ:</strong> ಕಂಪನಿಯ ನೌಕರರು ಖಾಸಗಿ ವ್ಯಾಪಾರ ಮಾಡುವುದನ್ನು ಮತ್ತು ಭಾರತೀಯರಿಂದ ಉಡುಗೊರೆ/ಲಂಚ ಪಡೆಯುವುದನ್ನು ಕಡ್ಡಾಯವಾಗಿ ನಿಷೇಧಿಸಲಾಯಿತು.</li>
+                    <li><strong>Court of Directors:</strong> ಕಂಪನಿಯ ಆಡಳಿತ ಮಂಡಳಿಯು ಭಾರತದ ಕಂದಾಯ, ನಾಗರಿಕ ಮತ್ತು ಮಿಲಿಟರಿ ವ್ಯವಹಾರಗಳ ವರದಿಯನ್ನು ಬ್ರಿಟಿಷ್ ಸರ್ಕಾರಕ್ಕೆ ಸಲ್ಲಿಸುವುದು ಕಡ್ಡಾಯವಾಯಿತು.</li>
+                </ul>
+            </div>
+            <div class="act-visual-side">
+                <div>
+                    <h4 style="color: var(--company-color); margin-bottom: 8px;">🎨 ದೃಶ್ಯ ಸಾರಾಂಶ (1773)</h4>
+                    <div class="svg-box">
+                        <svg viewBox="0 0 260 130" width="100%" height="130">
+                            <rect x="65" y="8" width="130" height="32" rx="6" fill="#d97706"/>
+                            <text x="130" y="28" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">ಬಂಗಾಳದ ಗವರ್ನರ್ ಜನರಲ್</text>
+                            <path d="M 100 40 L 55 80" stroke="#2563eb" stroke-width="2" class="animated-path"/>
+                            <path d="M 160 40 L 205 80" stroke="#2563eb" stroke-width="2" class="animated-path"/>
+                            <rect x="15" y="80" width="85" height="30" rx="5" fill="#1e40af"/>
+                            <text x="57" y="99" fill="#fff" font-size="9.5" text-anchor="middle">ಬಾಂಬೆ ಗವರ್ನರ್</text>
+                            <rect x="160" y="80" width="85" height="30" rx="5" fill="#1e40af"/>
+                            <text x="202" y="99" fill="#fff" font-size="9.5" text-anchor="middle">ಮದ್ರಾಸ್ ಗವರ್ನರ್</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="tip-box">🎯 <strong>UPSC ಪಾಯಿಂಟ್:</strong> ಈ ಕಾಯ್ದೆಯಲ್ಲಿ ಗವರ್ನರ್ ಜನರಲ್‌ಗೆ ವೀಟೋ (Veto) ಅಧಿಕಾರ ಇರಲಿಲ್ಲ; 4 ಸದಸ್ಯರ ಮಂಡಳಿಯಲ್ಲಿ ಬಹುಮತದ ನಿರ್ಧಾರವೇ ಅಂತಿಮವಾಗಿತ್ತು!</div>
+            </div>
+        </div>
+
+        <!-- Act 2: 1781 -->
+        <div class="act-full-card">
+            <div>
+                <div class="act-header-title">2. 1781 ರ ತಿದ್ದುಪಡಿ ಕಾಯ್ದೆ</div>
+                <div class="act-header-sub">Act of Settlement / Declaratory Act of 1781 (1773ರ ದೋಷಗಳನ್ನು ಸರಿಪಡಿಸಲು)</div>
+                <ul class="act-points-list">
+                    <li><strong>ಗವರ್ನರ್ ಜನರಲ್ ಮತ್ತು ಸುಪ್ರೀಂ ಕೋರ್ಟ್ ಸಂಘರ್ಷ ನಿವಾರಣೆ:</strong> ಗವರ್ನರ್ ಜನರಲ್ ಮತ್ತು ಅವರ ಕಾರ್ಯಕಾರಿ ಮಂಡಳಿಯು ತಮ್ಮ ಅಧಿಕೃತ ಕಾರ್ಯಗಳಿಗಾಗಿ ಕಲ್ಕತ್ತಾದ ಸುಪ್ರೀಂ ಕೋರ್ಟ್ ವ್ಯಾಪ್ತಿಯಿಂದ (Jurisdiction) ವಿನಾಯಿತಿ ಪಡೆದರು.</li>
+                    <li><strong>ಕಂದಾಯ ವಿಷಯಗಳಿಗೆ ವಿನಾಯಿತಿ:</strong> ಕಂದಾಯ ವಸೂಲಾತಿಗೆ ಸಂಬಂಧಿಸಿದ ವಿಷಯಗಳನ್ನು ಸಹ ಸುಪ್ರೀಂ ಕೋರ್ಟ್ ವ್ಯಾಪ್ತಿಯಿಂದ ಹೊರಗಿಡಲಾಯಿತು.</li>
+                    <li><strong>ವೈಯಕ್ತಿಕ ಕಾನೂನುಗಳಿಗೆ ಮನ್ನಣೆ:</strong> ಕಲ್ಕತ್ತಾದ ನಿವಾಸಿಗಳ ವಿಚಾರಣೆಯಲ್ಲಿ ಹಿಂದೂಗಳಿಗೆ ಹಿಂದೂ ಕಾನೂನು ಮತ್ತು ಮುಸ್ಲಿಮರಿಗೆ ಮೊಹಮ್ಮದನ್ ಕಾನೂನನ್ನು ಅನ್ವಯಿಸಬೇಕೆಂದು ಆದೇಶಿಸಲಾಯಿತು.</li>
+                    <li><strong>ಮೇಲ್ಮನವಿ ಅಧಿಕಾರ:</strong> ಪ್ರಾಂತೀಯ ನ್ಯಾಯಾಲಯಗಳ ಮೇಲ್ಮನವಿಯನ್ನು ಸುಪ್ರೀಂ ಕೋರ್ಟ್ ಬದಲಿಗೆ ಗವರ್ನರ್ ಜನರಲ್-ಇನ್-ಕೌನ್ಸಿಲ್ ಮುಂದೆ ಸಲ್ಲಿಸಲು ನಿಯಮ ಮಾಡಲಾಯಿತು.</li>
+                </ul>
+            </div>
+            <div class="act-visual-side">
+                <div>
+                    <h4 style="color: var(--company-color); margin-bottom: 8px;">🎨 ದೃಶ್ಯ ಸಾರಾಂಶ (1781)</h4>
+                    <div class="svg-box">
+                        <svg viewBox="0 0 260 120" width="100%" height="120">
+                            <rect x="15" y="35" width="95" height="45" rx="6" fill="#1e40af"/>
+                            <text x="62" y="60" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">ಗವರ್ನರ್ ಜನರಲ್</text>
+                            <line x1="130" y1="20" x2="130" y2="100" stroke="#dc2626" stroke-width="4" stroke-dasharray="5 5"/>
+                            <text x="130" y="15" fill="#dc2626" font-size="9" font-weight="bold" text-anchor="middle">ಅಧಿಕಾರ ಬೇರ್ಪಡಿಕೆ</text>
+                            <rect x="150" y="35" width="95" height="45" rx="6" fill="#9333ea"/>
+                            <text x="197" y="60" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">ಸುಪ್ರೀಂ ಕೋರ್ಟ್</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="tip-box">🎯 <strong>UPSC ಪಾಯಿಂಟ್:</strong> ಇದು ಕಾರ್ಯಾಂಗವನ್ನು ನ್ಯಾಯಾಂಗದ ಹಸ್ತಕ್ಷೇಪದಿಂದ ರಕ್ಷಿಸಿದ ಮೊದಲ ಕಾಯ್ದೆಯಾಗಿದೆ.</div>
+            </div>
+        </div>
+
+        <!-- Act 3: 1784 -->
+        <div class="act-full-card">
+            <div>
+                <div class="act-header-title">3. 1784 ರ ಪಿಟ್ಸ್ ಇಂಡಿಯಾ ಕಾಯ್ದೆ</div>
+                <div class="act-header-sub">ಬ್ರಿಟಿಷ್ ಪ್ರಧಾನಿ ವಿಲಿಯಂ ಪಿಟ್ (William Pitt) ಮಂಡಿಸಿದ ಐತಿಹಾಸಿಕ ಕಾಯ್ದೆ</div>
+                <ul class="act-points-list">
+                    <li><strong>ದ್ವಿಮುಖ ಸರ್ಕಾರ ಪದ್ಧತಿ (System of Double Government):</strong> ಕಂಪನಿಯ ವಾಣಿಜ್ಯ ಮತ್ತು ರಾಜಕೀಯ ಕಾರ್ಯಗಳನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಬೇರ್ಪಡಿಸಲಾಯಿತು.</li>
+                    <li><strong>1. ಕೋರ್ಟ್ ಆಫ್ ಡೈರೆಕ್ಟರ್ಸ್ (Court of Directors):</strong> ಕೇವಲ ವಾಣಿಜ್ಯ (Commercial) ವ್ಯವಹಾರಗಳನ್ನು ನೋಡಿಕೊಳ್ಳಲು ಅನುಮತಿ.</li>
+                    <li><strong>2. ಬೋರ್ಡ್ ಆಫ್ ಕಂಟ್ರೋಲ್ (Board of Control):</strong> ರಾಜಕೀಯ (Political), ನಾಗರಿಕ ಮತ್ತು ಮಿಲಿಟರಿ ವ್ಯವಹಾರಗಳನ್ನು ನಿಯಂತ್ರಿಸಲು 6 ಸದಸ್ಯರ ಹೊಸ ಮಂಡಳಿ ರಚನೆ.</li>
+                    <li><strong>'ಬ್ರಿಟಿಷ್ ವಶದಲ್ಲಿರುವ ಭಾರತದ ಪ್ರದೇಶಗಳು' (British Possessions in India):</strong> ಭಾರತದಲ್ಲಿ ಕಂಪನಿ ಗೆದ್ದ ಪ್ರದೇಶಗಳನ್ನು ಮೊದಲ ಬಾರಿಗೆ ಈ ಹೆಸರಿನಿಂದ ಕರೆಯಲಾಯಿತು!</li>
+                    <li><strong>ಕಾರ್ಯಕಾರಿ ಮಂಡಳಿ ಗಾತ್ರ ಕಡಿತ:</strong> ಗವರ್ನರ್ ಜನರಲ್ ಕಾರ್ಯಕಾರಿ ಮಂಡಳಿಯ ಸದಸ್ಯರ ಸಂಖ್ಯೆಯನ್ನು 4 ರಿಂದ <strong>3 ಕ್ಕೆ</strong> ಇಳಿಸಲಾಯಿತು.</li>
+                </ul>
+            </div>
+            <div class="act-visual-side">
+                <div>
+                    <h4 style="color: var(--company-color); margin-bottom: 8px;">🎨 ದೃಶ್ಯ ಸಾರಾಂಶ (1784)</h4>
+                    <div class="svg-box">
+                        <svg viewBox="0 0 260 130" width="100%" height="130">
+                            <rect x="70" y="8" width="120" height="28" rx="5" fill="#d97706"/>
+                            <text x="130" y="26" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">ದ್ವಿಮುಖ ಆಡಳಿತ (1784)</text>
+                            <path d="M 105 36 L 60 75" stroke="#16a34a" stroke-width="2" class="animated-path"/>
+                            <path d="M 155 36 L 200 75" stroke="#dc2626" stroke-width="2" class="animated-path"/>
+                            <rect x="10" y="75" width="105" height="42" rx="6" fill="#16a34a"/>
+                            <text x="62" y="93" fill="#fff" font-size="9" font-weight="bold" text-anchor="middle">Court of Directors</text>
+                            <text x="62" y="108" fill="#fff" font-size="8.5" text-anchor="middle">(ವಾಣಿಜ್ಯ ವ್ಯವಹಾರ)</text>
+                            <rect x="145" y="75" width="105" height="42" rx="6" fill="#dc2626"/>
+                            <text x="197" y="93" fill="#fff" font-size="9" font-weight="bold" text-anchor="middle">Board of Control</text>
+                            <text x="197" y="108" fill="#fff" font-size="8.5" text-anchor="middle">(ರಾಜಕೀಯ ವ್ಯವಹಾರ)</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="tip-box">🎯 <strong>UPSC ಪಾಯಿಂಟ್:</strong> 'Double Government' (1784) ಮತ್ತು 'Dyarchy' (1919) ನಡುವೆ ಗೊಂದಲ ಮಾಡಿಕೊಳ್ಳಬೇಡಿ!</div>
+            </div>
+        </div>
+
+        <!-- Act 4: 1786 & 1793 -->
+        <div class="act-full-card">
+            <div>
+                <div class="act-header-title">4. 1786 ರ ಕಾಯ್ದೆ & 1793 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ</div>
+                <div class="act-header-sub">ಲಾರ್ಡ್ ಕಾರ್ನ್‌ವಾಲಿಸ್ ಷರತ್ತುಗಳು ಮತ್ತು ಮೊದಲ ಚಾರ್ಟರ್ ನವೀಕರಣ ಕಾಯ್ದೆ</div>
+                <ul class="act-points-list">
+                    <li><strong>1786 ರ ಕಾಯ್ದೆ:</strong> ಲಾರ್ಡ್ ಕಾರ್ನ್‌‌ವಾಲಿಸ್ ಬಂಗಾಳದ ಗವರ್ನರ್ ಜನರಲ್ ಆಗಲು 2 ಷರತ್ತು ವಿಧಿಸಿದರು: (1) ವಿಶೇಷ ಸಂದರ್ಭಗಳಲ್ಲಿ ತನ್ನ ಮಂಡಳಿಯ ನಿರ್ಧಾರವನ್ನು ತಿರಸ್ಕರಿಸುವ (Overriding power) ಅಧಿಕಾರ, ಮತ್ತು (2) ದಂಡನಾಯಕನಾಗಿ (Commander-in-Chief) ಕಾರ್ಯನಿರ್ವಹಿಸುವ ಅಧಿಕಾರ. ಎರಡನ್ನೂ ಈ ಕಾಯ್ದೆ ನೀಡಿತು.</li>
+                    <li><strong>1793 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ:</strong> ಕಾರ್ನ್‌ವಾಲಿಸ್‌ಗೆ ನೀಡಿದ ಮಂಡಳಿ ತಿರಸ್ಕಾರದ ಅಧಿಕಾರವನ್ನು ಭವಿಷ್ಯದ ಎಲ್ಲಾ ಗವರ್ನರ್ ಜನರಲ್‌ಗಳಿಗೂ ವಿಸ್ತರಿಸಲಾಯಿತು.</li>
+                    <li><strong>20 ವರ್ಷಗಳ ವಿಸ್ತರಣೆ:</strong> ಕಂಪನಿಯ ವ್ಯಾಪಾರ ಏಕಸ್ವಾಮ್ಯವನ್ನು ಮುಂದಿನ 20 ವರ್ಷಗಳವರೆಗೆ ವಿಸ್ತರಿಸಲಾಯಿತು.</li>
+                    <li><strong>ಭಾರತದ ಬೊಕ್ಕಸದಿಂದ ವೇತನ:</strong> ಲಂಡನ್‌ನಲ್ಲಿದ್ದ ಬೋರ್ಡ್ ಆಫ್ ಕಂಟ್ರೋಲ್ ಸದಸ್ಯರು ಮತ್ತು ಸಿಬ್ಬಂದಿಯ ವೇತನವನ್ನು ಭಾರತೀಯ ಕಂದಾಯದಿಂದಲೇ ನೀಡಲು ಆದೇಶಿಸಲಾಯಿತು (ಇದು 1919 ರವರೆಗೆ ಮುಂದುವರಿಯಿತು!).</li>
+                </ul>
+            </div>
+            <div class="act-visual-side">
+                <div>
+                    <h4 style="color: var(--company-color); margin-bottom: 8px;">🎨 ದೃಶ್ಯ ಸಾರಾಂಶ (1786/1793)</h4>
+                    <div class="svg-box">
+                        <svg viewBox="0 0 260 120" width="100%" height="120">
+                            <circle cx="130" cy="60" r="45" fill="#1e40af" stroke="#f59e0b" stroke-width="3"/>
+                            <text x="130" y="55" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">ಕಾರ್ನ್‌ವಾಲಿಸ್</text>
+                            <text x="130" y="72" fill="#fde047" font-size="9" text-anchor="middle">Veto + Commander</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="tip-box">🎯 <strong>UPSC ಪಾಯಿಂಟ್:</strong> 1793ರ ಕಾಯ್ದೆಯ ಪ್ರಕಾರ ದಂಡನಾಯಕರು (Commander-in-Chief) ತಾನಾಗಿಯೇ ಗವರ್ನರ್ ಜನರಲ್ ಮಂಡಳಿಯ ಸದಸ್ಯರಾಗುವಂತಿರಲಿಲ್ಲ (ನೇಮಕ ಮಾಡಿದರೆ ಮಾತ್ರ).</div>
+            </div>
+        </div>
+
+        <!-- Act 5: 1813 -->
+        <div class="act-full-card">
+            <div>
+                <div class="act-header-title">5. 1813 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ</div>
+                <div class="act-header-sub">ವ್ಯಾಪಾರ ಏಕಸ್ವಾಮ್ಯದ ಅಂತ್ಯ ಮತ್ತು ಶಿಕ್ಷಣಕ್ಕೆ 1 ಲಕ್ಷ ರೂಪಾಯಿ ಅನುದಾನ</div>
+                <ul class="act-points-list">
+                    <li><strong>ವ್ಯಾಪಾರ ಏಕಸ್ವಾಮ್ಯ ರದ್ದು (End of Trade Monopoly):</strong> ಭಾರತದಲ್ಲಿ ಈಸ್ಟ್ ಇಂಡಿಯಾ ಕಂಪನಿಯ ವ್ಯಾಪಾರ ಏಕಸ್ವಾಮ್ಯವನ್ನು ರದ್ದುಗೊಳಿಸಿ, ಎಲ್ಲಾ ಬ್ರಿಟಿಷ್ ವ್ಯಾಪಾರಿಗಳಿಗೆ ಮುಕ್ತಗೊಳಿಸಲಾಯಿತು.</li>
+                    <li><strong>ಪ್ರಮುಖ ವಿನಾಯಿತಿ (UPSC ಫೇವರಿಟ್):</strong> ಆದರೆ <strong>'ಚಹಾ ವ್ಯಾಪಾರ' (Trade in Tea) ಮತ್ತು 'ಚೀನಾದೊಂದಿಗಿನ ವ್ಯಾಪಾರ' (Trade with China)</strong> ದ ಮೇಲೆ ಕಂಪನಿಯ ಏಕಸ್ವಾಮ್ಯವನ್ನು ಇನ್ನೂ 20 ವರ್ಷ ಉಳಿಸಲಾಯಿತು!</li>
+                    <li><strong>ಶಿಕ್ಷಣಕ್ಕೆ 1 ಲಕ್ಷ ರೂಪಾಯಿ:</strong> ಭಾರತದಲ್ಲಿ ಸಾಹಿತ್ಯದ ಪುನರುಜ್ಜೀವನ ಮತ್ತು ವಿಜ್ಞಾನದ ಪ್ರಚಾರಕ್ಕಾಗಿ ವಾರ್ಷಿಕ <strong>1 ಲಕ್ಷ ರೂಪಾಯಿಗಳನ್ನು</strong> ಮೀಸಲಿಡಲು ಆದೇಶಿಸಲಾಯಿತು.</li>
+                    <li><strong>ಕ್ರಿಶ್ಚಿಯನ್ ಮಿಷನರಿಗಳಿಗೆ ಅನುಮತಿ:</strong> ಭಾರತಕ್ಕೆ ಬಂದು ಜನರಿಗೆ ಜ್ಞಾನೋದಯ ಮಾಡಿಸಲು (ಧರ್ಮ ಪ್ರಚಾರಕ್ಕೆ) ಕ್ರಿಶ್ಚಿಯನ್ ಮಿಷನರಿಗಳಿಗೆ ಅಧಿಕೃತ ಪರವಾನಗಿ ನೀಡಲಾಯಿತು.</li>
+                    <li><strong>ಸ್ಥಳೀಯ ಸರ್ಕಾರಗಳಿಗೆ ತೆರಿಗೆ ಅಧಿಕಾರ:</strong> ವ್ಯಕ್ತಿಗಳ ಮೇಲೆ ತೆರಿಗೆ ವಿಧಿಸುವ ಮತ್ತು ಪಾವತಿಸದಿದ್ದರೆ ಶಿಕ್ಷಿಸುವ ಅಧಿಕಾರವನ್ನು ಸ್ಥಳೀಯ ಸಂಸ್ಥೆಗಳಿಗೆ ನೀಡಲಾಯಿತು.</li>
+                </ul>
+            </div>
+            <div class="act-visual-side">
+                <div>
+                    <h4 style="color: var(--company-color); margin-bottom: 8px;">🎨 ದೃಶ್ಯ ಸಾರಾಂಶ (1813)</h4>
+                    <div class="svg-box">
+                        <svg viewBox="0 0 260 125" width="100%" height="125">
+                            <rect x="15" y="20" width="105" height="80" rx="8" fill="#dc2626"/>
+                            <text x="67" y="50" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">ಸಾಮಾನ್ಯ ವ್ಯಾಪಾರ</text>
+                            <text x="67" y="70" fill="#fde047" font-size="9.5" font-weight="bold" text-anchor="middle">ಏಕಸ್ವಾಮ್ಯ ರದ್ದು ❌</text>
+                            <rect x="140" y="20" width="105" height="80" rx="8" fill="#16a34a"/>
+                            <text x="192" y="48" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">ಚಹಾ & ಚೀನಾ</text>
+                            <text x="192" y="66" fill="#fff" font-size="9" text-anchor="middle">ಏಕಸ್ವಾಮ್ಯ ಉಳಿಕೆ ✅</text>
+                            <text x="192" y="84" fill="#fde047" font-size="8.5" text-anchor="middle">+ ₹1 ಲಕ್ಷ ಶಿಕ್ಷಣಕ್ಕೆ</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="tip-box">🎯 <strong>UPSC ಪಾಯಿಂಟ್:</strong> ಭಾರತದಲ್ಲಿ ಕಂಪನಿಯ ಪ್ರದೇಶಗಳ ಮೇಲೆ ಬ್ರಿಟಿಷ್ ಕಿರೀಟದ (Crown) ಸಾರ್ವಭೌಮತ್ವವನ್ನು ಸ್ಪಷ್ಟವಾಗಿ ಪ್ರತಿಪಾದಿಸಿದ ಮೊದಲ ಕಾಯ್ದೆ ಇದು.</div>
+            </div>
+        </div>
+
+        <!-- Act 6: 1833 -->
+        <div class="act-full-card">
+            <div>
+                <div class="act-header-title">6. 1833 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ</div>
+                <div class="act-header-sub">ಸಂತ ಹೆಲೆನಾ ಕಾಯ್ದೆ (Saint Helena Act) - ಬ್ರಿಟಿಷ್ ಭಾರತದಲ್ಲಿ ಕೇಂದ್ರೀಕರಣದ ಅಂತಿಮ ಹೆಜ್ಜೆ</div>
+                <ul class="act-points-list">
+                    <li><strong>ಭಾರತದ ಗವರ್ನರ್ ಜನರಲ್ (Governor-General of India):</strong> ಬಂಗಾಳದ ಗವರ್ನರ್ ಜನರಲ್ ಅವರನ್ನು 'ಭಾರತದ ಗವರ್ನರ್ ಜನರಲ್' ಮಾಡಲಾಯಿತು. ಎಲ್ಲಾ ನಾಗರಿಕ ಮತ್ತು ಮಿಲಿಟರಿ ಅಧಿಕಾರ ನೀಡಲಾಯಿತು. ಮೊದಲಿಗರು: <strong>ಲಾರ್ಡ್ ವಿಲಿಯಂ ಬೆಂಟಿಂಕ್</strong>.</li>
+                    <li><strong>ಪ್ರಾಂತ್ಯಗಳ ಶಾಸನ ಅಧಿಕಾರ ರದ್ದು:</strong> ಬಾಂಬೆ ಮತ್ತು ಮದ್ರಾಸ್ ಗವರ್ನರ್‌ಗಳ ಕಾನೂನು ರಚಿಸುವ ಅಧಿಕಾರವನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಕಸಿದುಕೊಳ್ಳಲಾಯಿತು. ಇಡೀ ಬ್ರಿಟಿಷ್ ಭಾರತಕ್ಕೆ ಕಾನೂನು ಮಾಡುವ ಏಕೈಕ ಅಧಿಕಾರ ಭಾರತದ ಗವರ್ನರ್ ಜನರಲ್‌ಗೆ ಲಭಿಸಿತು.</li>
+                    <li><strong>ಕಂಪನಿಯ ವಾಣಿಜ್ಯ ಚಟುವಟಿಕೆ ಸಂಪೂರ್ಣ ಅಂತ್ಯ:</strong> ಚಹಾ ಮತ್ತು ಚೀನಾ ವ್ಯಾಪಾರದ ಏಕಸ್ವಾಮ್ಯವನ್ನೂ ರದ್ದುಪಡಿಸಿ, ಈಸ್ಟ್ ಇಂಡಿಯಾ ಕಂಪನಿಯನ್ನು ಕೇವಲ ಒಂದು <strong>ಆಡಳಿತಾತ್ಮಕ ಸಂಸ್ಥೆಯನ್ನಾಗಿ (Purely Administrative Body)</strong> ಮಾಡಲಾಯಿತು.</li>
+                    <li><strong>ಮೊದಲ ಕಾನೂನು ಸದಸ್ಯ ಮತ್ತು ಕಾನೂನು ಆಯೋಗ:</strong> ಗವರ್ನರ್ ಜನರಲ್ ಮಂಡಳಿಗೆ 4ನೇ ಸದಸ್ಯರಾಗಿ 'ಕಾನೂನು ಸದಸ್ಯ' (<strong>ಲಾರ್ಡ್ ಮೆಕಾಲೆ</strong>) ಸೇರ್ಪಡೆ. ಭಾರತೀಯ ಕಾನೂನುಗಳ ಕ್ರೋಢೀಕರಣಕ್ಕಾಗಿ 1834ರಲ್ಲಿ ಮೊದಲ ಕಾನೂನು ಆಯೋಗ ರಚನೆ.</li>
+                    <li><strong>ಗುಲಾಮಗಿರಿ (Slavery) ನಿಷೇಧ:</strong> ಭಾರತದಲ್ಲಿ ದಾಸ್ಯ ಪದ್ಧತಿ ರದ್ದುಪಡಿಸಲು ಸೂಚಿಸಲಾಯಿತು (1843ರಲ್ಲಿ ಲಾರ್ಡ್ ಎಲೆನ್‌ಬರೋ ಇದನ್ನು ಜಾರಿಗೊಳಿಸಿದರು).</li>
+                </ul>
+            </div>
+            <div class="act-visual-side">
+                <div>
+                    <h4 style="color: var(--company-color); margin-bottom: 8px;">🎨 ದೃಶ್ಯ ಸಾರಾಂಶ (1833)</h4>
+                    <div class="svg-box">
+                        <svg viewBox="0 0 260 125" width="100%" height="125">
+                            <circle cx="130" cy="62" r="48" fill="#dc2626"/>
+                            <text x="130" y="52" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">100% ಕೇಂದ್ರೀಕರಣ</text>
+                            <text x="130" y="68" fill="#fde047" font-size="9" text-anchor="middle">ವಿಲಿಯಂ ಬೆಂಟಿಂಕ್</text>
+                            <text x="130" y="83" fill="#fff" font-size="8.5" text-anchor="middle">(ಭಾರತದ ಗವರ್ನರ್ ಜನರಲ್)</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="tip-box">🎯 <strong>UPSC ಪಾಯಿಂಟ್:</strong> ಈ ಕಾಯ್ದೆಗಿಂತ ಹಿಂದಿನ ಕಾನೂನುಗಳನ್ನು 'Regulations' ಎಂದೂ, ಈ ಕಾಯ್ದೆಯಿಂದ ರಚನೆಯಾದವುಗಳನ್ನು 'Acts' ಎಂದೂ ಕರೆಯಲಾಯಿತು.</div>
+            </div>
+        </div>
+
+        <!-- Act 7: 1853 -->
+        <div class="act-full-card">
+            <div>
+                <div class="act-header-title">7. 1853 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ</div>
+                <div class="act-header-sub">ಕೊನೆಯ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ - ಭಾರತದಲ್ಲಿ ಸಂಸದೀಯ ವ್ಯವಸ್ಥೆಯ ಹುಟ್ಟು (ಮಿನಿ ಸಂಸತ್ತು)</div>
+                <ul class="act-points-list">
+                    <li><strong>ಕಾರ್ಯಾಂಗ ಮತ್ತು ಶಾಸಕಾಂಗ ಬೇರ್ಪಡಿಕೆ:</strong> ಗವರ್ನರ್ ಜನರಲ್ ಅವರ ಮಂಡಳಿಯ ಶಾಸಕಾಂಗ ಮತ್ತು ಕಾರ್ಯಾಂಗ ಕಾರ್ಯಗಳನ್ನು ಮೊದಲ ಬಾರಿಗೆ ಪ್ರತ್ಯೇಕಿಸಲಾಯಿತು.</li>
+                    <li><strong>ಕೇಂದ್ರ ವಿಧಾನ ಪರಿಷತ್ (ಮಿನಿ ಸಂಸತ್ತು):</strong> ಕಾನೂನು ರಚನೆಗಾಗಿ 6 ಹೊಸ 'ಶಾಸಕಾಂಗ ಸದಸ್ಯರನ್ನು' ಸೇರಿಸಿ 'ಭಾರತೀಯ ಕೇಂದ್ರ ವಿಧಾನ ಪರಿಷತ್' (Indian Central Legislative Council) ರಚಿಸಲಾಯಿತು. ಇದು ಬ್ರಿಟಿಷ್ ಸಂಸತ್ತಿನ ಮಾದರಿಯಲ್ಲೇ ಕಾರ್ಯನಿರ್ವಹಿಸಿತು.</li>
+                    <li><strong>ಮೊದಲ ಬಾರಿಗೆ ಪ್ರಾದೇಶಿಕ ಪ್ರಾತಿನಿಧ್ಯ (Local Representation):</strong> 6 ಹೊಸ ಶಾಸಕಾಂಗ ಸದಸ್ಯರಲ್ಲಿ <strong>4 ಸದಸ್ಯರನ್ನು ಮದ್ರಾಸ್, ಬಾಂಬೆ, ಬಂಗಾಳ ಮತ್ತು ಆಗ್ರಾ</strong> ಪ್ರಾಂತೀಯ ಸರ್ಕಾರಗಳು ನೇಮಿಸಿದವು!</li>
+                    <li><strong>ಮುಕ್ತ ನಾಗರಿಕ ಸೇವಾ ಪರೀಕ್ಷೆ (Open Competition for ICS):</strong> ಭಾರತೀಯರಿಗೂ ಸಿವಿಲ್ ಸರ್ವೀಸ್ ಪರೀಕ್ಷೆ ಬರೆಯಲು ಮುಕ್ತ ಅವಕಾಶ ನೀಡಲಾಯಿತು. ಇದಕ್ಕಾಗಿ 1854ರಲ್ಲಿ <strong>ಮೆಕಾಲೆ ಸಮಿತಿ</strong> ನೇಮಿಸಲಾಯಿತು.</li>
+                    <li><strong>ಕಾಲಮಿತಿ ಇಲ್ಲದ ನವೀಕರಣ:</strong> ಹಿಂದಿನ ಚಾರ್ಟರ್ ಕಾಯ್ದೆಗಳಂತೆ 20 ವರ್ಷಗಳ ಕಾಲಮಿತಿ ನೀಡಲಿಲ್ಲ; ಸಂಸತ್ತು ಬಯಸಿದಾಗ ಕಂಪನಿ ಆಳ್ವಿಕೆ ಕೊನೆಗೊಳಿಸಬಹುದು ಎಂಬ ಸೂಚನೆ ನೀಡಿತು.</li>
+                </ul>
+            </div>
+            <div class="act-visual-side">
+                <div>
+                    <h4 style="color: var(--company-color); margin-bottom: 8px;">🎨 ದೃಶ್ಯ ಸಾರಾಂಶ (1853)</h4>
+                    <div class="svg-box">
+                        <svg viewBox="0 0 260 125" width="100%" height="125">
+                            <rect x="20" y="15" width="220" height="40" rx="6" fill="#1e40af"/>
+                            <text x="130" y="38" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">ಮಿನಿ ಸಂಸತ್ತು (6 ಶಾಸಕಾಂಗ ಸದಸ್ಯರು)</text>
+                            <rect x="40" y="68" width="180" height="40" rx="6" fill="#16a34a"/>
+                            <text x="130" y="92" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">ICS ಮುಕ್ತ ಪರೀಕ್ಷೆ ಜಾರಿ (1854)</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="tip-box">🎯 <strong>UPSC ಪಾಯಿಂಟ್:</strong> ಶಾಸಕಾಂಗದಲ್ಲಿ 'ಸ್ಥಳೀಯ ಪ್ರಾತಿನಿಧ್ಯ' (Local Representation) ಮೊದಲು ಬಂದಿದ್ದು 1853 ರಲ್ಲಿ, ಆದರೆ 'ಭಾರತೀಯರ ನಾಮನಿರ್ದೇಶನ' ಬಂದಿದ್ದು 1861 ರಲ್ಲಿ!</div>
+            </div>
+        </div>
+
+        <!-- ERA 2: CROWN RULE -->
+        <div class="era-banner era-crown">
+            <span>👑 ಭಾಗ 2: ಬ್ರಿಟಿಷ್ ಕಿರೀಟದ ನೇರ ಆಳ್ವಿಕೆಯ ಕಾಯ್ದೆಗಳು (1858 – 1947)</span>
+            <span style="font-size: 0.85rem; opacity: 0.9;">ಒಟ್ಟು 7 ಪ್ರಮುಖ ಕಾಯ್ದೆಗಳು</span>
+        </div>
+
+        <!-- Act 8: 1858 -->
+        <div class="act-full-card">
+            <div>
+                <div class="act-header-title">8. 1858 ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆ</div>
+                <div class="act-header-sub">Act for the Good Government of India (1857ರ ಪ್ರಥಮ ಸ್ವಾತಂತ್ರ್ಯ ಸಂಗ್ರಾಮದ ನಂತರ ಜಾರಿ)</div>
+                <ul class="act-points-list">
+                    <li><strong>ಕಂಪನಿ ಆಳ್ವಿಕೆ ಅಂತ್ಯ:</strong> ಈಸ್ಟ್ ಇಂಡಿಯಾ ಕಂಪನಿಯನ್ನು ರದ್ದುಗೊಳಿಸಿ ಭಾರತದ ಆಡಳಿತವನ್ನು ನೇರವಾಗಿ ಬ್ರಿಟಿಷ್ ರಾಣಿ ವಿಕ್ಟೋರಿಯಾ (British Crown) ವಶಕ್ಕೆ ಹಸ್ತಾಂತರಿಸಲಾಯಿತು.</li>
+                    <li><strong>ವೈಸರಾಯ್ ಹುದ್ದೆ ಸೃಷ್ಟಿ (Viceroy of India):</strong> ಭಾರತದ ಗವರ್ನರ್ ಜನರಲ್ ಪದನಾಮವನ್ನು 'ಭಾರತದ ವೈಸರಾಯ್' (ರಾಣಿಯ ನೇರ ಪ್ರತಿನಿಧಿ) ಎಂದು ಬದಲಾಯಿಸಲಾಯಿತು. ಮೊದಲ ವೈಸರಾಯ್: <strong>ಲಾರ್ಡ್ ಕ್ಯಾನಿಂಗ್</strong>.</li>
+                    <li><strong>ದ್ವಿಮುಖ ಸರ್ಕಾರ ರದ್ದು:</strong> 1784ರ ಪಿಟ್ಸ್ ಕಾಯ್ದೆಯಡಿ ಇದ್ದ 'ಬೋರ್ಡ್ ಆಫ್ ಕಂಟ್ರೋಲ್' ಮತ್ತು 'ಕೋರ್ಟ್ ಆಫ್ ಡೈರೆಕ್ಟರ್ಸ್' ಎರಡನ್ನೂ ರದ್ದುಪಡಿಸಲಾಯಿತು.</li>
+                    <li><strong>ಭಾರತದ ರಾಜ್ಯ ಕಾರ್ಯದರ್ಶಿ (Secretary of State for India - SOS):</strong> ಬ್ರಿಟಿಷ್ ಕ್ಯಾಬಿನೆಟ್ ಸದಸ್ಯರಾದ ಹೊಸ ಹುದ್ದೆ ಸೃಷ್ಟಿಸಲಾಯಿತು (ಮೊದಲ SOS: <strong>ಲಾರ್ಡ್ ಸ್ಟಾನ್ಲಿ</strong>). ಇವರು ಬ್ರಿಟಿಷ್ ಸಂಸತ್ತಿಗೆ ಜವಾಬ್ದಾರರಾಗಿದ್ದರು.</li>
+                    <li><strong>15 ಸದಸ್ಯರ ಭಾರತ ಮಂಡಳಿ (Council of India):</strong> ರಾಜ್ಯ ಕಾರ್ಯದರ್ಶಿಗೆ ಸಹಾಯ ಮಾಡಲು ಲಂಡನ್‌ನಲ್ಲಿ 15 ಸದಸ್ಯರ ಸಲಹಾ ಮಂಡಳಿ ರಚಿಸಲಾಯಿತು.</li>
+                </ul>
+            </div>
+            <div class="act-visual-side">
+                <div>
+                    <h4 style="color: var(--crown-color); margin-bottom: 8px;">🎨 ದೃಶ್ಯ ಸಾರಾಂಶ (1858)</h4>
+                    <div class="svg-box">
+                        <svg viewBox="0 0 260 130" width="100%" height="130">
+                            <rect x="65" y="6" width="130" height="26" rx="5" fill="#dc2626"/>
+                            <text x="130" y="23" fill="#fff" font-size="9.5" font-weight="bold" text-anchor="middle">ಬ್ರಿಟಿಷ್ ರಾಣಿ / ಸಂಸತ್ತು</text>
+                            <path d="M 130 32 L 130 50" stroke="#dc2626" stroke-width="2" class="animated-path"/>
+                            <rect x="50" y="50" width="160" height="28" rx="5" fill="#9333ea"/>
+                            <text x="130" y="68" fill="#fff" font-size="9" font-weight="bold" text-anchor="middle">Secretary of State + 15 ಸದಸ್ಯರು</text>
+                            <path d="M 130 78 L 130 96" stroke="#9333ea" stroke-width="2" class="animated-path"/>
+                            <rect x="65" y="96" width="130" height="26" rx="5" fill="#1e40af"/>
+                            <text x="130" y="113" fill="#fff" font-size="9.5" font-weight="bold" text-anchor="middle">ಭಾರತದ ವೈಸರಾಯ್ (ಕ್ಯಾನಿಂಗ್)</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="tip-box">🎯 <strong>UPSC ಪಾಯಿಂಟ್:</strong> 1858ರ ಕಾಯ್ದೆಯು ಭಾರತದಲ್ಲಿ ಪ್ರಚಲಿತದಲ್ಲಿದ್ದ ಸರ್ಕಾರದ ವ್ಯವಸ್ಥೆಯಲ್ಲಿ ಯಾವುದೇ ಬದಲಾವಣೆ ಮಾಡಲಿಲ್ಲ, ಬದಲಿಗೆ ಇಂಗ್ಲೆಂಡ್‌ನಲ್ಲಿದ್ದ ಮೇಲ್ವಿಚಾರಣಾ ಯಂತ್ರಾಂಗವನ್ನು ಮಾತ್ರ ಬದಲಾಯಿಸಿತು!</div>
+            </div>
+        </div>
+
+        <!-- Act 9: 1861 -->
+        <div class="act-full-card">
+            <div>
+                <div class="act-header-title">9. 1861 ರ ಭಾರತೀಯ ಪರಿಷತ್ ಕಾಯ್ದೆ</div>
+                <div class="act-header-sub">ವಿಕೇಂದ್ರೀಕರಣದ ಆರಂಭ, ಪೋರ್ಟ್‌‌ಫೋಲಿಯೊ ಪದ್ಧತಿ ಮತ್ತು ಭಾರತೀಯರ ಸೇರ್ಪಡೆ</div>
+                <ul class="act-points-list">
+                    <li><strong>ಕಾನೂನು ರಚನೆಯಲ್ಲಿ ಭಾರತೀಯರ ಸೇರ್ಪಡೆ:</strong> ವೈಸರಾಯ್ ತನ್ನ ವಿಸ್ತೃತ ಪರಿಷತ್ತಿಗೆ ಭಾರತೀಯರನ್ನು ಅಧಿಕೃತೇತರ (Non-official) ಸದಸ್ಯರನ್ನಾಗಿ ನಾಮನಿರ್ದೇಶನ ಮಾಡಲು ಅವಕಾಶ. 1862ರಲ್ಲಿ ಲಾರ್ಡ್ ಕ್ಯಾನಿಂಗ್ 3 ಭಾರತೀಯರನ್ನು ನೇಮಿಸಿದರು: <strong>1. ಬನಾರಸ್ ರಾಜ, 2. ಪಟಿಯಾಲ ಮಹಾರಾಜ, 3. ಸರ್ ದಿನಕರ್ ರಾವ್</strong>.</li>
+                    <li><strong>ವಿಕೇಂದ್ರೀಕರಣ ಪ್ರಕ್ರಿಯೆ ಆರಂಭ (Decentralisation):</strong> 1833ರಲ್ಲಿ ಕಸಿದುಕೊಂಡಿದ್ದ ಬಾಂಬೆ ಮತ್ತು ಮದ್ರಾಸ್ ಪ್ರಾಂತ್ಯಗಳ ಶಾಸನ ರಚನೆಯ ಅಧಿಕಾರವನ್ನು ಮರಳಿ ನೀಡಲಾಯಿತು!</li>
+                    <li><strong>ಪೋರ್ಟ್‌ಫೋಲಿಯೊ ಪದ್ಧತಿಗೆ (ಖಾತೆ ಹಂಚಿಕೆ) ಮನ್ನಣೆ:</strong> 1859ರಲ್ಲಿ ಲಾರ್ಡ್ ಕ್ಯಾನಿಂಗ್ ಪರಿಚಯಿಸಿದ 'ಪೋರ್ಟ್‌ಫೋಲಿಯೊ ಪದ್ಧತಿ'ಗೆ (ಒಬ್ಬ ಸದಸ್ಯನಿಗೆ ಒಂದು ಅಥವಾ ಹೆಚ್ಚು ಇಲಾಖೆಗಳ ಉಸ್ತುವಾರಿ) ಶಾಸನಬದ್ಧ ಮನ್ನಣೆ ನೀಡಲಾಯಿತು.</li>
+                    <li><strong>ವೈಸರಾಯ್ ಸುಗ್ರೀವಾಜ್ಞೆ ಅಧಿಕಾರ (Ordinance Power):</strong> ತುರ್ತು ಸಂದರ್ಭಗಳಲ್ಲಿ ಪರಿಷತ್ತಿನ ಒಪ್ಪಿಗೆ ಇಲ್ಲದೆ ವೈಸರಾಯ್ ಸುಗ್ರೀವಾಜ್ಞೆ ಹೊರಡಿಸುವ ಅಧಿಕಾರ ಪಡೆದರು (ಇದರ ಅವಧಿ <strong>6 ತಿಂಗಳು</strong>).</li>
+                    <li><strong>ಹೊಸ ವಿಧಾನ ಪರಿಷತ್ತುಗಳ ಸ್ಥಾಪನೆ:</strong> ಬಂಗಾಳ (1862), ವಾಯುವ್ಯ ಗಡಿ ಪ್ರಾಂತ್ಯ - NWFP (1886) ಮತ್ತು ಪಂಜಾಬ್ (1897) ನಲ್ಲಿ ಹೊಸ ವಿಧಾನ ಪರಿಷತ್ತುಗಳನ್ನು ಸ್ಥಾಪಿಸಲಾಯಿತು.</li>
+                </ul>
+            </div>
+            <div class="act-visual-side">
+                <div>
+                    <h4 style="color: var(--crown-color); margin-bottom: 8px;">🎨 ದೃಶ್ಯ ಸಾರಾಂಶ (1861)</h4>
+                    <div class="svg-box">
+                        <svg viewBox="0 0 260 125" width="100%" height="125">
+                            <rect x="20" y="15" width="220" height="42" rx="6" fill="#16a34a"/>
+                            <text x="130" y="34" fill="#fff" font-size="9.5" font-weight="bold" text-anchor="middle">ವಿಕೇಂದ್ರೀಕರಣ ಆರಂಭ (ಬಾಂಬೆ/ಮದ್ರಾಸ್)</text>
+                            <text x="130" y="48" fill="#fde047" font-size="8.5" text-anchor="middle">+ 3 ಭಾರತೀಯರ ನಾಮನಿರ್ದೇಶನ</text>
+                            <rect x="35" y="70" width="190" height="40" rx="6" fill="#1e40af"/>
+                            <text x="130" y="94" fill="#fff" font-size="9.5" font-weight="bold" text-anchor="middle">ಪೋರ್ಟ್‌ಫೋಲಿಯೊ + ಸುಗ್ರೀವಾಜ್ಞೆ (6 ತಿಂಗಳು)</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="tip-box">🎯 <strong>UPSC ಪಾಯಿಂಟ್:</strong> ಇಂದಿನ ರಾಷ್ಟ್ರಪತಿಗಳ ಸುಗ್ರೀವಾಜ್ಞೆ ಅಧಿಕಾರ (ವಿಧಿ 123) ಮತ್ತು ಕ್ಯಾಬಿನೆಟ್ ಖಾತೆ ಹಂಚಿಕೆ ಪದ್ಧತಿಯ ಮೂಲವು 1861ರ ಕಾಯ್ದೆಯಲ್ಲಿದೆ.</div>
+            </div>
+        </div>
+
+        <!-- Act 10: 1892 -->
+        <div class="act-full-card">
+            <div>
+                <div class="act-header-title">10. 1892 ರ ಭಾರತೀಯ ಪರಿಷತ್ ಕಾಯ್ದೆ</div>
+                <div class="act-header-sub">ಬಜೆಟ್ ಮೇಲಿನ ಚರ್ಚೆ ಮತ್ತು ಪರೋಕ್ಷ ಚುನಾವಣಾ ಪದ್ಧತಿಯ ಉಗಮ</div>
+                <ul class="act-points-list">
+                    <li><strong>ಬಜೆಟ್ ಚರ್ಚಿಸುವ ಅಧಿಕಾರ:</strong> ವಿಧಾನ ಪರಿಷತ್ತುಗಳ ಕಾರ್ಯಗಳನ್ನು ವಿಸ್ತರಿಸಿ, ಸದಸ್ಯರಿಗೆ ಮೊದಲ ಬಾರಿಗೆ <strong>ಬಜೆಟ್ ಮೇಲೆ ಚರ್ಚಿಸುವ</strong> ಮತ್ತು ಕಾರ್ಯಾಂಗಕ್ಕೆ ಪ್ರಶ್ನೆಗಳನ್ನು ಕೇಳುವ ಅಧಿಕಾರ ನೀಡಲಾಯಿತು (ಆದರೆ ಪೂರಕ ಪ್ರಶ್ನೆ ಕೇಳುವಂತಿರಲಿಲ್ಲ).</li>
+                    <li><strong>ಪರೋಕ್ಷ ಚುನಾವಣೆಯ ಬೀಜ (Indirect Election):</strong> ಕಾಯ್ದೆಯಲ್ಲಿ 'ಚುನಾವಣೆ' (Election) ಎಂಬ ಪದವನ್ನು ನೇರವಾಗಿ ಬಳಸದಿದ್ದರೂ, ಜಿಲ್ಲಾ ಮಂಡಳಿಗಳು, ಪುರಸಭೆಗಳು, ವಿಶ್ವವಿದ್ಯಾಲಯಗಳು ಮತ್ತು ವಾಣಿಜ್ಯ ಮಂಡಳಿಗಳ ಶಿಫಾರಸಿನ ಮೇರೆಗೆ ಅಧಿಕೃತೇತರ ಸದಸ್ಯರನ್ನು ನೇಮಿಸುವ ಸೀಮಿತ ಪರೋಕ್ಷ ಚುನಾವಣಾ ಪದ್ಧತಿ ತರಲಾಯಿತು.</li>
+                    <li><strong>ಸದಸ್ಯರ ಸಂಖ್ಯೆ ಹೆಚ್ಚಳ:</strong> ಕೇಂದ್ರ ಮತ್ತು ಪ್ರಾಂತೀಯ ಪರಿಷತ್ತುಗಳಲ್ಲಿ ಅಧಿಕೃತೇತರ ಸದಸ್ಯರ ಸಂಖ್ಯೆಯನ್ನು ಹೆಚ್ಚಿಸಲಾಯಿತು, ಆದರೆ ಅಧಿಕೃತ (ಬ್ರಿಟಿಷ್) ಬಹುಮತವನ್ನು ಹಾಗೆಯೇ ಉಳಿಸಿಕೊಳ್ಳಲಾಯಿತು.</li>
+                </ul>
+            </div>
+            <div class="act-visual-side">
+                <div>
+                    <h4 style="color: var(--crown-color); margin-bottom: 8px;">🎨 ದೃಶ್ಯ ಸಾರಾಂಶ (1892)</h4>
+                    <div class="svg-box">
+                        <svg viewBox="0 0 260 120" width="100%" height="120">
+                            <rect x="25" y="25" width="210" height="70" rx="10" fill="#9333ea"/>
+                            <text x="130" y="52" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">📊 ಬಜೆಟ್ ಚರ್ಚಿಸುವ ಹಕ್ಕು</text>
+                            <text x="130" y="74" fill="#fde047" font-size="9.5" text-anchor="middle">+ ಸೀಮಿತ ಪರೋಕ್ಷ ಚುನಾವಣೆ ಆರಂಭ</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="tip-box">🎯 <strong>UPSC ಪಾಯಿಂಟ್:</strong> 1885ರಲ್ಲಿ ಭಾರತೀಯ ರಾಷ್ಟ್ರೀಯ ಕಾಂಗ್ರೆಸ್ (INC) ಸ್ಥಾಪನೆಯಾದ ನಂತರ ಕಾಂಗ್ರೆಸ್ಸಿನ ಒತ್ತಡಕ್ಕೆ ಮಣಿದು ಬ್ರಿಟಿಷರು ತಂದ ಮೊದಲ ಕಾಯ್ದೆ ಇದು.</div>
+            </div>
+        </div>
+
+        <!-- Act 11: 1909 -->
+        <div class="act-full-card">
+            <div>
+                <div class="act-header-title">11. 1909 ರ ಮಾರ್ಲೆ-ಮಿಂಟೋ ಸುಧಾರಣೆ</div>
+                <div class="act-header-sub">Indian Councils Act 1909 (ಲಾರ್ಡ್ ಮಾರ್ಲೆ: ರಾಜ್ಯ ಕಾರ್ಯದರ್ಶಿ | ಲಾರ್ಡ್ ಮಿಂಟೋ: ವೈಸರಾಯ್)</div>
+                <ul class="act-points-list">
+                    <li><strong>ಪ್ರತ್ಯೇಕ ಕೋಮುವಾರು ಮತಕ್ಷೇತ್ರ (Separate Electorate):</strong> ಮುಸ್ಲಿಮರಿಗೆ ಮೊದಲ ಬಾರಿಗೆ ಪ್ರತ್ಯೇಕ ಮತಕ್ಷೇತ್ರ ನೀಡಲಾಯಿತು (ಮುಸ್ಲಿಂ ಅಭ್ಯರ್ಥಿಗೆ ಮುಸ್ಲಿಂ ಮತದಾರರು ಮಾತ್ರ ಮತ ಹಾಕುವುದು). ಹೀಗಾಗಿ <strong>ಲಾರ್ಡ್ ಮಿಂಟೋ ಅವರನ್ನು 'ಕೋಮುವಾರು ಮತಕ್ಷೇತ್ರಗಳ ಪಿತಾಮಹ'</strong> ಎನ್ನುವರು.</li>
+                    <li><strong>ವೈಸರಾಯ್ ಕಾರ್ಯಕಾರಿ ಮಂಡಳಿಗೆ ಮೊದಲ ಭಾರತೀಯ:</strong> ವೈಸರಾಯ್ ಮತ್ತು ಗವರ್ನರ್‌ಗಳ ಕಾರ್ಯಕಾರಿ ಮಂಡಳಿಗೆ ಭಾರತೀಯರನ್ನು ಸೇರಿಸಲು ಅವಕಾಶ. ಮೊದಲ ಸದಸ್ಯರಾಗಿ <strong>ಸತ್ಯೇಂದ್ರ ಪ್ರಸಾದ್ ಸಿನ್ಹಾ (S.P. Sinha)</strong> ಕಾನೂನು ಸದಸ್ಯರಾಗಿ ನೇಮಕಗೊಂಡರು.</li>
+                    <li><strong>ಶಾಸಕಾಂಗದ ಗಾತ್ರ ಭಾರಿ ಹೆಚ್ಚಳ:</strong> ಕೇಂದ್ರ ವಿಧಾನ ಪರಿಷತ್ತಿನ ಸದಸ್ಯರ ಸಂಖ್ಯೆಯನ್ನು <strong>16 ರಿಂದ 60 ಕ್ಕೆ</strong> ಹೆಚ್ಚಿಸಲಾಯಿತು.</li>
+                    <li><strong>ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ ಅಧಿಕೃತೇತರ ಬಹುಮತ:</strong> ಕೇಂದ್ರದಲ್ಲಿ ಅಧಿಕೃತ (ಬ್ರಿಟಿಷ್) ಬಹುಮತ ಉಳಿಸಿಕೊಂಡು, ಪ್ರಾಂತೀಯ ಪರಿಷತ್ತುಗಳಲ್ಲಿ ಅಧಿಕೃತೇತರ ಬಹುಮತಕ್ಕೆ ಅವಕಾಶ ನೀಡಲಾಯಿತು.</li>
+                    <li><strong>ಪೂರಕ ಪ್ರಶ್ನೆಗಳ ಹಕ್ಕು:</strong> ಸದಸ್ಯರಿಗೆ ಪೂರಕ ಪ್ರಶ್ನೆ (Supplementary questions) ಕೇಳುವ ಮತ್ತು ಬಜೆಟ್ ಮೇಲೆ ನಿರ್ಣಯಗಳನ್ನು ಮಂಡಿಸುವ ಅಧಿಕಾರ ನೀಡಲಾಯಿತು.</li>
+                </ul>
+            </div>
+            <div class="act-visual-side">
+                <div>
+                    <h4 style="color: var(--crown-color); margin-bottom: 8px;">🎨 ದೃಶ್ಯ ಸಾರಾಂಶ (1909)</h4>
+                    <div class="svg-box">
+                        <svg viewBox="0 0 260 125" width="100%" height="125">
+                            <rect x="15" y="15" width="230" height="45" rx="6" fill="#dc2626"/>
+                            <text x="130" y="35" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">ಕೋಮುವಾರು ಮತಕ್ಷೇತ್ರ (ಮುಸ್ಲಿಮರಿಗೆ)</text>
+                            <text x="130" y="50" fill="#fde047" font-size="9" text-anchor="middle">ಪಿತಾಮಹ: ಲಾರ್ಡ್ ಮಿಂಟೋ</text>
+                            <rect x="30" y="70" width="200" height="40" rx="6" fill="#1e40af"/>
+                            <text x="130" y="94" fill="#fff" font-size="9.5" font-weight="bold" text-anchor="middle">ಎಸ್.ಪಿ. ಸಿನ್ಹಾ (ಮೊದಲ ಭಾರತೀಯ ಸದಸ್ಯ)</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="tip-box">🎯 <strong>UPSC ಪಾಯಿಂಟ್:</strong> ಈ ಕಾಯ್ದೆಯು ಭಾರತದಲ್ಲಿ 'ಕೋಮುವಾದವನ್ನು ಕಾನೂನುಬದ್ಧಗೊಳಿಸಿತು' (Legalised Communalism).</div>
+            </div>
+        </div>
+
+        <!-- Act 12: 1919 -->
+        <div class="act-full-card">
+            <div>
+                <div class="act-header-title">12. 1919 ರ ಮಾಂಟೆಗ್ಯೂ-ಚೆಮ್ಸ್‌ಫರ್ಡ್ ಕಾಯ್ದೆ</div>
+                <div class="act-header-sub">Government of India Act 1919 (ಜವಾಬ್ದಾರಿಯುತ ಸರ್ಕಾರದ ಘೋಷಣೆ - 1921ರಲ್ಲಿ ಜಾರಿ)</div>
+                <ul class="act-points-list">
+                    <li><strong>ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ ದ್ವಿಸರಕಾರ ಪದ್ಧತಿ (Dyarchy in Provinces):</strong> ಪ್ರಾಂತೀಯ ವಿಷಯಗಳನ್ನು 2 ಭಾಗಗಳಾಗಿ ವಿಂಗಡಿಸಲಾಯಿತು: <strong>1. ವರ್ಗಾಯಿತ ವಿಷಯಗಳು (Transferred)</strong> ಮತ್ತು <strong>2. ಮೀಸಲು ವಿಷಯಗಳು (Reserved)</strong>.</li>
+                    <li><strong>ಕೇಂದ್ರದಲ್ಲಿ ದ್ವಿಸದನ ಶಾಸಕಾಂಗ (Bicameralism) ಮತ್ತು ನೇರ ಚುನಾವಣೆ:</strong> ಮೊದಲ ಬಾರಿಗೆ ಕೇಂದ್ರದಲ್ಲಿ ಮೇಲ್ಮನೆ (Council of State - 60 ಸದಸ್ಯರು) ಮತ್ತು ಕೆಳಮನೆ (Legislative Assembly - 145 ಸದಸ್ಯರು) ಸ್ಥಾಪಿಸಿ ನೇರ ಚುನಾವಣೆ ಪರಿಚಯಿಸಲಾಯಿತು.</li>
+                    <li><strong>ಕಾರ್ಯಕಾರಿ ಮಂಡಳಿಯಲ್ಲಿ 3 ಭಾರತೀಯರು:</strong> ವೈಸರಾಯ್ ಕಾರ್ಯಕಾರಿ ಮಂಡಳಿಯ 6 ಸದಸ್ಯರಲ್ಲಿ (ದಂಡನಾಯಕರನ್ನು ಹೊರತುಪಡಿಸಿ) 3 ಸದಸ್ಯರು ಭಾರತೀಯರಾಗಿರುವುದು ಕಡ್ಡಾಯವಾಯಿತು.</li>
+                    <li><strong>ಕೋಮುವಾರು ಮತಕ್ಷೇತ್ರ ವಿಸ್ತರಣೆ:</strong> ಸಿಖ್ಖರು, ಭಾರತೀಯ ಕ್ರಿಶ್ಚಿಯನ್ನರು, ಆಂಗ್ಲೋ-ಇಂಡಿಯನ್ನರು ಮತ್ತು ಯುರೋಪಿಯನ್ನರಿಗೆ ಪ್ರತ್ಯೇಕ ಮತಕ್ಷೇತ್ರ ವಿಸ್ತರಿಸಲಾಯಿತು.</li>
+                    <li><strong>ಬಜೆಟ್ ಬೇರ್ಪಡಿಕೆ ಮತ್ತು UPSC ಉಗಮ:</strong> ಕೇಂದ್ರ ಬಜೆಟ್‌ನಿಂದ ಪ್ರಾಂತೀಯ ಬಜೆಟ್ ಅನ್ನು ಬೇರ್ಪಡಿಸಲಾಯಿತು ಹಾಗೂ 1926ರಲ್ಲಿ ಕೇಂದ್ರ ಲೋಕಸೇವಾ ಆಯೋಗ (CPSC) ಸ್ಥಾಪನೆಗೆ ಕಾರಣವಾಯಿತು.</li>
+                    <li><strong>ಸೀಮಿತ ಮತದಾನ ಮತ್ತು ಹೈಕಮಿಷನರ್:</strong> ಆಸ್ತಿ, ತೆರಿಗೆ ಅಥವಾ ಶಿಕ್ಷಣದ ಆಧಾರದ ಮೇಲೆ ಸೀಮಿತ ಜನರಿಗೆ ಮತದಾನದ ಹಕ್ಕು (ಮಹಿಳೆಯರಿಗೂ ಮತದಾನದ ಹಕ್ಕು ನೀಡಲು ಪ್ರಾಂತ್ಯಗಳಿಗೆ ಅವಕಾಶ) ಹಾಗೂ ಲಂಡನ್‌ನಲ್ಲಿ 'ಭಾರತದ ಹೈಕಮಿಷನರ್' ಹುದ್ದೆ ಸೃಷ್ಟಿ.</li>
+                </ul>
+            </div>
+            <div class="act-visual-side">
+                <div>
+                    <h4 style="color: var(--crown-color); margin-bottom: 8px;">🎨 ದೃಶ್ಯ ಸಾರಾಂಶ (1919)</h4>
+                    <div class="svg-box">
+                        <svg viewBox="0 0 260 125" width="100%" height="125">
+                            <rect x="15" y="15" width="110" height="90" rx="8" fill="#1e40af"/>
+                            <text x="70" y="45" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ</text>
+                            <text x="70" y="65" fill="#fde047" font-size="10.5" font-weight="bold" text-anchor="middle">ದ್ವಿಸರಕಾರ (Dyarchy)</text>
+                            <rect x="135" y="15" width="110" height="90" rx="8" fill="#16a34a"/>
+                            <text x="190" y="45" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">ಕೇಂದ್ರದಲ್ಲಿ</text>
+                            <text x="190" y="65" fill="#fde047" font-size="10" font-weight="bold" text-anchor="middle">ದ್ವಿಸದನ + ನೇರ ಚುನಾವಣೆ</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="tip-box">🎯 <strong>UPSC ಪಾಯಿಂಟ್:</strong> ಈ ಕಾಯ್ದೆಯು 10 ವರ್ಷಗಳ ನಂತರ ತನ್ನ ಕಾರ್ಯನಿರ್ವಹಣೆಯನ್ನು ಪರಿಶೀಲಿಸಲು ಒಂದು ಆಯೋಗ ನೇಮಿಸಬೇಕೆಂದು ಸೂಚಿಸಿತ್ತು; ಅದರಂತೆ 2 ವರ್ಷ ಮೊದಲೇ (1927ರಲ್ಲಿ) 'ಸೈಮನ್ ಆಯೋಗ' ನೇಮಕವಾಯಿತು!</div>
+            </div>
+        </div>
+
+        <!-- Act 13: 1935 -->
+        <div class="act-full-card">
+            <div>
+                <div class="act-header-title">13. 1935 ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆ</div>
+                <div class="act-header-sub">ಸಂವಿಧಾನದ ನೀಲನಕ್ಷೆ (321 ವಿಧಿಗಳು ಮತ್ತು 10 ಅನುಸೂಚಿಗಳು - ಅತಿ ದೊಡ್ಡ ಕಾಯ್ದೆ)</div>
+                <ul class="act-points-list">
+                    <li><strong>ಅಖಿಲ ಭಾರತ ಒಕ್ಕೂಟ ಮತ್ತು 3 ಪಟ್ಟಿಗಳು:</strong> ಫೆಡರಲ್ ಪಟ್ಟಿ (59), ಪ್ರಾಂತೀಯ ಪಟ್ಟಿ (54) ಮತ್ತು ಸಮವರ್ತಿ ಪಟ್ಟಿ (36) ಮೂಲಕ ಅಧಿಕಾರ ವಿಭಜನೆ. ಶ್ರೇಷ್ಠ ಅಧಿಕಾರಗಳನ್ನು (Residuary Powers) ವೈಸರಾಯ್‌ಗೆ ನೀಡಲಾಯಿತು.</li>
+                    <li><strong>ಪ್ರಾಂತೀಯ ಸ್ವಾಯತ್ತತೆ (Provincial Autonomy):</strong> ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ ದ್ವಿಸರಕಾರ ರದ್ದುಪಡಿಸಿ ಸ್ವಾಯತ್ತತೆ ನೀಡಲಾಯಿತು (1937ರಲ್ಲಿ ಜಾರಿಗೆ ಬಂದು 1939ರಲ್ಲಿ ಸ್ಥಗಿತಗೊಂಡಿತು).</li>
+                    <li><strong>ಕೇಂದ್ರದಲ್ಲಿ ದ್ವಿಸರಕಾರ (Dyarchy at Centre):</strong> ಫೆಡರಲ್ ವಿಷಯಗಳನ್ನು ಮೀಸಲು ಮತ್ತು ವರ್ಗಾಯಿತ ಎಂದು ವಿಭಜಿಸಲಾಯಿತು (ಆದರೆ ಇದು ಜಾರಿಗೆ ಬರಲಿಲ್ಲ).</li>
+                    <li><strong>6 ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ ದ್ವಿಸದನ ಪದ್ಧತಿ:</strong> 11 ಪ್ರಾಂತ್ಯಗಳ ಪೈಕಿ 6 ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ (ಬಂಗಾಳ, ಬಾಂಬೆ, ಮದ್ರಾಸ್, ಬಿಹಾರ, ಅಸ್ಸಾಂ, ಸಂಯುಕ್ತ ಪ್ರಾಂತ್ಯ) ದ್ವಿಸದನ ಶಾಸಕಾಂಗ ಪರಿಚಯಿಸಲಾಯಿತು.</li>
+                    <li><strong>ಪ್ರಮುಖ ಸಂಸ್ಥೆಗಳ ಸ್ಥಾಪನೆ:</strong> ಭಾರತೀಯ ರಿಸರ್ವ್ ಬ್ಯಾಂಕ್ (RBI - 1935), ಫೆಡರಲ್ ಕೋರ್ಟ್ (1937), ಫೆಡರಲ್ ಮತ್ತು ಜಂಟಿ ಲೋಕಸೇವಾ ಆಯೋಗಗಳ ಸ್ಥಾಪನೆ.</li>
+                    <li><strong>ಬರ್ಮಾ ಮತ್ತು ಅಡೆನ್ ಬೇರ್ಪಡಿಕೆ:</strong> ಭಾರತದಿಂದ ಬರ್ಮಾ (ಮ್ಯಾನ್ಮಾರ್) ಅನ್ನು ಬೇರ್ಪಡಿಸಲಾಯಿತು ಹಾಗೂ ಒರಿಸ್ಸಾ ಮತ್ತು ಸಿಂಧ್ ಎಂಬ ಎರಡು ಹೊಸ ಪ್ರಾಂತ್ಯಗಳನ್ನು ರಚಿಸಲಾಯಿತು. ಶೇ. 10 ರಷ್ಟು ಜನರಿಗೆ ಮತದಾನದ ಹಕ್ಕು ಲಭಿಸಿತು.</li>
+                </ul>
+            </div>
+            <div class="act-visual-side">
+                <div>
+                    <h4 style="color: var(--crown-color); margin-bottom: 8px;">🎨 ದೃಶ್ಯ ಸಾರಾಂಶ (1935)</h4>
+                    <div class="svg-box">
+                        <svg viewBox="0 0 260 125" width="100%" height="125">
+                            <rect x="10" y="12" width="240" height="32" rx="6" fill="#dc2626"/>
+                            <text x="130" y="32" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">1935: 321 ವಿಧಿಗಳು | 10 ಅನುಸೂಚಿಗಳು</text>
+                            <rect x="10" y="54" width="75" height="55" rx="6" fill="#1e40af"/>
+                            <text x="47" y="85" fill="#fff" font-size="9" font-weight="bold" text-anchor="middle">RBI (1935)</text>
+                            <rect x="92" y="54" width="75" height="55" rx="6" fill="#9333ea"/>
+                            <text x="130" y="80" fill="#fff" font-size="8.5" font-weight="bold" text-anchor="middle">ಫೆಡರಲ್ ಕೋರ್ಟ್</text>
+                            <text x="130" y="94" fill="#fde047" font-size="8" text-anchor="middle">(1937)</text>
+                            <rect x="175" y="54" width="75" height="55" rx="6" fill="#16a34a"/>
+                            <text x="212" y="80" fill="#fff" font-size="8.5" font-weight="bold" text-anchor="middle">ಪ್ರಾಂತೀಯ</text>
+                            <text x="212" y="94" fill="#fff" font-size="8.5" text-anchor="middle">ಸ್ವಾಯತ್ತತೆ</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="tip-box">🎯 <strong>UPSC ಪಾಯಿಂಟ್:</strong> 1858ರಲ್ಲಿ ಸ್ಥಾಪನೆಯಾಗಿದ್ದ ಲಂಡನ್‌ನ 15 ಸದಸ್ಯರ 'ಭಾರತ ಮಂಡಳಿ'ಯನ್ನು (Council of India) ಈ ಕಾಯ್ದೆಯು ಸಂಪೂರ್ಣವಾಗಿ ರದ್ದುಪಡಿಸಿತು!</div>
+            </div>
+        </div>
+
+        <!-- Act 14: 1947 -->
+        <div class="act-full-card">
+            <div>
+                <div class="act-header-title">14. 1947 ರ ಭಾರತ ಸ್ವಾತಂತ್ರ್ಯ ಕಾಯ್ದೆ</div>
+                <div class="act-header-sub">ಮೌಂಟ್ ಬ್ಯಾಟನ್ ಯೋಜನೆ (ಜೂನ್ 3 ಯೋಜನೆ) ಆಧರಿಸಿ ಬ್ರಿಟಿಷ್ ಸಂಸತ್ತು ಅಂಗೀಕರಿಸಿದ ಕೊನೆಯ ಕಾಯ್ದೆ</div>
+                <ul class="act-points-list">
+                    <li><strong>ಬ್ರಿಟಿಷ್ ಆಳ್ವಿಕೆಯ ಅಂತ್ಯ:</strong> 1947ರ ಆಗಸ್ಟ್ 15 ರಂದು ಭಾರತವನ್ನು ಸ್ವತಂತ್ರ ಮತ್ತು ಸಾರ್ವಭೌಮ ರಾಷ್ಟ್ರವೆಂದು ಘೋಷಿಸಲಾಯಿತು.</li>
+                    <li><strong>ಎರಡು ಡೊಮಿನಿಯನ್‌ಗಳ ರಚನೆ:</strong> ಭಾರತ ಮತ್ತು ಪಾಕಿಸ್ತಾನ ಎಂಬ ಎರಡು ಸ್ವತಂತ್ರ ಡೊಮಿನಿಯನ್‌ಗಳನ್ನು ರಚಿಸಲಾಯಿತು (ಗಡಿ ಗುರುತಿಸಲು <strong>ಸರ್ ಸಿರಿಲ್ ರಾಡ್‌ಕ್ಲಿಫ್</strong> ಆಯೋಗ).</li>
+                    <li><strong>ವೈಸರಾಯ್ ಮತ್ತು ರಾಜ್ಯ ಕಾರ್ಯದರ್ಶಿ ಹುದ್ದೆ ರದ್ದು:</strong> ವೈಸರಾಯ್ ಹುದ್ದೆಯನ್ನು ರದ್ದುಪಡಿಸಿ, ಪ್ರತಿ ಡೊಮಿನಿಯನ್‌ಗೆ ಒಬ್ಬ 'ಗವರ್ನರ್ ಜನರಲ್' ನೇಮಿಸಲು ಅವಕಾಶ (ಕ್ಯಾಬಿನೆಟ್ ಸಲಹೆಯಂತೆ ಕಾರ್ಯನಿರ್ವಹಿಸುವ ಸಾಂವಿಧಾನಿಕ ಮುಖ್ಯಸ್ಥ).</li>
+                    <li><strong>ಸಂವಿಧಾನ ಸಭೆಗೆ ಸಂಪೂರ್ಣ ಸಾರ್ವಭೌಮತ್ವ:</strong> ಎರಡೂ ದೇಶಗಳ ಸಂವಿಧಾನ ಸಭೆಗಳಿಗೆ ತಮಗೆ ಬೇಕಾದ ಸಂವಿಧಾನ ರಚಿಸುವ ಮತ್ತು ಬ್ರಿಟಿಷ್ ಸಂಸತ್ತಿನ ಯಾವುದೇ ಕಾಯ್ದೆಯನ್ನು ರದ್ದುಪಡಿಸುವ ಸಂಪೂರ್ಣ ಅಧಿಕಾರ ನೀಡಲಾಯಿತು.</li>
+                    <li><strong>ಬ್ರಿಟಿಷ್ ಪರಮಾಧಿಕಾರದ ಅಂತ್ಯ (Lapse of Paramountcy):</strong> ದೇಶೀಯ ಸಂಸ್ಥಾನಗಳ ಮೇಲಿನ ಬ್ರಿಟಿಷ್ ಪರಮಾಧಿಕಾರ ಅಂತ್ಯಗೊಂಡು, ಭಾರತ ಅಥವಾ ಪಾಕಿಸ್ತಾನ ಸೇರಲು ಇಲ್ಲವೇ ಸ್ವತಂತ್ರವಾಗಿರಲು ಅವಕಾಶ ನೀಡಲಾಯಿತು.</li>
+                    <li><strong>ಚಕ್ರವರ್ತಿ ಬಿರುದು ರದ್ದು:</strong> ಬ್ರಿಟಿಷ್ ರಾಜನ ಹೆಸರಿನಲ್ಲಿದ್ದ 'ಭಾರತದ ಚಕ್ರವರ್ತಿ' (Emperor of India) ಎಂಬ ಬಿರುದನ್ನು ಕೈಬಿಡಲಾಯಿತು.</li>
+                </ul>
+            </div>
+            <div class="act-visual-side">
+                <div>
+                    <h4 style="color: var(--crown-color); margin-bottom: 8px;">🎨 ದೃಶ್ಯ ಸಾರಾಂಶ (1947)</h4>
+                    <div class="svg-box">
+                        <svg viewBox="0 0 260 125" width="100%" height="125">
+                            <rect x="20" y="20" width="220" height="85" rx="10" fill="#16a34a"/>
+                            <text x="130" y="50" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">🇮🇳 15 ಆಗಸ್ಟ್ 1947</text>
+                            <text x="130" y="72" fill="#fde047" font-size="10" font-weight="bold" text-anchor="middle">ಸಾರ್ವಭೌಮ ಸಂವಿಧಾನ ಸಭೆ</text>
+                            <text x="130" y="90" fill="#fff" font-size="9" text-anchor="middle">(ಮೌಂಟ್ ಬ್ಯಾಟನ್ ಯೋಜನೆ ಜಾರಿ)</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="tip-box">🎯 <strong>UPSC ಪಾಯಿಂಟ್:</strong> ಹೊಸ ಸಂವಿಧಾನ ಜಾರಿಗೆ ಬರುವವರೆಗೆ (26 ಜನವರಿ 1950) ಎರಡೂ ಡೊಮಿನಿಯನ್‌ಗಳು 1935ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆಯ ಅಡಿಯಲ್ಲೇ ಆಡಳಿತ ನಡೆಸಲು ಅವಕಾಶ ನೀಡಲಾಯಿತು.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISUAL COMPARISON SECTION (ALL STAGES PRE-OPENED) -->
+    <section class="section-card" id="secSim">
+        <div class="section-title">
+            <span>🎨 ದೃಶ್ಯ ಹೋಲಿಕೆ: ಕೇಂದ್ರೀಕರಣ vs ವಿಕೇಂದ್ರೀಕರಣ ಮತ್ತು ದ್ವಿಸರಕಾರ (ಎಲ್ಲಾ ಹಂತಗಳು ತೆರೆದಿವೆ)</span>
+            <span class="badge">ವೇಗವಾಗಿ ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ವಿಶೇಷ ಗ್ರಾಫಿಕ್ಸ್</span>
+        </div>
+
+        <h4 style="color: var(--primary); margin-bottom: 6px;">1. ಕೇಂದ್ರೀಕರಣ vs ವಿಕೇಂದ್ರೀಕರಣದ 5 ಐತಿಹಾಸಿಕ ಹಂತಗಳು (1773 – 1935):</h4>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px;">ಬಾಂಬೆ ಮತ್ತು ಮದ್ರಾಸ್ ಪ್ರಾಂತ್ಯಗಳ ಶಾಸನ ರಚನೆಯ ಅಧಿಕಾರ ಹೇಗೆ ಕೇಂದ್ರೀಕೃತವಾಯಿತು ಮತ್ತು ಮತ್ತೆ ಹೇಗೆ ವಿಕೇಂದ್ರೀಕೃತವಾಯಿತು ಎಂಬುದರ ಸಂಪೂರ್ಣ ಚಿತ್ರಣ:</p>
+
+        <div class="cent-stage-grid">
+            <!-- Stage 1 -->
+            <div class="cent-card">
+                <strong style="color: var(--company-color);">ಹಂತ 1: 1773 (ಆರಂಭ)</strong>
+                <div class="mini-bars">
+                    <div class="m-col"><div class="m-bar" style="height: 60px; background:#dc2626;">60%</div><small>ಕೇಂದ್ರ</small></div>
+                    <div class="m-col"><div class="m-bar" style="height: 40px; background:#2563eb;">40%</div><small>ಬಾಂಬೆ</small></div>
+                    <div class="m-col"><div class="m-bar" style="height: 40px; background:#16a34a;">40%</div><small>ಮದ್ರಾಸ್</small></div>
+                </div>
+                <p style="font-size: 0.82rem;">📌 ಬಾಂಬೆ ಮತ್ತು ಮದ್ರಾಸ್ ಗವರ್ನರ್‌ಗಳನ್ನು ಬಂಗಾಳದ ಗವರ್ನರ್ ಜನರಲ್ ಅಧೀನಕ್ಕೆ ತರುವ ಮೂಲಕ ಕೇಂದ್ರೀಕರಣ ಪ್ರಾರಂಭವಾಯಿತು.</p>
+            </div>
+
+            <!-- Stage 2 -->
+            <div class="cent-card">
+                <strong style="color: var(--danger);">ಹಂತ 2: 1833 (ತುತ್ತತುದಿ)</strong>
+                <div class="mini-bars">
+                    <div class="m-col"><div class="m-bar" style="height: 95px; background:#dc2626;">100%</div><small>ಕೇಂದ್ರ</small></div>
+                    <div class="m-col"><div class="m-bar" style="height: 14px; background:#2563eb;">0%</div><small>ಬಾಂಬೆ</small></div>
+                    <div class="m-col"><div class="m-bar" style="height: 14px; background:#16a34a;">0%</div><small>ಮದ್ರಾಸ್</small></div>
+                </div>
+                <p style="font-size: 0.82rem;">🔥 ಬಾಂಬೆ ಮತ್ತು ಮದ್ರಾಸ್ ಗವರ್ನರ್‌ಗಳ ಶಾಸನ ರಚನೆಯ ಅಧಿಕಾರವನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಕಸಿದುಕೊಳ್ಳಲಾಯಿತು (0%)!</p>
+            </div>
+
+            <!-- Stage 3 -->
+            <div class="cent-card">
+                <strong style="color: var(--success);">ಹಂತ 3: 1861 (ಮರುಸ್ಥಾಪನೆ)</strong>
+                <div class="mini-bars">
+                    <div class="m-col"><div class="m-bar" style="height: 68px; background:#dc2626;">70%</div><small>ಕೇಂದ್ರ</small></div>
+                    <div class="m-col"><div class="m-bar" style="height: 35px; background:#2563eb;">35%</div><small>ಬಾಂಬೆ</small></div>
+                    <div class="m-col"><div class="m-bar" style="height: 35px; background:#16a34a;">35%</div><small>ಮದ್ರಾಸ್</small></div>
+                </div>
+                <p style="font-size: 0.82rem;">🌱 ಬಾಂಬೆ ಮತ್ತು ಮದ್ರಾಸ್ ಪ್ರಾಂತ್ಯಗಳಿಗೆ ಶಾಸನ ರಚನೆಯ ಅಧಿಕಾರವನ್ನು ಮರಳಿ ನೀಡುವ ಮೂಲಕ 'ವಿಕೇಂದ್ರೀಕರಣ' ಪ್ರಾರಂಭವಾಯಿತು.</p>
+            </div>
+
+            <!-- Stage 4 -->
+            <div class="cent-card">
+                <strong style="color: var(--primary);">ಹಂತ 4: 1919 (ಸಡಿಲಿಕೆ)</strong>
+                <div class="mini-bars">
+                    <div class="m-col"><div class="m-bar" style="height: 50px; background:#dc2626;">50%</div><small>ಕೇಂದ್ರ</small></div>
+                    <div class="m-col"><div class="m-bar" style="height: 60px; background:#2563eb;">60%</div><small>ಬಾಂಬೆ</small></div>
+                    <div class="m-col"><div class="m-bar" style="height: 60px; background:#16a34a;">60%</div><small>ಮದ್ರಾಸ್</small></div>
+                </div>
+                <p style="font-size: 0.82rem;">⚖️ ಕೇಂದ್ರ ಮತ್ತು ಪ್ರಾಂತೀಯ ವಿಷಯಗಳನ್ನು ಬೇರ್ಪಡಿಸಿ, ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ ದ್ವಿಸರಕಾರ ಹಾಗೂ ಪ್ರತ್ಯೇಕ ಬಜೆಟ್ ನೀಡಲಾಯಿತು.</p>
+            </div>
+
+            <!-- Stage 5 -->
+            <div class="cent-card">
+                <strong style="color: var(--secondary);">ಹಂತ 5: 1935 (ಸ್ವಾಯತ್ತತೆ)</strong>
+                <div class="mini-bars">
+                    <div class="m-col"><div class="m-bar" style="height: 35px; background:#dc2626;">35%</div><small>ಕೇಂದ್ರ</small></div>
+                    <div class="m-col"><div class="m-bar" style="height: 90px; background:#2563eb;">95%</div><small>ಬಾಂಬೆ</small></div>
+                    <div class="m-col"><div class="m-bar" style="height: 90px; background:#16a34a;">95%</div><small>ಮದ್ರಾಸ್</small></div>
+                </div>
+                <p style="font-size: 0.82rem;">🏆 ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ ದ್ವಿಸರಕಾರ ರದ್ದುಪಡಿಸಿ ಸಂಪೂರ್ಣ ಶಾಸಕಾಂಗ ಮತ್ತು ಕಾರ್ಯಾಂಗ ಸ್ವಾಯತ್ತತೆ (Provincial Autonomy) ನೀಡಲಾಯಿತು!</p>
+            </div>
+        </div>
+
+        <!-- Dyarchy & Communal Electorate Box -->
+        <div class="grid-2" style="margin-top: 22px;">
+            <div class="info-box">
+                <h4>2. ದ್ವಿಸರಕಾರ ಪದ್ಧತಿ (Dyarchy - ಲಿಯೋನೆಲ್ ಕರ್ಟಿಸ್ ಜನಕ)</h4>
+                <p style="font-size: 0.88rem; margin-bottom: 10px;">1919ರಲ್ಲಿ ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ ಜಾರಿಗೆ ಬಂದ 'ದ್ವಿಸರಕಾರ' (1935ರಲ್ಲಿ ಕೇಂದ್ರಕ್ಕೆ ವರ್ಗಾವಣೆ) ಹೇಗೆ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿತ್ತು?</p>
+                <svg viewBox="0 0 400 185" width="100%" height="auto" style="background: var(--bg-card); border-radius: 10px; border: 1px solid var(--border);">
+                    <rect x="115" y="10" width="170" height="32" rx="6" fill="#1e40af"/>
+                    <text x="200" y="30" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">ಪ್ರಾಂತೀಯ ವಿಷಯಗಳು (1919)</text>
+                    <path d="M 160 42 L 95 75" stroke="#dc2626" stroke-width="2.5" class="animated-path"/>
+                    <path d="M 240 42 L 305 75" stroke="#16a34a" stroke-width="2.5" class="animated-path"/>
+                    <rect x="15" y="75" width="165" height="95" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+                    <text x="97" y="95" fill="#dc2626" font-size="11" font-weight="bold" text-anchor="middle">1. ಮೀಸಲು ವಿಷಯಗಳು (Reserved)</text>
+                    <text x="97" y="113" fill="#1e293b" font-size="9.5" text-anchor="middle">• ಹಣಕಾಸು, ಪೊಲೀಸ್, ಭೂಕಂದಾಯ, ನ್ಯಾಯ</text>
+                    <text x="97" y="130" fill="#1e293b" font-size="9.5" text-anchor="middle">• ಗವರ್ನರ್ + ಕಾರ್ಯಕಾರಿ ಮಂಡಳಿ ಆಡಳಿತ</text>
+                    <text x="97" y="148" fill="#dc2626" font-size="9.5" font-weight="bold" text-anchor="middle">❌ ಶಾಸಕಾಂಗಕ್ಕೆ ಜವಾಬ್ದಾರರಲ್ಲ!</text>
+                    <rect x="220" y="75" width="165" height="95" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+                    <text x="302" y="95" fill="#16a34a" font-size="11" font-weight="bold" text-anchor="middle">2. ವರ್ಗಾಯಿತ ವಿಷಯಗಳು (Transferred)</text>
+                    <text x="302" y="113" fill="#1e293b" font-size="9.5" text-anchor="middle">• ಶಿಕ್ಷಣ, ಆರೋಗ್ಯ, ಕೃಷಿ, ಸ್ಥಳೀಯ ಸಂಸ್ಥೆ</text>
+                    <text x="302" y="130" fill="#1e293b" font-size="9.5" text-anchor="middle">• ಗವರ್ನರ್ + ಭಾರತೀಯ ಮಂತ್ರಿಗಳ ಆಡಳಿತ</text>
+                    <text x="302" y="148" fill="#16a34a" font-size="9.5" font-weight="bold" text-anchor="middle">✅ ಶಾಸಕಾಂಗಕ್ಕೆ ಜವಾಬ್ದಾರರು!</text>
+                </svg>
+            </div>
+
+            <div class="info-box" style="border-left-color: var(--crown-color);">
+                <h4>🔥 ಕೋಮುವಾರು ಮತಕ್ಷೇತ್ರಗಳ ವಿಸ್ತರಣೆ (Separate Electorates Chain)</h4>
+                <p style="margin-bottom: 10px;">ಬ್ರಿಟಿಷರ 'ಒಡೆದು ಆಳುವ ನೀತಿ' (Divide and Rule) ಮೂರು ಹಂತಗಳಲ್ಲಿ ಹೇಗೆ ವಿಸ್ತರಣೆಯಾಯಿತು:</p>
+                <ul style="padding-left: 20px;">
+                    <li style="margin-bottom: 10px;"><strong>1909 ರ ಕಾಯ್ದೆ:</strong> ಮುಸ್ಲಿಮರಿಗೆ ಮಾತ್ರ ಪ್ರತ್ಯೇಕ ಮತಕ್ಷೇತ್ರ ನೀಡಲಾಯಿತು (ಜನಕ: ಲಾರ್ಡ್ ಮಿಂಟೋ).</li>
+                    <li style="margin-bottom: 10px;"><strong>1919 ರ ಕಾಯ್ದೆ:</strong> ಸಿಖ್ಖರು + ಭಾರತೀಯ ಕ್ರಿಶ್ಚಿಯನ್ನರು + ಆಂಗ್ಲೋ-ಇಂಡಿಯನ್ನರು + ಯುರೋಪಿಯನ್ನರಿಗೆ ವಿಸ್ತರಿಸಲಾಯಿತು.</li>
+                    <li><strong>1935 ರ ಕಾಯ್ದೆ:</strong> ದಲಿತರು (ಪರಿಶಿಷ್ಟ ಜಾತಿ - Depressed Classes) + ಮಹಿಳೆಯರು + ಕಾರ್ಮಿಕರಿಗೆ ವಿಸ್ತರಿಸಲಾಯಿತು (1932ರ ರಾಮ್ಸೆ ಮ್ಯಾಕ್‌ಡೊನಾಲ್ಡ್ ಅವರ ಕಮ್ಯುನಲ್ ಅವಾರ್ಡ್ ಆಧಾರದಲ್ಲಿ).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. KEY FACTS, FIRST PERSONALITIES (ALL PRE-OPENED) -->
+    <section class="section-card" id="sec4">
+        <div class="section-title">
+            <span>4. ಪ್ರಮುಖ ವ್ಯಕ್ತಿಗಳು, ಮೊದಲ ಹುದ್ದೆಗಳು ಮತ್ತು ತಾಂತ್ರಿಕ ಮಾಹಿತಿ (ಎಲ್ಲವೂ ನೇರವಾಗಿ ತೆರೆದಿವೆ)</span>
+            <span class="badge">ಹಂತ 4 - ಪರೀಕ್ಷಾ ಪ್ರಮುಖರು</span>
+        </div>
+
+        <div class="grid-3">
+            <div class="person-card">
+                <div class="person-role">1. ಬಂಗಾಳದ ಮೊದಲ ಗವರ್ನರ್ ಜನರಲ್ (1773)</div>
+                <div class="person-name">ಲಾರ್ಡ್ ವಾರನ್ ಹೇಸ್ಟಿಂಗ್ಸ್ (Warren Hastings)</div>
+                <p style="font-size: 0.9rem;">1773ರ ರೆಗ್ಯುಲೇಟಿಂಗ್ ಕಾಯ್ದೆಯಡಿ ನೇಮಕ. (ಬಂಗಾಳದ ಮೊದಲ ಗವರ್ನರ್: <strong>ರಾಬರ್ಟ್ ಕ್ಲೈವ್</strong>).</p>
+            </div>
+
+            <div class="person-card">
+                <div class="person-role">2. ಭಾರತದ ಮೊದಲ ಗವರ್ನರ್ ಜನರಲ್ (1833)</div>
+                <div class="person-name">ಲಾರ್ಡ್ ವಿಲಿಯಂ ಬೆಂಟಿಂಕ್ (Lord William Bentinck)</div>
+                <p style="font-size: 0.9rem;">1833ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆಯಡಿ ಬಂಗಾಳದ ಗವರ್ನರ್ ಜನರಲ್ ಹುದ್ದೆಯು 'ಭಾರತದ ಗವರ್ನರ್ ಜನರಲ್' ಆಯಿತು.</p>
+            </div>
+
+            <div class="person-card">
+                <div class="person-role">3. ಭಾರತದ ಮೊದಲ ವೈಸರಾಯ್ (1858)</div>
+                <div class="person-name">ಲಾರ್ಡ್ ಕ್ಯಾನಿಂಗ್ (Lord Canning)</div>
+                <p style="font-size: 0.9rem;">ಕಂಪನಿಯ ಕೊನೆಯ ಗವರ್ನರ್ ಜನರಲ್ ಮತ್ತು ಬ್ರಿಟಿಷ್ ಕಿರೀಟದಡಿ ಭಾರತದ ಮೊದಲ ವೈಸರಾಯ್.</p>
+            </div>
+
+            <div class="person-card">
+                <div class="person-role">4. ವೈಸರಾಯ್ ಕಾರ್ಯಕಾರಿ ಮಂಡಳಿಯ ಮೊದಲ ಭಾರತೀಯ (1909)</div>
+                <div class="person-name">ಸತ್ಯೇಂದ್ರ ಪ್ರಸಾದ್ ಸಿನ್ಹಾ (S.P. Sinha)</div>
+                <p style="font-size: 0.9rem;">1909ರ ಮಾರ್ಲೆ-ಮಿಂಟೋ ಕಾಯ್ದೆಯಡಿ 'ಕಾನೂನು ಸದಸ್ಯರಾಗಿ' (Law Member) ನೇಮಕಗೊಂಡರು.</p>
+            </div>
+
+            <div class="person-card">
+                <div class="person-role">5. 1774ರ ಕಲ್ಕತ್ತಾ ಸುಪ್ರೀಂ ಕೋರ್ಟ್‌ನ ಮೊದಲ ಮುಖ್ಯ ನ್ಯಾಯಾಧೀಶರು</div>
+                <div class="person-name">ಸರ್ ಎಲಿಜಾ ಇಂಪೇ (Sir Elijah Impey)</div>
+                <p style="font-size: 0.9rem;">ಮತ್ತಿತರ 3 ನ್ಯಾಯಾಧೀಶರು: ಚೇಂಬರ್ಸ್, ಲಿಮೆಸ್ಟರ್ ಮತ್ತು ಹೈಡ್.</p>
+            </div>
+
+            <div class="person-card">
+                <div class="person-role">6. ಸ್ವತಂತ್ರ ಭಾರತದ ಮೊದಲ ಮತ್ತು ಕೊನೆಯ ಗವರ್ನರ್ ಜನರಲ್ (1947)</div>
+                <div class="person-name">ಮೌಂಟ್ ಬ್ಯಾಟನ್ & ಸಿ. ರಾಜಗೋಪಾಲಾಚಾರಿ</div>
+                <p style="font-size: 0.9rem;"><strong>ಮೊದಲನೆಯವರು:</strong> ಲಾರ್ಡ್ ಮೌಂಟ್ ಬ್ಯಾಟನ್ | <strong>ಮೊದಲ ಮತ್ತು ಕೊನೆಯ ಭಾರತೀಯ:</strong> ಸಿ. ರಾಜಗೋಪಾಲಾಚಾರಿ (ರಾಜಾಜಿ).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. COMPARISON TABLE -->
+    <section class="section-card" id="sec5">
+        <div class="section-title">
+            <span>5. ತುಲನಾತ್ಮಕ ಮಾಸ್ಟರ್ ಕೋಷ್ಟಕ (Master Comparison Table)</span>
+            <span class="badge">ಹಂತ 5 - ಗೊಂದಲ ನಿವಾರಣೆ</span>
+        </div>
+
+        <h4 style="margin-bottom: 10px; color: var(--secondary);">📊 ಟೇಬಲ್ 1: ನಾಲ್ಕು ಚಾರ್ಟರ್ ಕಾಯ್ದೆಗಳ (Charter Acts) ತುಲನಾತ್ಮಕ ವ್ಯತ್ಯಾಸ:</h4>
+        <div class="table-wrap" style="margin-bottom: 24px;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ಮಾನದಂಡ</th>
+                        <th>1793 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ</th>
+                        <th>1813 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ</th>
+                        <th>1833 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ (St. Helena Act)</th>
+                        <th>1853 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ಕಂಪನಿಯ ವ್ಯಾಪಾರ ಏಕಸ್ವಾಮ್ಯ</strong></td>
+                        <td>ಮುಂದಿನ 20 ವರ್ಷಗಳವರೆಗೆ ವಿಸ್ತರಿಸಲಾಯಿತು.</td>
+                        <td>ಭಾರತದೊಂದಿಗಿನ ವ್ಯಾಪಾರ ಏಕಸ್ವಾಮ್ಯ ರದ್ದು (<strong>ಚಹಾ ಮತ್ತು ಚೀನಾ ವ್ಯಾಪಾರ ಮಾತ್ರ ಉಳಿಯಿತು</strong>).</td>
+                        <td>ಚಹಾ ಮತ್ತು ಚೀನಾ ವ್ಯಾಪಾರವೂ ಸೇರಿದಂತೆ <strong>ಸಂಪೂರ್ಣ ವ್ಯಾಪಾರ ಚಟುವಟಿಕೆ ಅಂತ್ಯ!</strong> ಕಂಪನಿಯು ಕೇವಲ ಆಡಳಿತ ಸಂಸ್ಥೆಯಾಯಿತು.</td>
+                        <td>ನಿರ್ದಿಷ್ಟ 20 ವರ್ಷಗಳ ಕಾಲಮಿತಿಯನ್ನು ನೀಡದೆ, ಸಂಸತ್ತು ಬಯಸುವವರೆಗೆ ಆಳ್ವಿಕೆಗೆ ಅವಕಾಶ.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ಗವರ್ನರ್ ಜನರಲ್ ಅಧಿಕಾರ</strong></td>
+                        <td>ಮಂಡಳಿಯ ನಿರ್ಧಾರ ತಿರಸ್ಕರಿಸುವ (Overriding) ಅಧಿಕಾರ ಎಲ್ಲಾ ಭವಿಷ್ಯದ ಗವರ್ನರ್ ಜನರಲ್‌ಗಳಿಗೆ ವಿಸ್ತರಣೆ.</td>
+                        <td>ಸ್ಥಳೀಯ ಸರ್ಕಾರಗಳಿಗೆ ಜನರ ಮೇಲೆ ತೆರಿಗೆ ವಿಧಿಸುವ ಅಧಿಕಾರ ನೀಡಲಾಯಿತು.</td>
+                        <td>ಬಂಗಾಳದ ಗವರ್ನರ್ ಜನರಲ್ ➔ <strong>'ಭಾರತದ ಗವರ್ನರ್ ಜನರಲ್'</strong> ಆದರು (ವಿಲಿಯಂ ಬೆಂಟಿಂಕ್).</td>
+                        <td>ಗವರ್ನರ್ ಜನರಲ್ ಅವರ <strong>ಕಾರ್ಯಾಂಗ ಮತ್ತು ಶಾಸಕಾಂಗ</strong> ಕಾರ್ಯಗಳನ್ನು ಮೊದಲ ಬಾರಿಗೆ ಬೇರ್ಪಡಿಸಲಾಯಿತು!</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ಪ್ರಮುಖ ವಿಶೇಷತೆ</strong></td>
+                        <td>ಬೋರ್ಡ್ ಆಫ್ ಕಂಟ್ರೋಲ್ ಸದಸ್ಯರ ವೇತನವನ್ನು ಭಾರತದ ಬೊಕ್ಕಸದಿಂದಲೇ ನೀಡಲು ಆರಂಭ (1919ರವರೆಗೆ ನಡೆಯಿತು).</td>
+                        <td>1. ಶಿಕ್ಷಣಕ್ಕಾಗಿ ವಾರ್ಷಿಕ <strong>1 ಲಕ್ಷ ರೂ.</strong> ಮೀಸಲು.<br>2. ಕ್ರಿಶ್ಚಿಯನ್ ಮಿಷನರಿಗಳಿಗೆ ಧರ್ಮ ಪ್ರಚಾರಕ್ಕೆ ಅನುಮತಿ.</td>
+                        <td>1. <strong>ಮೊದಲ ಕಾನೂನು ಆಯೋಗ (1834 - ಲಾರ್ಡ್ ಮೆಕಾಲೆ)</strong>.<br>2. ದಾಸ್ಯ ಪದ್ಧತಿ ರದ್ದು (1843ರಲ್ಲಿ ಜಾರಿ).<br>3. ನಾಗರಿಕ ಸೇವೆಗೆ ಮುಕ್ತ ಸ್ಪರ್ಧೆಯ ಪ್ರಯತ್ನ (ವಿಫಲ).</td>
+                        <td>1. <strong>ICS ಪರೀಕ್ಷೆಗೆ ಮುಕ್ತ ಸ್ಪರ್ಧೆ ಜಾರಿ</strong> (1854 ಮೆಕಾಲೆ ಸಮಿತಿ).<br>2. 6 ಸದಸ್ಯರ 'ಕೇಂದ್ರ ವಿಧಾನ ಪರಿಷತ್' (ಮಿನಿ ಸಂಸತ್ತು - 4 ಸ್ಥಳೀಯ ಪ್ರತಿನಿಧಿಗಳು).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 style="margin-bottom: 10px; color: var(--secondary);">📊 ಟೇಬಲ್ 2: ಪರಿಷತ್ ಮತ್ತು ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆಗಳ (1861 – 1935) ತುಲನೆ:</h4>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ಮಾನದಂಡ</th>
+                        <th>1861 ರ ಕಾಯ್ದೆ</th>
+                        <th>1892 ರ ಕಾಯ್ದೆ</th>
+                        <th>1909 (ಮಾರ್ಲೆ-ಮಿಂಟೋ)</th>
+                        <th>1919 (ಮಾಂಟೆಗ್ಯೂ-ಚೆಮ್ಸ್‌‌ಫರ್ಡ್)</th>
+                        <th>1935 ರ ಕಾಯ್ದೆ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ಶಾಸಕಾಂಗದಲ್ಲಿ ಭಾರತೀಯರು</strong></td>
+                        <td>ಕಾನೂನು ರಚನೆಯಲ್ಲಿ ಮೊದಲ ಬಾರಿಗೆ 3 ಭಾರತೀಯರ ನಾಮನಿರ್ದೇಶನ (ಬನಾರಸ್ ರಾಜ, ಪಟಿಯಾಲ ಮಹಾರಾಜ, ಸರ್ ದಿನಕರ್ ರಾವ್).</td>
+                        <td>ಅಧಿಕೃತೇತರ (Non-official) ಸದಸ್ಯರ ಸಂಖ್ಯೆ ಹೆಚ್ಚಳ; ಪರೋಕ್ಷ ಚುನಾವಣೆಯ ಪದ ಬಳಸದೆ ಚುನಾವಣಾ ತತ್ವ ಜಾರಿ.</td>
+                        <td>ಕೇಂದ್ರ ಶಾಸಕಾಂಗದ ಸದಸ್ಯರ ಸಂಖ್ಯೆ <strong>16 ರಿಂದ 60 ಕ್ಕೆ</strong> ಏರಿಕೆ; ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ ಅಧಿಕೃತೇತರ ಬಹುಮತಕ್ಕೆ ಅವಕಾಶ.</td>
+                        <td>ಕೇಂದ್ರದಲ್ಲಿ ಮೊದಲ ಬಾರಿಗೆ <strong>ದ್ವಿಸದನ ಶಾಸಕಾಂಗ (Bicameralism)</strong> ಮತ್ತು ನೇರ ಚುನಾವಣೆ ಆರಂಭ.</td>
+                        <td>11 ರಲ್ಲಿ <strong>6 ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ ದ್ವಿಸದನ ಶಾಸಕಾಂಗ</strong> (ಬಂಗಾಳ, ಬಾಂಬೆ, ಮದ್ರಾಸ್, ಬಿಹಾರ, ಅಸ್ಸಾಂ, ಸಂಯುಕ್ತ ಪ್ರಾಂತ್ಯ).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ಬಜೆಟ್ ಮೇಲಿನ ಹಕ್ಕು</strong></td>
+                        <td>ಬಜೆಟ್ ಚರ್ಚಿಸುವ ಯಾವುದೇ ಅಧಿಕಾರ ಇರಲಿಲ್ಲ.</td>
+                        <td>ಮೊದಲ ಬಾರಿಗೆ <strong>ಬಜೆಟ್ ಚರ್ಚಿಸುವ ಮತ್ತು ಪ್ರಶ್ನೆ ಕೇಳುವ</strong> ಅಧಿಕಾರ (ಪೂರಕ ಪ್ರಶ್ನೆ ಮತ್ತು ಮತದಾನದ ಹಕ್ಕು ಇರಲಿಲ್ಲ).</td>
+                        <td><strong>ಪೂರಕ ಪ್ರಶ್ನೆ (Supplementary Questions)</strong> ಕೇಳುವ ಮತ್ತು ಬಜೆಟ್ ಮೇಲೆ ನಿರ್ಣಯ ಮಂಡಿಸುವ ಹಕ್ಕು.</td>
+                        <td><strong>ಕೇಂದ್ರ ಬಜೆಟ್‌ನಿಂದ ಪ್ರಾಂತೀಯ ಬಜೆಟ್ ಅನ್ನು ಬೇರ್ಪಡಿಸಲಾಯಿತು!</strong> (1924 ರಲ್ಲಿ ಆಕ್ವರ್ತ್ ಸಮಿತಿಯಂತೆ ರೈಲ್ವೆ ಬಜೆಟ್ ಪ್ರತ್ಯೇಕ).</td>
+                        <td>ಶೇ. 80 ರಷ್ಟು ಬಜೆಟ್ ಇನ್ನೂ ಮತದಾನಕ್ಕೆ ಒಳಪಡುತ್ತಿರಲಿಲ್ಲ.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ಆಡಳಿತಾತ್ಮಕ ಬದಲಾವಣೆ</strong></td>
+                        <td>1. <strong>ಪೋರ್ಟ್‌ಫೋಲಿಯೊ ಪದ್ಧತಿ (ಖಾತೆ ಹಂಚಿಕೆ)</strong>.<br>2. ವೈಸರಾಯ್‌ಗೆ <strong>ಸುಗ್ರೀವಾಜ್ಞೆ (Ordinance - 6 ತಿಂಗಳು)</strong> ಅಧಿಕಾರ.</td>
+                        <td>ಪ್ರಾತಿನಿಧ್ಯ ಸರ್ಕಾರದ ಆರಂಭಿಕ ಬೀಜ.</td>
+                        <td>ವೈಸರಾಯ್ ಕಾರ್ಯಕಾರಿ ಮಂಡಳಿಗೆ ಮೊದಲ ಭಾರತೀಯ (ಎಸ್.ಪಿ. ಸಿನ್ಹಾ) ಸೇರ್ಪಡೆ.</td>
+                        <td>1. ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ <strong>ದ್ವಿಸರಕಾರ (Dyarchy)</strong>.<br>2. ಕೇಂದ್ರ ಲೋಕಸೇವಾ ಆಯೋಗ (1926 - ಲೀ ಆಯೋಗ).<br>3. ಲಂಡನ್‌ನಲ್ಲಿ ಹೈಕಮಿಷನರ್ ಹುದ್ದೆ.</td>
+                        <td>1. ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ ದ್ವಿಸರಕಾರ ರದ್ದು (ಪ್ರಾಂತೀಯ ಸ್ವಾಯತ್ತತೆ) ಮತ್ತು ಕೇಂದ್ರದಲ್ಲಿ ದ್ವಿಸರಕಾರ.<br>2. <strong>RBI (1935) ಮತ್ತು ಫೆಡರಲ್ ಕೋರ್ಟ್ (1937)</strong> ಸ್ಥಾಪನೆ.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 6. UPSC GOLDEN POINTS & EXAM TRAPS -->
+    <section class="section-card" id="sec6">
+        <div class="section-title">
+            <span>6. ಪರೀಕ್ಷಾ ದೃಷ್ಟಿಕೋನದ 'ಗೋಲ್ಡನ್ ಪಾಯಿಂಟ್ಸ್' (UPSC Exam Traps & High-Yield Facts)</span>
+            <span class="badge">ಹಂತ 6 - ತಪ್ಪುಗಳನ್ನು ತಪ್ಪಿಸಿ!</span>
+        </div>
+        <div class="grid-3">
+            <div class="info-box" style="border-left-color: var(--danger);">
+                <h4>🚨 UPSC ಟ್ರ್ಯಾಪ್ 1: 'Regulations' vs 'Acts'</h4>
+                <p><strong>1833ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆಗೂ</strong> ಹಿಂದೆ ಜಾರಿಗೆ ಬಂದ ಕಾನೂನುಗಳನ್ನು <strong>'ನಿಬಂಧನೆಗಳು' (Regulations)</strong> ಎಂದು ಕರೆಯಲಾಗುತ್ತಿತ್ತು. 1833ರ ಕಾಯ್ದೆಯಿಂದ ಜಾರಿಗೆ ಬಂದ ಕಾನೂನುಗಳನ್ನು ಮೊದಲ ಬಾರಿಗೆ <strong>'ಕಾಯ್ದೆಗಳು' (Acts)</strong> ಎಂದು ಕರೆಯಲಾಯಿತು!</p>
+            </div>
+            <div class="info-box" style="border-left-color: var(--danger);">
+                <h4>🚨 UPSC ಟ್ರ್ಯಾಪ್ 2: ಶ್ರೇಷ್ಠ ಅಧಿಕಾರಗಳು (Residual Powers - 1935)</h4>
+                <p>ಇಂದಿನ ಭಾರತ ಸಂವಿಧಾನದಲ್ಲಿ ಶ್ರೇಷ್ಠ ಅಧಿಕಾರಗಳು (Residuary Powers) ಕೇಂದ್ರ ಸರ್ಕಾರದ ಬಳಿ ಇವೆ. ಆದರೆ <strong>1935ರ ಕಾಯ್ದೆಯಲ್ಲಿ ಶ್ರೇಷ್ಠ ಅಧಿಕಾರಗಳನ್ನು ಕೇಂದ್ರಕ್ಕೂ ನೀಡಲಿಲ್ಲ, ಪ್ರಾಂತ್ಯಗಳಿಗೂ ನೀಡಲಿಲ್ಲ; ಬದಲಿಗೆ 'ವೈಸರಾಯ್'ಗೆ (ಗವರ್ನರ್ ಜನರಲ್) ನೀಡಲಾಗಿತ್ತು!</strong> (UPSC ಯಲ್ಲಿ 3 ಬಾರಿ ಕೇಳಲಾದ ಪ್ರಶ್ನೆ).</p>
+            </div>
+            <div class="info-box" style="border-left-color: var(--danger);">
+                <h4>🚨 UPSC ಟ್ರ್ಯಾಪ್ 3: ಆಲ್ ಇಂಡಿಯಾ ಫೆಡರೇಷನ್ (1935)</h4>
+                <p>1935ರ ಕಾಯ್ದೆಯು ಪ್ರಾಂತ್ಯಗಳು ಮತ್ತು ದೇಶೀಯ ಸಂಸ್ಥಾನಗಳನ್ನು ಒಳಗೊಂಡ <strong>'ಅಖಿಲ ಭಾರತ ಒಕ್ಕೂಟ' (All-India Federation)</strong> ಸ್ಥಾಪಿಸಲು ಸೂಚಿಸಿತ್ತು. ಆದರೆ ದೇಶೀಯ ಸಂಸ್ಥಾನಗಳು (Princely States) ಸೇರಲು ನಿರಾಕರಿಸಿದ್ದರಿಂದ ಈ ಒಕ್ಕೂಟವು <strong>ಎಂದಿಗೂ ಜಾರಿಗೆ ಬರಲೇ ಇಲ್ಲ!</strong></p>
+            </div>
+            <div class="info-box" style="border-left-color: var(--success);">
+                <h4>💎 ಟ್ರ್ಯಾಪ್ 4: ICS ಪರೀಕ್ಷೆ (1833 vs 1853)</h4>
+                <p>ನಾಗರಿಕ ಸೇವಾ ಪರೀಕ್ಷೆಗಳಿಗೆ (Civil Services) ಮುಕ್ತ ಸ್ಪರ್ಧೆಯನ್ನು ಪರಿಚಯಿಸಲು <strong>1833ರಲ್ಲಿ ಪ್ರಯತ್ನಿಸಲಾಯಿತು</strong> (ಕೋರ್ಟ್ ಆಫ್ ಡೈರೆಕ್ಟರ್ಸ್ ವಿರೋಧದಿಂದ ರದ್ದಾಯಿತು). ಕೊನೆಗೆ <strong>1853ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆಯ ಮೂಲಕವೇ</strong> ಮುಕ್ತ ಸ್ಪರ್ಧಾತ್ಮಕ ಪರೀಕ್ಷೆ ಜಾರಿಯಾಯಿತು (ಮೊದಲ ಭಾರತೀಯ ICS ಅಧಿಕಾರಿ: <strong>ಸತ್ಯೇಂದ್ರನಾಥ ಟ್ಯಾಗೋರ್ - 1864</strong>).</p>
+            </div>
+            <div class="info-box" style="border-left-color: var(--success);">
+                <h4>💎 ಟ್ರ್ಯಾಪ್ 5: ಕಲ್ಕತ್ತಾ ಸುಪ್ರೀಂ ಕೋರ್ಟ್ vs ಫೆಡರಲ್ ಕೋರ್ಟ್</h4>
+                <p>• <strong>1773ರ ಕಾಯ್ದೆಯಡಿ (1774ರಲ್ಲಿ ಸ್ಥಾಪನೆ):</strong> ಕಲ್ಕತ್ತಾದ ಫೋರ್ಟ್ ವಿಲಿಯಂನಲ್ಲಿ ಸುಪ್ರೀಂ ಕೋರ್ಟ್ ಸ್ಥಾಪನೆಯಾಯಿತು.<br>
+                • <strong>1935ರ ಕಾಯ್ದೆಯಡಿ (1937ರಲ್ಲಿ ಸ್ಥಾಪನೆ):</strong> ದೆಹಲಿಯಲ್ಲಿ <strong>ಫೆಡರಲ್ ಕೋರ್ಟ್ (Federal Court)</strong> ಸ್ಥಾಪನೆಯಾಯಿತು (ಇದೇ 1950ರ ಜನವರಿ 28ರಂದು ಇಂದಿನ ಭಾರತದ ಸುಪ್ರೀಂ ಕೋರ್ಟ್ ಆಯಿತು!).</p>
+            </div>
+            <div class="info-box" style="border-left-color: var(--company-color);">
+                <h4>💬 ಪ್ರಸಿದ್ಧ ಐತಿಹಾಸಿಕ ಹೇಳಿಕೆಗಳು (Famous Quotes)</h4>
+                <p>• <strong>ಜವಾಹರಲಾಲ್ ನೆಹರು (1935ರ ಕಾಯ್ದೆ ಬಗ್ಗೆ):</strong> <em>"ಇದೊಂದು ಗುಲಾಮಗಿರಿಯ ಹೊಸ ಸನ್ನದು (New Charter of Slavery); ಬ್ರೇಕ್‌ಗಳೇ ತುಂಬಿರುವ ಆದರೆ ಇಂಜಿನ್ ಇಲ್ಲದ ಕಾರು (A machine with all brakes, no engine)."</em><br>
+                • <strong>ಕೆ.ಎಂ. ಮುನ್ಷಿ (1909ರ ಕಾಯ್ದೆ ಬಗ್ಗೆ):</strong> <em>"ಇದು ಉದಯಿಸುತ್ತಿರುವ ಪ್ರಜಾಪ್ರಭುತ್ವವನ್ನು ಕೊಂದಿತು."</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. MIND MAP (ALL PRE-OPENED) -->
+    <section class="section-card" id="sec7">
+        <div class="section-title">
+            <span>7. ಮೈಂಡ್ ಮ್ಯಾಪ್ ಮತ್ತು ಫ್ಲೋಚಾರ್ಟ್ (ಎಲ್ಲಾ ಶಾಖೆಗಳು ಮೊದಲೇ ತೆರೆದಿವೆ)</span>
+            <span class="badge">ಹಂತ 7 - ಸಂಸ್ಥೆಗಳ ವಿಕಾಸ</span>
+        </div>
+
+        <div class="mindmap-box">
+            <h4>🏛️ 1. ಸಂಸದೀಯ ವ್ಯವಸ್ಥೆ ಮತ್ತು ಶಾಸಕಾಂಗದ ವಿಕಾಸ (Legislature Evolution)</h4>
+            <ul>
+                <li><strong>1853:</strong> ಕಾರ್ಯಕಾರಿ ಮತ್ತು ಶಾಸಕಾಂಗ ಬೇರ್ಪಡಿಕೆ ➔ 6 ಸದಸ್ಯರ ಕೇಂದ್ರ ವಿಧಾನ ಪರಿಷತ್ (ಮಿನಿ ಸಂಸತ್ತು).</li>
+                <li><strong>1861:</strong> ಶಾಸಕಾಂಗದಲ್ಲಿ ಮೊದಲ ಬಾರಿಗೆ 3 ಭಾರತೀಯರ ಸೇರ್ಪಡೆ + ಪ್ರಾಂತ್ಯಗಳಿಗೆ ಶಾಸನ ಅಧಿಕಾರ ವಾಪಸ್.</li>
+                <li><strong>1892:</strong> ಬಜೆಟ್ ಚರ್ಚೆ + ಪರೋಕ್ಷ ಚುನಾವಣೆ ಆರಂಭ.</li>
+                <li><strong>1909:</strong> ಪೂರಕ ಪ್ರಶ್ನೆ ಕೇಳುವ ಹಕ್ಕು + ಸದಸ್ಯರ ಸಂಖ್ಯೆ 16 ರಿಂದ 60ಕ್ಕೆ ಏರಿಕೆ.</li>
+                <li><strong>1919:</strong> ಕೇಂದ್ರದಲ್ಲಿ ದ್ವಿಸದನ ಪದ್ಧತಿ (ಲೋಕಸಭೆ ಮತ್ತು ರಾಜ್ಯಸಭೆಯ ಪೂರ್ವಜ) + ನೇರ ಚುನಾವಣೆ.</li>
+                <li><strong>1935:</strong> 6 ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ ದ್ವಿಸದನ ಪದ್ಧತಿ + ಕೇಂದ್ರ, ರಾಜ್ಯ ಮತ್ತು ಸಮವರ್ತಿ ಪಟ್ಟಿಗಳ ವಿಭಜನೆ.</li>
+            </ul>
+        </div>
+
+        <div class="mindmap-box">
+            <h4>👔 2. ಕಾರ್ಯಾಂಗ ಮತ್ತು ಕ್ಯಾಬಿನೆಟ್ ಪದ್ಧತಿಯ ವಿಕಾಸ (Executive Evolution)</h4>
+            <ul>
+                <li><strong>1773:</strong> ಬಂಗಾಳದ ಗವರ್ನರ್ ➔ ಬಂಗಾಳದ ಗವರ್ನರ್ ಜನರಲ್ (ವಾರನ್ ಹೇಸ್ಟಿಂಗ್ಸ್) + 4 ಸದಸ್ಯರ ಕಾರ್ಯಕಾರಿ ಮಂಡಳಿ.</li>
+                <li><strong>1784:</strong> ವಾಣಿಜ್ಯ (Court of Directors) ಮತ್ತು ರಾಜಕೀಯ (Board of Control) ಕಾರ್ಯಗಳ ವಿಭಜನೆ.</li>
+                <li><strong>1833:</strong> ಬಂಗಾಳದ ಗವರ್ನರ್ ಜನರಲ್ ➔ ಭಾರತದ ಗವರ್ನರ್ ಜನರಲ್ (ವಿಲಿಯಂ ಬೆಂಟಿಂಕ್).</li>
+                <li><strong>1858:</strong> ಭಾರತದ ಗವರ್ನರ್ ಜನರಲ್ ➔ ಭಾರತದ ವೈಸರಾಯ್ (ಲಾರ್ಡ್ ಕ್ಯಾನಿಂಗ್) + ಭಾರತದ ರಾಜ್ಯ ಕಾರ್ಯದರ್ಶಿ (Secretary of State).</li>
+                <li><strong>1861:</strong> ಲಾರ್ಡ್ ಕ್ಯಾನಿಂಗ್ ಅವರಿಂದ <strong>ಪೋರ್ಟ್‌ಫೋಲಿಯೊ ಪದ್ಧತಿ (ಇಂದಿನ ಮಂತ್ರಿಮಂಡಲದ ಖಾತೆ ಹಂಚಿಕೆಯ ಮೂಲ)</strong> ಮತ್ತು ಸುಗ್ರೀವಾಜ್ಞೆ (Ordinance) ಅಧಿಕಾರ.</li>
+            </ul>
+        </div>
+
+        <div class="mindmap-box" style="margin-bottom: 0;">
+            <h4>⚖️ 3. ನ್ಯಾಯಾಂಗ ಮತ್ತು ಲೋಕಸೇವಾ ಆಯೋಗದ ವಿಕಾಸ (Judiciary & UPSC Evolution)</h4>
+            <ul>
+                <li><strong>1773 (1774):</strong> ಕಲ್ಕತ್ತಾದಲ್ಲಿ ಸುಪ್ರೀಂ ಕೋರ್ಟ್ ಸ್ಥಾಪನೆ (1781ರ ಕಾಯ್ದೆಯಿಂದ ಅದರ ವ್ಯಾಪ್ತಿ ಸ್ಪಷ್ಟೀಕರಣ).</li>
+                <li><strong>1833 (1834):</strong> ಲಾರ್ಡ್ ಮೆಕಾಲೆ ಅಧ್ಯಕ್ಷತೆಯಲ್ಲಿ ಮೊದಲ ಕಾನೂನು ಆಯೋಗ (IPC ಮತ್ತು CrPC ರಚನೆಗೆ ಬುನಾದಿ).</li>
+                <li><strong>1853 (1854):</strong> ICS ಮುಕ್ತ ಸ್ಪರ್ಧಾತ್ಮಕ ಪರೀಕ್ಷೆ ಆರಂಭ (ಮೆಕಾಲೆ ಸಮಿತಿ).</li>
+                <li><strong>1919 (1926):</strong> ಲೀ ಆಯೋಗದ (Lee Commission) ಶಿಫಾರಸಿನಂತೆ 1926ರಲ್ಲಿ ಕೇಂದ್ರ ಲೋಕಸೇವಾ ಆಯೋಗ (CPSC) ಸ್ಥಾಪನೆ.</li>
+                <li><strong>1935 (1937):</strong> ಫೆಡರಲ್ ಪಬ್ಲಿಕ್ ಸರ್ವಿಸ್ ಕಮಿಷನ್ (FPSC ➔ ಇಂದಿನ UPSC) ಮತ್ತು ಫೆಡರಲ್ ಕೋರ್ಟ್ ಸ್ಥಾಪನೆ.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 8. MEMORY TRICKS / MNEMONICS -->
+    <section class="section-card" id="sec8">
+        <div class="section-title">
+            <span>8. ನೆನಪಿಟ್ಟುಕೊಳ್ಳಲು ಸೂಪರ್ ತಂತ್ರಗಳು (Memory Tricks / Mnemonics)</span>
+            <span class="badge">ಹಂತ 8 - ಪರೀಕ್ಷಾ ಶಾರ್ಟ್‌ಕಟ್ಸ್</span>
+        </div>
+        <div class="grid-3">
+            <div class="info-box">
+                <h4>🧠 ಟ್ರಿಕ್ 1: ಗವರ್ನರ್ ಜನರಲ್ ಮತ್ತು ವೈಸರಾಯ್ ಸರಣಿ ("R - W - B - C - M - R")</h4>
+                <p><strong>ಕೋಡ್ ವಾಕ್ಯ:</strong> <em>"<strong>R</strong>obert <strong>W</strong>ent to <strong>B</strong>engal, <strong>C</strong>anning <strong>M</strong>et <strong>R</strong>ajaji"</em></p>
+                <ul style="margin-top:8px; padding-left:18px; font-size: 0.9rem;">
+                    <li><strong>R – Robert Clive:</strong> ಬಂಗಾಳದ ಮೊದಲ ಗವರ್ನರ್</li>
+                    <li><strong>W – Warren Hastings:</strong> ಬಂಗಾಳದ ಮೊದಲ ಗವರ್ನರ್ ಜನರಲ್ (1773)</li>
+                    <li><strong>B – Bentinck (William):</strong> ಭಾರತದ ಮೊದಲ ಗವರ್ನರ್ ಜನರಲ್ (1833)</li>
+                    <li><strong>C – Canning:</strong> ಭಾರತದ ಮೊದಲ ವೈಸರಾಯ್ (1858)</li>
+                    <li><strong>M – Mountbatten:</strong> ಸ್ವತಂತ್ರ ಭಾರತದ ಮೊದಲ ಗವರ್ನರ್ ಜನರಲ್ (1947)</li>
+                    <li><strong>R – Rajagopalachari:</strong> ಸ್ವತಂತ್ರ ಭಾರತದ ಮೊದಲ ಭಾರತೀಯ ಗವರ್ನರ್ ಜನರಲ್</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>🧠 ಟ್ರಿಕ್ 2: ಕಂಪನಿ ಆಳ್ವಿಕೆಯ ಕಾಯ್ದೆಗಳ ಕ್ರಮ ("R - S - P - C4")</h4>
+                <p>1773ರ ನಂತರ ಪ್ರತಿ 20 ವರ್ಷಕ್ಕೊಮ್ಮೆ ಚಾರ್ಟರ್ ಕಾಯ್ದೆಗಳು ಬಂದವು:</p>
+                <ul style="margin-top:8px; padding-left:18px; font-size: 0.9rem;">
+                    <li><strong>R (1773):</strong> Regulating Act</li>
+                    <li><strong>S (1781):</strong> Settlement Act</li>
+                    <li><strong>P (1784):</strong> Pitt's India Act</li>
+                    <li><strong>C1 (1793):</strong> 1773 + 20 = 1793 Charter Act</li>
+                    <li><strong>C2 (1813):</strong> 1793 + 20 = 1813 Charter Act (1 ಲಕ್ಷ ಶಿಕ್ಷಣಕ್ಕೆ)</li>
+                    <li><strong>C3 (1833):</strong> 1813 + 20 = 1833 Charter Act (ಕೇಂದ್ರೀಕರಣ)</li>
+                    <li><strong>C4 (1853):</strong> 1833 + 20 = 1853 Charter Act (ಮಿನಿ ಸಂಸತ್ತು)</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>🧠 ಟ್ರಿಕ್ 3: 1861ರ ಕಾಯ್ದೆಯ 5 ಮುಖ್ಯ ಅಂಶಗಳು ("P - O - D - I - N")</h4>
+                <p><strong>ಕೋಡ್ ಪದ: "PODIN"</strong></p>
+                <ul style="margin-top:8px; padding-left:18px; font-size: 0.9rem;">
+                    <li><strong>P – Portfolio System:</strong> ಖಾತೆ ಹಂಚಿಕೆ ಪದ್ಧತಿ</li>
+                    <li><strong>O – Ordinance Power:</strong> ವೈಸರಾಯ್ ಸುಗ್ರೀವಾಜ್ಞೆ ಅಧಿಕಾರ (6 ತಿಂಗಳು)</li>
+                    <li><strong>D – Decentralisation:</strong> ವಿಕೇಂದ್ರೀಕರಣ ಆರಂಭ (ಬಾಂಬೆ/ಮದ್ರಾಸ್‌ಗೆ ಅಧಿಕಾರ ವಾಪಸ್)</li>
+                    <li><strong>I – Indians in Council:</strong> 3 ಭಾರತೀಯರ ನಾಮನಿರ್ದೇಶನ</li>
+                    <li><strong>N – New Legislative Councils:</strong> ಬಂಗಾಳ (1862), NWFP (1886), ಪಂಜಾಬ್ (1897) ನಲ್ಲಿ ಹೊಸ ಪರಿಷತ್ತುಗಳು</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. UPSC LEVEL MCQS (PRE-OPENED WITH ANSWERS & EXPLANATIONS) -->
+    <section class="section-card" id="sec9">
+        <div class="section-title">
+            <span>9. ಪರೀಕ್ಷಾ ಮಾದರಿಯ 10 UPSC/KAS ಪ್ರಶ್ನೋತ್ತರಗಳು (ಉತ್ತರ ಮತ್ತು ವಿವರಣೆ ಮೊದಲೇ ತೆರೆದಿದೆ)</span>
+            <span class="badge">ಹಂತ 9 - ನೇರ ಓದುವಿಕೆ</span>
+        </div>
+
+        <!-- Q1 -->
+        <div class="quiz-item">
+            <h4>1. 1773ರ ರೆಗ್ಯುಲೇಟಿಂಗ್ ಕಾಯ್ದೆಗೆ ಸಂಬಂಧಿಸಿದಂತೆ ಕೆಳಗಿನ ಯಾವ ಹೇಳಿಕೆಗಳು ಸರಿಯಾಗಿವೆ?<br>1. ಇದು ಬಂಗಾಳದ ಗವರ್ನರ್ ಅವರನ್ನು 'ಭಾರತದ ಗವರ್ನರ್ ಜನರಲ್' ಎಂದು ಪದನಾಮ ಮಾಡಿತು.<br>2. ಇದು 1774ರಲ್ಲಿ ಕಲ್ಕತ್ತಾದಲ್ಲಿ ಸುಪ್ರೀಂ ಕೋರ್ಟ್ ಸ್ಥಾಪನೆಗೆ ಅವಕಾಶ ನೀಡಿತು.</h4>
+            <div class="quiz-options">
+                <div class="quiz-opt-div">(a) ಹೇಳಿಕೆ 1 ಮಾತ್ರ ಸರಿ</div>
+                <div class="quiz-opt-div correct-ans">✅ (b) ಹೇಳಿಕೆ 2 ಮಾತ್ರ ಸರಿ</div>
+                <div class="quiz-opt-div">(c) 1 ಮತ್ತು 2 ಎರಡೂ ಸರಿ</div>
+                <div class="quiz-opt-div">(d) 1 ಮತ್ತು 2 ಎರಡೂ ತಪ್ಪು</div>
+            </div>
+            <div class="quiz-exp-open">💡 <strong>ವಿವರಣೆ:</strong> ಹೇಳಿಕೆ 1 ತಪ್ಪು! 1773ರ ಕಾಯ್ದೆಯು ಬಂಗಾಳದ ಗವರ್ನರ್ ಅವರನ್ನು 'ಬಂಗಾಳದ ಗವರ್ನರ್ ಜನರಲ್' ಮಾಡಿತು ('ಭಾರತದ ಗವರ್ನರ್ ಜನರಲ್' ಮಾಡಿದ್ದು 1833ರ ಕಾಯ್ದೆ). ಹೇಳಿಕೆ 2 ಸರಿಯಾಗಿದೆ.</div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="quiz-item">
+            <h4>2. 1813ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆಯು ಭಾರತದಲ್ಲಿ ಈಸ್ಟ್ ಇಂಡಿಯಾ ಕಂಪನಿಯ ವ್ಯಾಪಾರ ಏಕಸ್ವಾಮ್ಯವನ್ನು ರದ್ದುಗೊಳಿಸಿತು, ಆದರೆ ಯಾವ ಎರಡು ವ್ಯಾಪಾರಗಳನ್ನು ಮಾತ್ರ ಕಂಪನಿಯ ಏಕಸ್ವಾಮ್ಯದಲ್ಲಿಯೇ ಉಳಿಸಿತು?</h4>
+            <div class="quiz-options">
+                <div class="quiz-opt-div">(a) ಹತ್ತಿ ವ್ಯಾಪಾರ ಮತ್ತು ಅಫೀಮು ವ್ಯಾಪಾರ</div>
+                <div class="quiz-opt-div correct-ans">✅ (b) ಚಹಾ ವ್ಯಾಪಾರ ಮತ್ತು ಚೀನಾದೊಂದಿಗಿನ ವ್ಯಾಪಾರ</div>
+                <div class="quiz-opt-div">(c) ಸಾಂಬಾರು ಪದಾರ್ಥಗಳ ವ್ಯಾಪಾರ ಮತ್ತು ರೇಷ್ಮೆ ವ್ಯಾಪಾರ</div>
+                <div class="quiz-opt-div">(d) ನೀಲಿ (Indigo) ಮತ್ತು ಕಲ್ಲಿದ್ದಲು ವ್ಯಾಪಾರ</div>
+            </div>
+            <div class="quiz-exp-open">💡 <strong>ವಿವರಣೆ:</strong> 1813ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆಯು ಚಹಾ (Tea) ವ್ಯಾಪಾರ ಮತ್ತು ಚೀನಾದೊಂದಿಗಿನ ವ್ಯಾಪಾರವನ್ನು ಹೊರತುಪಡಿಸಿ ಉಳಿದೆಲ್ಲಾ ವ್ಯಾಪಾರ ಏಕಸ್ವಾಮ್ಯವನ್ನು ರದ್ದುಪಡಿಸಿತು. (1833ರಲ್ಲಿ ಅವುಗಳನ್ನೂ ರದ್ದುಪಡಿಸಲಾಯಿತು).</div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="quiz-item">
+            <h4>3. ಕೆಳಗಿನ ಯಾವ ಕಾಯ್ದೆಯು ಮೊದಲ ಬಾರಿಗೆ ಗವರ್ನರ್ ಜನರಲ್ ಅವರ ಮಂಡಳಿಯ 'ಶಾಸಕಾಂಗ ಮತ್ತು ಕಾರ್ಯಾಂಗ' ಕಾರ್ಯಗಳನ್ನು ಪ್ರತ್ಯೇಕಿಸಿತು ಹಾಗೂ ICS ಪರೀಕ್ಷೆಗೆ ಮುಕ್ತ ಸ್ಪರ್ಧೆಯನ್ನು ಪರಿಚಯಿಸಿತು?</h4>
+            <div class="quiz-options">
+                <div class="quiz-opt-div">(a) 1813 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ</div>
+                <div class="quiz-opt-div">(b) 1833 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ</div>
+                <div class="quiz-opt-div correct-ans">✅ (c) 1853 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ</div>
+                <div class="quiz-opt-div">(d) 1861 ರ ಭಾರತೀಯ ಪರಿಷತ್ ಕಾಯ್ದೆ</div>
+            </div>
+            <div class="quiz-exp-open">💡 <strong>ವಿವರಣೆ:</strong> 1853ರ ಕೊನೆಯ ಚಾರ್ಟರ್ ಕಾಯ್ದೆಯು 6 ಸದಸ್ಯರ ಕೇಂದ್ರ ವಿಧಾನ ಪರಿಷತ್ (ಮಿನಿ ಸಂಸತ್ತು) ರಚಿಸಿ ಶಾಸಕಾಂಗ ಮತ್ತು ಕಾರ್ಯಾಂಗವನ್ನು ಬೇರ್ಪಡಿಸಿತು ಹಾಗೂ ICS ಮುಕ್ತ ಸ್ಪರ್ಧೆ ಜಾರಿಗೊಳಿಸಿತು.</div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="quiz-item">
+            <h4>4. 1861ರ ಭಾರತೀಯ ಪರಿಷತ್ ಕಾಯ್ದೆಗೆ ಸಂಬಂಧಿಸಿದಂತೆ ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಸರಿಯಲ್ಲ?</h4>
+            <div class="quiz-options">
+                <div class="quiz-opt-div">(a) ಇದು ಲಾರ್ಡ್ ಕ್ಯಾನಿಂಗ್ ಪರಿಚಯಿಸಿದ ಪೋರ್ಟ್‌‌ಫೋಲಿಯೊ ಪದ್ಧತಿಗೆ ಮಾನ್ಯತೆ ನೀಡಿತು.</div>
+                <div class="quiz-opt-div">(b) ಇದು ಬಾಂಬೆ ಮತ್ತು ಮದ್ರಾಸ್ ಪ್ರಾಂತ್ಯಗಳಿಗೆ ಶಾಸನ ರಚನೆಯ ಅಧಿಕಾರವನ್ನು ಮರಳಿ ನೀಡಿತು.</div>
+                <div class="quiz-opt-div">(c) ತುರ್ತು ಸಂದರ್ಭದಲ್ಲಿ ವೈಸರಾಯ್‌ಗೆ ಸುಗ್ರೀವಾಜ್ಞೆ (Ordinance) ಹೊರಡಿಸುವ ಅಧಿಕಾರ ನೀಡಿತು.</div>
+                <div class="quiz-opt-div correct-ans">✅ (d) ಇದು ಭಾರತದಲ್ಲಿ ಮೊದಲ ಬಾರಿಗೆ ದ್ವಿಸದನ ಶಾಸಕಾಂಗವನ್ನು (Bicameralism) ಪರಿಚಯಿಸಿತು.</div>
+            </div>
+            <div class="quiz-exp-open">💡 <strong>ವಿವರಣೆ:</strong> ಹೇಳಿಕೆ (d) ತಪ್ಪು. ಭಾರತದಲ್ಲಿ ಮೊದಲ ಬಾರಿಗೆ ಕೇಂದ್ರದಲ್ಲಿ ದ್ವಿಸದನ ಶಾಸಕಾಂಗವನ್ನು (Bicameralism) ಪರಿಚಯಿಸಿದ್ದು 1919ರ ಮಾಂಟೆಗ್ಯೂ-ಚೆಮ್ಸ್‌ಫರ್ಡ್ ಕಾಯ್ದೆ.</div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="quiz-item">
+            <h4>5. ವೈಸರಾಯ್ ಅವರ ಕಾರ್ಯಕಾರಿ ಮಂಡಳಿಗೆ (Executive Council) ನೇಮಕಗೊಂಡ ಮೊದಲ ಭಾರತೀಯ ಸದಸ್ಯ ಯಾರು ಮತ್ತು ಯಾವ ಕಾಯ್ದೆಯಡಿ ನೇಮಕಗೊಂಡರು?</h4>
+            <div class="quiz-options">
+                <div class="quiz-opt-div">(a) ಸತ್ಯೇಂದ್ರನಾಥ ಟ್ಯಾಗೋರ್ – 1861 ರ ಕಾಯ್ದೆ</div>
+                <div class="quiz-opt-div correct-ans">✅ (b) ಸತ್ಯೇಂದ್ರ ಪ್ರಸಾದ್ ಸಿನ್ಹಾ (S.P. Sinha) – 1909 ರ ಕಾಯ್ದೆ</div>
+                <div class="quiz-opt-div">(c) ಸರ್ ದಿನಕರ್ ರಾವ್ – 1892 ರ ಕಾಯ್ದೆ</div>
+                <div class="quiz-opt-div">(d) ಡಾ. ಬಿ.ಆರ್. ಅಂಬೇಡ್ಕರ್ – 1935 ರ ಕಾಯ್ದೆ</div>
+            </div>
+            <div class="quiz-exp-open">💡 <strong>ವಿವರಣೆ:</strong> 1909ರ ಮಾರ್ಲೆ-ಮಿಂಟೋ ಸುಧಾರಣೆಯ ಅಡಿಯಲ್ಲಿ ಸತ್ಯೇಂದ್ರ ಪ್ರಸಾದ್ ಸಿನ್ಹಾ ಅವರು ವೈಸರಾಯ್ ಕಾರ್ಯಕಾರಿ ಮಂಡಳಿಗೆ ಮೊದಲ ಭಾರತೀಯ 'ಕಾನೂನು ಸದಸ್ಯರಾಗಿ' ನೇಮಕಗೊಂಡರು.</div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="quiz-item">
+            <h4>6. 1919ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆಯ ಅಡಿಯಲ್ಲಿ ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ ಜಾರಿಗೆ ಬಂದ 'ದ್ವಿಸರಕಾರ' (Dyarchy) ಪದ್ಧತಿಯಲ್ಲಿ ಕೆಳಗಿನ ಯಾವ ವಿಷಯಗಳು 'ವರ್ಗಾಯಿತ ವಿಷಯಗಳ' (Transferred Subjects) ಅಡಿಯಲ್ಲಿ ಬರುತ್ತಿದ್ದವು?</h4>
+            <div class="quiz-options">
+                <div class="quiz-opt-div">(a) ಪೊಲೀಸ್, ನ್ಯಾಯಾಂಗ ಮತ್ತು ಹಣಕಾಸು</div>
+                <div class="quiz-opt-div">(b) ಭೂಕಂದಾಯ ಮತ್ತು ನೀರಾವರಿ</div>
+                <div class="quiz-opt-div correct-ans">✅ (c) ಶಿಕ್ಷಣ, ಸಾರ್ವಜನಿಕ ಆರೋಗ್ಯ ಮತ್ತು ಸ್ಥಳೀಯ ಸ್ವಯಂ ಸರ್ಕಾರ</div>
+                <div class="quiz-opt-div">(d) ರಕ್ಷಣೆ ಮತ್ತು ವಿದೇಶಾಂಗ ವ್ಯವಹಾರ</div>
+            </div>
+            <div class="quiz-exp-open">💡 <strong>ವಿವರಣೆ:</strong> ಶಿಕ್ಷಣ, ಆರೋಗ್ಯ, ಕೃಷಿ ಮತ್ತು ಸ್ಥಳೀಯ ಸಂಸ್ಥೆಗಳು 'ವರ್ಗಾಯಿತ ವಿಷಯ'ಗಳಾಗಿದ್ದು, ಭಾರತೀಯ ಮಂತ್ರಿಗಳ ಮೂಲಕ ನಿರ್ವಹಿಸಲ್ಪಡುತ್ತಿದ್ದವು. ಹಣಕಾಸು, ಪೊಲೀಸ್, ಭೂಕಂದಾಯ ಮತ್ತು ನ್ಯಾಯ 'ಮೀಸಲು ವಿಷಯ'ಗಳಾಗಿದ್ದವು.</div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="quiz-item">
+            <h4>7. 1935ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆಯ ಅಡಿಯಲ್ಲಿ 'ಶ್ರೇಷ್ಠ ಅಧಿಕಾರಗಳನ್ನು' (Residuary Powers) ಯಾರಿಗೆ ನೀಡಲಾಗಿತ್ತು? (UPSC Prelims ಪ್ರಶ್ನೆ)</h4>
+            <div class="quiz-options">
+                <div class="quiz-opt-div">(a) ಫೆಡರಲ್ ಶಾಸಕಾಂಗಕ್ಕೆ</div>
+                <div class="quiz-opt-div">(b) ಪ್ರಾಂತೀಯ ಶಾಸಕಾಂಗಗಳಿಗೆ</div>
+                <div class="quiz-opt-div correct-ans">✅ (c) ಗವರ್ನರ್ ಜನರಲ್ / ವೈಸರಾಯ್‌ಗೆ</div>
+                <div class="quiz-opt-div">(d) ಫೆಡರಲ್ ಕೋರ್ಟ್‌ಗೆ</div>
+            </div>
+            <div class="quiz-exp-open">💡 <strong>ವಿವರಣೆ:</strong> 1935ರ ಕಾಯ್ದೆಯಲ್ಲಿ ಫೆಡರಲ್, ಪ್ರಾಂತೀಯ ಮತ್ತು ಸಮವರ್ತಿ ಪಟ್ಟಿಗಳಲ್ಲಿ ಇಲ್ಲದ ಶ್ರೇಷ್ಠ ಅಧಿಕಾರಗಳನ್ನು (Residuary Powers) ವೈಸರಾಯ್‌ಗೆ (ಗವರ್ನರ್ ಜನರಲ್) ನೀಡಲಾಗಿತ್ತು.</div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="quiz-item">
+            <h4>8. ಪಟ್ಟಿ-I (ಕಾಯ್ದೆ) ಮತ್ತು ಪಟ್ಟಿ-II (ಪ್ರಮುಖ ವೈಶಿಷ್ಟ್ಯ) ವನ್ನು ಹೊಂದಿಸಿ ಬರೆಯಿರಿ:<br>A. 1784 ರ ಪಿಟ್ಸ್ ಇಂಡಿಯಾ ಕಾಯ್ದೆ - 1. ಪ್ರಾಂತೀಯ ಸ್ವಾಯತ್ತತೆ<br>B. 1833 ರ ಚಾರ್ಟರ್ ಕಾಯ್ದೆ - 2. ಬೋರ್ಡ್ ಆಫ್ ಕಂಟ್ರೋಲ್ ಸ್ಥಾಪನೆ<br>C. 1909 ರ ಕಾಯ್ದೆ - 3. ಭಾರತದ ಗವರ್ನರ್ ಜನರಲ್ ಹುದ್ದೆ<br>D. 1935 ರ ಕಾಯ್ದೆ - 4. ಮುಸ್ಲಿಮರಿಗೆ ಪ್ರತ್ಯೇಕ ಮತಕ್ಷೇತ್ರ</h4>
+            <div class="quiz-options">
+                <div class="quiz-opt-div correct-ans">✅ (a) A-2, B-3, C-4, D-1</div>
+                <div class="quiz-opt-div">(b) A-3, B-2, C-4, D-1</div>
+                <div class="quiz-opt-div">(c) A-2, B-4, C-3, D-1</div>
+                <div class="quiz-opt-div">(d) A-1, B-3, C-4, D-2</div>
+            </div>
+            <div class="quiz-exp-open">💡 <strong>ವಿವರಣೆ:</strong> 1784-ಬೋರ್ಡ್ ಆಫ್ ಕಂಟ್ರೋಲ್ (A-2), 1833-ಭಾರತದ ಗವರ್ನರ್ ಜನರಲ್ (B-3), 1909-ಪ್ರತ್ಯೇಕ ಮತಕ್ಷೇತ್ರ (C-4), 1935-ಪ್ರಾಂತೀಯ ಸ್ವಾಯತ್ತತೆ (D-1).</div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="quiz-item">
+            <h4>9. 1858ರಲ್ಲಿ ಸ್ಥಾಪಿಸಲಾಗಿದ್ದ 15 ಸದಸ್ಯರ 'ಭಾರತ ಮಂಡಳಿ'ಯನ್ನು (Council of India in London) ಯಾವ ಕಾಯ್ದೆಯ ಮೂಲಕ ಸಂಪೂರ್ಣವಾಗಿ ರದ್ದುಪಡಿಸಲಾಯಿತು?</h4>
+            <div class="quiz-options">
+                <div class="quiz-opt-div">(a) 1909 ರ ಮಾರ್ಲೆ-ಮಿಂಟೋ ಕಾಯ್ದೆ</div>
+                <div class="quiz-opt-div">(b) 1919 ರ ಮಾಂಟೆಗ್ಯೂ-ಚೆಮ್ಸ್‌ಫರ್ಡ್ ಕಾಯ್ದೆ</div>
+                <div class="quiz-opt-div correct-ans">✅ (c) 1935 ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆ</div>
+                <div class="quiz-opt-div">(d) 1947 ರ ಭಾರತ ಸ್ವಾತಂತ್ರ್ಯ ಕಾಯ್ದೆ</div>
+            </div>
+            <div class="quiz-exp-open">💡 <strong>ವಿವರಣೆ:</strong> ಭಾರತೀಯ ರಾಷ್ಟ್ರೀಯವಾದಿಗಳ ತೀವ್ರ ಟೀಕೆಗೆ ಗುರಿಯಾಗಿದ್ದ ಲಂಡನ್‌ನ ಭಾರತ ಮಂಡಳಿಯನ್ನು (Council of India) 1935ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆಯು ರದ್ದುಪಡಿಸಿತು.</div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="quiz-item" style="margin-bottom: 0;">
+            <h4>10. 1947ರ ಭಾರತ ಸ್ವಾತಂತ್ರ್ಯ ಕಾಯ್ದೆಗೆ ಸಂಬಂಧಿಸಿದಂತೆ ಕೆಳಗಿನ ಯಾವ ಹೇಳಿಕೆಯು ಸರಿಯಾಗಿದೆ?</h4>
+            <div class="quiz-options">
+                <div class="quiz-opt-div">(a) ಹೊಸ ಸಂವಿಧಾನ ರಚನೆಯಾಗುವವರೆಗೆ ಭಾರತವನ್ನು 1919ರ ಕಾಯ್ದೆಯಂತೆ ಆಳಲು ಸೂಚಿಸಿತು.</div>
+                <div class="quiz-opt-div correct-ans">✅ (b) ಭಾರತದ ಸಂವಿಧಾನ ಸಭೆಯು ಬ್ರಿಟಿಷ್ ಸಂಸತ್ತು ಮಾಡಿದ ಯಾವುದೇ ಕಾನೂನನ್ನು ರದ್ದುಪಡಿಸುವ ಸಾರ್ವಭೌಮ ಅಧಿಕಾರ ಪಡೆಯಿತು.</div>
+                <div class="quiz-opt-div">(c) ದೇಶೀಯ ಸಂಸ್ಥಾನಗಳು ಕಡ್ಡಾಯವಾಗಿ ಭಾರತ ಅಥವಾ ಪಾಕಿಸ್ತಾನವನ್ನು ಸೇರಲೇಬೇಕೆಂದು ಆದೇಶಿಸಿತು.</div>
+                <div class="quiz-opt-div">(d) ಬ್ರಿಟಿಷ್ ರಾಣಿಗೆ ಭಾರತದ ಮಸೂದೆಗಳ ಮೇಲೆ ವೀಟೋ ಚಲಾಯಿಸುವ ಅಧಿಕಾರವನ್ನು ಮುಂದುವರಿಸಿತು.</div>
+            </div>
+            <div class="quiz-exp-open">💡 <strong>ವಿವರಣೆ:</strong> 1947ರ ಸ್ವಾತಂತ್ರ್ಯ ಕಾಯ್ದೆಯು ಸಂವಿಧಾನ ಸಭೆಯನ್ನು ಸಂಪೂರ್ಣ ಸಾರ್ವಭೌಮ ಸಂಸ್ಥೆಯನ್ನಾಗಿ ಮಾಡಿತು ಮತ್ತು ಸ್ವಾತಂತ್ರ್ಯ ಕಾಯ್ದೆಯೂ ಸೇರಿದಂತೆ ಬ್ರಿಟಿಷ್ ಸಂಸತ್ತಿನ ಯಾವುದೇ ಕಾಯ್ದೆಯನ್ನು ರದ್ದುಪಡಿಸುವ ಅಧಿಕಾರ ನೀಡಿತು.</div>
+        </div>
+    </section>
+
+    <!-- 10. DESCRIPTIVE MAINS QUESTION -->
+    <section class="section-card" id="sec10">
+        <div class="section-title">
+            <span>10. ಮುಖ್ಯ ಪರೀಕ್ಷೆಯ ಪ್ರಶ್ನೆ ಮತ್ತು ಉತ್ತರದ ರೂಪುರೇಷೆ (UPSC / KAS Mains GS-II)</span>
+            <span class="badge">ಹಂತ 10 - 15 ಅಂಕಗಳು (250 ಪದಗಳು)</span>
+        </div>
+        <div class="info-box" style="border-left-color: var(--secondary);">
+            <h4 style="font-size: 1.1rem;">📝 ಪ್ರಶ್ನೆ: "1935ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆಯು ಸ್ವತಂತ್ರ ಭಾರತದ ಸಂವಿಧಾನದ ರಚನೆಗೆ ಕೇವಲ ಆಡಳಿತಾತ್ಮಕ ಅಸ್ಥಿಪಂಜರವನ್ನು ಮಾತ್ರ ನೀಡಲಿಲ್ಲ, ಬದಲಿಗೆ ಒಕ್ಕೂಟ ವ್ಯವಸ್ಥೆಯ ಮೂಲ ತಳಹದಿಯನ್ನೂ ಹಾಕಿತು. ಆದರೆ ಅದರಲ್ಲಿದ್ದ ವಸಾಹತುಶಾಹಿ ನಿಯಂತ್ರಣಗಳು ಅದನ್ನು ನಿಜವಾದ ಪ್ರಜಾಪ್ರಭುತ್ವವಾಗಿಸಲು ವಿಫಲವಾದವು." ವಿಮರ್ಶಾತ್ಮಕವಾಗಿ ವಿಶ್ಲೇಷಿಸಿ.</h4>
+            <hr style="margin: 12px 0; border-color: var(--border);">
+            
+            <p><strong>1. ಪೀಠಿಕೆ (Introduction - 30-40 ಪದಗಳು):</strong><br>
+            ಸೈಮನ್ ಆಯೋಗದ ವರದಿ (1930) ಮತ್ತು ಮೂರು ದುಂಡು ಮೇಜಿನ ಸಮ್ಮೇಳನಗಳ (1930-32) ಫಲಶ್ರುತಿಯಾಗಿ ಜಾರಿಗೆ ಬಂದ <strong>1935ರ ಭಾರತ ಸರ್ಕಾರದ ಕಾಯ್ದೆಯು</strong> ಬ್ರಿಟಿಷ್ ಭಾರತದ ಇತಿಹಾಸದಲ್ಲಿಯೇ ಅತ್ಯಂತ ಬೃಹತ್ ದಾಖಲೆಯಾಗಿದೆ (321 ವಿಧಿಗಳು ಮತ್ತು 10 ಅನುಸೂಚಿಗಳು). ಡಾ. ಬಿ.ಆರ್. ಅಂಬೇಡ್ಕರ್ ಅವರು ಸಂವಿಧಾನ ಸಭೆಯಲ್ಲಿ ಸಮರ್ಥಿಸಿಕೊಂಡಂತೆ, ಇಂದಿನ ಭಾರತ ಸಂವಿಧಾನದ ಆಡಳಿತಾತ್ಮಕ ವಿವರಗಳ ಬಹುಪಾಲು ಈ ಕಾಯ್ದೆಯಿಂದಲೇ ಎರವಲು ಪಡೆಯಲಾಗಿದೆ.</p>
+
+            <p style="margin-top: 12px;"><strong>2. ಮುಖ್ಯ ಭಾಗ A - ಸಂವಿಧಾನಕ್ಕೆ ನೀಡಿದ ರಚನಾತ್ಮಕ ಕೊಡುಗೆಗಳು (Structural Contributions):</strong></p>
+            <ul style="padding-left: 20px;">
+                <li><strong>ಅಧಿಕಾರ ವಿಭಜನೆ (7ನೇ ಅನುಸೂಚಿಯ ಮೂಲ):</strong> ಫೆಡರಲ್ ಪಟ್ಟಿ (59 ವಿಷಯಗಳು), ಪ್ರಾಂತೀಯ ಪಟ್ಟಿ (54 ವಿಷಯಗಳು) ಮತ್ತು ಸಮವರ್ತಿ ಪಟ್ಟಿ (36 ವಿಷಯಗಳು) ಮೂಲಕ ಇಂದಿನ ಕೇಂದ್ರ-ರಾಜ್ಯ ಸಂಬಂಧಗಳಿಗೆ ಬುನಾದಿ ಹಾಕಿತು.</li>
+                <li><strong>ಪ್ರಾಂತೀಯ ಸ್ವಾಯತ್ತತೆ (Provincial Autonomy):</strong> 1919ರ ದ್ವಿಸರಕಾರ ಪದ್ಧತಿಯನ್ನು ಪ್ರಾಂತ್ಯಗಳಲ್ಲಿ ರದ್ದುಗೊಳಿಸಿ, ಜವಾಬ್ದಾರಿಯುತ ಮಂತ್ರಿಮಂಡಲದ ಆಡಳಿತಕ್ಕೆ ದಾರಿ ಮಾಡಿಕೊಟ್ಟಿತು (1937ರ ಚುನಾವಣೆ).</li>
+                <li><strong>ಸಾಂವಿಧಾನಿಕ ಸಂಸ್ಥೆಗಳ ಸ್ಥಾಪನೆ:</strong> ಸ್ವತಂತ್ರ ನ್ಯಾಯಾಂಗಕ್ಕಾಗಿ <strong>ಫೆಡರಲ್ ಕೋರ್ಟ್ (1937)</strong>, ಆರ್ಥಿಕ ನಿಯಂತ್ರಣಕ್ಕಾಗಿ <strong>ಭಾರತೀಯ ರಿಸರ್ವ್ ಬ್ಯಾಂಕ್ (RBI - 1935)</strong> ಮತ್ತು ನೇಮಕಾತಿಗಳಿಗಾಗಿ ಫೆಡರಲ್ ಹಾಗೂ ಪ್ರಾಂತೀಯ ಲೋಕಸೇವಾ ಆಯೋಗಗಳನ್ನು ಸ್ಥಾಪಿಸಿತು.</li>
+                <li><strong>ರಾಜ್ಯಪಾಲರ ಕಚೇರಿ ಮತ್ತು ತುರ್ತು ಪರಿಸ್ಥಿತಿ:</strong> ಇಂದಿನ ಸಂವಿಧಾನದ 356ನೇ ವಿಧಿಯ (ರಾಷ್ಟ್ರಪತಿ ಆಳ್ವಿಕೆ) ಮೂಲವು 1935ರ ಕಾಯ್ದೆಯ ಸೆಕ್ಷನ್ 93 ರಲ್ಲಿ ಅಡಗಿದೆ.</li>
+            </ul>
+
+            <p style="margin-top: 12px;"><strong>3. ಮುಖ್ಯ ಭಾಗ B - ವಸಾಹತುಶಾಹಿ ಮಿತಿಗಳು ಮತ್ತು ದೋಷಗಳು (Colonial Limitations):</strong></p>
+            <ul style="padding-left: 20px;">
+                <li><strong>ಗವರ್ನರ್‌ಗಳ ವಿಶೇಷಾಧಿಕಾರ (Veto & Discretionary Powers):</strong> ಪ್ರಾಂತೀಯ ಸ್ವಾಯತ್ತತೆ ನೀಡಲಾದರೂ, ಗವರ್ನರ್‌ಗಳು ಮಂತ್ರಿಮಂಡಲದ ಸಲಹೆಯನ್ನು ತಿರಸ್ಕರಿಸುವ ಅಪರಿಮಿತ ಅಧಿಕಾರ ಹೊಂದಿದ್ದರು.</li>
+                <li><strong>ವಿಫಲ ಒಕ್ಕೂಟ ಮತ್ತು ಶ್ರೇಷ್ಠ ಅಧಿಕಾರಗಳು:</strong> ದೇಶೀಯ ಸಂಸ್ಥಾನಗಳು ಸೇರದ ಕಾರಣ 'ಅಖಿಲ ಭಾರತ ಒಕ್ಕೂಟ' ಜಾರಿಗೆ ಬರಲೇ ಇಲ್ಲ ಹಾಗೂ ಶ್ರೇಷ್ಠ ಅಧಿಕಾರಗಳನ್ನು (Residuary Powers) ಶಾಸಕಾಂಗದ ಬದಲು ವೈಸರಾಯ್‌ಗೆ ನೀಡಲಾಗಿತ್ತು.</li>
+                <li><strong>ಮತದಾನದ ಮಿತಿ ಮತ್ತು ಒಡೆದು ಆಳುವ ನೀತಿ:</strong> ಜನಸಂಖ್ಯೆಯ ಕೇವಲ <strong>ಶೇ. 10-14 ರಷ್ಟು</strong> ಜನರಿಗೆ ಮಾತ್ರ ಮತದಾನದ ಹಕ್ಕು ಇತ್ತು ಮತ್ತು ದಲಿತರು, ಮಹಿಳೆಯರು ಹಾಗೂ ಕಾರ್ಮಿಕರಿಗೆ ಪ್ರತ್ಯೇಕ ಮತಕ್ಷೇತ್ರಗಳನ್ನು ವಿಸ್ತರಿಸಿ ರಾಷ್ಟ್ರೀಯ ಏಕತೆಯನ್ನು ದುರ್ಬಲಗೊಳಿಸಲಾಯಿತು.</li>
+            </ul>
+
+            <p style="margin-top: 12px;"><strong>4. ಉಪಸಂಹಾರ (Conclusion - 30 ಪದಗಳು):</strong><br>
+            ಜವಾಹರಲಾಲ್ ನೆಹರು ಅವರು ಇದನ್ನು <em>"ಬ್ರೇಕ್‌ಗಳೇ ತುಂಬಿರುವ ಆದರೆ ಇಂಜಿನ್ ಇಲ್ಲದ ಯಂತ್ರ"</em> ಎಂದು ಟೀಕಿಸಿದ್ದು ಸೂಕ್ತವಾಗಿಯೇ ಇತ್ತು. ಆದಾಗ್ಯೂ, 1950ರಲ್ಲಿ ನಮ್ಮ ಸಂವಿಧಾನ ಶಿಲ್ಪಿಗಳು ಈ ಕಾಯ್ದೆಯ ವಸಾಹತುಶಾಹಿ 'ಬ್ರೇಕ್'ಗಳನ್ನು ಕಿತ್ತುಹಾಕಿ, ಅದಕ್ಕೆ ಸಾರ್ವತ್ರಿಕ ವಯಸ್ಕ ಮತದಾನ ಮತ್ತು ಮೂಲಭೂತ ಹಕ್ಕುಗಳೆಂಬ ಪ್ರಜಾಪ್ರಭುತ್ವದ 'ಇಂಜಿನ್' ಅಳವಡಿಸುವ ಮೂಲಕ ಜಗತ್ತಿನ ಶ್ರೇಷ್ಠ ಗಣರಾಜ್ಯವನ್ನು ನಿರ್ಮಿಸಿದರು.</p>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    // Eye-Friendly Theme Switcher
+    function setTheme(mode) {
+        const body = document.body;
+        document.querySelectorAll('.theme-btns .btn').forEach(b => b.classList.remove('active-theme'));
+
+        if (mode === 'paper') {
+            body.removeAttribute('data-theme');
+            document.getElementById('t-paper').classList.add('active-theme');
+        } else if (mode === 'sage') {
+            body.setAttribute('data-theme', 'sage');
+            document.getElementById('t-sage').classList.add('active-theme');
+        } else if (mode === 'dark') {
+            body.setAttribute('data-theme', 'dark');
+            document.getElementById('t-dark').classList.add('active-theme');
+        }
+    }
+
+    // Live Search & Filter
+    function filterContent() {
+        const q = document.getElementById('searchBox').value.trim().toLowerCase();
+        const sections = document.querySelectorAll('.section-card');
+        sections.forEach(sec => {
+            const txt = sec.innerText.toLowerCase();
+            sec.style.display = (!q || txt.includes(q)) ? 'block' : 'none';
+        });
+    }
+</script>
+
+</body>
+</html>
