@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಕಂಪ್ಯೂಟರ್ ಸಂರಚನೆ (Computer Architecture) - 100% Visual Master Notes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600;700;800&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Eye-Resonance Soothing Study Palette */
+            --bg-page: #edf2ec;
+            --bg-card: #ffffff;
+            --bg-soft: #e1eae0;
+            --bg-warn: #fef9c3;
+            --text-dark: #15221b;
+            --text-muted: #42564b;
+            --brand-teal: #0d6e5b;
+            --brand-blue: #0284c7;
+            --brand-purple: #6d28d9;
+            --brand-red: #dc2626;
+            --brand-amber: #d97706;
+            --border-clr: #c3d4c0;
+            --shadow: 0 8px 24px rgba(13, 110, 91, 0.08);
+        }
+
+        [data-theme="dark"] {
+            --bg-page: #0a120f;
+            --bg-card: #12201b;
+            --bg-soft: #1a2e27;
+            --bg-warn: #362b0e;
+            --text-dark: #ecfdf5;
+            --text-muted: #a7f3d0;
+            --brand-teal: #10b981;
+            --brand-blue: #38bdf8;
+            --brand-purple: #c084fc;
+            --brand-red: #f87171;
+            --brand-amber: #fbbf24;
+            --border-clr: #254238;
+            --shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Noto Sans Kannada', 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-dark);
+            line-height: 1.78;
+            transition: background 0.3s, color 0.3s;
+            padding-bottom: 60px;
+        }
+
+        #scrollBar {
+            position: fixed;
+            top: 0; left: 0; height: 5px;
+            background: linear-gradient(90deg, #10b981, #0ea5e9, #f59e0b);
+            width: 0%; z-index: 9999;
+        }
+
+        header {
+            background: linear-gradient(135deg, #064e3b 0%, #0f766e 50%, #0369a1 100%);
+            color: #fff;
+            padding: 32px 16px 26px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        header h1 { font-size: clamp(1.35rem, 4vw, 2.25rem); font-weight: 800; margin-bottom: 8px; }
+        header p { font-size: 0.96rem; opacity: 0.95; max-width: 900px; margin: 0 auto 18px; }
+
+        .nav-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+
+        .pill-btn {
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.4);
+            color: #fff;
+            padding: 7px 14px;
+            border-radius: 40px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .pill-btn:hover { background: #fff; color: #064e3b; transform: translateY(-2px); }
+
+        .container { max-width: 1240px; margin: 24px auto; padding: 0 15px; }
+
+        .section-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-clr);
+            border-radius: 18px;
+            padding: 24px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .sec-title {
+            font-size: clamp(1.2rem, 3vw, 1.55rem);
+            font-weight: 800;
+            color: var(--brand-teal);
+            border-bottom: 3px solid var(--brand-teal);
+            padding-bottom: 10px;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .badge-tag { background: var(--bg-soft); color: var(--brand-teal); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
+        .badge-new { background: #fee2e2; color: #dc2626; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 800; }
+
+        /* Visual Cards Grid */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 24px; }
+
+        .visual-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-clr);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .visual-card:hover { transform: translateY(-5px); box-shadow: 0 14px 28px rgba(0,0,0,0.14); }
+
+        .illustration-frame {
+            height: 215px;
+            background: linear-gradient(145deg, #0f172a, #1e293b);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-bottom: 3px solid var(--brand-teal);
+        }
+
+        .img-label-bar {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: rgba(0, 0, 0, 0.78); color: #fff;
+            padding: 6px 14px; font-size: 0.78rem; font-weight: 700;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+        .card-body h3 { font-size: 1.2rem; color: var(--brand-teal); margin-bottom: 10px; }
+        .card-body ul { padding-left: 18px; font-size: 0.94rem; margin-bottom: 14px; }
+        .card-body li { margin-bottom: 8px; }
+
+        .exam-booster {
+            margin-top: auto; background: var(--bg-warn); color: #713f12;
+            padding: 10px 12px; border-radius: 8px; border-left: 4px solid var(--brand-amber);
+            font-size: 0.88rem; font-weight: 700;
+        }
+        [data-theme="dark"] .exam-booster { color: #fde68a; }
+
+        /* Analogy Highlight Box */
+        .analogy-box {
+            background: linear-gradient(135deg, rgba(13, 110, 91, 0.08), rgba(2, 132, 199, 0.08));
+            border: 2px dashed var(--brand-teal);
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin-bottom: 22px;
+        }
+
+        /* Animations */
+        @keyframes pulseFlow {
+            0% { stroke-dashoffset: 100; }
+            100% { stroke-dashoffset: 0; }
+        }
+        .flow-line {
+            stroke-dasharray: 10, 6;
+            animation: pulseFlow 2s infinite linear;
+        }
+
+        @keyframes busMoveRight {
+            0% { transform: translateX(0); opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { transform: translateX(260px); opacity: 0.2; }
+        }
+        .bus-packet-right { animation: busMoveRight 2.2s infinite ease-in-out; }
+
+        @keyframes busMoveBi {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(250px); }
+        }
+        .bus-packet-bi { animation: busMoveBi 3s infinite ease-in-out; }
+
+        @keyframes cycleGlow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.96); }
+        }
+        .glow-node { animation: cycleGlow 1.8s infinite; }
+
+        /* Tables */
+        .table-wrap { overflow-x: auto; margin-top: 16px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+        th, td { padding: 11px 14px; border-bottom: 1px solid var(--border-clr); text-align: left; }
+        th { background: var(--brand-teal); color: #fff; }
+        tr:nth-child(even) { background: var(--bg-soft); }
+
+        /* 3D Flip Flashcards */
+        .flip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-top: 15px; }
+        .flip-box { height: 155px; perspective: 1000px; cursor: pointer; }
+        .flip-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; }
+        .flip-box:hover .flip-inner, .flip-box.flipped .flip-inner { transform: rotateY(180deg); }
+        .flip-front, .flip-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 14px; border: 2px solid var(--brand-teal);
+        }
+        .flip-front { background: var(--bg-soft); }
+        .flip-back { background: linear-gradient(135deg, #0d6e5b, #0284c7); color: #fff; transform: rotateY(180deg); }
+
+        /* Quiz Launch Banner */
+        .quiz-launch-banner {
+            background: linear-gradient(135deg, #064e3b, #0284c7);
+            color: #fff;
+            border-radius: 18px;
+            padding: 32px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .launch-btn {
+            display: inline-block;
+            background: #f59e0b;
+            color: #000;
+            font-weight: 800;
+            font-size: 1.1rem;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            margin-top: 14px;
+            transition: transform 0.2s;
+        }
+        .launch-btn:hover { transform: scale(1.05); }
+
+        @media (max-width: 680px) {
+            .section-box { padding: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="scrollBar"></div>
+
+<header>
+    <h1>🏛️ ಕಂಪ್ಯೂಟರ್ ಸಂರಚನೆ (Computer Architecture) - ಮಾಸ್ಟರ್ ನೋಟ್ಸ್</h1>
+    <p>ವಾನ್ ನ್ಯೂಮನ್ ವಿನ್ಯಾಸ + ಇನ್‌ಪುಟ್/ಔಟ್‌ಪುಟ್ + CPU (ALU, CU, 7 ರೆಜಿಸ್ಟರ್‌ಗಳು) + ಮೆಮೊರಿ ಪಿರಮಿಡ್ + ಸಿಸ್ಟಮ್ ಬಸ್ (100% ಸಚಿತ್ರ ಕೈಪಿಡಿ)</p>
+    <div class="nav-pills">
+        <a href="#sec-von" class="pill-btn">📐 ವಾನ್ ನ್ಯೂಮನ್ ವಿನ್ಯಾಸ</a>
+        <a href="#sec-io" class="pill-btn">⌨️ 1 & 4. ಇನ್‌ಪುಟ್ & ಔಟ್‌ಪುಟ್</a>
+        <a href="#sec-cpu" class="pill-btn">🧠 2. CPU (ALU & CU)</a>
+        <a href="#sec-reg" class="pill-btn">🗂️ ರೆಜಿಸ್ಟರ್‌ಗಳು (7 ವಿಧ)</a>
+        <a href="#sec-mem" class="pill-btn">💾 3. ಮೆಮೊರಿ ಘಟಕ</a>
+        <a href="#sec-bus" class="pill-btn">🛣️ 5. ಸಿಸ್ಟಮ್ ಬಸ್</a>
+        <a href="#sec-extra" class="pill-btn" style="background:#ef4444;">🔥 ಹೆಚ್ಚುವರಿ ಪರೀಕ್ಷಾ ಅಂಶಗಳು</a>
+        <a href="architecture_quiz.html" class="pill-btn" style="background:#f59e0b; color:#000;">🎯 45 MCQs ಕ್ವಿಜ್ ಪುಟ ➔</a>
+        <button class="pill-btn" onclick="toggleTheme()" id="themeBtn">🌙 ಡಾರ್ಕ್ ಮೋಡ್</button>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- SECTION 0: VON NEUMANN ARCHITECTURE & BLOCK DIAGRAM -->
+    <div class="section-box" id="sec-von">
+        <div class="sec-title">
+            <span>📐 ಮೂಲ ಪರಿಕಲ್ಪನೆ: ವಾನ್ ನ್ಯೂಮನ್ ವಿನ್ಯಾಸ (Von Neumann Architecture - 1945)</span>
+            <span class="badge-tag">Stored Program Concept</span>
+        </div>
+
+        <p style="margin-bottom:16px;">ಇಂದಿನ ಬಹುತೇಕ ಎಲ್ಲಾ ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್‌ಗಳು <strong>1945 ರಲ್ಲಿ ಜಾನ್ ವಾನ್ ನ್ಯೂಮನ್ (John Von Neumann)</strong> ರವರು ಪರಿಚಯಿಸಿದ ವಿನ್ಯಾಸವನ್ನು ಆಧರಿಸಿವೆ. ಇದನ್ನು <strong>"ಸ್ಟೋರ್ಡ್ ಪ್ರೋಗ್ರಾಮ್ ಕಾನ್ಸೆಪ್ಟ್" (Stored Program Concept)</strong> ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ. ಇದರ ಪ್ರಕಾರ, <b>ಡೇಟಾ (Data) ಮತ್ತು ಅದನ್ನು ಸಂಸ್ಕರಿಸುವ ಸೂಚನೆಗಳು (Instructions) ಎರಡನ್ನೂ ಒಂದೇ ಮೆಮೊರಿಯಲ್ಲಿ (Main Memory - RAM) ಶೇಖರಿಸಿಡಲಾಗುತ್ತದೆ.</b></p>
+
+        <!-- Complete Interactive Animated Block Diagram of Computer Architecture -->
+        <div style="background:#0f172a; border-radius:16px; padding:18px; overflow-x:auto; text-align:center; border:2px solid #0ea5e9;">
+            <h4 style="color:#38bdf8; margin-bottom:12px;">🖼️ ಕಂಪ್ಯೂಟರ್ ಸಂರಚನೆಯ ಸಮಗ್ರ ಬ್ಲಾಕ್ ಡಯಾಗ್ರಾಮ್ (Animated Von Neumann Block Diagram)</h4>
+            <svg width="920" height="340" viewBox="0 0 920 340" style="max-width:100%; height:auto;">
+                <!-- INPUT UNIT -->
+                <rect x="20" y="110" width="160" height="110" rx="12" fill="#065f46" stroke="#10b981" stroke-width="3"/>
+                <text x="100" y="145" fill="#fff" font-size="15" font-weight="bold" text-anchor="middle">1. INPUT UNIT</text>
+                <text x="100" y="168" fill="#a7f3d0" font-size="12" text-anchor="middle">(ಇನ್‌ಪುಟ್ ಘಟಕ)</text>
+                <text x="100" y="190" fill="#fde047" font-size="11" text-anchor="middle">ಡೇಟಾ ➔ 0 & 1 ಬೈನರಿ</text>
+                <text x="100" y="207" fill="#cbd5e1" font-size="10" text-anchor="middle">Keyboard, Mouse, OMR</text>
+
+                <!-- Arrow Input to CPU -->
+                <line x1="180" y1="165" x2="270" y2="165" stroke="#4ade80" stroke-width="4" class="flow-line"/>
+                <polygon points="270,165 258,158 258,172" fill="#4ade80"/>
+
+                <!-- CENTRAL PROCESSING UNIT (CPU) OUTER BOX -->
+                <rect x="275" y="15" width="370" height="205" rx="14" fill="#1e293b" stroke="#f59e0b" stroke-width="3.5"/>
+                <text x="460" y="40" fill="#fbbf24" font-size="15" font-weight="bold" text-anchor="middle">2. CPU (ಕಂಪ್ಯೂಟರ್‌ನ ಮೆದುಳು - Microprocessor)</text>
+
+                <!-- Control Unit (CU) -->
+                <rect x="295" y="55" width="330" height="48" rx="8" fill="#0284c7"/>
+                <text x="460" y="77" fill="#fff" font-size="13" font-weight="bold" text-anchor="middle">B. Control Unit (CU - ನಿಯಂತ್ರಣ ಘಟಕ)</text>
+                <text x="460" y="95" fill="#e0f2fe" font-size="10.5" text-anchor="middle">ನರಮಂಡಲ / ಟ್ರಾಫಿಕ್ ಪೊಲೀಸ್ (Fetch ➔ Decode ➔ Execute)</text>
+
+                <!-- ALU -->
+                <rect x="295" y="115" width="195" height="90" rx="8" fill="#7c3aed"/>
+                <text x="392" y="140" fill="#fff" font-size="13" font-weight="bold" text-anchor="middle">A. ALU (ಅಂಕಗಣಿತ & ತಾರ್ಕಿಕ)</text>
+                <text x="392" y="160" fill="#ddd6fe" font-size="11" text-anchor="middle">ಗಣಿತ: + , - , × , ÷</text>
+                <text x="392" y="178" fill="#fde047" font-size="11" text-anchor="middle">ತಾರ್ಕಿಕ: &gt; , &lt; , = , AND, OR</text>
+                <text x="392" y="196" fill="#fff" font-size="10" text-anchor="middle">(ನೈಜ ಪ್ರೊಸೆಸಿಂಗ್ ಸ್ಥಳ)</text>
+
+                <!-- Registers -->
+                <rect x="502" y="115" width="123" height="90" rx="8" fill="#be123c"/>
+                <text x="563" y="140" fill="#fff" font-size="13" font-weight="bold" text-anchor="middle">C. Registers</text>
+                <text x="563" y="158" fill="#fecdd3" font-size="10.5" text-anchor="middle">ಅತಿ ವೇಗದ ಮೆಮೊರಿ</text>
+                <text x="563" y="175" fill="#fde047" font-size="10" text-anchor="middle">ACC, PC, IR</text>
+                <text x="563" y="192" fill="#fde047" font-size="10" text-anchor="middle">MAR, MDR</text>
+
+                <!-- Arrow CPU to Memory (Bi-directional System Bus) -->
+                <line x1="420" y1="220" x2="420" y2="255" stroke="#38bdf8" stroke-width="4" class="flow-line"/>
+                <line x1="500" y1="255" x2="500" y2="220" stroke="#fbbf24" stroke-width="4" class="flow-line"/>
+                <text x="460" y="242" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="middle">System Bus</text>
+
+                <!-- MEMORY UNIT -->
+                <rect x="275" y="255" width="370" height="72" rx="12" fill="#0f766e" stroke="#2dd4bf" stroke-width="2.5"/>
+                <text x="460" y="280" fill="#fff" font-size="14" font-weight="bold" text-anchor="middle">3. MEMORY UNIT (ಮೆಮೊರಿ ಘಟಕ)</text>
+                <text x="460" y="300" fill="#ccfbf1" font-size="11.5" text-anchor="middle">Primary (RAM / ROM) | Cache | Secondary (HDD / SSD)</text>
+                <text x="460" y="317" fill="#fde047" font-size="10.5" text-anchor="middle">(ಡೇಟಾ + ಸೂಚನೆಗಳು ಒಂದೇ ಮೆಮೊರಿಯಲ್ಲಿ ಸಂಗ್ರಹ)</text>
+
+                <!-- Arrow CPU to Output -->
+                <line x1="645" y1="165" x2="735" y2="165" stroke="#4ade80" stroke-width="4" class="flow-line"/>
+                <polygon points="735,165 723,158 723,172" fill="#4ade80"/>
+
+                <!-- OUTPUT UNIT -->
+                <rect x="740" y="110" width="160" height="110" rx="12" fill="#0369a1" stroke="#38bdf8" stroke-width="3"/>
+                <text x="820" y="145" fill="#fff" font-size="15" font-weight="bold" text-anchor="middle">4. OUTPUT UNIT</text>
+                <text x="820" y="168" fill="#e0f2fe" font-size="12" text-anchor="middle">(ಔಟ್‌ಪುಟ್ ಘಟಕ)</text>
+                <text x="820" y="190" fill="#fde047" font-size="11" text-anchor="middle">0 & 1 ➔ ಮನುಷ್ಯನ ಭಾಷೆ</text>
+                <text x="820" y="207" fill="#cbd5e1" font-size="10" text-anchor="middle">Monitor, Printer, Speaker</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- SECTION 1 & 4: INPUT AND OUTPUT UNITS -->
+    <div class="section-box" id="sec-io">
+        <div class="sec-title">
+            <span>⌨️ 1. ಇನ್‌ಪುಟ್ ಘಟಕ (Input Unit) ಮತ್ತು 🖥️️ 4. ಔಟ್‌ಪುಟ್ ಘಟಕ (Output Unit)</span>
+            <span class="badge-tag">ಬೈನರಿ ಪರಿವರ್ತನೆ</span>
+        </div>
+
+        <div class="cards-grid">
+            <!-- INPUT UNIT -->
+            <div class="visual-card">
+                <div class="illustration-frame">
+                    <svg width="340" height="200" viewBox="0 0 340 200">
+                        <rect x="20" y="55" width="95" height="75" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="2.5"/>
+                        <text x="67" y="85" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">USER DATA</text>
+                        <text x="67" y="105" fill="#6ee7b7" font-size="10" text-anchor="middle">(A, B, 25, Click)</text>
+                        <line x1="115" y1="92" x2="195" y2="92" stroke="#fbbf24" stroke-width="3" class="flow-line"/>
+                        <rect x="130" y="75" width="50" height="34" rx="6" fill="#d97706"/>
+                        <text x="155" y="96" fill="#fff" font-size="9" font-weight="bold" text-anchor="middle">Encode</text>
+                        <rect x="195" y="55" width="125" height="75" rx="8" fill="#090d16" stroke="#38bdf8" stroke-width="2.5"/>
+                        <text x="257" y="85" fill="#4ade80" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle">01000001</text>
+                        <text x="257" y="108" fill="#38bdf8" font-size="10" text-anchor="middle">ಬೈನರಿ ಭಾಷೆ (0 & 1)</text>
+                    </svg>
+                    <div class="img-label-bar"><span>🖼️ ಚಿತ್ರ: ಇನ್‌ಪುಟ್ ಡೇಟಾ ➔ ಬೈನರಿ ಪರಿವರ್ತನೆ</span><span style="color:#4ade80;">Input Unit</span></div>
+                </div>
+                <div class="card-body">
+                    <h3>1. ಇನ್‌‌ಪುಟ್ ಘಟಕ (Input Unit)</h3>
+                    <ul>
+                        <li><strong>ಕಾರ್ಯ:</strong> ಬಳಕೆದಾರರಿಂದ ದತ್ತಾಂಶವನ್ನು (Data) ಮತ್ತು ಸೂಚನೆಗಳನ್ನು ಸ್ವೀಕರಿಸಿ, ಅದನ್ನು ಕಂಪ್ಯೂಟರ್‌ಗೆ ಅರ್ಥವಾಗುವ ಭಾಷೆಗೆ <b>(ಬೈನರಿ ಭಾಷೆ - 0 ಮತ್ತು 1)</b> ಪರಿವರ್ತಿಸುವ ಕೆಲಸವನ್ನು ಇನ್‌ಪುಟ್ ಘಟಕ ಮಾಡುತ್ತದೆ.</li>
+                        <li><strong>ಪ್ರಮುಖ ಇನ್‌ಪುಟ್ ಸಾಧನಗಳು:</strong> ಕೀಬೋರ್ಡ್ (Keyboard), ಮೌಸ್ (Mouse), ಸ್ಕ್ಯಾನರ್ (Scanner), ಬಾರ್ ಕೋಡ್ ರೀಡರ್ (BCR), ಒಎಂಆರ್ (OMR - Optical Mark Reader), ಮೈಕ್ರೊಫೋನ್ (Microphone), ಜಾಯ್‌ಸ್ಟಿಕ್, ವೆಬ್‌ಕ್ಯಾಮ್.</li>
+                    </ul>
+                    <div class="exam-booster">🎯 ಪರೀಕ್ಷಾ ಅಂಶ: ಮನುಷ್ಯನ ಭಾಷೆಯನ್ನು ಕಂಪ್ಯೂಟರ್‌ನ ಯಂತ್ರ ಭಾಷೆಗೆ (0 & 1) ಬದಲಾಯಿಸುವ ಘಟಕ = ಇನ್‌ಪುಟ್ ಘಟಕ.</div>
+                </div>
+            </div>
+
+            <!-- OUTPUT UNIT -->
+            <div class="visual-card">
+                <div class="illustration-frame">
+                    <svg width="340" height="200" viewBox="0 0 340 200">
+                        <rect x="25" y="40" width="135" height="95" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="3"/>
+                        <rect x="33" y="48" width="119" height="72" fill="#0284c7"/>
+                        <text x="92" y="82" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">MONITOR</text>
+                        <text x="92" y="102" fill="#fde047" font-size="10" font-weight="bold" text-anchor="middle">(Soft Copy Output)</text>
+                        <rect x="77" y="135" width="30" height="15" fill="#64748b"/>
+
+                        <rect x="195" y="55" width="115" height="75" rx="8" fill="#334155" stroke="#a78bfa" stroke-width="2.5"/>
+                        <rect x="215" y="30" width="75" height="35" fill="#ffffff"/>
+                        <line x1="225" y1="42" x2="280" y2="42" stroke="#000" stroke-width="2"/>
+                        <line x1="225" y1="52" x2="265" y2="52" stroke="#000" stroke-width="2"/>
+                        <text x="252" y="95" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">PRINTER</text>
+                        <text x="252" y="113" fill="#4ade80" font-size="10" font-weight="bold" text-anchor="middle">(Hard Copy Output)</text>
+                    </svg>
+                    <div class="img-label-bar"><span>🖼️ ಚಿತ್ರ: ಮಾನಿಟರ್ (ಸಾಫ್ಟ್ ಕಾಪಿ) & ಪ್ರಿಂಟರ್ (ಹಾರ್ಡ್ ಕಾಪಿ)</span><span style="color:#38bdf8;">Output Unit</span></div>
+                </div>
+                <div class="card-body">
+                    <h3>4. ಔಟ್‌ಪುಟ್ ಘಟಕ (Output Unit)</h3>
+                    <ul>
+                        <li><strong>ಕಾರ್ಯ:</strong> CPU ನಿಂದ ಸಂಸ್ಕರಿಸಲ್ಪಟ್ಟ ಯಂತ್ರ ಭಾಷೆಯ (0 & 1) ಫಲಿತಾಂಶವನ್ನು, ಮನುಷ್ಯರಿಗೆ ಅರ್ಥವಾಗುವ ಭಾಷೆಗೆ (ಚಿತ್ರ, ಅಕ್ಷರ, ಧ್ವನಿ) ಪರಿವರ್ತಿಸಿ ನೀಡುವ ಘಟಕ.</li>
+                        <li><strong>ಪ್ರಮುಖ ಔಟ್‌ಪುಟ್ ಸಾಧನಗಳು:</strong><br>
+                        • <b>ಮಾನಿಟರ್ (Monitor / VDU):</b> ಪರದೆಯ ಮೇಲೆ ತೋರಿಸುವ ತಾತ್ಕಾಲಿಕ ಪ್ರತಿ ಅಂದರೆ <b>ಸಾಫ್ಟ್ ಕಾಪಿ (Soft Copy)</b> ನೀಡುತ್ತದೆ.<br>
+                        • <b>ಪ್ರಿಂಟರ್ (Printer) & ಪ್ಲಾಟರ್ (Plotter):</b> ಕಾಗದದ ಮೇಲೆ ಮುದ್ರಿತ ಶಾಶ್ವತ ಪ್ರತಿ ಅಂದರೆ <b>ಹಾರ್ಡ್ ಕಾಪಿ (Hard Copy)</b> ನೀಡುತ್ತದೆ.<br>
+                        • <b>ಸ್ಪೀಕರ್ (Speaker), ಪ್ರೊಜೆಕ್ಟರ್ (Projector).</b></li>
+                    </ul>
+                    <div class="exam-booster">🎯 ಪರೀಕ್ಷಾ ಅಂಶ: ಸಾಫ್ಟ್ ಕಾಪಿ = ಮಾನಿಟರ್ | ಹಾರ್ಡ್ ಕಾಪಿ = ಪ್ರಿಂಟರ್.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: CPU - ALU AND CONTROL UNIT (CU) -->
+    <div class="section-box" id="sec-cpu">
+        <div class="sec-title">
+            <span>🧠 2. ಕೇಂದ್ರ ಸಂಸ್ಕರಣಾ ಘಟಕ (CPU - Central Processing Unit)</span>
+            <span class="badge-tag">ಕಂಪ್ಯೂಟರ್‌ನ ಮೆದುಳು (Brain of Computer)</span>
+        </div>
+
+        <p style="margin-bottom:18px;">ಇನ್‌ಪುಟ್ ಮೂಲಕ ಬಂದ ದತ್ತಾಂಶವನ್ನು ಸಂಸ್ಕರಿಸುವುದು CPU ನ ಮುಖ್ಯ ಕೆಲಸ. <b>ಮೈಕ್ರೋಪ್ರೊಸೆಸರ್ (Microprocessor)</b> ಎಂಬ ಚಿಪ್ ಈ ಕೆಲಸವನ್ನು ಮಾಡುತ್ತದೆ. CPU ಒಳಗೆ ಪ್ರಮುಖವಾಗಿ <b>3 ಉಪ-ಘಟಕಗಳಿವೆ: A) ALU, B) CU, ಮತ್ತು C) Registers.</b></p>
+
+        <div class="cards-grid">
+            <!-- A. ALU DEEP DIVE -->
+            <div class="visual-card">
+                <div class="illustration-frame">
+                    <svg width="340" height="200" viewBox="0 0 340 200">
+                        <!-- Classic V-Shaped ALU Symbol -->
+                        <polygon points="40,30 140,30 170,75 200,30 300,30 240,145 100,145" fill="#4c1d95" stroke="#a78bfa" stroke-width="3.5"/>
+                        <text x="170" y="92" fill="#fff" font-size="16" font-weight="bold" text-anchor="middle">ALU</text>
+                        <text x="105" y="60" fill="#4ade80" font-size="12" font-weight="bold" text-anchor="middle">+ − × ÷</text>
+                        <text x="235" y="60" fill="#fde047" font-size="11" font-weight="bold" text-anchor="middle">&gt; &lt; = AND OR</text>
+                        <text x="170" y="115" fill="#cbd5e1" font-size="10" text-anchor="middle">Actual Execution Place</text>
+
+                        <!-- Arrow to Accumulator -->
+                        <rect x="105" y="158" width="130" height="28" rx="6" fill="#be123c" stroke="#fda4af" stroke-width="2"/>
+                        <text x="170" y="176" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">➔ Accumulator (ACC)</text>
+                    </svg>
+                    <div class="img-label-bar"><span>🖼️ ಚಿತ್ರ: ALU (ಗಣಿತ + ತಾರ್ಕಿಕ) ➔ ಅಕ್ಯುಮುಲೇಟರ್</span><span style="color:#c084fc;">ಕಂಪ್ಯೂಟರ್‌ನ ಲೆಕ್ಕಿಗ</span></div>
+                </div>
+                <div class="card-body">
+                    <h3>A. ಅಂಕಗಣಿತ ಮತ್ತು ತಾರ್ಕಿಕ ಘಟಕ (ALU - Arithmetic Logic Unit)</h3>
+                    <ul>
+                        <li><strong>ಮೂಲ ವಿವರಣೆ:</strong> ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ ನಡೆಯುವ ಎಲ್ಲಾ ಗಣಿತದ ಲೆಕ್ಕಾಚಾರಗಳು ಮತ್ತು ತಾರ್ಕಿಕ ತೀರ್ಮಾನಗಳನ್ನು <b>ವಾಸ್ತವಿಕವಾಗಿ ನಿರ್ವಹಿಸುವ ಸ್ಥಳವೇ (Actual Execution of Instructions) ಈ ALU.</b></li>
+                        <li><strong>1. ಅಂಕಗಣಿತ ವಿಭಾಗ (Arithmetic Section):</strong> ಕೂಡುವುದು (+), ಕಳೆಯುವುದು (-), ಗುಣಿಸುವುದು (×), ಮತ್ತು ಭಾಗಿಸುವುದು (÷). ಎಷ್ಟೇ ಸಂಕೀರ್ಣ ಸಮೀಕರಣಗಳಿದ್ದರೂ ಈ ನಾಲ್ಕು ಮೂಲ ಕ್ರಿಯೆಗಳ ಪುನರಾವರ್ತನೆಯಿಂದಲೇ ಉತ್ತರ ಕಂಡುಹಿಡಿಯುತ್ತದೆ.</li>
+                        <li><strong>2. ತಾರ್ಕಿಕ ವಿಭಾಗ (Logic Section):</strong><br>
+                        • <b>ಹೋಲಿಕೆಗಳು (Comparisons):</b> ದೊಡ್ಡದು (&gt;), ಚಿಕ್ಕದು (&lt;), ಸಮ (=), ಸಮವಲ್ಲ (≠) ಪರಿಶೀಲನೆ.<br>
+                        • <b>ತಾರ್ಕಿಕ ಕಾರ್ಯಾಚರಣೆಗಳು:</b> AND, OR, NOT ಲಾಜಿಕ್ ಗೇಟ್ ಬಳಸಿ True/False ನಿರ್ಧಾರ (ಉದಾ: ಪಾಸ್‌ವರ್ಡ್ ಸರಿ ಇದೆಯೇ ಎಂದು ಪರಿಶೀಲಿಸುವುದು).</li>
+                        <li><strong>ALU ಕೆಲಸ ಮಾಡುವ ವಿಧಾನ:</strong> CU ಮೆಮೊರಿಯಿಂದ (RAM) ಡೇಟಾ ತಂದು 'ರೆಜಿಸ್ಟರ್‌ಗಳಲ್ಲಿ' ಇಡುತ್ತದೆ ➔ ALU ಲೆಕ್ಕಾಚಾರ ಮಾಡುತ್ತದೆ ➔ ಬಂದ ಫಲಿತಾಂಶವನ್ನು ತಕ್ಷಣವೇ <b>'ಅಕ್ಯುಮುಲೇಟರ್' (Accumulator)</b> ಎಂಬ ವಿಶೇಷ ರೆಜಿಸ್ಟರ್‌ನಲ್ಲಿ ತಾತ್ಕಾಲಿಕವಾಗಿ ಶೇಖರಿಸಿಡುತ್ತದೆ.</li>
+                    </ul>
+                    <div class="exam-booster">🎯 ಪರೀಕ್ಷಾ ಅಂಶಗಳು: ವಾಸ್ತವಿಕ ಡೇಟಾ ಪ್ರೊಸೆಸಿಂಗ್ ನಡೆಯುವ ಸ್ಥಳ = ALU | ಫಲಿತಾಂಶ ಹಿಡಿದಿಡುವ ರೆಜಿಸ್ಟರ್ = Accumulator | ALU ಕಂಟ್ರೋಲ್ ಯೂನಿಟ್ (CU) ಆದೇಶದಂತೆ ಮಾತ್ರ ಕೆಲಸ ಮಾಡುತ್ತದೆ.</div>
+                </div>
+            </div>
+
+            <!-- B. CONTROL UNIT (CU) & MACHINE CYCLE -->
+            <div class="visual-card">
+                <div class="illustration-frame">
+                    <svg width="340" height="200" viewBox="0 0 340 200">
+                        <text x="170" y="24" fill="#fbbf24" font-size="12" font-weight="bold" text-anchor="middle">CU MACHINE CYCLE (ಯಂತ್ರ ಚಕ್ರ)</text>
+                        <!-- 4 Cycle Boxes -->
+                        <rect x="30" y="40" width="110" height="42" rx="8" fill="#0284c7" class="glow-node"/>
+                        <text x="85" y="60" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">1. FETCH</text>
+                        <text x="85" y="74" fill="#e0f2fe" font-size="9" text-anchor="middle">(ಸೂಚನೆ ತರುವುದು)</text>
+
+                        <rect x="200" y="40" width="110" height="42" rx="8" fill="#0d9488"/>
+                        <text x="255" y="60" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">2. DECODE</text>
+                        <text x="255" y="74" fill="#ccfbf1" font-size="9" text-anchor="middle">(ಅರ್ಥೈಸುವುದು)</text>
+
+                        <rect x="200" y="118" width="110" height="42" rx="8" fill="#7c3aed"/>
+                        <text x="255" y="138" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">3. EXECUTE</text>
+                        <text x="255" y="152" fill="#ddd6fe" font-size="9" text-anchor="middle">(ಜಾರಿಗೊಳಿಸುವುದು)</text>
+
+                        <rect x="30" y="118" width="110" height="42" rx="8" fill="#d97706"/>
+                        <text x="85" y="138" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">4. STORE</text>
+                        <text x="85" y="152" fill="#fef3c7" font-size="9" text-anchor="middle">(ಉಳಿಸುವುದು)</text>
+
+                        <!-- Cycle Arrows -->
+                        <line x1="140" y1="61" x2="200" y2="61" stroke="#4ade80" stroke-width="3" class="flow-line"/>
+                        <line x1="255" y1="82" x2="255" y2="118" stroke="#4ade80" stroke-width="3" class="flow-line"/>
+                        <line x1="200" y1="139" x2="140" y2="139" stroke="#4ade80" stroke-width="3" class="flow-line"/>
+                        <line x1="85" y1="118" x2="85" y2="82" stroke="#4ade80" stroke-width="3" class="flow-line"/>
+                    </svg>
+                    <div class="img-label-bar"><span>🖼️ ಚಿತ್ರ: Fetch ➔ Decode ➔ Execute ➔ Store</span><span style="color:#38bdf8;">ನರಮಂಡಲ / ಟ್ರಾಫಿಕ್ ಪೊಲೀಸ್</span></div>
+                </div>
+                <div class="card-body">
+                    <h3>B. ನಿಯಂತ್ರಣ ಘಟಕ (CU - Control Unit)</h3>
+                    <ul>
+                        <li><strong>ಮೂಲ ವಿವರಣೆ:</strong> ಕಂಪ್ಯೂಟರ್‌ನ ವ್ಯವಸ್ಥಾಪಕ (Manager) ಅಥವಾ ಮೇಲ್ವಿಚಾರಕ (Supervisor). ಇದು ಕಂಪ್ಯೂಟರ್‌ನ <b>'ನರಮಂಡಲ' (Nervous System)</b> ಮತ್ತು <b>'ಟ್ರಾಫಿಕ್ ಪೊಲೀಸ್' (Traffic Police)</b> ಆಗಿದೆ.</li>
+                        <li><strong>ವಿಶೇಷ ಪರೀಕ್ಷಾ ಸೂಚನೆ:</strong> CU ಸ್ವತಃ ಯಾವುದೇ ಗಣಿತ ಲೆಕ್ಕಾಚಾರ ಅಥವಾ ಡೇಟಾ ಸಂಸ್ಕರಣೆ ಮಾಡುವುದಿಲ್ಲ; ಕೇವಲ ನಿರ್ದೇಶಿಸುತ್ತದೆ ಮತ್ತು 'ಟೈಮಿಂಗ್ & ಕಂಟ್ರೋಲ್ ಸಿಗ್ನಲ್' ಕಳುಹಿಸುತ್ತದೆ.</li>
+                        <li><strong>ಯಂತ್ರ ಚಕ್ರ (Machine / Instruction Cycle ಕ್ರಮ):</strong><br>
+                        1. <b>Fetch (ತರುವುದು):</b> RAM ಮೆಮೊರಿಯಿಂದ ಸೂಚನೆ ಪಡೆಯುವುದು.<br>
+                        2. <b>Decode (ಸಂಕೇತ ಬಿಡಿಸುವುದು):</b> ಸೂಚನೆಯ ಅರ್ಥ ತಿಳಿದುಕೊಳ್ಳುವುದು.<br>
+                        3. <b>Execute (ಕಾರ್ಯಗತಗೊಳಿಸುವುದು):</b> ALU ಗೆ ಆಜ್ಞೆ ನೀಡಿ ಕೆಲಸ ಮಾಡಿಸುವುದು.<br>
+                        4. <b>Store (ಉಳಿಸುವುದು):</b> ಫಲಿತಾಂಶವನ್ನು ಮೆಮೊರಿಯಲ್ಲಿ ಶೇಖರಿಸುವುದು.</li>
+                        <li><strong>CU ನಲ್ಲಿರುವ ಪ್ರಮುಖ ರೆಜಿಸ್ಟರ್‌ಗಳು:</strong> <b>PC (Program Counter)</b> ಮತ್ತು <b>IR (Instruction Register)</b>.</li>
+                    </ul>
+                    <div class="exam-booster">🎯 ಪರೀಕ್ಷಾ ಅಂಶ: ಕಂಪ್ಯೂಟರ್‌ನ ನರಮಂಡಲ ಮತ್ತು ಟ್ರಾಫಿಕ್ ಪೊಲೀಸ್ = Control Unit (CU). ಯಂತ್ರ ಚಕ್ರದ ಕ್ರಮ: Fetch ➔ Decode ➔ Execute ➔ Store.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2C: REGISTERS DEEP DIVE (CHEF ANALOGY + FLIP-FLOP + 7 REGISTERS) -->
+    <div class="section-box" id="sec-reg">
+        <div class="sec-title">
+            <span>🗂️ C. ರೆಜಿಸ್ಟರ್‌ಗಳು (CPU Registers) - ಅತ್ಯಂತ ವೇಗದ ಮೆಮೊರಿ</span>
+            <span class="badge-tag">ಅಡುಗೆಯವನ ಉದಾಹರಣೆ + 7 ವಿಧಗಳು</span>
+        </div>
+
+        <!-- Chef Analogy Visual Box -->
+        <div class="analogy-box">
+            <h4 style="color:var(--brand-teal); margin-bottom:8px;">👨‍🍳 ಸುಲಭವಾಗಿ ನೆನಪಿಟ್ಟುಕೊಳ್ಳಲು 'ಅಡುಗೆಯವನ' (Chef) ಉದಾಹರಣೆ:</h4>
+            <p style="font-size:0.95rem;">ಕಲ್ಪಿಸಿಕೊಳ್ಳಿ, <b>CPU ಒಬ್ಬ ಅಡುಗೆಯವನು (Chef)</b>. ಆತನಿಗೆ ಬೇಕಾದ ತರಕಾರಿಗಳು (Data) ದೊಡ್ಡ ಉಗ್ರಾಣದಲ್ಲಿ <b>(Hard Disk)</b> ಇವೆ. ಅಲ್ಲಿಂದ ತಂದು ಆತ ಅಡುಗೆಮನೆಯ ಫ್ರಿಡ್ಜ್‌ನಲ್ಲಿ <b>(RAM)</b> ಇಡುತ್ತಾನೆ. ಆದರೆ ಈಗಲೇ ಒಲೆಯ ಮೇಲೆ ಬೇಯುತ್ತಿರುವ ಅಡುಗೆಗೆ ಹಾಕಲು, ಆತನ ಕೈಗೆಟುಕುವಂತೆ ಪಕ್ಕದಲ್ಲೇ ಇರುವ <b>ಚಿಕ್ಕ ತಟ್ಟೆಗಳೇ 'ರೆಜಿಸ್ಟರ್‌ಗಳು' (Registers)!</b> ಅಂದರೆ ಇದು ಕಂಪ್ಯೂಟರ್ ಮೆದುಳಿನ (CPU) ಜೇಬಿನಲ್ಲಿರುವ ಪುಟ್ಟ 'ನೋಟ್‌ಪ್ಯಾಡ್' ಇದ್ದಂತೆ.</p>
+        </div>
+
+        <div class="cards-grid" style="margin-bottom:22px;">
+            <div class="visual-card">
+                <div class="illustration-frame">
+                    <svg width="340" height="200" viewBox="0 0 340 200">
+                        <text x="170" y="28" fill="#fbbf24" font-size="12" font-weight="bold" text-anchor="middle">8-BIT REGISTER (8 ಫ್ಲಿಪ್-ಫ್ಲಾಪ್ ಸ್ವಿಚ್‌ಗಳ ಗುಂಪು)</text>
+                        <!-- 8 Flip Flop Switches -->
+                        <rect x="22" y="45" width="34" height="55" rx="4" fill="#10b981"/><text x="39" y="78" fill="#000" font-weight="bold" font-size="16" text-anchor="middle">1</text>
+                        <rect x="59" y="45" width="34" height="55" rx="4" fill="#334155"/><text x="76" y="78" fill="#fff" font-weight="bold" font-size="16" text-anchor="middle">0</text>
+                        <rect x="96" y="45" width="34" height="55" rx="4" fill="#10b981"/><text x="113" y="78" fill="#000" font-weight="bold" font-size="16" text-anchor="middle">1</text>
+                        <rect x="133" y="45" width="34" height="55" rx="4" fill="#10b981"/><text x="150" y="78" fill="#000" font-weight="bold" font-size="16" text-anchor="middle">1</text>
+                        <rect x="170" y="45" width="34" height="55" rx="4" fill="#334155"/><text x="187" y="78" fill="#fff" font-weight="bold" font-size="16" text-anchor="middle">0</text>
+                        <rect x="207" y="45" width="34" height="55" rx="4" fill="#334155"/><text x="224" y="78" fill="#fff" font-weight="bold" font-size="16" text-anchor="middle">0</text>
+                        <rect x="244" y="45" width="34" height="55" rx="4" fill="#10b981"/><text x="261" y="78" fill="#000" font-weight="bold" font-size="16" text-anchor="middle">1</text>
+                        <rect x="281" y="45" width="34" height="55" rx="4" fill="#334155"/><text x="298" y="78" fill="#fff" font-weight="bold" font-size="16" text-anchor="middle">0</text>
+                        <text x="170" y="125" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">1 Flip-Flop = 1 Bit (ಲೈಟ್ ಸ್ವಿಚ್ ಆನ್=1, ಆಫ್=0)</text>
+                        <text x="170" y="148" fill="#fde047" font-size="11" text-anchor="middle">Word Size: 32-bit ಅಥವಾ 64-bit (ರಸ್ತೆಯ ಅಗಲ)</text>
+                    </svg>
+                    <div class="img-label-bar"><span>🖼️ ಚಿತ್ರ: ಫ್ಲಿಪ್-ಫ್ಲಾಪ್ (Flip-Flop) ಮತ್ತು ಬಿಟ್ ಸಂಗ್ರಹ</span><span style="color:#4ade80;">Zero Wait State</span></div>
+                </div>
+                <div class="card-body">
+                    <h3>ತಾಂತ್ರಿಕ ಹಿನ್ನೆಲೆ & ಪರೀಕ್ಷಾ ಗುಣಲಕ್ಷಣಗಳು</h3>
+                    <ul>
+                        <li><strong>ಫ್ಲಿಪ್-ಫ್ಲಾಪ್ (Flip-Flop):</strong> ರೆಜಿಸ್ಟರ್ ಎಂಬುದು ಫ್ಲಿಪ್-ಫ್ಲಾಪ್‌ಗಳ ಗುಂಪು. ಒಂದು ಫ್ಲಿಪ್-ಫ್ಲಾಪ್ ಕೇವಲ <b>1-ಬಿಟ್ (0 ಅಥವಾ 1)</b> ಡೇಟಾ ಸಂಗ್ರಹಿಸುವ ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಸರ್ಕ್ಯೂಟ್ (ಮನೆಯ ಲೈಟ್ ಸ್ವಿಚ್ ಇದ್ದಂತೆ).</li>
+                        <li><strong>ಅತ್ಯಂತ ವೇಗದ ಮೆಮೊರಿ (Fastest Memory):</strong><br>
+                        👉 ವೇಗದ ಕ್ರಮಾಂಕ: <b>Registers &gt; Cache &gt; RAM &gt; ROM &gt; Hard Disk</b>.<br>
+                        ಇದು ಶೂನ್ಯ ಕಾಯುವಿಕೆ (Zero wait state) ಹೊಂದಿರುತ್ತದೆ.</li>
+                        <li><strong>ವರ್ಡ್ ಸೈಜ್ (Word Size):</strong> 32-ಬಿಟ್ ಅಥವಾ 64-ಬಿಟ್ ಎಂಬುದು ಡೇಟಾ ಚಲಿಸುವ ರಸ್ತೆಯ ಅಗಲವಿದ್ದಂತೆ. 64-ಬಿಟ್ ರೆಜಿಸ್ಟರ್ ಒಮ್ಮೆಗೆ 64 ಬಿಟ್ ಡೇಟಾ ಪ್ರೊಸೆಸ್ ಮಾಡುತ್ತದೆ.</li>
+                        <li><strong>ಸ್ಥಿತಿ (Volatility) & ಸ್ಥಳ:</strong> ಇದು ತಾತ್ಕಾಲಿಕ (Volatile) ಮೆಮೊರಿ (ಪವರ್ ಆಫ್ ಆದರೆ ಅಳಿಸುತ್ತದೆ) ಮತ್ತು CPU ಚಿಪ್ ಒಳಗಡೆಯೇ ಬೆಸೆದುಕೊಂಡಿರುತ್ತದೆ.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Postman MAR vs MDR Visual Card -->
+            <div class="visual-card">
+                <div class="illustration-frame">
+                    <svg width="340" height="200" viewBox="0 0 340 200">
+                        <!-- MAR Envelope Address -->
+                        <rect x="25" y="40" width="130" height="90" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="2.5"/>
+                        <text x="90" y="65" fill="#fbbf24" font-size="13" font-weight="bold" text-anchor="middle">MAR (ವಿಳಾಸ)</text>
+                        <text x="90" y="88" fill="#fff" font-size="10" text-anchor="middle">📍 Address: #2048</text>
+                        <text x="90" y="108" fill="#94a3b8" font-size="9.5" text-anchor="middle">(ಕವರ್ ಮೇಲಿನ ವಿಳಾಸ ಚೀಟಿ)</text>
+
+                        <!-- MDR Parcel Content -->
+                        <rect x="185" y="40" width="130" height="90" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="2.5"/>
+                        <text x="250" y="65" fill="#4ade80" font-size="13" font-weight="bold" text-anchor="middle">MDR (ಡೇಟಾ)</text>
+                        <text x="250" y="88" fill="#fff" font-size="10" text-anchor="middle">📦 Data: "5000"</text>
+                        <text x="250" y="108" fill="#94a3b8" font-size="9.5" text-anchor="middle">(ಬಾಕ್ಸ್ ಒಳಗಿರುವ ಅಸಲು ವಸ್ತು)</text>
+
+                        <text x="170" y="160" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">PC = ಮುಂದಿನ ಟೋಕನ್ | IR = ಕೈಯಲ್ಲಿರುವ ಪ್ರಸ್ತುತ ಪತ್ರ</text>
+                    </svg>
+                    <div class="img-label-bar"><span>🖼️ ಚಿತ್ರ: ಪೋಸ್ಟ್‌ಮ್ಯಾನ್ ಉದಾಹರಣೆ (MAR vs MDR)</span><span style="color:#fbbf24;">7 Types of Registers</span></div>
+                </div>
+                <div class="card-body">
+                    <h3>ಪ್ರಮುಖ ರೆಜಿಸ್ಟರ್‌ಗಳ ಸಂಕ್ಷಿಪ್ತ ಹೋಲಿಕೆ</h3>
+                    <ul>
+                        <li><strong>ACC (Accumulator):</strong> ಕ್ಯಾಲ್ಕುಲೇಟರ್ ಪರದೆಯ ಮೇಲಿನ ಒಟ್ಟು ಮೊತ್ತ (Running Total).</li>
+                        <li><strong>PC (Program Counter):</strong> ಬ್ಯಾಂಕಿನಲ್ಲಿ "ಮುಂದಿನ ಟೋಕನ್ ನಂಬರ್ ಯಾರು?" ಎಂದು ನೆನಪಿಸುವ ಯಂತ್ರ (Next Instruction Address).</li>
+                        <li><strong>IR (Instruction Register):</strong> ಕೆಲಸಗಾರನ ಕೈಯಲ್ಲಿರುವ 'ಪ್ರಸ್ತುತ' ಓದುತ್ತಿರುವ ಆಜ್ಞಾ ಪತ್ರ (Current Running Instruction).</li>
+                        <li><strong>MAR (Memory Address Register):</strong> ಪೋಸ್ಟ್‌ಮ್ಯಾನ್ ಕವರ್ ಮೇಲಿನ 'ವಿಳಾಸದ ಚೀಟಿ'.</li>
+                        <li><strong>MDR (Memory Data Register):</strong> ಪೋಸ್ಟ್‌ಮ್ಯಾನ್ ತಂದ ಬಾಕ್ಸ್ ಒಳಗಿರುವ 'ಅಸಲು ವಸ್ತು' (Parcel).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Complete Table of all 7 Registers from User Notes + 2 Extra Exam Registers -->
+        <div class="table-wrap">
+            <h4 style="color:var(--brand-teal); margin-bottom:10px;">📋 ರೆಜಿಸ್ಟರ್‌ಗಳ ಎಲ್ಲಾ ವಿಧಗಳು, ತಾಂತ್ರಿಕ ಕೆಲಸ ಮತ್ತು ಸರಳ ಉದಾಹರಣೆಗಳ ಕೋಷ್ಟಕ:</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ರೆಜಿಸ್ಟರ್ ಹೆಸರು</th>
+                        <th>ತಾಂತ್ರಿಕ ಕೆಲಸ (Technical Function)</th>
+                        <th>ಸರಳ ಉದಾಹರಣೆ (Easy Analogy)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. ಅಕ್ಯುಮುಲೇಟರ್ (Accumulator - ACC)</strong></td>
+                        <td>ALU ಮಾಡುವ ಎಲ್ಲಾ ಗಣಿತ ಲೆಕ್ಕಾಚಾರಗಳ ಮಧ್ಯಂತರ ಮತ್ತು ಅಂತಿಮ ಫಲಿತಾಂಶಗಳನ್ನು ಉಳಿಸಿಕೊಳ್ಳುತ್ತದೆ.</td>
+                        <td>ಕ್ಯಾಲ್ಕುಲೇಟರ್‌ನಲ್ಲಿ 5+5+5 ಹೊಡೆಯುವಾಗ ಪರದೆಯ ಮೇಲೆ ಕಾಣುವ ಒಟ್ಟು ಮೊತ್ತ (Running Total).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. ಪ್ರೋಗ್ರಾಮ್ ಕೌಂಟರ್ (Program Counter - PC)</strong></td>
+                        <td><b>'ಮುಂದಿನ ಬಾರಿ' (Next Instruction)</b> ಯಾವ ಸೂಚನೆಯನ್ನು ಕಾರ್ಯಗತಗೊಳಿಸಬೇಕು ಎಂಬುದರ ವಿಳಾಸವನ್ನು ನೆನಪಿಟ್ಟುಕೊಳ್ಳುತ್ತದೆ.</td>
+                        <td>ಬ್ಯಾಂಕಿನಲ್ಲಿ ಕೌಂಟರ್‌ನಲ್ಲಿ ಕುಳಿತವನಿಗೆ "ಮುಂದಿನ ಟೋಕನ್ ನಂಬರ್ ಯಾರು?" ಎಂದು ತೋರಿಸುವ ಯಂತ್ರ.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. ಇನ್ಸ್‌ಟ್ರಕ್ಷನ್ ರೆಜಿಸ್ಟರ್ (Instruction Register - IR)</strong></td>
+                        <td>CPU <b>'ಪ್ರಸ್ತುತ' (Current running instruction)</b> ಯಾವ ಸೂಚನೆಯನ್ನು ಕಾರ್ಯಗತಗೊಳಿಸುತ್ತಿದೆಯೋ ಅದನ್ನು ಹಿಡಿದಿಟ್ಟುಕೊಳ್ಳುತ್ತದೆ.</td>
+                        <td>ಕೆಲಸಗಾರನೊಬ್ಬ ಪ್ರಸ್ತುತ ತನ್ನ ಕೈಯಲ್ಲಿ ಹಿಡಿದು ಓದುತ್ತಿರುವ ಆಜ್ಞಾ ಪತ್ರ (Task sheet).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. ಮೆಮೊರಿ ಅಡ್ರೆಸ್ ರೆಜಿಸ್ಟರ್ (MAR)</strong></td>
+                        <td>CPU ಗೆ ಬೇಕಾದ ಡೇಟಾ RAM ನ ಯಾವ ಜಾಗದಲ್ಲಿದೆ (ವಿಳಾಸ/Address) ಎಂಬುದನ್ನು CU ಗೆ ತಿಳಿಸುತ್ತದೆ.</td>
+                        <td>ಪೋಸ್ಟ್‌‌ಮ್ಯಾನ್ ಕೈಲಿರುವ ಕವರ್ ಮೇಲಿನ <b>'ವಿಳಾಸದ ಚೀಟಿ'</b>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. ಮೆಮೊರಿ ಡೇಟಾ ರೆಜಿಸ್ಟರ್ (MDR / MBR)</strong></td>
+                        <td>ಮೆಮೊರಿಯಿಂದ ಬಂದ ಡೇಟಾ ಅಥವಾ ಮೆಮೊರಿಗೆ ಹೋಗಬೇಕಾದ ಅಸಲು ಡೇಟಾವನ್ನು ಹಿಡಿದಿಟ್ಟುಕೊಳ್ಳುತ್ತದೆ.</td>
+                        <td>ಪೋಸ್ಟ್‌ಮ್ಯಾನ್ ತಂದಿರುವ ಬಾಕ್ಸ್ ಒಳಗಿರುವ <b>'ಅಸಲು ವಸ್ತು' (Parcel)</b>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6. ಸಾಮಾನ್ಯ ಉದ್ದೇಶದ ರೆಜಿಸ್ಟರ್ (GPR - R1, R2)</strong></td>
+                        <td>ಪ್ರೊಸೆಸಿಂಗ್ ನಡೆಯುವಾಗ ಡೇಟಾವನ್ನು ತಾತ್ಕಾಲಿಕವಾಗಿ ಇಟ್ಟುಕೊಳ್ಳಲು ALU ಇವುಗಳನ್ನು ಬಳಸುತ್ತದೆ.</td>
+                        <td>ಲೆಕ್ಕ ಮಾಡುವಾಗ ಮುಖ್ಯ ಹಾಳೆಯ ಪಕ್ಕದಲ್ಲಿ ಗೀಚಲು ಬಳಸುವ <b>'ರಫ್ ವರ್ಕ್' (Rough work)</b> ಹಾಳೆ.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>7. ಶಿಫ್ಟ್ ರೆಜಿಸ್ಟರ್‌ಗಳು (Shift Registers)</strong></td>
+                        <td>ಬೈನರಿ ಬಿಟ್‌ಗಳನ್ನು ಎಡಕ್ಕೆ ಅಥವಾ ಬಲಕ್ಕೆ ಚಲಿಸುವಂತೆ (Shift) ಮಾಡಿ ತ್ವರಿತ ಗುಣಾಕಾರ/ಭಾಗಾಕಾರ ನಿರ್ವಹಿಸುತ್ತವೆ.</td>
+                        <td>25 ನ್ನು 10 ರಿಂದ ಗುಣಿಸುವಾಗ ಮಗ್ಗಿ ಹೇಳದೆ ಪಕ್ಕದಲ್ಲಿ ಸೊನ್ನೆ ಸೇರಿಸಿ 250 ಮಾಡುವ ಶಾರ್ಟ್‌ಕಟ್.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🆕 8. ಫ್ಲಾಗ್ / ಸ್ಟೇಟಸ್ ರೆಜಿಸ್ಟರ್ (Flag Register / PSW)</strong></td>
+                        <td>ALU ಲೆಕ್ಕಾಚಾರದ ನಂತರ ಫಲಿತಾಂಶ ಶೂನ್ಯವಾಗಿದೆಯೇ (Zero), ಮೈನಸ್ ಆಗಿದೆಯೇ (Sign) ಅಥವಾ ಮಿತಿ ಮೀರಿದೆಯೇ (Overflow/Carry) ಎಂದು ಸೂಚಿಸುತ್ತದೆ.</td>
+                        <td>ವಾಹನದ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿರುವ ವಾರ್ನಿಂಗ್ ಇಂಡಿಕೇಟರ್ ಲೈಟ್‌ಗಳು.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- SECTION 3: MEMORY UNIT & HIERARCHY PYRAMID -->
+    <div class="section-box" id="sec-mem">
+        <div class="sec-title">
+            <span>💾 3. ಮೆಮೊರಿ ಘಟಕ (Memory / Storage Unit) & ವೇಗದ ಪಿರಮಿಡ್</span>
+            <span class="badge-tag">Registers &gt; Cache &gt; RAM &gt; HDD</span>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Memory Pyramid Visual -->
+            <div class="visual-card">
+                <div class="illustration-frame">
+                    <svg width="340" height="200" viewBox="0 0 340 200">
+                        <!-- Pyramid Levels -->
+                        <polygon points="170,18 210,55 130,55" fill="#ef4444"/>
+                        <text x="170" y="48" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">1. Registers</text>
+
+                        <polygon points="128,58 212,58 240,95 100,95" fill="#f59e0b"/>
+                        <text x="170" y="81" fill="#000" font-size="11" font-weight="bold" text-anchor="middle">2. Cache Memory</text>
+
+                        <polygon points="98,98 242,98 275,138 65,138" fill="#10b981"/>
+                        <text x="170" y="122" fill="#000" font-size="11" font-weight="bold" text-anchor="middle">3. Main Memory (RAM / ROM)</text>
+
+                        <polygon points="63,141 277,141 310,182 30,182" fill="#0284c7"/>
+                        <text x="170" y="166" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">4. Secondary (SSD / Hard Disk)</text>
+
+                        <!-- Speed Arrow Up -->
+                        <line x1="22" y1="175" x2="22" y2="25" stroke="#4ade80" stroke-width="3"/>
+                        <polygon points="22,20 16,32 28,32" fill="#4ade80"/>
+                        <text x="15" y="100" fill="#4ade80" font-size="10" font-weight="bold" transform="rotate(-90 15,100)" text-anchor="middle">ವೇಗ ಹೆಚ್ಚಳ (Speed)</text>
+                    </svg>
+                    <div class="img-label-bar"><span>🖼️ ಚಿತ್ರ: ಮೆಮೊರಿ ವೇಗದ ಪಿರಮಿಡ್ (Memory Hierarchy)</span><span style="color:#fbbf24;">Very Important</span></div>
+                </div>
+                <div class="card-body">
+                    <h3>A. ಪ್ರಾಥಮಿಕ ಮೆಮೊರಿ (Primary / Main Memory)</h3>
+                    <ul>
+                        <li>ಇದು ನೇರವಾಗಿ CPU ಸಂಪರ್ಕದಲ್ಲಿರುತ್ತದೆ:</li>
+                        <li><strong>1. RAM (Random Access Memory):</strong> ಪ್ರಸ್ತುತ ನಡೆಯುತ್ತಿರುವ ಕೆಲಸಗಳ ಡೇಟಾ ಇಟ್ಟುಕೊಳ್ಳುತ್ತದೆ. ವಿದ್ಯುತ್ ಹೋದ ತಕ್ಷಣ ಡೇಟಾ ಅಳಿಸಿಹೋಗುತ್ತದೆ. ಆದ್ದರಿಂದ ಇದನ್ನು <b>Volatile Memory (ತಾತ್ಕಾಲಿಕ/ಅಸ್ಥಿರ ಮೆಮೊರಿ)</b> ಎನ್ನುತ್ತಾರೆ.</li>
+                        <li><strong>2. ROM (Read Only Memory):</strong> ಕಂಪ್ಯೂಟರ್ ಆನ್ ಆಗಲು ಬೇಕಾದ ಮೂಲ ಸೂಚನೆಗಳನ್ನು <b>(Booting / BIOS)</b> ತಯಾರಕರು ಮೊದಲೇ ತುಂಬಿರುತ್ತಾರೆ. ವಿದ್ಯುತ್ ಹೋದರೂ ಡೇಟಾ ಅಳಿಸುವುದಿಲ್ಲ. ಆದ್ದರಿಂದ ಇದು <b>Non-Volatile Memory (ಶಾಶ್ವತ/ಸ್ಥಿರ ಮೆಮೊರಿ)</b>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Secondary & Cache Memory -->
+            <div class="visual-card">
+                <div class="illustration-frame">
+                    <svg width="340" height="200" viewBox="0 0 340 200">
+                        <rect x="20" y="60" width="80" height="75" rx="8" fill="#be123c"/>
+                        <text x="60" y="95" fill="#fff" font-size="13" font-weight="bold" text-anchor="middle">CPU</text>
+                        <text x="60" y="112" fill="#fecdd3" font-size="9" text-anchor="middle">(Registers)</text>
+
+                        <line x1="100" y1="97" x2="130" y2="97" stroke="#4ade80" stroke-width="3" class="flow-line"/>
+
+                        <rect x="130" y="68" width="80" height="58" rx="8" fill="#d97706" stroke="#fde047" stroke-width="2"/>
+                        <text x="170" y="95" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">CACHE</text>
+                        <text x="170" y="110" fill="#fef9c3" font-size="8.5" text-anchor="middle">(CPU & RAM ನಡುವೆ)</text>
+
+                        <line x1="210" y1="97" x2="240" y2="97" stroke="#38bdf8" stroke-width="3" class="flow-line"/>
+
+                        <rect x="240" y="60" width="80" height="75" rx="8" fill="#0284c7"/>
+                        <text x="280" y="95" fill="#fff" font-size="13" font-weight="bold" text-anchor="middle">RAM</text>
+                        <text x="280" y="112" fill="#e0f2fe" font-size="9" text-anchor="middle">(Main Memory)</text>
+                    </svg>
+                    <div class="img-label-bar"><span>🖼️ ಚಿತ್ರ: CPU ಮತ್ತು RAM ನಡುವೆ ಇರುವ ಕ್ಯಾಶ್ ಮೆಮೊರಿ</span><span style="color:#4ade80;">SRAM ವೇಗವರ್ಧಕ</span></div>
+                </div>
+                <div class="card-body">
+                    <h3>B. ದ್ವಿತೀಯಕ ಮೆಮೊರಿ & C. ಕ್ಯಾಶ್ ಮೆಮೊರಿ</h3>
+                    <ul>
+                        <li><strong>B. ದ್ವಿತೀಯಕ ಮೆಮೊರಿ (Secondary Memory):</strong> ಭವಿಷ್ಯದ ಬಳಕೆಗಾಗಿ ಅಪಾರ ಪ್ರಮಾಣದ ಡೇಟಾವನ್ನು ಶಾಶ್ವತವಾಗಿ (Non-Volatile) ಸಂಗ್ರಹಿಸಲು ಬಳಸಲಾಗುತ್ತದೆ. <b>ಉದಾಹರಣೆ:</b> Hard Disk (HDD), Solid State Drive (SSD), CD/DVD, Pen Drive.</li>
+                        <li><strong>C. ಕ್ಯಾಶ್ ಮೆಮೊರಿ (Cache Memory):</strong> ಇದು <b>CPU ಮತ್ತು RAM ನ ನಡುವೆ</b> ಇರುವ ಅತಿ ವೇಗದ ಮೆಮೊರಿ. CPU ಗೆ ಪದೇ ಪದೇ ಬೇಕಾಗುವ ಡೇಟಾವನ್ನು ಇದು ಇಟ್ಟುಕೊಳ್ಳುತ್ತದೆ, ಇದರಿಂದ ಕಂಪ್ಯೂಟರ್ ವೇಗ ಹೆಚ್ಚಾಗುತ್ತದೆ.</li>
+                    </ul>
+                    <div class="exam-booster">🎯 ಪರೀಕ್ಷಾ ವೇಗದ ಕ್ರಮ: <b>Registers &gt; Cache Memory &gt; Main Memory (RAM) &gt; Secondary Memory (SSD/HDD)</b>.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 5: SYSTEM BUS (NATIONAL HIGHWAY ANALOGY + ANIMATED 3 BUSES) -->
+    <div class="section-box" id="sec-bus">
+        <div class="sec-title">
+            <span>🛣️ 5. ಸಿಸ್ಟಮ್ ಬಸ್ (System Bus) - ಕಂಪ್ಯೂಟರ್ ಒಳಗಿನ 'ರಾಷ್ಟ್ರೀಯ ಹೆದ್ದಾರಿ'</span>
+            <span class="badge-tag">Data Bus + Address Bus + Control Bus</span>
+        </div>
+
+        <p style="margin-bottom:16px;"><strong>ಮೂಲ ವಿವರಣೆ:</strong> ಸಿಸ್ಟಮ್ ಬಸ್ ಎಂಬುದು ಮದರ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿರುವ ಎಲೆಕ್ಟ್ರಾನಿಕ್ ತಂತಿಗಳ (Electronic Wires / Pathways) ಗುಂಪಾಗಿದೆ. ಇದನ್ನು ಕಂಪ್ಯೂಟರ್ ಒಳಗಿನ <b>'ರಾಷ್ಟ್ರೀಯ ಹೆದ್ದಾರಿ' (National Highway)</b> ಎನ್ನಬಹುದು. ಊರುಗಳ (CPU, RAM, I/O) ನಡುವೆ ವಾಹನಗಳು (ಡೇಟಾ) ಓಡಾಡಲು ಈ ರಸ್ತೆಗಳೇ ಆಧಾರ.</p>
+
+        <!-- Live Animated System Bus Diagram -->
+        <div style="background:#0f172a; border-radius:16px; padding:18px; margin-bottom:22px; border:2px solid #10b981; overflow-x:auto;">
+            <h4 style="color:#4ade80; text-align:center; margin-bottom:12px;">🎬 ಲೈವ್ ಅನಿಮೇಷನ್: ಸಿಸ್ಟಮ್ ಬಸ್‌ನ 3 ಹೆದ್ದಾರಿಗಳು (ಚಲನೆಯ ದಿಕ್ಕು ಗಮನಿಸಿ)</h4>
+            <svg width="860" height="230" viewBox="0 0 860 230" style="max-width:100%; height:auto;">
+                <!-- CPU Block -->
+                <rect x="20" y="25" width="130" height="180" rx="10" fill="#be123c" stroke="#fda4af" stroke-width="2.5"/>
+                <text x="85" y="110" fill="#fff" font-size="18" font-weight="bold" text-anchor="middle">CPU</text>
+                <text x="85" y="132" fill="#fde047" font-size="11" text-anchor="middle">(MAR / MDR / CU)</text>
+
+                <!-- RAM & I/O Block -->
+                <rect x="700" y="25" width="140" height="180" rx="10" fill="#0284c7" stroke="#7dd3fc" stroke-width="2.5"/>
+                <text x="770" y="110" fill="#fff" font-size="16" font-weight="bold" text-anchor="middle">MEMORY (RAM)</text>
+                <text x="770" y="132" fill="#e0f2fe" font-size="11" text-anchor="middle">&amp; I/O Devices</text>
+
+                <!-- 1. DATA BUS (Bi-directional) -->
+                <rect x="150" y="40" width="550" height="36" fill="#1e293b"/>
+                <text x="425" y="63" fill="#4ade80" font-size="13" font-weight="bold" text-anchor="middle">1. DATA BUS (ಡೇಟಾ ಬಸ್) ⟷ ದ್ವಿಮುಖ ಮಾರ್ಗ (Bi-directional: Two-Way Road)</text>
+                <circle cx="200" cy="58" r="8" fill="#4ade80" class="bus-packet-bi"/>
+
+                <!-- 2. ADDRESS BUS (Uni-directional) -->
+                <rect x="150" y="98" width="550" height="36" fill="#1e293b"/>
+                <text x="425" y="121" fill="#fbbf24" font-size="13" font-weight="bold" text-anchor="middle">2. ADDRESS BUS (ಅಡ್ರೆಸ್ ಬಸ್) ⟶ ಏಕಮುಖ ಮಾರ್ಗ (Uni-directional: CPU ನಿಂದ ಮೆಮೊರಿಗೆ ಮಾತ್ರ)</text>
+                <circle cx="200" cy="116" r="8" fill="#fbbf24" class="bus-packet-right"/>
+
+                <!-- 3. CONTROL BUS -->
+                <rect x="150" y="156" width="550" height="36" fill="#1e293b"/>
+                <text x="425" y="179" fill="#c084fc" font-size="13" font-weight="bold" text-anchor="middle">3. CONTROL BUS (ಕಂಟ್ರೋಲ್ ಬಸ್) ⟷ ನಿಯಂತ್ರಣ ಸಿಗ್ನಲ್ (Read / Write Traffic Signal)</text>
+                <circle cx="200" cy="174" r="8" fill="#c084fc" class="bus-packet-bi"/>
+            </svg>
+        </div>
+
+        <div class="cards-grid">
+            <div class="visual-card">
+                <div class="card-body">
+                    <h3>1. ಡೇಟಾ ಬಸ್ (Data Bus)</h3>
+                    <ul>
+                        <li><strong>ತಾಂತ್ರಿಕ ಕೆಲಸ:</strong> CPU ಮತ್ತು ಮೆಮೊರಿ ಅಥವಾ ಇತರ ಸಾಧನಗಳ ನಡುವೆ <b>ವಾಸ್ತವಿಕ ದತ್ತಾಂಶವನ್ನು (Actual Data)</b> ಸಾಗಿಸುವ ಕೆಲಸ ಮಾಡುತ್ತದೆ.</li>
+                        <li><strong>ಚಲನೆಯ ದಿಕ್ಕು:</strong> ಇದು <b>ದ್ವಿಮುಖ (Bi-directional)</b> ಮಾರ್ಗವಾಗಿದೆ. ಡೇಟಾ CPU ನಿಂದ ಮೆಮೊರಿಗೆ ಹೋಗಬಹುದು ಮತ್ತು ಮೆಮೊರಿಯಿಂದ CPU ಗೂ ಬರಬಹುದು.</li>
+                        <li><strong>ಸರಳ ಉದಾಹರಣೆ:</strong> ರಸ್ತೆಯಲ್ಲಿ ಪ್ರಯಾಣಿಕರನ್ನು ಮತ್ತು ಸರಕುಗಳನ್ನು ಹೊತ್ತೊಯ್ಯುವ ನೈಜ ಬಸ್ಸುಗಳು/ಲಾರಿಗಳು (Two-way road).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="visual-card">
+                <div class="card-body">
+                    <h3>2. ಅಡ್ರೆಸ್ ಬಸ್ (Address Bus)</h3>
+                    <ul>
+                        <li><strong>ತಾಂತ್ರಿಕ ಕೆಲಸ:</strong> ಮೆಮೊರಿಯಲ್ಲಿ ಡೇಟಾ ಎಲ್ಲಿದೆ ಅಥವಾ ಎಲ್ಲಿಗೆ ಹೋಗಬೇಕು ಎಂಬ <b>'ವಿಳಾಸವನ್ನು' (Memory Location)</b> ಮಾತ್ರ ಹೊತ್ತೊಯ್ಯುತ್ತದೆ.</li>
+                        <li><strong>ಚಲನೆಯ ದಿಕ್ಕು:</strong> ಇದು <b>ಏಕಮುಖ (Uni-directional)</b> ಮಾರ್ಗವಾಗಿದೆ. ವಿಳಾಸವು ಯಾವಾಗಲೂ CPU ನಿಂದ (ನಿರ್ದಿಷ್ಟವಾಗಿ MAR ನಿಂದ) ಮೆಮೊರಿಯ ಕಡೆಗೆ ಮಾತ್ರ ಹರಿಯುತ್ತದೆ.</li>
+                        <li><strong>ಸರಳ ಉದಾಹರಣೆ:</strong> ವಾಹನ ಹೋಗಬೇಕಾದ ಜಾಗ ತೋರಿಸುವ 'ಮೈಲಿಗಲ್ಲು' (Milestone) ಅಥವಾ GPS ವಿಳಾಸ.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="visual-card">
+                <div class="card-body">
+                    <h3>3. ಕಂಟ್ರೋಲ್ ಬಸ್ (Control Bus)</h3>
+                    <ul>
+                        <li><strong>ತಾಂತ್ರಿಕ ಕೆಲಸ:</strong> CPU ನ ಕಂಟ್ರೋಲ್ ಯೂನಿಟ್ (CU) ನಿಂದ ಹೊರಡುವ <b>ನಿಯಂತ್ರಣ ಮತ್ತು ಟೈಮಿಂಗ್ ಸಿಗ್ನಲ್‌ಗಳನ್ನು (Read / Write signals)</b> ಇತರ ಭಾಗಗಳಿಗೆ ತಲುಪಿಸುತ್ತದೆ.</li>
+                        <li><strong>ಸರಳ ಉದಾಹರಣೆ:</strong> ಹೆದ್ದಾರಿಯಲ್ಲಿ ವಾಹನ ನಿಯಂತ್ರಿಸುವ 'ಟ್ರಾಫಿಕ್ ಸಿಗ್ನಲ್'.</li>
+                        <li><strong>ಪರೀಕ್ಷಾ ಅಂಶಗಳು (Bus Width & RAM ಸಾಮರ್ಥ್ಯ):</strong><br>
+                        • <b>ಬಸ್ ಅಗಲ (Bus Width):</b> ಏಕಕಾಲಕ್ಕೆ ಎಷ್ಟು ಬಿಟ್ ಡೇಟಾ ಚಲಿಸಬಹುದು ಎಂಬುದು (32-bit ಬಸ್ = 32 ತಂತಿಗಳ ಹೈವೇ).<br>
+                        • <b>ಮೆಮೊರಿ ಸಾಮರ್ಥ್ಯ ನಿರ್ಧಾರ:</b> <b>'ಅಡ್ರೆಸ್ ಬಸ್'ನ ಅಗಲವು</b> ಕಂಪ್ಯೂಟರ್‌ನ ಗರಿಷ್ಠ RAM ಸಾಮರ್ಥ್ಯವನ್ನು ನಿರ್ಧರಿಸುತ್ತದೆ! (32-bit Address Bus = ಗರಿಷ್ಠ <b>$2^{32}$ = 4 GB RAM</b> ಮಾತ್ರ ಬೆಂಬಲಿಸುತ್ತದೆ; 64-bit ಇದ್ದರೆ ಟೆರಾಬೈಟ್‌ಗಟ್ಟಲೆ RAM ಬೆಂಬಲಿಸುತ್ತದೆ).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 6: EXTRA EXAM GOLDMINE & 3D FLIP CARDS -->
+    <div class="section-box" id="sec-extra">
+        <div class="sec-title">
+            <span>🔥 ಪರೀಕ್ಷೆಗೆ ಉಳಿದಿದ್ದ ಹೆಚ್ಚುವರಿ ಮುಖ್ಯಾಂಶಗಳು & 3D ಫ್ಲಿಪ್ ಕಾರ್ಡ್ಸ್</span>
+            <span class="badge-new">Harvard vs Von Neumann, Pipelining, Clock Speed</span>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>ಪರಿಕಲ್ಪನೆ / ಪ್ರಶ್ನೆ</th><th>ನಿಖರ ಉತ್ತರ / ವಿವರಣೆ</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>ಕಂಪ್ಯೂಟರ್ ವಿನ್ಯಾಸದ ಪಿತಾಮಹ</strong></td><td><strong>ಜಾನ್ ವಾನ್ ನ್ಯೂಮನ್ (John Von Neumann - 1945)</strong> - ಸ್ಟೋರ್ಡ್ ಪ್ರೋಗ್ರಾಮ್ ಕಾನ್ಸೆಪ್ಟ್.</td></tr>
+                    <tr><td><strong>ವಾನ್ ನ್ಯೂಮನ್ ಬಾಟಲ್‌ನೆಕ್ (Bottleneck) ಎಂದರೇನು?</strong></td><td>ಡೇಟಾ ಮತ್ತು ಸೂಚನೆಗಳೆರಡೂ ಒಂದೇ ಬಸ್ ಮೂಲಕ ಚಲಿಸುವುದರಿಂದ CPU ಕಾಯಬೇಕಾದ ಸ್ಥಿತಿಯನ್ನು 'Von Neumann Bottleneck' ಎನ್ನುತ್ತಾರೆ.</td></tr>
+                    <tr><td><strong>ಹಾವರ್ಡ್ ವಿನ್ಯಾಸ (Harvard Architecture)</strong></td><td>ಡೇಟಾ ಮತ್ತು ಸೂಚನೆಗಳನ್ನು ಸಂಗ್ರಹಿಸಲು ಪ್ರತ್ಯೇಕ ಮೆಮೊರಿ ಮತ್ತು ಪ್ರತ್ಯೇಕ ಬಸ್‌ಗಳನ್ನು ಬಳಸುವ ವಿನ್ಯಾಸ (ಮೈಕ್ರೋಕಂಟ್ರೋಲರ್ ಮತ್ತು DSP ಗಳಲ್ಲಿ ಬಳಕೆ).</td></tr>
+                    <tr><td><strong>ಇನ್ಸ್‌ಟ್ರಕ್ಷನ್ ಪೈಪ್‌ಲೈನಿಂಗ್ (Pipelining)</strong></td><td>ಒಂದು ಸೂಚನೆ Execute ಆಗುತ್ತಿರುವಾಗಲೇ ಮುಂದಿನ ಸೂಚನೆಯನ್ನು Decode ಮತ್ತು Fetch ಮಾಡುವ ಮೂಲಕ CPU ವೇಗ ಹೆಚ್ಚಿಸುವ ತಂತ್ರಜ್ಞಾನ.</td></tr>
+                    <tr><td><strong>ಸಿಸ್ಟಮ್ ಕ್ಲಾಕ್ ವೇಗ (Clock Speed)</strong></td><td>CPU ನ ವೇಗವನ್ನು <b>Hertz (MHz / GHz - Gigahertz)</b> ಅಥವಾ <b>MIPS (Million Instructions Per Second)</b> ನಲ್ಲಿ ಅಳೆಯಲಾಗುತ್ತದೆ.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 style="color:var(--brand-teal); margin-top:22px;">🧠 3D ಫ್ಲಿಪ್ ಕಾರ್ಡ್ಸ್: ತ್ವರಿತ ನೆನಪಿನ ಕಾರ್ಡ್‌ಗಳು (ಟಚ್ ಮಾಡಿ):</h4>
+        <div class="flip-grid">
+            <div class="flip-box" onclick="this.classList.toggle('flipped')">
+                <div class="flip-inner">
+                    <div class="flip-front"><div>🧠</div><h4>ಕಂಪ್ಯೂಟರ್‌ನ ಮೆದುಳು & ನರಮಂಡಲ?</h4><small>ಟಚ್ ಮಾಡಿ</small></div>
+                    <div class="flip-back"><h3>ಮೆದುಳು: CPU<br>ನರಮಂಡಲ: CU</h3><small>ನೈಜ ಲೆಕ್ಕಾಚಾರ: ALU</small></div>
+                </div>
+            </div>
+            <div class="flip-box" onclick="this.classList.toggle('flipped')">
+                <div class="flip-inner">
+                    <div class="flip-front"><div>🔢</div><h4>PC vs IR ರೆಜಿಸ್ಟರ್ ವ್ಯತ್ಯಾಸ?</h4><small>ಟಚ್ ಮಾಡಿ</small></div>
+                    <div class="flip-back"><h3>PC: ಮುಂದಿನ ಸೂಚನೆ ವಿಳಾಸ<br>IR: ಪ್ರಸ್ತುತ ಸೂಚನೆ</h3><small>ACC: ALU ಫಲಿತಾಂಶ</small></div>
+                </div>
+            </div>
+            <div class="flip-box" onclick="this.classList.toggle('flipped')">
+                <div class="flip-inner">
+                    <div class="flip-front"><div>📮</div><h4>MAR vs MDR ವ್ಯತ್ಯಾಸ?</h4><small>ಟಚ್ ಮಾಡಿ</small></div>
+                    <div class="flip-back"><h3>MAR: ವಿಳಾಸ ಚೀಟಿ<br>MDR: ಅಸಲು ಡೇಟಾ</h3><small>ಪೋಸ್ಟ್‌ಮ್ಯಾನ್ ಉದಾಹರಣೆ</small></div>
+                </div>
+            </div>
+            <div class="flip-box" onclick="this.classList.toggle('flipped')">
+                <div class="flip-inner">
+                    <div class="flip-front"><div>🛣️</div><h4>ಯಾವ ಬಸ್ ಏಕಮುಖ (Uni-directional)?</h4><small>ಟಚ್ ಮಾಡಿ</small></div>
+                    <div class="flip-back"><h3>ಅಡ್ರೆಸ್ ಬಸ್ (Address Bus)</h3><small>Data Bus ದ್ವಿಮುಖ (Bi-directional)</small></div>
+                </div>
+            </div>
+            <div class="flip-box" onclick="this.classList.toggle('flipped')">
+                <div class="flip-inner">
+                    <div class="flip-front"><div>⚡</div><h4>ಮೆಮೊರಿ ವೇಗದ ಸರಿಯಾದ ಕ್ರಮ?</h4><small>ಟಚ್ ಮಾಡಿ</small></div>
+                    <div class="flip-back"><h3>Registers &gt; Cache &gt; RAM &gt; HDD</h3><small>ರೆಜಿಸ್ಟರ್ ಅತ್ಯಂತ ವೇಗದ್ದು</small></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTTOM BANNER LINKING TO SEPARATE ARCHITECTURE QUIZ PAGE -->
+    <div class="quiz-launch-banner">
+        <h2>🎯 ಕಂಪ್ಯೂಟರ್ ಸಂರಚನೆ ನೋಟ್ಸ್ ಓದಿ ಮುಗಿಸಿದಿರಾ?</h2>
+        <p style="margin-top:6px; opacity:0.92;">ಈ ಅಧ್ಯಾಯದ ಮೇಲಿನ ಎಲ್ಲಾ 45 ಬಹುಆಯ್ಕೆ ಪ್ರಶ್ನೆಗಳ (Direct + KAS Statement MCQs) ಪ್ರತ್ಯೇಕ ಕ್ವಿಜ್ ಪುಟಕ್ಕೆ ಹೋಗಲು ಕೆಳಗಿನ ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ:</p>
+        <a href="architecture_quiz.html" class="launch-btn">🚀 45 ಪ್ರಶ್ನೆಗಳ ಲೈವ್ ಕ್ವಿಜ್ ಪ್ರಾರಂಭಿಸಿ (Open Architecture Quiz) ➔</a>
+    </div>
+
+</div>
+
+<script>
+    window.onscroll = function() {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        document.getElementById("scrollBar").style.width = ((winScroll / height) * 100) + "%";
+    };
+
+    function toggleTheme() {
+        const b = document.body;
+        const btn = document.getElementById('themeBtn');
+        if (b.getAttribute('data-theme') === 'dark') {
+            b.removeAttribute('data-theme');
+            btn.textContent = '🌙 ಡಾರ್ಕ್ ಮೋಡ್';
+        } else {
+            b.setAttribute('data-theme', 'dark');
+            btn.textContent = '☀️ ಲೈಟ್ ಮೋಡ್';
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಗಣಕಯಂತ್ರಗಳ ಪೀಳಿಗೆಗಳು - ಮೆಗಾ ರಸಪ್ರಶ್ನೆ (25 MCQs)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #f1f5f9;
+            --bg-card: #ffffff;
+            --bg-soft: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border: #cbd5e1;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --correct-bg: #dcfce7;
+            --correct-border: #16a34a;
+            --correct-text: #14532d;
+            --wrong-bg: #fee2e2;
+            --wrong-border: #dc2626;
+            --wrong-text: #7f1d1d;
+            --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+        }
+
+        [data-theme="dark"] {
+            --bg-main: #0b1120;
+            --bg-card: #1e293b;
+            --bg-soft: #0f172a;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border: #334155;
+            --accent: #3b82f6;
+            --accent-hover: #60a5fa;
+            --correct-bg: rgba(22, 163, 74, 0.2);
+            --correct-border: #22c55e;
+            --correct-text: #bbf7d0;
+            --wrong-bg: rgba(220, 38, 38, 0.2);
+            --wrong-border: #ef4444;
+            --wrong-text: #fecaca;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        [data-theme="sepia"] {
+            --bg-main: #efe6d5;
+            --bg-card: #fbf5e9;
+            --bg-soft: #f3ead8;
+            --text-primary: #3d312a;
+            --text-secondary: #635347;
+            --border: #d5c7b2;
+            --accent: #b45309;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans Kannada', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.7;
+            transition: background 0.3s, color 0.3s;
+            padding-bottom: 60px;
+        }
+
+        /* Sticky Top Header */
+        .header-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .brand-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stats-bar {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .stat-pill {
+            background: var(--bg-soft);
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 99px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .theme-group button {
+            background: var(--bg-soft);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 28px auto;
+            padding: 0 16px;
+        }
+
+        /* Hero Banner */
+        .quiz-hero {
+            background: linear-gradient(135deg, #1e1b4b, #1d4ed8);
+            color: #ffffff;
+            padding: 30px 24px;
+            border-radius: 22px;
+            text-align: center;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .quiz-hero h1 {
+            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            margin-bottom: 8px;
+        }
+
+        .quiz-hero p {
+            color: #dbeafe;
+            font-size: 1rem;
+        }
+
+        /* Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 99px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: 0.2s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+        }
+
+        /* Progress Bar */
+        .progress-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 16px 20px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 10px;
+            background: var(--bg-soft);
+            border-radius: 99px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #2563eb, #10b981);
+            transition: width 0.4s ease;
+        }
+
+        /* Question Card */
+        .q-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 22px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s;
+        }
+
+        .q-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .q-badge {
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 99px;
+            background: var(--bg-soft);
+            border: 1px solid var(--border);
+            color: var(--accent);
+        }
+
+        .q-title {
+            font-size: 1.12rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .options-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .opt-btn {
+            width: 100%;
+            text-align: left;
+            padding: 13px 16px;
+            border-radius: 12px;
+            border: 1.5px solid var(--border);
+            background: var(--bg-soft);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.98rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s;
+        }
+
+        .opt-btn:hover:not(:disabled) {
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .opt-letter {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .opt-btn.correct {
+            background: var(--correct-bg);
+            border-color: var(--correct-border);
+            color: var(--correct-text);
+        }
+
+        .opt-btn.wrong {
+            background: var(--wrong-bg);
+            border-color: var(--wrong-border);
+            color: var(--wrong-text);
+        }
+
+        /* Explanation Box */
+        .exp-box {
+            margin-top: 16px;
+            padding: 16px;
+            border-radius: 14px;
+            background: var(--bg-soft);
+            border-left: 5px solid var(--accent);
+            font-size: 0.95rem;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Result Summary Modal Card */
+        .result-panel {
+            background: var(--bg-card);
+            border: 2px solid var(--accent);
+            border-radius: 24px;
+            padding: 32px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .score-circle {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .action-btn {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 16px;
+            transition: 0.2s;
+        }
+
+        .action-btn:hover {
+            background: var(--accent-hover);
+        }
+
+        @media (max-width: 640px) {
+            .header-bar {
+                justify-content: center;
+            }
+            .q-card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Sticky Bar -->
+    <header class="header-bar">
+        <div class="brand-title">🏆 ಗಣಕಯಂತ್ರ ಪೀಳಿಗೆಗಳ ಕ್ವಿಜ್ ಬ್ಯಾಂಕ್</div>
+        <div class="stats-bar">
+            <span class="stat-pill">✅ ಸರಿ: <span id="correct-count">0</span></span>
+            <span class="stat-pill">❌ ತಪ್ಪು: <span id="wrong-count">0</span></span>
+            <span class="stat-pill">📊 ಅಂಕ: <span id="score-pct">0%</span></span>
+        </div>
+        <div class="theme-group">
+            <button onclick="setTheme('light')">☀️ ಲೈಟ್</button>
+            <button onclick="setTheme('sepia')">📜 ಸೆಪಿಯಾ</button>
+            <button onclick="setTheme('dark')">🌙 ಡಾರ್ಕ್</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hero Banner -->
+        <section class="quiz-hero">
+            <h1>ಸ್ಪರ್ಧಾತ್ಮಕ ಪರೀಕ್ಷಾ ಮೆಗಾ ರಸಪ್ರಶ್ನೆ (25 MCQs)</h1>
+            <p>ಮೊದಲನೇ ಪೀಳಿಗೆಯಿಂದ ಐದನೇ ಪೀಳಿಗೆಯವರೆಗಿನ ಸಂಪೂರ್ಣ ನೋಟ್ಸ್ ಆಧಾರಿತ ಪ್ರಶ್ನೋತ್ತರಗಳು ಮತ್ತು ವಿವರಣೆ.</p>
+        </section>
+
+        <!-- Category Filter Tabs -->
+        <div class="filter-tabs">
+            <button class="tab-btn active" onclick="filterQuestions('all', this)">ಎಲ್ಲಾ ಪ್ರಶ್ನೆಗಳು (25)</button>
+            <button class="tab-btn" onclick="filterQuestions('1ನೇ ಪೀಳಿಗೆ', this)">1ನೇ ಪೀಳಿಗೆ</button>
+            <button class="tab-btn" onclick="filterQuestions('2ನೇ ಪೀಳಿಗೆ', this)">2ನೇ ಪೀಳಿಗೆ</button>
+            <button class="tab-btn" onclick="filterQuestions('3ನೇ ಪೀಳಿಗೆ', this)">3ನೇ ಪೀಳಿಗೆ</button>
+            <button class="tab-btn" onclick="filterQuestions('4ನೇ ಪೀಳಿಗೆ', this)">4ನೇ ಪೀಳಿಗೆ</button>
+            <button class="tab-btn" onclick="filterQuestions('5ನೇ ಪೀಳಿಗೆ', this)">5ನೇ ಪೀಳಿಗೆ</button>
+        </div>
+
+        <!-- Progress Tracker -->
+        <div class="progress-wrapper">
+            <div class="progress-info">
+                <span>ನಿಮ್ಮ ಪ್ರಗತಿ (Progress)</span>
+                <span><span id="answered-count">0</span> / <span id="total-count">25</span> ಉತ್ತರಿಸಲಾಗಿದೆ</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+
+        <!-- Questions Container -->
+        <div id="quiz-container"></div>
+
+        <!-- Final Score Card -->
+        <div class="result-panel">
+            <div class="score-circle">
+                <span id="final-score">0/25</span>
+                <small style="font-size: 0.75rem; font-weight: 500;">ಒಟ್ಟು ಅಂಕ</small>
+            </div>
+            <h2 id="feedback-msg">ಎಲ್ಲಾ ಪ್ರಶ್ನೆಗಳಿಗೂ ಉತ್ತರಿಸಿ ನಿಮ್ಮ ಸಾಮರ್ಥ್ಯ ಪರೀಕ್ಷಿಸಿ!</h2>
+            <p style="color: var(--text-secondary); margin-top: 6px;">ಪ್ರತಿಯೊಂದು ಪ್ರಶ್ನೆಯ ಕೆಳಗೆ ನೀಡಲಾದ ಪರೀಕ್ಷಾ ವಿವರಣೆಯನ್ನು ತಪ್ಪದೇ ಓದಿ.</p>
+            <button class="action-btn" onclick="resetQuiz()">🔄 ಕ್ವಿಜ್ ಮರುಪ್ರಾರಂಭಿಸಿ (Reset Quiz)</button>
+        </div>
+    </div>
+
+    <script>
+        const questionsData = [
+            // 1ನೇ ಪೀಳಿಗೆ
+            {
+                gen: "1ನೇ ಪೀಳಿಗೆ",
+                q: "1. ಮೊದಲನೇ ಪೀಳಿಗೆಯ ಗಣಕಯಂತ್ರಗಳ (1940-1956) ಪ್ರಮುಖ ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಘಟಕ ಮತ್ತು ಮೆಮೊರಿ ತಂತ್ರಜ್ಞಾನ ಯಾವುದು?",
+                options: [
+                    "ಟ್ರಾನ್ಸಿಸ್ಟರ್‌‌ಗಳು ಮತ್ತು ಮ್ಯಾಗ್ನೆಟಿಕ್ ಕೋರ್",
+                    "ವ್ಯಾಕ್ಯೂಮ್ ಟ್ಯೂಬ್‌ಗಳು (ನಿರ್ವಾತ ನಾಳಗಳು) ಮತ್ತು ಮ್ಯಾಗ್ನೆಟಿಕ್ ಡ್ರಮ್‌ಗಳು",
+                    "ಇಂಟಿಗ್ರೇಟೆಡ್ ಸರ್ಕ್ಯೂಟ್ (IC) ಮತ್ತು RAM",
+                    "ಮೈಕ್ರೋಪ್ರೊಸೆಸರ್ ಮತ್ತು ಹಾರ್ಡ್ ಡಿಸ್ಕ್"
+                ],
+                ans: 1,
+                exp: "ಮೊದಲ ಪೀಳಿಗೆಯ ಗಣಕಯಂತ್ರಗಳಲ್ಲಿ ಸರ್ಕ್ಯೂಟ್‌ಗಳಿಗಾಗಿ 'ವ್ಯಾಕ್ಯೂಮ್ ಟ್ಯೂಬ್‌'ಗಳನ್ನು ಮತ್ತು ಡೇಟಾ ಶೇಖರಣೆಗೆ (Memory) 'ಮ್ಯಾಗ್ನೆಟಿಕ್ ಡ್ರಮ್‌'ಗಳನ್ನು ಬಳಸಲಾಗುತ್ತಿತ್ತು."
+            },
+            {
+                gen: "1ನೇ ಪೀಳಿಗೆ",
+                q: "2. ಜಗತ್ತಿನ ಮೊಟ್ಟಮೊದಲ ಸಾಮಾನ್ಯ ಉದ್ದೇಶದ (General-purpose) ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಗಣಕಯಂತ್ರ ಯಾವುದು ಮತ್ತು ಅದರ ಅಂದಾಜು ತೂಕವೆಷ್ಟು?",
+                options: [
+                    "UNIVAC - 10 ಟನ್",
+                    "EDVAC - 15 ಟನ್",
+                    "ENIAC - ಸುಮಾರು 30 ಟನ್",
+                    "IBM 1401 - 5 ಟನ್"
+                ],
+                ans: 2,
+                exp: "ENIAC (Electronic Numerical Integrator and Computer) ಜಗತ್ತಿನ ಮೊದಲ ಸಾಮಾನ್ಯ ಉದ್ದೇಶದ ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಗಣಕಯಂತ್ರವಾಗಿದ್ದು, ಸುಮಾರು 30 ಟನ್ ತೂಕವಿತ್ತು."
+            },
+            {
+                gen: "1ನೇ ಪೀಳಿಗೆ",
+                q: "3. ವಾಣಿಜ್ಯ ಉದ್ದೇಶಕ್ಕಾಗಿ (Commercial use) ನಿರ್ಮಿಸಲಾದ ಮೊದಲ ಗಣಕಯಂತ್ರ ಯಾವುದು? ಇದನ್ನು 1951 ರಲ್ಲಿ ಅಮೇರಿಕಾದ ಸೆನ್ಸಸ್ ಬ್ಯೂರೋಗೆ ನೀಡಲಾಯಿತು.",
+                options: [
+                    "ENIAC",
+                    "UNIVAC (Universal Automatic Computer)",
+                    "EDVAC",
+                    "PDP-8"
+                ],
+                ans: 1,
+                exp: "UNIVAC-I ವಾಣಿಜ್ಯ ಉದ್ದೇಶಕ್ಕಾಗಿ ನಿರ್ಮಿಸಲಾದ ಮೊದಲ ಗಣಕಯಂತ್ರವಾಗಿದೆ."
+            },
+            {
+                gen: "1ನೇ ಪೀಳಿಗೆ",
+                q: "4. ಡೇಟಾ ಮತ್ತು ಪ್ರೋಗ್ರಾಮ್ ಎರಡನ್ನೂ ಮೆಮೊರಿಯಲ್ಲಿ ಸ್ಟೋರ್ ಮಾಡುವ (Stored Program Concept) ಸಾಮರ್ಥ್ಯ ಹೊಂದಿದ್ದ ಮೊದಲ ಪೀಳಿಗೆಯ ಗಣಕಯಂತ್ರ ಯಾವುದು?",
+                options: [
+                    "EDVAC (Electronic Discrete Variable Automatic Computer)",
+                    "ENIAC",
+                    "Apple II",
+                    "CDC 1604"
+                ],
+                ans: 0,
+                exp: "ಜಾನ್ ವಾನ್ ನ್ಯೂಮನ್ ಅವರ Stored Program ಪರಿಕಲ್ಪನೆಯಂತೆ ಡೇಟಾ ಮತ್ತು ಪ್ರೋಗ್ರಾಮ್ ಎರಡನ್ನೂ ಮೆಮೊರಿಯಲ್ಲಿ ಸ್ಟೋರ್ ಮಾಡುವ ಸಾಮರ್ಥ್ಯ ಹೊಂದಿದ್ದ ಯಂತ್ರ EDVAC."
+            },
+            {
+                gen: "1ನೇ ಪೀಳಿಗೆ",
+                q: "5. ಮೊದಲನೇ ಪೀಳಿಗೆಯ ಗಣಕಯಂತ್ರಗಳ ಭಾಷೆ, ಇನ್‌ಪುಟ್ ಸಾಧನ ಮತ್ತು ಲೆಕ್ಕಾಚಾರದ ವೇಗದ ಸರಿಯಾದ ಜೋಡಿ ಯಾವುದು?",
+                options: [
+                    "ಅಸೆಂಬ್ಲಿ ಭಾಷೆ | ಕೀಬೋರ್ಡ್ | ಮೈಕ್ರೋಸೆಕೆಂಡ್ಸ್",
+                    "ಮಷಿನ್ ಭಾಷೆ (0 ಮತ್ತು 1) | ಪಂಚ್ ಕಾರ್ಡ್ ಮತ್ತು ಪೇಪರ್ ಟೇಪ್ | ಮಿಲಿಸೆಕೆಂಡ್ಸ್",
+                    "ಹೈ-ಲೆವೆಲ್ ಭಾಷೆ | ಮೌಸ್ | ನ್ಯಾನೊಸೆಕೆಂಡ್ಸ್",
+                    "ಕೃತಕ ಬುದ್ಧಿಮತ್ತೆ | ವಾಯ್ಸ್ ರೆಕಗ್ನಿಷನ್ | ಪಿಕೊಸೆಕೆಂಡ್ಸ್"
+                ],
+                ans: 1,
+                exp: "ಮೊದಲ ಪೀಳಿಗೆಯ ಯಂತ್ರಗಳು ಕೇವಲ ದ್ವಿಮಾನ ಮಷಿನ್ ಭಾಷೆಯನ್ನು (0 ಮತ್ತು 1) ಅರ್ಥಮಾಡಿಕೊಳ್ಳುತ್ತಿದ್ದವು, ಪಂಚ್ ಕಾರ್ಡ್ ಬಳಸುತ್ತಿದ್ದವು ಹಾಗೂ ಇವುಗಳ ವೇಗ ಮಿಲಿಸೆಕೆಂಡ್‌ಗಳಷ್ಟಿತ್ತು."
+            },
+
+            // 2ನೇ ಪೀಳಿಗೆ
+            {
+                gen: "2ನೇ ಪೀಳಿಗೆ",
+                q: "6. ಎರಡನೇ ಪೀಳಿಗೆಯ ಗಣಕಯಂತ್ರಗಳ (1956-1963) ಕಾಲಘಟ್ಟದಲ್ಲಿ ವ್ಯಾಕ್ಯೂಮ್ ಟ್ಯೂಬ್‌ಗಳ ಬದಲಿಗೆ ಯಾವ ಕ್ರಾಂತಿಕಾರಿ ತಂತ್ರಜ್ಞಾನವನ್ನು ಬಳಸಲಾಯಿತು?",
+                options: [
+                    "ಇಂಟಿಗ್ರೇಟೆಡ್ ಸರ್ಕ್ಯೂಟ್ (IC)",
+                    "ಟ್ರಾನ್ಸಿಸ್ಟರ್‌ಗಳು (Transistors)",
+                    "VLSI ಮೈಕ್ರೋಪ್ರೊಸೆಸರ್",
+                    "ಕ್ವಾಂಟಮ್ ಕ್ಯೂಬಿಟ್ಸ್"
+                ],
+                ans: 1,
+                exp: "ಎರಡನೇ ಪೀಳಿಗೆಯಲ್ಲಿ ವ್ಯಾಕ್ಯೂಮ್ ಟ್ಯೂಬ್‌ಗಳ ಬದಲಿಗೆ ಟ್ರಾನ್ಸಿಸ್ಟರ್‌ಗಳನ್ನು (1947 ರಲ್ಲಿ ವಿಲಿಯಂ ಶಾಕ್ಲಿ, ಜಾನ್ ಬಾರ್ಡೀನ್ ಮತ್ತು ವಾಲ್ಟರ್ ಬ್ರಾಟೈನ್ ಕಂಡುಹಿಡಿದದ್ದು) ಬಳಸಲಾಯಿತು."
+            },
+            {
+                gen: "2ನೇ ಪೀಳಿಗೆ",
+                q: "7. ಎರಡನೇ ಪೀಳಿಗೆಯ ಗಣಕಯಂತ್ರಗಳಲ್ಲಿ ಪ್ರೈಮರಿ ಮೆಮೊರಿ (Primary Memory) ಮತ್ತು ಸೆಕೆಂಡರಿ ಸ್ಟೋರೇಜ್‌ಗಾಗಿ ಏನನ್ನು ಬಳಸಲಾಗುತ್ತಿತ್ತು?",
+                options: [
+                    "ಮ್ಯಾಗ್ನೆಟಿಕ್ ಡ್ರಮ್ ಮತ್ತು ಪಂಚ್ ಕಾರ್ಡ್",
+                    "ಪ್ರೈಮರಿ ಮೆಮೊರಿಗೆ 'ಮ್ಯಾಗ್ನೆಟಿಕ್ ಕೋರ್' ಹಾಗೂ ಶಾಶ್ವತ ಶೇಖರಣೆಗೆ 'ಮ್ಯಾಗ್ನೆಟಿಕ್ ಟೇಪ್ ಮತ್ತು ಡಿಸ್ಕ್'",
+                    "RAM ಮತ್ತು SSD",
+                    "ಆಪ್ಟಿಕಲ್ ಡಿಸ್ಕ್ ಮತ್ತು ಪೆನ್ ಡ್ರೈವ್"
+                ],
+                ans: 1,
+                exp: "ಎರಡನೇ ಪೀಳಿಗೆಯಲ್ಲಿ ಪ್ರೈಮರಿ ಮೆಮೊರಿಗಾಗಿ 'ಮ್ಯಾಗ್ನೆಟಿಕ್ ಕೋರ್' (Magnetic Core) ಮತ್ತು ಸೆಕೆಂಡರಿ ಸ್ಟೋರೇಜ್‌ಗಾಗಿ ಮ್ಯಾಗ್ನೆಟಿಕ್ ಟೇಪ್/ಡಿಸ್ಕ್ ಬಳಸಲಾಯಿತು."
+            },
+            {
+                gen: "2ನೇ ಪೀಳಿಗೆ",
+                q: "8. ಎರಡನೇ ಪೀಳಿಗೆಯ ಗಣಕಯಂತ್ರಗಳ ಲೆಕ್ಕಾಚಾರದ ವೇಗ ಮತ್ತು ಬಳಸಲಾದ ಪ್ರೋಗ್ರಾಮಿಂಗ್ ಭಾಷೆಗಳು ಯಾವುವು?",
+                options: [
+                    "ಮಿಲಿಸೆಕೆಂಡ್ಸ್ | ಕೇವಲ ಬೈನರಿ ಭಾಷೆ",
+                    "ಮೈಕ್ರೋಸೆಕೆಂಡ್ಸ್ | ಅಸೆಂಬ್ಲಿ ಭಾಷೆ ಹಾಗೂ FORTRAN ಮತ್ತು COBOL",
+                    "ನ್ಯಾನೊಸೆಕೆಂಡ್ಸ್ | C ಮತ್ತು C++",
+                    "ಪಿಕೊಸೆಕೆಂಡ್ಸ್ | Python ಮತ್ತು Java"
+                ],
+                ans: 1,
+                exp: "ಎರಡನೇ ಪೀಳಿಗೆಯ ವೇಗ ಮೈಕ್ರೋಸೆಕೆಂಡ್‌ಗಳಿಗೆ ($10^{-6}$ ಸೆಕೆಂಡ್) ಏರಿತು ಹಾಗೂ ಅಸೆಂಬ್ಲಿ ಭಾಷೆ, FORTRAN ಮತ್ತು COBOL ಭಾಷೆಗಳು ಅಭಿವೃದ್ಧಿಗೊಂಡವು."
+            },
+            {
+                gen: "2ನೇ ಪೀಳಿಗೆ",
+                q: "9. ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಪಿತಾಮಹ ಸೆಮೌರ್ ಕ್ರೇ (Seymour Cray) ವಿನ್ಯಾಸಗೊಳಿಸಿದ ಮೊಟ್ಟಮೊದಲ ಯಶಸ್ವಿ ಟ್ರಾನ್ಸಿಸ್ಟರೈಸ್ಡ್ ಗಣಕಯಂತ್ರ ಯಾವುದು?",
+                options: [
+                    "IBM 1401",
+                    "CDC 1604",
+                    "UNIVAC 1108",
+                    "TDC-316"
+                ],
+                ans: 1,
+                exp: "CDC 1604 ಎರಡನೇ ಪೀಳಿಗೆಯ ಯಶಸ್ವಿ ಟ್ರಾನ್ಸಿಸ್ಟರೈಸ್ಡ್ ಗಣಕಯಂತ್ರವಾಗಿದ್ದು, ಇದನ್ನು ಸೆಮೌರ್ ಕ್ರೇ ವಿನ್ಯಾಸಗೊಳಿಸಿದ್ದರು."
+            },
+            {
+                gen: "2ನೇ ಪೀಳಿಗೆ",
+                q: "10. ವ್ಯಾಪಾರ-ವಾಣಿಜ್ಯ ಉದ್ದೇಶಗಳಿಗೆ ಜನಪ್ರಿಯವಾದ 'IBM 1401' ಮತ್ತು ವೈಜ್ಞಾನಿಕ ಉದ್ದೇಶಗಳಿಗೆ ಬಳಸಲಾದ 'IBM 1620' ಯಾವ ಪೀಳಿಗೆಯ ಉದಾಹರಣೆಗಳು?",
+                options: [
+                    "ಮೊದಲನೇ ಪೀಳಿಗೆ",
+                    "ಎರಡನೇ ಪೀಳಿಗೆ",
+                    "ಮೂರನೇ ಪೀಳಿಗೆ",
+                    "ನಾಲ್ಕನೇ ಪೀಳಿಗೆ"
+                ],
+                ans: 1,
+                exp: "IBM 1401, IBM 1620, CDC 1604 ಮತ್ತು UNIVAC 1108 ಎರಡನೇ ಪೀಳಿಗೆಯ ಪ್ರಮುಖ ಗಣಕಯಂತ್ರಗಳಾಗಿವೆ."
+            },
+
+            // 3ನೇ ಪೀಳಿಗೆ
+            {
+                gen: "3ನೇ ಪೀಳಿಗೆ",
+                q: "11. ಮೂರನೇ ಪೀಳಿಗೆಯ ಗಣಕಯಂತ್ರಗಳಲ್ಲಿ (1964-1971) ಬಳಸಲಾದ 'ಇಂಟಿಗ್ರೇಟೆಡ್ ಸರ್ಕ್ಯೂಟ್' (IC) ತಂತ್ರಜ್ಞಾನವನ್ನು ಕಂಡುಹಿಡಿದವರು ಯಾರು?",
+                options: [
+                    "ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್",
+                    "ಜಾಕ್ ಕಿಲ್ಬಿ (Jack Kilby) ಮತ್ತು ರಾಬರ್ಟ್ ನಾಯ್ಸ್",
+                    "ಹರ್ಮನ್ ಹೊಲೆರಿತ್",
+                    "ಟಿಮ್ ಬರ್ನರ್ಸ್ ಲೀ"
+                ],
+                ans: 1,
+                exp: "ಜಾಕ್ ಕಿಲ್ಬಿ (ಮತ್ತು ರಾಬರ್ಟ್ ನಾಯ್ಸ್) ಕಂಡುಹಿಡಿದ ಸಿಲಿಕಾನ್ ಚಿಪ್ ಆಧಾರಿತ IC ತಂತ್ರಜ್ಞಾನವು ಮೂರನೇ ಪೀಳಿಗೆಯ ಪ್ರಮುಖ ಆವಿಷ್ಕಾರವಾಗಿದೆ."
+            },
+            {
+                gen: "3ನೇ ಪೀಳಿಗೆ",
+                q: "12. ಪಂಚ್ ಕಾರ್ಡ್‌ಗಳ ಬದಲಿಗೆ ಬಳಕೆದಾರರು ಯಂತ್ರದೊಂದಿಗೆ ಸಂವಹನ ನಡೆಸಲು ಮೊದಲ ಬಾರಿಗೆ ಕೀಬೋರ್ಡ್ (Keyboard) ಮತ್ತು ಮಾನಿಟರ್ (Monitor) ಅನ್ನು ಯಾವ ಪೀಳಿಗೆಯಲ್ಲಿ ಪರಿಚಯಿಸಲಾಯಿತು?",
+                options: [
+                    "ಮೊದಲನೇ ಪೀಳಿಗೆ",
+                    "ಎರಡನೇ ಪೀಳಿಗೆ",
+                    "ಮೂರನೇ ಪೀಳಿಗೆ",
+                    "ನಾಲ್ಕನೇ ಪೀಳಿಗೆ"
+                ],
+                ans: 2,
+                exp: "ಮೂರನೇ ಪೀಳಿಗೆಯಲ್ಲಿ (1964-1971) ಇನ್‌ಪುಟ್ ಮತ್ತು ಔಟ್‌ಪುಟ್‌ಗಾಗಿ ಮೊದಲ ಬಾರಿಗೆ ಕೀಬೋರ್ಡ್ ಮತ್ತು ಮಾನಿಟರ್‌ಗಳನ್ನು ಪರಿಚಯಿಸಲಾಯಿತು."
+            },
+            {
+                gen: "3ನೇ ಪೀಳಿಗೆ",
+                q: "13. ಮೂರನೇ ಪೀಳಿಗೆಯ ಗಣಕಯಂತ್ರಗಳ ಲೆಕ್ಕಾಚಾರದ ವೇಗ ಮತ್ತು ಪರಿಚಯಿಸಲಾದ ಆಪರೇಟಿಂಗ್ ಸಿಸ್ಟಮ್ ಯಾವುದು?",
+                options: [
+                    "ಮಿಲಿಸೆಕೆಂಡ್ಸ್ | ಬ್ಯಾಚ್ ಪ್ರೊಸೆಸಿಂಗ್",
+                    "ನ್ಯಾನೊಸೆಕೆಂಡ್ಸ್ (Nanoseconds) | ಟೈಮ್-ಶೇರಿಂಗ್ (Time-sharing) ಮತ್ತು ಮಲ್ಟಿಪ್ರೋಗ್ರಾಮಿಂಗ್ OS",
+                    "ಮೈಕ್ರೋಸೆಕೆಂಡ್ಸ್ | MS Windows GUI",
+                    "ಪಿಕೊಸೆಕೆಂಡ್ಸ್ | Android OS"
+                ],
+                ans: 1,
+                exp: "ಮೂರನೇ ಪೀಳಿಗೆಯಲ್ಲಿ ವೇಗವು ಮೈಕ್ರೋಸೆಕೆಂಡ್‌ಗಳಿಂದ ನ್ಯಾನೊಸೆಕೆಂಡ್‌ಗಳಿಗೆ ($10^{-9}$ s) ಏರಿತು ಹಾಗೂ ಟೈಮ್-ಶೇರಿಂಗ್ ಮತ್ತು ಮಲ್ಟಿಪ್ರೋಗ್ರಾಮಿಂಗ್ OS ಬಳಕೆಗೆ ಬಂದಿತು."
+            },
+            {
+                gen: "3ನೇ ಪೀಳಿಗೆ",
+                q: "14. ಭಾರತದಲ್ಲಿ ECIL ನಿಂದ ಅಭಿವೃದ್ಧಿಪಡಿಸಲಾದ ಆರಂಭಿಕ ಮೂರನೇ ಪೀಳಿಗೆಯ ಗಣಕಯಂತ್ರ ಯಾವುದು?",
+                options: [
+                    "PARAM 8000",
+                    "TDC-316",
+                    "STAR 1000",
+                    "IBM-360"
+                ],
+                ans: 1,
+                exp: "TDC-316 (Trombay Digital Computer) ಭಾರತದ ECIL ಸಂಸ್ಥೆಯಿಂದ ಅಭಿವೃದ್ಧಿಪಡಿಸಲಾದ ಮೂರನೇ ಪೀಳಿಗೆಯ ಪ್ರಮುಖ ಗಣಕಯಂತ್ರವಾಗಿದೆ."
+            },
+            {
+                gen: "3ನೇ ಪೀಳಿಗೆ",
+                q: "15. ಮಿನಿಕಂಪ್ಯೂಟರ್‌ಗಳ ಯುಗವನ್ನು ಪ್ರಾರಂಭಿಸಿದ PDP-8, PDP-11, IBM-360 ಸರಣಿ ಮತ್ತು Honeywell-6000 ಸರಣಿ ಯಾವ ಪೀಳಿಗೆಗೆ ಸೇರಿವೆ?",
+                options: [
+                    "1ನೇ ಪೀಳಿಗೆ",
+                    "2ನೇ ಪೀಳಿಗೆ",
+                    "3ನೇ ಪೀಳಿಗೆ",
+                    "4ನೇ ಪೀಳಿಗೆ"
+                ],
+                ans: 2,
+                exp: "IBM-360 ಸರಣಿ, Honeywell-6000 ಮತ್ತು PDP (Personal Data Processor) ಮೂರನೇ ಪೀಳಿಗೆಯ ಪ್ರಮುಖ ಉದಾಹರಣೆಗಳಾಗಿವೆ."
+            },
+
+            // 4ನೇ ಪೀಳಿಗೆ
+            {
+                gen: "4ನೇ ಪೀಳಿಗೆ",
+                q: "16. ನಾಲ್ಕನೇ ಪೀಳಿಗೆಯ ಗಣಕಯಂತ್ರಗಳ (1971-1980+) ಅತಿದೊಡ್ಡ ಕ್ರಾಂತಿಯಾದ ಮೈಕ್ರೋಪ್ರೊಸೆಸರ್‌ಗಳಲ್ಲಿ ಯಾವ ತಂತ್ರಜ್ಞಾನವನ್ನು ಬಳಸಲಾಯಿತು?",
+                options: [
+                    "ವ್ಯಾಕ್ಯೂಮ್ ವಾಲ್ವ್ಸ್",
+                    "VLSI (Very Large Scale Integration)",
+                    "SSI (Small Scale Integration)",
+                    "ಮ್ಯಾಗ್ನೆಟಿಕ್ ಡ್ರಮ್"
+                ],
+                ans: 1,
+                exp: "ನಾಲ್ಕನೇ ಪೀಳಿಗೆಯಲ್ಲಿ VLSI ತಂತ್ರಜ್ಞಾನವನ್ನು ಬಳಸಿ ಲಕ್ಷಾಂತರ ಟ್ರಾನ್ಸಿಸ್ಟರ್‌ಗಳನ್ನು ಒಂದೇ ಒಂದು ಸಣ್ಣ ಸಿಲಿಕಾನ್ ಮೈಕ್ರೋಪ್ರೊಸೆಸರ್ ಚಿಪ್ ಮೇಲೆ ಅಳವಡಿಸಲಾಯಿತು."
+            },
+            {
+                gen: "4ನೇ ಪೀಳಿಗೆ",
+                q: "17. ಚಿತ್ರಗಳು ಮತ್ತು ಐಕಾನ್‌ಗಳನ್ನು ಒಳಗೊಂಡ GUI (Graphical User Interface), ಮೌಸ್ (Mouse) ಮತ್ತು LAN/WAN ನೆಟ್‌ವರ್ಕ್ ತಂತ್ರಜ್ಞಾನ ಯಾವ ಪೀಳಿಗೆಯಲ್ಲಿ ಅಭಿವೃದ್ಧಿಯಾಯಿತು?",
+                options: [
+                    "ಎರಡನೇ ಪೀಳಿಗೆ",
+                    "ಮೂರನೇ ಪೀಳಿಗೆ",
+                    "ನಾಲ್ಕನೇ ಪೀಳಿಗೆ",
+                    "ಮೊದಲನೇ ಪೀಳಿಗೆ"
+                ],
+                ans: 2,
+                exp: "ನಾಲ್ಕನೇ ಪೀಳಿಗೆಯಲ್ಲಿ ಪರ್ಸನಲ್ ಕಂಪ್ಯೂಟರ್‌ಗಳ ಜೊತೆಗೆ GUI, ಮೌಸ್ ಹಾಗೂ ಇಂಟರ್ನೆಟ್‌ಗೆ ಬುನಾದಿಯಾದ LAN ಮತ್ತು WAN ನೆಟ್‌ವರ್ಕಿಂಗ್ ಅಭಿವೃದ್ಧಿಯಾಯಿತು."
+            },
+            {
+                gen: "4ನೇ ಪೀಳಿಗೆ",
+                q: "18. 1981 ರಲ್ಲಿ ಮನೆ ಬಳಕೆಗಾಗಿ ಮೊದಲ ಪರ್ಸನಲ್ ಕಂಪ್ಯೂಟರ್ (PC) ಬಿಡುಗಡೆ ಮಾಡಿದ ಕಂಪನಿ ಮತ್ತು ನಾಲ್ಕನೇ ಪೀಳಿಗೆಯ ಪ್ರಮುಖ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಯಾವುದು?",
+                options: [
+                    "Microsoft PC ಮತ್ತು PARAM",
+                    "IBM PC ಮತ್ತು CRAY-1 ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್",
+                    "Intel PC ಮತ್ತು UNIVAC",
+                    "Honeywell PC ಮತ್ತು EDVAC"
+                ],
+                ans: 1,
+                exp: "1981 ರಲ್ಲಿ IBM ಕಂಪನಿಯು ಮೊದಲ IBM PC ಬಿಡುಗಡೆ ಮಾಡಿತು ಹಾಗೂ CRAY-1 ಈ ಪೀಳಿಗೆಯ ಮೊಟ್ಟಮೊದಲ ಯಶಸ್ವಿ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಆಗಿದೆ."
+            },
+            {
+                gen: "4ನೇ ಪೀಳಿಗೆ",
+                q: "19. ನಾಲ್ಕನೇ ಪೀಳಿಗೆಯಲ್ಲಿ ಬಳಸಲಾದ ಪ್ರಮುಖ ಉನ್ನತ ಮಟ್ಟದ ಪ್ರೋಗ್ರಾಮಿಂಗ್ ಭಾಷೆಗಳು ಮತ್ತು ವರ್ಕ್‌ಸ್ಟೇಷನ್ ಗಣಕಯಂತ್ರ ಯಾವುದು?",
+                options: [
+                    "C, C++, DBASE | STAR 1000 ಮತ್ತು Apple II",
+                    "ಕೇವಲ ಬೈನರಿ 0,1 | ENIAC",
+                    "FORTRAN-I | IBM 701",
+                    "PROLOG | IBM Watson"
+                ],
+                ans: 0,
+                exp: "C, C++, DBASE ನಾಲ್ಕನೇ ಪೀಳಿಗೆಯ ಪ್ರಮುಖ ಭಾಷೆಗಳಾಗಿದ್ದು, Apple II, IBM PC, STAR 1000 ಮತ್ತು CRAY-1 ಪ್ರಮುಖ ಉದಾಹರಣೆಗಳಾಗಿವೆ."
+            },
+            {
+                gen: "4ನೇ ಪೀಳಿಗೆ",
+                q: "20. 1971 ರಲ್ಲಿ ಅಭಿವೃದ್ಧಿಪಡಿಸಲಾದ ಜಗತ್ತಿನ ಮೊಟ್ಟಮೊದಲ ಮೈಕ್ರೋಪ್ರೊಸೆಸರ್ (Microprocessor) ಚಿಪ್ ಯಾವುದು?",
+                options: [
+                    "Intel 8086",
+                    "Intel 4004 (ಟೆಡ್ ಹಾಫ್ ಅವರಿಂದ ಅಭಿವೃದ್ಧಿ)",
+                    "AMD Ryzen",
+                    "Apple M1"
+                ],
+                ans: 1,
+                exp: "1971 ರಲ್ಲಿ ಇಂಟೆಲ್ ಕಂಪನಿಯ ಟೆಡ್ ಹಾಫ್ ಮತ್ತು ತಂಡ ಅಭಿವೃದ್ಧಿಪಡಿಸಿದ 'Intel 4004' ಜಗತ್ತಿನ ಮೊದಲ ಮೈಕ್ರೋಪ್ರೊಸೆಸರ್ ಆಗಿದೆ."
+            },
+
+            // 5ನೇ ಪೀಳಿಗೆ
+            {
+                gen: "5ನೇ ಪೀಳಿಗೆ",
+                q: "21. ಐದನೇ ಪೀಳಿಗೆಯ ಗಣಕಯಂತ್ರಗಳಲ್ಲಿ (1980 ರಿಂದ ಪ್ರಸ್ತುತ ಮತ್ತು ಭವಿಷ್ಯ) VLSI ಬದಲಿಗೆ ಯಾವ ಚಿಪ್ ತಂತ್ರಜ್ಞಾನ ಮತ್ತು ಪ್ರಮುಖ ಗುರಿಯನ್ನು ಬಳಸಲಾಗುತ್ತದೆ?",
+                options: [
+                    "SSI ಮತ್ತು ಬ್ಯಾಚ್ ಪ್ರೊಸೆಸಿಂಗ್",
+                    "ULSI (Ultra Large Scale Integration) ಮತ್ತು ಕೃತಕ ಬುದ್ಧಿಮತ್ತೆ (Artificial Intelligence - AI)",
+                    "ವ್ಯಾಕ್ಯೂಮ್ ಟ್ಯೂಬ್ಸ್ ಮತ್ತು ಮ್ಯಾಗ್ನೆಟಿಕ್ ಡ್ರಮ್ಸ್",
+                    "ಟ್ರಾನ್ಸಿಸ್ಟರ್ ಮತ್ತು ಪಂಚ್ ಕಾರ್ಡ್"
+                ],
+                ans: 1,
+                exp: "ಐದನೇ ಪೀಳಿಗೆಯಲ್ಲಿ ULSI ತಂತ್ರಜ್ಞಾನದ ಮೂಲಕ ಹತ್ತಾರು ದಶಲಕ್ಷ ಟ್ರಾನ್ಸಿಸ್ಟರ್‌ಗಳನ್ನು ಚಿಪ್‌ನಲ್ಲಿ ಅಳವಡಿಸಲಾಗಿದ್ದು, ಕೃತಕ ಬುದ್ಧಿಮತ್ತೆ (AI) ಇದರ ಪ್ರಮುಖ ಆಧಾರವಾಗಿದೆ."
+            },
+            {
+                gen: "5ನೇ ಪೀಳಿಗೆ",
+                q: "22. ಮನುಷ್ಯರು ಮಾತನಾಡುವ ಸಾಮಾನ್ಯ ಭಾಷೆಗಳನ್ನು (ಕನ್ನಡ, ಇಂಗ್ಲಿಷ್ ಇತ್ಯಾದಿ) ಅರ್ಥಮಾಡಿಕೊಂಡು ಪ್ರತಿಕ್ರಿಯಿಸುವ ಐದನೇ ಪೀಳಿಗೆಯ ತಂತ್ರಜ್ಞಾನವನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?",
+                options: [
+                    "Batch Processing",
+                    "Natural Language Processing (NLP)",
+                    "Punched Card Reading",
+                    "Magnetic Core Memory"
+                ],
+                ans: 1,
+                exp: "ನ್ಯಾಚುರಲ್ ಲ್ಯಾಂಗ್ವೇಜ್ ಪ್ರೊಸೆಸಿಂಗ್ (NLP) ಮೂಲಕ ಐದನೇ ಪೀಳಿಗೆಯ ಗಣಕಯಂತ್ರಗಳು ಮನುಷ್ಯರ ಭಾಷೆಯನ್ನು ಅರ್ಥಮಾಡಿಕೊಂಡು ಪ್ರತಿಕ್ರಿಯಿಸುತ್ತವೆ."
+            },
+            {
+                gen: "5ನೇ ಪೀಳಿಗೆ",
+                q: "23. ಒಂದೇ ಬಾರಿಗೆ ಅನೇಕ ಪ್ರೊಸೆಸರ್‌ಗಳನ್ನು ಒಟ್ಟಿಗೆ ಬಳಸಿ ಅತ್ಯಂತ ಜಟಿಲವಾದ ಸಮಸ್ಯೆಗಳನ್ನು ಕ್ಷಣಾರ್ಧದಲ್ಲಿ ವಿಶ್ಲೇಷಿಸುವ 5ನೇ ಪೀಳಿಗೆಯ ತಂತ್ರಜ್ಞಾನ ಯಾವುದು?",
+                options: [
+                    "ಸೀರಿಯಲ್ ಪ್ರೊಸೆಸಿಂಗ್",
+                    "ಪ್ಯಾರಲಲ್ ಪ್ರೊಸೆಸಿಂಗ್ (Parallel Processing)",
+                    "ಸಿಂಗಲ್ ಟಾಸ್ಕಿಂಗ್",
+                    "ಮ್ಯಾನುಯಲ್ ಕಂಪ್ಯೂಟಿಂಗ್"
+                ],
+                ans: 1,
+                exp: "ಪ್ಯಾರಲಲ್ ಪ್ರೊಸೆಸಿಂಗ್ (Parallel Processing) ಮತ್ತು ಸೂಪರ್ ಕಂಡಕ್ಟರ್ ತಂತ್ರಜ್ಞಾನವು ಏಕಕಾಲದಲ್ಲಿ ಅನೇಕ ಪ್ರೊಸೆಸರ್‌ಗಳನ್ನು ಬಳಸಿ ವೇಗವಾಗಿ ಡೇಟಾ ವಿಶ್ಲೇಷಿಸುತ್ತದೆ."
+            },
+            {
+                gen: "5ನೇ ಪೀಳಿಗೆ",
+                q: "24. ಭಾರತದಲ್ಲಿ C-DAC ನಿಂದ ಅಭಿವೃದ್ಧಿಪಡಿಸಲಾದ ಐದನೇ ಪೀಳಿಗೆಯ ಪ್ರಬಲ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಸರಣಿ ಮತ್ತು ಮನುಷ್ಯರ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸುವ IBM ನ ಪ್ರಬಲ AI ಗಣಕಯಂತ್ರ ಯಾವುದು?",
+                options: [
+                    "TDC-316 ಮತ್ತು IBM 1401",
+                    "PARAM 8000 ಸರಣಿ ಮತ್ತು IBM Watson",
+                    "ENIAC ಮತ್ತು UNIVAC",
+                    "PDP-11 ಮತ್ತು CDC 1604"
+                ],
+                ans: 1,
+                exp: "ಭಾರತದ C-DAC ಅಭಿವೃದ್ಧಿಪಡಿಸಿದ PARAM 8000 (ಮತ್ತು ಮುಂದಿನ ಸರಣಿ) ಹಾಗೂ IBM Watson, Alexa, Siri ಇವು ಐದನೇ ಪೀಳಿಗೆಯ ಪ್ರಮುಖ ಉದಾಹರಣೆಗಳಾಗಿವೆ."
+            },
+            {
+                gen: "5ನೇ ಪೀಳಿಗೆ",
+                q: "25. ಭವಿಷ್ಯದಲ್ಲಿ ಗಣಕಯಂತ್ರಗಳ ವೇಗ, ಶೇಖರಣಾ ಸಾಮರ್ಥ್ಯ ಮತ್ತು ಬುದ್ಧಿಮತ್ತೆಯನ್ನು ನೂರಾರು ಪಟ್ಟು ಹೆಚ್ಚಿಸಲು ಐದನೇ ಪೀಳಿಗೆಯಲ್ಲಿ ನಡೆಯುತ್ತಿರುವ ಸಂಶೋಧನೆಗಳು ಯಾವುವು?",
+                options: [
+                    "ಕ್ವಾಂಟಮ್ ಕಂಪ್ಯೂಟಿಂಗ್ (Quantum Computing) ಮತ್ತು ನ್ಯಾನೊ ತಂತ್ರಜ್ಞಾನ (Nanotechnology)",
+                    "ವ್ಯಾಕ್ಯೂಮ್ ಟ್ಯೂಬ್ ಮತ್ತು ಪೇಪರ್ ಟೇಪ್",
+                    "ಮ್ಯಾಗ್ನೆಟಿಕ್ ಡ್ರಮ್ ಮತ್ತು ಅಬاكಸ್",
+                    "ಪಂಚ್ ಕಾರ್ಡ್ ಮತ್ತು ರಿಲೇ ಸ್ವಿಚ್"
+                ],
+                ans: 0,
+                exp: "ಕ್ವಾಂಟಮ್ ಕಂಪ್ಯೂಟಿಂಗ್ ಮತ್ತು ನ್ಯಾನೊ ತಂತ್ರಜ್ಞಾನದ ಮೂಲಕ ಭವಿಷ್ಯದ ಗಣಕಯಂತ್ರಗಳ ಸಾಮರ್ಥ್ಯವನ್ನು ನೂರಾರು ಪಟ್ಟು ಹೆಚ್ಚಿಸುವ ಸಂಶೋಧನೆಗಳು ನಡೆಯುತ್ತಿವೆ."
+            }
+        ];
+
+        let correctCount = 0;
+        let wrongCount = 0;
+        let answeredCount = 0;
+        const letters = ["A", "B", "C", "D"];
+
+        function renderQuiz(filter = 'all') {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+
+            questionsData.forEach((item, index) => {
+                if (filter !== 'all' && item.gen !== filter) return;
+
+                const card = document.createElement('div');
+                card.className = 'q-card';
+                card.dataset.gen = item.gen;
+
+                let optionsHTML = '';
+                item.options.forEach((opt, optIdx) => {
+                    optionsHTML += `
+                        <button class="opt-btn" onclick="selectOption(${index}, ${optIdx}, this)">
+                            <span class="opt-letter">${letters[optIdx]}</span>
+                            <span>${opt}</span>
+                        </button>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="q-meta">
+                        <span class="q-badge">📌 ${item.gen}</span>
+                        <span style="font-size:0.85rem; color:var(--text-secondary);">ಪ್ರಶ್ನೆ #${index + 1}</span>
+                    </div>
+                    <div class="q-title">${item.q}</div>
+                    <div class="options-list" id="opts-${index}">
+                        ${optionsHTML}
+                    </div>
+                    <div class="exp-box" id="exp-${index}">
+                        <strong>💡 ಪರೀಕ್ಷಾ ವಿವರಣೆ:</strong> ${item.exp}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function selectOption(qIndex, selectedIdx, btnElement) {
+            const question = questionsData[qIndex];
+            const optionsContainer = document.getElementById(`opts-${qIndex}`);
+            const allButtons = optionsContainer.querySelectorAll('.opt-btn');
+            const expBox = document.getElementById(`exp-${qIndex}`);
+
+            allButtons.forEach(btn => btn.disabled = true);
+
+            answeredCount++;
+            if (selectedIdx === question.ans) {
+                btnElement.classList.add('correct');
+                correctCount++;
+            } else {
+                btnElement.classList.add('wrong');
+                allButtons[question.ans].classList.add('correct');
+                wrongCount++;
+            }
+
+            expBox.style.display = 'block';
+            updateStats();
+        }
+
+        function updateStats() {
+            const total = questionsData.length;
+            document.getElementById('correct-count').innerText = correctCount;
+            document.getElementById('wrong-count').innerText = wrongCount;
+            document.getElementById('answered-count').innerText = answeredCount;
+
+            const pct = Math.round((correctCount / total) * 100);
+            document.getElementById('score-pct').innerText = pct + '%';
+
+            const progressPct = (answeredCount / total) * 100;
+            document.getElementById('progress-fill').style.width = progressPct + '%';
+            document.getElementById('final-score').innerText = `${correctCount}/${total}`;
+
+            const msg = document.getElementById('feedback-msg');
+            if (answeredCount === total) {
+                if (correctCount >= 22) {
+                    msg.innerText = "🌟 ಅತ್ಯುತ್ತಮ! ಪರೀಕ್ಷೆಗೆ ನಿಮ್ಮ ತಯಾರಿ ಭರ್ಜರಿಯಾಗಿದೆ!";
+                } else if (correctCount >= 16) {
+                    msg.innerText = "👍 ಉತ್ತಮ ಪ್ರಯತ್ನ! ತಪ್ಪಾದ ಪ್ರಶ್ನೆಗಳ ವಿವರಣೆಯನ್ನು ಒಮ್ಮೆ ಪುನಃ ಓದಿ.";
+                } else {
+                    msg.innerText = "📚 ನೋಟ್ಸ್ ಅನ್ನು ಮತ್ತೊಮ್ಮೆ ಓದಿ ಕ್ವಿಜ್ ಮರುಪ್ರಾರಂಭಿಸಿ!";
+                }
+            }
+        }
+
+        function filterQuestions(category, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const cards = document.querySelectorAll('.q-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.gen === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function resetQuiz() {
+            correctCount = 0;
+            wrongCount = 0;
+            answeredCount = 0;
+            updateStats();
+            document.getElementById('feedback-msg').innerText = "ಎಲ್ಲಾ ಪ್ರಶ್ನೆಗಳಿಗೂ ಉತ್ತರಿಸಿ ನಿಮ್ಮ ಸಾಮರ್ಥ್ಯ ಪರೀಕ್ಷಿಸಿ!";
+            renderQuiz('all');
+            document.querySelectorAll('.tab-btn').forEach((b, i) => {
+                b.classList.toggle('active', i === 0);
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function setTheme(mode) {
+            if (mode === 'light') {
+                document.documentElement.removeAttribute('data-theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', mode);
+            }
+        }
+
+        // Initial Render
+        renderQuiz();
+    </script>
+</body>
+</html>

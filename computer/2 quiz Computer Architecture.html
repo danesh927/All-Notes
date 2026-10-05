@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಕಂಪ್ಯೂಟರ್ ಸಂರಚನೆ (Computer Architecture) - 60 MCQs KPSC/KEA Master Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600;700;800&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Eye-Resonance Warm Sage Theme */
+            --bg-page: #edf2ec;
+            --bg-card: #ffffff;
+            --bg-soft: #e1eae0;
+            --text-dark: #15221b;
+            --text-muted: #42564b;
+            --brand-teal: #0d6e5b;
+            --brand-blue: #0284c7;
+            --brand-purple: #6d28d9;
+            --brand-red: #dc2626;
+            --brand-amber: #d97706;
+            --brand-green: #16a34a;
+            --border-clr: #c3d4c0;
+            --shadow: 0 8px 24px rgba(13, 110, 91, 0.09);
+        }
+
+        [data-theme="dark"] {
+            --bg-page: #0a120f;
+            --bg-card: #12201b;
+            --bg-soft: #1a2e27;
+            --text-dark: #ecfdf5;
+            --text-muted: #a7f3d0;
+            --brand-teal: #10b981;
+            --brand-blue: #38bdf8;
+            --brand-purple: #c084fc;
+            --brand-red: #f87171;
+            --brand-amber: #fbbf24;
+            --brand-green: #4ade80;
+            --border-clr: #254238;
+            --shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Noto Sans Kannada', 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-dark);
+            line-height: 1.75;
+            transition: background 0.3s, color 0.3s;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #064e3b 0%, #0f766e 50%, #0369a1 100%);
+            color: #fff;
+            padding: 28px 16px 22px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        header h1 { font-size: clamp(1.35rem, 3.8vw, 2.1rem); font-weight: 800; margin-bottom: 6px; }
+        header p { font-size: 0.94rem; opacity: 0.94; max-width: 850px; margin: 0 auto 16px; }
+
+        .top-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
+
+        .nav-btn {
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.4);
+            color: #fff;
+            padding: 7px 15px;
+            border-radius: 30px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            font-family: inherit;
+            transition: 0.2s;
+        }
+
+        .nav-btn:hover, .nav-btn.active-mode { background: #ffffff; color: #064e3b; }
+
+        .container { max-width: 1140px; margin: 22px auto; padding: 0 15px; }
+
+        /* Sticky Score & Control Bar */
+        .dashboard-bar {
+            background: var(--bg-card);
+            border: 2px solid var(--brand-teal);
+            border-radius: 16px;
+            padding: 14px 18px;
+            margin-bottom: 18px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 8px;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .stats-group { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+        .stat-pill { background: var(--bg-soft); padding: 5px 12px; border-radius: 25px; font-size: 0.88rem; font-weight: 700; }
+
+        .progress-track { width: 100%; height: 8px; background: var(--bg-soft); border-radius: 10px; overflow: hidden; margin-top: 4px; }
+        .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #10b981, #0284c7, #f59e0b); transition: width 0.3s; }
+
+        /* Category Filter Tabs */
+        .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+
+        .filter-tab {
+            background: var(--bg-card);
+            border: 1px solid var(--border-clr);
+            color: var(--text-dark);
+            padding: 7px 13px;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.84rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .filter-tab.active { background: var(--brand-teal); color: #fff; border-color: var(--brand-teal); }
+
+        /* Question Palette Grid (1 to 60) */
+        .palette-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-clr);
+            border-radius: 14px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(36px, 1fr)); gap: 6px; margin-top: 10px; }
+
+        .p-num {
+            height: 34px; border-radius: 8px; border: 1px solid var(--border-clr);
+            background: var(--bg-soft); color: var(--text-dark);
+            font-weight: 700; font-size: 0.8rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.15s;
+        }
+
+        .p-num:hover { border-color: var(--brand-blue); transform: scale(1.06); }
+        .p-num.p-right { background: #16a34a; color: #fff; border-color: #16a34a; }
+        .p-num.p-wrong { background: #dc2626; color: #fff; border-color: #dc2626; }
+
+        /* Question Card */
+        .q-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-clr);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .q-cat-badge { background: var(--bg-soft); color: var(--brand-blue); padding: 3px 10px; border-radius: 12px; font-size: 0.76rem; font-weight: 700; }
+        .q-title { font-weight: 700; font-size: 1.03rem; margin-bottom: 14px; }
+
+        .opt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; }
+
+        .opt-btn {
+            background: var(--bg-soft);
+            border: 2px solid transparent;
+            color: var(--text-dark);
+            padding: 11px 15px;
+            border-radius: 10px;
+            text-align: left;
+            font-family: inherit;
+            font-size: 0.93rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .opt-btn:hover:not(:disabled) { border-color: var(--brand-blue); transform: translateY(-1px); }
+        .opt-btn.correct { background: #dcfce7; border-color: #16a34a; color: #14532d; font-weight: 700; }
+        .opt-btn.wrong { background: #fee2e2; border-color: #dc2626; color: #7f1d1d; }
+
+        .exp-box {
+            display: none;
+            margin-top: 14px;
+            padding: 12px 15px;
+            background: var(--bg-soft);
+            border-left: 4px solid var(--brand-blue);
+            border-radius: 8px;
+            font-size: 0.92rem;
+        }
+
+        /* Single Mode Stepper */
+        .stepper-controls {
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            background: var(--bg-card);
+            padding: 14px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-clr);
+        }
+
+        /* Result Card */
+        .result-card {
+            display: none;
+            background: linear-gradient(135deg, #064e3b, #0284c7);
+            color: #fff;
+            border-radius: 18px;
+            padding: 28px;
+            text-align: center;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        @media (max-width: 650px) {
+            .opt-grid { grid-template-columns: 1fr; }
+            .dashboard-bar { padding: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🎯 ಕಂಪ್ಯೂಟರ್ ಸಂರಚನೆ (Computer Architecture) - 60 MCQs ಮೆಗಾ ಕ್ವಿಜ್</h1>
+    <p>KPSC (FDA / SDA / KAS / PDO) ಮತ್ತು KEA ಪರೀಕ್ಷೆಗಳಿಗಾಗಿ: ವಾನ್ ನ್ಯೂಮನ್ ವಿನ್ಯಾಸ, ALU, CU, 7 ರೆಜಿಸ್ಟರ್‌ಗಳು, ಮೆಮೊರಿ ಮತ್ತು ಸಿಸ್ಟಮ್ ಬಸ್</p>
+    <div class="top-nav">
+        <button class="nav-btn active-mode" id="modeAllBtn" onclick="setMode('all')">📋 ಎಲ್ಲಾ 60 ಪ್ರಶ್ನೆಗಳು ಒಂದೇ ಕಡೆ</button>
+        <button class="nav-btn" id="modeSingleBtn" onclick="setMode('single')">🎯 ಒಂದೊಂದೇ ಪ್ರಶ್ನೆ ಮೋಡ್ (CBT Mode)</button>
+        <button class="nav-btn" onclick="filterWrongOnly()">❌ ತಪ್ಪಾದ ಪ್ರಶ್ನೆಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸಿ</button>
+        <button class="nav-btn" onclick="toggleTheme()" id="themeBtn">🌙 ಡಾರ್ಕ್ ಮೋಡ್ (Eye Care)</button>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- STICKY SCORE & TIMER BAR -->
+    <div class="dashboard-bar">
+        <div class="stats-group">
+            <span class="stat-pill" style="color:var(--brand-teal);" id="scoreStat">🏆 ಅಂಕಗಳು: 0 / 60</span>
+            <span class="stat-pill" style="color:var(--brand-green);" id="rightStat">✅ ಸರಿ: 0</span>
+            <span class="stat-pill" style="color:var(--brand-red);" id="wrongStat">❌ ತಪ್ಪು: 0</span>
+            <span class="stat-pill" style="color:var(--brand-purple);" id="negStat">📉 ನೆಗೆಟಿವ್ ಸಹಿತ (0.25): 0.00</span>
+            <span class="stat-pill" style="color:var(--brand-blue);" id="timerStat">⏱️ 00:00</span>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="nav-btn" style="background:var(--brand-teal);" onclick="showAllAnswers()">👁️ ಎಲ್ಲಾ ಉತ್ತರ ತೋರಿಸಿ</button>
+            <button class="nav-btn" style="background:var(--brand-purple);" onclick="showResultCard()">📊 ಫಲಿತಾಂಶ ಕಾರ್ಡ್</button>
+            <button class="nav-btn" style="background:var(--brand-red);" onclick="resetQuiz()">🔄 ರೀಸೆಟ್</button>
+        </div>
+        <div class="progress-track">
+            <div class="progress-fill" id="progBar"></div>
+        </div>
+    </div>
+
+    <!-- RESULT REPORT CARD -->
+    <div class="result-card" id="resultBox">
+        <h2 style="font-size:1.7rem; margin-bottom:8px;">🎉 ನಿಮ್ಮ ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶ (KPSC/KEA Score Card)</h2>
+        <p id="resultText" style="font-size:1.12rem; margin-bottom:16px;"></p>
+        <button class="nav-btn" style="background:#fff; color:#064e3b;" onclick="document.getElementById('resultBox').style.display='none'">ಮುಚ್ಚಿ (Close)</button>
+    </div>
+
+    <!-- TOPIC FILTER TABS -->
+    <div class="filter-bar">
+        <button class="filter-tab active" onclick="filterCategory('all', this)">ಎಲ್ಲಾ ಪ್ರಶ್ನೆಗಳು (60)</button>
+        <button class="filter-tab" onclick="filterCategory('von', this)">1. ವಾನ್ ನ್ಯೂಮನ್ & I/O (1-10)</button>
+        <button class="filter-tab" onclick="filterCategory('cpu', this)">2. CPU: ALU & CU (11-24)</button>
+        <button class="filter-tab" onclick="filterCategory('reg', this)">3. ರೆಜಿಸ್ಟರ್‌ಗಳು (25-38)</button>
+        <button class="filter-tab" onclick="filterCategory('mem', this)">4. ಮೆಮೊರಿ ಘಟಕ (39-46)</button>
+        <button class="filter-tab" onclick="filterCategory('bus', this)">5. ಸಿಸ್ಟಮ್ ಬಸ್ (47-54)</button>
+        <button class="filter-tab" onclick="filterCategory('kas', this)">6. KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆಗಳು (55-60)</button>
+    </div>
+
+    <!-- QUESTION PALETTE (1 TO 60) -->
+    <div class="palette-box">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+            <strong style="font-size:0.86rem; color:var(--brand-teal);">🔢 ಪ್ರಶ್ನೆಗಳ ಪ್ಯಾಲೆಟ್ (1 ರಿಂದ 60 - ನೇರವಾಗಿ ಯಾವುದೇ ಪ್ರಶ್ನೆಗೆ ಜಂಪ್ ಮಾಡಲು ಕ್ಲಿಕ್ ಮಾಡಿ):</strong>
+            <button class="filter-tab" style="padding:3px 10px; font-size:0.78rem;" onclick="togglePalette()" id="palToggleBtn">ಪ್ಯಾಲೆಟ್ ಮರೆಮಾಡಿ ▲</button>
+        </div>
+        <div class="palette-grid" id="paletteGrid"></div>
+    </div>
+
+    <!-- QUESTIONS LIST -->
+    <div id="quizContainer"></div>
+
+    <!-- SINGLE MODE STEPPER -->
+    <div class="stepper-controls" id="stepperBox">
+        <button class="nav-btn" style="background:var(--brand-teal);" onclick="prevQuestion()">⬅️ ಹಿಂದಿನ ಪ್ರಶ್ನೆ</button>
+        <strong id="stepIndicator">ಪ್ರಶ್ನೆ 1 / 60</strong>
+        <button class="nav-btn" style="background:var(--brand-blue);" onclick="nextQuestion()">ಮುಂದಿನ ಪ್ರಶ್ನೆ ➡️</button>
+    </div>
+
+</div>
+
+<script>
+    const mcqs = [
+        // 1 to 10: Von Neumann Architecture & Input/Output Unit
+        { id: 1, cat: 'von', catName: 'ವಾನ್ ನ್ಯೂಮನ್ ವಿನ್ಯಾಸ', q: "1. ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್‌‌ಗಳ ಮೂಲ ವಿನ್ಯಾಸವಾದ 'ಸ್ಟೋರ್ಡ್ ಪ್ರೋಗ್ರಾಮ್ ಕಾನ್ಸೆಪ್ಟ್' (Stored Program Concept) ಅನ್ನು 1945 ರಲ್ಲಿ ಪರಿಚಯಿಸಿದವರು ಯಾರು?", o: ["A) ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್", "B) ಜಾನ್ ವಾನ್ ನ್ಯೂಮನ್ (John Von Neumann)", "C) ಅಲನ್ ಟ್ಯೂರಿಂಗ್", "D) ಸೇಮೌರ್ ಕ್ರೇ"], a: 1, e: "1945 ರಲ್ಲಿ ಜಾನ್ ವಾನ್ ನ್ಯೂಮನ್ ರವರು ಸ್ಟೋರ್ಡ್ ಪ್ರೋಗ್ರಾಮ್ ಕಾನ್ಸೆಪ್ಟ್ ಪರಿಚಯಿಸಿದರು. ಇವರನ್ನು ಕಂಪ್ಯೂಟರ್ ಸಂರಚನೆಯ ಪಿತಾಮಹ ಎನ್ನುತ್ತಾರೆ." },
+        { id: 2, cat: 'von', catName: 'ವಾನ್ ನ್ಯೂಮನ್ ವಿನ್ಯಾಸ', q: "2. ವಾನ್ ನ್ಯೂಮನ್ ವಿನ್ಯಾಸದ 'ಸ್ಟೋರ್ಡ್ ಪ್ರೋಗ್ರಾಮ್ ಕಾನ್ಸೆಪ್ಟ್' (Stored Program Concept) ನ ಮುಖ್ಯ ಅರ್ಥವೇನು?", o: ["A) ಡೇಟಾವನ್ನು ಮಾತ್ರ ಮೆಮೊರಿಯಲ್ಲಿ ಇಡಲಾಗುತ್ತದೆ", "B) ಡೇಟಾ (Data) ಮತ್ತು ಅದನ್ನು ಸಂಸ್ಕರಿಸುವ ಸೂಚನೆಗಳು (Instructions) ಎರಡನ್ನೂ ಒಂದೇ ಮೆಮೊರಿಯಲ್ಲಿ ಶೇಖರಿಸಿಡಲಾಗುತ್ತದೆ", "C) ಪ್ರೋಗ್ರಾಮ್‌‌ಗಳನ್ನು ಕೇವಲ ಹಾರ್ಡ್ ಡಿಸ್ಕ್‌ನಲ್ಲಿ ಮಾತ್ರ ಇಡಲಾಗುತ್ತದೆ", "D) ಕಂಪ್ಯೂಟರ್ ಮೆಮೊರಿ ಇಲ್ಲದೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ"], a: 1, e: "ವಾನ್ ನ್ಯೂಮನ್ ವಿನ್ಯಾಸದ ಪ್ರಕಾರ ಡೇಟಾ ಮತ್ತು ಪ್ರೋಗ್ರಾಮ್ ಸೂಚನೆಗಳು ಎರಡೂ ಒಂದೇ ಮುಖ್ಯ ಮೆಮೊರಿಯಲ್ಲಿ (RAM) ಬೈನರಿ ರೂಪದಲ್ಲಿ ಸಂಗ್ರಹವಾಗಿರುತ್ತವೆ." },
+        { id: 3, cat: 'von', catName: 'ವಾನ್ ನ್ಯೂಮನ್ ವಿನ್ಯಾಸ', q: "3. ಕಂಪ್ಯೂಟರ್‌ನ ಮೂಲ ಸಂರಚನೆಯನ್ನು (Computer Architecture) ಪ್ರಮುಖವಾಗಿ ಎಷ್ಟು ವಿಭಾಗಗಳಾಗಿ ವಿಂಗಡಿಸಲಾಗಿದೆ?", o: ["A) 2 ವಿಭಾಗಗಳು", "B) 4 ಪ್ರಮುಖ ವಿಭಾಗಗಳು (ಇನ್‌ಪುಟ್, CPU, ಮೆಮೊರಿ, ಔಟ್‌ಪುಟ್)", "C) 8 ವಿಭಾಗಗಳು", "D) 10 ವಿಭಾಗಗಳು"], a: 1, e: "ಕಂಪ್ಯೂಟರ್ ಸಂರಚನೆಯನ್ನು ಇನ್‌ಪುಟ್ ಘಟಕ, CPU, ಮೆಮೊರಿ ಘಟಕ ಮತ್ತು ಔಟ್‌ಪುಟ್ ಘಟಕ ಎಂದು 4 ಪ್ರಮುಖ ವಿಭಾಗಗಳಾಗಿ ವಿಂಗಡಿಸಲಾಗಿದೆ (ಇವುಗಳನ್ನು ಬೆಸೆಯಲು ಸಿಸ್ಟಮ್ ಬಸ್ ಬಳಕೆಯಾಗುತ್ತದೆ)." },
+        { id: 4, cat: 'von', catName: 'ಇನ್‌ಪುಟ್ ಘಟಕ', q: "4. ಬಳಕೆದಾರರಿಂದ ದತ್ತಾಂಶವನ್ನು (Data) ಮತ್ತು ಸೂಚನೆಗಳನ್ನು ಸ್ವೀಕರಿಸಿ, ಅದನ್ನು ಕಂಪ್ಯೂಟರ್‌ಗೆ ಅರ್ಥವಾಗುವ ಬೈನರಿ ಭಾಷೆಗೆ (0 ಮತ್ತು 1) ಪರಿವರ್ತಿಸುವ ಘಟಕ ಯಾವುದು?", o: ["A) ಔಟ್‌ಪುಟ್ ಘಟಕ", "B) ಇನ್‌ಪುಟ್ ಘಟಕ (Input Unit)", "C) ಅಕ್ಯುಮುಲೇಟರ್", "D) ಕಂಟ್ರೋಲ್ ಯೂನಿಟ್"], a: 1, e: "ಇನ್‌ಪುಟ್ ಘಟಕವು ಬಳಕೆದಾರರ ಸೂಚನೆಗಳನ್ನು ಸ್ವೀಕರಿಸಿ ಕಂಪ್ಯೂಟರ್‌ಗೆ ಅರ್ಥವಾಗುವ 0 ಮತ್ತು 1 ರ ಯಂತ್ರ ಭಾಷೆಗೆ ಪರಿವರ್ತಿಸುತ್ತದೆ." },
+        { id: 5, cat: 'von', catName: 'ಇನ್‌‌ಪುಟ್ ಘಟಕ', q: "5. ಈ ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಸಂಪೂರ್ಣವಾಗಿ 'ಇನ್‌ಪುಟ್ ಸಾಧನಗಳ' (Input Devices) ಗುಂಪಾಗಿದೆ?", o: ["A) ಕೀಬೋರ್ಡ್, ಮೌಸ್, ಸ್ಕ್ಯಾನರ್, ಬಾರ್ ಕೋಡ್ ರೀಡರ್ (BCR), OMR, ಮೈಕ್ರೊಫೋನ್", "B) ಮಾನಿಟರ್, ಪ್ರಿಂಟರ್, ಸ್ಪೀಕರ್, ಪ್ರೊಜೆಕ್ಟರ್", "C) ALU, CU, ರೆಜಿಸ್ಟರ್‌ಗಳು", "D) RAM, ROM, SSD"], a: 0, e: "ಕೀಬೋರ್ಡ್, ಮೌಸ್, ಸ್ಕ್ಯಾನರ್, BCR, OMR ಮತ್ತು ಮೈಕ್ರೊಫೋನ್ ಇವೆಲ್ಲವೂ ಇನ್‌ಪುಟ್ ಸಾಧನಗಳಾಗಿವೆ." },
+        { id: 6, cat: 'von', catName: 'ಔಟ್‌ಪುಟ್ ಘಟಕ', q: "6. CPU ನಿಂದ ಸಂಸ್ಕರಿಸಲ್ಪಟ್ಟ ಯಂತ್ರ ಭಾಷೆಯ (0 & 1) ಫಲಿತಾಂಶವನ್ನು, ಮನುಷ್ಯರಿಗೆ ಅರ್ಥವಾಗುವ ಭಾಷೆಗೆ (ಚಿತ್ರ, ಅಕ್ಷರ, ಧ್ವನಿ) ಪರಿವರ್ತಿಸಿ ನೀಡುವ ಘಟಕ ಯಾವುದು?", o: ["A) ಇನ್‌ಪುಟ್ ಘಟಕ", "B) ಔಟ್‌ಪುಟ್ ಘಟಕ (Output Unit)", "C) ಮೆಮೊರಿ ಘಟಕ", "D) ಶಿಫ್ಟ್ ರೆಜಿಸ್ಟರ್"], a: 1, e: "ಔಟ್‌ಪುಟ್ ಘಟಕವು ಬೈನರಿ ಫಲಿತಾಂಶವನ್ನು ಮನುಷ್ಯರಿಗೆ ಅರ್ಥವಾಗುವ ದೃಶ್ಯ, ಮುದ್ರಿತ ಅಥವಾ ಶ್ರವಣ ರೂಪಕ್ಕೆ ಬದಲಾಯಿಸುತ್ತದೆ." },
+        { id: 7, cat: 'von', catName: 'ಔಟ್‌ಪುಟ್ ಘಟಕ', q: "7. ಕೆಳಗಿನ ಯಾವ ಔಟ್‌ಪುಟ್ ಸಾಧನವು ಬಳಕೆದಾರರಿಗೆ 'ಸಾಫ್ಟ್ ಕಾಪಿ' (Soft Copy) ರೂಪದಲ್ಲಿ ಫಲಿತಾಂಶವನ್ನು ನೀಡುತ್ತದೆ?", o: ["A) ಪ್ರಿಂಟರ್", "B) ಮಾನಿಟರ್ (Monitor)", "C) ಪ್ಲಾಟರ್", "D) ಸ್ಕ್ಯಾನರ್"], a: 1, e: "ಮಾನಿಟರ್ (ಮತ್ತು ಪ್ರೊಜೆಕ್ಟರ್) ಪರದೆಯ ಮೇಲೆ ತೋರಿಸುವ ಡಿಜಿಟಲ್ ಫಲಿತಾಂಶವನ್ನು 'ಸಾಫ್ಟ್ ಕಾಪಿ' ಎನ್ನುತ್ತಾರೆ." },
+        { id: 8, cat: 'von', catName: 'ಔಟ್‌ಪುಟ್ ಘಟಕ', q: "8. ಕೆಳಗಿನ ಯಾವ ಔಟ್‌ಪುಟ್ ಸಾಧನವು ಕಾಗದದ ಮೇಲೆ ಮುದ್ರಿತ 'ಹಾರ್ಡ್ ಕಾಪಿ' (Hard Copy) ರೂಪದಲ್ಲಿ ಫಲಿತಾಂಶವನ್ನು ನೀಡುತ್ತದೆ?", o: ["A) ಮಾನಿಟರ್", "B) ಪ್ರಿಂಟರ್ (Printer)", "C) ಸ್ಪೀಕರ್", "D) ಮೈಕ್ರೊಫೋನ್"], a: 1, e: "ಪ್ರಿಂಟರ್ ಕಾಗದದ ಮೇಲೆ ಮುದ್ರಿತ ಶಾಶ್ವತ 'ಹಾರ್ಡ್ ಕಾಪಿ' ನೀಡುತ್ತದೆ." },
+        { id: 9, cat: 'von', catName: 'ವಾನ್ ನ್ಯೂಮನ್ ವಿನ್ಯಾಸ', q: "9. ವಾನ್ ನ್ಯೂಮನ್ ವಿನ್ಯಾಸದಲ್ಲಿ ಡೇಟಾ ಮತ್ತು ಸೂಚನೆಗಳೆರಡೂ ಒಂದೇ ಬಸ್ ಮೂಲಕ ಚಲಿಸುವುದರಿಂದ ಉಂಟಾಗುವ ವೇಗದ ಮಿತಿಯನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?", o: ["A) Von Neumann Bottleneck (ವಾನ್ ನ್ಯೂಮನ್ ಬಾಟಲ್‌ನೆಕ್)", "B) System Crash", "C) Memory Overflow", "D) Logic Error"], a: 0, e: "ಡೇಟಾ ಮತ್ತು ಸೂಚನೆಗೆ ಒಂದೇ ಮಾರ್ಗ ಇರುವುದರಿಂದ CPU ಕಾಯಬೇಕಾದ ಸ್ಥಿತಿಯನ್ನು Von Neumann Bottleneck ಎನ್ನುತ್ತಾರೆ." },
+        { id: 10, cat: 'von', catName: 'ವಾನ್ ನ್ಯೂಮನ್ ವಿನ್ಯಾಸ', q: "10. ಡೇಟಾ ಮತ್ತು ಸೂಚನೆಗಳನ್ನು ಸಂಗ್ರಹಿಸಲು ಪ್ರತ್ಯೇಕ ಮೆಮೊರಿ ಮತ್ತು ಪ್ರತ್ಯೇಕ ಬಸ್‌ಗಳನ್ನು ಬಳಸುವ ಪರ್ಯಾಯ ಸಂರಚನೆ ಯಾವುದು?", o: ["A) ಹಾವರ್ಡ್ ಸಂರಚನೆ (Harvard Architecture)", "B) ಅನಲಾಗ್ ಸಂರಚನೆ", "C) ಬ್ಯಾಬೇಜ್ ಸಂರಚನೆ", "D) ಟ್ಯೂರಿಂಗ್ ಸಂರಚನೆ"], a: 0, e: "ಹಾವರ್ಡ್ ಸಂರಚನೆಯಲ್ಲಿ (Harvard Architecture) ಡೇಟಾ ಮತ್ತು ಪ್ರೋಗ್ರಾಮ್ ಸೂಚನೆಗಳಿಗೆ ಪ್ರತ್ಯೇಕ ಮೆಮೊರಿ ಹಾಗೂ ಬಸ್ ಇರುತ್ತವೆ." },
+
+        // 11 to 24: CPU (ALU & Control Unit)
+        { id: 11, cat: 'cpu', catName: 'CPU - ALU & CU', q: "11. ಯಾವ ಘಟಕವನ್ನು 'ಕಂಪ್ಯೂಟರ್‌ನ ಮೆದುಳು' (Brain of the Computer) ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ?", o: ["A) RAM", "B) CPU (Central Processing Unit)", "C) ಹಾರ್ಡ್ ಡಿಸ್ಕ್", "D) ಮದರ್‌ಬೋರ್ಡ್"], a: 1, e: "ಕೇಂದ್ರ ಸಂಸ್ಕರಣಾ ಘಟಕವನ್ನು (CPU) ಕಂಪ್ಯೂಟರ್‌ನ ಮೆದುಳು ಎನ್ನುತ್ತಾರೆ." },
+        { id: 12, cat: 'cpu', catName: 'CPU - ALU & CU', q: "12. CPU ಒಳಗೆ ಇರುವ ಮೂರು ಪ್ರಮುಖ ಉಪ-ಘಟಕಗಳು (Sub-units) ಯಾವುವು?", o: ["A) ALU, Control Unit (CU), ಮತ್ತು Registers", "B) RAM, ROM, ಮತ್ತು Cache", "C) Data Bus, Address Bus, Control Bus", "D) Input, Output, Storage"], a: 0, e: "CPU ಒಳಗೆ 1. ALU, 2. Control Unit (CU), ಮತ್ತು 3. Registers ಎಂಬ 3 ಪ್ರಮುಖ ಭಾಗಗಳಿವೆ." },
+        { id: 13, cat: 'cpu', catName: 'CPU - ALU & CU', q: "13. CPU ಗೆ ಸಂಬಂಧಿಸಿದಂತೆ 'ALU' ನ ವಿಸ್ತೃತ ರೂಪವೇನು?", o: ["A) Application Logic Unit", "B) Arithmetic Logic Unit", "C) Advanced Link Unit", "D) Array Logic Unit"], a: 1, e: "ALU ಎಂದರೆ Arithmetic Logic Unit (ಅಂಕಗಣಿತ ಮತ್ತು ತಾರ್ಕಿಕ ಘಟಕ)." },
+        { id: 14, cat: 'cpu', catName: 'CPU - ALU & CU', q: "14. ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ ವಾಸ್ತವಿಕ ಡೇಟಾ ಪ್ರೊಸೆಸಿಂಗ್ (Actual Execution of Instructions - ಗಣಿತ ಮತ್ತು ತಾರ್ಕಿಕ ಲೆಕ್ಕಾಚಾರ) ನಡೆಯುವ ಸ್ಥಳ ಯಾವುದು?", o: ["A) ಕಂಟ್ರೋಲ್ ಯೂನಿಟ್ (CU)", "B) ALU (Arithmetic Logic Unit)", "C) ಪ್ರೋಗ್ರಾಮ್ ಕೌಂಟರ್", "D) ಅಡ್ರೆಸ್ ಬಸ್"], a: 1, e: "ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ ನೈಜವಾಗಿ ಡೇಟಾ ಪ್ರೊಸೆಸಿಂಗ್ ಮತ್ತು ಲೆಕ್ಕಾಚಾರ ನಡೆಯುವ ಸ್ಥಳ ALU." },
+        { id: 15, cat: 'cpu', catName: 'CPU - ALU & CU', q: "15. ಎಷ್ಟೇ ದೊಡ್ಡ ಅಥವಾ ಸಂಕೀರ್ಣ ಸಮೀಕರಣಗಳಿದ್ದರೂ, ALU ನ ಅಂಕಗಣಿತ ವಿಭಾಗವು (Arithmetic Section) ಯಾವ ನಾಲ್ಕು ಮೂಲಭೂತ ಕ್ರಿಯೆಗಳ ಪುನರಾವರ್ತನೆಯಿಂದ ಉತ್ತರ ಕಂಡುಕೊಳ್ಳುತ್ತದೆ?", o: ["A) ಕೂಡುವುದು (+), ಕಳೆಯುವುದು (-), ಗುಣಿಸುವುದು (×), ಭಾಗಿಸುವುದು (÷)", "B) Fetch, Decode, Execute, Store", "C) Read, Write, Copy, Paste", "D) Input, Process, Output, Store"], a: 0, e: "ALU ತನ್ನೆಲ್ಲಾ ಗಣಿತ ಲೆಕ್ಕಾಚಾರಗಳನ್ನು Addition, Subtraction, Multiplication ಮತ್ತು Division ಮೂಲಕವೇ ನಿರ್ವಹಿಸುತ್ತದೆ." },
+        { id: 16, cat: 'cpu', catName: 'CPU - ALU & CU', q: "16. ಎರಡು ಸಂಖ್ಯೆಗಳ ನಡುವೆ ಯಾವುದು ದೊಡ್ಡದು (>), ಚಿಕ್ಕದು (<), ಸಮ (=) ಎಂಬ ಹೋಲಿಕೆ ಮತ್ತು AND, OR, NOT ತಾರ್ಕಿಕ ನಿರ್ಧಾರಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳುವ ಜವಾಬ್ದಾರಿ ಯಾರದ್ದು?", o: ["A) ALU ನ ತಾರ್ಕಿಕ ವಿಭಾಗ (Logic Section of ALU)", "B) ಕಂಟ್ರೋಲ್ ಯೂನಿಟ್", "C) ಇನ್ಸ್‌ಟ್ರಕ್ಷನ್ ರೆಜಿಸ್ಟರ್", "D) RAM"], a: 0, e: "ALU ನ Logic Section ಹೋಲಿಕೆಗಳು (Comparisons) ಮತ್ತು True/False ತಾರ್ಕಿಕ ನಿರ್ಧಾರಗಳನ್ನು ಮಾಡುತ್ತದೆ." },
+        { id: 17, cat: 'cpu', catName: 'CPU - ALU & CU', q: "17. ಬಳಕೆದಾರರು ಹಾಕಿದ ಪಾಸ್‌ವರ್ಡ್ ಸರಿ ಇದೆಯೋ ಇಲ್ಲವೋ (True or False) ಎಂದು ಪರಿಶೀಲಿಸುವಾಗ CPU ನ ಯಾವ ಭಾಗ ಕೆಲಸ ಮಾಡುತ್ತದೆ?", o: ["A) ALU ನ ತಾರ್ಕಿಕ ಘಟಕ (Logic Unit)", "B) ಶಿಫ್ಟ್ ರೆಜಿಸ್ಟರ್", "C) ಅಡ್ರೆಸ್ ಬಸ್", "D) ROM"], a: 0, e: "ಪಾಸ್‌ವರ್ಡ್ ಹೋಲಿಕೆ ಮಾಡಿ ಸರಿ/ತಪ್ಪು ನಿರ್ಧರಿಸುವುದು ALU ನ ತಾರ್ಕಿಕ ಘಟಕದ ಕೆಲಸ." },
+        { id: 18, cat: 'cpu', catName: 'CPU - ALU & CU', q: "18. ಇನ್‌ಪುಟ್, ಮೆಮೊರಿ, ALU ಮತ್ತು ಔಟ್‌ಪುಟ್ ಸಾಧನಗಳ ನಡುವೆ ಸಮನ್ವಯ ಸಾಧಿಸಿ, ಇಡೀ ಕಂಪ್ಯೂಟರ್ ವ್ಯವಸ್ಥೆಯನ್ನು ನಿಯಂತ್ರಿಸುವ 'ವ್ಯವಸ್ಥಾಪಕ' (Manager/Supervisor) ಯಾರು?", o: ["A) ALU", "B) ನಿಯಂತ್ರಣ ಘಟಕ (Control Unit - CU)", "C) ಅಕ್ಯುಮುಲೇಟರ್", "D) ಕ್ಯಾಶ್ ಮೆಮೊರಿ"], a: 1, e: "Control Unit (CU) ಕಂಪ್ಯೂಟರ್‌ನ ಮ್ಯಾನೇಜರ್ ಅಥವಾ ಮೇಲ್ವಿಚಾರಕನಂತೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ." },
+        { id: 19, cat: 'cpu', catName: 'CPU - ALU & CU', q: "19. ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದನ್ನು ಕಂಪ್ಯೂಟರ್‌ನ 'ನರಮಂಡಲ' (Nervous System) ಮತ್ತು 'ಟ್ರಾಫಿಕ್ ಪೊಲೀಸ್' (Traffic Police) ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ?", o: ["A) ALU", "B) ನಿಯಂತ್ರಣ ಘಟಕ (Control Unit - CU)", "C) ಮದರ್‌ಬೋರ್ಡ್", "D) RAM"], a: 1, e: "ಡೇಟಾ ಎಲ್ಲಿಂದ ಎಲ್ಲಿಗೆ ಹೋಗಬೇಕು ಎಂದು ಟ್ರಾಫಿಕ್ ಪೊಲೀಸನಂತೆ ನಿರ್ದೇಶಿಸುವ ಮತ್ತು ಸಿಗ್ನಲ್ ಕಳುಹಿಸುವ ನರಮಂಡಲವೇ Control Unit (CU)." },
+        { id: 20, cat: 'cpu', catName: 'CPU - ALU & CU', q: "20. ನಿಯಂತ್ರಣ ಘಟಕವು (CU) ಪ್ರತಿ ಸೂಚನೆಯನ್ನು ಕಾರ್ಯಗತಗೊಳಿಸಲು ಪಾಲಿಸುವ 'ಯಂತ್ರ ಚಕ್ರ'ದ (Machine Cycle / Instruction Cycle) ಸರಿಯಾದ ಕ್ರಮ ಯಾವುದು?", o: ["A) Decode ➔ Fetch ➔ Execute ➔ Store", "B) Fetch ➔ Decode ➔ Execute ➔ Store", "C) Fetch ➔ Execute ➔ Decode ➔ Store", "D) Store ➔ Fetch ➔ Decode ➔ Execute"], a: 1, e: "ಯಂತ್ರ ಚಕ್ರದ 4 ಹಂತಗಳು: 1. Fetch (ತರುವುದು) ➔ 2. Decode (ಅರ್ಥೈಸುವುದು) ➔ 3. Execute (ಕಾರ್ಯಗತಗೊಳಿಸುವುದು) ➔ 4. Store (ಉಳಿಸುವುದು)." },
+        { id: 21, cat: 'cpu', catName: 'CPU - ALU & CU', q: "21. ಯಂತ್ರ ಚಕ್ರದಲ್ಲಿ (Machine Cycle) RAM ಮೆಮೊರಿಯಿಂದ ಪ್ರೋಗ್ರಾಮ್ ಸೂಚನೆಯನ್ನು CPU ಗೆ ತರುವ ಮೊದಲ ಹಂತವನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?", o: ["A) Fetch (ಫೆಚ್)", "B) Decode", "C) Execute", "D) Store"], a: 0, e: "ಮೆಮೊರಿಯಿಂದ ಸೂಚನೆಯನ್ನು ಪಡೆಯುವ ಪ್ರಕ್ರಿಯೆಯೇ Fetch." },
+        { id: 22, cat: 'cpu', catName: 'CPU - ALU & CU', q: "22. ಮೆಮೊರಿಯಿಂದ ತಂದ ಸೂಚನೆಯು ಏನನ್ನು ಹೇಳುತ್ತಿದೆ ಎಂದು ಕಂಪ್ಯೂಟರ್‌ಗೆ ಅರ್ಥವಾಗುವಂತೆ ಬಿಡಿಸುವ CU ನ ಪ್ರಕ್ರಿಯೆ ಯಾವುದು?", o: ["A) Fetch", "B) Decode (ಡಿಕೋಡ್)", "C) Execute", "D) Store"], a: 1, e: "ಸೂಚನೆಯ ಸಂಕೇತ ಬಿಡಿಸಿ ಅರ್ಥೈಸಿಕೊಳ್ಳುವುದನ್ನು Decode ಎನ್ನುತ್ತಾರೆ." },
+        { id: 23, cat: 'cpu', catName: 'CPU - ALU & CU', q: "23. ಒಂದು ಕೆಲಸವನ್ನು ಮಾಡಲು ALU, ಮೆಮೊರಿ ಮತ್ತು ಇತರ ಸಾಧನಗಳಿಗೆ 'ಟೈಮಿಂಗ್ ಮತ್ತು ಕಂಟ್ರೋಲ್ ಸಿಗ್ನಲ್'ಗಳನ್ನು (Timing and Control Signals) ಕಳುಹಿಸುವುದು ಯಾರು?", o: ["A) Control Unit (CU)", "B) ALU", "C) SMPS", "D) Hard Disk"], a: 0, e: "ನಿಯಂತ್ರಣ ಘಟಕವು (CU) ಟೈಮಿಂಗ್ ಮತ್ತು ಕಂಟ್ರೋಲ್ ಸಿಗ್ನಲ್‌ಗಳನ್ನು ಕಳುಹಿಸುತ್ತದೆ." },
+        { id: 24, cat: 'cpu', catName: 'CPU - ALU & CU', q: "24. ಕಂಟ್ರೋಲ್ ಯೂನಿಟ್ (CU) ಒಳಗೆ ಕಾರ್ಯನಿರ್ವಹಿಸುವ ಎರಡು ಪ್ರಮುಖ ರೆಜಿಸ್ಟರ್‌ಗಳು ಯಾವುವು?", o: ["A) ಪ್ರೋಗ್ರಾಮ್ ಕೌಂಟರ್ (PC) ಮತ್ತು ಇನ್ಸ್‌ಟ್ರಕ್ಷನ್ ರೆಜಿಸ್ಟರ್ (IR)", "B) RAM ಮತ್ತು ROM", "C) HDD ಮತ್ತು SSD", "D) ಕೀಬೋರ್ಡ್ ಮತ್ತು ಮೌಸ್"], a: 0, e: "CU ನಲ್ಲಿರುವ ಪ್ರಮುಖ ರೆಜಿಸ್ಟರ್‌ಗಳೆಂದರೆ PC (ಮುಂದಿನ ಸೂಚನೆ ವಿಳಾಸ) ಮತ್ತು IR (ಪ್ರಸ್ತುತ ಸೂಚನೆ)." },
+
+        // 25 to 38: Registers (Chef Analogy, Flip-Flops, 7 Types)
+        { id: 25, cat: 'reg', catName: 'ರೆಜಿಸ್ಟರ್‌ಗಳು', q: "25. CPU ಒಳಗಿರುವ ಅತ್ಯಂತ ಚಿಕ್ಕ ಮತ್ತು ಅತ್ಯಂತ ವೇಗದ ತಾತ್ಕಾಲಿಕ ಮೆಮೊರಿಯನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?", o: ["A) ಕ್ಯಾಶ್ ಮೆಮೊರಿ", "B) ರೆಜಿಸ್ಟರ್‌ಗಳು (Registers)", "C) RAM", "D) ಫ್ಲಾಶ್ ಮೆಮೊರಿ"], a: 1, e: "CPU ಒಳಗಿರುವ ಪುಟ್ಟ ನೋಟ್‌ಪ್ಯಾಡ್‌‌ನಂತಹ ಅತಿ ವೇಗದ ಮೆಮೊರಿಯೇ ರೆಜಿಸ್ಟರ್." },
+        { id: 26, cat: 'reg', catName: 'ರೆಜಿಸ್ಟರ್‌ಗಳು', q: "26. ಅಡುಗೆಯವನ (Chef) ಉದಾಹರಣೆಯಲ್ಲಿ ಉಗ್ರಾಣವು Hard Disk ಆದರೆ, ಫ್ರಿಡ್ಜ್ RAM ಆದರೆ, ಒಲೆಯ ಪಕ್ಕದಲ್ಲೇ ಇರುವ 'ಚಿಕ್ಕ ತಟ್ಟೆಗಳು' ಯಾವುದನ್ನು ಸೂಚಿಸುತ್ತವೆ?", o: ["A) ರೆಜಿಸ್ಟರ್‌ಗಳು (Registers)", "B) ಕ್ಯಾಶ್ ಮೆಮೊರಿ", "C) ಪೆನ್ ಡ್ರೈವ್", "D) ಆಪ್ಟಿಕಲ್ ಡಿಸ್ಕ್"], a: 0, e: "ತಕ್ಷಣದ ಬಳಕೆಗೆ ಅಡುಗೆಯವನ (CPU) ಕೈಗೆಟುಕುವಂತೆ ಪಕ್ಕದಲ್ಲೇ ಇರುವ ಚಿಕ್ಕ ತಟ್ಟೆಗಳೇ ರೆಜಿಸ್ಟರ್‌ಗಳು." },
+        { id: 27, cat: 'reg', catName: 'ರೆಜಿಸ್ಟರ್‌ಗಳು', q: "27. ರೆಜಿಸ್ಟರ್‌ಗಳನ್ನು ಯಾವ ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಸರ್ಕ್ಯೂಟ್‌ಗಳ ಗುಂಪಿನಿಂದ ನಿರ್ಮಿಸಲಾಗುತ್ತದೆ (ಒಂದು ಸರ್ಕ್ಯೂಟ್ ಕೇವಲ 1-ಬಿಟ್ ಡೇಟಾ ಸಂಗ್ರಹಿಸುತ್ತದೆ)?", o: ["A) ಫ್ಲಿಪ್-ಫ್ಲಾಪ್ (Flip-Flop)", "B) ಡಯೋಡ್", "C) ವ್ಯಾಕ್ಯೂಮ್ ಟ್ಯೂಬ್", "D) ಇಂಡಕ್ಟರ್"], a: 0, e: "ಒಂದು ಫ್ಲಿಪ್-ಫ್ಲಾಪ್ ಕೇವಲ 1-ಬಿಟ್ (0 ಅಥವಾ 1) ಸಂಗ್ರಹಿಸುತ್ತದೆ. 64-ಬಿಟ್ ರೆಜಿಸ್ಟರ್ ಎಂದರೆ 64 ಫ್ಲಿಪ್-ಫ್ಲಾಪ್ ಸ್ವಿಚ್‌ಗಳ ಬೋರ್ಡ್." },
+        { id: 28, cat: 'reg', catName: 'ರೆಜಿಸ್ಟರ್‌ಗಳು', q: "28. ಕ್ಲಾಕ್ ಸೈಕಲ್‌ಗಳ ವೇಗಕ್ಕೆ ಸಮನಾಗಿ ಕೆಲಸ ಮಾಡುವುದರಿಂದ 'ಶೂನ್ಯ ಕಾಯುವಿಕೆ' (Zero Wait State) ಹೊಂದಿರುವ ಮೆಮೊರಿ ಯಾವುದು?", o: ["A) ಹಾರ್ಡ್ ಡಿಸ್ಕ್", "B) RAM", "C) ರೆಜಿಸ್ಟರ್‌ಗಳು (Registers)", "D) CD-ROM"], a: 2, e: "ರೆಜಿಸ್ಟರ್‌ಗಳು CPU ಒಳಗಡೆಯೇ ಇರುವುದರಿಂದ Zero wait state ಹೊಂದಿರುತ್ತವೆ." },
+        { id: 29, cat: 'reg', catName: 'ರೆಜಿಸ್ಟರ್‌ಗಳು', q: "29. CPU ಒಮ್ಮೆಗೆ ಎಷ್ಟು ಬಿಟ್ ಡೇಟಾವನ್ನು (ಉದಾ: 32-bit ಅಥವಾ 64-bit) ಪ್ರೊಸೆಸ್ ಮಾಡಬಲ್ಲದು ಎಂಬ ರೆಜಿಸ್ಟರ್ ಸಾಮರ್ಥ್ಯವನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?", o: ["A) ವರ್ಡ್ ಸೈಜ್ (Word Size)", "B) ಬಸ್ ಸ್ಪೀಡ್", "C) ಪಿಕ್ಸೆಲ್ ಗಾತ್ರ", "D) ಸೆಕ್ಟರ್ ಗಾತ್ರ"], a: 0, e: "32-ಬಿಟ್ ಅಥವಾ 64-ಬಿಟ್ ಎಂಬುದು ರೆಜಿಸ್ಟರ್‌ನ Word Size ಆಗಿದೆ." },
+        { id: 30, cat: 'reg', catName: 'ರೆಜಿಸ್ಟರ್‌ಗಳು', q: "30. ALU ಮಾಡುವ ಎಲ್ಲಾ ಗಣಿತ ಲೆಕ್ಕಾಚಾರಗಳ ಮಧ್ಯಂತರ ಮತ್ತು ಅಂತಿಮ ಫಲಿತಾಂಶಗಳನ್ನು ತಾತ್ಕಾಲಿಕವಾಗಿ ಹಿಡಿದಿಡುವ ಪ್ರಮುಖ ರೆಜಿಸ್ಟರ್ ಯಾವುದು?", o: ["A) ಪ್ರೋಗ್ರಾಮ್ ಕೌಂಟರ್ (PC)", "B) ಅಕ್ಯುಮುಲೇಟರ್ (Accumulator - ACC)", "C) MAR", "D) ಇನ್ಸ್‌ಟ್ರಕ್ಷನ್ ರೆಜಿಸ್ಟರ್"], a: 1, e: "ಕ್ಯಾಲ್ಕುಲೇಟರ್ ಪರದೆಯ ಮೇಲಿನ ಒಟ್ಟು ಮೊತ್ತದಂತೆ (Running Total) ಫಲಿತಾಂಶ ಹಿಡಿದಿಡುವ ರೆಜಿಸ್ಟರ್ Accumulator." },
+        { id: 31, cat: 'reg', catName: 'ರೆಜಿಸ್ಟರ್‌‌ಗಳು', q: "31. 'ಮುಂದಿನ ಬಾರಿ' (Next Instruction) ಯಾವ ಸೂಚನೆಯನ್ನು ಕಾರ್ಯಗತಗೊಳಿಸಬೇಕು ಎಂಬುದರ ವಿಳಾಸವನ್ನು ನೆನಪಿಟ್ಟುಕೊಳ್ಳುವ ರೆಜಿಸ್ಟರ್ ಯಾವುದು?", o: ["A) ಇನ್ಸ್‌ಟ್ರಕ್ಷನ್ ರೆಜಿಸ್ಟರ್ (IR)", "B) ಪ್ರೋಗ್ರಾಮ್ ಕೌಂಟರ್ (Program Counter - PC)", "C) MDR", "D) ಅಕ್ಯುಮುಲೇಟರ್"], a: 1, e: "ಬ್ಯಾಂಕಿನಲ್ಲಿ 'ಮುಂದಿನ ಟೋಕನ್ ನಂಬರ್ ಯಾರು?' ಎಂದು ನೆನಪಿಸುವ ಯಂತ್ರದಂತೆ ಕೆಲಸ ಮಾಡುವುದು Program Counter (PC)." },
+        { id: 32, cat: 'reg', catName: 'ರೆಜಿಸ್ಟರ್‌ಗಳು', q: "32. CPU 'ಪ್ರಸ್ತುತ' (ಈಗಲೇ - Current running instruction) ಯಾವ ಸೂಚನೆಯನ್ನು ಕಾರ್ಯಗತಗೊಳಿಸುತ್ತಿದೆಯೋ ಆ ಸೂಚನೆಯನ್ನು ಹಿಡಿದಿಟ್ಟುಕೊಳ್ಳುವ ರೆಜಿಸ್ಟರ್ ಯಾವುದು?", o: ["A) ಪ್ರೋಗ್ರಾಮ್ ಕೌಂಟರ್ (PC)", "B) ಇನ್ಸ್‌ಟ್ರಕ್ಷನ್ ರೆಜಿಸ್ಟರ್ (Instruction Register - IR)", "C) MAR", "D) ಶಿಫ್ಟ್ ರೆಜಿಸ್ಟರ್"], a: 1, e: "ಕೆಲಸಗಾರನ ಕೈಯಲ್ಲಿರುವ ಪ್ರಸ್ತುತ ಆಜ್ಞಾ ಪತ್ರದಂತೆ (Task sheet) ಕೆಲಸ ಮಾಡುವುದು Instruction Register (IR)." },
+        { id: 33, cat: 'reg', catName: 'ರೆಜಿಸ್ಟರ್‌ಗಳು', q: "33. CPU ಗೆ ಬೇಕಾದ ಡೇಟಾ RAM ನ ಯಾವ ಜಾಗದಲ್ಲಿದೆ ಎಂಬ 'ವಿಳಾಸವನ್ನು' (Address) ಕಂಟ್ರೋಲ್ ಯೂನಿಟ್‌ಗೆ ತಿಳಿಸುವ ರೆಜಿಸ್ಟರ್ ಯಾವುದು?", o: ["A) ಮೆಮೊರಿ ಡೇಟಾ ರೆಜಿಸ್ಟರ್ (MDR)", "B) ಮೆಮೊರಿ ಅಡ್ರೆಸ್ ರೆಜಿಸ್ಟರ್ (Memory Address Register - MAR)", "C) ಸಾಮಾನ್ಯ ರೆಜಿಸ್ಟರ್", "D) ಅಕ್ಯುಮುಲೇಟರ್"], a: 1, e: "ಪೋಸ್ಟ್‌ಮ್ಯಾನ್ ಕೈಲಿರುವ ಕವರ್ ಮೇಲಿನ 'ವಿಳಾಸದ ಚೀಟಿ'ಯಂತೆ ಕೆಲಸ ಮಾಡುವುದು MAR." },
+        { id: 34, cat: 'reg', catName: 'ರೆಜಿಸ್ಟರ್‌ಗಳು', q: "34. ಮೆಮೊರಿಯಿಂದ ಬಂದ ಡೇಟಾ ಅಥವಾ ಮೆಮೊರಿಗೆ ಹೋಗಬೇಕಾದ 'ಅಸಲು ಡೇಟಾವನ್ನು' (Parcel) ಹಿಡಿದಿಟ್ಟುಕೊಳ್ಳುವ ರೆಜಿಸ್ಟರ್ ಯಾವುದು?", o: ["A) MAR", "B) ಮೆಮೊರಿ ಡೇಟಾ ರೆಜಿಸ್ಟರ್ (Memory Data Register - MDR)", "C) PC", "D) IR"], a: 1, e: "MAR ವಿಳಾಸವಾದರೆ, MDR ಆ ವಿಳಾಸದಲ್ಲಿರುವ ಅಸಲು ವಸ್ತು (Data)." },
+        { id: 35, cat: 'reg', catName: 'ರೆಜಿಸ್ಟರ್‌ಗಳು', q: "35. ಪ್ರೊಸೆಸಿಂಗ್ ನಡೆಯುವಾಗ ಡೇಟಾವನ್ನು ತಾತ್ಕಾಲಿಕವಾಗಿ ಇಟ್ಟುಕೊಳ್ಳಲು ALU ಬಳಸುವ 'ರಫ್ ವರ್ಕ್' (Rough work) ಹಾಳೆಯಂತಹ ರೆಜಿಸ್ಟರ್‌ಗಳು ಯಾವುವು?", o: ["A) ಸಾಮಾನ್ಯ ಉದ್ದೇಶದ ರೆಜಿಸ್ಟರ್‌ಗಳು (General Purpose Registers - GPR: R1, R2)", "B) ಪ್ರೋಗ್ರಾಮ್ ಕೌಂಟರ್", "C) ಇನ್ಸ್‌ಟ್ರಕ್ಷನ್ ರೆಜಿಸ್ಟರ್", "D) ಫ್ಲಾಗ್ ರೆಜಿಸ್ಟರ್"], a: 0, e: "GPR (R1, R2...) ರೆಜಿಸ್ಟರ್‌ಗಳನ್ನು ತಾತ್ಕಾಲಿಕ ರಫ್ ವರ್ಕ್‌ಗಾಗಿ ಬಳಸಲಾಗುತ್ತದೆ." },
+        { id: 36, cat: 'reg', catName: 'ರೆಜಿಸ್ಟರ್‌ಗಳು', q: "36. ಬೈನರಿ ಬಿಟ್‌ಗಳನ್ನು ಎಡಕ್ಕೆ ಅಥವಾ ಬಲಕ್ಕೆ ಚಲಿಸುವಂತೆ (Shift) ಮಾಡಿ, ತ್ವರಿತ ಗುಣಾಕಾರ ಮತ್ತು ಭಾಗಾಕಾರ ನಿರ್ವಹಿಸುವ ರೆಜಿಸ್ಟರ್ ಯಾವುದು?", o: ["A) ಶಿಫ್ಟ್ ರೆಜಿಸ್ಟರ್‌ಗಳು (Shift Registers)", "B) MAR", "C) MDR", "D) PC"], a: 0, e: "25×10 ಮಾಡುವಾಗ ಪಕ್ಕದಲ್ಲಿ ಸೊನ್ನೆ ಸೇರಿಸಿ ಸ್ಥಾನ ಪಲ್ಲಟ ಮಾಡುವ ಶಾರ್ಟ್‌ಕಟ್‌ನಂತೆ Shift Register ಬಿಟ್‌ಗಳನ್ನು ಶಿಫ್ಟ್ ಮಾಡುತ್ತದೆ." },
+        { id: 37, cat: 'reg', catName: 'ರೆಜಿಸ್ಟರ್‌ಗಳು', q: "37. ರೆಜಿಸ್ಟರ್‌ಗಳ ಸ್ಥಿತಿಯ (Volatility) ಕುರಿತು ಈ ಕೆಳಗಿನ ಯಾವ ಹೇಳಿಕೆ ಸರಿಯಾಗಿದೆ?", o: ["A) ವಿದ್ಯುತ್ ಹೋದರೂ ರೆಜಿಸ್ಟರ್ ಡೇಟಾ ಅಳಿಸುವುದಿಲ್ಲ", "B) ಇದು ತಾತ್ಕಾಲಿಕ (Volatile) ಮೆಮೊರಿಯಾಗಿದ್ದು, ಪವರ್ ಆಫ್ ಆದ ತಕ್ಷಣ ಎಲ್ಲವೂ ಅಳಿಸಿಹೋಗುತ್ತದೆ", "C) ಇದು ಹಾರ್ಡ್ ಡಿಸ್ಕ್‌ನಂತೆ ಶಾಶ್ವತ ಮೆಮೊರಿ", "D) ಇದು ಮದರ್‌ಬೋರ್ಡ್ ಹೊರಗೆ ಇರುತ್ತದೆ"], a: 1, e: "ರೆಜಿಸ್ಟರ್‌ಗಳು Volatile ಮೆಮೊರಿಗಳಾಗಿವೆ, ವಿದ್ಯುತ್ ನಿಂತ ತಕ್ಷಣ ಅವುಗಳ ಡೇಟಾ ಅಳಿಸಿಹೋಗುತ್ತದೆ." },
+        { id: 38, cat: 'reg', catName: 'ರೆಜಿಸ್ಟರ್‌ಗಳು', q: "38. ಒಂದು 8-ಬಿಟ್ ರೆಜಿಸ್ಟರ್‌ನಲ್ಲಿ ಎಷ್ಟು ಫ್ಲಿಪ್-ಫ್ಲಾಪ್ (Flip-flop) ಸರ್ಕ್ಯೂಟ್‌ಗಳಿರುತ್ತವೆ?", o: ["A) 1", "B) 4", "C) 8", "D) 64"], a: 2, e: "ಪ್ರತಿ 1 ಬಿಟ್‌ಗೆ 1 ಫ್ಲಿಪ್-ಫ್ಲಾಪ್ ಬೇಕಾಗುವುದರಿಂದ, 8-ಬಿಟ್ ರೆಜಿಸ್ಟರ್‌ನಲ್ಲಿ 8 ಫ್ಲಿಪ್-ಫ್ಲಾಪ್‌ಗಳಿರುತ್ತವೆ." },
+
+        // 39 to 46: Memory Unit
+        { id: 39, cat: 'mem', catName: 'ಮೆಮೊರಿ ಘಟಕ', q: "39. ಮೆಮೊರಿಗಳ ವೇಗದ ಆಧಾರದ ಮೇಲೆ (ಅತ್ಯಂತ ವೇಗದಿಂದ ಕಡಿಮೆ ವೇಗಕ್ಕೆ) ಸರಿಯಾದ ಕ್ರಮಾಂಕ ಯಾವುದು?", o: ["A) Registers > Cache > RAM > ROM > Hard Disk", "B) RAM > Registers > Cache > Hard Disk", "C) Hard Disk > ROM > RAM > Cache > Registers", "D) Cache > Registers > RAM > Hard Disk"], a: 0, e: "ವೇಗದ ಸರಿಯಾದ ಕ್ರಮಾಂಕ: Registers > Cache Memory > Main Memory (RAM) > ROM > Secondary Memory (HDD/SSD)." },
+        { id: 40, cat: 'mem', catName: 'ಮೆಮೊರಿ ಘಟಕ', q: "40. ಪ್ರಸ್ತುತ ನಡೆಯುತ್ತಿರುವ ಕೆಲಸಗಳ ಡೇಟಾವನ್ನು ಇಟ್ಟುಕೊಳ್ಳುವ ಮತ್ತು ವಿದ್ಯುತ್ ಹೋದ ತಕ್ಷಣ ಡೇಟಾ ಕಳೆದುಕೊಳ್ಳುವ (Volatile) ಪ್ರಾಥಮಿಕ ಮೆಮೊರಿ ಯಾವುದು?", o: ["A) ROM", "B) RAM (Random Access Memory)", "C) ಹಾರ್ಡ್ ಡಿಸ್ಕ್", "D) ಪೆನ್ ಡ್ರೈವ್"], a: 1, e: "RAM ಪ್ರಸ್ತುತ ಚಾಲನೆಯಲ್ಲಿರುವ ಪ್ರೋಗ್ರಾಮ್‌ಗಳನ್ನು ಇಟ್ಟುಕೊಳ್ಳುವ ತಾತ್ಕಾಲಿಕ (Volatile) ಮೆಮೊರಿಯಾಗಿದೆ." },
+        { id: 41, cat: 'mem', catName: 'ಮೆಮೊರಿ ಘಟಕ', q: "41. ಕಂಪ್ಯೂಟರ್ ಆನ್ ಆಗಲು ಬೇಕಾದ ಮೂಲ ಸೂಚನೆಗಳನ್ನು (Booting / BIOS) ಒಳಗೊಂಡಿರುವ ಮತ್ತು ವಿದ್ಯುತ್ ಹೋದರೂ ಅಳಿಸದ (Non-Volatile) ಪ್ರಾಥಮಿಕ ಮೆಮೊರಿ ಯಾವುದು?", o: ["A) RAM", "B) ROM (Read Only Memory)", "C) ಕ್ಯಾಶ್ ಮೆಮೊರಿ", "D) ರೆಜಿಸ್ಟರ್"], a: 1, e: "ROM (Read Only Memory) ಶಾಶ್ವತ ಪ್ರಾಥಮಿಕ ಮೆಮೊರಿಯಾಗಿದ್ದು, ಇದರಲ್ಲಿ BIOS ಸೂಚನೆಗಳಿರುತ್ತವೆ." },
+        { id: 42, cat: 'mem', catName: 'ಮೆಮೊರಿ ಘಟಕ', q: "42. ಭವಿಷ್ಯದ ಬಳಕೆಗಾಗಿ ಅಪಾರ ಪ್ರಮಾಣದ ಡೇಟಾವನ್ನು ಶಾಶ್ವತವಾಗಿ ಸಂಗ್ರಹಿಸಲು ಬಳಸುವ 'ದ್ವಿತೀಯಕ ಮೆಮೊರಿ'ಗೆ (Secondary Memory) ಉದಾಹರಣೆ ಯಾವುದು?", o: ["A) Hard Disk (HDD), Solid State Drive (SSD), CD, Pen Drive", "B) Registers ಮತ್ತು Accumulator", "C) L1 ಮತ್ತು L2 Cache", "D) SRAM ಮತ್ತು DRAM"], a: 0, e: "HDD, SSD, CD/DVD ಮತ್ತು Pen Drive ದ್ವಿತೀಯಕ (Secondary) ಶಾಶ್ವತ ಸಂಗ್ರಹಣಾ ಸಾಧನಗಳಾಗಿವೆ." },
+        { id: 43, cat: 'mem', catName: 'ಮೆಮೊರಿ ಘಟಕ', q: "43. CPU ಮತ್ತು RAM ನ ನಡುವೆ ಇದ್ದು, CPU ಗೆ ಪದೇ ಪದೇ ಬೇಕಾಗುವ ಡೇಟಾವನ್ನು ಇಟ್ಟುಕೊಂಡು ಕಂಪ್ಯೂಟರ್ ವೇಗ ಹೆಚ್ಚಿಸುವ ಮೆಮೊರಿ ಯಾವುದು?", o: ["A) ಕ್ಯಾಶ್ ಮೆಮೊರಿ (Cache Memory)", "B) ಫ್ಲಾಪಿ ಡಿಸ್ಕ್", "C) ಮ್ಯಾಗ್ನೆಟಿಕ್ ಟೇಪ್", "D) ROM"], a: 0, e: "ಕ್ಯಾಶ್ ಮೆಮೊರಿಯು CPU ಮತ್ತು RAM ನಡುವೆ ಇರುವ ಅತಿ ವೇಗದ ಮೆಮೊರಿಯಾಗಿದೆ." },
+        { id: 44, cat: 'mem', catName: 'ಮೆಮೊರಿ ಘಟಕ', q: "44. ಈ ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ನೇರವಾಗಿ CPU ಸಂಪರ್ಕದಲ್ಲಿರುವ ಮೆಮೊರಿ ವಿಭಾಗವಾಗಿದೆ?", o: ["A) ಪ್ರಾಥಮಿಕ ಮೆಮೊರಿ (Primary / Main Memory)", "B) ಮ್ಯಾಗ್ನೆಟಿಕ್ ಟೇಪ್", "C) CD-ROM", "D) ಪೆನ್ ಡ್ರೈವ್"], a: 0, e: "ಪ್ರಾಥಮಿಕ ಮೆಮೊರಿ (RAM/ROM) ಹಾಗೂ ಕ್ಯಾಶ್ ಮೆಮೊರಿ ನೇರವಾಗಿ CPU ಸಂಪರ್ಕದಲ್ಲಿರುತ್ತವೆ." },
+        { id: 45, cat: 'mem', catName: 'ಮೆಮೊರಿ ಘಟಕ', q: "45. ರೆಜಿಸ್ಟರ್‌ಗಳ ನಂತರ ಎರಡನೇ ಅತ್ಯಂತ ವೇಗದ ಮೆಮೊರಿ ಯಾವುದು?", o: ["A) ಹಾರ್ಡ್ ಡಿಸ್ಕ್", "B) RAM", "C) ಕ್ಯಾಶ್ ಮೆಮೊರಿ (Cache Memory)", "D) SSD"], a: 2, e: "ವೇಗದಲ್ಲಿ ಮೊದಲ ಸ್ಥಾನ ರೆಜಿಸ್ಟರ್ಸ್, ಎರಡನೇ ಸ್ಥಾನ ಕ್ಯಾಶ್ ಮೆಮೊರಿ, ಮೂರನೇ ಸ್ಥಾನ RAM." },
+        { id: 46, cat: 'mem', catName: 'ಮೆಮೊರಿ ಘಟಕ', q: "46. ಕಂಪ್ಯೂಟರ್ ಆನ್ ಮಾಡಿದಾಗ ನಡೆಯುವ ಪ್ರಕ್ರಿಯೆಯನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ (ಇದಕ್ಕೆ ROM ನಲ್ಲಿರುವ BIOS ಸಹಾಯ ಮಾಡುತ್ತದೆ)?", o: ["A) ಬೂಟಿಂಗ್ (Booting)", "B) ಡಿಕೋಡಿಂಗ್", "C) ಶಿಫ್ಟಿಂಗ್", "D) ಸ್ಕ್ಯಾನಿಂಗ್"], a: 0, e: "ಕಂಪ್ಯೂಟರ್ ಆನ್ ಆಗಿ ಆಪರೇಟಿಂಗ್ ಸಿಸ್ಟಮ್ ಲೋಡ್ ಆಗುವ ಪ್ರಕ್ರಿಯೆಯನ್ನು Booting ಎನ್ನುತ್ತಾರೆ." },
+
+        // 47 to 54: System Bus
+        { id: 47, cat: 'bus', catName: 'ಸಿಸ್ಟಮ್ ಬಸ್', q: "47. ಮದರ್‌‌ಬೋರ್ಡ್‌ನಲ್ಲಿ CPU, ಮೆಮೊರಿ (RAM) ಮತ್ತು ಇನ್‌ಪುಟ್/ಔಟ್‌ಪುಟ್ ಸಾಧನಗಳ ನಡುವೆ ಡೇಟಾ ಮತ್ತು ಸಿಗ್ನಲ್‌ಗಳನ್ನು ಸಾಗಿಸುವ ಎಲೆಕ್ಟ್ರಾನಿಕ್ ತಂತಿಗಳ ಗುಂಪನ್ನು ('ರಾಷ್ಟ್ರೀಯ ಹೆದ್ದಾರಿ') ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?", o: ["A) ಸಿಸ್ಟಮ್ ಬಸ್ (System Bus)", "B) ಫ್ಲಿಪ್-ಫ್ಲಾಪ್", "C) ಅಕ್ಯುಮುಲೇಟರ್", "D) ಪವರ್ ಸಪ್ಲೈ"], a: 0, e: "ಸಿಸ್ಟಮ್ ಬಸ್ ಕಂಪ್ಯೂಟರ್ ಒಳಗಿನ ರಾಷ್ಟ್ರೀಯ ಹೆದ್ದಾರಿಯಂತೆ ಎಲ್ಲಾ ಘಟಕಗಳನ್ನು ಬೆಸೆಯುತ್ತದೆ." },
+        { id: 48, cat: 'bus', catName: 'ಸಿಸ್ಟಮ್ ಬಸ್', q: "48. ಸಿಸ್ಟಮ್ ಬಸ್ (System Bus) ಪ್ರಮುಖವಾಗಿ ಯಾವ ಮೂರು ಬಸ್‌ಗಳನ್ನು ಒಳಗೊಂಡಿದೆ?", o: ["A) Data Bus + Address Bus + Control Bus", "B) Input Bus + Output Bus + Memory Bus", "C) ALU Bus + CU Bus + Register Bus", "D) LAN + MAN + WAN"], a: 0, e: "ಡೇಟಾ ಬಸ್, ಅಡ್ರೆಸ್ ಬಸ್ ಮತ್ತು ಕಂಟ್ರೋಲ್ ಬಸ್‌ಗಳ ಒಟ್ಟು ಗುಂಪನ್ನೇ ಸಿಸ್ಟಮ್ ಬಸ್ ಎನ್ನುತ್ತಾರೆ." },
+        { id: 49, cat: 'bus', catName: 'ಸಿಸ್ಟಮ್ ಬಸ್', q: "49. CPU ಮತ್ತು ಮೆಮೊರಿ ನಡುವೆ ವಾಸ್ತವಿಕ ದತ್ತಾಂಶವನ್ನು (Actual Data) ಎರಡೂ ದಿಕ್ಕುಗಳಲ್ಲಿ (ದ್ವಿಮುಖ - Bi-directional) ಸಾಗಿಸುವ ಬಸ್ ಯಾವುದು?", o: ["A) ಅಡ್ರೆಸ್ ಬಸ್", "B) ಡೇಟಾ ಬಸ್ (Data Bus)", "C) ಕಂಟ್ರೋಲ್ ಬಸ್", "D) ಏಕಮುಖ ಬಸ್"], a: 1, e: "ಡೇಟಾ ಬಸ್ ದ್ವಿಮುಖ (Two-way road) ಮಾರ್ಗವಾಗಿದ್ದು, ಅಸಲು ಡೇಟಾವನ್ನು CPU ನಿಂದ ಮೆಮೊರಿಗೆ ಮತ್ತು ಮೆಮೊರಿಯಿಂದ CPU ಗೆ ಸಾಗಿಸುತ್ತದೆ." },
+        { id: 50, cat: 'bus', catName: 'ಸಿಸ್ಟಮ್ ಬಸ್', q: "50. ಮೆಮೊರಿಯಲ್ಲಿ ಡೇಟಾ ಎಲ್ಲಿದೆ ಎಂಬ 'ವಿಳಾಸವನ್ನು' ಮಾತ್ರ ಹೊತ್ತೊಯ್ಯುವ ಮತ್ತು ಕೇವಲ 'ಏಕಮುಖ' (Uni-directional) ವಾಗಿರುವ ಬಸ್ ಯಾವುದು?", o: ["A) ಡೇಟಾ ಬಸ್", "B) ಅಡ್ರೆಸ್ ಬಸ್ (Address Bus)", "C) ಕಂಟ್ರೋಲ್ ಬಸ್", "D) USB ಬಸ್"], a: 1, e: "ಅಡ್ರೆಸ್ ಬಸ್ ಏಕಮುಖವಾಗಿದ್ದು, ವಿಳಾಸವು ಯಾವಾಗಲೂ CPU (MAR) ನಿಂದ ಮೆಮೊರಿ ಕಡೆಗೆ ಮಾತ್ರ ಹರಿಯುತ್ತದೆ." },
+        { id: 51, cat: 'bus', catName: 'ಸಿಸ್ಟಮ್ ಬಸ್', q: "51. CPU ನ ಕಂಟ್ರೋಲ್ ಯೂನಿಟ್‌ನಿಂದ ಹೊರಡುವ Read/Write ನಿಯಂತ್ರಣ ಸಿಗ್ನಲ್‌ಗಳನ್ನು ಇತರ ಭಾಗಗಳಿಗೆ ತಲುಪಿಸುವ 'ಟ್ರಾಫಿಕ್ ಸಿಗ್ನಲ್'ನಂತಹ ಬಸ್ ಯಾವುದು?", o: ["A) ಡೇಟಾ ಬಸ್", "B) ಅಡ್ರೆಸ್ ಬಸ್", "C) ಕಂಟ್ರೋಲ್ ಬಸ್ (Control Bus)", "D) ಮೆಮೊರಿ ಬಸ್"], a: 2, e: "ಕಂಟ್ರೋಲ್ ಬಸ್ ಯಾರು, ಯಾವಾಗ, ಯಾವ ಕೆಲಸ ಮಾಡಬೇಕು ಎಂಬ ನಿಯಂತ್ರಣ ಸಿಗ್ನಲ್‌ಗಳನ್ನು ತಲುಪಿಸುತ್ತದೆ." },
+        { id: 52, cat: 'bus', catName: 'ಸಿಸ್ಟಮ್ ಬಸ್', q: "52. ಒಂದು ಬಸ್‌ನಲ್ಲಿ ಏಕಕಾಲಕ್ಕೆ ಎಷ್ಟು ಬಿಟ್ ಡೇಟಾ ಚಲಿಸಬಹುದು (ಉದಾ: 32-ಬಿಟ್ ಅಥವಾ 64-ಬಿಟ್ ತಂತಿಗಳ ಗುಂಪು) ಎಂಬುದನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?", o: ["A) ಬಸ್ ಅಗಲ (Bus Width)", "B) ಬಸ್ ಉದ್ದ (Bus Length)", "C) ಬಸ್ ಎತ್ತರ", "D) ಕ್ಲಾಕ್ ಸೈಕಲ್"], a: 0, e: "ಬಸ್‌ನಲ್ಲಿರುವ ಸಮಾನಾಂತರ ತಂತಿಗಳ ಸಂಖ್ಯೆಯನ್ನು Bus Width ಎನ್ನುತ್ತಾರೆ." },
+        { id: 53, cat: 'bus', catName: 'ಸಿಸ್ಟಮ್ ಬಸ್', q: "53. ಕಂಪ್ಯೂಟರ್‌ನ ಗರಿಷ್ಠ RAM ಸಾಮರ್ಥ್ಯವನ್ನು (Maximum Memory Capacity) ನಿರ್ಧರಿಸುವ ಬಸ್ ಯಾವುದು?", o: ["A) ಡೇಟಾ ಬಸ್", "B) ಅಡ್ರೆಸ್ ಬಸ್‌ನ ಅಗಲ (Address Bus Width)", "C) ಕಂಟ್ರೋಲ್ ಬಸ್", "D) ಆಡಿಯೋ ಬಸ್"], a: 1, e: "ಅಡ್ರೆಸ್ ಬಸ್‌ನ ಅಗಲವು ಗರಿಷ್ಠ RAM ಸಾಮರ್ಥ್ಯ ನಿರ್ಧರಿಸುತ್ತದೆ." },
+        { id: 54, cat: 'bus', catName: 'ಸಿಸ್ಟಮ್ ಬಸ್', q: "54. 32-ಬಿಟ್ ಅಡ್ರೆಸ್ ಬಸ್ ಹೊಂದಿರುವ ಕಂಪ್ಯೂಟರ್ ಗರಿಷ್ಠ ಎಷ್ಟು RAM ಅನ್ನು ಮಾತ್ರ ಬೆಂಬಲಿಸುತ್ತದೆ?", o: ["A) 1 GB", "B) 2 GB", "C) 4 GB RAM", "D) 128 GB"], a: 2, e: "32-ಬಿಟ್ ಅಡ್ರೆಸ್ ಬಸ್ ಗರಿಷ್ಠ 2^32 = 4 GB RAM ಅನ್ನು ಮಾತ್ರ ಬೆಂಬಲಿಸುತ್ತದೆ." },
+
+        // 55 to 60: KAS / UPSC High-Level Statement Questions
+        { id: 55, cat: 'kas', catName: 'KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆಗಳು', q: "55. [KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆ] ಹೇಳಿಕೆ 1: ನಿಯಂತ್ರಣ ಘಟಕವು (CU) ಸ್ವತಃ ಯಾವುದೇ ಗಣಿತದ ಲೆಕ್ಕಾಚಾರ ಅಥವಾ ಡೇಟಾ ಸಂಸ್ಕರಣೆಯನ್ನು ಮಾಡುವುದಿಲ್ಲ. | ಹೇಳಿಕೆ 2: ALU ಸ್ವಂತವಾಗಿ ಯಾವುದೇ ಡೇಟಾವನ್ನು ತರುವ ಅಧಿಕಾರ ಹೊಂದಿಲ್ಲ, ಅದು CU ಆದೇಶದ ಮೇರೆಗೆ ಮಾತ್ರ ಲೆಕ್ಕಾಚಾರ ಮಾಡುತ್ತದೆ.", o: ["A) 1 ಮಾತ್ರ ಸರಿ", "B) 2 ಮಾತ್ರ ಸರಿ", "C) 1 ಮತ್ತು 2 ಎರಡೂ ಸರಿ", "D) 1 ಮತ್ತು 2 ಎರಡೂ ತಪ್ಪು"], a: 2, e: "ಎರಡೂ ಹೇಳಿಕೆಗಳು 100% ಸರಿಯಾಗಿವೆ. CU ನಿರ್ದೇಶಕನಾದರೆ, ALU ಆಜ್ಞೆಯಂತೆ ಲೆಕ್ಕ ಮಾಡುವ ಗಣಿತಜ್ಞ." },
+        { id: 56, cat: 'kas', catName: 'KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆಗಳು', q: "56. [KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆ] ಹೇಳಿಕೆ 1: ಡೇಟಾ ಬಸ್ ಏಕಮುಖ (Uni-directional) ಮಾರ್ಗವಾಗಿದೆ. | ಹೇಳಿಕೆ 2: ಅಡ್ರೆಸ್ ಬಸ್ ದ್ವಿಮುಖ (Bi-directional) ಮಾರ್ಗವಾಗಿದೆ.", o: ["A) 1 ಮಾತ್ರ ಸರಿ", "B) 2 ಮಾತ್ರ ಸರಿ", "C) 1 ಮತ್ತು 2 ಎರಡೂ ಸರಿ", "D) 1 ಮತ್ತು 2 ಎರಡೂ ತಪ್ಪು"], a: 3, e: "ಎರಡೂ ಹೇಳಿಕೆಗಳು ತಪ್ಪಾಗಿವೆ! ಡೇಟಾ ಬಸ್ ದ್ವಿಮುಖ (Bi-directional) ಹಾಗೂ ಅಡ್ರೆಸ್ ಬಸ್ ಏಕಮುಖ (Uni-directional) ಆಗಿದೆ." },
+        { id: 57, cat: 'kas', catName: 'KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆಗಳು', q: "57. [KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆ] ಹೇಳಿಕೆ 1: ಪ್ರೋಗ್ರಾಮ್ ಕೌಂಟರ್ (PC) ಮುಂದಿನ ಬಾರಿ ಕಾರ್ಯಗತಗೊಳ್ಳಬೇಕಾದ ಸೂಚನೆಯ ವಿಳಾಸವನ್ನು ಹಿಡಿದಿಟ್ಟುಕೊಳ್ಳುತ್ತದೆ. | ಹೇಳಿಕೆ 2: ಇನ್ಸ್‌ಟ್ರಕ್ಷನ್ ರೆಜಿಸ್ಟರ್ (IR) ಪ್ರಸ್ತುತ ಕಾರ್ಯಗತಗೊಳ್ಳುತ್ತಿರುವ ಸೂಚನೆಯನ್ನು ಇಟ್ಟುಕೊಳ್ಳುತ್ತದೆ.", o: ["A) 1 ಮಾತ್ರ ಸರಿ", "B) 2 ಮಾತ್ರ ಸರಿ", "C) 1 ಮತ್ತು 2 ಎರಡೂ ಸರಿ", "D) 1 ಮತ್ತು 2 ಎರಡೂ ತಪ್ಪು"], a: 2, e: "ಎರಡೂ ಹೇಳಿಕೆಗಳು ಸರಿಯಾಗಿವೆ." },
+        { id: 58, cat: 'kas', catName: 'KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆಗಳು', q: "58. [KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆ] ಹೇಳಿಕೆ 1: MAR ಪೋಸ್ಟ್‌‌ಮ್ಯಾನ್ ಕೈಲಿರುವ ಕವರ್ ಮೇಲಿನ ವಿಳಾಸದ ಚೀಟಿಯಂತೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ. | ಹೇಳಿಕೆ 2: MDR ಪೋಸ್ಟ್‌ಮ್ಯಾನ್ ತಂದ ಬಾಕ್ಸ್ ಒಳಗಿರುವ ಅಸಲು ವಸ್ತುವಿನಂತೆ (ಡೇಟಾ) ಕೆಲಸ ಮಾಡುತ್ತದೆ.", o: ["A) 1 ಮಾತ್ರ ಸರಿ", "B) 2 ಮಾತ್ರ ಸರಿ", "C) 1 ಮತ್ತು 2 ಎರಡೂ ಸರಿ", "D) 1 ಮತ್ತು 2 ಎರಡೂ ತಪ್ಪು"], a: 2, e: "ಎರಡೂ ಹೇಳಿಕೆಗಳು ಸರಿಯಾಗಿವೆ." },
+        { id: 59, cat: 'kas', catName: 'KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆಗಳು', q: "59. [KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆ] ಹೇಳಿಕೆ 1: CPU ಗೆ RAM ನಿಂದ ಡೇಟಾ ತರುವುದಕ್ಕಿಂತ ರೆಜಿಸ್ಟರ್‌ನಿಂದ ಡೇಟಾ ತೆಗೆಯುವುದು ಅತಿ ವೇಗವಾಗಿರುತ್ತದೆ. | ಹೇಳಿಕೆ 2: ಕ್ಯಾಶ್ ಮೆಮೊರಿಯು ಹಾರ್ಡ್ ಡಿಸ್ಕ್‌ಗಿಂತ ನಿಧಾನವಾಗಿರುತ್ತದೆ.", o: ["A) 1 ಮಾತ್ರ ಸರಿ", "B) 2 ಮಾತ್ರ ಸರಿ", "C) 1 ಮತ್ತು 2 ಎರಡೂ ಸರಿ", "D) 1 ಮತ್ತು 2 ಎರಡೂ ತಪ್ಪು"], a: 0, e: "ಹೇಳಿಕೆ 1 ಮಾತ್ರ ಸರಿ. ಹೇಳಿಕೆ 2 ತಪ್ಪು ಏಕೆಂದರೆ ಕ್ಯಾಶ್ ಮೆಮೊರಿಯು ಹಾರ್ಡ್ ಡಿಸ್ಕ್ ಮತ್ತು RAM ಗಿಂತಲೂ ಬಹಳ ವೇಗವಾಗಿರುತ್ತದೆ." },
+        { id: 60, cat: 'kas', catName: 'KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆಗಳು', q: "60. [ಹೊಂದಿಸಿ ಬರೆಯಿರಿ ಪ್ರಶ್ನೆ] ಕೆಳಗಿನ ಜೋಡಿಗಳಲ್ಲಿ ಯಾವುದು ಸರಿಯಾಗಿ ಹೊಂದಾಣಿಕೆಯಾಗಿದೆ? 1) ಕಂಪ್ಯೂಟರ್‌ನ ಮೆದುಳು - CPU | 2) ಕಂಪ್ಯೂಟರ್‌ನ ನರಮಂಡಲ - CU | 3) ನೈಜ ಲೆಕ್ಕಾಚಾರದ ಸ್ಥಳ - ALU | 4) ಕಂಪ್ಯೂಟರ್‌ನ ರಾಷ್ಟ್ರೀಯ ಹೆದ್ದಾರಿ - System Bus", o: ["A) 1 ಮತ್ತು 2 ಮಾತ್ರ", "B) 1, 2 ಮತ್ತು 3 ಮಾತ್ರ", "C) 2 ಮತ್ತು 4 ಮಾತ್ರ", "D) 1, 2, 3 ಮತ್ತು 4 ಎಲ್ಲವೂ ಸರಿ"], a: 3, e: "ನಾಲ್ಕೂ ಜೋಡಿಗಳು 100% ಸರಿಯಾಗಿ ಹೊಂದಾಣಿಕೆಯಾಗಿವೆ." }
+    ];
+
+    let rightCount = 0;
+    let wrongCount = 0;
+    let viewMode = 'all';
+    let currentIndex = 0;
+    let currentFilter = 'all';
+    let secondsElapsed = 0;
+    let userAnswers = new Array(mcqs.length).fill(null);
+
+    setInterval(() => {
+        secondsElapsed++;
+        const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+        const secs = String(secondsElapsed % 60).padStart(2, '0');
+        document.getElementById('timerStat').textContent = `⏱️ ${mins}:${secs}`;
+    }, 1000);
+
+    function toggleTheme() {
+        const b = document.body;
+        const btn = document.getElementById('themeBtn');
+        if (b.getAttribute('data-theme') === 'dark') {
+            b.removeAttribute('data-theme');
+            btn.textContent = '🌙 ಡಾರ್ಕ್ ಮೋಡ್ (Eye Care)';
+        } else {
+            b.setAttribute('data-theme', 'dark');
+            btn.textContent = '☀️ ಲೈಟ್ ಮೋಡ್';
+        }
+    }
+
+    function togglePalette() {
+        const g = document.getElementById('paletteGrid');
+        const b = document.getElementById('palToggleBtn');
+        if (g.style.display === 'none') {
+            g.style.display = 'grid';
+            b.textContent = 'ಪ್ಯಾಲೆಟ್ ಮರೆಮಾಡಿ ▲';
+        } else {
+            g.style.display = 'none';
+            b.textContent = 'ಪ್ಯಾಲೆಟ್ ತೋರಿಸಿ ▼';
+        }
+    }
+
+    function initQuiz() {
+        const container = document.getElementById('quizContainer');
+        const palette = document.getElementById('paletteGrid');
+        container.innerHTML = '';
+        palette.innerHTML = '';
+        rightCount = 0;
+        wrongCount = 0;
+        secondsElapsed = 0;
+        userAnswers.fill(null);
+        updateStats();
+
+        mcqs.forEach((item, idx) => {
+            const pBtn = document.createElement('button');
+            pBtn.className = 'p-num';
+            pBtn.id = 'p-' + idx;
+            pBtn.textContent = item.id;
+            pBtn.onclick = () => jumpToQuestion(idx);
+            palette.appendChild(pBtn);
+
+            const card = document.createElement('div');
+            card.className = 'q-card';
+            card.id = 'qcard-' + idx;
+            card.dataset.cat = item.cat;
+
+            const head = document.createElement('div');
+            head.className = 'q-header';
+            head.innerHTML = `<span class="q-cat-badge">${item.catName}</span><span style="font-size:0.8rem; color:var(--text-muted);">ಪ್ರಶ್ನೆ #${item.id} / 60</span>`;
+            card.appendChild(head);
+
+            const title = document.createElement('div');
+            title.className = 'q-title';
+            title.textContent = item.q;
+            card.appendChild(title);
+
+            const grid = document.createElement('div');
+            grid.className = 'opt-grid';
+
+            const exp = document.createElement('div');
+            exp.className = 'exp-box';
+            exp.id = 'exp-' + idx;
+            exp.innerHTML = `<strong>💡 ಪರೀಕ್ಷಾ ವಿವರಣೆ:</strong> ${item.e}`;
+
+            item.o.forEach((optText, oIdx) => {
+                const btn = document.createElement('button');
+                btn.className = 'opt-btn';
+                btn.textContent = optText;
+                btn.onclick = () => checkAnswer(idx, oIdx, btn, grid, exp);
+                grid.appendChild(btn);
+            });
+
+            card.appendChild(grid);
+            card.appendChild(exp);
+            container.appendChild(card);
+        });
+
+        applyViewVisibility();
+    }
+
+    function checkAnswer(qIdx, selIdx, clickedBtn, grid, exp) {
+        const allBtns = grid.querySelectorAll('.opt-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        const rightIdx = mcqs[qIdx].a;
+        const pBtn = document.getElementById('p-' + qIdx);
+
+        if (selIdx === rightIdx) {
+            clickedBtn.classList.add('correct');
+            pBtn.classList.add('p-right');
+            userAnswers[qIdx] = 'right';
+            rightCount++;
+        } else {
+            clickedBtn.classList.add('wrong');
+            allBtns[rightIdx].classList.add('correct');
+            pBtn.classList.add('p-wrong');
+            userAnswers[qIdx] = 'wrong';
+            wrongCount++;
+        }
+
+        exp.style.display = 'block';
+        updateStats();
+    }
+
+    function updateStats() {
+        const totalDone = rightCount + wrongCount;
+        const netScore = (rightCount - (wrongCount * 0.25)).toFixed(2);
+        document.getElementById('scoreStat').textContent = `🏆 ಅಂಕಗಳು: ${rightCount} / 60`;
+        document.getElementById('rightStat').textContent = `✅ ಸರಿ: ${rightCount}`;
+        document.getElementById('wrongStat').textContent = `❌ ತಪ್ಪು: ${wrongCount}`;
+        document.getElementById('negStat').textContent = `📉 ನೆಗೆಟಿವ್ ಸಹಿತ (0.25): ${netScore}`;
+        document.getElementById('progBar').style.width = ((totalDone / 60) * 100) + '%';
+    }
+
+    function setMode(mode) {
+        viewMode = mode;
+        document.getElementById('modeAllBtn').classList.toggle('active-mode', mode === 'all');
+        document.getElementById('modeSingleBtn').classList.toggle('active-mode', mode === 'single');
+        document.getElementById('stepperBox').style.display = (mode === 'single') ? 'flex' : 'none';
+        applyViewVisibility();
+    }
+
+    function filterCategory(cat, tabBtn) {
+        currentFilter = cat;
+        document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+        if (tabBtn) tabBtn.classList.add('active');
+        if (viewMode === 'single') setMode('all');
+        applyViewVisibility();
+    }
+
+    function filterWrongOnly() {
+        setMode('all');
+        const cards = document.querySelectorAll('.q-card');
+        let anyWrong = false;
+        cards.forEach((c, idx) => {
+            if (userAnswers[idx] === 'wrong') {
+                c.style.display = 'block';
+                anyWrong = true;
+            } else {
+                c.style.display = 'none';
+            }
+        });
+        if (!anyWrong) {
+            alert('ನೀವು ಇದುವರೆಗೆ ಯಾವುದೇ ತಪ್ಪು ಉತ್ತರ ನೀಡಿಲ್ಲ! ಎಲ್ಲಾ ಪ್ರಶ್ನೆಗಳನ್ನು ತೋರಿಸಲಾಗುತ್ತಿದೆ.');
+            filterCategory('all', document.querySelector('.filter-tab'));
+        }
+    }
+
+    function applyViewVisibility() {
+        const cards = document.querySelectorAll('.q-card');
+        if (viewMode === 'single') {
+            cards.forEach((c, idx) => {
+                c.style.display = (idx === currentIndex) ? 'block' : 'none';
+            });
+            document.getElementById('stepIndicator').textContent = `ಪ್ರಶ್ನೆ ${currentIndex + 1} / 60`;
+        } else {
+            cards.forEach(c => {
+                if (currentFilter === 'all' || c.dataset.cat === currentFilter) {
+                    c.style.display = 'block';
+                } else {
+                    c.style.display = 'none';
+                }
+            });
+        }
+    }
+
+    function prevQuestion() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            applyViewVisibility();
+        }
+    }
+
+    function nextQuestion() {
+        if (currentIndex < mcqs.length - 1) {
+            currentIndex++;
+            applyViewVisibility();
+        }
+    }
+
+    function jumpToQuestion(idx) {
+        if (viewMode === 'single') {
+            currentIndex = idx;
+            applyViewVisibility();
+        } else {
+            const target = document.getElementById('qcard-' + idx);
+            target.style.display = 'block';
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+
+    function showAllAnswers() {
+        mcqs.forEach((item, idx) => {
+            const card = document.getElementById('qcard-' + idx);
+            const btns = card.querySelectorAll('.opt-btn');
+            btns.forEach((b, bIdx) => {
+                b.disabled = true;
+                if (bIdx === item.a) b.classList.add('correct');
+            });
+            document.getElementById('exp-' + idx).style.display = 'block';
+        });
+    }
+
+    function showResultCard() {
+        const box = document.getElementById('resultBox');
+        const txt = document.getElementById('resultText');
+        const pct = Math.round((rightCount / 60) * 100);
+        const net = (rightCount - (wrongCount * 0.25)).toFixed(2);
+        txt.innerHTML = `ಒಟ್ಟು ಪ್ರಶ್ನೆಗಳು: <b>60</b> | ಸರಿ ಉತ್ತರಗಳು: <b>${rightCount}</b> | ತಪ್ಪು ಉತ್ತರಗಳು: <b>${wrongCount}</b><br>ಶೇಕಡಾವಾರು ಅಂಕ: <b>${pct}%</b> | KPSC ನೆಗೆಟಿವ್ ಅಂಕ ಕಳೆದ ನಂತರ ನಿವ್ವಳ ಸ್ಕೋರ್: <b>${net} / 60</b>`;
+        box.style.display = 'block';
+        box.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function resetQuiz() {
+        document.getElementById('resultBox').style.display = 'none';
+        initQuiz();
+    }
+
+    initQuiz();
+</script>
+
+</body>
+</html>

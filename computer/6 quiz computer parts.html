@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಗಣಕಯಂತ್ರದ ಭಾಗಗಳು ಮತ್ತು ಆರ್ಕಿಟೆಕ್ಚರ್ - 50 ಪ್ರಶ್ನೆಗಳ ಮೆಗಾ ಡೈನಾಮಿಕ್ ಕ್ವಿಜ್</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #f1f5f9;
+            --bg-card: #ffffff;
+            --bg-soft: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --border: #cbd5e1;
+            --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+
+            --blue: #2563eb; --blue-bg: #eff6ff;
+            --green: #059669; --green-bg: #ecfdf5; --green-border: #10b981;
+            --rose: #e11d48; --rose-bg: #fff1f2; --rose-border: #f43f5e;
+            --amber: #d97706; --amber-bg: #fffbeb;
+            --purple: #7c3aed; --purple-bg: #f5f3ff;
+        }
+
+        [data-theme="dark"] {
+            --bg-main: #090d16;
+            --bg-card: #111827;
+            --bg-soft: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+
+            --blue-bg: rgba(37, 99, 235, 0.15);
+            --green-bg: rgba(5, 150, 105, 0.18);
+            --rose-bg: rgba(225, 29, 72, 0.18);
+            --amber-bg: rgba(217, 119, 6, 0.15);
+            --purple-bg: rgba(124, 58, 237, 0.15);
+        }
+
+        [data-theme="sepia"] {
+            --bg-main: #ece3d2;
+            --bg-card: #faf3e6;
+            --bg-soft: #f2e9d8;
+            --text-primary: #2c221e;
+            --text-secondary: #4e3e3e;
+            --text-muted: #6e5a4f;
+            --border: #d4c5b1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans Kannada', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.75;
+            transition: background 0.3s, color 0.3s;
+            padding-bottom: 60px;
+        }
+
+        /* Top Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: var(--blue);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stats-bar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .stat-pill {
+            padding: 5px 12px;
+            border-radius: 99px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            background: var(--bg-soft);
+            border: 1px solid var(--border);
+        }
+
+        .stat-correct { color: var(--green); border-color: var(--green-border); background: var(--green-bg); }
+        .stat-wrong { color: var(--rose); border-color: var(--rose-border); background: var(--rose-bg); }
+        .stat-timer { font-family: 'JetBrains Mono', monospace; color: var(--purple); }
+
+        .theme-btns {
+            display: flex;
+            gap: 6px;
+        }
+
+        .t-btn {
+            padding: 5px 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg-soft);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 24px auto;
+            padding: 0 16px;
+        }
+
+        /* Layout Grid */
+        .quiz-layout {
+            display: grid;
+            grid-template-columns: 1fr 330px;
+            gap: 24px;
+            align-items: start;
+        }
+
+        /* Left Main Quiz Card */
+        .quiz-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+        }
+
+        .filter-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        select.topic-select {
+            padding: 8px 14px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg-soft);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .q-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .q-badge {
+            background: var(--blue-bg);
+            color: var(--blue);
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 0.82rem;
+            font-weight: 800;
+        }
+
+        .q-topic-tag {
+            background: var(--purple-bg);
+            color: var(--purple);
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .question-text {
+            font-size: 1.22rem;
+            font-weight: 800;
+            margin-bottom: 22px;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .opt-btn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
+            text-align: left;
+            padding: 15px 18px;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+            background: var(--bg-soft);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .opt-btn:hover:not(:disabled) {
+            border-color: var(--blue);
+            background: var(--blue-bg);
+            transform: translateX(4px);
+        }
+
+        .opt-letter {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .opt-btn.correct {
+            background: var(--green-bg);
+            border-color: var(--green-border);
+            color: var(--green);
+        }
+
+        .opt-btn.correct .opt-letter {
+            background: var(--green);
+            color: #fff;
+            border-color: var(--green);
+        }
+
+        .opt-btn.wrong {
+            background: var(--rose-bg);
+            border-color: var(--rose-border);
+            color: var(--rose);
+        }
+
+        .opt-btn.wrong .opt-letter {
+            background: var(--rose);
+            color: #fff;
+            border-color: var(--rose);
+        }
+
+        /* Explanation Box */
+        .exp-box {
+            margin-top: 22px;
+            padding: 20px;
+            border-radius: 16px;
+            background: var(--amber-bg);
+            border-left: 5px solid var(--amber);
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .exp-title {
+            font-weight: 800;
+            color: var(--amber);
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+
+        .exp-text {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* Navigation Controls */
+        .nav-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 26px;
+            padding-top: 18px;
+            border-top: 1px solid var(--border);
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .ctrl-btn {
+            padding: 10px 22px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: var(--bg-soft);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .ctrl-btn.primary {
+            background: var(--blue);
+            color: #fff;
+            border-color: var(--blue);
+        }
+
+        .ctrl-btn:hover:not(:disabled) {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+        }
+
+        .ctrl-btn:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+        }
+
+        /* Right Sidebar Question Palette */
+        .sidebar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 22px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 80px;
+        }
+
+        .sidebar-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+            color: var(--blue);
+        }
+
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .p-btn {
+            height: 38px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg-soft);
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .p-btn.active {
+            border: 2px solid var(--blue);
+            transform: scale(1.06);
+        }
+
+        .p-btn.ans-correct {
+            background: var(--green);
+            color: #fff;
+            border-color: var(--green);
+        }
+
+        .p-btn.ans-wrong {
+            background: var(--rose);
+            color: #fff;
+            border-color: var(--rose);
+        }
+
+        /* Result Modal / Summary Card */
+        .result-card {
+            display: none;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .score-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: var(--blue-bg);
+            border: 6px solid var(--blue);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .score-big {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--blue);
+        }
+
+        @media (max-width: 900px) {
+            .quiz-layout {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-card {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Sticky Bar -->
+    <header class="navbar">
+        <div class="brand">🎯 ಗಣಕಯಂತ್ರ ಆರ್ಕಿಟೆಕ್ಚರ್ - 50 MCQ ಪರೀಕ್ಷಾ ಕ್ವಿಜ್</div>
+        <div class="stats-bar">
+            <span class="stat-pill stat-correct">✅ ಸರಿ: <span id="correct-count">0</span></span>
+            <span class="stat-pill stat-wrong">❌ ತಪ್ಪು: <span id="wrong-count">0</span></span>
+            <span class="stat-pill stat-timer">⏱️ ಸಮಯ: <span id="timer">00:00</span></span>
+        </div>
+        <div class="theme-btns">
+            <button class="t-btn" onclick="setTheme('light')">☀️ ಲೈಟ್</button>
+            <button class="t-btn" onclick="setTheme('sepia')">📜 ಸೆಪಿಯಾ</button>
+            <button class="t-btn" onclick="setTheme('dark')">🌙 ಡಾರ್ಕ್</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="quiz-layout">
+
+            <!-- Main Question Area -->
+            <div class="quiz-card">
+                <div id="quiz-view">
+                    <div class="filter-bar">
+                        <div>
+                            <label for="topic-filter" style="font-size: 0.88rem; font-weight: 700; margin-right: 6px;">📚 ಅಧ್ಯಾಯ ಫಿಲ್ಟರ್:</label>
+                            <select id="topic-filter" class="topic-select" onchange="filterByTopic()">
+                                <option value="ALL">ಎಲ್ಲಾ 8 ಅಧ್ಯಾಯಗಳು (50 ಪ್ರಶ್ನೆಗಳು)</option>
+                                <option value="ಭಾಗ 1: IPOS & ವಿಧಗಳು">ಭಾಗ 1: IPOS & ಕಂಪ್ಯೂಟರ್ ವಿಧಗಳು</option>
+                                <option value="ಭಾಗ 2: CPU & ರೆಜಿಸ್ಟರ್ಸ್">ಭಾಗ 2: CPU, ರೆಜಿಸ್ಟರ್ಸ್ & ಬಸ್‌ಗಳು</option>
+                                <option value="ಭಾಗ 3: ಮದರ್‌ಬೋರ್ಡ್ & ಬೂಟಿಂಗ್">ಭಾಗ 3: ಮದರ್‌ಬೋರ್ಡ್, BIOS & ಬೂಟಿಂಗ್</option>
+                                <option value="ಭಾಗ 4: RAM, ROM & Cache">ಭಾಗ 4: RAM, ROM, Cache & Virtual Memory</option>
+                                <option value="ಭಾಗ 5: HDD, SSD & Units">ಭಾಗ 5: HDD, SSD, Optical & ಮೆಮೊರಿ ಘಟಕಗಳು</option>
+                                <option value="ಭಾಗ 6: I/O & ಪ್ರಿಂಟರ್ಸ್">ಭಾಗ 6: ಕೀಬೋರ್ಡ್, ಸ್ಕ್ಯಾನರ್, ಪ್ರಿಂಟರ್ & ಮಾನಿಟರ್</option>
+                                <option value="ಭಾಗ 7: ASCII & Unicode">ಭಾಗ 7: BCD, ASCII, EBCDIC & Unicode</option>
+                                <option value="ಭಾಗ 8: ಪೋರ್ಟ್ಸ್ & ಇತಿಹಾಸ">ಭಾಗ 8: ಕಂಪ್ಯೂಟರ್ ಪೋರ್ಟ್ಸ್ & ಪ್ರಮುಖ ಸತ್ಯಗಳು</option>
+                            </select>
+                        </div>
+                        <button class="t-btn" onclick="resetQuiz()" style="color: var(--rose); border-color: var(--rose);">🔄 ಮರುಪ್ರಾರಂಭಿಸಿ (Reset)</button>
+                    </div>
+
+                    <div class="q-meta">
+                        <span class="q-badge" id="q-number-badge">ಪ್ರಶ್ನೆ 1 / 50</span>
+                        <span class="q-topic-tag" id="q-topic-badge">ಭಾಗ 1</span>
+                    </div>
+
+                    <div class="question-text" id="question-box">ಪ್ರಶ್ನೆ ಲೋಡ್ ಆಗುತ್ತಿದೆ...</div>
+
+                    <div class="options-list" id="options-box"></div>
+
+                    <!-- Instant Explanation Box -->
+                    <div class="exp-box" id="exp-box">
+                        <div class="exp-title" id="exp-status">💡 ಪರೀಕ್ಷಾ ಸವಿವರ ವಿವರಣೆ:</div>
+                        <div class="exp-text" id="exp-text"></div>
+                    </div>
+
+                    <div class="nav-controls">
+                        <button class="ctrl-btn" id="prev-btn" onclick="prevQuestion()">⬅️ ಹಿಂದಿನ ಪ್ರಶ್ನೆ</button>
+                        <button class="ctrl-btn" onclick="showFinalResult()" style="border-color: var(--purple); color: var(--purple);">📊 ಅಂತಿಮ ಫಲಿತಾಂಶ ನೋಡಿ</button>
+                        <button class="ctrl-btn primary" id="next-btn" onclick="nextQuestion()">ಮುಂದಿನ ಪ್ರಶ್ನೆ ➡️</button>
+                    </div>
+                </div>
+
+                <!-- Final Score Card View -->
+                <div class="result-card" id="result-view">
+                    <h2 style="margin-bottom: 16px;">🏆 ರಸಪ್ರಶ್ನೆ ಫಲಿತಾಂಶ ವರದಿ (Quiz Report Card)</h2>
+                    <div class="score-circle">
+                        <span class="score-big" id="final-score-pct">0%</span>
+                        <small style="font-weight: 700; color: var(--text-muted);">ಅಂಕಗಳು</small>
+                    </div>
+                    <p id="final-summary-text" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 20px;"></p>
+                    <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                        <button class="ctrl-btn primary" onclick="returnToQuiz()">🔍 ಪ್ರಶ್ನೆಗಳನ್ನು ಮತ್ತೆ ಪರಿಶೀಲಿಸಿ</button>
+                        <button class="ctrl-btn" onclick="resetQuiz()">🔄 ಹೊಸದಾಗಿ ಕ್ವಿಜ್ ಪ್ರಾರಂಭಿಸಿ</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Question Palette Sidebar -->
+            <aside class="sidebar-card">
+                <h3>🔢 ಪ್ರಶ್ನೆಗಳ ಪ್ಯಾಲೆಟ್ (Question Palette)</h3>
+                <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">ಯಾವುದೇ ಪ್ರಶ್ನೆಗೆ ನೇರವಾಗಿ ಹೋಗಲು ಸಂಖ್ಯೆಯ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ:</p>
+                <div class="palette-grid" id="palette-grid"></div>
+                <div style="font-size: 0.82rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 6px; border-top: 1px solid var(--border); padding-top: 12px;">
+                    <div>🟢 ಹಸಿರು = ಸರಿಯಾದ ಉತ್ತರ</div>
+                    <div>🔴 ಕೆಂಪು = ತಪ್ಪಾದ ಉತ್ತರ</div>
+                    <div>⚪ ಬೂದು = ಇನ್ನೂ ಉತ್ತರಿಸಿಲ್ಲ</div>
+                </div>
+            </aside>
+
+        </div>
+    </div>
+
+    <script>
+        const masterQuestions = [
+            // ಭಾಗ 1: IPOS & ಕಂಪ್ಯೂಟರ್ ವಿಧಗಳು (1-6)
+            {
+                topic: "ಭಾಗ 1: IPOS & ವಿಧಗಳು",
+                q: "1. ಗಣಕಯಂತ್ರಕ್ಕೆ ನೀಡಲಾಗುವ ಕಚ್ಚಾ ಅಂಕಿ-ಅಂಶಗಳನ್ನು (Raw facts) 'ಡೇಟಾ' ಎಂದರೆ, ಸಿಪಿಯು ಸಂಸ್ಕರಿಸಿದ ನಂತರ ದೊರೆಯುವ ಅರ್ಥಪೂರ್ಣ ಫಲಿತಾಂಶವನ್ನು (Processed Data) ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?",
+                options: ["ಪ್ರೋಗ್ರಾಮ್ (Program)", "ಮಾಹಿತಿ (Information)", "ಸೂಚನೆ (Instruction)", "ಬೈನರಿ ಕೋಡ್ (Binary Code)"],
+                ans: 1,
+                exp: "ಕಂಪ್ಯೂಟರ್‌ಗೆ ನೀಡುವ ಕಚ್ಚಾ ದತ್ತಾಂಶವನ್ನು 'Data' ಎನ್ನುತ್ತಾರೆ. ಅದು CPU ಒಳಗೆ ಸಂಸ್ಕರಣೆಯಾದ (Processed) ನಂತರ ನಮಗೆ ದೊರೆಯುವ ಉಪಯುಕ್ತ ಹಾಗೂ ಅರ್ಥಪೂರ್ಣ ಫಲಿತಾಂಶವನ್ನು 'ಮಾಹಿತಿ (Information)' ಎನ್ನುತ್ತಾರೆ."
+            },
+            {
+                topic: "ಭಾಗ 1: IPOS & ವಿಧಗಳು",
+                q: "2. 1945 ರಲ್ಲಿ 'Stored-Program Concept' (ಡೇಟಾ ಮತ್ತು ಸೂಚನೆಗಳೆರಡನ್ನೂ ಒಂದೇ ಮೆಮೊರಿಯಲ್ಲಿ ಸಂಗ್ರಹಿಸುವ ತತ್ವ) ಪರಿಚಯಿಸಿದ ವಿಜ್ಞಾನಿ ಯಾರು?",
+                options: ["ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್", "ಜಾನ್ ವಾನ್ ನ್ಯೂಮನ್ (John von Neumann)", "ಆಲನ್ ಟ್ಯೂರಿಂಗ್", "ಹರ್ಮನ್ ಹಾಲೆರಿತ್"],
+                ans: 1,
+                exp: "ಇಂದಿನ ಎಲ್ಲಾ ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್‌ಗಳು 'ವಾನ್ ನ್ಯೂಮನ್ ಆರ್ಕಿಟೆಕ್ಚರ್ (1945)' ಮೇಲೆ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತವೆ. ಇದರಲ್ಲಿ ಡೇಟಾ ಮತ್ತು ಸೂಚನೆಗಳೆರಡನ್ನೂ ಒಂದೇ RAM ಮೆಮೊರಿಯಲ್ಲಿ ಬೈನರಿ ರೂಪದಲ್ಲಿ ಸಂಗ್ರಹಿಸಿಡಲಾಗುತ್ತದೆ."
+            },
+            {
+                topic: "ಭಾಗ 1: IPOS & ವಿಧಗಳು",
+                q: "3. ಆಸ್ಪತ್ರೆಗಳ ICU ನಲ್ಲಿ ರೋಗಿಯ ಹೃದಯ ಬಡಿತವನ್ನು (Analog) ಸ್ವೀಕರಿಸಿ ಪರದೆಯ ಮೇಲೆ ಡಿಜಿಟಲ್ ಸಂಖ್ಯೆಗಳಲ್ಲಿ ತೋರಿಸುವ 'ECG ಯಂತ್ರ' ಯಾವ ವಿಧದ ಗಣಕಯಂತ್ರಕ್ಕೆ ಉದಾಹರಣೆಯಾಗಿದೆ?",
+                options: ["ಅನಲಾಗ್ ಕಂಪ್ಯೂಟರ್ (Analog)", "ಡಿಜಿಟಲ್ ಕಂಪ್ಯೂಟರ್ (Digital)", "ಹೈಬ್ರಿಡ್ ಕಂಪ್ಯೂಟರ್ (Hybrid)", "ಮಿನಿ ಕಂಪ್ಯೂಟರ್ (Mini)"],
+                ans: 2,
+                exp: "ಅನಲಾಗ್ ಮತ್ತು ಡಿಜಿಟಲ್ ಎರಡರ ಗುಣಲಕ್ಷಣಗಳನ್ನು ಒಳಗೊಂಡಿರುವ ಗಣಕಯಂತ್ರವನ್ನು 'ಹೈಬ್ರಿಡ್ ಕಂಪ್ಯೂಟರ್ (Hybrid Computer)' ಎನ್ನುತ್ತಾರೆ. ಉದಾ: ಆಸ್ಪತ್ರೆಯ ECG ಮಷಿನ್, ಪೆಟ್ರೋಲ್ ಬಂಕ್ ಮಷಿನ್."
+            },
+            {
+                topic: "ಭಾಗ 1: IPOS & ವಿಧಗಳು",
+                q: "4. ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌ಗಳ (Supercomputers) ಕಾರ್ಯನಿರ್ವಹಣೆಯ ವೇಗವನ್ನು ಯಾವ ಮಾಪನದಲ್ಲಿ ಅಳೆಯಲಾಗುತ್ತದೆ?",
+                options: ["MIPS (Million Instructions Per Second)", "FLOPS (Floating Point Operations Per Second)", "DPI (Dots Per Inch)", "PPM (Pages Per Minute)"],
+                ans: 1,
+                exp: "ಸಾಮಾನ್ಯ ಕಂಪ್ಯೂಟರ್‌ಗಳ ವೇಗವನ್ನು GHz ಅಥವಾ MIPS ನಲ್ಲಿ ಅಳೆದರೆ, ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌ಗಳ ವೇಗವನ್ನು FLOPS (PetaFLOPS / ExaFLOPS) ನಲ್ಲಿ ಅಳೆಯಲಾಗುತ್ತದೆ."
+            },
+            {
+                topic: "ಭಾಗ 1: IPOS & ವಿಧಗಳು",
+                q: "5. 1991 ರಲ್ಲಿ ಪುಣೆಯ C-DAC ಸಂಸ್ಥೆಯು ಅಭಿವೃದ್ಧಿಪಡಿಸಿದ ಭಾರತದ ಮೊದಲ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಯಾವುದು?",
+                options: ["ಸಿದ್ಧಾರ್ಥ್ (Siddhartha)", "ಪರಮ್ 8000 (PARAM 8000)", "ಅನುಪಮ್ (ANUPAM)", "ಪ್ರತ್ಯೂಷ್ (Pratyush)"],
+                ans: 1,
+                exp: "ಡಾ. ವಿಜಯ್ ಭಟ್ಕರ್ ಅವರ ನೇತೃತ್ವದಲ್ಲಿ C-DAC ಪುಣೆ 1991 ರಲ್ಲಿ ನಿರ್ಮಿಸಿದ 'PARAM 8000' ಭಾರತದ ಮೊದಲ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಆಗಿದೆ (ಭಾರತದ ಮೊದಲ ಸಾಮಾನ್ಯ ಕಂಪ್ಯೂಟರ್ 'ಸಿದ್ಧಾರ್ಥ್')."
+            },
+            {
+                topic: "ಭಾಗ 1: IPOS & ವಿಧಗಳು",
+                q: "6. ಬ್ಯಾಂಕಿಂಗ್ ಕ್ಷೇತ್ರ ಮತ್ತು ರೈಲ್ವೆ ಟಿಕೆಟ್ ಕಾಯ್ದಿರಿಸುವಿಕೆಯಲ್ಲಿ ಏಕಕಾಲಕ್ಕೆ ಸಾವಿರಾರು ಬಳಕೆದಾರರ ಕೋಟ್ಯಂತರ ವಹಿವಾಟುಗಳನ್ನು (Bulk Transactions) ನಿಭಾಯಿಸಲು ಯಾವ ಕಂಪ್ಯೂಟರ್ ಬಳಸುತ್ತಾರೆ?",
+                options: ["ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್", "ಮೇನ್‌ಫ್ರೇಮ್ ಕಂಪ್ಯೂಟರ್ (Mainframe Computer)", "ಮೈಕ್ರೋ ಕಂಪ್ಯೂಟರ್", "ಅನಲಾಗ್ ಕಂಪ್ಯೂಟರ್"],
+                ans: 1,
+                exp: "ಮೇನ್‌ಫ್ರೇಮ್ ಕಂಪ್ಯೂಟರ್‌ಗಳು (ಉದಾ: IBM zSeries) ಏಕಕಾಲಕ್ಕೆ ಸಾವಿರಾರು ಬಳಕೆದಾರರ (Multi-user) ಬೃಹತ್ ವಹಿವಾಟುಗಳನ್ನು ಹ್ಯಾಂಗ್ ಆಗದಂತೆ ನಿಭಾಯಿಸಲು ಬ್ಯಾಂಕ್ ಮತ್ತು ರೈಲ್ವೆಗಳಲ್ಲಿ ಬಳಕೆಯಾಗುತ್ತವೆ."
+            },
+
+            // ಭಾಗ 2: CPU, ರೆಜಿಸ್ಟರ್ಸ್ & ಬಸ್‌ಗಳು (7-14)
+            {
+                topic: "ಭಾಗ 2: CPU & ರೆಜಿಸ್ಟರ್ಸ್",
+                q: "7. ಸಿಪಿಯು ಒಳಗಿರುವ ಯಾವ ಘಟಕವು ಸ್ವತಃ ಯಾವುದೇ ಡೇಟಾವನ್ನು ಲೆಕ್ಕ ಹಾಕುವುದಿಲ್ಲ, ಆದರೆ ಇಡೀ ಕಂಪ್ಯೂಟರ್‌ನ ಎಲ್ಲಾ ಭಾಗಗಳಿಗೆ ಟೈಮಿಂಗ್ ಮತ್ತು ನಿಯಂತ್ರಣ ಸಂಕೇತಗಳನ್ನು (Control Signals) ಕಳುಹಿಸುತ್ತದೆ?",
+                options: ["ALU (Arithmetic Logic Unit)", "CU (Control Unit)", "Accumulator", "DRAM"],
+                ans: 1,
+                exp: "Control Unit (ನಿಯಂತ್ರಣ ಘಟಕ) ಕಂಪ್ಯೂಟರ್‌ನ ನರಮಂಡಲ ಅಥವಾ ಟ್ರಾಫಿಕ್ ಪೊಲೀಸ್ ಇದ್ದಂತೆ. ಇದು ಸ್ವತಃ ಲೆಕ್ಕ ಹಾಕುವುದಿಲ್ಲ, ಆದರೆ Fetch ಮತ್ತು Decode ಮಾಡಿ ಎಲ್ಲಾ ಭಾಗಗಳನ್ನು ನಿಯಂತ್ರಿಸುತ್ತದೆ."
+            },
+            {
+                topic: "ಭಾಗ 2: CPU & ರೆಜಿಸ್ಟರ್ಸ್",
+                q: "8. ಸಿಪಿಯು ಒಂದು ಸೂಚನೆಯನ್ನು ಕಾರ್ಯಗತಗೊಳಿಸುವ 'Instruction Cycle' (Machine Cycle) ನ ಸರಿಯಾದ 4 ಹಂತಗಳ ಕ್ರಮ ಯಾವುದು?",
+                options: ["Decode ➔ Fetch ➔ Store ➔ Execute", "Fetch ➔ Decode ➔ Execute ➔ Store", "Fetch ➔ Execute ➔ Decode ➔ Store", "Store ➔ Fetch ➔ Decode ➔ Execute"],
+                ans: 1,
+                exp: "ಸಿಪಿಯು ಮೊದಲು ಸೂಚನೆಯನ್ನು RAM ನಿಂದ ತರುತ್ತದೆ (Fetch), ಅದನ್ನು ಅರ್ಥೈಸಿಕೊಳ್ಳುತ್ತದೆ (Decode), ಲೆಕ್ಕ ಹಾಕುತ್ತದೆ (Execute) ಮತ್ತು ಫಲಿತಾಂಶವನ್ನು ಸಂಗ್ರಹಿಸುತ್ತದೆ (Store) - FDES Cycle."
+            },
+            {
+                topic: "ಭಾಗ 2: CPU & ರೆಜಿಸ್ಟರ್ಸ್",
+                q: "9. ಸಿಪಿಯು ಒಳಗಿರುವ ಯಾವ ವಿಶೇಷ ರೆಜಿಸ್ಟರ್ 'ಮುಂದೆ ಕಾರ್ಯಗತಗೊಳಿಸಬೇಕಾದ ಸೂಚನೆಯ' (Next Instruction to be executed) ಮೆಮೊರಿ ವಿಳಾಸವನ್ನು ಹಿಡಿದಿಟ್ಟುಕೊಳ್ಳುತ್ತದೆ?",
+                options: ["Instruction Register (IR)", "Program Counter (PC)", "Accumulator (AC)", "Memory Data Register (MDR)"],
+                ans: 1,
+                exp: "Program Counter (PC) ಅನ್ನು Instruction Pointer ಎಂದೂ ಕರೆಯುತ್ತಾರೆ. ಇದು ಯಾವಾಗಲೂ ಸಿಪಿಯು ಮುಂದೆ ಕಾರ್ಯಗತಗೊಳಿಸಬೇಕಾದ (Next Instruction) ಸೂಚನೆಯ ವಿಳಾಸವನ್ನು ಸೂಚಿಸುತ್ತದೆ."
+            },
+            {
+                topic: "ಭಾಗ 2: CPU & ರೆಜಿಸ್ಟರ್ಸ್",
+                q: "10. ALU (Arithmetic Logic Unit) ಮಾಡುವ ಗಣಿತ ಮತ್ತು ತಾರ್ಕಿಕ ಲೆಕ್ಕಾಚಾರಗಳ ತಕ್ಷಣದ ಫಲಿತಾಂಶವನ್ನು ಸಂಗ್ರಹಿಸಿಟ್ಟುಕೊಳ್ಳುವ ರೆಜಿಸ್ಟರ್ ಯಾವುದು?",
+                options: ["Stack Pointer (SP)", "Program Counter (PC)", "Accumulator (AC)", "Memory Address Register (MAR)"],
+                ans: 2,
+                exp: "ALU ಮಾಡಿದ ಯಾವುದೇ ಲೆಕ್ಕಾಚಾರದ ಮಧ್ಯಂತರ ಮತ್ತು ತಕ್ಷಣದ ಫಲಿತಾಂಶವು ನೇರವಾಗಿ 'Accumulator (AC)' ರೆಜಿಸ್ಟರ್‌ನಲ್ಲಿ ಸಂಗ್ರಹವಾಗುತ್ತದೆ."
+            },
+            {
+                topic: "ಭಾಗ 2: CPU & ರೆಜಿಸ್ಟರ್ಸ್",
+                q: "11. ಮದರ್‌ಬೋರ್ಡ್‌ನ ಸಿಸ್ಟಮ್ ಬಸ್‌‌ಗಳಲ್ಲಿ ಯಾವ ಬಸ್ 'ಏಕಮುಖ'ವಾಗಿ (Unidirectional - ಕೇವಲ CPU ನಿಂದ ಹೊರಟು RAM ಕಡೆಗೆ ಮಾತ್ರ) ಚಲಿಸುತ್ತದೆ?",
+                options: ["Data Bus (ಡೇಟಾ ಬಸ್)", "Address Bus (ವಿಳಾಸ ಬಸ್)", "Control Bus (ಕಂಟ್ರೋಲ್ ಬಸ್)", "USB Bus"],
+                ans: 1,
+                exp: "Address Bus ಏಕಮುಖವಾಗಿರುತ್ತದೆ (Unidirectional). ಇದು ಸಿಪಿಯುನಿಂದ ಮೆಮೊರಿಗೆ ವಿಳಾಸವನ್ನು ಮಾತ್ರ ಕಳುಹಿಸುತ್ತದೆ. Data Bus ದ್ವಿಮುಖವಾಗಿರುತ್ತದೆ (Bidirectional)."
+            },
+            {
+                topic: "ಭಾಗ 2: CPU & ರೆಜಿಸ್ಟರ್ಸ್",
+                q: "12. ಒಂದು ಕಂಪ್ಯೂಟರ್ ಗರಿಷ್ಠ ಎಷ್ಟು GB RAM ಮೆಮೊರಿಯನ್ನು ಬೆಂಬಲಿಸಬಲ್ಲದು (उदा: 32-Bit ಸಿಸ್ಟಮ್‌ನಲ್ಲಿ 4 GB RAM ಮಿತಿ) ಎಂಬುದನ್ನು ನಿರ್ಧರಿಸುವ ಬಸ್ ಯಾವುದು?",
+                options: ["Data Bus ಅಗಲ", "Address Bus ಅಗಲ", "Control Bus ವೇಗ", "SATA ಕೇಬಲ್"],
+                ans: 1,
+                exp: "Address Bus ನ ಸಾಲುಗಳ ಸಂಖ್ಯೆಯು ಗರಿಷ್ಠ RAM ಸಾಮರ್ಥ್ಯವನ್ನು ನಿರ್ಧರಿಸುತ್ತದೆ. 32-bit Address Bus ಇದ್ದರೆ $2^{32} = 4\\text{ GB RAM}$ ಮಾತ್ರ ಗುರುತಿಸಲು ಸಾಧ್ಯ."
+            },
+            {
+                topic: "ಭಾಗ 2: CPU & ರೆಜಿಸ್ಟರ್ಸ್",
+                q: "13. ಒಂದೇ ಸಿಪಿಯು ಚಿಪ್ ಒಳಗೆ 8 ಸ್ವತಂತ್ರ ಪ್ರೊಸೆಸರ್ ಕೋರ್‌ಗಳನ್ನು ಅಳವಡಿಸಲಾಗಿದ್ದರೆ ಅದನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?",
+                options: ["Quad-Core Processor", "Hexa-Core Processor", "Octa-Core Processor", "Deca-Core Processor"],
+                ans: 2,
+                exp: "Dual-Core = 2, Quad-Core = 4, Hexa-Core = 6, Octa-Core = 8 ಮತ್ತು Deca-Core = 10 ಕೋರ್‌ಗಳು."
+            },
+            {
+                topic: "ಭಾಗ 2: CPU & ರೆಜಿಸ್ಟರ್ಸ್",
+                q: "14. ಸ್ಮಾರ್ಟ್‌ಫೋನ್‌ಗಳಲ್ಲಿ ಬಳಸುವ ARM ಪ್ರೊಸೆಸರ್‌‌ಗಳು ಹಾಗೂ Apple M1/M2 ಚಿಪ್‌ಗಳು ಕಡಿಮೆ ವಿದ್ಯುತ್ ಬಳಸುವ ಯಾವ ಆರ್ಕಿಟೆಕ್ಚರ್ ಅನ್ನು ಆಧರಿಸಿವೆ?",
+                options: ["CISC (Complex Instruction Set Computer)", "RISC (Reduced Instruction Set Computer)", "EPIC", "ANALOG"],
+                ans: 1,
+                exp: "ಡೆಸ್ಕ್‌ಟಾಪ್‌ನ Intel/AMD ಪ್ರೊಸೆಸರ್‌ಗಳು CISC ಆಧರಿಸಿದ್ದರೆ, ಮೊಬೈಲ್‌ನ ARM/Snapdragon ಮತ್ತು Apple M-series ಚಿಪ್‌ಗಳು ಸರಳ ಹಾಗೂ ವೇಗದ RISC ಆರ್ಕಿಟೆಕ್ಚರ್ ಆಧರಿಸಿವೆ."
+            },
+
+            // ಭಾಗ 3: ಮದರ್‌ಬೋರ್ಡ್, BIOS & ಬೂಟಿಂಗ್ (15-21)
+            {
+                topic: "ಭಾಗ 3: ಮದರ್‌ಬೋರ್ಡ್ & ಬೂಟಿಂಗ್",
+                q: "15. ಮದರ್‌ಬೋರ್ಡ್ ಮೇಲೆ CPU, RAM ಮತ್ತು Graphics Card (GPU) ನಡುವೆ ಅತಿ ವೇಗದ ಡೇಟಾ ವರ್ಗಾವಣೆಯನ್ನು ನಿಯಂತ್ರಿಸುವ ಚಿಪ್‌ಸೆಟ್ ಭಾಗ ಯಾವುದು?",
+                options: ["Southbridge (ಸೌತ್‌ಬ್ರಿಡ್ಜ್)", "Northbridge (ನಾರ್ತ್‌ಬ್ರಿಡ್ಜ್)", "CMOS ಬ್ಯಾಟರಿ", "SMPS"],
+                ans: 1,
+                exp: "Northbridge (Memory Controller Hub) ಸಿಪಿಯು ಪಕ್ಕದಲ್ಲಿದ್ದು ವೇಗದ ಭಾಗಗಳಾದ CPU, RAM ಮತ್ತು GPU ನಡುವೆ ಸಂಪರ್ಕ ಕಲ್ಪಿಸುತ್ತದೆ. Southbridge ನಿಧಾನಗತಿಯ USB, SATA, BIOS ನಿಯಂತ್ರಿಸುತ್ತದೆ."
+            },
+            {
+                topic: "ಭಾಗ 3: ಮದರ್‌ಬೋರ್ಡ್ & ಬೂಟಿಂಗ್",
+                q: "16. ಕಂಪ್ಯೂಟರ್ ಅನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಪವರ್ ಆಫ್ ಮಾಡಿಟ್ಟಿದ್ದರೂ, ಮರುದಿನ ಆನ್ ಮಾಡಿದಾಗ ಸರಿಯಾದ ದಿನಾಂಕ ಮತ್ತು ಸಮಯವನ್ನು (Real-Time Clock) ತೋರಿಸಲು ವಿದ್ಯುತ್ ನೀಡುವ ಬ್ಯಾಟರಿ ಯಾವುದು?",
+                options: ["UPS ಬ್ಯಾಟರಿ", "SMPS ಯೂನಿಟ್", "CMOS ಬ್ಯಾಟರಿ (CR2032 - 3V)", "VRM ಮಾಡ್ಯೂಲ್"],
+                ans: 2,
+                exp: "ಮದರ್‌ಬೋರ್ಡ್ ಮೇಲಿರುವ ಬೆಳ್ಳಿಯ ಬಟನ್ ಬ್ಯಾಟರಿಯಾದ CMOS (Complementary Metal-Oxide Semiconductor - 3V CR2032) ಕಂಪ್ಯೂಟರ್ ಆಫ್ ಆಗಿದ್ದಾಗಲೂ ಗಡಿಯಾರ ಮತ್ತು BIOS ಸೆಟ್ಟಿಂಗ್ಸ್ ಕಾಪಾಡುತ್ತದೆ."
+            },
+            {
+                topic: "ಭಾಗ 3: ಮದರ್‌ಬೋರ್ಡ್ & ಬೂಟಿಂಗ್",
+                q: "17. ಕಂಪ್ಯೂಟರ್ ಪವರ್ ಬಟನ್ ಒತ್ತಿದ ತಕ್ಷಣ BIOS ಚಿಪ್ ನಡೆಸುವ ಹಾರ್ಡ್‌ವೇರ್ ತಪಾಸಣಾ ಪರೀಕ್ಷೆಯನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?",
+                options: ["MBR (Master Boot Record)", "POST (Power-On Self-Test)", "FAT (File Allocation Table)", "DHCP"],
+                ans: 1,
+                exp: "ಕಂಪ್ಯೂಟರ್ ಆನ್ ಮಾಡಿದ ತಕ್ಷಣ ROM ನಲ್ಲಿರುವ BIOS ಜಾಗೃತಗೊಂಡು RAM, ಕೀಬೋರ್ಡ್, ಡಿಸ್ಕ್ ಸರಿಯಾಗಿವೆಯೇ ಎಂದು 'POST (Power-On Self-Test)' ನಡೆಸುತ್ತದೆ. ದೋಷವಿದ್ದರೆ Beep ಶಬ್ದ ಮಾಡುತ್ತದೆ."
+            },
+            {
+                topic: "ಭಾಗ 3: ಮದರ್‌ಬೋರ್ಡ್ & ಬೂಟಿಂಗ್",
+                q: "18. ಈಗಾಗಲೇ ಆನ್ ಆಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿರುವ ಕಂಪ್ಯೂಟರ್ ಅನ್ನು ಪವರ್ ಆಫ್ ಮಾಡದೆ 'Restart / Reboot' ಮಾಡುವ ಪ್ರಕ್ರಿಯೆಯನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?",
+                options: ["Cold Booting (ಕೋಲ್ಡ್ ಬೂಟಿಂಗ್)", "Warm Booting (ವಾರ್ಮ್ ಬೂಟಿಂಗ್ / Soft Boot)", "Hibernation", "POST Booting"],
+                ans: 1,
+                exp: "ಆಫ್ ಆಗಿರುವ ಕಂಪ್ಯೂಟರ್ ಆನ್ ಮಾಡುವುದನ್ನು 'Cold Booting' ಎಂದರೆ, ಆನ್ ಇರುವ ಕಂಪ್ಯೂಟರ್ ಅನ್ನು Restart ಮಾಡುವುದನ್ನು (Ctrl+Alt+Del) 'Warm Booting' ಎನ್ನುತ್ತಾರೆ."
+            },
+            {
+                topic: "ಭಾಗ 3: ಮದರ್‌ಬೋರ್ಡ್ & ಬೂಟಿಂಗ್",
+                q: "19. ಮನೆಯ ಗೋಡೆಯ ಸಾಕೆಟ್‌ನಿಂದ ಬರುವ 230V AC ವಿದ್ಯುತ್ ಅನ್ನು ಕಂಪ್ಯೂಟರ್ ಮದರ್‌ಬೋರ್ಡ್‌ಗೆ ಬೇಕಾದ +3.3V, +5V ಮತ್ತು +12V DC ವಿದ್ಯುತ್ ಆಗಿ ಪರಿವರ್ತಿಸುವ ಸಾಧನ ಯಾವುದು?",
+                options: ["UPS", "SMPS (Switched-Mode Power Supply)", "Inverter", "Chipset"],
+                ans: 1,
+                exp: "SMPS (Switched-Mode Power Supply) AC ವಿದ್ಯುತ್ ಅನ್ನು ಕಂಪ್ಯೂಟರ್ ಒಳಗಿನ ಚಿಪ್‌ಗಳಿಗೆ ಬೇಕಾದ ಕಡಿಮೆ ವೋಲ್ಟೇಜ್ DC ವಿದ್ಯುತ್ ಆಗಿ ಬದಲಿಸುತ್ತದೆ."
+            },
+            {
+                topic: "ಭಾಗ 3: ಮದರ್‌ಬೋರ್ಡ್ & ಬೂಟಿಂಗ್",
+                q: "20. ಮದರ್‌ಬೋರ್ಡ್ ಮೇಲೆ ಯಾವುದೇ ಬಲ ಪ್ರಯೋಗವಿಲ್ಲದೆ ಪಿನ್‌ಗಳು ಬಾಗದಂತೆ ಸಿಪಿಯು ಕೂರಿಸಲು ಇರುವ 'ZIF Socket' ನಲ್ಲಿ ZIF ಪೂರ್ಣ ರೂಪವೇನು?",
+                options: ["Zero Integrated Force", "Zero Insertion Force", "Zonal Input Frequency", "Zero Internal Friction"],
+                ans: 1,
+                exp: "ZIF ಎಂದರೆ Zero Insertion Force. ಸಾಕೆಟ್ ಪಕ್ಕದ ಲಿವರ್ ಎಳೆದು ಯಾವುದೇ ಒತ್ತಡವಿಲ್ಲದೆ ಸಿಪಿಯು ಅಳವಡಿಸಬಹುದು."
+            },
+            {
+                topic: "ಭಾಗ 3: ಮದರ್‌ಬೋರ್ಡ್ & ಬೂಟಿಂಗ್",
+                q: "21. ಮದರ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿ ಗ್ರಾಫಿಕ್ಸ್ ಕಾರ್ಡ್ (Dedicated GPU) ಜೋಡಿಸಲು ಬಳಸುವ ಅತ್ಯಂತ ವೇಗದ ವಿಸ್ತರಣಾ ಸ್ಲಾಟ್ ಯಾವುದು?",
+                options: ["ISA Slot", "PCIe x16 Slot (Peripheral Component Interconnect Express)", "SATA Slot", "DIMM Slot"],
+                ans: 1,
+                exp: "ಗ್ರಾಫಿಕ್ಸ್ ಕಾರ್ಡ್‌ಗಳನ್ನು PCIe x16 ಸ್ಲಾಟ್‌ನಲ್ಲಿ ಜೋಡಿಸಲಾಗುತ್ತದೆ (ಇದು ಹಳೆಯ AGP ಸ್ಲಾಟ್ ಅನ್ನು ಬದಲಿಸಿದೆ). RAM ಅನ್ನು DIMM ಸ್ಲಾಟ್‌ನಲ್ಲಿ ಜೋಡಿಸಲಾಗುತ್ತದೆ."
+            },
+
+            // ಭಾಗ 4: RAM, ROM, Cache & Virtual Memory (22-28)
+            {
+                topic: "ಭಾಗ 4: RAM, ROM & Cache",
+                q: "22. ಕೆಳಗಿನ ಮೆಮೊರಿಗಳನ್ನು ಅವುಗಳ ಕಾರ್ಯನಿರ್ವಹಣೆಯ ವೇಗದ ಆಧಾರದ ಮೇಲೆ 'ಅತ್ಯಂತ ವೇಗದಿಂದ ನಿಧಾನಕ್ಕೆ' (Fastest to Slowest) ಸರಿಯಾಗಿ ಜೋಡಿಸಿರುವ ಕ್ರಮ ಯಾವುದು?",
+                options: ["RAM ➔ Cache ➔ CPU Registers ➔ Hard Disk", "CPU Registers ➔ Cache Memory ➔ Main RAM ➔ Hard Disk", "Cache Memory ➔ CPU Registers ➔ SSD ➔ RAM", "CPU Registers ➔ Main RAM ➔ Cache Memory ➔ Hard Disk"],
+                ans: 1,
+                exp: "ಮೆಮೊರಿ ಪಿರಮಿಡ್ ಪ್ರಕಾರ ವೇಗದ ಕ್ರಮ: 1. CPU Registers (ಅತ್ಯಂತ ವೇಗ) ➔ 2. Cache (L1, L2, L3) ➔ 3. Main RAM ➔ 4. SSD ➔ 5. Hard Disk."
+            },
+            {
+                topic: "ಭಾಗ 4: RAM, ROM & Cache",
+                q: "23. ಸಿಪಿಯು ಮತ್ತು ಮುಖ್ಯ ಮೆಮೊರಿ (RAM) ನಡುವೆ ವೇಗದ ವ್ಯತ್ಯಾಸವನ್ನು ಸರಿದೂಗಿಸಲು ಬಳಸುವ 'Cache Memory' ಯನ್ನು ಯಾವುದರಿಂದ ತಯಾರಿಸಲಾಗುತ್ತದೆ?",
+                options: ["DRAM (Dynamic RAM)", "SRAM (Static RAM)", "EEPROM", "Magnetic Platter"],
+                ans: 1,
+                exp: "SRAM (Static RAM) ಟ್ರಾನ್ಸಿಸ್ಟರ್/Flip-Flop ಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದ್ದು, ಇದಕ್ಕೆ Refreshing ಬೇಕಿಲ್ಲ ಮತ್ತು ಅತ್ಯಂತ ವೇಗವಾಗಿರುತ್ತದೆ. ಆದ್ದರಿಂದ ಇದನ್ನು Cache Memory ಮಾಡಲು ಬಳಸುತ್ತಾರೆ."
+            },
+            {
+                topic: "ಭಾಗ 4: RAM, ROM & Cache",
+                q: "24. ನಮ್ಮ ಕಂಪ್ಯೂಟರ್‌ನ ಮುಖ್ಯ RAM (DDR4/DDR5) ಆಗಿ ಬಳಸುವ DRAM (Dynamic RAM) ಅನ್ನು ಪ್ರತಿ ಮಿಲಿಸೆಕೆಂಡ್‌ಗೆ ಸಾವಿರಾರು ಬಾರಿ ಏಕೆ 'Refresh' ಮಾಡಬೇಕಾಗುತ್ತದೆ?",
+                options: ["ಅದರಲ್ಲಿ ಟ್ರಾನ್ಸಿಸ್ಟರ್ ಇಲ್ಲದ ಕಾರಣ", "ಅದರಲ್ಲಿರುವ Capacitor ವಿದ್ಯುತ್ ಚಾರ್ಜ್ ಅನ್ನು ನಿರಂತರವಾಗಿ ಸೋರಿಕೆ (Leak) ಮಾಡುವುದರಿಂದ", "ಅದು ಕಾಂತೀಯ ತಟ್ಟೆ ಹೊಂದಿರುವುದರಿಂದ", "ಅದು Non-volatile ಆಗಿರುವುದರಿಂದ"],
+                ans: 1,
+                exp: "DRAM ನಲ್ಲಿ ಪ್ರತಿ ಬಿಟ್ ಅನ್ನು 1 Capacitor ಒಳಗೆ ವಿದ್ಯುತ್ ಚಾರ್ಜ್ ರೂಪದಲ್ಲಿ ಸಂಗ್ರಹಿಸಲಾಗುತ್ತದೆ. ಕ್ಯಾಪಾಸಿಟರ್ ವಿದ್ಯುತ್ ಸೋರಿಕೆಯಾಗುವುದರಿಂದ ಅದನ್ನು ನಿರಂತರವಾಗಿ Refresh ಮಾಡುತ್ತಿರಬೇಕು."
+            },
+            {
+                topic: "ಭಾಗ 4: RAM, ROM & Cache",
+                q: "25. ಕ್ಯಾಶ್ ಮೆಮೊರಿಯ 3 ಹಂತಗಳಲ್ಲಿ (L1, L2, L3), ಗಾತ್ರದಲ್ಲಿ ಅತ್ಯಂತ ಚಿಕ್ಕದಾಗಿದ್ದು ಸಿಪಿಯು ಕೋರ್ ಒಳಗೇ ಇರುವ 'ಅತ್ಯಂತ ವೇಗದ' ಕ್ಯಾಶ್ ಯಾವುದು?",
+                options: ["L3 Cache", "L2 Cache", "L1 Cache (Level 1 Cache)", "Swap Cache"],
+                ans: 2,
+                exp: "L1 (Level 1) ಕ್ಯಾಶ್ ಪ್ರತಿಯೊಂದು ಸಿಪಿಯು ಕೋರ್ ಒಳಗೇ ನಿರ್ಮಿತವಾಗಿರುತ್ತದೆ. ಇದು ಗಾತ್ರದಲ್ಲಿ ಚಿಕ್ಕದಾದರೂ (32KB-128KB) ಕ್ಯಾಶ್‌ಗಳಲ್ಲೇ ಅತ್ಯಂತ ವೇಗವಾದುದು."
+            },
+            {
+                topic: "ಭಾಗ 4: RAM, ROM & Cache",
+                q: "26. ಯಾವ ವಿಧದ ROM ಚಿಪ್‌ನಲ್ಲಿರುವ ಡೇಟಾವನ್ನು ಅಳಿಸಲು ಚಿಪ್ ಮೇಲಿರುವ ಕ್ವಾರ್ಟ್ಜ್ ಗಾಜಿನ ಕಿಟಕಿಯ ಮೂಲಕ 'ನೇರಳಾತೀತ ಕಿರಣಗಳನ್ನು' (Ultraviolet - UV Rays) ಹಾಯಿಸಲಾಗುತ್ತದೆ?",
+                options: ["PROM", "EPROM (Erasable Programmable ROM)", "EEPROM", "MROM"],
+                ans: 1,
+                exp: "EPROM ನಲ್ಲಿ ಡೇಟಾ ಅಳಿಸಲು UV (ನೇರಳಾತೀತ) ಕಿರಣ ಬಳಸುತ್ತಾರೆ. EEPROM ನಲ್ಲಿ ವಿದ್ಯುತ್ ಸಂಕೇತಗಳ (Electrical Signals) ಮೂಲಕ ಅಳಿಸುತ್ತಾರೆ."
+            },
+            {
+                topic: "ಭಾಗ 4: RAM, ROM & Cache",
+                q: "27. ನಾವು ಬಳಸುವ Pen Drive, SSD ಮತ್ತು ಮೆಮೊರಿ ಕಾರ್ಡ್‌ಗಳಲ್ಲಿರುವ 'Flash Memory' ಯಾವ ROM ತಂತ್ರಜ್ಞಾನದ ಮುಂದುವರಿದ ರೂಪವಾಗಿದೆ?",
+                options: ["PROM", "MROM", "EEPROM (Electrically Erasable PROM)", "SRAM"],
+                ans: 2,
+                exp: "NAND Flash Memory ಎಂಬುದು EEPROM ನ ಆಧುನಿಕ ರೂಪವಾಗಿದ್ದು, ವಿದ್ಯುತ್ ಮೂಲಕವೇ ವೇಗವಾಗಿ ಡೇಟಾ ಅಳಿಸಿ ಮರುಬರೆಯಲು ಅನುವು ಮಾಡಿಕೊಡುತ್ತದೆ."
+            },
+            {
+                topic: "ಭಾಗ 4: RAM, ROM & Cache",
+                q: "28. ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ RAM ಸಂಪೂರ್ಣವಾಗಿ ತುಂಬಿಹೋದಾಗ, ಆಪರೇಟಿಂಗ್ ಸಿಸ್ಟಮ್ ಹಾರ್ಡ್ ಡಿಸ್ಕ್‌ನ ಸ್ವಲ್ಪ ಜಾಗವನ್ನೇ ತಾತ್ಕಾಲಿಕ RAM ನಂತೆ ಬಳಸಿಕೊಳ್ಳುವ ತಂತ್ರಜ್ಞಾನವನ್ನು ಏನೆನ್ನುತ್ತಾರೆ?",
+                options: ["Cache Memory", "Virtual Memory (ವರ್ಚುವಲ್ ಮೆಮೊರಿ)", "Flash Memory", "Register Memory"],
+                ans: 1,
+                exp: "ಹಾರ್ಡ್ ಡಿಸ್ಕ್ ಅಥವಾ SSD ಜಾಗವನ್ನು ತಾತ್ಕಾಲಿಕ RAM ನಂತೆ ಬಳಸಿ Swapping/Paging ಮಾಡುವುದನ್ನು 'Virtual Memory' ಎನ್ನುತ್ತಾರೆ."
+            },
+
+            // ಭಾಗ 5: HDD, SSD, Optical & ಮೆಮೊರಿ ಘಟಕಗಳು (29-35)
+            {
+                topic: "ಭಾಗ 5: HDD, SSD & Units",
+                q: "29. ಹೊಸ ಹಾರ್ಡ್ ಡಿಸ್ಕ್ ಅನ್ನು ಡೇಟಾ ಸಂಗ್ರಹಿಸಲು ಸಿದ್ಧಪಡಿಸಲು ಅದರ ತಟ್ಟೆಯ ಮೇಲೆ ಏಕಕೇಂದ್ರಿತ ವೃತ್ತಗಳಾದ Tracks ಮತ್ತು Sectors ರಚಿಸುವ ಪ್ರಕ್ರಿಯೆಯನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?",
+                options: ["Booting", "Disk Formatting (ಫಾರ್ಮ್ಯಾಟಿಂಗ್)", "Swapping", "Caching"],
+                ans: 1,
+                exp: "ಡಿಸ್ಕ್ ಮೇಲೆ Tracks ಮತ್ತು Sectors (1 Sector = 512 Bytes) ವಿಭಜಿಸುವ ಪ್ರಕ್ರಿಯೆಯನ್ನು 'Formatting' ಎನ್ನುತ್ತಾರೆ."
+            },
+            {
+                topic: "ಭಾಗ 5: HDD, SSD & Units",
+                q: "30. ಹಾರ್ಡ್ ಡಿಸ್ಕ್‌ನಿಂದ ಡೇಟಾ ಓದುವಾಗ, Read/Write ಆರ್ಮ್ (ಹೆಡ್) ಸರಿಯಾದ ವೃತ್ತಾಕಾರದ 'Track' ಅನ್ನು ಗುರುತಿಸಿ ತಲುಪಲು ತೆಗೆದುಕೊಳ್ಳುವ ಸಮಯವನ್ನು ಏನೆನ್ನುತ್ತಾರೆ?",
+                options: ["Rotational Latency", "Seek Time (ಸೀಕ್ ಟೈಮ್)", "Transfer Rate", "Refresh Rate"],
+                ans: 1,
+                exp: "ಹೆಡ್ ಸರಿಯಾದ Track ತಲುಪಲು ತೆಗೆದುಕೊಳ್ಳುವ ಸಮಯ 'Seek Time'. ತಟ್ಟೆ ತಿರುಗಿ ಸರಿಯಾದ Sector ಹೆಡ್ ಕೆಳಗೆ ಬರಲು ತೆಗೆದುಕೊಳ್ಳುವ ಸಮಯ 'Rotational Latency'."
+            },
+            {
+                topic: "ಭಾಗ 5: HDD, SSD & Units",
+                q: "31. ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವ ಶೇಖರಣಾ ಸಾಧನವು 'Sequential Access' (ಮೊದಲಿನಿಂದ ಅನುಕ್ರಮವಾಗಿ ಮಾತ್ರ ಡೇಟಾ ಓದುವ ವಿಧಾನ) ಬಳಸುತ್ತದೆ?",
+                options: ["Hard Disk (HDD)", "SSD", "Magnetic Tape (ಮ್ಯಾಗ್ನೆಟಿಕ್ ಕ್ಯಾಸೆಟ್ ಟೇಪ್)", "Pen Drive"],
+                ans: 2,
+                exp: "Magnetic Tape ಮಾತ್ರ Sequential Access ಬಳಸುತ್ತದೆ. ಉಳಿದ HDD, SSD, RAM, CD/DVD, Pen Drive ಎಲ್ಲವೂ Direct / Random Access ಸಾಧನಗಳಾಗಿವೆ."
+            },
+            {
+                topic: "ಭಾಗ 5: HDD, SSD & Units",
+                q: "32. ಆಪ್ಟಿಕಲ್ ಡಿಸ್ಕ್‌‌ಗಳಾದ CD, DVD ಮತ್ತು Blu-Ray ಡಿಸ್ಕ್‌ಗಳ ಪ್ರಮಾಣಿತ ಸಾಮರ್ಥ್ಯದ ಸರಿಯಾದ ಜೋಡಿ ಯಾವುದು?",
+                options: ["CD = 4.7 GB, DVD = 700 MB, Blu-Ray = 1.44 MB", "CD = 700 MB, DVD = 4.7 GB, Blu-Ray = 25 GB - 50 GB", "CD = 1.44 MB, DVD = 700 MB, Blu-Ray = 4.7 GB", "CD = 700 KB, DVD = 4.7 MB, Blu-Ray = 25 MB"],
+                ans: 1,
+                exp: "Floppy = 1.44 MB | CD = 700 MB | DVD = 4.7 GB (Single Layer) | Blu-Ray = 25 GB ನಿಂದ 50 GB (ನೀಲಿ-ನೇರಳೆ ಲೇಸರ್ ಬಳಕೆ)."
+            },
+            {
+                topic: "ಭಾಗ 5: HDD, SSD & Units",
+                q: "33. ಕಂಪ್ಯೂಟರ್ ಮೆಮೊರಿ ಅಳತೆಯಲ್ಲಿ '1 Nibble' (ಒಂದು ನಿಬ್ಬಲ್) ಮತ್ತು '1 Byte' (ಒಂದು ಬೈಟ್) ಎಷ್ಟು ಬಿಟ್‌ಗಳಿಗೆ ಸಮಾನವಾಗಿವೆ?",
+                options: ["1 Nibble = 8 Bits, 1 Byte = 16 Bits", "1 Nibble = 4 Bits, 1 Byte = 8 Bits", "1 Nibble = 2 Bits, 1 Byte = 4 Bits", "1 Nibble = 1024 Bits, 1 Byte = 1024 KB"],
+                ans: 1,
+                exp: "1 Bit = 0 ಅಥವಾ 1 | 1 Nibble = 4 Bits (ಅರ್ಧ ಬೈಟ್) | 1 Byte = 8 Bits (2 Nibbles)."
+            },
+            {
+                topic: "ಭಾಗ 5: HDD, SSD & Units",
+                q: "34. 1 Terabyte (TB) ಎಂಬುದು 2 ರ ಘಾತಾಂಕದಲ್ಲಿ ಎಷ್ಟು ಬೈಟ್‌ಗಳಿಗೆ ಸಮಾನವಾಗಿದೆ?",
+                options: ["2^20 Bytes", "2^30 Bytes", "2^40 Bytes (1024 GB)", "2^50 Bytes"],
+                ans: 2,
+                exp: "KB = 2^10, MB = 2^20, GB = 2^30, TB = 2^40 Bytes (1024 GB), PB = 2^50 Bytes."
+            },
+            {
+                topic: "ಭಾಗ 5: HDD, SSD & Units",
+                q: "35. Terabyte (TB) ಗಿಂತ ದೊಡ್ಡದಾದ ಮೆಮೊರಿ ಘಟಕಗಳ ಸರಿಯಾದ ಏರಿಕೆ ಕ್ರಮ ಯಾವುದು?",
+                options: ["TB ➔ Exabyte ➔ Petabyte ➔ Yottabyte ➔ Zettabyte", "TB ➔ Petabyte (PB) ➔ Exabyte (EB) ➔ Zettabyte (ZB) ➔ Yottabyte (YB)", "TB ➔ Zettabyte ➔ Petabyte ➔ Exabyte ➔ Yottabyte", "TB ➔ Yottabyte ➔ Zettabyte ➔ Exabyte ➔ Petabyte"],
+                ans: 1,
+                exp: "ಸರಿಯಾದ ಕ್ರಮ: KB ➔ MB ➔ GB ➔ TB ➔ PB (Petabyte) ➔ EB (Exabyte) ➔ ZB (Zettabyte) ➔ YB (Yottabyte) ➔ Brontobyte ➔ Geopbyte."
+            },
+
+            // ಭಾಗ 6: ಕೀಬೋರ್ಡ್, ಸ್ಕ್ಯಾನರ್, ಪ್ರಿಂಟರ್ & ಮಾನಿಟರ್ (36-42)
+            {
+                topic: "ಭಾಗ 6: I/O & ಪ್ರಿಂಟರ್ಸ್",
+                q: "36. ಕೀಬೋರ್ಡ್‌ನಲ್ಲಿ ಒಮ್ಮೆ ಒತ್ತಿದರೆ ಸಕ್ರಿಯವಾಗುವ (ON) ಮತ್ತು ಮತ್ತೊಮ್ಮೆ ಒತ್ತಿದರೆ ನಿಷ್ಕ್ರಿಯವಾಗುವ (OFF) Caps Lock, Num Lock ಮತ್ತು Scroll Lock ಕೀಲಿಗಳನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?",
+                options: ["Modifier Keys", "Toggle Keys (ಟಾಗಲ್ ಕೀಲಿಗಳು)", "Function Keys", "Navigation Keys"],
+                ans: 1,
+                exp: "Caps Lock, Num Lock, Scroll Lock ಇವುಗಳನ್ನು 'Toggle Keys' ಎನ್ನುತ್ತಾರೆ. Ctrl, Alt, Shift ಇವುಗಳನ್ನು 'Modifier / Combination Keys' ಎನ್ನುತ್ತಾರೆ."
+            },
+            {
+                topic: "ಭಾಗ 6: I/O & ಪ್ರಿಂಟರ್ಸ್",
+                q: "37. ಬ್ಯಾಂಕ್ ಚೆಕ್‌ಗಳ ಕೆಳಭಾಗದಲ್ಲಿ ಕಬ್ಬಿಣದ ಆಕ್ಸೈಡ್ (Iron Oxide) ಕಾಂತೀಯ ಶಾಯಿಯಿಂದ ಮುದ್ರಿಸಲಾದ 9 ಅಂಕಿಗಳ ಕೋಡ್ ಅನ್ನು ವೇಗವಾಗಿ ಓದಲು ಬಳಸುವ ಸಾಧನ ಯಾವುದು?",
+                options: ["OMR (Optical Mark Reader)", "OCR (Optical Character Recognition)", "MICR (Magnetic Ink Character Recognition)", "Barcode Reader"],
+                ans: 2,
+                exp: "ಬ್ಯಾಂಕ್ ಚೆಕ್‌ಗಳನ್ನು ಓದಲು MICR ಬಳಸುತ್ತಾರೆ. ಸ್ಪರ್ಧಾತ್ಮಕ ಪರೀಕ್ಷೆಗಳ ಉತ್ತರ ಪತ್ರಿಕೆ ಮೌಲ್ಯಮಾಪನಕ್ಕೆ OMR ಬಳಸುತ್ತಾರೆ."
+            },
+            {
+                topic: "ಭಾಗ 6: I/O & ಪ್ರಿಂಟರ್ಸ್",
+                q: "38. ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಶಾಯಿಯ ರಿಬ್ಬನ್ ಮತ್ತು ಕಾಗದಕ್ಕೆ ಪಿನ್‌ಗಳ ಮೂಲಕ ಭೌತಿಕವಾಗಿ ಬಡಿದು ಮುದ್ರಿಸುವ 'Impact Printer' (ಇಂಪ್ಯಾಕ್ಟ್ ಪ್ರಿಂಟರ್) ಆಗಿದೆ?",
+                options: ["Laser Printer", "Inkjet Printer", "Dot Matrix Printer (ಡಾಟ್ ಮ್ಯಾಟ್ರಿಕ್ಸ್ ಪ್ರಿಂಟರ್)", "Thermal Printer"],
+                ans: 2,
+                exp: "Dot Matrix, Daisy Wheel ಮತ್ತು Line Printer ಇವು Impact ಪ್ರಿಂಟರ್‌ಗಳಾಗಿವೆ. Inkjet, Laser ಮತ್ತು Thermal ಇವು Non-Impact ಪ್ರಿಂಟರ್‌ಗಳಾಗಿವೆ."
+            },
+            {
+                topic: "ಭಾಗ 6: I/O & ಪ್ರಿಂಟರ್ಸ್",
+                q: "39. ದ್ರವ ಶಾಯಿಯ ಬದಲಿಗೆ 'ಒಣ ಪುಡಿ ಶಾಯಿ' (Dry Powder Toner) ಮತ್ತು ಫೋಟೋಸೆನ್ಸಿಟಿವ್ ಡ್ರಮ್ ಬಳಸಿ ಅತ್ಯಂತ ವೇಗವಾಗಿ ಇಡೀ ಪುಟವನ್ನು ಮುದ್ರಿಸುವ ಪ್ರಿಂಟರ್ ಯಾವುದು?",
+                options: ["Inkjet Printer", "Laser Printer (ಲೇಸರ್ ಪ್ರಿಂಟರ್)", "Daisy Wheel Printer", "Dot Matrix Printer"],
+                ans: 1,
+                exp: "Laser Printer ಒಣ ಪುಡಿ ಶಾಯಿ (Toner) ಮತ್ತು ಲೇಸರ್ ಕಿರಣ ಬಳಸುತ್ತದೆ. ಇದರ ವೇಗವನ್ನು PPM (Pages Per Minute) ನಲ್ಲಿ ಅಳೆಯುತ್ತಾರೆ."
+            },
+            {
+                topic: "ಭಾಗ 6: I/O & ಪ್ರಿಂಟರ್ಸ್",
+                q: "40. ಬಸ್ ಟಿಕೆಟ್ ಮಷಿನ್, ATM ರಸೀದಿ ಮತ್ತು ಶಾಪಿಂಗ್ ಮಾಲ್ ಬಿಲ್ಲಿಂಗ್‌ನಲ್ಲಿ ಯಾವುದೇ ಶಾಯಿ (Ink) ಬಳಸದೆ ಶಾಖದ ಮೂಲಕ ವಿಶೇಷ ಕಾಗದದ ಮೇಲೆ ಮುದ್ರಿಸುವ ಪ್ರಿಂಟರ್ ಯಾವುದು?",
+                options: ["Plotter", "Thermal Printer (ಥರ್ಮಲ್ ಪ್ರಿಂಟರ್)", "Dot Matrix Printer", "Inkjet Printer"],
+                ans: 1,
+                exp: "Thermal Printer ಶಾಖಕ್ಕೆ ಸ್ಪಂದಿಸುವ ರಾಸಾಯನಿಕ ಕಾಗದದ (Thermochromic paper) ಮೇಲೆ ಶಾಖ ನೀಡಿ ಶಾಯಿಯಿಲ್ಲದೆ ಮುದ್ರಿಸುತ್ತದೆ."
+            },
+            {
+                topic: "ಭಾಗ 6: I/O & ಪ್ರಿಂಟರ್ಸ್",
+                q: "41. ಇಂಜಿನಿಯರಿಂಗ್ ಕಟ್ಟಡದ ಬೃಹತ್ ನೀಲನಕ್ಷೆಗಳು (Blueprints), ಭೂಪಟಗಳು (Maps) ಮತ್ತು CAD ವಿನ್ಯಾಸಗಳನ್ನು ನಿಖರವಾದ ರೇಖೆಗಳ ಮೂಲಕ ಮುದ್ರಿಸಲು ಬಳಸುವ ಸಾಧನ ಯಾವುದು?",
+                options: ["Laser Printer", "Plotter (ಪ್ಲಾಟರ್)", "OMR Scanner", "Projector"],
+                ans: 1,
+                exp: "Plotter ವೆಕ್ಟರ್ ಗ್ರಾಫಿಕ್ಸ್, ಬೃಹತ್ ನಕ್ಷೆಗಳು ಮತ್ತು ಬ್ಯಾನರ್‌ಗಳನ್ನು ಪೆನ್ ಮೂಲಕ ಬಿಡಿಸುವ ವಿಶೇಷ ಔಟ್‌ಪುಟ್ ಸಾಧನವಾಗಿದೆ."
+            },
+            {
+                topic: "ಭಾಗ 6: I/O & ಪ್ರಿಂಟರ್ಸ್",
+                q: "42. ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವ ಸಾಧನವು 'Input ಮತ್ತು Output ಎರಡೂ ಆಗಿ' (Both I/O Device) ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ?",
+                options: ["Mouse", "Touchscreen & Modem (ಟಚ್‌ಸ್ಕ್ರೀನ್ ಮತ್ತು ಮೋಡೆಮ್)", "Plotter", "Barcode Reader"],
+                ans: 1,
+                exp: "Touchscreen, Modem, Headset, Multifunction Printer (All-in-One) ಮತ್ತು Fax ಮಷಿನ್ ಇವು ಇನ್‌ಪುಟ್ ಮತ್ತು ಔಟ್‌‌ಪುಟ್ ಎರಡೂ ಆಗಿ ಕೆಲಸ ಮಾಡುತ್ತವೆ."
+            },
+
+            // ಭಾಗ 7: BCD, ASCII, EBCDIC & Unicode (43-45)
+            {
+                topic: "ಭಾಗ 7: ASCII & Unicode",
+                q: "43. ಪರ್ಸನಲ್ ಕಂಪ್ಯೂಟರ್‌ಗಳಲ್ಲಿ ಬಳಸುವ 'Standard ASCII' ಕೋಡ್ ಎಷ್ಟು ಬಿಟ್‌ಗಳನ್ನು ಹೊಂದಿದೆ ಮತ್ತು ಒಟ್ಟು ಎಷ್ಟು ಅಕ್ಷರಗಳನ್ನು ಪ್ರತಿನಿಧಿಸುತ್ತದೆ?",
+                options: ["4 Bits (16 ಅಕ್ಷರಗಳು)", "7 Bits (2^7 = 128 ಅಕ್ಷರಗಳು)", "8 Bits (256 ಅಕ್ಷರಗಳು)", "16 Bits (65536 ಅಕ್ಷರಗಳು)"],
+                ans: 1,
+                exp: "Standard ASCII 7-ಬಿಟ್ ಕೋಡ್ ಆಗಿದ್ದು 128 ಅಕ್ಷರಗಳನ್ನು (0-127) ಹೊಂದಿದೆ (ಇದರಲ್ಲಿ 'A'=65, 'a'=97). Extended ASCII 8-ಬಿಟ್ (256 ಅಕ್ಷರ) ಹೊಂದಿದೆ."
+            },
+            {
+                topic: "ಭಾಗ 7: ASCII & Unicode",
+                q: "44. IBM ಕಂಪನಿಯು ತನ್ನ ಬೃಹತ್ Mainframe ಕಂಪ್ಯೂಟರ್‌ಗಳಲ್ಲಿ ಬಳಸುವುದಕ್ಕಾಗಿ ಅಭಿವೃದ್ಧಿಪಡಿಸಿದ 8-Bit ಅಕ್ಷರ ಕೋಡಿಂಗ್ ವ್ಯವಸ್ಥೆ ಯಾವುದು?",
+                options: ["ASCII", "EBCDIC (Extended Binary Coded Decimal Interchange Code)", "ISCII", "BCD"],
+                ans: 1,
+                exp: "EBCDIC ಎಂಬುದು 8-Bit ಕೋಡ್ (256 ಅಕ್ಷರಗಳು) ಆಗಿದ್ದು, ಇದನ್ನು IBM ತನ್ನ ಮೇನ್‌ಫ್ರೇಮ್ ಕಂಪ್ಯೂಟರ್‌ಗಳಲ್ಲಿ ಬಳಸುತ್ತದೆ."
+            },
+            {
+                topic: "ಭಾಗ 7: ASCII & Unicode",
+                q: "45. ಇಂದು ನಾವು ಮೊಬೈಲ್ ಮತ್ತು ಕಂಪ್ಯೂಟರ್‌ಗಳಲ್ಲಿ ಕನ್ನಡ ಸೇರಿದಂತೆ ವಿಶ್ವದ ಎಲ್ಲಾ ಭಾಷೆಗಳಲ್ಲಿ ಟೈಪ್ ಮಾಡಲು ಮತ್ತು ಎಮೋಜಿಗಳನ್ನು (😀) ಬಳಸಲು ಅನುವು ಮಾಡಿಕೊಟ್ಟಿರುವ ಜಾಗತಿಕ ಮಾನದಂಡ ಯಾವುದು?",
+                options: ["BCD Code", "Standard ASCII", "Unicode (UTF-8 / UTF-16)", "Morse Code"],
+                ans: 2,
+                exp: "Unicode ವಿಶ್ವದ ಎಲ್ಲಾ ಭಾಷೆಗಳ ಅಕ್ಷರಗಳಿಗೆ ವಿಶಿಷ್ಟ ಕೋಡ್ ಪಾಯಿಂಟ್ ನೀಡಿದೆ (ಕನ್ನಡದ ಯುನಿಕೋಡ್ ವ್ಯಾಪ್ತಿ: U+0C80 ದಿಂದ U+0CFF)."
+            },
+
+            // ಭಾಗ 8: ಕಂಪ್ಯೂಟರ್ ಪೋರ್ಟ್ಸ್ & ಪ್ರಮುಖ ಸತ್ಯಗಳು (46-50)
+            {
+                topic: "ಭಾಗ 8: ಪೋರ್ಟ್ಸ್ & ಇತಿಹಾಸ",
+                q: "46. ಮಾನಿಟರ್ ಜೋಡಿಸಲು ಬಳಸುವ 15-ಪಿನ್‌ಗಳ ನೀಲಿ ಬಣ್ಣದ 'VGA ಪೋರ್ಟ್' ಮತ್ತು 19-ಪಿನ್‌ಗಳ 'HDMI ಪೋರ್ಟ್' ನಡುವಿನ ಮುಖ್ಯ ವ್ಯತ್ಯಾಸವೇನು?",
+                options: ["VGA ಆಡಿಯೋ ಮಾತ್ರ ಕಳುಹಿಸುತ್ತದೆ", "VGA ಕೇವಲ Analog ವಿಡಿಯೋ ಮಾತ್ರ ಕಳುಹಿಸುತ್ತದೆ; ಆದರೆ HDMI ಒಂದೇ ಕೇಬಲ್‌ನಲ್ಲಿ Digital HD ವಿಡಿಯೋ ಮತ್ತು ಆಡಿಯೋ ಎರಡನ್ನೂ ಕಳುಹಿಸುತ್ತದೆ", "HDMI ನಲ್ಲಿ ಕೇವಲ ಕಪ್ಪು-ಬಿಳುಪು ಚಿತ್ರ ಬರುತ್ತದೆ", "ಯಾವುದೇ ವ್ಯತ್ಯಾಸವಿಲ್ಲ"],
+                ans: 1,
+                exp: "VGA (15-Pin) ಹಳೆಯ ಅನಲಾಗ್ ವಿಡಿಯೋ ಪೋರ್ಟ್ ಆಗಿದ್ದು ಆಡಿಯೋ ಸಾಗಿಸುವುದಿಲ್ಲ. HDMI (19-Pin) HD ವಿಡಿಯೋ ಮತ್ತು ಆಡಿಯೋ ಎರಡನ್ನೂ ಡಿಜಿಟಲ್ ರೂಪದಲ್ಲಿ ಸಾಗಿಸುತ್ತದೆ."
+            },
+            {
+                topic: "ಭಾಗ 8: ಪೋರ್ಟ್ಸ್ & ಇತಿಹಾಸ",
+                q: "47. ಹಳೆಯ ಪ್ರಿಂಟರ್‌ಗಳನ್ನು ಜೋಡಿಸಲು ಬಳಸುತ್ತಿದ್ದ, ಒಮ್ಮೆಗೆ 8 Bits (1 Byte) ಡೇಟಾವನ್ನು ಸಮಾನಾಂತರವಾಗಿ ಕಳುಹಿಸುವ 25-ಪಿನ್‌ಗಳ ಪೋರ್ಟ್ ಯಾವುದು?",
+                options: ["Serial Port (9-Pin COM)", "Parallel Port (25-Pin LPT Port)", "PS/2 Port (6-Pin)", "RJ-11 Port"],
+                ans: 1,
+                exp: "Serial ಪೋರ್ಟ್ (9-Pin) ಒಮ್ಮೆಗೆ 1 Bit ಕಳುಹಿಸಿದರೆ, Parallel ಪೋರ್ಟ್ (25-Pin LPT) ಒಮ್ಮೆಗೆ 8 Bits ಕಳುಹಿಸುವ ಪ್ರಿಂಟರ್ ಪೋರ್ಟ್ ಆಗಿದೆ."
+            },
+            {
+                topic: "ಭಾಗ 8: ಪೋರ್ಟ್ಸ್ & ಇತಿಹಾಸ",
+                q: "48. ಕಂಪ್ಯೂಟರ್‌ಗೆ ವೇಗದ ಬ್ರಾಡ್‌ಬ್ಯಾಂಡ್ ಇಂಟರ್ನೆಟ್ ಕೇಬಲ್ (Ethernet LAN Cable) ಜೋಡಿಸಲು ಬಳಸುವ ಪೋರ್ಟ್ ಮತ್ತು ಅದರ ಪಿನ್ ಸಂಖ್ಯೆ ಎಷ್ಟು?",
+                options: ["RJ-11 (4 Pins)", "RJ-45 (8 Pins)", "PS/2 (6 Pins)", "VGA (15 Pins)"],
+                ans: 1,
+                exp: "RJ-45 ಪೋರ್ಟ್ 8 ಪಿನ್‌ಗಳನ್ನು ಹೊಂದಿದ್ದು LAN ಇಂಟರ್ನೆಟ್ ಕೇಬಲ್ ಜೋಡಿಸಲು ಬಳಕೆಯಾಗುತ್ತದೆ. RJ-11 (4/6 ಪಿನ್) ಟೆಲಿಫೋನ್ ಲೈನ್‌ಗೆ ಬಳಕೆಯಾಗುತ್ತದೆ."
+            },
+            {
+                topic: "ಭಾಗ 8: ಪೋರ್ಟ್ಸ್ & ಇತಿಹಾಸ",
+                q: "49. 1971 ರಲ್ಲಿ ಇಂಟೆಲ್ ಕಂಪನಿಯ ಟೆಡ್ ಹಾಫ್ (Ted Hoff) ತಂಡ ನಿರ್ಮಿಸಿದ ವಿಶ್ವದ ಮೊದಲ ಮೈಕ್ರೋಪ್ರೊಸೆಸರ್ (CPU Chip) ಯಾವುದು?",
+                options: ["Intel 8086", "Intel 4004 (4-Bit Processor)", "Pentium 1", "SHAKTI"],
+                ans: 1,
+                exp: "1971 ರಲ್ಲಿ ತಯಾರಾದ 'Intel 4004' ಜಗತ್ತಿನ ಮೊದಲ ಏಕ-ಚಿಪ್ ಮೈಕ್ರೋಪ್ರೊಸೆಸರ್ ಆಗಿದೆ. ಭಾರತದ ಮೊದಲ ಸ್ವದೇಶಿ ಮೈಕ್ರೋಪ್ರೊಸೆಸರ್ 'SHAKTI' (IIT Madras)."
+            },
+            {
+                topic: "ಭಾಗ 8: ಪೋರ್ಟ್ಸ್ & ಇತಿಹಾಸ",
+                q: "50. ಸಿಪಿಯು ಮಧ್ಯಸ್ಥಿಕೆ ಇಲ್ಲದೆ ಇನ್‌ಪುಟ್/ಔಟ್‌ಪುಟ್ ಸಾಧನಗಳು ನೇರವಾಗಿ RAM ಮೆಮೊರಿಯೊಂದಿಗೆ ವೇಗವಾಗಿ ಡೇಟಾ ವರ್ಗಾಯಿಸಿಕೊಳ್ಳುವ ತಂತ್ರಜ್ಞಾನವನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?",
+                options: ["POST", "DMA (Direct Memory Access)", "ALU", "BIOS"],
+                ans: 1,
+                exp: "DMA (Direct Memory Access) ಮೂಲಕ ಹಾರ್ಡ್ ಡಿಸ್ಕ್ ಅಥವಾ ಸೌಂಡ್ ಕಾರ್ಡ್‌ಗಳು ಸಿಪಿಯುಗೆ ಹೊರೆಯಾಗದಂತೆ ನೇರವಾಗಿ RAM ಜೊತೆ ವೇಗವಾಗಿ ಡೇಟಾ ಹಂಚಿಕೊಳ್ಳುತ್ತವೆ."
+            }
+        ];
+
+        let filteredQuestions = [...masterQuestions];
+        let currentIndex = 0;
+        let userAnswers = new Array(masterQuestions.length).fill(null);
+        let secondsElapsed = 0;
+        let timerInterval;
+
+        function startTimer() {
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                secondsElapsed++;
+                let mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+                let secs = String(secondsElapsed % 60).padStart(2, '0');
+                document.getElementById('timer').innerText = `${mins}:${secs}`;
+            }, 1000);
+        }
+
+        function setTheme(mode) {
+            if (mode === 'light') {
+                document.documentElement.removeAttribute('data-theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', mode);
+            }
+        }
+
+        function filterByTopic() {
+            const selected = document.getElementById('topic-filter').value;
+            if (selected === 'ALL') {
+                filteredQuestions = [...masterQuestions];
+            } else {
+                filteredQuestions = masterQuestions.filter(item => item.topic === selected);
+            }
+            currentIndex = 0;
+            returnToQuiz();
+            renderQuestion();
+            renderPalette();
+        }
+
+        function renderQuestion() {
+            const qObj = filteredQuestions[currentIndex];
+            const globalIndex = masterQuestions.indexOf(qObj);
+
+            document.getElementById('q-number-badge').innerText = `ಪ್ರಶ್ನೆ ${currentIndex + 1} / ${filteredQuestions.length}`;
+            document.getElementById('q-topic-badge').innerText = qObj.topic;
+            document.getElementById('question-box').innerText = qObj.q;
+
+            const optsBox = document.getElementById('options-box');
+            optsBox.innerHTML = '';
+            const letters = ['A', 'B', 'C', 'D'];
+
+            qObj.options.forEach((optText, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'opt-btn';
+                btn.innerHTML = `<span class="opt-letter">${letters[idx]}</span> <span>${optText}</span>`;
+
+                if (userAnswers[globalIndex] !== null) {
+                    btn.disabled = true;
+                    if (idx === qObj.ans) {
+                        btn.classList.add('correct');
+                    } else if (idx === userAnswers[globalIndex]) {
+                        btn.classList.add('wrong');
+                    }
+                } else {
+                    btn.onclick = () => selectAnswer(idx);
+                }
+
+                optsBox.appendChild(btn);
+            });
+
+            // Show/Hide Explanation
+            const expBox = document.getElementById('exp-box');
+            if (userAnswers[globalIndex] !== null) {
+                expBox.style.display = 'block';
+                const isCorrect = userAnswers[globalIndex] === qObj.ans;
+                document.getElementById('exp-status').innerHTML = isCorrect
+                    ? '✅ ಅತ್ಯುತ್ತಮ! ನಿಮ್ಮ ಉತ್ತರ ಸರಿಯಾಗಿದೆ:'
+                    : `❌ ತಪ್ಪು ಉತ್ತರ! ಸರಿಯಾದ ಉತ್ತರ: (${letters[qObj.ans]})`;
+                document.getElementById('exp-status').style.color = isCorrect ? 'var(--green)' : 'var(--rose)';
+                document.getElementById('exp-text').innerText = qObj.exp;
+            } else {
+                expBox.style.display = 'none';
+            }
+
+            document.getElementById('prev-btn').disabled = currentIndex === 0;
+            document.getElementById('next-btn').innerText = currentIndex === filteredQuestions.length - 1 ? 'ಫಲಿತಾಂಶ ನೋಡಿ 🏁' : 'ಮುಂದಿನ ಪ್ರಶ್ನೆ ➡️';
+
+            updateStats();
+            renderPalette();
+        }
+
+        function selectAnswer(choiceIdx) {
+            const qObj = filteredQuestions[currentIndex];
+            const globalIndex = masterQuestions.indexOf(qObj);
+            userAnswers[globalIndex] = choiceIdx;
+            renderQuestion();
+        }
+
+        function nextQuestion() {
+            if (currentIndex < filteredQuestions.length - 1) {
+                currentIndex++;
+                renderQuestion();
+            } else {
+                showFinalResult();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderQuestion();
+            }
+        }
+
+        function renderPalette() {
+            const grid = document.getElementById('palette-grid');
+            grid.innerHTML = '';
+
+            filteredQuestions.forEach((qObj, idx) => {
+                const globalIndex = masterQuestions.indexOf(qObj);
+                const btn = document.createElement('button');
+                btn.className = 'p-btn';
+                btn.innerText = idx + 1;
+
+                if (idx === currentIndex) btn.classList.add('active');
+                if (userAnswers[globalIndex] !== null) {
+                    if (userAnswers[globalIndex] === qObj.ans) {
+                        btn.classList.add('ans-correct');
+                    } else {
+                        btn.classList.add('ans-wrong');
+                    }
+                }
+
+                btn.onclick = () => {
+                    currentIndex = idx;
+                    returnToQuiz();
+                    renderQuestion();
+                };
+
+                grid.appendChild(btn);
+            });
+        }
+
+        function updateStats() {
+            let correct = 0;
+            let wrong = 0;
+            masterQuestions.forEach((q, idx) => {
+                if (userAnswers[idx] !== null) {
+                    if (userAnswers[idx] === q.ans) correct++;
+                    else wrong++;
+                }
+            });
+            document.getElementById('correct-count').innerText = correct;
+            document.getElementById('wrong-count').innerText = wrong;
+        }
+
+        function showFinalResult() {
+            document.getElementById('quiz-view').style.display = 'none';
+            document.getElementById('result-view').style.display = 'block';
+
+            let correct = 0;
+            let attempted = 0;
+            filteredQuestions.forEach(qObj => {
+                const gIdx = masterQuestions.indexOf(qObj);
+                if (userAnswers[gIdx] !== null) {
+                    attempted++;
+                    if (userAnswers[gIdx] === qObj.ans) correct++;
+                }
+            });
+
+            let pct = Math.round((correct / filteredQuestions.length) * 100);
+            document.getElementById('final-score-pct').innerText = `${pct}%`;
+            document.getElementById('final-summary-text').innerText =
+                `ನೀವು ಒಟ್ಟು ${filteredQuestions.length} ಪ್ರಶ್ನೆಗಳಲ್ಲಿ ${attempted} ಪ್ರಶ್ನೆಗಳನ್ನು ಉತ್ತರಿಸಿದ್ದು, ${correct} ಸರಿಯಾದ ಉತ್ತರಗಳನ್ನು ನೀಡಿದ್ದೀರಿ!`;
+        }
+
+        function returnToQuiz() {
+            document.getElementById('result-view').style.display = 'none';
+            document.getElementById('quiz-view').style.display = 'block';
+        }
+
+        function resetQuiz() {
+            userAnswers = new Array(masterQuestions.length).fill(null);
+            currentIndex = 0;
+            secondsElapsed = 0;
+            returnToQuiz();
+            renderQuestion();
+            startTimer();
+        }
+
+        // Initialize Quiz
+        window.onload = () => {
+            renderQuestion();
+            startTimer();
+        };
+    </script>
+</body>
+</html>

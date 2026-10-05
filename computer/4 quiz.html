@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಕಂಪ್ಯೂಟರ್ ಇತಿಹಾಸ (History of Computers) - 55 MCQs ಪರೀಕ್ಷಾ ಪೋರ್ಟಲ್</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600;700;800&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-page: #edf2ec;
+            --bg-card: #ffffff;
+            --bg-soft: #e1eae0;
+            --text-dark: #15221b;
+            --text-muted: #42564b;
+            --brand-teal: #0d6e5b;
+            --brand-blue: #0284c7;
+            --brand-purple: #6d28d9;
+            --brand-red: #dc2626;
+            --brand-amber: #d97706;
+            --brand-green: #16a34a;
+            --border-clr: #c3d4c0;
+            --shadow: 0 8px 24px rgba(13, 110, 91, 0.09);
+        }
+
+        [data-theme="dark"] {
+            --bg-page: #0a120f;
+            --bg-card: #12201b;
+            --bg-soft: #1a2e27;
+            --text-dark: #ecfdf5;
+            --text-muted: #a7f3d0;
+            --brand-teal: #10b981;
+            --brand-blue: #38bdf8;
+            --brand-purple: #c084fc;
+            --brand-red: #f87171;
+            --brand-amber: #fbbf24;
+            --brand-green: #4ade80;
+            --border-clr: #254238;
+            --shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Noto Sans Kannada', 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-dark);
+            line-height: 1.75;
+            transition: background 0.3s, color 0.3s;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #064e3b 0%, #0f766e 50%, #0369a1 100%);
+            color: #fff;
+            padding: 28px 16px 22px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        header h1 { font-size: clamp(1.35rem, 3.8vw, 2.1rem); font-weight: 800; margin-bottom: 6px; }
+        header p { font-size: 0.94rem; opacity: 0.94; max-width: 850px; margin: 0 auto 16px; }
+
+        .top-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
+
+        .nav-btn {
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.4);
+            color: #fff;
+            padding: 7px 15px;
+            border-radius: 30px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            font-family: inherit;
+            transition: 0.2s;
+        }
+
+        .nav-btn:hover, .nav-btn.active-mode { background: #ffffff; color: #064e3b; }
+
+        .container { max-width: 1140px; margin: 22px auto; padding: 0 15px; }
+
+        .dashboard-bar {
+            background: var(--bg-card);
+            border: 2px solid var(--brand-teal);
+            border-radius: 16px;
+            padding: 14px 18px;
+            margin-bottom: 18px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 8px;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .stats-group { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+        .stat-pill { background: var(--bg-soft); padding: 5px 12px; border-radius: 25px; font-size: 0.88rem; font-weight: 700; }
+
+        .progress-track { width: 100%; height: 8px; background: var(--bg-soft); border-radius: 10px; overflow: hidden; margin-top: 4px; }
+        .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #10b981, #0284c7, #f59e0b); transition: width 0.3s; }
+
+        .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+
+        .filter-tab {
+            background: var(--bg-card);
+            border: 1px solid var(--border-clr);
+            color: var(--text-dark);
+            padding: 7px 13px;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.84rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .filter-tab.active { background: var(--brand-teal); color: #fff; border-color: var(--brand-teal); }
+
+        .palette-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-clr);
+            border-radius: 14px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(36px, 1fr)); gap: 6px; margin-top: 10px; }
+
+        .p-num {
+            height: 34px; border-radius: 8px; border: 1px solid var(--border-clr);
+            background: var(--bg-soft); color: var(--text-dark);
+            font-weight: 700; font-size: 0.8rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .p-num.p-right { background: #16a34a; color: #fff; border-color: #16a34a; }
+        .p-num.p-wrong { background: #dc2626; color: #fff; border-color: #dc2626; }
+
+        .q-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-clr);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .q-cat-badge { background: var(--bg-soft); color: var(--brand-blue); padding: 3px 10px; border-radius: 12px; font-size: 0.76rem; font-weight: 700; }
+        .q-title { font-weight: 700; font-size: 1.03rem; margin-bottom: 14px; }
+
+        .opt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; }
+
+        .opt-btn {
+            background: var(--bg-soft);
+            border: 2px solid transparent;
+            color: var(--text-dark);
+            padding: 11px 15px;
+            border-radius: 10px;
+            text-align: left;
+            font-family: inherit;
+            font-size: 0.93rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .opt-btn:hover:not(:disabled) { border-color: var(--brand-blue); transform: translateY(-1px); }
+        .opt-btn.correct { background: #dcfce7; border-color: #16a34a; color: #14532d; font-weight: 700; }
+        .opt-btn.wrong { background: #fee2e2; border-color: #dc2626; color: #7f1d1d; }
+
+        .exp-box {
+            display: none;
+            margin-top: 14px;
+            padding: 12px 15px;
+            background: var(--bg-soft);
+            border-left: 4px solid var(--brand-blue);
+            border-radius: 8px;
+            font-size: 0.92rem;
+        }
+
+        .stepper-controls {
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            background: var(--bg-card);
+            padding: 14px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-clr);
+        }
+
+        .result-card {
+            display: none;
+            background: linear-gradient(135deg, #064e3b, #0284c7);
+            color: #fff;
+            border-radius: 18px;
+            padding: 28px;
+            text-align: center;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        @media (max-width: 650px) {
+            .opt-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🎯 ಕಂಪ್ಯೂಟರ್ ಇತಿಹಾಸ (History of Computers) - 55 MCQs ಮೆಗಾ ಕ್ವಿಜ್</h1>
+    <p>ಅಬಾಕಸ್‌ನಿಂದ ಯೂನಿವಾಕ್ ವರೆಗೆ: FDA / SDA / KAS / PDO / KEA ಪರೀಕ್ಷೆಗಳಿಗಾಗಿ ಸಂಪೂರ್ಣ ಅಭ್ಯಾಸ ಪೋರ್ಟಲ್</p>
+    <div class="top-nav">
+        <a href="history_notes.html" class="nav-btn" style="background:#f59e0b; color:#000;">📖 ನೋಟ್ಸ್ ಪುಟಕ್ಕೆ ಹಿಂತಿರುಗಿ</a>
+        <button class="nav-btn active-mode" id="modeAllBtn" onclick="setMode('all')">📋 ಎಲ್ಲಾ 55 ಪ್ರಶ್ನೆಗಳು ಒಂದೇ ಕಡೆ</button>
+        <button class="nav-btn" id="modeSingleBtn" onclick="setMode('single')">🎯 ಒಂದೊಂದೇ ಪ್ರಶ್ನೆ ಮೋಡ್ (CBT Mode)</button>
+        <button class="nav-btn" onclick="filterWrongOnly()">❌ ತಪ್ಪಾದ ಪ್ರಶ್ನೆಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸಿ</button>
+        <button class="nav-btn" onclick="toggleTheme()" id="themeBtn">🌙 ಡಾರ್ಕ್ ಮೋಡ್</button>
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="dashboard-bar">
+        <div class="stats-group">
+            <span class="stat-pill" style="color:var(--brand-teal);" id="scoreStat">🏆 ಅಂಕಗಳು: 0 / 55</span>
+            <span class="stat-pill" style="color:var(--brand-green);" id="rightStat">✅ ಸರಿ: 0</span>
+            <span class="stat-pill" style="color:var(--brand-red);" id="wrongStat">❌ ತಪ್ಪು: 0</span>
+            <span class="stat-pill" style="color:var(--brand-purple);" id="negStat">📉 ನೆಗೆಟಿವ್ ಸಹಿತ (0.25): 0.00</span>
+            <span class="stat-pill" style="color:var(--brand-blue);" id="timerStat">⏱️ 00:00</span>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="nav-btn" style="background:var(--brand-teal);" onclick="showAllAnswers()">👁️ ಎಲ್ಲಾ ಉತ್ತರ ತೋರಿಸಿ</button>
+            <button class="nav-btn" style="background:var(--brand-purple);" onclick="showResultCard()">📊 ಫಲಿತಾಂಶ ಕಾರ್ಡ್</button>
+            <button class="nav-btn" style="background:var(--brand-red);" onclick="resetQuiz()">🔄 ರೀಸೆಟ್</button>
+        </div>
+        <div class="progress-track">
+            <div class="progress-fill" id="progBar"></div>
+        </div>
+    </div>
+
+    <div class="result-card" id="resultBox">
+        <h2 style="font-size:1.7rem; margin-bottom:8px;">🎉 ನಿಮ್ಮ ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶ (Computer History Report)</h2>
+        <p id="resultText" style="font-size:1.12rem; margin-bottom:16px;"></p>
+        <button class="nav-btn" style="background:#fff; color:#064e3b;" onclick="document.getElementById('resultBox').style.display='none'">ಮುಚ್ಚಿ (Close)</button>
+    </div>
+
+    <div class="filter-bar">
+        <button class="filter-tab active" onclick="filterCategory('all', this)">ಎಲ್ಲಾ ಪ್ರಶ್ನೆಗಳು (55)</button>
+        <button class="filter-tab" onclick="filterCategory('early', this)">1. ಅಬಾಕಸ್, ನೇಪಿಯರ್ & ಪಾಸ್ಕಲೈನ್ (1-12)</button>
+        <button class="filter-tab" onclick="filterCategory('babbage', this)">2. ಬ್ಯಾಬೇಜ್, ಅಡಾ & ಹೊಲೆರಿತ್ (13-25)</button>
+        <button class="filter-tab" onclick="filterCategory('modern', this)">3. Mark I, ENIAC, EDVAC, UNIVAC (26-42)</button>
+        <button class="filter-tab" onclick="filterCategory('extra', this)">4. ಭಾರತದ ಇತಿಹಾಸ & KAS ಹೇಳಿಕೆ (43-55)</button>
+    </div>
+
+    <div class="palette-box">
+        <strong style="font-size:0.86rem; color:var(--brand-teal);">🔢 ಪ್ರಶ್ನೆಗಳ ಪ್ಯಾಲೆಟ್ (1 ರಿಂದ 55 - ಯಾವುದೇ ಪ್ರಶ್ನೆಗೆ ಜಂಪ್ ಮಾಡಲು ಕ್ಲಿಕ್ ಮಾಡಿ):</strong>
+        <div class="palette-grid" id="paletteGrid"></div>
+    </div>
+
+    <div id="quizContainer"></div>
+
+    <div class="stepper-controls" id="stepperBox">
+        <button class="nav-btn" style="background:var(--brand-teal);" onclick="prevQuestion()">⬅️ ಹಿಂದಿನ ಪ್ರಶ್ನೆ</button>
+        <strong id="stepIndicator">ಪ್ರಶ್ನೆ 1 / 55</strong>
+        <button class="nav-btn" style="background:var(--brand-blue);" onclick="nextQuestion()">ಮುಂದಿನ ಪ್ರಶ್ನೆ ➡️</button>
+    </div>
+
+</div>
+
+<script>
+    const mcqs = [
+        // 1 to 12: Abacus, Napier's Bones, Pascaline, Leibniz
+        { id: 1, cat: 'early', catName: 'ಆರಂಭಿಕ ಸಾಧನಗಳು', q: "1. ವಿಶ್ವದ ಅತ್ಯಂತ ಹಳೆಯ ಮತ್ತು ಮೊಟ್ಟಮೊದಲ ಲೆಕ್ಕಾಚಾರದ ಸಾಧನ (First Calculating Device) ಯಾವುದು?", o: ["A) ಪಾಸ್ಕಲೈನ್", "B) ಅಬಾಕಸ್ (Abacus)", "C) ನೇಪಿಯರ್ಸ್ ಬೋನ್ಸ್", "D) ಎನಿಯಾಕ್"], a: 1, e: "ಕ್ರಿ.ಪೂ 3000 ರಲ್ಲಿ ಕಂಡುಹಿಡಿಯಲಾದ ಅಬಾಕಸ್ ಜಗತ್ತಿನ ಮೊದಲ ಲೆಕ್ಕಾಚಾರದ ಸಾಧನವಾಗಿದೆ." },
+        { id: 2, cat: 'early', catName: 'ಆರಂಭಿಕ ಸಾಧನಗಳು', q: "2. ಕ್ರಿ.ಪೂ 3000 ರಲ್ಲಿ 'ಅಬಾಕಸ್' (Abacus) ಸಾಧನವನ್ನು ಮೊಟ್ಟಮೊದಲು ಅಭಿವೃದ್ಧಿಪಡಿಸಿದವರು ಯಾರು?", o: ["A) ಭಾರತೀಯರು", "B) ಚೀನಾದ ಜನರು (China)", "C) ಅಮೆರಿಕನ್ನರು", "D) ಬ್ರಿಟಿಷರು"], a: 1, e: "ಅಬಾಕಸ್ ಅನ್ನು ಚೀನಾದ ಜನರು ಕಂಡುಹಿಡಿದರು." },
+        { id: 3, cat: 'early', catName: 'ಆರಂಭಿಕ ಸಾಧನಗಳು', q: "3. ಅಬಾಕಸ್‌ನಲ್ಲಿ ಮರದ ಚೌಕಟ್ಟಿನಲ್ಲಿರುವ ತಂತಿಗಳ ಮೇಲಿನ ಮಣಿಗಳನ್ನು (Beads) ಜಾರಿಸುವ ಮೂಲಕ ಯಾವ ಲೆಕ್ಕಾಚಾರಗಳನ್ನು ಮಾಡಲಾಗುತ್ತಿತ್ತು?", o: ["A) ಕೇವಲ ಕೂಡುವುದು ಮತ್ತು ಕಳೆಯುವುದು (Addition & Subtraction)", "B) ಕೇವಲ ವರ್ಗಮೂಲ ಕಂಡುಹಿಡಿಯುವುದು", "C) ಕೇವಲ ಲಾಗರಿಥಮ್ ಲೆಕ್ಕಾಚಾರ", "D) ಬೈನರಿ ಕೋಡಿಂಗ್"], a: 0, e: "ಅಬಾಕಸ್ ಮೂಲಕ ಪ್ರಮುಖವಾಗಿ ಕೂಡುವುದು ಮತ್ತು ಕಳೆಯುವ ಕ್ರಿಯೆಗಳನ್ನು ಮಾಡಲಾಗುತ್ತಿತ್ತು." },
+        { id: 4, cat: 'early', catName: 'ಆರಂಭಿಕ ಸಾಧನಗಳು', q: "4. 1617 ರಲ್ಲಿ 'ನೇಪಿಯರ್ಸ್ ಬೋನ್ಸ್' (Napier's Bones) ಎಂಬ ಲೆಕ್ಕಾಚಾರದ ಸಾಧನವನ್ನು ಕಂಡುಹಿಡಿದ ಸ್ಕಾಟ್ಲೆಂಡ್‌ನ ಗಣಿತಜ್ಞ ಯಾರು?", o: ["A) ಬ್ಲೇಸ್ ಪಾಸ್ಕಲ್", "B) ಜಾನ್ ನೇಪಿಯರ್ (John Napier)", "C) ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್", "D) ಹೋವರ್ಡ್ ಐಕೆನ್"], a: 1, e: "ಸ್ಕಾಟ್ಲೆಂಡ್‌ನ ಜಾನ್ ನೇಪಿಯರ್ 1617 ರಲ್ಲಿ ನೇಪಿಯರ್ಸ್ ಬೋನ್ಸ್ ಕಂಡುಹಿಡಿದರು." },
+        { id: 5, cat: 'early', catName: 'ಆರಂಭಿಕ ಸಾಧನಗಳು', q: "5. 'ನೇಪಿಯರ್ಸ್ ಬೋನ್ಸ್' ಸಾಧನಕ್ಕೆ ಆ ಹೆಸರು ಬರಲು ಕಾರಣವೇನು?", o: ["A) ಲೆಕ್ಕ ಮಾಡಲು ಪ್ರಾಣಿಗಳ ಮೂಳೆಗಳು (Bones/Ivory) ಅಥವಾ ಮರದ ಕೋಲುಗಳನ್ನು ಬಳಸಿದ್ದರಿಂದ", "B) ಮಾನವನ ಅಸ್ಥಿಪಂಜರದ ಎಕ್ಸ್-ರೇ ತೆಗೆಯಲು ಬಳಸಿದ್ದರಿಂದ", "C) ಕಬ್ಬಿಣದ ಚಕ್ರಗಳನ್ನು ಬಳಸಿದ್ದರಿಂದ", "D) ವ್ಯಾಕ್ಯೂಮ್ ಟ್ಯೂಬ್ ಬಳಸಿದ್ದರಿಂದ"], a: 0, e: "ಪ್ರಾಣಿಗಳ ಮೂಳೆಗಳು ಅಥವಾ ದಂತದ ಕಡ್ಡಿಗಳ ಮೇಲೆ ಅಂಕಿಗಳನ್ನು ಬರೆದು ಬಳಸಿದ್ದರಿಂದ ಇದಕ್ಕೆ Napier's Bones ಎಂದು ಹೆಸರು ಬಂತು." },
+        { id: 6, cat: 'early', catName: 'ಆರಂಭಿಕ ಸಾಧನಗಳು', q: "6. ಅಬಾಕಸ್‌ಗಿಂತ ಒಂದು ಹೆಜ್ಜೆ ಮುಂದೆ ಹೋಗಿ, ಗುಣಾಕಾರ (Multiplication) ಮತ್ತು ಭಾಗಾಕಾರ (Division) ಮಾಡಲು ಬಳಸಲಾದ 1617 ರ ಸಾಧನ ಯಾವುದು?", o: ["A) ಅಬಾಕಸ್", "B) ನೇಪಿಯರ್ಸ್ ಬೋನ್ಸ್ (Napier's Bones)", "C) ಪಂಚ್ ಕಾರ್ಡ್", "D) ಮೌಸ್"], a: 1, e: "ನೇಪಿಯರ್ಸ್ ಬೋನ್ಸ್ ಅನ್ನು ಗುಣಾಕಾರ ಮತ್ತು ಭಾಗಾಕಾರಕ್ಕಾಗಿ ಬಳಸಲಾಯಿತು." },
+        { id: 7, cat: 'early', catName: 'ಆರಂಭಿಕ ಸಾಧನಗಳು', q: "7. 1642 ರಲ್ಲಿ ವಿಶ್ವದ ಮೊಟ್ಟಮೊದಲ 'ಮೆಕ್ಯಾನಿಕಲ್ ಕ್ಯಾಲ್ಕುಲೇಟರ್' ಆದ 'ಪಾಸ್ಕಲೈನ್' (Pascaline) ಅನ್ನು ಕಂಡುಹಿಡಿದವರು ಯಾರು?", o: ["A) ಜಾನ್ ನೇಪಿಯರ್", "B) ಬ್ಲೇಸ್ ಪಾಸ್ಕಲ್ (Blaise Pascal - ಫ್ರಾನ್ಸ್)", "C) ಹರ್ಮನ್ ಹೊಲೆರಿತ್", "D) ಜಾನ್ ವಾನ್ ನ್ಯೂಮನ್"], a: 1, e: "ಫ್ರಾನ್ಸ್‌ನ ಗಣಿತಜ್ಞ ಬ್ಲೇಸ್ ಪಾಸ್ಕಲ್ 1642 ರಲ್ಲಿ ಪಾಸ್ಕಲೈನ್ ಕಂಡುಹಿಡಿದರು." },
+        { id: 8, cat: 'early', catName: 'ಆರಂಭಿಕ ಸಾಧನಗಳು', q: "8. ವಿಶ್ವದ ಮೊದಲ ಮೆಕ್ಯಾನಿಕಲ್ ಕ್ಯಾಲ್ಕುಲೇಟರ್ (First Mechanical Calculator / Adding Machine) ಎಂದು ಯಾವುದನ್ನು ಕರೆಯಲಾಗುತ್ತದೆ?", o: ["A) ಅಬಾಕಸ್", "B) ಪಾಸ್ಕಲೈನ್ (Pascaline)", "C) ಎನಿಯಾಕ್", "D) ಯೂನಿವಾಕ್"], a: 1, e: "ಪಾಸ್ಕಲೈನ್ ವಿಶ್ವದ ಮೊದಲ ಮೆಕ್ಯಾನಿಕಲ್ ಕ್ಯಾಲ್ಕುಲೇಟರ್ ಆಗಿದೆ." },
+        { id: 9, cat: 'early', catName: 'ಆರಂಭಿಕ ಸಾಧನಗಳು', q: "9. ಬ್ಲೇಸ್ ಪಾಸ್ಕಲ್ ಅವರ 'ಪಾಸ್ಕಲೈನ್' ಯಂತ್ರವು ಹೇಗೆ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿತ್ತು?", o: ["A) ವ್ಯಾಕ್ಯೂಮ್ ಟ್ಯೂಬ್‌ಗಳ ಮೂಲಕ", "B) ಗಡಿಯಾರದ ಒಳಗಿರುವಂತಹ ಚಕ್ರಗಳು ಮತ್ತು ಗೇರ್‌ಗಳನ್ನು (Gears and wheels) ತಿರುಗಿಸುವ ಮೂಲಕ", "C) ಮ್ಯಾಗ್ನೆಟಿಕ್ ಟೇಪ್ ಮೂಲಕ", "D) ಮೈಕ್ರೋಪ್ರೊಸೆಸರ್ ಮೂಲಕ"], a: 1, e: "ಪಾಸ್ಕಲೈನ್ ಚಕ್ರಗಳು ಮತ್ತು ಹಲ್ಲುಗಾಲಿಗಳ (Gears) ತಿರುಗುವಿಕೆಯಿಂದ ಲೆಕ್ಕ ಮಾಡುತ್ತಿತ್ತು." },
+        { id: 10, cat: 'early', catName: 'ಆರಂಭಿಕ ಸಾಧನಗಳು', q: "10. 1673 ರಲ್ಲಿ ಪಾಸ್ಕಲೈನ್ ಅನ್ನು ಸುಧಾರಿಸಿ 'ಸ್ಟೆಪ್ಡ್ ರೆಕನರ್' (Leibniz Wheel) ನಿರ್ಮಿಸಿದ ಮತ್ತು ಆಧುನಿಕ 'ಬೈನರಿ ಸಂಖ್ಯಾ ಪದ್ಧತಿ (0 & 1)' ಕಂಡುಹಿಡಿದ ಜರ್ಮನ್ ಗಣಿತಜ್ಞ ಯಾರು?", o: ["A) ಗಾಟ್‌ಫ್ರೈಡ್ ವಿಲ್ಹೆಲ್ಮ್ ಲೆಬ್ನಿಜ್ (Gottfried Wilhelm Leibniz)", "B) ಜಾನ್ ಮೌಚ್ಲಿ", "C) ಐಸಾಕ್ ನ್ಯೂಟನ್", "D) ಹೋವರ್ಡ್ ಐಕೆನ್"], a: 0, e: "ಗಾಟ್‌ಫ್ರೈಡ್ ಲೆಬ್ನಿಜ್ ಅವರು ಬೈನರಿ ಪದ್ಧತಿಯ ಜನಕ ಹಾಗೂ Leibniz Wheel ನಿರ್ಮಾತೃ." },
+        { id: 11, cat: 'early', catName: 'ಆರಂಭಿಕ ಸಾಧನಗಳು', q: "11. 1801 ರಲ್ಲಿ ಬಟ್ಟೆ ನೇಯುವ ಸ್ವಯಂಚಾಲಿತ ಮಗ್ಗದಲ್ಲಿ ವಿನ್ಯಾಸ ನಿಯಂತ್ರಿಸಲು ಮೊಟ್ಟಮೊದಲ ಬಾರಿಗೆ 'ಪಂಚ್ ಕಾರ್ಡ್' ಬಳಸಿದ ಫ್ರಾನ್ಸ್‌‌ನ ಸಂಶೋಧಕ ಯಾರು?", o: ["A) ಜೋಸೆಫ್ ಮೇರಿ ಜಾಕ್ವಾರ್ಡ್ (Joseph Marie Jacquard)", "B) ಜಾನ್ ನೇಪಿಯರ್", "C) ಸೇಮೌರ್ ಕ್ರೇ", "D) ಅಲನ್ ಟ್ಯೂರಿಂಗ್"], a: 0, e: "ಜಾಕ್ವಾರ್ಡ್ ಲೂಮ್ (1801) ಮಗ್ಗದಲ್ಲಿ ಮೊದಲ ಬಾರಿಗೆ ಪಂಚ್ ಕಾರ್ಡ್ ಬಳಕೆಯಾಯಿತು." },
+        { id: 12, cat: 'early', catName: 'ಆರಂಭಿಕ ಸಾಧನಗಳು', q: "12. ಗಣಿತದಲ್ಲಿ ಸಂಕೀರ್ಣ ಲೆಕ್ಕಾಚಾರಗಳನ್ನು ಸರಳಗೊಳಿಸುವ 'ಲಾಗರಿಥಮ್' (Logarithm) ಪರಿಕಲ್ಪನೆಯನ್ನು ಪರಿಚಯಿಸಿದವರು ಯಾರು?", o: ["A) ಜಾನ್ ನೇಪಿಯರ್", "B) ಬ್ಲೇಸ್ ಪಾಸ್ಕಲ್", "C) ಹರ್ಮನ್ ಹೊಲೆರಿತ್", "D) ಎಕರ್ಟ್"], a: 0, e: "ಜಾನ್ ನೇಪಿಯರ್ ಲಾಗರಿಥಮ್ ಮತ್ತು ನೇಪಿಯರ್ಸ್ ಬೋನ್ಸ್ ಎರಡನ್ನೂ ಪರಿಚಯಿಸಿದರು." },
+
+        // 13 to 25: Charles Babbage, Lady Ada Lovelace, Herman Hollerith
+        { id: 13, cat: 'babbage', catName: 'ಬ್ಯಾಬೇಜ್ & ಹೊಲೆರಿತ್', q: "13. 'ಕಂಪ್ಯೂಟರ್‌ನ ಪಿತಾಮಹ' (Father of Computer) ಎಂದು ಯಾರನ್ನು ಕರೆಯಲಾಗುತ್ತದೆ?", o: ["A) ಬ್ಲೇಸ್ ಪಾಸ್ಕಲ್", "B) ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ (Charles Babbage)", "C) ಜಾನ್ ವಾನ್ ನ್ಯೂಮನ್", "D) ಬಿಲ್ ಗೇಟ್ಸ್"], a: 1, e: "ಬ್ರಿಟನ್‌ನ ಗಣಿತಜ್ಞ ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ ಅವರನ್ನು ಕಂಪ್ಯೂಟರ್‌ನ ಪಿತಾಮಹ ಎನ್ನುತ್ತಾರೆ." },
+        { id: 14, cat: 'babbage', catName: 'ಬ್ಯಾಬೇಜ್ & ಹೊಲೆರಿತ್', q: "14. ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ ಅವರು 1822 ಮತ್ತು 1833 ರಲ್ಲಿ ವಿನ್ಯಾಸಗೊಳಿಸಿದ ಎರಡು ಪ್ರಮುಖ ಯಂತ್ರಗಳು ಯಾವುವು?", o: ["A) ENIAC ಮತ್ತು EDVAC", "B) ಡಿಫರೆನ್ಸ್ ಎಂಜಿನ್ (Difference Engine - 1822) ಮತ್ತು ಅನಲಿಟಿಕಲ್ ಎಂಜಿನ್ (Analytical Engine - 1833)", "C) ಪಾಸ್ಕಲೈನ್ ಮತ್ತು ಅಬಾಕಸ್", "D) Mark I ಮತ್ತು UNIVAC"], a: 1, e: "1822 ರಲ್ಲಿ ಡಿಫರೆನ್ಸ್ ಎಂಜಿನ್ ಮತ್ತು 1833 ರಲ್ಲಿ ಅನಲಿಟಿಕಲ್ ಎಂಜಿನ್ ಅನ್ನು ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ ವಿನ್ಯಾಸಗೊಳಿಸಿದರು." },
+        { id: 15, cat: 'babbage', catName: 'ಬ್ಯಾಬೇಜ್ & ಹೊಲೆರಿತ್', q: "15. ಇಂದಿನ ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್‌ನಂತೆ ಇನ್‌ಪುಟ್, ಔಟ್‌ಪುಟ್, ಪ್ರೊಸೆಸಿಂಗ್ (Mill) ಮತ್ತು ಮೆಮೊರಿ (Store) ವ್ಯವಸ್ಥೆಯನ್ನು ಹೊಂದಿದ್ದ ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ ಅವರ ಯಂತ್ರ ಯಾವುದು?", o: ["A) ಡಿಫರೆನ್ಸ್ ಎಂಜಿನ್", "B) ಅನಲಿಟಿಕಲ್ ಎಂಜಿನ್ (Analytical Engine - 1833)", "C) ಪಾಸ್ಕಲೈನ್", "D) ಟ್ಯಾಬುಲೇಟಿಂಗ್ ಮಷಿನ್"], a: 1, e: "ಅನಲಿಟಿಕಲ್ ಎಂಜಿನ್ ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್‌ನ ಎಲ್ಲಾ 4 ಮೂಲ ಅಂಗಗಳನ್ನು ಒಳಗೊಂಡಿತ್ತು, ಇದೇ ಕಾರಣಕ್ಕೆ ಬ್ಯಾಬೇಜ್ ಅವರನ್ನು ಕಂಪ್ಯೂಟರ್ ಪಿತಾಮಹ ಎನ್ನುತ್ತಾರೆ." },
+        { id: 16, cat: 'babbage', catName: 'ಬ್ಯಾಬೇಜ್ & ಹೊಲೆರಿತ್', q: "16. ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ ಅವರ ಅನಲಿಟಿಕಲ್ ಎಂಜಿನ್‌ಗೆ ಮೊದಲ ಬಾರಿಗೆ ಪ್ರೋಗ್ರಾಂ ಬರೆದ 'ವಿಶ್ವದ ಮೊದಲ ಕಂಪ್ಯೂಟರ್ ಪ್ರೋಗ್ರಾಮರ್' ಯಾರು?", o: ["A) ಮೇರಿ ಕ್ಯೂರಿ", "B) ಲೇಡಿ ಅಡಾ ಲವ್‌ಲೇಸ್ (Lady Ada Lovelace)", "C) ಗ್ರೇಸ್ ಹಾಪರ್", "D) ಮಾರ್ಗರೆಟ್ ಹ್ಯಾಮಿಲ್ಟನ್"], a: 1, e: "ಲೇಡಿ ಅಡಾ ಅಗಸ್ಟಾ ಲವ್‌ಲೇಸ್ ವಿಶ್ವದ ಮೊದಲ ಕಂಪ್ಯೂಟರ್ ಪ್ರೋಗ್ರಾಮರ್ ಆಗಿದ್ದಾರೆ." },
+        { id: 17, cat: 'babbage', catName: 'ಬ್ಯಾಬೇಜ್ & ಹೊಲೆರಿತ್', q: "17. ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ ಅವರ ಅನಲಿಟಿಕಲ್ ಎಂಜಿನ್‌ನಲ್ಲಿ ಪ್ರೊಸೆಸಿಂಗ್ ಮಾಡುವ CPU ಭಾಗವನ್ನು ಮತ್ತು ಮೆಮೊರಿ ಭಾಗವನ್ನು ಏನೆಂದು ಕರೆಯಲಾಗುತ್ತಿತ್ತು?", o: ["A) Mill (ಪ್ರೊಸೆಸರ್) ಮತ್ತು Store (ಮೆಮೊರಿ)", "B) RAM ಮತ್ತು ROM", "C) Cache ಮತ್ತು Bus", "D) Abacus ಮತ್ತು Bone"], a: 0, e: "ಅನಲಿಟಿಕಲ್ ಎಂಜಿನ್‌ನಲ್ಲಿ ಲೆಕ್ಕ ಮಾಡುವ ಭಾಗವನ್ನು 'Mill' ಎಂದೂ, ಮೆಮೊರಿ ಭಾಗವನ್ನು 'Store' ಎಂದೂ ಕರೆಯಲಾಗಿತ್ತು." },
+        { id: 18, cat: 'babbage', catName: 'ಬ್ಯಾಬೇಜ್ & ಹೊಲೆರಿತ್', q: "18. 1890 ರಲ್ಲಿ ಅಮೆರಿಕದ ಜನಗಣತಿಯನ್ನು (Census) ವೇಗವಾಗಿ ಮಾಡಲು 'ಟ್ಯಾಬುಲೇಟಿಂಗ್ ಮಷಿನ್' (Tabulating Machine) ಕಂಡುಹಿಡಿದವರು ಯಾರು?", o: ["A) ಹೋವರ್ಡ್ ಐಕೆನ್", "B) ಹರ್ಮನ್ ಹೊಲೆರಿತ್ (Herman Hollerith)", "C) ಜಾನ್ ಮೌಚ್ಲಿ", "D) ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್"], a: 1, e: "ಹರ್ಮನ್ ಹೊಲೆರಿತ್ 1890 ರಲ್ಲಿ ಟ್ಯಾಬುಲೇಟಿಂಗ್ ಮಷಿನ್ ಕಂಡುಹಿಡಿದರು." },
+        { id: 19, cat: 'babbage', catName: 'ಬ್ಯಾಬೇಜ್ & ಹೊಲೆರಿತ್', q: "19. ಹರ್ಮನ್ ಹೊಲೆರಿತ್ ಅವರ ಟ್ಯಾಬುಲೇಟಿಂಗ್ ಮಷಿನ್‌ನಲ್ಲಿ ಡೇಟಾವನ್ನು ಕಂಪ್ಯೂಟರ್‌ಗೆ ನೀಡಲು ಪ್ರಮುಖವಾಗಿ ಏನನ್ನು ಬಳಸಲಾಯಿತು?", o: ["A) ಪಂಚ್ ಕಾರ್ಡ್‌ಗಳು (Punch Cards)", "B) ಪೆನ್ ಡ್ರೈವ್", "C) ಸಿಡಿ-ರಾಮ್", "D) ಮೌಸ್"], a: 0, e: "ಡೇಟಾ ಸಂಗ್ರಹಿಸಿ ಇನ್‌ಪುಟ್ ನೀಡಲು ರಂಧ್ರಗಳಿರುವ ಕಾಗದದ ಪಂಚ್ ಕಾರ್ಡ್‌ಗಳನ್ನು ಬಳಸಲಾಯಿತು." },
+        { id: 20, cat: 'babbage', catName: 'ಬ್ಯಾಬೇಜ್ & ಹೊಲೆರಿತ್', q: "20. ಟ್ಯಾಬುಲೇಟಿಂಗ್ ಮಷಿನ್ ಕಂಡುಹಿಡಿದ ಹರ್ಮನ್ ಹೊಲೆರಿತ್ ಸ್ಥಾಪಿಸಿದ ಕಂಪನಿಯು ಮುಂದೆ (1924 ರಲ್ಲಿ) ಯಾವ ಜಗತ್ಪ್ರಸಿದ್ಧ ಕಂಪನಿಯಾಗಿ ಬದಲಾಯಿತು?", o: ["A) Microsoft", "B) Apple", "C) IBM (International Business Machines)", "D) Intel"], a: 2, e: "ಹರ್ಮನ್ ಹೊಲೆರಿತ್ ಅವರ ಕಂಪನಿಯೇ ಮುಂದೆ IBM ಆಗಿ ಪ್ರಸಿದ್ಧವಾಯಿತು." },
+        { id: 21, cat: 'babbage', catName: 'ಬ್ಯಾಬೇಜ್ & ಹೊಲೆರಿತ್', q: "21. 'IBM' ಕಂಪನಿಯ ವಿಸ್ತೃತ ರೂಪವೇನು?", o: ["A) Indian Business Machines", "B) International Business Machines", "C) Integrated Binary Machines", "D) Internal Business Microcomputers"], a: 1, e: "IBM = International Business Machines." },
+        { id: 22, cat: 'babbage', catName: 'ಬ್ಯಾಬೇಜ್ & ಹೊಲೆರಿತ್', q: "22. 'ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್ ವಿಜ್ಞಾನದ ಪಿತಾಮಹ' (Father of Modern Computer Science) ಎಂದು ಯಾರನ್ನು ಕರೆಯಲಾಗುತ್ತದೆ?", o: ["A) ಅಲನ್ ಟ್ಯೂರಿಂಗ್ (Alan Turing)", "B) ಬ್ಲೇಸ್ ಪಾಸ್ಕಲ್", "C) ಜಾನ್ ನೇಪಿಯರ್", "D) ಹರ್ಮನ್ ಹೊಲೆರಿತ್"], a: 0, e: "1936 ರಲ್ಲಿ ಟ್ಯೂರಿಂಗ್ ಮಷಿನ್ ಪರಿಕಲ್ಪನೆ ನೀಡಿದ ಬ್ರಿಟನ್‌ನ ಅಲನ್ ಟ್ಯೂರಿಂಗ್ ಅವರನ್ನು ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್ ವಿಜ್ಞಾನದ ಪಿತಾಮಹ ಎನ್ನುತ್ತಾರೆ." },
+        { id: 23, cat: 'babbage', catName: 'ಬ್ಯಾಬೇಜ್ & ಹೊಲೆರಿತ್', q: "23. ಕೇವಲ 'ಕಂಪ್ಯೂಟರ್‌ನ ಪಿತಾಮಹ' ಎಂದು ಕೇಳಿದರೆ ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ ಉತ್ತರವಾದರೆ, 'ವೈಯಕ್ತಿಕ ಕಂಪ್ಯೂಟರ್‌ನ ಪಿತಾಮಹ' (Father of Personal Computer - PC) ಯಾರು?", o: ["A) ಎಡ್ವರ್ಡ್ ರಾಬರ್ಟ್ಸ್ (Ed Roberts - Altair 8800 ನಿರ್ಮಾತೃ)", "B) ಜಾನ್ ನೇಪಿಯರ್", "C) ಹೋವರ್ಡ್ ಐಕೆನ್", "D) ಸೇಮೌರ್ ಕ್ರೇ"], a: 0, e: "ಮೊದಲ ಪಿಸಿ Altair 8800 ಸೃಷ್ಟಿಸಿದ ಹೆನ್ರಿ ಎಡ್ವರ್ಡ್ ರಾಬರ್ಟ್ಸ್ ಅವರನ್ನು ಪಿಸಿಯ ಪಿತಾಮಹ ಎನ್ನುತ್ತಾರೆ." },
+        { id: 24, cat: 'babbage', catName: 'ಬ್ಯಾಬೇಜ್ & ಹೊಲೆರಿತ್', q: "24. ವಿಶ್ವದ ಮೊದಲ ಪ್ರೋಗ್ರಾಮರ್ ಲೇಡಿ ಅಡಾ ಲವ್‌ಲೇಸ್ ಅವರ ಗೌರವಾರ್ಥವಾಗಿ ಅಮೆರಿಕಾದ ರಕ್ಷಣಾ ಇಲಾಖೆ ಅಭಿವೃದ್ಧಿಪಡಿಸಿದ ಪ್ರೋಗ್ರಾಮಿಂಗ್ ಭಾಷೆ ಯಾವುದು?", o: ["A) ADA (ಅಡಾ)", "B) JAVA", "C) PYTHON", "D) C++"], a: 0, e: "ಅಡಾ ಲವ್‌ಲೇಸ್ ನೆನಪಿಗಾಗಿ ಪ್ರೋಗ್ರಾಮಿಂಗ್ ಭಾಷೆಗೆ 'ADA' ಎಂದು ಹೆಸರಿಡಲಾಯಿತು." },
+        { id: 25, cat: 'babbage', catName: 'ಬ್ಯಾಬೇಜ್ & ಹೊಲೆರಿತ್', q: "25. ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ ಅವರು ಯಾವ ದೇಶದ ಗಣಿತಜ್ಞರಾಗಿದ್ದರು?", o: ["A) ಫ್ರಾನ್ಸ್", "B) ಬ್ರಿಟನ್ (ಇಂಗ್ಲೆಂಡ್)", "C) ಚೀನಾ", "D) ಜಪಾನ್"], a: 1, e: "ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ ಬ್ರಿಟನ್ (ಇಂಗ್ಲೆಂಡ್) ದೇಶದವರಾಗಿದ್ದರು." },
+
+        // 26 to 42: Mark I, ENIAC, EDVAC, UNIVAC I
+        { id: 26, cat: 'modern', catName: 'ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಯುಗ', q: "26. 1944 ರಲ್ಲಿ ನಿರ್ಮಿಸಲಾದ ವಿಶ್ವದ ಮೊಟ್ಟಮೊದಲ 'ಎಲೆಕ್ಟ್ರೋ-ಮೆಕ್ಯಾನಿಕಲ್ ಕಂಪ್ಯೂಟರ್' (First Electro-Mechanical Computer) ಯಾವುದು?", o: ["A) ಪಾಸ್ಕಲೈನ್", "B) ಮಾರ್ಕ್ 1 (Harvard Mark I)", "C) ಎನಿಯಾಕ್", "D) ಅಬಾಕಸ್"], a: 1, e: "Mark I (1944) ವಿಶ್ವದ ಮೊದಲ ಎಲೆಕ್ಟ್ರೋ-ಮೆಕ್ಯಾನಿಕಲ್ ಕಂಪ್ಯೂಟರ್ ಆಗಿದೆ." },
+        { id: 27, cat: 'modern', catName: 'ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಯುಗ', q: "27. 'ಮಾರ್ಕ್ 1' (Mark I - 1944) ಕಂಪ್ಯೂಟರ್ ಅನ್ನು ನಿರ್ಮಿಸಿದವರು ಯಾರು?", o: ["A) ಹೋವರ್ಡ್ ಐಕೆನ್ (Howard Aiken) ಮತ್ತು IBM ಕಂಪನಿ", "B) ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್", "C) ಬ್ಲೇಸ್ ಪಾಸ್ಕಲ್", "D) ಜಾನ್ ನೇಪಿಯರ್"], a: 0, e: "ಹಾವರ್ಡ್ ವಿಶ್ವವಿದ್ಯಾಲಯದ ಹೋವರ್ಡ್ ಐಕೆನ್ ಮತ್ತು IBM ಜಂಟಿಯಾಗಿ Mark I ನಿರ್ಮಿಸಿದರು." },
+        { id: 28, cat: 'modern', catName: 'ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಯುಗ', q: "28. ವಿಶ್ವದ ಮೊಟ್ಟಮೊದಲ ಸಂಪೂರ್ಣ 'ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಡಿಜಿಟಲ್ ಕಂಪ್ಯೂಟರ್' (First General-Purpose Electronic Digital Computer - 1946) ಯಾವುದು?", o: ["A) Mark I", "B) ENIAC (ಎನಿಯಾಕ್)", "C) Pascaline", "D) Tabulating Machine"], a: 1, e: "1946 ರಲ್ಲಿ ನಿರ್ಮಿಸಲಾದ ENIAC ವಿಶ್ವದ ಮೊದಲ ಸಂಪೂರ್ಣ ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಡಿಜಿಟಲ್ ಕಂಪ್ಯೂಟರ್ ಆಗಿದೆ." },
+        { id: 29, cat: 'modern', catName: 'ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಯುಗ', q: "29. 'ENIAC' ಕಂಪ್ಯೂಟರ್‌ನ ವಿಸ್ತೃತ ರೂಪವೇನು (Full Form)?", o: ["A) Electronic Numerical Integrator And Computer", "B) Electrical Number Input And Calculator", "C) Electronic Network Information And Computer", "D) Early Numerical Integrator Automatic Computer"], a: 0, e: "ENIAC = Electronic Numerical Integrator And Computer." },
+        { id: 30, cat: 'modern', catName: 'ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಯುಗ', q: "30. 1946 ರಲ್ಲಿ 'ENIAC' ಮತ್ತು 1951 ರಲ್ಲಿ 'UNIVAC' ಕಂಪ್ಯೂಟರ್‌ಗಳನ್ನು ನಿರ್ಮಿಸಿದ ವಿಜ್ಞಾನಿಗಳು ಯಾರು?", o: ["A) ಜೆ. ಪ್ರೆಸ್ಪರ್ ಎಕರ್ಟ್ ಮತ್ತು ಜಾನ್ ಮೌಚ್ಲಿ (J. Presper Eckert & John Mauchly)", "B) ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ ಮತ್ತು ಅಡಾ ಲವ್‌ಲೇಸ್", "C) ಹೋವರ್ಡ್ ಐಕೆನ್ ಮತ್ತು ಹರ್ಮನ್ ಹೊಲೆರಿತ್", "D) ಬ್ಲೇಸ್ ಪಾಸ್ಕಲ್ ಮತ್ತು ಜಾನ್ ನೇಪಿಯರ್"], a: 0, e: "ಎಕರ್ಟ್ ಮತ್ತು ಮೌಚ್ಲಿ ಅವರು ENIAC ಮತ್ತು UNIVAC ಎರಡನ್ನೂ ನಿರ್ಮಿಸಿದರು." },
+        { id: 31, cat: 'modern', catName: 'ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಯುಗ', q: "31. ENIAC (1946) ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಪ್ರಕ್ರಿಯೆಗಾಗಿ ಸುಮಾರು 18,000 ಸಂಖ್ಯೆಯಲ್ಲಿ ಯಾವ ಸಾಧನಗಳನ್ನು ಬಳಸಲಾಗಿತ್ತು?", o: ["A) ಟ್ರಾನ್ಸಿಸ್ಟರ್‌ಗಳು", "B) ವ್ಯಾಕ್ಯೂಮ್ ಟ್ಯೂಬ್‌ಗಳು (Vacuum Tubes / ನಿರ್ವಾತ ನಳಿಕೆಗಳು)", "C) ಮೈಕ್ರೋಪ್ರೊಸೆಸರ್ ಚಿಪ್‌ಗಳು", "D) ಐಸಿ ಚಿಪ್‌ಗಳು"], a: 1, e: "ಮೊದಲ ತಲೆಮಾರಿನ ENIAC ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ ಸುಮಾರು 18,000 ವ್ಯಾಕ್ಯೂಮ್ ಟ್ಯೂಬ್‌ಗಳನ್ನು ಬಳಸಲಾಗಿತ್ತು." },
+        { id: 32, cat: 'modern', catName: 'ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಯುಗ', q: "32. 1949 ರಲ್ಲಿ ನಿರ್ಮಿಸಲಾದ 'EDVAC' ಕಂಪ್ಯೂಟರ್‌ನ ವಿಸ್ತೃತ ರೂಪವೇನು?", o: ["A) Electronic Discrete Variable Automatic Computer", "B) Electronic Data Variable Automatic Calculator", "C) Electrical Digital Vacuum Automatic Computer", "D) Electronic Direct Visual Automatic Computer"], a: 0, e: "EDVAC = Electronic Discrete Variable Automatic Computer." },
+        { id: 33, cat: 'modern', catName: 'ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಯುಗ', q: "33. ಜಾನ್ ವಾನ್ ನ್ಯೂಮನ್ ಅವರ 'ಸ್ಟೋರ್ಡ್-ಪ್ರೋಗ್ರಾಂ' (Stored-Program - ಡೇಟಾ ಮತ್ತು ಪ್ರೋಗ್ರಾಂ ಎರಡನ್ನೂ ಮೆಮೊರಿಯಲ್ಲೇ ಸೇವ್ ಮಾಡುವ) ಕಲ್ಪನೆಯ ಆಧಾರದ ಮೇಲೆ ನಿರ್ಮಿಸಲಾದ ಕಂಪ್ಯೂಟರ್ ಯಾವುದು?", o: ["A) Abacus", "B) Pascaline", "C) EDVAC (ಮತ್ತು EDSAC)", "D) Mark I"], a: 2, e: "EDVAC ಅನ್ನು ಜಾನ್ ವಾನ್ ನ್ಯೂಮನ್ ಅವರ ಸ್ಟೋರ್ಡ್-ಪ್ರೋಗ್ರಾಂ ಪರಿಕಲ್ಪನೆಯ ಮೇಲೆ ವಿನ್ಯಾಸಗೊಳಿಸಲಾಯಿತು." },
+        { id: 34, cat: 'modern', catName: 'ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಯುಗ', q: "34. 1951 ರಲ್ಲಿ ಬಿಡುಗಡೆಯಾದ ವಿಶ್ವದ ಮೊಟ್ಟಮೊದಲ 'ವಾಣಿಜ್ಯ ಕಂಪ್ಯೂಟರ್' (First Commercial Computer) ಯಾವುದು?", o: ["A) ENIAC", "B) EDVAC", "C) UNIVAC I (ಯೂನಿವಾಕ್ I)", "D) Mark I"], a: 2, e: "UNIVAC I (1951) ವ್ಯಾಪಾರ ಮತ್ತು ಕಚೇರಿ ಬಳಕೆಗಾಗಿ ಮಾರಾಟವಾದ ವಿಶ್ವದ ಮೊದಲ ವಾಣಿಜ್ಯ ಕಂಪ್ಯೂಟರ್ ಆಗಿದೆ." },
+        { id: 35, cat: 'modern', catName: 'ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಯುಗ', q: "35. 'UNIVAC' ಕಂಪ್ಯೂಟರ್‌ನ ವಿಸ್ತೃತ ರೂಪವೇನು?", o: ["A) Universal Automatic Computer", "B) Unique Vacuum Automatic Calculator", "C) United Variable Array Computer", "D) Universal Analog Computer"], a: 0, e: "UNIVAC = Universal Automatic Computer." },
+        { id: 36, cat: 'modern', catName: 'ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಯುಗ', q: "36. ಪಂಚ್ ಕಾರ್ಡ್ ಬದಲಿಗೆ ಡೇಟಾ ಸೇವ್ ಮಾಡಲು ಮೊದಲ ಬಾರಿಗೆ 'ಮ್ಯಾಗ್ನೆಟಿಕ್ ಟೇಪ್'ಗಳನ್ನು (Magnetic Tapes) ಬಳಸಿದ ಕಂಪ್ಯೂಟರ್ ಯಾವುದು?", o: ["A) Mark I", "B) ENIAC", "C) UNIVAC I (1951)", "D) Analytical Engine"], a: 2, e: "UNIVAC I ಡೇಟಾ ಸಂಗ್ರಹಣೆಗೆ ಮ್ಯಾಗ್ನೆಟಿಕ್ ಟೇಪ್ ಬಳಸಿದ ಮೊದಲ ಕಂಪ್ಯೂಟರ್ ಆಗಿದೆ." },
+        { id: 37, cat: 'modern', catName: 'ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಯುಗ', q: "37. 1942 ರಲ್ಲಿ ಜಾನ್ ಅಟಾನಾಸಾಫ್ ಮತ್ತು ಕ್ಲಿಫರ್ಡ್ ಬೆರಿ ನಿರ್ಮಿಸಿದ ಮೊದಲ ವಿಶೇಷ ಉದ್ದೇಶದ ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಡಿಜಿಟಲ್ ಕಂಪ್ಯೂಟರ್ ಮಾದರಿ ಯಾವುದು?", o: ["A) ABC (Atanasoff-Berry Computer)", "B) IBM PC", "C) PARAM", "D) PDP-8"], a: 0, e: "ABC (Atanasoff-Berry Computer) ಮೊದಲ ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಡಿಜಿಟಲ್ ಕಂಪ್ಯೂಟರ್ ಮಾದರಿಯಾಗಿದೆ." },
+        { id: 38, cat: 'modern', catName: 'ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಯುಗ', q: "38. 1949 ರಲ್ಲಿ ಕೇಂಬ್ರಿಡ್ಜ್ ವಿಶ್ವವಿದ್ಯಾಲಯದ ಮೌರಿಸ್ ವಿಲ್ಕ್ಸ್ ನಿರ್ಮಿಸಿದ 'EDSAC' ನ ವಿಸ್ತೃತ ರೂಪವೇನು?", o: ["A) Electronic Delay Storage Automatic Calculator", "B) Electronic Data System And Computer", "C) Early Digital Storage Automatic Computer", "D) Electrical Direct Storage Calculator"], a: 0, e: "EDSAC = Electronic Delay Storage Automatic Calculator." },
+        { id: 39, cat: 'modern', catName: 'ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಯುಗ', q: "39. Mark I (1944) ಕಂಪ್ಯೂಟರ್‌ನ ಅಧಿಕೃತ IBM ಹೆಸರು ಏನಾಗಿತ್ತು?", o: ["A) ASCC (Automatic Sequence Controlled Calculator)", "B) ENIAC", "C) UNIVAC", "D) EDVAC"], a: 0, e: "Mark I ಅನ್ನು ಅಧಿಕೃತವಾಗಿ Automatic Sequence Controlled Calculator (ASCC) ಎಂದು ಕರೆಯಲಾಗುತ್ತಿತ್ತು." },
+        { id: 40, cat: 'modern', catName: 'ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಯುಗ', q: "40. ಈ ಕೆಳಗಿನ ಕಂಪ್ಯೂಟರ್‌ಗಳನ್ನು ಅವುಗಳು ಆವಿಷ್ಕಾರಗೊಂಡ ವರ್ಷದ ಆಧಾರದ ಮೇಲೆ ಸರಿಯಾದ ಕಾಲಾನುಕ್ರಮದಲ್ಲಿ (ಹಳೆಯದರಿಂದ ಹೊಸದಕ್ಕೆ) ಜೋಡಿಸಿ:", o: ["A) Abacus ➔ Pascaline ➔ Analytical Engine ➔ ENIAC ➔ UNIVAC I", "B) ENIAC ➔ Abacus ➔ Pascaline ➔ UNIVAC I ➔ Analytical Engine", "C) Pascaline ➔ Abacus ➔ ENIAC ➔ Analytical Engine ➔ UNIVAC I", "D) UNIVAC I ➔ EDVAC ➔ ENIAC ➔ Mark I ➔ Abacus"], a: 0, e: "ಸರಿಯಾದ ಕಾಲಾನುಕ್ರಮ: Abacus (BC 3000) ➔ Pascaline (1642) ➔ Analytical Engine (1833) ➔ ENIAC (1946) ➔ UNIVAC I (1951)." },
+        { id: 41, cat: 'modern', catName: 'ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಯುಗ', q: "41. ENIAC, EDVAC ಮತ್ತು UNIVAC I ಇವು ಕಂಪ್ಯೂಟರ್‌ಗಳ ಯಾವ ತಲೆಮಾರಿಗೆ (Generation) ಸೇರಿವೆ?", o: ["A) ಮೊದಲನೇ ತಲೆಮಾರು (1st Generation - Vacuum Tubes)", "B) ಎರಡನೇ ತಲೆಮಾರು", "C) ಮೂರನೇ ತಲೆಮಾರು", "D) ನಾಲ್ಕನೇ ತಲೆಮಾರು"], a: 0, e: "ವ್ಯಾಕ್ಯೂಮ್ ಟ್ಯೂಬ್ ಬಳಸಿದ ENIAC, EDVAC, UNIVAC ಮೊದಲನೇ ತಲೆಮಾರಿನ (1940-1956) ಕಂಪ್ಯೂಟರ್‌ಗಳಾಗಿವೆ." },
+        { id: 42, cat: 'modern', catName: 'ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಯುಗ', q: "42. ವಿಶ್ವದ ಮೊದಲ ವಾಣಿಜ್ಯ ಕಂಪ್ಯೂಟರ್ ಆದ UNIVAC I ಅನ್ನು ಮೊದಲ ಬಾರಿಗೆ ಯಾವ ಸಂಸ್ಥೆಗೆ ನೀಡಲಾಯಿತು?", o: ["A) ಅಮೆರಿಕಾದ ಜನಗಣತಿ ಇಲಾಖೆ (US Census Bureau - 1951)", "B) ಇಸ್ರೋ", "C) ಭಾರತೀಯ ರೈಲ್ವೆ", "D) ಗೂಗಲ್"], a: 0, e: "UNIVAC I ಅನ್ನು 1951 ರಲ್ಲಿ ಅಮೆರಿಕದ ಜನಗಣತಿ ಇಲಾಖೆಗೆ (US Census Bureau) ಹಸ್ತಾಂತರಿಸಲಾಯಿತು." },
+
+        // 43 to 55: Indian History & KAS Statement Questions
+        { id: 43, cat: 'extra', catName: 'ಭಾರತದ ಇತಿಹಾಸ & ಹೇಳಿಕೆಗಳು', q: "43. ಭಾರತದಲ್ಲಿ ಮೊಟ್ಟಮೊದಲ ಬಾರಿಗೆ (1955 ರಲ್ಲಿ ಕೋಲ್ಕತ್ತಾದ ಇಂಡಿಯನ್ ಸ್ಟ್ಯಾಟಿಸ್ಟಿಕಲ್ ಇನ್‌ಸ್ಟಿಟ್ಯೂಟ್ - ISI ನಲ್ಲಿ) ಸ್ಥಾಪಿಸಲಾದ ಕಂಪ್ಯೂಟರ್ ಯಾವುದು?", o: ["A) HEC-2M (Hollerith Electronic Computer)", "B) PARAM 8000", "C) Siddhartha", "D) Apple II"], a: 0, e: "ಬ್ರಿಟನ್‌ನಿಂದ ತರಿಸಿ ಕೋಲ್ಕತ್ತಾದ ISI ನಲ್ಲಿ ಸ್ಥಾಪಿಸಲಾದ HEC-2M ಭಾರತದಲ್ಲಿ ಸ್ಥಾಪನೆಯಾದ ಮೊದಲ ಕಂಪ್ಯೂಟರ್." },
+        { id: 44, cat: 'extra', catName: 'ಭಾರತದ ಇತಿಹಾಸ & ಹೇಳಿಕೆಗಳು', q: "44. ಭಾರತದಲ್ಲೇ ಸಂಪೂರ್ಣವಾಗಿ ವಿನ್ಯಾಸಗೊಳಿಸಿ ನಿರ್ಮಿಸಲಾದ ಭಾರತದ ಮೊಟ್ಟಮೊದಲ ಸ್ವದೇಶಿ ಡಿಜಿಟಲ್ ಕಂಪ್ಯೂಟರ್ (1960 - ಮುಂಬೈನ TIFR ನಲ್ಲಿ) ಯಾವುದು?", o: ["A) TIFRAC (Tata Institute of Fundamental Research Automatic Calculator)", "B) ENIAC", "C) UNIVAC", "D) Cray-1"], a: 0, e: "TIFRAC ಭಾರತವೇ ಸ್ವಂತವಾಗಿ ನಿರ್ಮಿಸಿದ ಮೊದಲ ಆಟೋಮ್ಯಾಟಿಕ್ ಕಂಪ್ಯೂಟರ್ (ಇದಕ್ಕೆ ಜವಾಹರಲಾಲ್ ನೆಹರು ಹೆಸರಿಟ್ಟರು)." },
+        { id: 45, cat: 'extra', catName: 'ಭಾರತದ ಇತಿಹಾಸ & ಹೇಳಿಕೆಗಳು', q: "45. ಭಾರತದ ಎಲೆಕ್ಟ್ರಾನಿಕ್ಸ್ ಕಾರ್ಪೊರೇಷನ್ (ECIL) ಅಭಿವೃದ್ಧಿಪಡಿಸಿದ ಭಾರತದ ಮೊದಲ ಕಮರ್ಷಿಯಲ್/ಪರ್ಸನಲ್ ಕಂಪ್ಯೂಟರ್ (ಇದನ್ನು ಬೆಂಗಳೂರಿನ ಮುಖ್ಯ ಅಂಚೆ ಕಚೇರಿಯಲ್ಲಿ ಸ್ಥಾಪಿಸಲಾಯಿತು) ಯಾವುದು?", o: ["A) ಸಿದ್ಧಾರ್ಥ (Siddhartha - 1986)", "B) ಚಾಣಕ್ಯ", "C) ಆರ್ಯಭಟ", "D) ಭಾಸ್ಕರ"], a: 0, e: "ಭಾರತದಲ್ಲಿ ತಯಾರಾದ ಮೊದಲ ಸಾಮಾನ್ಯ ಕಂಪ್ಯೂಟರ್ 'ಸಿದ್ಧಾರ್ಥ' (1986 ರಲ್ಲಿ ಬೆಂಗಳೂರಿನ GPO ದಲ್ಲಿ ಸ್ಥಾಪಿಸಲಾಯಿತು)." },
+        { id: 46, cat: 'extra', catName: 'ಭಾರತದ ಇತಿಹಾಸ & ಹೇಳಿಕೆಗಳು', q: "46. ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ ದೋಷ ಉಂಟಾದಾಗ ಬಳಸುವ 'Bug' ಮತ್ತು 'Debugging' ಪದಗಳನ್ನು ಜನಪ್ರಿಯಗೊಳಿಸಿದ (Mark II ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ ಚಿಟ್ಟೆ ಸಿಕ್ಕಿಹಾಕಿಕೊಂಡಾಗ) ವಿಜ್ಞಾನಿ ಯಾರು?", o: ["A) ಗ್ರೇಸ್ ಹಾಪರ್ (Grace Hopper)", "B) ಅಡಾ ಲವ್‌ಲೇಸ್", "C) ಬ್ಲೇಸ್ ಪಾಸ್ಕಲ್", "D) ಜಾನ್ ನೇಪಿಯರ್"], a: 0, e: "COBOL ಭಾಷೆಯ ಜನಕಿ ಗ್ರೇಸ್ ಹಾಪರ್ ಮೊದಲ ಬಾರಿಗೆ ಕಂಪ್ಯೂಟರ್ ದೋಷಕ್ಕೆ 'Bug' ಎಂಬ ಪದ ಬಳಸಿದರು." },
+        { id: 47, cat: 'extra', catName: 'ಭಾರತದ ಇತಿಹಾಸ & ಹೇಳಿಕೆಗಳು', q: "47. [KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆ] ಹೇಳಿಕೆ 1: ಅಬಾಕಸ್ ವಿಶ್ವದ ಮೊದಲ ಲೆಕ್ಕಾಚಾರದ ಸಾಧನವಾಗಿದ್ದು ಚೀನಾದಲ್ಲಿ ಕಂಡುಹಿಡಿಯಲಾಯಿತು. | ಹೇಳಿಕೆ 2: ಪಾಸ್ಕಲೈನ್ ವಿಶ್ವದ ಮೊದಲ ಮೆಕ್ಯಾನಿಕಲ್ ಕ್ಯಾಲ್ಕುಲೇಟರ್ ಆಗಿದ್ದು ಬ್ಲೇಸ್ ಪಾಸ್ಕಲ್ ಕಂಡುಹಿಡಿದರು.", o: ["A) 1 ಮಾತ್ರ ಸರಿ", "B) 2 ಮಾತ್ರ ಸರಿ", "C) 1 ಮತ್ತು 2 ಎರಡೂ ಸರಿ", "D) 1 ಮತ್ತು 2 ಎರಡೂ ತಪ್ಪು"], a: 2, e: "ಎರಡೂ ಹೇಳಿಕೆಗಳು 100% ಸರಿಯಾಗಿವೆ." },
+        { id: 48, cat: 'extra', catName: 'ಭಾರತದ ಇತಿಹಾಸ & ಹೇಳಿಕೆಗಳು', q: "48. [KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆ] ಹೇಳಿಕೆ 1: ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ ಅವರ ಅನಲಿಟಿಕಲ್ ಎಂಜಿನ್ ಇನ್‌ಪುಟ್, ಔಟ್‌ಪುಟ್, ಪ್ರೊಸೆಸಿಂಗ್ ಮತ್ತು ಮೆಮೊರಿ ವ್ಯವಸ್ಥೆ ಹೊಂದಿತ್ತು. | ಹೇಳಿಕೆ 2: ಲೇಡಿ ಅಡಾ ಲವ್‌ಲೇಸ್ ಈ ಯಂತ್ರಕ್ಕೆ ಪ್ರೋಗ್ರಾಂ ಬರೆದ ವಿಶ್ವದ ಮೊದಲ ಪ್ರೋಗ್ರಾಮರ್ ಆಗಿದ್ದಾರೆ.", o: ["A) 1 ಮಾತ್ರ ಸರಿ", "B) 2 ಮಾತ್ರ ಸರಿ", "C) 1 ಮತ್ತು 2 ಎರಡೂ ಸರಿ", "D) 1 ಮತ್ತು 2 ಎರಡೂ ತಪ್ಪು"], a: 2, e: "ಎರಡೂ ಹೇಳಿಕೆಗಳು ಸರಿಯಾಗಿವೆ." },
+        { id: 49, cat: 'extra', catName: 'ಭಾರತದ ಇತಿಹಾಸ & ಹೇಳಿಕೆಗಳು', q: "49. [KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆ] ಹೇಳಿಕೆ 1: ENIAC ವಿಶ್ವದ ಮೊದಲ ಎಲೆಕ್ಟ್ರೋ-ಮೆಕ್ಯಾನಿಕಲ್ ಕಂಪ್ಯೂಟರ್ ಆಗಿದೆ. | ಹೇಳಿಕೆ 2: Mark I ವಿಶ್ವದ ಮೊದಲ ಸಂಪೂರ್ಣ ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಡಿಜಿಟಲ್ ಕಂಪ್ಯೂಟರ್ ಆಗಿದೆ.", o: ["A) 1 ಮಾತ್ರ ಸರಿ", "B) 2 ಮಾತ್ರ ಸರಿ", "C) 1 ಮತ್ತು 2 ಎರಡೂ ಸರಿ", "D) 1 ಮತ್ತು 2 ಎರಡೂ ತಪ್ಪು (ಪರಸ್ಪರ ಅದಲು-ಬದಲಾಗಿದೆ)"], a: 3, e: "ಎರಡೂ ತಪ್ಪು! Mark I ಮೊದಲ ಎಲೆಕ್ಟ್ರೋ-ಮೆಕ್ಯಾನಿಕಲ್ ಕಂಪ್ಯೂಟರ್ ಆಗಿದ್ದರೆ, ENIAC ಮೊದಲ ಸಂಪೂರ್ಣ ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಡಿಜಿಟಲ್ ಕಂಪ್ಯೂಟರ್ ಆಗಿದೆ." },
+        { id: 50, cat: 'extra', catName: 'ಭಾರತದ ಇತಿಹಾಸ & ಹೇಳಿಕೆಗಳು', q: "50. [KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆ] ಹೇಳಿಕೆ 1: ಹರ್ಮನ್ ಹೊಲೆರಿತ್ 1890ರ ಅಮೆರಿಕ ಜನಗಣತಿಗಾಗಿ ಪಂಚ್ ಕಾರ್ಡ್ ಆಧಾರಿತ ಟ್ಯಾಬುಲೇಟಿಂಗ್ ಮಷಿನ್ ಬಳಸಿದರು. | ಹೇಳಿಕೆ 2: ಇವರೇ ಮುಂದೆ ಪ್ರಸಿದ್ಧ IBM ಕಂಪನಿಯನ್ನು ಸ್ಥಾಪಿಸಿದರು.", o: ["A) 1 ಮಾತ್ರ ಸರಿ", "B) 2 ಮಾತ್ರ ಸರಿ", "C) 1 ಮತ್ತು 2 ಎರಡೂ ಸರಿ", "D) 1 ಮತ್ತು 2 ಎರಡೂ ತಪ್ಪು"], a: 2, e: "ಎರಡೂ ಹೇಳಿಕೆಗಳು ಸರಿಯಾಗಿವೆ." },
+        { id: 51, cat: 'extra', catName: 'ಭಾರತದ ಇತಿಹಾಸ & ಹೇಳಿಕೆಗಳು', q: "51. [KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆ] ಹೇಳಿಕೆ 1: EDVAC ಕಂಪ್ಯೂಟರ್ ಜಾನ್ ವಾನ್ ನ್ಯೂಮನ್ ಅವರ ಸ್ಟೋರ್ಡ್-ಪ್ರೋಗ್ರಾಂ ಕಲ್ಪನೆಯ ಮೇಲೆ ನಿರ್ಮಿತವಾಯಿತು. | ಹೇಳಿಕೆ 2: UNIVAC I ಡೇಟಾ ಸೇವ್ ಮಾಡಲು ಮ್ಯಾಗ್ನೆಟಿಕ್ ಟೇಪ್ ಬಳಸಿದ ವಿಶ್ವದ ಮೊದಲ ವಾಣಿಜ್ಯ ಕಂಪ್ಯೂಟರ್ ಆಗಿದೆ.", o: ["A) 1 ಮಾತ್ರ ಸರಿ", "B) 2 ಮಾತ್ರ ಸರಿ", "C) 1 ಮತ್ತು 2 ಎರಡೂ ಸರಿ", "D) 1 ಮತ್ತು 2 ಎರಡೂ ತಪ್ಪು"], a: 2, e: "ಎರಡೂ ಹೇಳಿಕೆಗಳು ಸರಿಯಾಗಿವೆ." },
+        { id: 52, cat: 'extra', catName: 'ಭಾರತದ ಇತಿಹಾಸ & ಹೇಳಿಕೆಗಳು', q: "52. [ಹೊಂದಿಸಿ ಬರೆಯಿರಿ] 1) ಜಾನ್ ನೇಪಿಯರ್ - ನೇಪಿಯರ್ಸ್ ಬೋನ್ಸ್ | 2) ಬ್ಲೇಸ್ ಪಾಸ್ಕಲ್ - ಪಾಸ್ಕಲೈನ್ | 3) ಹೋವರ್ಡ್ ಐಕೆನ್ - Mark I | 4) ಎಕರ್ಟ್ ಮತ್ತು ಮೌಚ್ಲಿ - ENIAC & UNIVAC", o: ["A) 1 ಮತ್ತು 2 ಮಾತ್ರ ಸರಿ", "B) 2 ಮತ್ತು 3 ಮಾತ್ರ ಸರಿ", "C) 1, 2 ಮತ್ತು 3 ಮಾತ್ರ ಸರಿ", "D) 1, 2, 3 ಮತ್ತು 4 ಎಲ್ಲವೂ ಸರಿ"], a: 3, e: "ನಾಲ್ಕೂ ಜೋಡಿಗಳು ಸರಿಯಾಗಿ ಹೊಂದಾಣಿಕೆಯಾಗಿವೆ." },
+        { id: 53, cat: 'extra', catName: 'ಭಾರತದ ಇತಿಹಾಸ & ಹೇಳಿಕೆಗಳು', q: "53. ಇಂಟೆಲ್ (Intel) ಕಂಪನಿಯು 1971 ರಲ್ಲಿ ಬಿಡುಗಡೆ ಮಾಡಿದ ವಿಶ್ವದ ಮೊಟ್ಟಮೊದಲ 'ಮೈಕ್ರೋಪ್ರೊಸೆಸರ್' (First Microprocessor) ಯಾವುದು?", o: ["A) Intel 4004 (ಟೆಡ್ ಹಾಫ್ ವಿನ್ಯಾಸಗೊಳಿಸಿದರು)", "B) Intel Core i9", "C) Ryzen 5", "D) Apple M1"], a: 0, e: "1971 ರಲ್ಲಿ ಟೆಡ್ ಹಾಫ್ ವಿನ್ಯಾಸಗೊಳಿಸಿದ 4-ಬಿಟ್ 'Intel 4004' ವಿಶ್ವದ ಮೊದಲ ಮೈಕ್ರೋಪ್ರೊಸೆಸರ್ ಚಿಪ್ ಆಗಿದೆ." },
+        { id: 54, cat: 'extra', catName: 'ಭಾರತದ ಇತಿಹಾಸ & ಹೇಳಿಕೆಗಳು', q: "54. ಕಂಪ್ಯೂಟರ್ ಮೌಸ್ (Computer Mouse) ಅನ್ನು 1960ರ ದಶಕದಲ್ಲಿ ಮರದ ಪೆಟ್ಟಿಗೆಯ ರೂಪದಲ್ಲಿ ಕಂಡುಹಿಡಿದ ವಿಜ್ಞಾನಿ ಯಾರು?", o: ["A) ಡಗ್ಲಸ್ ಎಂಗೆಲ್‌ಬಾರ್ಟ್ (Douglas Engelbart)", "B) ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್", "C) ಕ್ರಿಸ್ಟೋಫರ್ ಶೋಲ್ಸ್", "D) ಜಾನ್ ಮೌಚ್ಲಿ"], a: 0, e: "ಡಗ್ಲಸ್ ಎಂಗೆಲ್‌ಬಾರ್ಟ್ ಕಂಪ್ಯೂಟರ್ ಮೌಸ್ ಕಂಡುಹಿಡಿದರು (ಕ್ರಿಸ್ಟೋಫರ್ ಶೋಲ್ಸ್ ಕೀಬೋರ್ಡ್ ಕಂಡುಹಿಡಿದರು)." },
+        { id: 55, cat: 'extra', catName: 'ಭಾರತದ ಇತಿಹಾಸ & ಹೇಳಿಕೆಗಳು', q: "55. QWERTY ವಿನ್ಯಾಸದ ಟೈಪ್‌ರೈಟರ್ / ಕೀಬೋರ್ಡ್ ಅನ್ನು ಕಂಡುಹಿಡಿದವರು ಯಾರು?", o: ["A) ಕ್ರಿಸ್ಟೋಫರ್ ಲಾಥಮ್ ಶೋಲ್ಸ್ (Christopher Latham Sholes)", "B) ಡಗ್ಲಸ್ ಎಂಗೆಲ್‌ಬಾರ್ಟ್", "C) ಬ್ಲೇಸ್ ಪಾಸ್ಕಲ್", "D) ಹೋವರ್ಡ್ ಐಕೆನ್"], a: 0, e: "ಕ್ರಿಸ್ಟೋಫರ್ ಲಾಥಮ್ ಶೋಲ್ಸ್ QWERTY ಕೀಬೋರ್ಡ್ ವಿನ್ಯಾಸದ ಜನಕ." }
+    ];
+
+    let rightCount = 0;
+    let wrongCount = 0;
+    let viewMode = 'all';
+    let currentIndex = 0;
+    let currentFilter = 'all';
+    let secondsElapsed = 0;
+    let userAnswers = new Array(mcqs.length).fill(null);
+
+    setInterval(() => {
+        secondsElapsed++;
+        const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+        const secs = String(secondsElapsed % 60).padStart(2, '0');
+        document.getElementById('timerStat').textContent = `⏱️ ${mins}:${secs}`;
+    }, 1000);
+
+    function toggleTheme() {
+        const b = document.body;
+        const btn = document.getElementById('themeBtn');
+        if (b.getAttribute('data-theme') === 'dark') {
+            b.removeAttribute('data-theme');
+            btn.textContent = '🌙 ಡಾರ್ಕ್ ಮೋಡ್';
+        } else {
+            b.setAttribute('data-theme', 'dark');
+            btn.textContent = '☀️ ಲೈಟ್ ಮೋಡ್';
+        }
+    }
+
+    function initQuiz() {
+        const container = document.getElementById('quizContainer');
+        const palette = document.getElementById('paletteGrid');
+        container.innerHTML = '';
+        palette.innerHTML = '';
+        rightCount = 0;
+        wrongCount = 0;
+        secondsElapsed = 0;
+        userAnswers.fill(null);
+        updateStats();
+
+        mcqs.forEach((item, idx) => {
+            const pBtn = document.createElement('button');
+            pBtn.className = 'p-num';
+            pBtn.id = 'p-' + idx;
+            pBtn.textContent = item.id;
+            pBtn.onclick = () => jumpToQuestion(idx);
+            palette.appendChild(pBtn);
+
+            const card = document.createElement('div');
+            card.className = 'q-card';
+            card.id = 'qcard-' + idx;
+            card.dataset.cat = item.cat;
+
+            const head = document.createElement('div');
+            head.className = 'q-header';
+            head.innerHTML = `<span class="q-cat-badge">${item.catName}</span><span style="font-size:0.8rem; color:var(--text-muted);">ಪ್ರಶ್ನೆ #${item.id} / 55</span>`;
+            card.appendChild(head);
+
+            const title = document.createElement('div');
+            title.className = 'q-title';
+            title.textContent = item.q;
+            card.appendChild(title);
+
+            const grid = document.createElement('div');
+            grid.className = 'opt-grid';
+
+            const exp = document.createElement('div');
+            exp.className = 'exp-box';
+            exp.id = 'exp-' + idx;
+            exp.innerHTML = `<strong>💡 ಪರೀಕ್ಷಾ ವಿವರಣೆ:</strong> ${item.e}`;
+
+            item.o.forEach((optText, oIdx) => {
+                const btn = document.createElement('button');
+                btn.className = 'opt-btn';
+                btn.textContent = optText;
+                btn.onclick = () => checkAnswer(idx, oIdx, btn, grid, exp);
+                grid.appendChild(btn);
+            });
+
+            card.appendChild(grid);
+            card.appendChild(exp);
+            container.appendChild(card);
+        });
+
+        applyViewVisibility();
+    }
+
+    function checkAnswer(qIdx, selIdx, clickedBtn, grid, exp) {
+        const allBtns = grid.querySelectorAll('.opt-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        const rightIdx = mcqs[qIdx].a;
+        const pBtn = document.getElementById('p-' + qIdx);
+
+        if (selIdx === rightIdx) {
+            clickedBtn.classList.add('correct');
+            pBtn.classList.add('p-right');
+            userAnswers[qIdx] = 'right';
+            rightCount++;
+        } else {
+            clickedBtn.classList.add('wrong');
+            allBtns[rightIdx].classList.add('correct');
+            pBtn.classList.add('p-wrong');
+            userAnswers[qIdx] = 'wrong';
+            wrongCount++;
+        }
+
+        exp.style.display = 'block';
+        updateStats();
+    }
+
+    function updateStats() {
+        const totalDone = rightCount + wrongCount;
+        const netScore = (rightCount - (wrongCount * 0.25)).toFixed(2);
+        document.getElementById('scoreStat').textContent = `🏆 ಅಂಕಗಳು: ${rightCount} / 55`;
+        document.getElementById('rightStat').textContent = `✅ ಸರಿ: ${rightCount}`;
+        document.getElementById('wrongStat').textContent = `❌ ತಪ್ಪು: ${wrongCount}`;
+        document.getElementById('negStat').textContent = `📉 ನೆಗೆಟಿವ್ ಸಹಿತ (0.25): ${netScore}`;
+        document.getElementById('progBar').style.width = ((totalDone / 55) * 100) + '%';
+    }
+
+    function setMode(mode) {
+        viewMode = mode;
+        document.getElementById('modeAllBtn').classList.toggle('active-mode', mode === 'all');
+        document.getElementById('modeSingleBtn').classList.toggle('active-mode', mode === 'single');
+        document.getElementById('stepperBox').style.display = (mode === 'single') ? 'flex' : 'none';
+        applyViewVisibility();
+    }
+
+    function filterCategory(cat, tabBtn) {
+        currentFilter = cat;
+        document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+        if (tabBtn) tabBtn.classList.add('active');
+        if (viewMode === 'single') setMode('all');
+        applyViewVisibility();
+    }
+
+    function filterWrongOnly() {
+        setMode('all');
+        const cards = document.querySelectorAll('.q-card');
+        let anyWrong = false;
+        cards.forEach((c, idx) => {
+            if (userAnswers[idx] === 'wrong') {
+                c.style.display = 'block';
+                anyWrong = true;
+            } else {
+                c.style.display = 'none';
+            }
+        });
+        if (!anyWrong) {
+            alert('ನೀವು ಇದುವರೆಗೆ ಯಾವುದೇ ತಪ್ಪು ಉತ್ತರ ನೀಡಿಲ್ಲ!');
+            filterCategory('all', document.querySelector('.filter-tab'));
+        }
+    }
+
+    function applyViewVisibility() {
+        const cards = document.querySelectorAll('.q-card');
+        if (viewMode === 'single') {
+            cards.forEach((c, idx) => {
+                c.style.display = (idx === currentIndex) ? 'block' : 'none';
+            });
+            document.getElementById('stepIndicator').textContent = `ಪ್ರಶ್ನೆ ${currentIndex + 1} / 55`;
+        } else {
+            cards.forEach(c => {
+                if (currentFilter === 'all' || c.dataset.cat === currentFilter) {
+                    c.style.display = 'block';
+                } else {
+                    c.style.display = 'none';
+                }
+            });
+        }
+    }
+
+    function prevQuestion() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            applyViewVisibility();
+        }
+    }
+
+    function nextQuestion() {
+        if (currentIndex < mcqs.length - 1) {
+            currentIndex++;
+            applyViewVisibility();
+        }
+    }
+
+    function jumpToQuestion(idx) {
+        if (viewMode === 'single') {
+            currentIndex = idx;
+            applyViewVisibility();
+        } else {
+            const target = document.getElementById('qcard-' + idx);
+            target.style.display = 'block';
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+
+    function showAllAnswers() {
+        mcqs.forEach((item, idx) => {
+            const card = document.getElementById('qcard-' + idx);
+            const btns = card.querySelectorAll('.opt-btn');
+            btns.forEach((b, bIdx) => {
+                b.disabled = true;
+                if (bIdx === item.a) b.classList.add('correct');
+            });
+            document.getElementById('exp-' + idx).style.display = 'block';
+        });
+    }
+
+    function showResultCard() {
+        const box = document.getElementById('resultBox');
+        const txt = document.getElementById('resultText');
+        const pct = Math.round((rightCount / 55) * 100);
+        const net = (rightCount - (wrongCount * 0.25)).toFixed(2);
+        txt.innerHTML = `ಒಟ್ಟು ಪ್ರಶ್ನೆಗಳು: <b>55</b> | ಸರಿ ಉತ್ತರಗಳು: <b>${rightCount}</b> | ತಪ್ಪು ಉತ್ತರಗಳು: <b>${wrongCount}</b><br>ಶೇಕಡಾವಾರು ಅಂಕ: <b>${pct}%</b> | KPSC ನೆಗೆಟಿವ್ ಅಂಕ ಕಳೆದ ನಂತರ ನಿವ್ವಳ ಸ್ಕೋರ್: <b>${net} / 55</b>`;
+        box.style.display = 'block';
+        box.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function resetQuiz() {
+        document.getElementById('resultBox').style.display = 'none';
+        initQuiz();
+    }
+
+    initQuiz();
+</script>
+
+</body>
+</html>

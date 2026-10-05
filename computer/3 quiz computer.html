@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಕಂಪ್ಯೂಟರ್ ವರ್ಗೀಕರಣ & ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ - 45 MCQs ಪರೀಕ್ಷಾ ಪೋರ್ಟಲ್</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600;700;800&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Eye-Resonance Soothing Exam Theme */
+            --bg-page: #edf2ec;
+            --bg-card: #ffffff;
+            --bg-soft: #e1eae0;
+            --text-dark: #15221b;
+            --text-muted: #42564b;
+            --brand-teal: #0d6e5b;
+            --brand-blue: #0284c7;
+            --brand-purple: #6d28d9;
+            --brand-red: #dc2626;
+            --brand-amber: #d97706;
+            --brand-green: #16a34a;
+            --border-clr: #c3d4c0;
+            --shadow: 0 8px 24px rgba(13, 110, 91, 0.09);
+        }
+
+        [data-theme="dark"] {
+            --bg-page: #0a120f;
+            --bg-card: #12201b;
+            --bg-soft: #1a2e27;
+            --text-dark: #ecfdf5;
+            --text-muted: #a7f3d0;
+            --brand-teal: #10b981;
+            --brand-blue: #38bdf8;
+            --brand-purple: #c084fc;
+            --brand-red: #f87171;
+            --brand-amber: #fbbf24;
+            --brand-green: #4ade80;
+            --border-clr: #254238;
+            --shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans Kannada', 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-dark);
+            line-height: 1.75;
+            transition: background 0.3s, color 0.3s;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #064e3b 0%, #0f766e 50%, #0369a1 100%);
+            color: #fff;
+            padding: 26px 16px 22px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: clamp(1.35rem, 3.8vw, 2.1rem);
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        header p {
+            font-size: 0.94rem;
+            opacity: 0.94;
+            margin-bottom: 14px;
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.4);
+            color: #fff;
+            padding: 7px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            font-family: inherit;
+            transition: 0.2s;
+        }
+
+        .nav-btn:hover, .nav-btn.active-mode {
+            background: #ffffff;
+            color: #064e3b;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 22px auto;
+            padding: 0 15px;
+        }
+
+        /* Sticky Dashboard Bar */
+        .dashboard-bar {
+            background: var(--bg-card);
+            border: 2px solid var(--brand-teal);
+            border-radius: 16px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .stats-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .stat-pill {
+            background: var(--bg-soft);
+            padding: 6px 14px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 8px;
+            background: var(--bg-soft);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 6px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #10b981, #0284c7);
+            transition: width 0.3s;
+        }
+
+        /* Filter Tabs */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .filter-tab {
+            background: var(--bg-card);
+            border: 1px solid var(--border-clr);
+            color: var(--text-dark);
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.86rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .filter-tab.active {
+            background: var(--brand-teal);
+            color: #fff;
+            border-color: var(--brand-teal);
+        }
+
+        /* Question Card */
+        .q-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-clr);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 18px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s;
+        }
+
+        .q-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .q-cat-badge {
+            background: var(--bg-soft);
+            color: var(--brand-blue);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.76rem;
+            font-weight: 700;
+        }
+
+        .q-title {
+            font-weight: 700;
+            font-size: 1.04rem;
+            margin-bottom: 14px;
+        }
+
+        .opt-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+
+        .opt-btn {
+            background: var(--bg-soft);
+            border: 2px solid transparent;
+            color: var(--text-dark);
+            padding: 11px 15px;
+            border-radius: 10px;
+            text-align: left;
+            font-family: inherit;
+            font-size: 0.93rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .opt-btn:hover:not(:disabled) {
+            border-color: var(--brand-blue);
+            transform: translateY(-1px);
+        }
+
+        .opt-btn.correct {
+            background: #dcfce7;
+            border-color: #16a34a;
+            color: #14532d;
+            font-weight: 700;
+        }
+
+        .opt-btn.wrong {
+            background: #fee2e2;
+            border-color: #dc2626;
+            color: #7f1d1d;
+        }
+
+        .exp-box {
+            display: none;
+            margin-top: 14px;
+            padding: 12px 15px;
+            background: var(--bg-soft);
+            border-left: 4px solid var(--brand-blue);
+            border-radius: 8px;
+            font-size: 0.92rem;
+        }
+
+        /* Single Question Stepper Navigation */
+        .stepper-controls {
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            background: var(--bg-card);
+            padding: 14px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-clr);
+        }
+
+        /* Question Palette Grid (1 to 45) */
+        .palette-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-clr);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 22px;
+        }
+
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(38px, 1fr));
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .p-num {
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border-clr);
+            background: var(--bg-soft);
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 0.82rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .p-num.p-right { background: #16a34a; color: #fff; border-color: #16a34a; }
+        .p-num.p-wrong { background: #dc2626; color: #fff; border-color: #dc2626; }
+
+        /* Score Result Modal Card */
+        .result-card {
+            display: none;
+            background: linear-gradient(135deg, #064e3b, #0284c7);
+            color: #fff;
+            border-radius: 18px;
+            padding: 28px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        @media (max-width: 650px) {
+            .opt-grid { grid-template-columns: 1fr; }
+            .dashboard-bar { padding: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🎯 KPSC (FDA / SDA / KAS / KEA) ಕಂಪ್ಯೂಟರ್ ಲೈವ್ ಕ್ವಿಜ್ ಪೋರ್ಟಲ್</h1>
+    <p>ಕಂಪ್ಯೂಟರ್‌ಗಳ ವರ್ಗೀಕರಣ, ಪ್ಯಾರಲಲ್ ಪ್ರೊಸೆಸಿಂಗ್ ಮತ್ತು ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ - 45 ಸಂಭವನೀಯ ಪ್ರಶ್ನೆಗಳು</p>
+    <div class="top-nav">
+        <a href="computer_notes.html" class="nav-btn" style="background:#f59e0b; color:#000;">📖 ನೋಟ್ಸ್ ಪುಟಕ್ಕೆ ಹಿಂತಿರುಗಿ</a>
+        <button class="nav-btn active-mode" id="modeAllBtn" onclick="setMode('all')">📋 ಎಲ್ಲಾ ಪ್ರಶ್ನೆಗಳ ಮೋಡ್ (All 45)</button>
+        <button class="nav-btn" id="modeSingleBtn" onclick="setMode('single')">🎯 ಒಂದೊಂದೇ ಪ್ರಶ್ನೆ ಮೋಡ್ (Exam Mode)</button>
+        <button class="nav-btn" onclick="toggleTheme()" id="themeBtn">🌙 ಡಾರ್ಕ್ ಮೋಡ್</button>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- STICKY SCORE & TIMER DASHBOARD -->
+    <div class="dashboard-bar">
+        <div class="stats-group">
+            <span class="stat-pill" style="color:var(--brand-teal);" id="scoreStat">🏆 ಸ್ಕೋರ್: 0 / 45</span>
+            <span class="stat-pill" style="color:var(--brand-green);" id="rightStat">✅ ಸರಿ: 0</span>
+            <span class="stat-pill" style="color:var(--brand-red);" id="wrongStat">❌ ತಪ್ಪು: 0</span>
+            <span class="stat-pill" style="color:var(--brand-blue);" id="timerStat">⏱️ ಸಮಯ: 00:00</span>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="nav-btn" style="background:var(--brand-teal);" onclick="showAllAnswers()">👁️ ಎಲ್ಲಾ ಉತ್ತರ ತೋರಿಸಿ</button>
+            <button class="nav-btn" style="background:var(--brand-purple);" onclick="showResultCard()">📊 ಫಲಿತಾಂಶ ಕಾರ್ಡ್</button>
+            <button class="nav-btn" style="background:var(--brand-red);" onclick="resetQuiz()">🔄 ರೀಸೆಟ್</button>
+        </div>
+        <div class="progress-track">
+            <div class="progress-fill" id="progBar"></div>
+        </div>
+    </div>
+
+    <!-- RESULT SUMMARY CARD -->
+    <div class="result-card" id="resultBox">
+        <h2 style="font-size:1.7rem; margin-bottom:8px;">🎉 ನಿಮ್ಮ ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶ (Exam Performance Report)</h2>
+        <p id="resultText" style="font-size:1.15rem; margin-bottom:14px;"></p>
+        <button class="nav-btn" style="background:#fff; color:#064e3b;" onclick="document.getElementById('resultBox').style.display='none'">ಮುಚ್ಚಿ (Close)</button>
+    </div>
+
+    <!-- CATEGORY FILTER TABS -->
+    <div class="filter-bar">
+        <button class="filter-tab active" onclick="filterCategory('all', this)">ಎಲ್ಲಾ ಪ್ರಶ್ನೆಗಳು (45)</button>
+        <button class="filter-tab" onclick="filterCategory('class', this)">1. ಕಂಪ್ಯೂಟರ್ ವರ್ಗೀಕರಣ (1-7)</button>
+        <button class="filter-tab" onclick="filterCategory('kas', this)">2. KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆಗಳು (8-10)</button>
+        <button class="filter-tab" onclick="filterCategory('super', this)">3. ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ (11-30)</button>
+        <button class="filter-tab" onclick="filterCategory('extra', this)">4. ಪ್ಯಾರಲಲ್ & ಹೆಚ್ಚುವರಿ (31-45)</button>
+    </div>
+
+    <!-- QUESTION NUMBER PALETTE (1 TO 45) -->
+    <div class="palette-box">
+        <strong style="font-size:0.88rem; color:var(--brand-teal);">🔢 ಪ್ರಶ್ನೆಗಳ ನ್ಯಾವಿಗೇಷನ್ ಪ್ಯಾಲೆಟ್ (ಯಾವುದೇ ಪ್ರಶ್ನೆಗೆ ನೇರವಾಗಿ ಜಂಪ್ ಮಾಡಲು ಸಂಖ್ಯೆ ಕ್ಲಿಕ್ ಮಾಡಿ):</strong>
+        <div class="palette-grid" id="paletteGrid"></div>
+    </div>
+
+    <!-- QUESTIONS CONTAINER -->
+    <div id="quizContainer"></div>
+
+    <!-- SINGLE MODE STEPPER BUTTONS -->
+    <div class="stepper-controls" id="stepperBox">
+        <button class="nav-btn" style="background:var(--brand-teal);" onclick="prevQuestion()">⬅️ ಹಿಂದಿನ ಪ್ರಶ್ನೆ</button>
+        <strong id="stepIndicator">ಪ್ರಶ್ನೆ 1 / 45</strong>
+        <button class="nav-btn" style="background:var(--brand-blue);" onclick="nextQuestion()">ಮುಂದಿನ ಪ್ರಶ್ನೆ ➡️</button>
+    </div>
+
+</div>
+
+<script>
+    // Complete 45 Questions Dataset
+    const mcqs = [
+        // Category: class (1-7)
+        { id: 1, cat: 'class', catName: 'ಕಂಪ್ಯೂಟರ್ ವರ್ಗೀಕರಣ', q: "1. ವಾಹನಗಳಲ್ಲಿರುವ ಸ್ಪೀಡೋಮೀಟರ್ (Speedometer) ಯಾವ ರೀತಿಯ ಕಂಪ್ಯೂಟರ್‌ಗೆ ಅತ್ಯುತ್ತಮ ಉದಾಹರಣೆಯಾಗಿದೆ?", o: ["A) ಡಿಜಿಟಲ್ ಕಂಪ್ಯೂಟರ್", "B) ಅನಲಾಗ್ ಕಂಪ್ಯೂಟರ್", "C) ಹೈಬ್ರಿಡ್ ಕಂಪ್ಯೂಟರ್", "D) ಮೈಕ್ರೋ ಕಂಪ್ಯೂಟರ್"], a: 1, e: "ಮುಳ್ಳಿನ ಸ್ಪೀಡೋಮೀಟರ್ ನಿರಂತರ ಭೌತಿಕ ವೇಗವನ್ನು (Continuous Physical Data) ಅಳೆಯುವುದರಿಂದ ಇದು ಅನಲಾಗ್ ಕಂಪ್ಯೂಟರ್ ಆಗಿದೆ." },
+        { id: 2, cat: 'class', catName: 'ಕಂಪ್ಯೂಟರ್ ವರ್ಗೀಕರಣ', q: "2. ಆಸ್ಪತ್ರೆಗಳ ತೀವ್ರ ನಿಗಾ ಘಟಕ (ICU) ದಲ್ಲಿ ಬಳಸುವ ECG ಯಂತ್ರವು ಯಾವ ಕಂಪ್ಯೂಟರ್‌ಗೆ ಉದಾಹರಣೆಯಾಗಿದೆ?", o: ["A) ಅನಲಾಗ್", "B) ಹೈಬ್ರಿಡ್", "C) ಡಿಜಿಟಲ್", "D) ಮೈನ್‌ಫ್ರೇಮ್"], a: 1, e: "ಇದು ರೋಗಿಯ ಹೃದಯ ಬಡಿತದ ಅನಲಾಗ್ ಸಿಗ್ನಲ್ ಅನ್ನು ಡಿಜಿಟಲ್ ಅಂಕಿಗಳಾಗಿ ಪರಿವರ್ತಿಸುತ್ತದೆ." },
+        { id: 3, cat: 'class', catName: 'ಕಂಪ್ಯೂಟರ್ ವರ್ಗೀಕರಣ', q: "3. ಗಾತ್ರ ಮತ್ತು ಕಾರ್ಯಕ್ಷಮತೆಯ ಆಧಾರದ ಮೇಲೆ ಕೆಳಗಿನವುಗಳನ್ನು ಏರಿಕೆ ಕ್ರಮದಲ್ಲಿ (ಸಣ್ಣದರಿಂದ ದೊಡ್ಡದಕ್ಕೆ) ಜೋಡಿಸಿ:", o: ["A) Micro, Mainframe, Mini, Super", "B) Micro, Mini, Mainframe, Super", "C) Mini, Micro, Mainframe, Super", "D) Mainframe, Mini, Micro, Super"], a: 1, e: "ಸಣ್ಣದರಿಂದ ದೊಡ್ಡದಕ್ಕೆ ಸರಿಯಾದ ಕ್ರಮ: Micro ➔ Mini ➔ Mainframe ➔ Super." },
+        { id: 4, cat: 'class', catName: 'ಕಂಪ್ಯೂಟರ್ ವರ್ಗೀಕರಣ', q: "4. ಬ್ಯಾಂಕಿಂಗ್ ಕ್ಷೇತ್ರ ಮತ್ತು ರೈಲ್ವೆ ಟಿಕೆಟ್ ಕಾಯ್ದಿರಿಸುವಿಕೆ (Reservation) ಯಲ್ಲಿ ಏಕಕಾಲದಲ್ಲಿ ಲಕ್ಷಾಂತರ ವಹಿವಾಟುಗಳನ್ನು ನಿರ್ವಹಿಸಲು ಯಾವ ಕಂಪ್ಯೂಟರ್ ಬಳಸಲಾಗುತ್ತದೆ?", o: ["A) ಮಿನಿ ಕಂಪ್ಯೂಟರ್", "B) ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್", "C) ಮೈನ್‌ಫ್ರೇಮ್ ಕಂಪ್ಯೂಟರ್", "D) ಮೈಕ್ರೋ ಕಂಪ್ಯೂಟರ್"], a: 2, e: "ಮೈನ್‌ಫ್ರೇಮ್ ಕಂಪ್ಯೂಟರ್‌ಗಳನ್ನು 'Big Iron' ಎಂದೂ ಕರೆಯುತ್ತಾರೆ." },
+        { id: 5, cat: 'class', catName: 'ಕಂಪ್ಯೂಟರ್ ವರ್ಗೀಕರಣ', q: "5. ಡೆಸ್ಕ್‌ಟಾಪ್, ಲ್ಯಾಪ್‌ಟಾಪ್ ಮತ್ತು ಟ್ಯಾಬ್ಲೆಟ್‌ಗಳು ಯಾವ ವರ್ಗದ ಕಂಪ್ಯೂಟರ್‌ಗಳಿಗೆ ಸೇರಿವೆ?", o: ["A) ಮಿನಿ ಕಂಪ್ಯೂಟರ್", "B) ಮೈನ್‌ಫ್ರೇಮ್ ಕಂಪ್ಯೂಟರ್", "C) ಮೈಕ್ರೋ ಕಂಪ್ಯೂಟರ್", "D) ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್"], a: 2, e: "ಇವು ಸಿಂಗಲ್-ಯೂಸರ್ ಮೈಕ್ರೋ ಕಂಪ್ಯೂಟರ್‌ಗಳಾಗಿವೆ." },
+        { id: 6, cat: 'class', catName: 'ಕಂಪ್ಯೂಟರ್ ವರ್ಗೀಕರಣ', q: "6. 'ಮೈಕ್ರೋಪ್ರೊಸೆಸರ್' (Microprocessor) ಅನ್ನು ಬಳಸಲು ಪ್ರಾರಂಭಿಸಿದ ಕಂಪ್ಯೂಟರ್‌‌ಗಳು ಯಾವುವು?", o: ["A) ಮೈನ್‌ಫ್ರೇಮ್ ಕಂಪ್ಯೂಟರ್‌ಗಳು", "B) ಮೈಕ್ರೋ ಕಂಪ್ಯೂಟರ್‌ಗಳು", "C) ಅನಲಾಗ್ ಕಂಪ್ಯೂಟರ್‌ಗಳು", "D) ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌ಗಳು"], a: 1, e: "ಮೈಕ್ರೋಪ್ರೊಸೆಸರ್ ಬಳಸುವುದರಿಂದ ಇವುಗಳನ್ನು ಮೈಕ್ರೋ ಕಂಪ್ಯೂಟರ್ ಎನ್ನುತ್ತಾರೆ." },
+        { id: 7, cat: 'class', catName: 'ಕಂಪ್ಯೂಟರ್ ವರ್ಗೀಕರಣ', q: "7. ವಿಶ್ವದ ಮೊಟ್ಟಮೊದಲ ವಾಣಿಜ್ಯಿಕವಾಗಿ ಯಶಸ್ವಿಯಾದ 'ಮಿನಿ ಕಂಪ್ಯೂಟರ್' (Minicomputer) ಯಾವುದು?", o: ["A) ENIAC", "B) PDP-8", "C) IBM 360", "D) PARAM"], a: 1, e: "PDP-8 ಅನ್ನು DEC (Digital Equipment Corporation) ಸಂಸ್ಥೆ ತಯಾರಿಸಿತು." },
+
+        // Category: kas (8-10)
+        { id: 8, cat: 'kas', catName: 'KAS ಹೇಳಿಕೆ ಆಧಾರಿತ', q: "8. [KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆ] ಹೇಳಿಕೆ 1: ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌ನ ಮುಖ್ಯ ಉದ್ದೇಶ ಸಂಕೀರ್ಣ ಲೆಕ್ಕಾಚಾರಗಳನ್ನು ಅತಿ ವೇಗವಾಗಿ ಮಾಡುವುದಾಗಿದೆ. | ಹೇಳಿಕೆ 2: ಮೈನ್‌ಫ್ರೇಮ್ ಕಂಪ್ಯೂಟರ್‌ನ ಮುಖ್ಯ ಉದ್ದೇಶ ಏಕಕಾಲದಲ್ಲಿ ಲಕ್ಷಾಂತರ ಬಳಕೆದಾರರ ಡೇಟಾವನ್ನು ಸುರಕ್ಷಿತವಾಗಿ ನಿರ್ವಹಿಸುವುದಾಗಿದೆ (Bulk Transaction Processing).", o: ["A) 1 ಮಾತ್ರ ಸರಿ", "B) 2 ಮಾತ್ರ ಸರಿ", "C) 1 ಮತ್ತು 2 ಎರಡೂ ಸರಿ", "D) 1 ಮತ್ತು 2 ಎರಡೂ ತಪ್ಪು"], a: 2, e: "ಎರಡೂ ಹೇಳಿಕೆಗಳು ಸರಿಯಾಗಿವೆ. ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ವಿಜ್ಞಾನಿಗಳಿಗೆ ಬೇಕು, ಮೈನ್‌ಫ್ರೇಮ್ ಬ್ಯಾಂಕ್‌ಗಳಿಗೆ ಬೇಕು." },
+        { id: 9, cat: 'kas', catName: 'KAS ಹೇಳಿಕೆ ಆಧಾರಿತ', q: "9. [KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆ] ಹೇಳಿಕೆ 1: ಡಿಜಿಟಲ್ ಕಂಪ್ಯೂಟರ್‌ಗಳು ಉಷ್ಣಾಂಶ ಮತ್ತು ಒತ್ತಡದಂತಹ ನಿರಂತರ (Continuous) ಭೌತಿಕ ಸಂಕೇತಗಳ ಮೇಲೆ ನೇರವಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತವೆ. | ಹೇಳಿಕೆ 2: ಪೆಟ್ರೋಲ್ ಬಂಕ್‌ಗಳಲ್ಲಿ ಬಳಸುವ ಯಂತ್ರಗಳು ಹೈಬ್ರಿಡ್ ಕಂಪ್ಯೂಟರ್‌ಗಳಿಗೆ ಉದಾಹರಣೆಯಾಗಿದೆ.", o: ["A) 1 ಮಾತ್ರ ಸರಿ", "B) 2 ಮಾತ್ರ ಸರಿ", "C) 1 ಮತ್ತು 2 ಎರಡೂ ಸರಿ", "D) 1 ಮತ್ತು 2 ಎರಡೂ ತಪ್ಪು"], a: 1, e: "ಹೇಳಿಕೆ 1 ತಪ್ಪು (ನಿರಂತರ ಭೌತಿಕ ಸಂಕೇತಗಳ ಮೇಲೆ ಕೆಲಸ ಮಾಡುವುದು ಅನಲಾಗ್ ಕಂಪ್ಯೂಟರ್). ಹೇಳಿಕೆ 2 ಸರಿ." },
+        { id: 10, cat: 'kas', catName: 'KAS ಹೇಳಿಕೆ ಆಧಾರಿತ', q: "10. [KAS ಹೇಳಿಕೆ ಪ್ರಶ್ನೆ] ಹೇಳಿಕೆ 1: ಮೈಕ್ರೋ ಕಂಪ್ಯೂಟರ್‌ಗಳು ಬಹು-ಬಳಕೆದಾರ (Multi-user) ವ್ಯವಸ್ಥೆಯಾಗಿದ್ದು, ಒಂದೇ ಸಮಯದಲ್ಲಿ ನೂರಾರು ಜನರು ಬಳಸಬಹುದು. | ಹೇಳಿಕೆ 2: ಲ್ಯಾಪ್‌ಟಾಪ್‌ಗಳು ಮತ್ತು ಸ್ಮಾರ್ಟ್‌ಫೋನ್‌ಗಳು ಮೈಕ್ರೋ ಕಂಪ್ಯೂಟರ್‌ಗಳಾಗಿವೆ.", o: ["A) 1 ಮಾತ್ರ ಸರಿ", "B) 2 ಮಾತ್ರ ಸರಿ", "C) 1 ಮತ್ತು 2 ಎರಡೂ ಸರಿ", "D) 1 ಮತ್ತು 2 ಎರಡೂ ತಪ್ಪು"], a: 1, e: "ಮೈಕ್ರೋ ಕಂಪ್ಯೂಟರ್‌ಗಳು ಸಿಂಗಲ್-ಯೂಸರ್ ಕಂಪ್ಯೂಟರ್‌ಗಳಾಗಿವೆ, ಆದ್ದರಿಂದ ಹೇಳಿಕೆ 1 ತಪ್ಪು." },
+
+        // Category: super (11-30)
+        { id: 11, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "11. ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌ಗಳು ಪ್ರಮುಖವಾಗಿ ಯಾವ ತಂತ್ರಜ್ಞಾನದ ಆಧಾರದ ಮೇಲೆ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತವೆ?", o: ["A) ಸೀರಿಯಲ್ ಪ್ರೊಸೆಸಿಂಗ್", "B) ಪ್ಯಾರಲಲ್ ಪ್ರೊಸೆಸಿಂಗ್ (Parallel Processing)", "C) ಬ್ಯಾಚ್ ಪ್ರೊಸೆಸಿಂಗ್", "D) ಸಿಂಗಲ್ ಪ್ರೊಸೆಸಿಂಗ್"], a: 1, e: "ಸಾವಿರಾರು ಪ್ರೊಸೆಸರ್‌ಗಳು ಒಟ್ಟಿಗೆ ಕೆಲಸ ಮಾಡುವ ಪ್ಯಾರಲಲ್ ಪ್ರೊಸೆಸಿಂಗ್ ತಂತ್ರಜ್ಞಾನ." },
+        { id: 12, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "12. ಸಾಮಾನ್ಯ ಕಂಪ್ಯೂಟರ್‌ನ ವೇಗವನ್ನು Hertz ಗಳಲ್ಲಿ ಅಳೆದರೆ, ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌ನ ವೇಗವನ್ನು ಅಳೆಯುವ ಮಾನದಂಡ ಯಾವುದು?", o: ["A) MIPS", "B) FLOPS", "C) Bytes", "D) Pixels"], a: 1, e: "ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ವೇಗವನ್ನು FLOPS ನಲ್ಲಿ ಅಳೆಯಲಾಗುತ್ತದೆ." },
+        { id: 13, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "13. ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌‌ಗೆ ಸಂಬಂಧಿಸಿದಂತೆ 'FLOPS' ನ ವಿಸ್ತೃತ ರೂಪವೇನು?", o: ["A) Floating Point Operations Per Second", "B) Fast Logic Operations Per Second", "C) File Logic Output Per Second", "D) Floating Process Operations Per Second"], a: 0, e: "FLOPS = Floating Point Operations Per Second." },
+        { id: 14, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "14. 'ವಿಶ್ವದ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌ನ ಪಿತಾಮಹ' ಎಂದು ಯಾರನ್ನು ಕರೆಯಲಾಗುತ್ತದೆ?", o: ["A) ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್", "B) ಜಾನ್ ವಾನ್ ನ್ಯೂಮನ್", "C) ಸೇಮೌರ್ ಕ್ರೇ (Seymour Cray)", "D) ಡಾ. ವಿಜಯ್ ಭಟ್ಕರ್"], a: 2, e: "ಸೇಮೌರ್ ಕ್ರೇ ವಿಶ್ವದ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಪಿತಾಮಹ." },
+        { id: 15, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "15. ವಿಶ್ವದ ಮೊಟ್ಟಮೊದಲ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಯಾವುದು?", o: ["A) ENIAC", "B) CDC 6600", "C) PARAM 8000", "D) ಫುಗಾಕು (Fugaku)"], a: 1, e: "CDC 6600 ವಿಶ್ವದ ಮೊದಲ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್." },
+        { id: 16, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "16. ವಿಶ್ವದ ಮೊದಲ Exascale ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಯಾವುದು?", o: ["A) ಐರಾವತ (Airawat)", "B) ಫುಗಾಕು (Fugaku)", "C) ಫ್ರಾಂಟಿಯರ್ (Frontier - USA)", "D) ಟೈಟಾನ್ (Titan)"], a: 2, e: "Frontier ಮೊದಲ Exascale ಕಂಪ್ಯೂಟರ್ (ಪ್ರಸ್ತುತ El Capitan 1ನೇ ಸ್ಥಾನದಲ್ಲಿದೆ)." },
+        { id: 17, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "17. 'ಭಾರತದ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌ನ ಪಿತಾಮಹ' ಎಂದು ಯಾರನ್ನು ಕರೆಯುತ್ತಾರೆ?", o: ["A) ಎ.ಪಿ.ಜೆ. ಅಬ್ದುಲ್ ಕಲಾಂ", "B) ವಿಕ್ರಮ್ ಸಾರಾಭಾಯ್", "C) ಡಾ. ವಿಜಯ್ ಭಟ್ಕರ್ (Dr. Vijay Bhatkar)", "D) ಹೋಮಿ ಜೆ. ಭಾಭಾ"], a: 2, e: "ಡಾ. ವಿಜಯ್ ಭಟ್ಕರ್ ಭಾರತದ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಪಿತಾಮಹ." },
+        { id: 18, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "18. ಭಾರತದ ಮೊಟ್ಟಮೊದಲ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಯಾವುದು?", o: ["A) ಪ್ರತ್ಯೂಷ್", "B) PARAM 8000", "C) ಮಿಹಿರ್", "D) ಐರಾವತ"], a: 1, e: "1991 ರಲ್ಲಿ ನಿರ್ಮಿಸಲಾದ PARAM 8000 ಭಾರತದ ಮೊದಲ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್." },
+        { id: 19, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "19. ಭಾರತದಲ್ಲಿ 'ಪರಮ್' ಸರಣಿಯ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌ಗಳನ್ನು ನಿರ್ಮಿಸಿದ C-DAC ಸಂಸ್ಥೆ ಎಲ್ಲಿದೆ?", o: ["A) ನವದೆಹಲಿ", "B) ಬೆಂಗಳೂರು", "C) ಪುಣೆ (Pune)", "D) ಹೈದರಾಬಾದ್"], a: 2, e: "C-DAC ಕೇಂದ್ರ ಕಚೇರಿ ಪುಣೆಯಲ್ಲಿದೆ." },
+        { id: 20, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "20. ಪ್ರಸ್ತುತ (ಟಾಪ್ 500 ಪಟ್ಟಿಯಂತೆ) ಭಾರತದ ಅತಿ ವೇಗದ AI ಆಧಾರಿತ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಯಾವುದು?", o: ["A) ಪರಮ್ ಸಿದ್ಧಿ-AI", "B) ಪ್ರತ್ಯೂಷ್", "C) ಮಿಹಿರ್", "D) ಐರಾವತ (AIRAWAT)"], a: 3, e: "C-DAC ಪುಣೆಯಲ್ಲಿರುವ AIRAWAT ಭಾರತದ ಅತಿ ವೇಗದ AI ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್." },
+        { id: 21, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "21. ಭಾರತ ಸರ್ಕಾರದ 'ರಾಷ್ಟ್ರೀಯ ಸೂಪರ್ ಕಂಪ್ಯೂಟಿಂಗ್ ಮಿಷನ್' (NSM) ಯೋಜನೆಯ ಉಸ್ತುವಾರಿಯನ್ನು ಯಾವ ಸಂಸ್ಥೆಗಳು ಜಂಟಿಯಾಗಿ ವಹಿಸಿಕೊಂಡಿವೆ?", o: ["A) ISRO ಮತ್ತು DRDO", "B) C-DAC (ಪುಣೆ) ಮತ್ತು IISc (ಬೆಂಗಳೂರು)", "C) IIT ಬಾಂಬೆ ಮತ್ತು NIC", "D) NITI ಆಯೋಗ್ ಮತ್ತು C-DAC"], a: 1, e: "C-DAC ಪುಣೆ ಮತ್ತು IISc ಬೆಂಗಳೂರು ಜಂಟಿಯಾಗಿ ವಹಿಸಿಕೊಂಡಿವೆ." },
+        { id: 22, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "22. ಈ ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌ನ ಪ್ರಮುಖ ಉಪಯೋಗ ಯಾವುದು?", o: ["A) ಹವಾಮಾನ ಮುನ್ಸೂಚನೆ", "B) ಔಷಧಿಗಳ ಆವಿಷ್ಕಾರ ಮತ್ತು DNA ವಿಶ್ಲೇಷಣೆ", "C) ಬಾಹ್ಯಾಕಾಶ ಮತ್ತು ಪರಮಾಣು ಸಂಶೋಧನೆ", "D) ಮೇಲಿನ ಎಲ್ಲವೂ"], a: 3, e: "ಮೇಲಿನ ಎಲ್ಲವೂ ಸರಿಯಾಗಿವೆ." },
+        { id: 23, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "23. ಭಾಭಾ ಪರಮಾಣು ಸಂಶೋಧನಾ ಕೇಂದ್ರವು (BARC) ಅಭಿವೃದ್ಧಿಪಡಿಸಿದ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಸರಣಿಯ ಹೆಸರೇನು?", o: ["A) ಪರಮ್ (PARAM)", "B) ಅನುಪಮ್ (ANUPAM)", "C) ಪೇಸ್ (PACE)", "D) ಫ್ಲೋಸಾಲ್ವರ್ (Flosolver)"], a: 1, e: "BARC ಸಂಸ್ಥೆಯು ANUPAM ಸರಣಿಯನ್ನು ಅಭಿವೃದ್ಧಿಪಡಿಸಿದೆ." },
+        { id: 24, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "24. ಭಾರತದ ರಕ್ಷಣಾ ಸಂಶೋಧನೆ ಮತ್ತು ಅಭಿವೃದ್ಧಿ ಸಂಸ್ಥೆ (DRDO) ನಿರ್ಮಿಸಿದ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಸರಣಿ ಯಾವುದು?", o: ["A) ಸಾಸ್ತ್ರ", "B) ಪೇಸ್ (PACE)", "C) ಸಾಗಾ", "D) ಕಬೀರ್"], a: 1, e: "DRDO ದ ANURAG ವಿಭಾಗವು PACE ಸರಣಿಯನ್ನು ನಿರ್ಮಿಸಿದೆ." },
+        { id: 25, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "25. ಭಾರತೀಯ ಬಾಹ್ಯಾಕಾಶ ಸಂಶೋಧನಾ ಸಂಸ್ಥೆ (ISRO) ನಿರ್ಮಿಸಿದ ಪ್ರಸಿದ್ಧ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಯಾವುದು?", o: ["A) SAGA-220", "B) PARAM-ISRO", "C) VIKRAM-100", "D) ANTARIKSH"], a: 0, e: "ISRO ನಿರ್ಮಿಸಿದ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ SAGA-220." },
+        { id: 26, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "26. ಭಾರತದಲ್ಲಿ 'ಹವಾಮಾನ ಮುನ್ಸೂಚನೆ' (Weather Forecasting) ಗಾಗಿಯೇ ಮೀಸಲಿಟ್ಟಿರುವ ಪ್ರಸಿದ್ಧ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌ಗಳು ಯಾವುವು?", o: ["A) ಪರಮ್ ಮತ್ತು ಅನುಪಮ್", "B) ಪ್ರತ್ಯೂಷ್ ಮತ್ತು ಮಿಹಿರ್ (ಹಾಗೂ ಅರ್ಕ, ಅರುಣಿಕಾ)", "C) ಐರಾವತ ಮತ್ತು ಟೈಟಾನ್", "D) ಫ್ರಾಂಟಿಯರ್ ಮತ್ತು ಫುಗಾಕು"], a: 1, e: "ಪ್ರತ್ಯೂಷ್ (ಪುಣೆ) ಮತ್ತು ಮಿಹಿರ್ (ನೋಯ್ಡಾ) ಹವಾಮಾನ ಮುನ್ಸೂಚನೆಗೆ ಮೀಸಲಾಗಿವೆ." },
+        { id: 27, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "27. 'ನ್ಯಾಷನಲ್ ಸೂಪರ್ ಕಂಪ್ಯೂಟಿಂಗ್ ಮಿಷನ್' (NSM) ಅಡಿಯಲ್ಲಿ ಭಾರತದಲ್ಲಿಯೇ ಜೋಡಿಸಲ್ಪಟ್ಟ (Assembled) ಮೊದಲ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಯಾವುದು?", o: ["A) ಪರಮ್ ಸಿದ್ಧಿ-AI", "B) ಪರಮ್ ಪ್ರವೇಗ", "C) ಪರಮ್ ಶಿವಾಯ್ (PARAM Shivay)", "D) ಪರಮ್ ಶಕ್ತಿ"], a: 2, e: "PARAM Shivay ಅನ್ನು IIT BHU ವಾರಣಾಸಿಯಲ್ಲಿ ಸ್ಥಾಪಿಸಲಾಯಿತು." },
+        { id: 28, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "28. ಭಾರತದ ಮೊದಲ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ನಿರ್ಮಿಸಿದ ಸಂಸ್ಥೆಯಾದ 'C-DAC' ನ ವಿಸ್ತೃತ ರೂಪವೇನು?", o: ["A) Centre for Development of Advanced Computing", "B) Council for Data and Advanced Computing", "C) Centre for Design of Advanced Computers", "D) Central Department of Applied Computing"], a: 0, e: "C-DAC = Centre for Development of Advanced Computing." },
+        { id: 29, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "29. ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌ಗಳ ವೇಗವನ್ನು ಅಳೆಯುವಾಗ 'Petaflops' ಎಂಬ ಪದ ಬಳಸಲಾಗುತ್ತದೆ. ಇಲ್ಲಿ 'Peta' ಎಂದರೆ ಗಣಿತದ ಪರಿಭಾಷೆಯಲ್ಲಿ ಎಷ್ಟು?", o: ["A) 10^12", "B) 10^15", "C) 10^18", "D) 10^21"], a: 1, e: "Peta = 10^15 (Tera = 10^12, Exa = 10^18)." },
+        { id: 30, cat: 'super', catName: 'ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್', q: "30. 'ನ್ಯಾಷನಲ್ ಏರೋಸ್ಪೇಸ್ ಲ್ಯಾಬೊರೇಟರೀಸ್' (NAL - ಬೆಂಗಳೂರು) ಅಭಿವೃದ್ಧಿಪಡಿಸಿದ ಭಾರತದ ಆರಂಭಿಕ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಯಾವುದು?", o: ["A) Flosolver (ಫ್ಲೋಸಾಲ್ವರ್)", "B) PARAM 10000", "C) SAGA-220", "D) ANUPAM-Aditi"], a: 0, e: "NAL ಬೆಂಗಳೂರು Flosolver ಎಂಬ ಪ್ಯಾರಲಲ್ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಅಭಿವೃದ್ಧಿಪಡಿಸಿತು." },
+
+        // Category: extra (31-45)
+        { id: 31, cat: 'extra', catName: 'ಪ್ಯಾರಲಲ್ & ಹೆಚ್ಚುವರಿ', q: "31. ಜಗತ್ತಿನ ಟಾಪ್ 500 ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌ಗಳಲ್ಲಿ ಶೇಕಡಾ 100 ರಷ್ಟು ಬಳಸಲಾಗುವ ಆಪರೇಟಿಂಗ್ ಸಿಸ್ಟಮ್ (OS) ಯಾವುದು?", o: ["A) Windows Server", "B) Linux (ಲಿನಕ್ಸ್)", "C) macOS", "D) MS-DOS"], a: 1, e: "ಎಲ್ಲಾ ಆಧುನಿಕ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌ಗಳು ಓಪನ್ ಸೋರ್ಸ್ Linux OS ಅನ್ನೇ ಬಳಸುತ್ತವೆ." },
+        { id: 32, cat: 'extra', catName: 'ಪ್ಯಾರಲಲ್ & ಹೆಚ್ಚುವರಿ', q: "32. ಫ್ಲಿನ್ಸ್ ವರ್ಗೀಕರಣದ (Flynn's Classification) ಪ್ರಕಾರ ಆಧುನಿಕ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌ಗಳ ಪ್ಯಾರಲಲ್ ಪ್ರೊಸೆಸಿಂಗ್ ಯಾವ ವರ್ಗಕ್ಕೆ ಸೇರುತ್ತದೆ?", o: ["A) SISD", "B) SIMD", "C) MISD", "D) MIMD (Multiple Instruction, Multiple Data)"], a: 3, e: "MIMD ಎಂದರೆ ಅನೇಕ ಪ್ರೊಸೆಸರ್‌ಗಳು ಏಕಕಾಲದಲ್ಲಿ ಬೇರೆ ಬೇರೆ ಡೇಟಾವನ್ನು ಪ್ರಕ್ರಿಯೆಗೊಳಿಸುವುದು." },
+        { id: 33, cat: 'extra', catName: 'ಪ್ಯಾರಲಲ್ & ಹೆಚ್ಚುವರಿ', q: "33. ಬೆಂಗಳೂರಿನ ಇಂಡಿಯನ್ ಇನ್‌ಸ್ಟಿಟ್ಯೂಟ್ ಆಫ್ ಸೈನ್ಸ್ (IISc) ನಲ್ಲಿ ಸ್ಥಾಪಿಸಲಾಗಿರುವ ಪ್ರಸಿದ್ಧ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಯಾವುದು?", o: ["A) ಪರಮ್ ಗಂಗಾ", "B) ಪರಮ್ ಪ್ರವೇಗ (PARAM Pravega)", "C) ಪರಮ್ ಕಾಮರೂಪ", "D) ಪರಮ್ ಶಕ್ತಿ"], a: 1, e: "IISc ಬೆಂಗಳೂರಿನಲ್ಲಿ PARAM Pravega ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಸ್ಥಾಪಿಸಲಾಗಿದೆ." },
+        { id: 34, cat: 'extra', catName: 'ಪ್ಯಾರಲಲ್ & ಹೆಚ್ಚುವರಿ', q: "34. ಸಾಮಾನ್ಯ ಡಿಜಿಟಲ್ ಕಂಪ್ಯೂಟರ್‌ಗಳು 'Bits' (0 ಮತ್ತು 1) ಬಳಸಿದರೆ, ಮುಂದಿನ ಪೀಳಿಗೆಯ 'ಕ್ವಾಂಟಮ್ ಕಂಪ್ಯೂಟರ್' (Quantum Computer) ಯಾವುದನ್ನು ಬಳಸುತ್ತದೆ?", o: ["A) FLOPS", "B) Qubits (ಕ್ಯೂಬಿಟ್ಸ್)", "C) Bytes", "D) Pixels"], a: 1, e: "ಕ್ವಾಂಟಮ್ ಕಂಪ್ಯೂಟರ್‌ಗಳು Qubits (Quantum Bits) ಬಳಸುತ್ತವೆ." },
+        { id: 35, cat: 'extra', catName: 'ಪ್ಯಾರಲಲ್ & ಹೆಚ್ಚುವರಿ', q: "35. ವಾಷಿಂಗ್ ಮಷಿನ್, ಮೈಕ್ರೋವೇವ್ ಓವನ್ ಮತ್ತು ಕಾರಿನ ಏರ್‌ಬ್ಯಾಗ್ ಸಿಸ್ಟಮ್‌ನ ಒಳಗಿರುವ ವಿಶೇಷ ಉದ್ದೇಶದ ಸಣ್ಣ ಕಂಪ್ಯೂಟರ್ ಚಿಪ್ ಅನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?", o: ["A) ಮೈನ್‌ಫ್ರೇಮ್ ಕಂಪ್ಯೂಟರ್", "B) ಎಂಬೆಡೆಡ್ ಕಂಪ್ಯೂಟರ್ (Embedded Computer)", "C) ಮಿನಿ ಕಂಪ್ಯೂಟರ್", "D) ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್"], a: 1, e: "ಯಂತ್ರದ ಒಳಗೆ ಒಂದು ನಿರ್ದಿಷ್ಟ ಕೆಲಸಕ್ಕಾಗಿ ಅಳವಡಿಸಲಾದ ಸಿಸ್ಟಮ್ ಅನ್ನು Embedded System ಎನ್ನುತ್ತಾರೆ." },
+        { id: 36, cat: 'extra', catName: 'ಪ್ಯಾರಲಲ್ & ಹೆಚ್ಚುವರಿ', q: "36. 3D ಅನಿಮೇಷನ್, ವಿಡಿಯೋ ಎಡಿಟಿಂಗ್ ಮತ್ತು ಇಂಜಿನಿಯರಿಂಗ್ ವಿನ್ಯಾಸಕ್ಕಾಗಿ (CAD) ಬಳಸುವ ಶಕ್ತಿಶಾಲಿ ಸಿಂಗಲ್-ಯೂಸರ್ ಕಂಪ್ಯೂಟರ್ ಯಾವುದು?", o: ["A) ವರ್ಕ್‌ಸ್ಟೇಷನ್ (Workstation)", "B) ಮಿನಿ ಕಂಪ್ಯೂಟರ್", "C) ಅನಲಾಗ್ ಕಂಪ್ಯೂಟರ್", "D) ಡಂಬ್ ಟರ್ಮಿನಲ್"], a: 0, e: "ವರ್ಕ್‌ಸ್ಟೇಷನ್‌ಗಳು ಸಾಮಾನ್ಯ ಪಿಸಿಗಿಂತ ಹೆಚ್ಚಿನ RAM ಮತ್ತು GPU ಸಾಮರ್ಥ್ಯ ಹೊಂದಿರುತ್ತವೆ." },
+        { id: 37, cat: 'extra', catName: 'ಪ್ಯಾರಲಲ್ & ಹೆಚ್ಚುವರಿ', q: "37. ರಾಷ್ಟ್ರೀಯ ಸೂಪರ್ ಕಂಪ್ಯೂಟಿಂಗ್ ಮಿಷನ್ (NSM) ಅಡಿಯಲ್ಲಿ C-DAC ಅಭಿವೃದ್ಧಿಪಡಿಸಿದ ಭಾರತದ ಮೊದಲ ಸ್ವದೇಶಿ ಸರ್ವರ್ (Indigenous Server) ಹೆಸರೇನು?", o: ["A) ವಿಕ್ರಮ್", "B) ರುದ್ರ (Rudra)", "C) ತೇಜಸ್", "D) ಧನುಷ್"], a: 1, e: "ಭಾರತವು ಸ್ವದೇಶಿ ಸರ್ವರ್ 'Rudra' ಮತ್ತು ಹೈ-ಸ್ಪೀಡ್ ಇಂಟರ್‌ಕನೆಕ್ಟ್ 'Trinetra' ಅಭಿವೃದ್ಧಿಪಡಿಸಿದೆ." },
+        { id: 38, cat: 'extra', catName: 'ಪ್ಯಾರಲಲ್ & ಹೆಚ್ಚುವರಿ', q: "38. ಇತ್ತೀಚಿನ TOP500 ಪಟ್ಟಿಯಂತೆ 'Frontier' ಅನ್ನು ಹಿಂದಿಕ್ಕಿ ವಿಶ್ವದ ಅತಿ ವೇಗದ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಆಗಿ ಹೊರಹೊಮ್ಮಿದ ಅಮೆರಿಕಾದ ಹೊಸ Exascale ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಯಾವುದು?", o: ["A) El Capitan (ಎಲ್ ಕ್ಯಾಪಿಟನ್)", "B) Fugaku", "C) Summit", "D) Tianhe-2"], a: 0, e: "ಅಮೆರಿಕಾದ El Capitan ಪ್ರಸ್ತುತ ವಿಶ್ವದ ಅತಿ ವೇಗದ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ಆಗಿದೆ." },
+        { id: 39, cat: 'extra', catName: 'ಪ್ಯಾರಲಲ್ & ಹೆಚ್ಚುವರಿ', q: "39. ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌ನ ವೇಗದಲ್ಲಿ 'Exaflops' (ಎಕ್ಸಾಫ್ಲಾಪ್ಸ್) ಎಂದರೆ ಒಂದು ಸೆಕೆಂಡಿಗೆ ಎಷ್ಟು ಫ್ಲೋಟಿಂಗ್ ಪಾಯಿಂಟ್ ಲೆಕ್ಕಾಚಾರಗಳು?", o: ["A) 10^12", "B) 10^15", "C) 10^18", "D) 10^24"], a: 2, e: "Exa = 10^18 (ಒಂದು ಕ್ವಿಂಟಿಲಿಯನ್ ಲೆಕ್ಕಾಚಾರಗಳು ಪ್ರತಿ ಸೆಕೆಂಡಿಗೆ)." },
+        { id: 40, cat: 'extra', catName: 'ಪ್ಯಾರಲಲ್ & ಹೆಚ್ಚುವರಿ', q: "40. ಪ್ಯಾರಲಲ್ ಪ್ರೊಸೆಸಿಂಗ್‌ನಲ್ಲಿ (Parallel Processing) ಒಂದು ದೊಡ್ಡ ಕೆಲಸವು ಹೇಗೆ ನಿರ್ವಹಿಸಲ್ಪಡುತ್ತದೆ?", o: ["A) ಒಂದೇ CPU ಎಲ್ಲಾ ಕೆಲಸವನ್ನು ಒಂದರ ನಂತರ ಒಂದರಂತೆ ಮಾಡುತ್ತದೆ", "B) ದೊಡ್ಡ ಕೆಲಸವನ್ನು ಸಣ್ಣ ಭಾಗಗಳಾಗಿ ಒಡೆದು ಸಾವಿರಾರು ಪ್ರೊಸೆಸರ್‌ಗಳ ಮೂಲಕ ಏಕಕಾಲದಲ್ಲಿ ಮಾಡಲಾಗುತ್ತದೆ", "C) ಡೇಟಾವನ್ನು ಅನಲಾಗ್ ರೂಪಕ್ಕೆ ಪರಿವರ್ತಿಸಲಾಗುತ್ತದೆ", "D) ಕೇವಲ ಬ್ಯಾಂಕ್ ವಹಿವಾಟುಗಳಿಗೆ ಮಾತ್ರ ಬಳಸಲಾಗುತ್ತದೆ"], a: 1, e: "ಪ್ಯಾರಲಲ್ ಪ್ರೊಸೆಸಿಂಗ್‌ನಲ್ಲಿ ಸಾವಿರಾರು CPU/GPU ಕೋರ್‌ಗಳು ಏಕಕಾಲದಲ್ಲಿ ಕೆಲಸ ಹಂಚಿಕೊಂಡು ಮುಗಿಸುತ್ತವೆ." },
+        { id: 41, cat: 'extra', catName: 'ಪ್ಯಾರಲಲ್ & ಹೆಚ್ಚುವರಿ', q: "41. ಜಗತ್ತಿನ ಅತಿ ಹೆಚ್ಚು ವಿದ್ಯುತ್ ಉಳಿತಾಯ ಮಾಡುವ (Energy-Efficient / ಪರಿಸರ ಸ್ನೇಹಿ) ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌ಗಳ ಶ್ರೇಯಾಂಕ ಪಟ್ಟಿಯನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?", o: ["A) Blue500", "B) Green500", "C) Eco500", "D) Power500"], a: 1, e: "Green500 ಪಟ್ಟಿಯು ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌ಗಳ ಇಂಧನ ದಕ್ಷತೆಯನ್ನು (FLOPS per Watt) ಅಳೆಯುತ್ತದೆ." },
+        { id: 42, cat: 'extra', catName: 'ಪ್ಯಾರಲಲ್ & ಹೆಚ್ಚುವರಿ', q: "42. ಪ್ಯಾರಲಲ್ ಪ್ರೊಸೆಸಿಂಗ್‌ನಲ್ಲಿ ಪ್ರೊಸೆಸರ್‌ಗಳ ಸಂಖ್ಯೆಯನ್ನು ಹೆಚ್ಚಿಸಿದಾಗ ಲಭಿಸುವ ಗರಿಷ್ಠ ವೇಗದ ಮಿತಿಯನ್ನು (Speedup Limit) ವಿವರಿಸುವ ನಿಯಮ ಯಾವುದು?", o: ["A) ಅಮ್ಡಾಲ್ ನಿಯಮ (Amdahl's Law)", "B) ಓಮ್ ನಿಯಮ (Ohm's Law)", "C) ಪಾಸ್ಕಲ್ ನಿಯಮ", "D) ನ್ಯೂಟನ್ ನಿಯಮ"], a: 0, e: "ಜೀನ್ ಅಮ್ಡಾಲ್ ಮಂಡಿಸಿದ Amdahl's Law ಪ್ಯಾರಲಲ್ ಕಂಪ್ಯೂಟಿಂಗ್ ವೇಗದ ಮಿತಿಯನ್ನು ತಿಳಿಸುತ್ತದೆ." },
+        { id: 43, cat: 'extra', catName: 'ಪ್ಯಾರಲಲ್ & ಹೆಚ್ಚುವರಿ', q: "43. ಇತ್ತೀಚೆಗೆ ಭಾರತ ಸರ್ಕಾರವು ಹವಾಮಾನ ಮುನ್ಸೂಚನೆಗಾಗಿ ಪುಣೆ ಮತ್ತು ನೋಯ್ಡಾದಲ್ಲಿ ಸ್ಥಾಪಿಸಿದ ಎರಡು ಹೊಸ ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್‌‌ಗಳು ಯಾವುವು?", o: ["A) ಅರ್ಕ ಮತ್ತು ಅರುಣಿಕಾ (Arka and Arunika)", "B) ಪರಮ್ ಮತ್ತು ಅನುಪಮ್", "C) ಸಾಗಾ ಮತ್ತು ಪೇಸ್", "D) ವಿಕ್ರಮ್ ಮತ್ತು ಆದಿತ್ಯ"], a: 0, e: "ಪ್ರತ್ಯೂಷ್ ಮತ್ತು ಮಿಹಿರ್ ನಂತರ ಹೊಸದಾಗಿ ಅರ್ಕ (ಪುಣೆ) ಮತ್ತು ಅರುಣಿಕಾ (ನೋಯ್ಡಾ) ಸ್ಥಾಪಿಸಲಾಗಿದೆ." },
+        { id: 44, cat: 'extra', catName: 'ಪ್ಯಾರಲಲ್ & ಹೆಚ್ಚುವರಿ', q: "44. ಮೈನ್‌ಫ್ರೇಮ್ ಕಂಪ್ಯೂಟರ್‌ಗಳಿಗೆ ಸಂಪರ್ಕ ಸಾಧಿಸಲು ಬಳಕೆದಾರರು ಬಳಸುವ ಸ್ವಂತ CPU ಇಲ್ಲದ (ಕೇವಲ ಮಾನಿಟರ್ ಮತ್ತು ಕೀಬೋರ್ಡ್ ಇರುವ) ಸಾಧನವನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?", o: ["A) ಸೂಪರ್ ಟರ್ಮಿನಲ್", "B) ಡಂಬ್ ಟರ್ಮಿನಲ್ (Dumb Terminal)", "C) ವರ್ಕ್‌ಸ್ಟೇಷನ್", "D) ಮೈಕ್ರೋಕಂಟ್ರೋಲರ್"], a: 1, e: "ಡಂಬ್ ಟರ್ಮಿನಲ್‌ಗೆ ಸ್ವಂತ ಪ್ರೊಸೆಸಿಂಗ್ ಸಾಮರ್ಥ್ಯವಿರುವುದಿಲ್ಲ, ಅದು ಮೈನ್‌ಫ್ರೇಮ್ ಸರ್ವರ್ ಮೇಲೆ ಅವಲಂಬಿತವಾಗಿರುತ್ತದೆ." },
+        { id: 45, cat: 'extra', catName: 'ಪ್ಯಾರಲಲ್ & ಹೆಚ್ಚುವರಿ', q: "45. C-DAC ಅಭಿವೃದ್ಧಿಪಡಿಸಿದ ಭಾರತದ ಮೊದಲ ರಾಷ್ಟ್ರೀಯ ಗ್ರಿಡ್ ಕಂಪ್ಯೂಟಿಂಗ್ ಜಾಲದ (National Grid Computing Initiative) ಹೆಸರೇನು?", o: ["A) GARUDA (ಗರುಡ)", "B) VAJRA (ವಜ್ರ)", "C) SURYA (ಸೂರ್ಯ)", "D) AKASH (ಆಕಾಶ್)"], a: 0, e: "GARUDA ಭಾರತದ ಸಂಶೋಧನಾ ಸಂಸ್ಥೆಗಳನ್ನು ಬೆಸೆಯುವ ಮೊದಲ ರಾಷ್ಟ್ರೀಯ ಗ್ರಿಡ್ ಕಂಪ್ಯೂಟಿಂಗ್ ಯೋಜನೆಯಾಗಿದೆ." }
+    ];
+
+    let rightCount = 0;
+    let wrongCount = 0;
+    let viewMode = 'all'; // 'all' or 'single'
+    let currentIndex = 0;
+    let currentFilter = 'all';
+    let secondsElapsed = 0;
+
+    // Timer
+    setInterval(() => {
+        secondsElapsed++;
+        const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+        const secs = String(secondsElapsed % 60).padStart(2, '0');
+        document.getElementById('timerStat').textContent = `⏱️ ಸಮಯ: ${mins}:${secs}`;
+    }, 1000);
+
+    function toggleTheme() {
+        const b = document.body;
+        const btn = document.getElementById('themeBtn');
+        if (b.getAttribute('data-theme') === 'dark') {
+            b.removeAttribute('data-theme');
+            btn.textContent = '🌙 ಡಾರ್ಕ್ ಮೋಡ್';
+        } else {
+            b.setAttribute('data-theme', 'dark');
+            btn.textContent = '☀️ ಲೈಟ್ ಮೋಡ್';
+        }
+    }
+
+    function initQuiz() {
+        const container = document.getElementById('quizContainer');
+        const palette = document.getElementById('paletteGrid');
+        container.innerHTML = '';
+        palette.innerHTML = '';
+        rightCount = 0;
+        wrongCount = 0;
+        secondsElapsed = 0;
+        updateStats();
+
+        mcqs.forEach((item, idx) => {
+            // Palette Number Button
+            const pBtn = document.createElement('button');
+            pBtn.className = 'p-num';
+            pBtn.id = 'p-' + idx;
+            pBtn.textContent = item.id;
+            pBtn.onclick = () => jumpToQuestion(idx);
+            palette.appendChild(pBtn);
+
+            // Question Card
+            const card = document.createElement('div');
+            card.className = 'q-card';
+            card.id = 'qcard-' + idx;
+            card.dataset.cat = item.cat;
+
+            const head = document.createElement('div');
+            head.className = 'q-header';
+            head.innerHTML = `<span class="q-cat-badge">${item.catName}</span><span style="font-size:0.8rem; color:var(--text-muted);">ಪ್ರಶ್ನೆ #${item.id}</span>`;
+            card.appendChild(head);
+
+            const title = document.createElement('div');
+            title.className = 'q-title';
+            title.textContent = item.q;
+            card.appendChild(title);
+
+            const grid = document.createElement('div');
+            grid.className = 'opt-grid';
+
+            const exp = document.createElement('div');
+            exp.className = 'exp-box';
+            exp.id = 'exp-' + idx;
+            exp.innerHTML = `<strong>💡 ವಿವರಣೆ:</strong> ${item.e}`;
+
+            item.o.forEach((optText, oIdx) => {
+                const btn = document.createElement('button');
+                btn.className = 'opt-btn';
+                btn.textContent = optText;
+                btn.onclick = () => checkAnswer(idx, oIdx, btn, grid, exp);
+                grid.appendChild(btn);
+            });
+
+            card.appendChild(grid);
+            card.appendChild(exp);
+            container.appendChild(card);
+        });
+
+        applyViewVisibility();
+    }
+
+    function checkAnswer(qIdx, selIdx, clickedBtn, grid, exp) {
+        const allBtns = grid.querySelectorAll('.opt-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        const rightIdx = mcqs[qIdx].a;
+        const pBtn = document.getElementById('p-' + qIdx);
+
+        if (selIdx === rightIdx) {
+            clickedBtn.classList.add('correct');
+            pBtn.classList.add('p-right');
+            rightCount++;
+        } else {
+            clickedBtn.classList.add('wrong');
+            allBtns[rightIdx].classList.add('correct');
+            pBtn.classList.add('p-wrong');
+            wrongCount++;
+        }
+
+        exp.style.display = 'block';
+        updateStats();
+    }
+
+    function updateStats() {
+        const totalDone = rightCount + wrongCount;
+        document.getElementById('scoreStat').textContent = `🏆 ಸ್ಕೋರ್: ${rightCount} / 45`;
+        document.getElementById('rightStat').textContent = `✅ ಸರಿ: ${rightCount}`;
+        document.getElementById('wrongStat').textContent = `❌ ತಪ್ಪು: ${wrongCount}`;
+        document.getElementById('progBar').style.width = ((totalDone / 45) * 100) + '%';
+    }
+
+    function setMode(mode) {
+        viewMode = mode;
+        document.getElementById('modeAllBtn').classList.toggle('active-mode', mode === 'all');
+        document.getElementById('modeSingleBtn').classList.toggle('active-mode', mode === 'single');
+        document.getElementById('stepperBox').style.display = (mode === 'single') ? 'flex' : 'none';
+        applyViewVisibility();
+    }
+
+    function filterCategory(cat, tabBtn) {
+        currentFilter = cat;
+        document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+        tabBtn.classList.add('active');
+        if (viewMode === 'single') setMode('all');
+        applyViewVisibility();
+    }
+
+    function applyViewVisibility() {
+        const cards = document.querySelectorAll('.q-card');
+        if (viewMode === 'single') {
+            cards.forEach((c, idx) => {
+                c.style.display = (idx === currentIndex) ? 'block' : 'none';
+            });
+            document.getElementById('stepIndicator').textContent = `ಪ್ರಶ್ನೆ ${currentIndex + 1} / 45`;
+        } else {
+            cards.forEach(c => {
+                if (currentFilter === 'all' || c.dataset.cat === currentFilter) {
+                    c.style.display = 'block';
+                } else {
+                    c.style.display = 'none';
+                }
+            });
+        }
+    }
+
+    function prevQuestion() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            applyViewVisibility();
+        }
+    }
+
+    function nextQuestion() {
+        if (currentIndex < mcqs.length - 1) {
+            currentIndex++;
+            applyViewVisibility();
+        }
+    }
+
+    function jumpToQuestion(idx) {
+        if (viewMode === 'single') {
+            currentIndex = idx;
+            applyViewVisibility();
+        } else {
+            const target = document.getElementById('qcard-' + idx);
+            target.style.display = 'block';
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+
+    function showAllAnswers() {
+        mcqs.forEach((item, idx) => {
+            const card = document.getElementById('qcard-' + idx);
+            const btns = card.querySelectorAll('.opt-btn');
+            btns.forEach((b, bIdx) => {
+                b.disabled = true;
+                if (bIdx === item.a) b.classList.add('correct');
+            });
+            document.getElementById('exp-' + idx).style.display = 'block';
+        });
+    }
+
+    function showResultCard() {
+        const box = document.getElementById('resultBox');
+        const txt = document.getElementById('resultText');
+        const pct = Math.round((rightCount / 45) * 100);
+        txt.innerHTML = `ನೀವು 45 ಪ್ರಶ್ನೆಗಳಲ್ಲಿ <b>${rightCount} ಸರಿ ಉತ್ತರ</b> ನೀಡಿದ್ದೀರಿ (ಶೇಕಡಾವಾರು: <b>${pct}%</b>).<br>ತಪ್ಪಾದ ಪ್ರಶ್ನೆಗಳು: ${wrongCount} | ಬಾಕಿ ಉಳಿದ ಪ್ರಶ್ನೆಗಳು: ${45 - (rightCount + wrongCount)}`;
+        box.style.display = 'block';
+        box.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function resetQuiz() {
+        document.getElementById('resultBox').style.display = 'none';
+        initQuiz();
+    }
+
+    initQuiz();
+</script>
+
+</body>
+</html>
