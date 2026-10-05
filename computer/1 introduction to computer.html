@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಕಂಪ್ಯೂಟರ್ ಸಮಗ್ರ ದೃಶ್ಯ ಕೈಪಿಡಿ | UPSC • KAS • KPSC • KEA Master Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600;700;800;900&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #090d16;
+            --bg-secondary: #111827;
+            --bg-card: #1e293b;
+            --bg-glass: rgba(30, 41, 59, 0.75);
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --accent-cyan: #06b6d4;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-emerald: #10b981;
+            --accent-amber: #f59e0b;
+            --accent-red: #ef4444;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --card-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+        }
+
+        body.light-mode {
+            --bg-main: #f1f5f9;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --bg-glass: rgba(255, 255, 255, 0.9);
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --border-color: rgba(15, 23, 42, 0.12);
+            --card-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans Kannada', 'Poppins', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.75;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Top Sticky Navigation */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--bg-glass);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--accent-cyan);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--accent-cyan);
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-tool {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 7px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.2s;
+        }
+
+        .btn-tool:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Banner */
+        .hero {
+            position: relative;
+            padding: 65px 20px 55px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 20%, rgba(59, 130, 246, 0.22), transparent 65%),
+                        radial-gradient(circle at 85% 80%, rgba(139, 92, 246, 0.18), transparent 50%);
+            border-bottom: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .exam-tags {
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .exam-tag {
+            background: linear-gradient(90deg, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2));
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 5px 14px;
+            border-radius: 99px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.9rem, 4vw, 3rem);
+            font-weight: 900;
+            line-height: 1.3;
+            margin-bottom: 14px;
+            background: linear-gradient(135deg, #38bdf8 0%, #a855f7 55%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            max-width: 780px;
+            margin: 0 auto 25px;
+            color: var(--text-secondary);
+            font-size: 1.08rem;
+        }
+
+        /* Memory Formula Ribbon */
+        .mnemonic-bar {
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(90deg, rgba(16, 185, 129, 0.15), rgba(59, 130, 246, 0.15));
+            border: 1px dashed var(--accent-emerald);
+            padding: 14px 22px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-size: 0.96rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Section Header */
+        .sec-header {
+            margin: 55px 0 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .sec-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            flex-shrink: 0;
+            box-shadow: 0 6px 18px rgba(59, 130, 246, 0.35);
+        }
+
+        .sec-header h2 {
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .sec-header span {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        /* Cards & Grids */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 26px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--accent-amber);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 99px;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 14px;
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hl-green {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-emerald);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+
+        .hl-amber {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--accent-amber);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+
+        .hl-purple {
+            background: rgba(139, 92, 246, 0.18);
+            color: #c4b5fd;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+
+        .exam-tip {
+            margin-top: 16px;
+            padding: 12px 16px;
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid var(--accent-blue);
+            border-radius: 8px;
+            font-size: 0.92rem;
+        }
+
+        /* 3D Flip Cards for COMPUTER Full Form */
+        .acronym-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+            gap: 16px;
+            perspective: 1000px;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            height: 190px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner,
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-front, .flip-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+        }
+
+        .flip-front {
+            background: linear-gradient(145deg, var(--bg-card), var(--bg-secondary));
+        }
+
+        .flip-front .big-char {
+            font-size: 3.2rem;
+            font-weight: 900;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .flip-front .eng-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .flip-front .kan-sub {
+            font-size: 0.88rem;
+            color: var(--accent-amber);
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .flip-back {
+            background: linear-gradient(135deg, #1d4ed8, #6d28d9);
+            color: #ffffff;
+            transform: rotateY(180deg);
+        }
+
+        .flip-back h4 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            color: #fde047;
+        }
+
+        .flip-back p {
+            font-size: 0.82rem;
+            line-height: 1.4;
+        }
+
+        /* Animated SVG IPOS & CPU Architecture Diagram */
+        .diagram-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 28px;
+            text-align: center;
+        }
+
+        .svg-container {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+
+        /* Animated SVG strokes */
+        .flow-line {
+            stroke-dasharray: 8 6;
+            animation: dashFlow 1.2s linear infinite;
+        }
+
+        @keyframes dashFlow {
+            to {
+                stroke-dashoffset: -28;
+            }
+        }
+
+        .cpu-glow {
+            animation: pulseGlow 2.5s infinite ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.5)); }
+            50% { filter: drop-shadow(0 0 16px rgba(6, 182, 212, 0.9)); }
+        }
+
+        /* 4 Functions Cards */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .step-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 22px;
+            border-top: 4px solid var(--accent-cyan);
+            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .step-num {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            font-size: 2rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.07);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Interactive EDP & GIGO Lab Simulator */
+        .lab-box {
+            background: linear-gradient(145deg, rgba(17, 24, 39, 0.95), rgba(30, 41, 59, 0.95));
+            border: 2px solid var(--accent-purple);
+            border-radius: 20px;
+            padding: 28px;
+            margin-top: 28px;
+            color: #f8fafc;
+        }
+
+        .sim-controls {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 18px 0;
+        }
+
+        .sim-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+
+        .sim-btn.active, .sim-btn:hover {
+            background: var(--accent-cyan);
+            color: #090d16;
+            border-color: var(--accent-cyan);
+        }
+
+        .sim-btn.gigo-btn:hover, .sim-btn.gigo-btn.active {
+            background: var(--accent-red);
+            color: #fff;
+            border-color: var(--accent-red);
+        }
+
+        .sim-stages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 15px;
+        }
+
+        .sim-panel {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 18px;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .sim-panel h5 {
+            color: var(--accent-amber);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        /* Comparison Table */
+        .table-wrap {
+            overflow-x: auto;
+            margin-top: 24px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+        }
+
+        th, td {
+            padding: 15px 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background: linear-gradient(90deg, #0284c7, #4f46e5);
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        tr:hover td {
+            background: rgba(6, 182, 212, 0.05);
+        }
+
+        /* Pioneers Avatar Cards */
+        .pioneer-card {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .pioneer-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .avatar-svg {
+            width: 62px;
+            height: 62px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        /* Speed Visualizer Bars */
+        .speed-meter {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .speed-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+        }
+
+        .speed-label {
+            width: 155px;
+            font-weight: 700;
+        }
+
+        .speed-bar-bg {
+            flex: 1;
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .speed-bar-fill {
+            height: 100%;
+            border-radius: 99px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            animation: growBar 2s ease-out forwards;
+        }
+
+        @keyframes growBar {
+            from { width: 0; }
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            background: var(--bg-card);
+            border: 2px solid var(--accent-blue);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .score-banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(59, 130, 246, 0.12);
+            padding: 14px 20px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+
+        .q-block {
+            margin-bottom: 26px;
+            padding-bottom: 22px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .q-title {
+            font-size: 1.12rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .q-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+        }
+
+        .q-btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 12px 16px;
+            border-radius: 10px;
+            text-align: left;
+            font-family: inherit;
+            font-size: 0.96rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .q-btn:hover:not(:disabled) {
+            border-color: var(--accent-cyan);
+            background: rgba(6, 182, 212, 0.1);
+        }
+
+        .q-btn.correct {
+            background: rgba(16, 185, 129, 0.22);
+            border-color: var(--accent-emerald);
+            color: var(--accent-emerald);
+        }
+
+        .q-btn.wrong {
+            background: rgba(239, 68, 68, 0.22);
+            border-color: var(--accent-red);
+            color: var(--accent-red);
+        }
+
+        .q-exp {
+            display: none;
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--accent-emerald);
+            border-radius: 8px;
+            font-size: 0.92rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 60px;
+        }
+
+        @media print {
+            .top-nav, .sim-controls, .quiz-container { display: none; }
+            body { background: #fff; color: #000; }
+            .card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="top-nav">
+        <div class="brand-logo">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                <path d="M8 21h8M12 17v4"></path>
+            </svg>
+            <span>ಕಂಪ್ಯೂಟರ್ ಮಾಸ್ಟರ್ ನೋಟ್ಸ್</span>
+        </div>
+        <div class="nav-links">
+            <a href="#sec-def">೧. ವ್ಯಾಖ್ಯಾನ & ಮೂಲ</a>
+            <a href="#sec-fullform">೨. COMPUTER ವಿಸ್ತರಣೆ</a>
+            <a href="#sec-ipos">೩. ೪ ಹಂತಗಳು & EDP</a>
+            <a href="#sec-facts">೪. ಪಿತಾಮಹರು & CPU</a>
+            <a href="#sec-char">೫. ಲಕ್ಷಣಗಳು & GIGO</a>
+            <a href="#sec-quiz">೬. ಪರೀಕ್ಷಾ ಕ್ವಿಜ್</a>
+        </div>
+        <div class="action-btns">
+            <button class="btn-tool" onclick="toggleTheme()">🌓 ಥೀಮ್ ಬದಲಿಸಿ</button>
+            <button class="btn-tool" onclick="window.print()">🖨️ PDF / Print</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="exam-tags">
+            <span class="exam-tag">🎯 UPSC</span>
+            <span class="exam-tag">🎯 KPSC (KAS / FDA / SDA / PDO)</span>
+            <span class="exam-tag">🎯 KEA / PSI / PC</span>
+            <span class="exam-tag">🎯 SSC / Banking / RRB</span>
+        </div>
+        <h1>ಕಂಪ್ಯೂಟರ್ ಮೂಲ ಪರಿಕಲ್ಪನೆ</h1>
+       
+
+        <div class="mnemonic-bar">
+            <span>🧠 <strong>ಸ್ಮರಣೀಯ ಸೂತ್ರ (Memory Trick):</strong></span>
+            <span>ಕಂಪ್ಯೂಟರ್‌ನ 4 ಕಾರ್ಯಗಳು = <strong class="hl-green">I-P-O-S</strong> (Input ➔ Process ➔ Output ➔ Storage)</span>
+            <span>|</span>
+            <span>ಗುಣಲಕ್ಷಣಗಳು = <strong class="hl-amber">S-A-V-D</strong> (Speed, Accuracy, Versatility, Diligence)</span>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- ==========================================
+             SECTION 1: ಮೂಲ ವ್ಯಾಖ್ಯಾನ & ಪದದ ಮೂಲ
+             ========================================== -->
+        <div id="sec-def" class="sec-header">
+            <div class="sec-icon">
+                <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+            </div>
+            <div>
+                <span>ಪರಿಚಯ ಮತ್ತು ಇತಿಹಾಸ</span>
+                <h2>೧. ಮೂಲ ವ್ಯಾಖ್ಯಾನ (Basic Definition) ಮತ್ತು ಪದದ ಮೂಲ (Origin)</h2>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <!-- ಮೂಲ ವ್ಯಾಖ್ಯಾನ -->
+            <div class="card">
+                <span class="card-badge">ಮೂಲ ವ್ಯಾಖ್ಯಾನ</span>
+                <h3>
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                    ಮೂಲ ವ್ಯಾಖ್ಯಾನ (Basic Definition)
+                </h3>
+                <p>
+                    <strong>ಕಂಪ್ಯೂಟರ್ (Computer)</strong> ಎಂಬುದು ಒಂದು <span class="hl-green">ವಿದ್ಯುನ್ಮಾನ ಸಾಧನ (Electronic Device)</span> ಆಗಿದ್ದು, ಇದು ಬಳಕೆದಾರರಿಂದ ದತ್ತಾಂಶವನ್ನು (<strong>Data</strong>) ಇನ್‌ಪುಟ್ (<strong>Input</strong>) ರೂಪದಲ್ಲಿ ಸ್ವೀಕರಿಸಿ, ಅದನ್ನು ಸಂಸ್ಕರಿಸಿ (<strong>Process</strong>), ಉಪಯುಕ್ತ ಮಾಹಿತಿಯನ್ನಾಗಿ (<strong>Output</strong>) ನೀಡುತ್ತದೆ. ಜೊತೆಗೆ ಭವಿಷ್ಯದ ಬಳಕೆಗಾಗಿ ದತ್ತಾಂಶವನ್ನು ಸಂಗ್ರಹಿಸಿ (<strong>Store</strong>) ಇಡುತ್ತದೆ.
+                </p>
+                <div class="exam-tip">
+                    <strong>🎯 ಪರೀಕ್ಷಾ ಹೆಚ್ಚುವರಿ ಅಂಶಗಳು:</strong>
+                    <ul style="padding-left: 18px; margin-top: 6px;">
+                        <li>ಕನ್ನಡದಲ್ಲಿ ಕಂಪ್ಯೂಟರ್ ಅನ್ನು <strong>'ಗಣಕಯಂತ್ರ'</strong> ಅಥವಾ <strong>'ಸಂಗಣಕ'</strong> ಎನ್ನುತ್ತಾರೆ.</li>
+                        <li>ಕಂಪ್ಯೂಟರ್ ಕೇವಲ <strong>ಬೈನರಿ ಭಾಷೆಯನ್ನು (Binary Language: 0 ಮತ್ತು 1)</strong> ಮಾತ್ರ ಅರ್ಥಮಾಡಿಕೊಳ್ಳುತ್ತದೆ.</li>
+                        <li>ಭಾರತದಲ್ಲಿ ತಯಾರಾದ ಮೊದಲ ಕಂಪ್ಯೂಟರ್: <strong>'ಸಿದ್ಧಾರ್ಥ' (Siddhartha)</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ಪದದ ಮೂಲ -->
+            <div class="card">
+                <span class="card-badge">ಪದದ ಉಗಮ</span>
+                <h3>
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                    ಪದದ ಮೂಲ (Origin of the Word)
+                </h3>
+                <p>
+                    <strong>"Computer"</strong> ಎಂಬ ಪದವು ಲ್ಯಾಟಿನ್ ಭಾಷೆಯ <span class="hl-amber">"Computare" (ಕಂಪ್ಯೂಟೇರ್)</span> ಎಂಬ ಪದದಿಂದ ಹುಟ್ಟಿಕೊಂಡಿದೆ (ಹಾಗೆಯೇ ಇಂಗ್ಲಿಷ್‌ನ <em>"Compute"</em> ಪದದಿಂದಲೂ ಗುರುತಿಸಲಾಗುತ್ತದೆ).
+                </p>
+                <p style="margin-top: 10px;">
+                    ಇದರ ಅರ್ಥ <span class="hl-green">"ಲೆಕ್ಕಾಚಾರ ಮಾಡುವುದು" (To Calculate)</span> ಎಂದಾಗಿದೆ. ಆರಂಭದಲ್ಲಿ ಇದನ್ನು ಕೇವಲ ಲೆಕ್ಕಾಚಾರ ಮಾಡುವ ಯಂತ್ರವಾಗಿ ಬಳಸಲಾಗುತ್ತಿತ್ತು.
+                </p>
+                <div class="exam-tip">
+                    <strong>🎯 KPSC / UPSC ಪ್ರಶ್ನೆ ಕೋನ:</strong>
+                    <ul style="padding-left: 18px; margin-top: 6px;">
+                        <li>ಪ್ರಪಂಚದ ಮೊದಲ ಲೆಕ್ಕಾಚಾರದ ಸಾಧನ (First Calculating Device): <strong>ಅಬಾಕಸ್ (Abacus - ಚೀನಾ)</strong>.</li>
+                        <li>'Computer' ಎಂಬ ಪದವನ್ನು 1613 ರಲ್ಲಿ ಮೊಟ್ಟಮೊದಲ ಬಾರಿಗೆ <strong>'ರಿಚರ್ಡ್ ಬ್ರಾತ್‌ವೇಟ್' (Richard Braithwait)</strong> ತಮ್ಮ <em>"The Yong Mans Gleanings"</em> ಪುಸ್ತಕದಲ್ಲಿ ಲೆಕ್ಕ ಮಾಡುವ ಮನುಷ್ಯನನ್ನು ಸೂಚಿಸಲು ಬಳಸಿದ್ದರು.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SECTION 2: ಕಂಪ್ಯೂಟರ್‌ನ ವಿಸ್ತೃತ ರೂಪ (3D Flip Cards)
+             ========================================== -->
+        <div id="sec-fullform" class="sec-header">
+            <div class="sec-icon">
+                <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M4 7V4h16v3M9 20h6M12 4v16"></path>
+                </svg>
+            </div>
+            <div>
+                <span>ಸ್ಪರ್ಧಾತ್ಮಕ ಪರೀಕ್ಷೆಗಳ ವಿಶೇಷ</span>
+                <h2>೨. ಕಂಪ್ಯೂಟರ್‌ನ ವಿಸ್ತೃತ ರೂಪ (Full Form of COMPUTER)</h2>
+            </div>
+        </div>
+
+        <p style="margin-bottom: 18px; color: var(--text-secondary);">
+            ಸ್ಪರ್ಧಾತ್ಮಕ ಪರೀಕ್ಷೆಗಳಲ್ಲಿ <strong>COMPUTER</strong> ಪದದ ಅಕ್ಷರಗಳ ವಿಸ್ತರಣೆಯನ್ನು ಈ ಕೆಳಗಿನಂತೆ ಗುರುತಿಸಲಾಗುತ್ತದೆ. <em>(ಪ್ರತಿ ಕಾರ್ಡ್ ಮೇಲೆ ಮೌಸ್ ಇಡಿ ಅಥವಾ ಕ್ಲಿಕ್ ಮಾಡಿ 3D ಮಾಹಿತಿ ನೋಡಿ):</em>
+        </p>
+
+        <div class="acronym-container">
+            <!-- C -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-front">
+                        <div class="big-char">C</div>
+                        <div class="eng-title">Commonly</div>
+                        <div class="kan-sub">ಸಾಮಾನ್ಯವಾಗಿ</div>
+                    </div>
+                    <div class="flip-back">
+                        <h4>C - Commonly</h4>
+                        <p>ಸಾಮಾನ್ಯವಾಗಿ ಎಲ್ಲಾ ಕ್ಷೇತ್ರಗಳಲ್ಲೂ ಬಳಸಲ್ಪಡುವ ಸಾರ್ವತ್ರಿಕ ಸಾಧನ.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- O -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-front">
+                        <div class="big-char">O</div>
+                        <div class="eng-title">Operated</div>
+                        <div class="kan-sub">ಚಾಲಿತವಾಗುವ</div>
+                    </div>
+                    <div class="flip-back">
+                        <h4>O - Operated</h4>
+                        <p>ಬಳಕೆದಾರರ ಸೂಚನೆ ಮತ್ತು ಸಾಫ್ಟ್‌ವೇರ್ ಪ್ರೋಗ್ರಾಂ ಮೂಲಕ ಚಾಲಿತವಾಗುವ.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- M -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-front">
+                        <div class="big-char">M</div>
+                        <div class="eng-title">Machine</div>
+                        <div class="kan-sub">ಯಂತ್ರ</div>
+                    </div>
+                    <div class="flip-back">
+                        <h4>M - Machine</h4>
+                        <p>ವಿದ್ಯುತ್ ಶಕ್ತಿಯಿಂದ ಕಾರ್ಯನಿರ್ವಹಿಸುವ ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಯಂತ್ರ.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- P -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-front">
+                        <div class="big-char">P</div>
+                        <div class="eng-title">Particularly</div>
+                        <div class="kan-sub">ನಿರ್ದಿಷ್ಟವಾಗಿ</div>
+                    </div>
+                    <div class="flip-back">
+                        <h4>P - Particularly</h4>
+                        <p>ನಿರ್ದಿಷ್ಟವಾಗಿ ಹಾಗೂ ವಿಶೇಷ ಉದ್ದೇಶಗಳಿಗಾಗಿ ವಿನ್ಯಾಸಗೊಳಿಸಲಾದ.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- U -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-front">
+                        <div class="big-char">U</div>
+                        <div class="eng-title">Used for</div>
+                        <div class="kan-sub">ಬಳಕೆಯಾಗುವ</div>
+                    </div>
+                    <div class="flip-back">
+                        <h4>U - Used for</h4>
+                        <p>ವಿವಿಧ ಮಾನವ ಕಾರ್ಯಗಳನ್ನು ಸುಲಭಗೊಳಿಸಲು ಬಳಕೆಯಾಗುವ.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- T -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-front">
+                        <div class="big-char">T</div>
+                        <div class="eng-title">Technical / Trade</div>
+                        <div class="kan-sub">ತಾಂತ್ರಿಕ / ವ್ಯಾಪಾರ</div>
+                    </div>
+                    <div class="flip-back">
+                        <h4>T - Technical/Trade</h4>
+                        <p>ತಾಂತ್ರಿಕ (Technical), ತಂತ್ರಜ್ಞಾನ (Technology) ಮತ್ತು ವ್ಯಾಪಾರ (Trade) ಕ್ಷೇತ್ರಕ್ಕೆ.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- E -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-front">
+                        <div class="big-char">E</div>
+                        <div class="eng-title">Education</div>
+                        <div class="kan-sub">ಶೈಕ್ಷಣಿಕ</div>
+                    </div>
+                    <div class="flip-back">
+                        <h4>E - Education</h4>
+                        <p>ಶೈಕ್ಷಣಿಕ ಕಲಿಕೆ, ಇ-ಲರ್ನಿಂಗ್ ಮತ್ತು ತರಬೇತಿಗಳಿಗಾಗಿ.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- R -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-front">
+                        <div class="big-char">R</div>
+                        <div class="eng-title">Research</div>
+                        <div class="kan-sub">ಸಂಶೋಧನೆ</div>
+                    </div>
+                    <div class="flip-back">
+                        <h4>R - Research</h4>
+                        <p>ಬಾಹ್ಯಾಕಾಶ, ವೈದ್ಯಕೀಯ ಮತ್ತು ವೈಜ್ಞಾನಿಕ ಸಂಶೋಧನೆಗಳಿಗಾಗಿ (Research).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SECTION 3: ಕಾರ್ಯನಿರ್ವಹಣೆಯ ೪ ಹಂತಗಳು & EDP
+             ========================================== -->
+        <div id="sec-ipos" class="sec-header">
+            <div class="sec-icon">
+                <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+            </div>
+            <div>
+                <span>ಕಂಪ್ಯೂಟರ್ ವಾಸ್ತುಶಿಲ್ಪ ಮತ್ತು ಡೇಟಾ ಪ್ರೊಸೆಸಿಂಗ್</span>
+                <h2>೩. ಕಾರ್ಯನಿರ್ವಹಣೆಯ ೪ ಪ್ರಮುಖ ಹಂತಗಳು (Functions) ಮತ್ತು EDP</h2>
+            </div>
+        </div>
+
+        <!-- Animated SVG Block Diagram of Computer -->
+        <div class="diagram-wrapper">
+            <h3 style="justify-content: center; color: var(--accent-amber); margin-bottom: 8px;">
+                ⚡ ಕಂಪ್ಯೂಟರ್ ಒಳರಚನೆ ಮತ್ತು ಕಾರ್ಯನಿರ್ವಹಣೆಯ ಲೈವ್ ಅನಿಮೇಟೆಡ್ ಚಿತ್ರ (IPOS & Von Neumann Architecture)
+            </h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 18px;">
+                ಇನ್‌ಪುಟ್ ಸಾಧನದಿಂದ ಡೇಟಾ ಹೇಗೆ CPU ಒಳಗೆ ಹೋಗಿ ಸಂಸ್ಕರಿಸಲ್ಪಟ್ಟು ಔಟ್‌ಪುಟ್ ಮತ್ತು ಸ್ಟೋರೇಜ್‌ಗೆ ಚಲಿಸುತ್ತದೆ ಎಂಬುದನ್ನು ಗಮನಿಸಿ:
+            </p>
+
+            <div class="svg-container">
+                <svg viewBox="0 0 900 360" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="cpuGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#1e1b4b"/>
+                            <stop offset="100%" stop-color="#312e81"/>
+                        </linearGradient>
+                        <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8" />
+                        </marker>
+                    </defs>
+
+                    <!-- 1. INPUT BOX -->
+                    <rect x="20" y="110" width="170" height="120" rx="14" fill="#0f172a" stroke="#06b6d4" stroke-width="2.5"/>
+                    <text x="105" y="145" fill="#06b6d4" font-size="16" font-weight="bold" text-anchor="middle">1. ಇನ್‌ಪುಟ್ (INPUT)</text>
+                    <text x="105" y="172" fill="#cbd5e1" font-size="13" text-anchor="middle">ಕಚ್ಚಾ ದತ್ತಾಂಶ (Raw Data)</text>
+                    <text x="105" y="195" fill="#94a3b8" font-size="11.5" text-anchor="middle">ಕೀಬೋರ್ಡ್, ಮೌಸ್, ಸ್ಕ್ಯಾನರ್</text>
+
+                    <!-- Animated Line Input -> CPU -->
+                    <line x1="190" y1="170" x2="295" y2="170" stroke="#06b6d4" stroke-width="3" class="flow-line" marker-end="url(#arrow)"/>
+                    <text x="242" y="158" fill="#fde047" font-size="11" font-weight="bold" text-anchor="middle">Data (0,1)</text>
+
+                    <!-- 2. CPU BOX (Center Brain) -->
+                    <g class="cpu-glow">
+                        <rect x="305" y="25" width="290" height="215" rx="18" fill="url(#cpuGrad)" stroke="#a855f7" stroke-width="3"/>
+                        <text x="450" y="55" fill="#f59e0b" font-size="16" font-weight="bold" text-anchor="middle">2. CPU (ಕಂಪ್ಯೂಟರ್‌ನ ಮೆದುಳು)</text>
+
+                        <!-- CU -->
+                        <rect x="325" y="70" width="250" height="45" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+                        <text x="450" y="97" fill="#38bdf8" font-size="13.5" font-weight="bold" text-anchor="middle">Control Unit (CU) - ನಿಯಂತ್ರಣ ಘಟಕ</text>
+
+                        <!-- ALU -->
+                        <rect x="325" y="125" width="250" height="48" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+                        <text x="450" y="147" fill="#10b981" font-size="13" font-weight="bold" text-anchor="middle">ALU (ಗಣಿತ ಮತ್ತು ತಾರ್ಕಿಕ ಘಟಕ)</text>
+                        <text x="450" y="164" fill="#94a3b8" font-size="11" text-anchor="middle">(+, -, ×, ÷ ಮತ್ತು &lt;, &gt;, =, AND, OR)</text>
+
+                        <!-- Registers -->
+                        <rect x="325" y="182" width="250" height="42" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+                        <text x="450" y="208" fill="#fde047" font-size="13" font-weight="bold" text-anchor="middle">Registers (ಅತಿ ವೇಗದ ತಾತ್ಕಾಲಿಕ ಮೆಮೊರಿ)</text>
+                    </g>
+
+                    <!-- Animated Line CPU <-> Storage -->
+                    <line x1="430" y1="240" x2="430" y2="275" stroke="#f59e0b" stroke-width="3" class="flow-line" marker-end="url(#arrow)"/>
+                    <line x1="470" y1="275" x2="470" y2="240" stroke="#f59e0b" stroke-width="3" class="flow-line" marker-end="url(#arrow)"/>
+
+                    <!-- 4. STORAGE BOX -->
+                    <rect x="305" y="280" width="290" height="70" rx="14" fill="#0f172a" stroke="#f59e0b" stroke-width="2.5"/>
+                    <text x="450" y="310" fill="#f59e0b" font-size="15.5" font-weight="bold" text-anchor="middle">4. ಸ್ಟೋರೇಜ್ (STORAGE / MEMORY)</text>
+                    <text x="450" y="333" fill="#cbd5e1" font-size="12" text-anchor="middle">Primary (RAM/ROM) &amp; Secondary (Hard Disk/SSD)</text>
+
+                    <!-- Animated Line CPU -> Output -->
+                    <line x1="595" y1="170" x2="700" y2="170" stroke="#10b981" stroke-width="3" class="flow-line" marker-end="url(#arrow)"/>
+                    <text x="648" y="158" fill="#86efac" font-size="11" font-weight="bold" text-anchor="middle">Information</text>
+
+                    <!-- 3. OUTPUT BOX -->
+                    <rect x="710" y="110" width="170" height="120" rx="14" fill="#0f172a" stroke="#10b981" stroke-width="2.5"/>
+                    <text x="795" y="145" fill="#10b981" font-size="16" font-weight="bold" text-anchor="middle">3. ಔಟ್‌ಪುಟ್ (OUTPUT)</text>
+                    <text x="795" y="172" fill="#cbd5e1" font-size="13" text-anchor="middle">ಉಪಯುಕ್ತ ಮಾಹಿತಿ (Result)</text>
+                    <text x="795" y="195" fill="#94a3b8" font-size="11.5" text-anchor="middle">ಮಾನಿಟರ್, ಪ್ರಿಂಟರ್, ಸ್ಪೀಕರ್</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- 4 Functions Detailed Cards -->
+        <div class="steps-grid">
+            <div class="step-card" style="border-top-color: var(--accent-cyan);">
+                <span class="step-num">01</span>
+                <h4 style="color: var(--accent-cyan); font-size: 1.2rem; margin-bottom: 8px;">1. ಇನ್‌ಪುಟ್ (Input)</h4>
+                <p>ಕೀಬೋರ್ಡ್, ಮೌಸ್, ಸ್ಕ್ಯಾನರ್ ಮುಂತಾದ ಸಾಧನಗಳ ಮೂಲಕ ದತ್ತಾಂಶವನ್ನು (<strong>Data</strong>) ಕಂಪ್ಯೂಟರ್‌ಗೆ ನೀಡುವುದು.</p>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">📌 <em>ಪರೀಕ್ಷಾ ಅಂಶ: ಇನ್‌ಪುಟ್ ಘಟಕವು ಮನುಷ್ಯನ ಭಾಷೆಯ ಡೇಟಾವನ್ನು ಕಂಪ್ಯೂಟರ್ ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವ ಬೈನರಿ (0,1) ರೂಪಕ್ಕೆ ಪರಿವರ್ತಿಸುತ್ತದೆ.</em></p>
+            </div>
+
+            <div class="step-card" style="border-top-color: var(--accent-purple);">
+                <span class="step-num">02</span>
+                <h4 style="color: var(--accent-purple); font-size: 1.2rem; margin-bottom: 8px;">2. ಪ್ರೊಸೆಸಿಂಗ್ (Processing)</h4>
+                <p>ಇನ್‌ಪುಟ್ ಮಾಡಿದ ದತ್ತಾಂಶವನ್ನು ಸಿಪಿಯು (<strong>CPU - Central Processing Unit</strong>) ಮೂಲಕ ತಾರ್ಕಿಕವಾಗಿ ಮತ್ತು ಗಣಿತೀಯವಾಗಿ ಸಂಸ್ಕರಿಸುವುದು.</p>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">📌 <em>ಪರೀಕ್ಷಾ ಅಂಶ: ಇಲ್ಲಿ ಕಚ್ಚಾ ಡೇಟಾವು ಅರ್ಥಪೂರ್ಣ ಮಾಹಿತಿಯಾಗಿ ಬದಲಾಗುತ್ತದೆ.</em></p>
+            </div>
+
+            <div class="step-card" style="border-top-color: var(--accent-emerald);">
+                <span class="step-num">03</span>
+                <h4 style="color: var(--accent-emerald); font-size: 1.2rem; margin-bottom: 8px;">3. ಔಟ್‌ಪುಟ್ (Output)</h4>
+                <p>ಸಂಸ್ಕರಿಸಿದ ಮಾಹಿತಿಯನ್ನು ಮಾನಿಟರ್ ಅಥವಾ ಪ್ರಿಂಟರ್ ಮೂಲಕ ಫಲಿತಾಂಶವಾಗಿ (<strong>Result</strong>) ನೀಡುವುದು.</p>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">📌 <em>ಪರೀಕ್ಷಾ ಅಂಶ: ಮಾನಿಟರ್ ನೀಡುವ ಫಲಿತಾಂಶವನ್ನು <strong>Soft Copy</strong> ಎಂದೂ, ಪ್ರಿಂಟರ್ ನೀಡುವ ಫಲಿತಾಂಶವನ್ನು <strong>Hard Copy</strong> ಎಂದೂ ಕರೆಯುತ್ತಾರೆ.</em></p>
+            </div>
+
+            <div class="step-card" style="border-top-color: var(--accent-amber);">
+                <span class="step-num">04</span>
+                <h4 style="color: var(--accent-amber); font-size: 1.2rem; margin-bottom: 8px;">4. ಸ್ಟೋರೇಜ್ (Storage)</h4>
+                <p>ಪ್ರೊಸೆಸ್ ಆದ ಮಾಹಿತಿಯನ್ನು ಹಾರ್ಡ್ ಡಿಸ್ಕ್ (Hard Disk) ಅಥವಾ ಮೆಮೊರಿಯಲ್ಲಿ ಭವಿಷ್ಯದ ಬಳಕೆಗಾಗಿ ಶೇಖರಿಸಿಡುವುದು.</p>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">📌 <em>ಪರೀಕ್ಷಾ ಅಂಶ: RAM ತಾತ್ಕಾಲಿಕ (Volatile) ಮೆಮೊರಿಯಾದರೆ, Hard Disk/SSD ಶಾಶ್ವತ (Non-Volatile) ಮೆಮೊರಿಯಾಗಿದೆ.</em></p>
+            </div>
+        </div>
+
+        <!-- EDP Complete Box & Interactive Simulator -->
+        <div class="lab-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <h3 style="color: var(--accent-cyan); font-size: 1.4rem;">
+                    ⚡ ಕಂಪ್ಯೂಟರ್ ಒಂದು EDP ಸಾಧನವಾಗಿದೆ (Electronic Data Processing)
+                </h3>
+                <span class="exam-tag">ಅತಿ ಮುಖ್ಯ ಪರೀಕ್ಷಾ ವಿಷಯ</span>
+            </div>
+
+            <p style="margin-top: 12px;">
+                <strong>ವಿಸ್ತೃತ ರೂಪ (Full Form):</strong> EDP ಎಂದರೆ <span class="hl-green">Electronic Data Processing (ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಡೇಟಾ ಪ್ರೊಸೆಸಿಂಗ್)</span>.<br>
+                <strong>ವ್ಯಾಖ್ಯಾನ (Definition):</strong> ಕಂಪ್ಯೂಟರ್ ಅಥವಾ ಇತರ ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಸಾಧನಗಳನ್ನು ಬಳಸಿಕೊಂಡು ಕಚ್ಚಾ ದತ್ತಾಂಶವನ್ನು (<strong>Raw Data</strong>) ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಮತ್ತು ವೇಗವಾಗಿ ಉಪಯುಕ್ತ ಮಾಹಿತಿಯನ್ನಾಗಿ (<strong>Useful Information</strong>) ಪರಿವರ್ತಿಸುವ ಪ್ರಕ್ರಿಯೆಯನ್ನು EDP ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.
+            </p>
+
+            <div style="margin-top: 16px; padding: 14px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+                <h4 style="color: var(--accent-amber); margin-bottom: 8px;">EDP ಯ ೩ ಪ್ರಮುಖ ಹಂತಗಳು (Stages of EDP):</h4>
+                <ol style="padding-left: 20px;">
+                    <li><strong>ಇನ್‌ಪುಟ್ (Input):</strong> ಕೀಬೋರ್ಡ್, ಸ್ಕ್ಯಾನರ್ ಮುಂತಾದ ಸಾಧನಗಳ ಮೂಲಕ ಕಚ್ಚಾ ದತ್ತಾಂಶವನ್ನು (ಉದಾಹರಣೆಗೆ: ಅಂಕಿ-ಅಂಶಗಳು, ಹೆಸರುಗಳು) ಕಂಪ್ಯೂಟರ್‌ಗೆ ನೀಡುವುದು.</li>
+                    <li><strong>ಪ್ರೊಸೆಸಿಂಗ್ (Processing):</strong> ನೀಡಲಾದ ದತ್ತಾಂಶವನ್ನು ಸಿಪಿಯು (CPU) ತಾರ್ಕಿಕವಾಗಿ ಮತ್ತು ಗಣಿತೀಯವಾಗಿ ಲೆಕ್ಕಾಚಾರ ಮಾಡಿ ಸಂಸ್ಕರಿಸುವುದು.</li>
+                    <li><strong>ಔಟ್‌ಪುಟ್ (Output):</strong> ಸಂಸ್ಕರಣೆಯ ನಂತರ ಲಭ್ಯವಾದ ಅರ್ಥಗರ್ಭಿತ ಫಲಿತಾಂಶವನ್ನು ಅಥವಾ ಮಾಹಿತಿಯನ್ನು ಮಾನಿಟರ್ ಅಥವಾ ಪ್ರಿಂಟರ್ ಮೂಲಕ ಒದಗಿಸುವುದು.</li>
+                </ol>
+            </div>
+
+            <!-- Interactive Simulator -->
+            <div style="margin-top: 22px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 18px;">
+                <h4 style="color: #fde047;">🧪 ಲೈವ್ EDP ಮತ್ತು GIGO ಪ್ರಯೋಗಾಲಯ (ಕೆಳಗಿನ ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿ ಪರೀಕ್ಷಿಸಿ):</h4>
+                <div class="sim-controls">
+                    <button class="sim-btn active" onclick="runSim('marks', this)">📊 ಉದಾಹರಣೆ 1: ವಿದ್ಯಾರ್ಥಿ ಅಂಕಗಳ ಡೇಟಾ</button>
+                    <button class="sim-btn" onclick="runSim('bank', this)">🏦 ಉದಾಹರಣೆ 2: ಬ್ಯಾಂಕ್ ವಹಿವಾಟು ಡೇಟಾ</button>
+                    <button class="sim-btn gigo-btn" onclick="runSim('gigo', this)">⚠️ GIGO ನಿಯಮ ಪರೀಕ್ಷಿಸಿ (Garbage In Garbage Out)</button>
+                </div>
+
+                <div class="sim-stages">
+                    <div class="sim-panel">
+                        <h5>1. ಇನ್‌ಪುಟ್ (Raw Data)</h5>
+                        <p id="sim-in" style="font-family: monospace; font-size: 1rem; color: #38bdf8;">"ರಮೇಶ್", 85, 90, 95</p>
+                    </div>
+                    <div class="sim-panel">
+                        <h5>2. ಸಿಪಿಯು ಪ್ರೊಸೆಸಿಂಗ್ (ALU + CU)</h5>
+                        <p id="sim-proc" style="font-family: monospace; font-size: 0.95rem; color: #c4b5fd;">ಒಟ್ಟು = 85+90+95 = 270 | ಸರಾಸರಿ = 270/3 = 90%</p>
+                    </div>
+                    <div class="sim-panel">
+                        <h5>3. ಔಟ್‌ಪುಟ್ (Information)</h5>
+                        <p id="sim-out" style="font-size: 0.98rem; color: #4ade80; font-weight: 700;">"ರಮೇಶ್ ಪರೀಕ್ಷೆಯಲ್ಲಿ 90% ಅಂಕಗಳೊಂದಿಗೆ ಉನ್ನತ ಶ್ರೇಣಿಯಲ್ಲಿ (Distinction) ಉತ್ತೀರ್ಣರಾಗಿದ್ದಾರೆ."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data vs Information Table -->
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ವ್ಯತ್ಯಾಸದ ಅಂಶ</th>
+                        <th>ಡೇಟಾ (Data - ದತ್ತಾಂಶ)</th>
+                        <th>ಮಾಹಿತಿ (Information)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ಮೂಲ ವ್ಯಾಖ್ಯಾನ</strong></td>
+                        <td>ಸಂಸ್ಕರಿಸದ ಕಚ್ಚಾ ಮಾಹಿತಿಗೆ (<strong>Unprocessed raw facts and figures</strong>) ಡೇಟಾ ಎನ್ನುತ್ತಾರೆ.</td>
+                        <td>ಪ್ರೊಸೆಸ್ ಆದ (ಸಂಸ್ಕರಿಸಲ್ಪಟ್ಟ) ಅರ್ಥಗರ್ಭಿತ ಡೇಟಾವನ್ನು (<strong>Processed & meaningful data</strong>) ಮಾಹಿತಿ ಎನ್ನುತ್ತಾರೆ.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ಪದದ ಮೂಲ</strong></td>
+                        <td>ಲ್ಯಾಟಿನ್ ಪದ <strong>'Datum'</strong> ನ ಬಹುವಚನ ರೂಪವೇ Data.</td>
+                        <td>ಇದು ಸಂಸ್ಕರಣೆಯ ನಂತರದ ಅಂತಿಮ ಫಲಿತಾಂಶವಾಗಿದೆ.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ಸ್ವರೂಪ</strong></td>
+                        <td>ಇದು ಕೇವಲ ಅಕ್ಷರಗಳು, ಸಂಖ್ಯೆಗಳು ಅಥವಾ ಚಿಹ್ನೆಗಳಾಗಿದ್ದು ನೇರವಾಗಿ ನಿರ್ಧಾರ ತೆಗೆದುಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುವುದಿಲ್ಲ.</td>
+                        <td>ಇದು ವ್ಯವಸ್ಥಿತವಾಗಿದ್ದು, ನಿರ್ಧಾರ ತೆಗೆದುಕೊಳ್ಳಲು (Decision Making) ನೇರವಾಗಿ ಉಪಯುಕ್ತವಾಗಿದೆ.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ==========================================
+             SECTION 4: ಪರೀಕ್ಷಾ ದೃಷ್ಟಿಯಿಂದ ಪ್ರಮುಖ ಅಂಶಗಳು
+             ========================================== -->
+        <div id="sec-facts" class="sec-header">
+            <div class="sec-icon">
+                <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+            </div>
+            <div>
+                <span>ಪಿತಾಮಹರು ಮತ್ತು ಕಂಪ್ಯೂಟರ್ ಮೆದುಳು</span>
+                <h2>೪. ಪರೀಕ್ಷಾ ದೃಷ್ಟಿಯಿಂದ ನೆನಪಿಡಬೇಕಾದ ಪ್ರಮುಖ ಅಂಶಗಳು (Golden Exam Facts)</h2>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <!-- Charles Babbage -->
+            <div class="card pioneer-card">
+                <div class="pioneer-header">
+                    <div class="avatar-svg" style="background: rgba(59, 130, 246, 0.18); border: 2px solid var(--accent-blue);">👨‍🔬</div>
+                    <div>
+                        <span style="color: var(--accent-amber); font-weight: 700; font-size: 0.85rem;">ಕಂಪ್ಯೂಟರ್‌ನ ಪಿತಾಮಹ (Father of Computer)</span>
+                        <h3 style="margin: 2px 0 0; color: var(--text-primary);">ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ (Charles Babbage)</h3>
+                    </div>
+                </div>
+                <p>
+                    ಬ್ರಿಟಿಷ್ ಗಣಿತಜ್ಞರಾದ ಇವರು <strong>1822</strong> ರಲ್ಲಿ <strong>'ಡಿಫರೆನ್ಸ್ ಎಂಜಿನ್' (Difference Engine)</strong> ಮತ್ತು <strong>1837</strong> ರಲ್ಲಿ <span class="hl-green">'ಅನಾಲಿಟಿಕಲ್ ಎಂಜಿನ್' (Analytical Engine)</span> ಅನ್ನು ಕಂಡುಹಿಡಿದರು.
+                </p>
+                <div class="exam-tip">
+                    💡 <strong>ಯಾಕೆ ಇವರನ್ನು ಪಿತಾಮಹ ಎನ್ನುತ್ತಾರೆ?</strong> ಇವರ 'ಅನಾಲಿಟಿಕಲ್ ಎಂಜಿನ್' ಇಂದಿನ ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್‌ಗಳಂತೆ Input, Mill (ALU), Control, Store (Memory) ಮತ್ತು Output ಎಂಬ ಮೂಲ ವಿನ್ಯಾಸವನ್ನು ಹೊಂದಿತ್ತು.
+                </div>
+            </div>
+
+            <!-- Alan Turing -->
+            <div class="card pioneer-card">
+                <div class="pioneer-header">
+                    <div class="avatar-svg" style="background: rgba(139, 92, 246, 0.18); border: 2px solid var(--accent-purple);">🧠</div>
+                    <div>
+                        <span style="color: var(--accent-purple); font-weight: 700; font-size: 0.85rem;">ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್ ವಿಜ್ಞಾನದ ಪಿತಾಮಹ</span>
+                        <h3 style="margin: 2px 0 0; color: var(--text-primary);">ಅಲಾನ್ ಟ್ಯೂರಿಂಗ್ (Alan Turing)</h3>
+                    </div>
+                </div>
+                <p>
+                    <strong>Father of Modern Computer Science & Artificial Intelligence (AI).</strong> ಇವರು 1936 ರಲ್ಲಿ <strong>'ಟ್ಯೂರಿಂಗ್ ಮಷಿನ್' (Turing Machine)</strong> ಪರಿಕಲ್ಪನೆಯನ್ನು ಜಗತ್ತಿಗೆ ನೀಡಿದರು.
+                </p>
+                <div class="exam-tip">
+                    💡 <strong>ಪರೀಕ್ಷಾ ಅಂಶ:</strong> ಕಂಪ್ಯೂಟರ್ ವಿಜ್ಞಾನ ಕ್ಷೇತ್ರದ ನೊಬೆಲ್ ಪ್ರಶಸ್ತಿ ಎಂದೇ ಕರೆಯಲ್ಪಡುವ ಅತ್ಯುನ್ನತ ಪ್ರಶಸ್ತಿ <strong>'ಟ್ಯೂರಿಂಗ್ ಪ್ರಶಸ್ತಿ' (Turing Award)</strong>.
+                </div>
+            </div>
+
+            <!-- Lady Ada Lovelace -->
+            <div class="card pioneer-card">
+                <div class="pioneer-header">
+                    <div class="avatar-svg" style="background: rgba(236, 72, 153, 0.18); border: 2px solid var(--accent-pink);">👩‍💻</div>
+                    <div>
+                        <span style="color: var(--accent-pink); font-weight: 700; font-size: 0.85rem;">ಪ್ರಪಂಚದ ಮೊದಲ ಪ್ರೋಗ್ರಾಮರ್ (First Programmer)</span>
+                        <h3 style="margin: 2px 0 0; color: var(--text-primary);">ಲೇಡಿ ಅದಾ ಲವ್‌ಲೇಸ್ (Lady Ada Lovelace)</h3>
+                    </div>
+                </div>
+                <p>
+                    ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ ಅವರ ಅನಾಲಿಟಿಕಲ್ ಎಂಜಿನ್‌ಗಾಗಿ ಪ್ರಪಂಚದ ಮೊದಲ ಅಲ್ಗಾರಿದಮ್ (ಕಂಪ್ಯೂಟರ್ ಪ್ರೋಗ್ರಾಂ) ಬರೆದ ಕೀರ್ತಿ ಇವರಿಗೆ ಸಲ್ಲುತ್ತದೆ.
+                </p>
+                <div class="exam-tip">
+                    💡 <strong>ಪರೀಕ್ಷಾ ಅಂಶ:</strong> ಬೈನರಿ ನಂಬರ್ ಸಿಸ್ಟಮ್ (0 ಮತ್ತು 1) ಪ್ರತಿಪಾದಿಸಿದವರು <strong>ಗಾಟ್‌ಫ್ರೈಡ್ ಲೆಬ್ನಿಜ್ (Gottfried Leibniz)</strong>, ಹಾಗೂ ಅದನ್ನು ಬ್ಯಾಬೇಜ್ ಯಂತ್ರದಲ್ಲಿ ಬಳಸಲು ಸಲಹೆ ನೀಡಿದವರು ಲೇಡಿ ಅದಾ ಲವ್‌ಲೇಸ್.
+                </div>
+            </div>
+
+            <!-- Brain of Computer: CPU -->
+            <div class="card pioneer-card">
+                <div class="pioneer-header">
+                    <div class="avatar-svg" style="background: rgba(16, 185, 129, 0.18); border: 2px solid var(--accent-emerald);">⚙️️</div>
+                    <div>
+                        <span style="color: var(--accent-emerald); font-weight: 700; font-size: 0.85rem;">ಕಂಪ್ಯೂಟರ್‌ನ ಮೆದುಳು (Brain of Computer)</span>
+                        <h3 style="margin: 2px 0 0; color: var(--text-primary);">ಸಿಪಿಯು (CPU - Central Processing Unit)</h3>
+                    </div>
+                </div>
+                <p>
+                    ಸಿಪಿಯು ಅನ್ನು ಕಂಪ್ಯೂಟರ್‌ನ <strong>ಮೆದುಳು (Brain)</strong> ಮತ್ತು <strong>ಹೃದಯ</strong> ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ. ಇದನ್ನು ಸಿಲಿಕಾನ್ ಚಿಪ್ ಮೇಲಿನ <strong>ಮೈಕ್ರೋಪ್ರೊಸೆಸರ್ (Microprocessor)</strong> ಎಂದೂ ಕರೆಯುತ್ತಾರೆ (ಮೊದಲ ಮೈಕ್ರೋಪ್ರೊಸೆಸರ್: <strong>Intel 4004</strong>).
+                </p>
+                <div class="exam-tip">
+                    💡 <strong>ಜಾನ್ ವಾನ್ ನ್ಯೂಮನ್ (John von Neumann):</strong> ಇವರನ್ನು <em>'ಆಧುನಿಕ ಕಂಪ್ಯೂಟರ್ ವಾಸ್ತುಶಿಲ್ಪದ ಪಿತಾಮಹ'</em> ಎನ್ನುತ್ತಾರೆ (Stored Program Concept ನೀಡಿದವರು).
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SECTION 5: ಕಂಪ್ಯೂಟರ್‌ನ ಪ್ರಮುಖ ಲಕ್ಷಣಗಳು
+             ========================================== -->
+        <div id="sec-char" class="sec-header">
+            <div class="sec-icon">
+                <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+            </div>
+            <div>
+                <span>ಸಾಮರ್ಥ್ಯಗಳು ಮತ್ತು ಮಿತಿಗಳು</span>
+                <h2>೫. ಕಂಪ್ಯೂಟರ್‌ನ ಪ್ರಮುಖ ಲಕ್ಷಣಗಳು (Characteristics of Computer)</h2>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <!-- 1. ವೇಗ (Speed) -->
+            <div class="card">
+                <h3>🚀 1. ವೇಗ (Speed)</h3>
+                <p>
+                    ಕಂಪ್ಯೂಟರ್ ಲೆಕ್ಕಾಚಾರಗಳನ್ನು <strong>ನ್ಯಾನೊಸೆಕೆಂಡ್‌ಗಳಲ್ಲಿ (Nanoseconds)</strong> ಹಾಗೂ ಪಿಕೊಸೆಕೆಂಡ್‌ಗಳಲ್ಲಿ ಮಾಡುತ್ತದೆ. ಸಾಮಾನ್ಯ ಕಂಪ್ಯೂಟರ್ ವೇಗವನ್ನು <span class="hl-green">MIPS (Million Instructions Per Second)</span> ಮತ್ತು ಸೂಪರ್ ಕಂಪ್ಯೂಟರ್ ವೇಗವನ್ನು <span class="hl-amber">FLOPS (Floating Point Operations Per Second)</span> ನಲ್ಲಿ ಅಳೆಯುತ್ತಾರೆ.
+                </p>
+                <div class="speed-meter">
+                    <div class="speed-row">
+                        <span class="speed-label">Millisecond (ms)</span>
+                        <div class="speed-bar-bg"><div class="speed-bar-fill" style="width: 40%;"></div></div>
+                        <span>10⁻³ ಸೆಕೆಂಡ್</span>
+                    </div>
+                    <div class="speed-row">
+                        <span class="speed-label">Microsecond (µs)</span>
+                        <div class="speed-bar-bg"><div class="speed-bar-fill" style="width: 60%;"></div></div>
+                        <span>10⁻⁶ ಸೆಕೆಂಡ್</span>
+                    </div>
+                    <div class="speed-row">
+                        <span class="speed-label" style="color: var(--accent-cyan);">Nanosecond (ns)</span>
+                        <div class="speed-bar-bg"><div class="speed-bar-fill" style="width: 85%;"></div></div>
+                        <span class="hl-green">10⁻⁹ ಸೆಕೆಂಡ್</span>
+                    </div>
+                    <div class="speed-row">
+                        <span class="speed-label">Picosecond (ps)</span>
+                        <div class="speed-bar-bg"><div class="speed-bar-fill" style="width: 100%;"></div></div>
+                        <span>10⁻¹² ಸೆಕೆಂಡ್</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. ನಿಖರತೆ (Accuracy & GIGO) -->
+            <div class="card">
+                <h3>🎯 2. ನಿಖರತೆ (Accuracy) ಮತ್ತು GIGO ನಿಯಮ</h3>
+                <p>
+                    ಕಂಪ್ಯೂಟರ್ ಯಾವುದೇ ತಪ್ಪುಗಳಿಲ್ಲದೆ <strong>100% ಸರಿಯಾದ ಫಲಿತಾಂಶವನ್ನು</strong> ನೀಡುತ್ತದೆ. ಇದು <span class="hl-amber">GIGO (Garbage In Garbage Out)</span> ನಿಯಮದಡಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ.
+                </p>
+                <div class="exam-tip" style="margin-top: 20px;">
+                    <strong>🔍 ಏನಿದು GIGO ನಿಯಮ? (KAS / FDA / KEA ಪದೇ ಪದೇ ಕೇಳುವ ಪ್ರಶ್ನೆ):</strong><br>
+                    ಕಂಪ್ಯೂಟರ್ ತಾನಾಗಿಯೇ ಎಂದಿಗೂ ತಪ್ಪು ಮಾಡುವುದಿಲ್ಲ. ಬಳಕೆದಾರನು ತಪ್ಪಾದ ಡೇಟಾ (Garbage In) ನೀಡಿದರೆ, ಕಂಪ್ಯೂಟರ್ ನೀಡುವ ಫಲಿತಾಂಶವೂ ತಪ್ಪಾಗಿಯೇ (Garbage Out) ಇರುತ್ತದೆ. ಇದು ಕಂಪ್ಯೂಟರ್‌ನ <strong>'ನಿಖರತೆ' (Accuracy)</strong> ಗುಣಕ್ಕೆ ಸಂಬಂಧಿಸಿದೆ.
+                </div>
+            </div>
+
+            <!-- 3. ಬಹುಮುಖಿ ಕಾರ್ಯ (Versatility) -->
+            <div class="card">
+                <h3>🔄 3. ಬಹುಮುಖಿ ಕಾರ್ಯ (Versatility)</h3>
+                <p>
+                    ಒಂದೇ ಸಮಯದಲ್ಲಿ ವಿವಿಧ ರೀತಿಯ ಕಾರ್ಯಗಳನ್ನು ನಿರ್ವಹಿಸುವ ಸಾಮರ್ಥ್ಯವನ್ನು <strong>ಬಹುಮುಖಿ ಕಾರ್ಯ (Versatility)</strong> ಎನ್ನುತ್ತಾರೆ.
+                </p>
+                <p style="margin-top: 10px; font-size: 0.94rem; color: var(--text-secondary);">
+                    ಉದಾಹರಣೆಗೆ: ಒಂದೇ ಕ್ಷಣದಲ್ಲಿ ಎಂಎಸ್ ವರ್ಡ್‌ನಲ್ಲಿ ಡಾಕ್ಯುಮೆಂಟ್ ಟೈಪ್ ಮಾಡುವುದು, ಹಿನ್ನೆಲೆಯಲ್ಲಿ ಹಾಡು ಕೇಳುವುದು, ಪಿಡಿಎಫ್ ಪ್ರಿಂಟ್ ಕೊಡುವುದು ಮತ್ತು ಇಂಟರ್ನೆಟ್‌ನಿಂದ ಫೈಲ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡುವುದು (Multitasking).
+                </p>
+            </div>
+
+            <!-- 4. ದಣಿವರಿಯದ ದುಡಿಮೆ (Diligence) & ಇತರ ಲಕ್ಷಣಗಳು -->
+            <div class="card">
+                <h3>🔋 4. ದಣಿವರಿಯದ ದುಡಿಮೆ (Diligence) ಮತ್ತು ಮಿತಿಗಳು</h3>
+                <p>
+                    <strong>ದಣಿವರಿಯದ ದುಡಿಮೆ (Diligence):</strong> ಮನುಷ್ಯನಂತೆ ಆಯಾಸ (Fatigue), ಬೇಸರ (Boredom) ಅಥವಾ ಏಕಾಗ್ರತೆಯ ಕೊರತೆಯಿಲ್ಲದೆ (Lack of Concentration) ಗಂಟೆಗಟ್ಟಲೆ ನಿರಂತರವಾಗಿ ಮೊದಲ ಲೆಕ್ಕಾಚಾರದಷ್ಟೇ ನಿಖರವಾಗಿ ಕೋಟ್ಯಂತರ ಲೆಕ್ಕಾಚಾರ ಮಾಡುತ್ತದೆ.
+                </p>
+                <div class="exam-tip" style="border-left-color: var(--accent-red); background: rgba(239, 68, 68, 0.1);">
+                    <strong>⚠️ ಕಂಪ್ಯೂಟರ್‌ನ ಮಿತಿಗಳು (Limitations - ಪರೀಕ್ಷೆಯಲ್ಲಿ ತಪ್ಪಿಸಲು ಕೇಳುವ ಅಂಶ):</strong>
+                    <ul style="padding-left: 18px; margin-top: 4px;">
+                        <li><strong>Zero IQ (ಬುದ್ಧಿಮತ್ತೆಯ ಕೊರತೆ):</strong> ಕಂಪ್ಯೂಟರ್‌ಗೆ ಸ್ವಂತವಾಗಿ ಯೋಚಿಸುವ ಬುದ್ಧಿಮತ್ತೆ ಇಲ್ಲ (ಐಕ್ಯೂ = 0).</li>
+                        <li><strong>No Feelings:</strong> ಇದಕ್ಕೆ ಯಾವುದೇ ಭಾವನೆಗಳು, ಕರುಣೆ ಅಥವಾ ಸೃಜನಶೀಲತೆ ಇರುವುದಿಲ್ಲ.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SECTION 6: ಇಂಟರಾಕ್ಟಿವ್ ಪರೀಕ್ಷಾ ರಸಪ್ರಶ್ನೆ (MCQ Quiz)
+             ========================================== -->
+        <div id="sec-quiz" class="sec-header">
+            <div class="sec-icon">
+                <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M9 11l3 3L22 4"></path>
+                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                </svg>
+            </div>
+            <div>
+                <span>ಸ್ವಯಂ ಮೌಲ್ಯಮಾಪನ</span>
+                <h2>೬. ಸ್ಪರ್ಧಾತ್ಮಕ ಪರೀಕ್ಷಾ ಮಾದರಿ ಪ್ರಶ್ನೋತ್ತರಗಳು (Live Mock Quiz)</h2>
+            </div>
+        </div>
+
+        <div class="quiz-container">
+            <div class="score-banner">
+                <span>🎯 ನೀವು ಓದಿದ ನೋಟ್ಸ್ ಆಧರಿಸಿ ಕೆಳಗಿನ 6 ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸಿ:</span>
+                <span id="score-display" class="hl-green">ನಿಮ್ಮ ಅಂಕ: 0 / 6</span>
+            </div>
+
+            <!-- Q1 -->
+            <div class="q-block">
+                <div class="q-title">1. "Computer" ಎಂಬ ಪದವು ಯಾವ ಭಾಷೆಯ "Computare" ಎಂಬ ಪದದಿಂದ ಹುಟ್ಟಿಕೊಂಡಿದೆ?</div>
+                <div class="q-options">
+                    <button class="q-btn" onclick="answerQuiz(this, false, 'qexp1')">A) ಗ್ರೀಕ್ (Greek)</button>
+                    <button class="q-btn" onclick="answerQuiz(this, true, 'qexp1')">B) ಲ್ಯಾಟಿನ್ (Latin)</button>
+                    <button class="q-btn" onclick="answerQuiz(this, false, 'qexp1')">C) ಫ್ರೆಂಚ್ (French)</button>
+                    <button class="q-btn" onclick="answerQuiz(this, false, 'qexp1')">D) ಜರ್ಮನ್ (German)</button>
+                </div>
+                <div id="qexp1" class="q-exp">✅ <strong>ಸರಿಯಾದ ಉತ್ತರ: B) ಲ್ಯಾಟಿನ್ (Latin).</strong> 'Computare' ಎಂದರೆ 'ಲೆಕ್ಕಾಚಾರ ಮಾಡುವುದು' (To Calculate) ಎಂದರ್ಥ.</div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="q-block">
+                <div class="q-title">2. ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ 'EDP' ಯ ವಿಸ್ತೃತ ರೂಪವೇನು?</div>
+                <div class="q-options">
+                    <button class="q-btn" onclick="answerQuiz(this, false, 'qexp2')">A) Electronic Data Part</button>
+                    <button class="q-btn" onclick="answerQuiz(this, false, 'qexp2')">B) Electronic Digital Processing</button>
+                    <button class="q-btn" onclick="answerQuiz(this, true, 'qexp2')">C) Electronic Data Processing</button>
+                    <button class="q-btn" onclick="answerQuiz(this, false, 'qexp2')">D) External Data Processing</button>
+                </div>
+                <div id="qexp2" class="q-exp">✅ <strong>ಸರಿಯಾದ ಉತ್ತರ: C) Electronic Data Processing.</strong> ಕಚ್ಚಾ ದತ್ತಾಂಶವನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಉಪಯುಕ್ತ ಮಾಹಿತಿಯನ್ನಾಗಿ ಪರಿವರ್ತಿಸುವ ಪ್ರಕ್ರಿಯೆ.</div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="q-block">
+                <div class="q-title">3. ಕಂಪ್ಯೂಟರ್‌ನ 'GIGO' (Garbage In Garbage Out) ನಿಯಮವು ಕೆಳಗಿನ ಯಾವ ಲಕ್ಷಣಕ್ಕೆ ನೇರವಾಗಿ ಸಂಬಂಧಿಸಿದೆ?</div>
+                <div class="q-options">
+                    <button class="q-btn" onclick="answerQuiz(this, false, 'qexp3')">A) ವೇಗ (Speed)</button>
+                    <button class="q-btn" onclick="answerQuiz(this, true, 'qexp3')">B) ನಿಖರತೆ (Accuracy)</button>
+                    <button class="q-btn" onclick="answerQuiz(this, false, 'qexp3')">C) ದಣಿವರಿಯದ ದುಡಿಮೆ (Diligence)</button>
+                    <button class="q-btn" onclick="answerQuiz(this, false, 'qexp3')">D) ಬಹುಮುಖಿ ಕಾರ್ಯ (Versatility)</button>
+                </div>
+                <div id="qexp3" class="q-exp">✅ <strong>ಸರಿಯಾದ ಉತ್ತರ: B) ನಿಖರತೆ (Accuracy).</strong> ತಪ್ಪಾದ ಇನ್‌ಪುಟ್ ನೀಡಿದರೆ ಮಾತ್ರ ತಪ್ಪಾದ ಔಟ್‌ಪುಟ್ ಬರುತ್ತದೆ ಎಂದು GIGO ತಿಳಿಸುತ್ತದೆ.</div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="q-block">
+                <div class="q-title">4. ಸಂಸ್ಕರಿಸದ ಕಚ್ಚಾ ಮಾಹಿತಿಗೆ (Unprocessed raw facts) ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?</div>
+                <div class="q-options">
+                    <button class="q-btn" onclick="answerQuiz(this, true, 'qexp4')">A) ಡೇಟಾ / ದತ್ತಾಂಶ (Data)</button>
+                    <button class="q-btn" onclick="answerQuiz(this, false, 'qexp4')">B) ಮಾಹಿತಿ (Information)</button>
+                    <button class="q-btn" onclick="answerQuiz(this, false, 'qexp4')">C) ಔಟ್‌ಪುಟ್ (Output)</button>
+                    <button class="q-btn" onclick="answerQuiz(this, false, 'qexp4')">D) ಸ್ಟೋರೇಜ್ (Storage)</button>
+                </div>
+                <div id="qexp4" class="q-exp">✅ <strong>ಸರಿಯಾದ ಉತ್ತರ: A) ಡೇಟಾ / ದತ್ತಾಂಶ (Data).</strong> ಪ್ರೊಸೆಸ್ ಆದ ನಂತರ ದೊರೆಯುವ ಅರ್ಥಗರ್ಭಿತ ಫಲಿತಾಂಶವನ್ನು ಮಾಹಿತಿ (Information) ಎನ್ನುತ್ತಾರೆ.</div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="q-block">
+                <div class="q-title">5. ಪ್ರಪಂಚದ ಮೊದಲ ಕಂಪ್ಯೂಟರ್ ಪ್ರೋಗ್ರಾಮರ್ (First Computer Programmer) ಯಾರು?</div>
+                <div class="q-options">
+                    <button class="q-btn" onclick="answerQuiz(this, false, 'qexp5')">A) ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್</button>
+                    <button class="q-btn" onclick="answerQuiz(this, false, 'qexp5')">B) ಅಲಾನ್ ಟ್ಯೂರಿಂಗ್</button>
+                    <button class="q-btn" onclick="answerQuiz(this, true, 'qexp5')">C) ಲೇಡಿ ಅದಾ ಲವ್‌ಲೇಸ್</button>
+                    <button class="q-btn" onclick="answerQuiz(this, false, 'qexp5')">D) ಜಾನ್ ವಾನ್ ನ್ಯೂಮನ್</button>
+                </div>
+                <div id="qexp5" class="q-exp">✅ <strong>ಸರಿಯಾದ ಉತ್ತರ: C) ಲೇಡಿ ಅದಾ ಲವ್‌ಲೇಸ್ (Lady Ada Lovelace).</strong> ಇವರು ಚಾರ್ಲ್ಸ್ ಬ್ಯಾಬೇಜ್ ಅವರ ಅನಾಲಿಟಿಕಲ್ ಎಂಜಿನ್‌‌ಗೆ ಮೊದಲ ಪ್ರೋಗ್ರಾಂ ಬರೆದರು.</div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="q-block" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+                <div class="q-title">6. ಮನುಷ್ಯನಂತೆ ಆಯಾಸ ಮತ್ತು ಬೇಸರವಿಲ್ಲದೆ ಗಂಟೆಗಟ್ಟಲೆ ನಿರಂತರವಾಗಿ ಕೆಲಸ ಮಾಡುವ ಕಂಪ್ಯೂಟರ್ ಗುಣವನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?</div>
+                <div class="q-options">
+                    <button class="q-btn" onclick="answerQuiz(this, false, 'qexp6')">A) Versatility (ಬಹುಮುಖಿ ಕಾರ್ಯ)</button>
+                    <button class="q-btn" onclick="answerQuiz(this, true, 'qexp6')">B) Diligence (ದಣಿವರಿಯದ ದುಡಿಮೆ)</button>
+                    <button class="q-btn" onclick="answerQuiz(this, false, 'qexp6')">C) Artificial Intelligence</button>
+                    <button class="q-btn" onclick="answerQuiz(this, false, 'qexp6')">D) Reliability (ವಿಶ್ವಾಸಾರ್ಹತೆ)</button>
+                </div>
+                <div id="qexp6" class="q-exp">✅ <strong>ಸರಿಯಾದ ಉತ್ತರ: B) Diligence (ದಣಿವರಿಯದ ದುಡಿಮೆ).</strong> ಒಂದೇ ಸಮಯದಲ್ಲಿ ಅನೇಕ ಕೆಲಸ ಮಾಡುವುದನ್ನು Versatility ಎನ್ನುತ್ತಾರೆ, ಆಯಾಸವಿಲ್ಲದೆ ದುಡಿಯುವುದನ್ನು Diligence ಎನ್ನುತ್ತಾರೆ.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>🌟 ಸ್ಪರ್ಧಾತ್ಮಕ ಪರೀಕ್ಷಾರ್ಥಿಗಳ ಯಶಸ್ಸಿಗಾಗಿ ವಿಶೇಷವಾಗಿ ವಿನ್ಯಾಸಗೊಳಿಸಲಾದ ಡಿಜಿಟಲ್ ಸ್ಟಡಿ ಪೋರ್ಟಲ್ 🌟</p>
+    </footer>
+
+    <script>
+        // Theme Switcher
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+        }
+
+        // EDP & GIGO Live Simulator
+        function runSim(type, btn) {
+            const buttons = document.querySelectorAll('.sim-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const simIn = document.getElementById('sim-in');
+            const simProc = document.getElementById('sim-proc');
+            const simOut = document.getElementById('sim-out');
+
+            if (type === 'marks') {
+                simIn.innerText = '"ರಮೇಶ್", 85, 90, 95 (ಕಚ್ಚಾ ಸಂಖ್ಯೆಗಳು)';
+                simProc.innerText = 'ಒಟ್ಟು = 85+90+95 = 270 | ಸರಾಸರಿ = 270/3 = 90%';
+                simOut.style.color = '#4ade80';
+                simOut.innerText = '"ರಮೇಶ್ ಪರೀಕ್ಷೆಯಲ್ಲಿ 90% ಅಂಕಗಳೊಂದಿಗೆ ಉನ್ನತ ಶ್ರೇಣಿಯಲ್ಲಿ ಉತ್ತೀರ್ಣರಾಗಿದ್ದಾರೆ." (ಉಪಯುಕ್ತ ಮಾಹಿತಿ)';
+            } else if (type === 'bank') {
+                simIn.innerText = 'A/C: 4092, ಶುಲ್ಕ: ₹5000, ಬ್ಯಾಲೆನ್ಸ್: ₹12000';
+                simProc.innerText = 'ALU ಲೆಕ್ಕಾಚಾರ: 12000 - 5000 = ₹7000 ಉಳಿತಾಯ';
+                simOut.style.color = '#4ade80';
+                simOut.innerText = '"ನಿಮ್ಮ ಖಾತೆಯಿಂದ ₹5000 ಯಶಸ್ವಿಯಾಗಿ ವರ್ಗಾವಣೆಯಾಗಿದೆ. ಉಳಿದ ಬ್ಯಾಲೆನ್ಸ್: ₹7000."';
+            } else if (type === 'gigo') {
+                simIn.innerText = '⚠️ ತಪ್ಪು ಡೇಟಾ (Garbage In): ಜನನ ವರ್ಷ = 2050, ಪ್ರಸ್ತುತ ವರ್ಷ = 2026';
+                simProc.innerText = 'CPU ಸೂತ್ರದಂತೆ ಕಳೆಯುತ್ತದೆ: 2026 - 2050 = -24';
+                simOut.style.color = '#f87171';
+                simOut.innerText = '❌ ತಪ್ಪು ಫಲಿತಾಂಶ (Garbage Out): "ವ್ಯಕ್ತಿಯ ವಯಸ್ಸು -24 ವರ್ಷಗಳು!" (ಇಲ್ಲಿ ಕಂಪ್ಯೂಟರ್ ಲೆಕ್ಕ ಸರಿ ಇದೆ, ಆದರೆ ಮನುಷ್ಯ ಕೊಟ್ಟ ಇನ್‌ಪುಟ್ ತಪ್ಪಾಗಿದೆ - ಇದೇ GIGO).';
+            }
+        }
+
+        // Quiz Logic
+        let score = 0;
+        let answeredCount = 0;
+
+        function answerQuiz(btn, isCorrect, expId) {
+            const parent = btn.parentElement;
+            const allBtns = parent.querySelectorAll('.q-btn');
+            allBtns.forEach(b => b.disabled = true);
+
+            answeredCount++;
+            if (isCorrect) {
+                btn.classList.add('correct');
+                score++;
+            } else {
+                btn.classList.add('wrong');
+            }
+
+            document.getElementById(expId).style.display = 'block';
+            document.getElementById('score-display').innerText = `ನಿಮ್ಮ ಅಂಕ: ${score} / 6`;
+        }
+    </script>
+</body>
+</html>
