@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಕನ್ನಡ ವ್ಯಾಕರಣ ಪರಂಪರೆ - ಸಮಗ್ರ KEA/KPSC ಪರೀಕ್ಷಾ ಮಹಾಕೈಪಿಡಿ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --kar-red: #b71c1c;
+            --kar-yellow: #fbc02d;
+            --dark-bg: #1e293b;
+            --light-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-sub: #475569;
+            --accent: #0284c7;
+            --purple: #6d28d9;
+            --success: #16a34a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans Kannada', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-main);
+            line-height: 1.75;
+        }
+
+        /* Animated Header */
+        header {
+            background: linear-gradient(135deg, #7f1d1d 0%, #b91c1c 50%, #d97706 100%);
+            color: white;
+            padding: 3.5rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        header p {
+            font-size: 1.15rem;
+            max-width: 850px;
+            margin: 0 auto;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .badge-top {
+            display: inline-block;
+            background: rgba(255,255,255,0.22);
+            backdrop-filter: blur(5px);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        /* Sticky Navigation */
+        nav {
+            background: var(--dark-bg);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0.8rem 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        nav a {
+            color: #f1f5f9;
+            text-decoration: none;
+            padding: 7px 14px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: var(--kar-yellow);
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 2rem auto;
+            padding: 0 1.2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--kar-red);
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 3px solid var(--kar-yellow);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.6rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            border-top: 5px solid var(--kar-red);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        .info-card h3 {
+            color: var(--dark-bg);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .highlight {
+            background: #fef08a;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-weight: 700;
+            color: #854d0e;
+        }
+
+        .highlight-blue {
+            background: #e0f2fe;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-weight: 700;
+            color: #0369a1;
+        }
+
+        /* Grammarian Cards */
+        .grammarian-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .g-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .g-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 28px rgba(0,0,0,0.15);
+        }
+
+        .g-header {
+            background: linear-gradient(90deg, #1e293b, #334155);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .g-avatar {
+            width: 64px;
+            height: 64px;
+            background: var(--kar-yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 0 12px rgba(251,192,45,0.7);
+        }
+
+        .g-body {
+            padding: 1.5rem;
+        }
+
+        .g-body ul {
+            list-style: none;
+        }
+
+        .g-body li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .g-body li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--kar-red);
+            font-weight: bold;
+        }
+
+        .sutra-box {
+            background: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+        }
+
+        /* Quotes & Titles Special Cards */
+        .quote-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .quote-card {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border: 1px solid #cbd5e1;
+            border-left: 6px solid var(--purple);
+            border-radius: 10px;
+            padding: 1.3rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.25s ease;
+        }
+
+        .quote-card:hover {
+            transform: scale(1.02);
+            border-left-color: var(--kar-red);
+        }
+
+        .quote-tag {
+            display: inline-block;
+            background: #ede9fe;
+            color: var(--purple);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+        }
+
+        /* Comparison Table */
+        .table-wrapper {
+            overflow-x: auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            margin-bottom: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 750px;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: var(--dark-bg);
+            color: white;
+            font-weight: 700;
+        }
+
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        /* Quiz Section */
+        .quiz-card {
+            background: white;
+            padding: 1.8rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px 16px;
+            margin: 8px 0;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            background: #f8fafc;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--accent);
+            background: #e0f2fe;
+        }
+
+        .correct {
+            background: #dcfce7 !important;
+            border-color: #16a34a !important;
+            color: #14532d;
+        }
+
+        .wrong {
+            background: #fee2e2 !important;
+            border-color: #dc2626 !important;
+            color: #7f1d1d;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            background: var(--dark-bg);
+            color: white;
+            text-align: center;
+            padding: 2.5rem;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="badge-top">KEA | KPSC | FDA | SDA | PSI | PDO | GPSTR | NET/KSET ಮಹಾಕೈಪಿಡಿ</div>
+    <h1>ಕನ್ನಡ ಭಾಷೆಯ ಪ್ರಾಚೀನತೆ ಮತ್ತು ವ್ಯಾಕರಣ ಪರಂಪರೆ (ಸಂಪೂರ್ಣ ಆವೃತ್ತಿ)</h1>
+    <p>ವ್ಯಾಕರಣಕಾರರು, ಗ್ರಂಥಗಳು, ಬಿ.ಎಲ್. ರೈಸ್, ಎಂ.ಎಲ್./ವಿ. ಸೀತಾರಾಮಯ್ಯ ಅವರ ಹೇಳಿಕೆಗಳು ಹಾಗೂ ಪರೀಕ್ಷಾ ಕೋಷ್ಟಕಗಳ ಸಮಗ್ರ ಸಂಗ್ರಹ</p>
+</header>
+
+<nav>
+    <a href="#prachinate">೧. ಭಾಷೆಯ ಪ್ರಾಚೀನತೆ</a>
+    <a href="#grammarians">೨. ಪ್ರಮುಖ ವ್ಯಾಕರಣಕಾರರು</a>
+    <a href="#titles-quotes">೩. ಬಿರುದು ಮತ್ತು ವಿದ್ವಾಂಸರ ಹೇಳಿಕೆಗಳು (ಹೊಸದು)</a>
+    <a href="#trimuni">೪. ಕನ್ನಡದ ತ್ರಿಮುನಿಗಳು & ಸಂಪಾದಕರು</a>
+    <a href="#shabdamani">೫. ಶಬ್ದಮಣಿದರ್ಪಣ ವಿಶೇಷ</a>
+    <a href="#table">೬. ಸಮಗ್ರ ಹೋಲಿಕೆ ಕೋಷ್ಟಕ</a>
+    <a href="#quiz">೭. ಪರೀಕ್ಷಾ ರಸಪ್ರಶ್ನೆ</a>
+</nav>
+
+<div class="container">
+
+    <!-- Section 1: Prachinate (100% Retained + Expanded) -->
+    <h2 id="prachinate" class="section-title">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        ೧. ಕನ್ನಡ ಭಾಷೆಯ ಪ್ರಾಚೀನತೆ ಮತ್ತು ಅವಸ್ಥೆಗಳು
+    </h2>
+    <div class="info-grid">
+        <div class="info-card">
+            <h3>📜 ಪ್ರಾಚೀನ ಶಾಸನಗಳು ಮತ್ತು ಉಲ್ಲೇಖ</h3>
+            <p>ಕನ್ನಡವು ದ್ರಾವಿಡ ಭಾಷಾ ಕುಟುಂಬದಲ್ಲಿ ತಮಿಳಿನ ನಂತರ ಅತ್ಯಂತ ಪ್ರಾಚೀನ ಭಾಷೆಯಾಗಿದೆ (ಸುಮಾರು 2000 ವರ್ಷಗಳ ಇತಿಹಾಸ).</p>
+            <ul style="margin-top:10px; padding-left:20px;">
+                <li><strong>ಹಲ್ಮಿಡಿ ಶಾಸನ (ಕ್ರಿ.ಶ. 450):</strong> ಕದಂಬರ ಕಾಕುತ್ಸ್ಥವರ್ಮನ ಕಾಲದ ಕನ್ನಡದ ಮೊದಲ ಅಧಿಕೃತ ಶಾಸನ (ಹಾಸನ ಜಿಲ್ಲೆಯ ಬೇಲೂರು ತಾಲ್ಲೂಕು).</li>
+                <li><strong>ತಮಟಕಲ್ಲು ಶಾಸನ (ಕ್ರಿ.ಶ. 500):</strong> ಚಿತ್ರದುರ್ಗದಲ್ಲಿ ದೊರೆತ ಪ್ರಾಚೀನ ಶಾಸನ.</li>
+                <li><strong>ಬಾದಾಮಿ ಶಾಸನ (ಕ್ರಿ.ಶ. 578):</strong> ಮಂಗಳೇಶನ ಕಾಲದ ಶಾಸನ, ಇಲ್ಲಿ ಮೊಟ್ಟಮೊದಲ ಬಾರಿಗೆ <span class="highlight">ತ್ರಿಪದಿ ಛಂದಸ್ಸು</span> ಬಳಕೆಯಾಗಿದೆ.</li>
+                <li><strong>ಕವಿರಾಜಮಾರ್ಗ (ಕ್ರಿ.ಶ. 850):</strong> ಶ್ರೀವಿಜಯ ರಚಿಸಿದ ಕನ್ನಡದ ಮೊದಲ ಉಪಲಬ್ಧ ಗ್ರಂಥ (ಅಲಂಕಾರ ಗ್ರಂಥ).</li>
+            </ul>
+        </div>
+
+        <div class="info-card">
+            <h3>⏳ ಕನ್ನಡ ಭಾಷೆಯ 4 ಪ್ರಮುಖ ಅವಸ್ಥೆಗಳು</h3>
+            <p>ಭಾಷಾ ವಿಜ್ಞಾನಿ <strong>ಬಿ.ಎಂ. ಶ್ರೀಕಂಠಯ್ಯ (ಬಿಎಂಶ್ರೀ)</strong> ಮತ್ತು ಇತರ ವಿದ್ವಾಂಸರ ಪ್ರಕಾರ ಕನ್ನಡದ ಬೆಳವಣಿಗೆಯ ಹಂತಗಳು:</p>
+            <ul style="margin-top:10px; padding-left:20px;">
+                <li><strong>ಪೂರ್ವದ ಹಳಗನ್ನಡ:</strong> ಕ್ರಿ.ಶ. 9ನೇ ಶತಮಾನದವರೆಗೆ (ಶಾಸನಗಳ ಕಾಲ).</li>
+                <li><strong>ಹಳಗನ್ನಡ:</strong> 9ನೇ ಶತಮಾನದಿಂದ 12ನೇ ಶತಮಾನದವರೆಗೆ (ಪಂಪ, ರನ್ನ, ಪೊನ್ನರ ಚಂಪೂ ಯುಗ).</li>
+                <li><strong>ನಡುಗನ್ನಡ:</strong> 12ನೇ ಶತಮಾನದಿಂದ 18ನೇ ಶತಮಾನದವರೆಗೆ (ವಚನಕಾರರು, ಕೀರ್ತನಕಾರರು, ಷಟ್ಪದಿ ಕಾಲ).</li>
+                <li><strong>ಹೊಸಗನ್ನಡ:</strong> 19ನೇ ಶತಮಾನದಿಂದ ಇಂದಿನವರೆಗೆ (ಮುದ್ದಣ, ಬಿಎಂಶ್ರೀ, ಕುವೆಂಪು ಕಾಲ).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Section 2: Major Grammarians (100% Retained + Expanded) -->
+    <h2 id="grammarians" class="section-title">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        ೨. ಕನ್ನಡದ ಪ್ರಮುಖ ವ್ಯಾಕರಣಕಾರರು ಮತ್ತು ಗ್ರಂಥಗಳು
+    </h2>
+
+    <div class="grammarian-container">
+        <!-- Nagavarma II -->
+        <div class="g-card">
+            <div class="g-header">
+                <div class="g-avatar">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="#1e293b"><path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"/></svg>
+                </div>
+                <div>
+                    <h3>ಎರಡನೆಯ ನಾಗವರ್ಮ (ಕ್ರಿ.ಶ. 1042 / 1145)</h3>
+                    <small style="color:#fde047;">ಬಿರುದು: ಅಭಿನವ ಶರ್ವವರ್ಮ, ಕವಿಕರ್ಣಪೂರ, ಕಟಕಾಚಾರ್ಯ</small>
+                </div>
+            </div>
+            <div class="g-body">
+                <ul>
+                    <li><strong>ಆಶ್ರಯದಾತ:</strong> ಕಲ್ಯಾಣಿ ಚಾಲುಕ್ಯರ ಜಗದೇಕಮಲ್ಲ (ಜನ್ನನಿಗೂ ಈತ ಗುರುವಾಗಿದ್ದನು).</li>
+                    <li><strong>ಕನ್ನಡದ ಮೊದಲ ವ್ಯಾಕರಣ ಗ್ರಂಥ:</strong> <span class="highlight">ಶಬ್ದಸ್ಮೃತಿ</span> (ಇದು 'ಕಾವ್ಯಾವಲೋಕನ' ಗ್ರಂಥದ ಮೊದಲ ಅಧಿಕರಣ ಹಾಗೂ ಕಂದಪದ್ಯ ರೂಪದಲ್ಲಿದೆ - 5 ಪ್ರಕರಣ, 96 ಸೂತ್ರಗಳು).</li>
+                    <li><strong>ಸಂಸ್ಕೃತದಲ್ಲಿ ಕನ್ನಡ ವ್ಯಾಕರಣ:</strong> <span class="highlight">ಕರ್ಣಾಟಕ ಭಾಷಾಭೂಷಣ</span> (ಇದು ಸಂಸ್ಕೃತ ಸೂತ್ರಗಳ ಮೂಲಕ ಕನ್ನಡ ವ್ಯಾಕರಣ ಹೇಳುವ ಮೊದಲ ಗ್ರಂಥ - 10 ಪರಿಚ್ಛೇದ, 280 ಸೂತ್ರಗಳು).</li>
+                    <li><strong>ಇತರ ಕೃತಿಗಳು:</strong> ಅಭಿಧಾನ ವಸ್ತುಕೋಶ (ನಿಘಂಟು), ವಸ್ತುವಿಜ್ಞಾನ, ವರ್ಧಮಾನ ಪುರಾಣ.</li>
+                </ul>
+                <div class="sutra-box">
+                    <strong>KEA ಪರೀಕ್ಷಾ ಪಾಯಿಂಟ್:</strong> ಕನ್ನಡದಲ್ಲಿ ಕನ್ನಡ ವ್ಯಾಕರಣ ಬರೆದ ಮೊದಲಿಗ ಹಾಗೂ ಸಂಸ್ಕೃತದಲ್ಲಿ ಕನ್ನಡ ವ್ಯಾಕರಣ ಬರೆದ ಮೊದಲಿಗ — ಇಬ್ಬರೂ <strong>2ನೇ ನಾಗವರ್ಮ</strong>ನೇ ಆಗಿದ್ದಾನೆ! ಈತನನ್ನು <strong>'ಕನ್ನಡದ ಆದ್ಯ ವ್ಯಾಕರಣಕಾರ'</strong> ಎನ್ನುತ್ತಾರೆ.
+                </div>
+            </div>
+        </div>
+
+        <!-- Keshiraja -->
+        <div class="g-card">
+            <div class="g-header">
+                <div class="g-avatar">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="#1e293b"><path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+                </div>
+                <div>
+                    <h3>ಕೇಶಿರಾಜ (ಕ್ರಿ.ಶ. 1260 - 13ನೇ ಶತಮಾನ)</h3>
+                    <small style="color:#fde047;">ಬಿರುದು: ಸುಕವೀಂದ್ರ, ಶಬ್ದಮಣಿದರ್ಪಣಕಾರ, ಕನ್ನಡದ ಪಾಣಿನಿ</small>
+                </div>
+            </div>
+            <div class="g-body">
+                <ul>
+                    <li><strong>ಹಿನ್ನೆಲೆ:</strong> ಜನ್ನ ಕವಿಯ ಸೋದರಳಿಯ, ಮಲ್ಲಿಕಾರ್ಜುನನ (ಚಿದಾನಂದ ಕವಿ) ಮಗ, ಸುಮನೋಬಾಣನ ಮೊಮ್ಮಗ. ಹೊಯ್ಸಳರ 3ನೇ ನರಸಿಂಹನ ಆಸ್ಥಾನ ಕವಿ.</li>
+                    <li><strong>ಮೇರುಕೃತಿ:</strong> <span class="highlight">ಶಬ್ದಮಣಿದರ್ಪಣಂ</span> (ಕನ್ನಡದ ಮೊದಲ ಸ್ವತಂತ್ರ ಮತ್ತು ಸಮಗ್ರ ವ್ಯಾಕರಣ ಗ್ರಂಥ).</li>
+                    <li><strong>ಛಂದಸ್ಸು ಮತ್ತು ವೃತ್ತಿ:</strong> ಸೂತ್ರಗಳನ್ನು <strong>ಕಂದಪದ್ಯ</strong>ದಲ್ಲಿ ರಚಿಸಿ, ಅವುಗಳಿಗೆ ತಾನೇ ಗದ್ಯದಲ್ಲಿ <strong>'ವೃತ್ತಿ' (ವಿವರಣೆ)</strong> ಬರೆದಿದ್ದಾನೆ.</li>
+                    <li><strong>ಒಟ್ಟು ಪ್ರಕರಣಗಳು:</strong> 8 ಪ್ರಕರಣಗಳು (ಸಂಧಿ, ನಾಮ, ಸಮಾಸ, ತದ್ಧಿತ, ಆಖ್ಯಾತ, ಧಾತು, ಅಪಭ್ರಂಶ, ಅವ್ಯಯ) + ಪ್ರಾಯೋಗಿಕ ಪ್ರಯೋಗಸಾರ.</li>
+                    <li><strong>ಅಲಭ್ಯ ಕೃತಿಗಳು (5):</strong> ಚೋಳಪಾಲಕ ಚರಿತಂ, ಶ್ರೀ ಚಿತ್ರಮಾಲೆ, ಸುಭದ್ರಾಹರಣಂ, ಪ್ರಬೋಧಚಂದ್ರ, ಕಿರಾತಂ.</li>
+                </ul>
+                <div class="sutra-box">
+                    <strong>KEA ಪರೀಕ್ಷಾ ಪಾಯಿಂಟ್:</strong> ಕೇಶಿರಾಜನ ಪ್ರಕಾರ ಶುದ್ಧಗೆಯ (ಕನ್ನಡ ವರ್ಣಮಾಲೆಯ) ಅಕ್ಷರಗಳು <strong>47</strong>. ದೇಶೀಯ ಅಕ್ಷರಗಳು <strong>5</strong> (ಱ, ೞ, ಲ, ಎ, ಒ).
+                </div>
+            </div>
+        </div>
+
+        <!-- Bhattakalankadeva -->
+        <div class="g-card">
+            <div class="g-header">
+                <div class="g-avatar">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="#1e293b"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                </div>
+                <div>
+                    <h3>ಭಟ್ಟಾಕಳಂಕದೇವ (ಕ್ರಿ.ಶ. 1604 - 17ನೇ ಶತಮಾನ)</h3>
+                    <small style="color:#fde047;">ಬಿರುದು: ಸಕಲ ಭಾಷಾ ಚಕ್ರವರ್ತಿ, ಅಭಿನವ ಪಾಣಿನಿ, ಪ್ರತಿವಾದಿ ಭಯಂಕರ</small>
+                </div>
+            </div>
+            <div class="g-body">
+                <ul>
+                    <li><strong>ಕೃತಿ:</strong> <span class="highlight">ಕರ್ಣಾಟಕ ಶಬ್ದಾನುಶಾಸನಂ</span> (ಕ್ರಿ.ಶ. 1604 ರಲ್ಲಿ ರಚಿತ, ದಕ್ಷಿಣ ಕನ್ನಡದ ಹಾಡುವಳ್ಳಿ/ಸಂಗೀತಪುರ ಮಠದ ಜೈನ ಯತಿ).</li>
+                    <li><strong>ಭಾಷೆ:</strong> ಸಂಸ್ಕೃತ ಭಾಷೆಯಲ್ಲಿ ಕನ್ನಡ ವ್ಯಾಕರಣವನ್ನು ವಿವರಿಸುವ ಬೃಹತ್ ಗ್ರಂಥ.</li>
+                    <li><strong>ರಚನಾ ವಿನ್ಯಾಸ:</strong> ಒಟ್ಟು <strong>4 ಪಾದಗಳು</strong> ಮತ್ತು <strong>592 ಸೂತ್ರಗಳನ್ನು</strong> ಒಳಗೊಂಡಿದೆ.</li>
+                    <li><strong>ವೃತ್ತಿ ಮತ್ತು ಟೀಕೆ:</strong> ಸೂತ್ರಗಳಿಗೆ <strong>'ಭಾಷಾಮಂಜರಿ'</strong> ಎಂಬ ವೃತ್ತಿ ಮತ್ತು <strong>'ಮಂಜರೀ ಮಕರಂದ'</strong> ಎಂಬ ಬೃಹತ್ ವ್ಯಾಖ್ಯಾನವನ್ನು ತಾನೇ ಬರೆದಿದ್ದಾನೆ.</li>
+                </ul>
+                <div class="sutra-box">
+                    <strong>KEA ಪರೀಕ್ಷಾ ಪಾಯಿಂಟ್:</strong> ಕನ್ನಡವು ಯಾವುದಕ್ಕೂ ಕಡಿಮೆಯಿಲ್ಲ ಎಂದು ಸಂಸ್ಕೃತ ಪಂಡಿತರಿಗೆ ತೋರಿಸಲು ಈತ ಸಂಸ್ಕೃತದಲ್ಲೇ ಕನ್ನಡ ವ್ಯಾಕರಣ ಬರೆದನು. ಬಿ.ಎಲ್. ರೈಸ್ ಈ ಗ್ರಂಥವನ್ನು <strong>'ಕನ್ನಡದ ಅಷ್ಟಾಧ್ಯಾಯಿ'</strong> ಎಂದು ಕರೆದಿದ್ದಾರೆ.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 3: NEW - Scholar Quotes, Titles & Comparisons (B.L. Rice, M.L./V. Seetharamaiah, etc.) -->
+    <h2 id="titles-quotes" class="section-title">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        ೩. ಬಿ.ಎಲ್. ರೈಸ್, ಎಂ.ಎಲ್./ವಿ. ಸೀತಾರಾಮಯ್ಯ ಮತ್ತು ವಿದ್ವಾಂಸರ ಪ್ರಮುಖ ಹೇಳಿಕೆಗಳು ಹಾಗೂ ಬಿರುದುಗಳು
+    </h2>
+
+    <div class="quote-grid">
+        <div class="quote-card">
+            <span class="quote-tag">ಬಿ.ಎಲ್. ರೈಸ್ (B.L. Rice) ಅವರ ಹೇಳಿಕೆ</span>
+            <h4>"ಕನ್ನಡದ ಅಷ್ಟಾಧ್ಯಾಯಿ"</h4>
+            <p>ಪಾಣಿನಿಯು ಸಂಸ್ಕೃತದಲ್ಲಿ ಬರೆದ 'ಅಷ್ಟಾಧ್ಯಾಯಿ' ಗ್ರಂಥದಂತೆಯೇ ಭಟ್ಟಾಕಳಂಕದೇವನ <strong>'ಕರ್ಣಾಟಕ ಶಬ್ದಾನುಶಾಸನಂ'</strong> ಗ್ರಂಥವು ಅತ್ಯಂತ ವೈಜ್ಞಾನಿಕ ಹಾಗೂ ಸಮಗ್ರವಾಗಿರುವುದರಿಂದ, ಇದನ್ನು ಕ್ರಿ.ಶ. 1890ರಲ್ಲಿ ಮೊದಲು ಸಂಪಾದಿಸಿ ಪ್ರಕಟಿಸಿದ <strong>ಬಿ.ಎಲ್. ರೈಸ್ (ಬೆಂಜಮಿನ್ ಲೂಯಿಸ್ ರೈಸ್)</strong> ಅವರು ಇದನ್ನು <span class="highlight">"ಕನ್ನಡದ ಅಷ್ಟಾಧ್ಯಾಯಿ"</span> ಎಂದು ಕರೆದಿದ್ದಾರೆ.</p>
+        </div>
+
+        <div class="quote-card">
+            <span class="quote-tag">ಎಂ.ಎಲ್. / ವಿ. ಸೀತಾರಾಮಯ್ಯ ಹಾಗೂ ವಿದ್ವಾಂಸರ ಅಭಿಮತ</span>
+            <h4>"ಕನ್ನಡದ ಪಾಣಿನಿ" ಮತ್ತು "ಅಭಿನವ ಪಾಣಿನಿ"</h4>
+            <p>ಕನ್ನಡ ವ್ಯಾಕರಣ ಪರಂಪರೆಯಲ್ಲಿ ಸೀತಾರಾಮಯ್ಯ ಮತ್ತು ಸಾಹಿತ್ಯ ಚರಿತ್ರೆಕಾರರು ಗುರುತಿಸುವಂತೆ:<br>
+            • <strong>ಕೇಶಿರಾಜ:</strong> <span class="highlight">"ಕನ್ನಡದ ಪಾಣಿನಿ"</span> (ಕನ್ನಡದಲ್ಲೇ ಸಮಗ್ರ ಸೂತ್ರಗಳನ್ನು ರಚಿಸಿದ್ದಕ್ಕಾಗಿ).<br>
+            • <strong>ಭಟ್ಟಾಕಳಂಕದೇವ:</strong> <span class="highlight">"ಅಭಿನವ ಪಾಣಿನಿ"</span> (ಪಾಣಿನಿಯ ಅಷ್ಟಾಧ್ಯಾಯಿ ಮಾದರಿಯಲ್ಲಿ ಸಂಸ್ಕೃತ ಸೂತ್ರ-ವೃತ್ತಿ-ಮಹಾಭಾಷ್ಯದಂತೆ ಕನ್ನಡ ವ್ಯಾಕರಣ ರಚಿಸಿದ್ದಕ್ಕಾಗಿ).</p>
+        </div>
+
+        <div class="quote-card">
+            <span class="quote-tag">ಎರಡನೆಯ ನಾಗವರ್ಮನ ವಿಶೇಷ ಬಿರುದು</span>
+            <h4>"ಅಭಿನವ ಶರ್ವವರ್ಮ"</h4>
+            <p>ಸಂಸ್ಕೃತದಲ್ಲಿ 'ಕಾತಂತ್ರ ವ್ಯಾಕರಣ' ರಚಿಸಿದವನು <strong>ಶರ್ವವರ್ಮ</strong>. ಅದೇ ಕಾತಂತ್ರ ವ್ಯಾಕರಣದ ಮಾದರಿಯನ್ನು ಅನುಸರಿಸಿ ಕನ್ನಡದಲ್ಲಿ ವ್ಯಾಕರಣ ರಚಿಸಿದ್ದರಿಂದ 2ನೇ ನಾಗವರ್ಮನನ್ನು <span class="highlight">"ಅಭಿನವ ಶರ್ವವರ್ಮ"</span> ಎಂದು ಕರೆಯಲಾಗಿದೆ.</p>
+        </div>
+
+        <div class="quote-card">
+            <span class="quote-tag">ಕೇಶಿರಾಜನ ಆತ್ಮವಿಶ್ವಾಸದ ಹೇಳಿಕೆ</span>
+            <h4>"ವಾಗ್ದೇವಿ ಭಂಡಾರದ ಮುದ್ರೆಯನಿತ್ತಳ್"</h4>
+            <p>ಕೇಶಿರಾಜನು ತನ್ನ ಶಬ್ದಮಣಿದರ್ಪಣದಲ್ಲಿ <em>"ಕವಿ ಕೇಶಿರಾಜಂಗೆ ವಾಗ್ದೇವಿ ಭಂಡಾರದ ಮುದ್ರೆಯನಿತ್ತಳ್"</em> (ಸರಸ್ವತಿಯೇ ತನಗೆ ಶಬ್ದಭಂಡಾರದ ಮುದ್ರೆಯನ್ನು ನೀಡಿದ್ದಾಳೆ) ಹಾಗೂ <em>"ಗಜಾಂಕುಶನೊಳ್ ಮೇಣ್ ಕೇಶಿರಾಜನೊಳ್"</em> ಎಂದು ತನ್ನ ವಿದ್ವತ್ತನ್ನು ತಾನೇ ಕೊಂಡಾಡಿಕೊಂಡಿದ್ದಾನೆ.</p>
+        </div>
+
+        <div class="quote-card">
+            <span class="quote-tag">ಭಟ್ಟಾಕಳಂಕದೇವನ ಕನ್ನಡಾಭಿಮಾನ</span>
+            <h4>"ಸಕಲ ಭಾಷಾ ಚಕ್ರವರ್ತಿ"</h4>
+            <p>ವಿಜಯನಗರದ ಅರಸ ಮೊದಲನೇ ವೆಂಕಟಪತಿರಾಯನ ಕಾಲದಲ್ಲಿದ್ದ ಭಟ್ಟಾಕಳಂಕನಿಗೆ <strong>'ಸಕಲ ಭಾಷಾ ಚಕ್ರವರ್ತಿ'</strong>, <strong>'ಪ್ರತಿವಾದಿ ಭಯಂಕರ'</strong>, <strong>'ವಿದ್ಯಾ ನದೀಶ್ವರ'</strong> ಎಂಬ ಬಿರುದುಗಳಿದ್ದವು. ಈತ ಕನ್ನಡವನ್ನು 'ಅಮೃತಕ್ಕೆ ಸಮಾನವಾದ ಭಾಷೆ' ಎಂದು ಸಂಸ್ಕೃತ ಪಂಡಿತರ ಮುಂದೆ ವಾದಿಸಿ ಗೆದ್ದಿದ್ದನು.</p>
+        </div>
+
+        <div class="quote-card">
+            <span class="quote-tag">ಆರ್. ನರಸಿಂಹಾಚಾರ್ (ಕವಿಚರಿತೆಕಾರರು)</span>
+            <h4>ವ್ಯಾಕರಣ ರತ್ನತ್ರಯರು</h4>
+            <p>ಕರ್ನಾಟಕ ಕವಿಚರಿತೆಕಾರರಾದ ಆರ್. ನರಸಿಂಹಾಚಾರ್ ಮತ್ತು ಪರಂಪರೆಯ ವಿದ್ವಾಂಸರು <strong>2ನೇ ನಾಗವರ್ಮ, ಕೇಶಿರಾಜ ಮತ್ತು ಭಟ್ಟಾಕಳಂಕದೇವ</strong> ಈ ಮೂವರನ್ನು ಕನ್ನಡ ವ್ಯಾಕರಣ ಲೋಕದ <span class="highlight">"ರತ್ನತ್ರಯರು / ತ್ರಿಮುನಿಗಳು"</span> ಎಂದು ಗುರುತಿಸಿದ್ದಾರೆ.</p>
+        </div>
+    </div>
+
+    <!-- Section 4: NEW - Sanskrit Trimunis vs Kannada Trimunis & Editors -->
+    <h2 id="trimuni" class="section-title">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        ೪. ಸಂಸ್ಕೃತದ 'ತ್ರಿಮುನಿ'ಗಳೊಂದಿಗೆ ಕನ್ನಡ ವ್ಯಾಕರಣಕಾರರ ಹೋಲಿಕೆ ಮತ್ತು ಗ್ರಂಥ ಸಂಪಾದಕರು
+    </h2>
+
+    <div class="info-grid">
+        <div class="info-card">
+            <h3>⚖️️ ಸಂಸ್ಕೃತದ ತ್ರಿಮುನಿಗಳು vs ಭಟ್ಟಾಕಳಂಕದೇವನ ಏಕವ್ಯಕ್ತಿ ಸಾಧನೆ!</h3>
+            <p>ಸಂಸ್ಕೃತ ವ್ಯಾಕರಣದಲ್ಲಿ ಮೂವರು ಮುನಿಗಳು (ತ್ರಿಮುನಿಗಳು) ಮಾಡಿದ ಕೆಲಸವನ್ನು ಕನ್ನಡದಲ್ಲಿ <strong>ಭಟ್ಟಾಕಳಂಕದೇವ ಒಬ್ಬನೇ</strong> ತನ್ನ 'ಕರ್ಣಾಟಕ ಶಬ್ದಾನುಶಾಸನ'ದಲ್ಲಿ ಮಾಡಿದ್ದಾನೆ. ಇದು KEA ಪರೀಕ್ಷೆಯ ಅತ್ಯಂತ ನೆಚ್ಚಿನ ಪ್ರಶ್ನೆ:</p>
+            <ul style="margin-top:10px; padding-left:20px;">
+                <li><strong>1. ಪಾಣಿನಿ (ಸೂತ್ರಕಾರ):</strong> ಸಂಸ್ಕೃತದಲ್ಲಿ 'ಅಷ್ಟಾಧ್ಯಾಯಿ' ಸೂತ್ರ ಬರೆದನು ➔ ಕನ್ನಡದಲ್ಲಿ ಭಟ್ಟಾಕಳಂಕನು <strong>592 ಸೂತ್ರಗಳನ್ನು (ಶಬ್ದಾನುಶಾಸನ)</strong> ಬರೆದನು.</li>
+                <li><strong>2. ಕಾತ್ಯಾಯನ / ವರರುಚಿ (ವಾರ್ತಿಕಕಾರ):</strong> ಸೂತ್ರಗಳಿಗೆ ವೃತ್ತಿ/ವಾರ್ತಿಕ ಬರೆದನು ➔ ಕನ್ನಡದಲ್ಲಿ ಭಟ್ಟಾಕಳಂಕನೇ ತನ್ನ ಸೂತ್ರಗಳಿಗೆ <strong>'ಭಾಷಾಮಂಜರಿ' (ವೃತ್ತಿ)</strong> ಬರೆದನು.</li>
+                <li><strong>3. ಪತಂಜಲಿ (ಮಹಾಭಾಷ್ಯಕಾರ):</strong> ವಿಸ್ತೃತ ಭಾಷ್ಯ ಬರೆದನು ➔ ಕನ್ನಡದಲ್ಲಿ ಭಟ್ಟಾಕಳಂಕನೇ <strong>'ಮಂಜರೀ ಮಕರಂದ' (ಮಹಾಭಾಷ್ಯ/ವ್ಯಾಖ್ಯಾನ)</strong> ಬರೆದನು.</li>
+            </ul>
+            <p style="margin-top:10px; font-weight:600; color:var(--kar-red);">👉 ಇದೇ ಕಾರಣಕ್ಕೆ ಭಟ್ಟಾಕಳಂಕದೇವನನ್ನು "ಅಭಿನವ ಪಾಣಿನಿ", "ಅಭಿನವ ಕಾತ್ಯಾಯನ" ಮತ್ತು "ಅಭಿನವ ಪತಂಜಲಿ" (ತ್ರಿಮುನಿ ಸ್ವರೂಪ) ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ!</p>
+        </div>
+
+        <div class="info-card">
+            <h3>📚 ಪ್ರಾಚೀನ ವ್ಯಾಕರಣ ಗ್ರಂಥಗಳ ಮೊದಲ ಸಂಪಾದಕರು (ಪರೀಕ್ಷಾ ಕೋಷ್ಟಕ)</h3>
+            <p>ಹಸ್ತಪ್ರತಿಗಳಲ್ಲಿದ್ದ ಕನ್ನಡ ವ್ಯಾಕರಣ ಗ್ರಂಥಗಳನ್ನು ಮುದ್ರಿಸಿ ಬೆಳಕಿಗೆ ತಂದ ಪಾಶ್ಚಾತ್ಯ ಮತ್ತು ಭಾರತೀಯ ವಿದ್ವಾಂಸರು:</p>
+            <ul style="margin-top:10px; padding-left:20px;">
+                <li><strong>ಶಬ್ದಮಣಿದರ್ಪಣಂ:</strong><br>
+                    - ಮೊದಲು ಮುದ್ರಿಸಿದವರು: <strong>ಜೆ. ಗ್ಯಾರೆಟ್ (1868)</strong> ಮತ್ತು <strong>ರೆವರೆಂಡ್ ಎಫ್. ಕಿಟ್ಟೆಲ್ (1872)</strong>.<br>
+                    - ಶ್ರೇಷ್ಠ ಪರಿಷ್ಕೃತ ಆವೃತ್ತಿ ಸಂಪಾದಕರು: <strong>ಡಿ.ಎಲ್. ನರಸಿಂಹಾಚಾರ್ (ಡಿ.ಎಲ್.ಎನ್)</strong> ಮತ್ತು <strong>ದೇವೇಗೌಡ ಜವರೇಗೌಡ (ದೇಜಗೌ)</strong>.
+                </li>
+                <li><strong>ಕರ್ಣಾಟಕ ಭಾಷಾಭೂಷಣ (2ನೇ ನಾಗವರ್ಮ):</strong><br>
+                    - ಮೊದಲು ಸಂಪಾದಿಸಿ ಪ್ರಕಟಿಸಿದವರು: <strong>ಬಿ.ಎಲ್. ರೈಸ್ (B.L. Rice - ಕ್ರಿ.ಶ. 1884)</strong>.
+                </li>
+                <li><strong>ಕರ್ಣಾಟಕ ಶಬ್ದಾನುಶಾಸನಂ (ಭಟ್ಟಾಕಳಂಕ):</strong><br>
+                    - ಮೊದಲು ಸಂಪಾದಿಸಿ ಪ್ರಕಟಿಸಿದವರು: <strong>ಬಿ.ಎಲ್. ರೈಸ್ (B.L. Rice - ಕ್ರಿ.ಶ. 1890)</strong>.<br>
+                    - ಕನ್ನಡ ಅನುವಾದ ಮಾಡಿದವರು: <strong>ಪಂಡಿತ ರಾಮಚಂದ್ರ ಶರ್ಮ / ಆರ್. ನರಸಿಂಹಾಚಾರ್</strong>.
+                </li>
+                <li><strong>ಕಾವ್ಯಾವಲೋಕನ (ಶಬ್ದಸ್ಮೃತಿ):</strong><br>
+                    - ಮೊದಲು ಸಂಪಾದಿಸಿದವರು: <strong>ಆರ್. ನರಸಿಂಹಾಚಾರ್ (1903)</strong> ಮತ್ತು <strong>ಪ್ರೊ. ಶಿ.ಚಂ. ನಂದೀಮಠ</strong>.
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Section 5: Shabdamanidarpana Deep Dive (100% Retained + Expanded) -->
+    <h2 id="shabdamani" class="section-title">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        ೫. ಪರೀಕ್ಷೆಯಲ್ಲಿ ಅತಿ ಹೆಚ್ಚು ಪ್ರಶ್ನೆ ಬರುವ 'ಶಬ್ದಮಣಿದರ್ಪಣ'ದ ಮುಖ್ಯಾಂಶಗಳು
+    </h2>
+    <div class="info-grid">
+        <div class="info-card">
+            <h3>🔢 ಪ್ರಕರಣಗಳು ಮತ್ತು ಸೂತ್ರಗಳ ಸಂಖ್ಯೆ</h3>
+            <p>ಕೇಶಿರಾಜನ ಶಬ್ದಮಣಿದರ್ಪಣದಲ್ಲಿ ಒಟ್ಟು <strong>322 ಸೂತ್ರಗಳು</strong> (ಪೀಠಿಕಾ ಪದ್ಯ ಸೇರಿ ಕೆಲವು ಆವೃತ್ತಿಗಳಲ್ಲಿ 343 ಪದ್ಯಗಳು) ಇವೆ. ಎಂಟು ಪ್ರಕರಣಗಳ ಕ್ರಮವನ್ನು ಪರೀಕ್ಷೆಯಲ್ಲಿ ಕೇಳುತ್ತಾರೆ:</p>
+            <ol style="margin-top:10px; padding-left:20px; font-weight:600;">
+                <li>ಸಂಧಿ ಪ್ರಕರಣ (ಮೊದಲ ಪ್ರಕರಣ)</li>
+                <li>ನಾಮ ಪ್ರಕರಣ</li>
+                <li>ಸಮಾಸ ಪ್ರಕರಣ</li>
+                <li>ತದ್ಧಿತ ಪ್ರಕರಣ</li>
+                <li>ಆಖ್ಯಾತ ಪ್ರಕರಣ (ಕ್ರಿಯಾಪದ ಕುರಿತು)</li>
+                <li>ಧಾತು ಪ್ರಕರಣ (ಸುಮಾರು 990+ ಕನ್ನಡ ಧಾತುಗಳ ಪಟ್ಟಿ)</li>
+                <li>ಅಪಭ್ರಂಶ ಪ್ರಕರಣ (ತತ್ಸಮ-ತದ್ಭವ ನಿಯಮಗಳು)</li>
+                <li>ಅವ್ಯಯ ಪ್ರಕರಣ (ಕೊನೆಯ ಪ್ರಕರಣ + ಪ್ರಯೋಗಸಾರ)</li>
+            </ol>
+        </div>
+
+        <div class="info-card">
+            <h3>💎 ಕೇಶಿರಾಜನ ವಿಶೇಷ ವ್ಯಾಕರಣ ನಿಯಮಗಳು ಮತ್ತು ಸೂತ್ರಗಳು</h3>
+            <ul style="margin-top:10px; padding-left:20px;">
+                <li><strong>ಗಮಕ ಸಮಾಸ:</strong> ಈ ಸಮಾಸವನ್ನು ಕನ್ನಡಕ್ಕೆ ಪರಿಚಯಿಸಿದವನು ಕೇಶಿರಾಜ.</li>
+                <li><strong>ಸತಿ ಸಪ್ತಮಿ:</strong> ಕನ್ನಡದ ವಿಶಿಷ್ಟ ವಾಕ್ಯ ರಚನೆಯಾದ ಸತಿಸಪ್ತಮಿಯನ್ನು ಗುರುತಿಸಿದವನು.</li>
+                <li><strong>ಶುದ್ಧಗೆ (47 ಅಕ್ಷರಗಳು):</strong> ಸಂಸ್ಕೃತದ 52 ಅಕ್ಷರಗಳಲ್ಲಿ ಋ, ೠ, ಌ, ೡ, ಶ, ಷ, ವಿಸರ್ಗ, ಜಿಹ್ವಾಮೂಲೀಯ, ಉಪಧ್ಮಾನೀಯ (9 ಅಕ್ಷರ) ಕಳೆದು, ಕನ್ನಡದ ಹ್ರಸ್ವ ಎ, ಒ ಮತ್ತು ಱ, ೞ (4 ಅಕ್ಷರ) ಸೇರಿಸಿ <strong>52 - 9 + 4 = 47</strong> ಶುದ್ಧಗೆ ಅಕ್ಷರಗಳೆಂದು ಕರೆದಿದ್ದಾನೆ.</li>
+                <li><strong>ಲಿಂಗ ವ್ಯವಸ್ಥೆ:</strong> ಕೇಶಿರಾಜನು ಕನ್ನಡದಲ್ಲಿ <strong>9 ಲಿಂಗಗಳನ್ನು</strong> (3 ವಿಶೇಷ್ಯಧೀನ + 6 ವಿಶಿಷ್ಟ ಲಿಂಗ) ಗುರುತಿಸಿದ್ದಾನೆ (2ನೇ ನಾಗವರ್ಮ 8 ಲಿಂಗಗಳನ್ನು ಹೇಳಿದ್ದಾನೆ).</li>
+                <li><strong>ಪ್ರಸಿದ್ಧ ಸೂತ್ರಗಳು:</strong> <em>"ಸಂಧಿಸಿರೆ ವರ್ಣಮೊಂದೊಂದೆಡೆಯೊಳ್..."</em> (ಸಂಧಿ), <em>"ಅರಿ ಸಮಾಸಂ ಕೇಶಿರಾಜಂಗೆ ಸಮ್ಮತಂ ಅಲ್ಲ"</em> (ಅರಿಸಮಾಸ ನಿಷೇಧ).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Section 6: Master Comparison Table (100% Retained + Expanded) -->
+    <h2 id="table" class="section-title">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        ೬. ಪ್ರಾಚೀನ ಮತ್ತು ಆಧುನಿಕ ವ್ಯಾಕರಣಕಾರರ ಸಮಗ್ರ ಹೋಲಿಕೆ ಕೋಷ್ಟಕ
+    </h2>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>ವ್ಯಾಕರಣಕಾರ</th>
+                    <th>ಕಾಲ / ಶತಮಾನ</th>
+                    <th>ವ್ಯಾಕರಣ ಗ್ರಂಥ</th>
+                    <th>ಬಿರುದು / ವಿಶೇಷಣ</th>
+                    <th>ಗ್ರಂಥದ ಭಾಷೆ ಮತ್ತು ಪ್ರಮುಖ ವಿಶೇಷತೆ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>ದುರ್ವಿನೀತ / ಗುಣಗಾಂಕ</strong></td>
+                    <td>6ನೇ - 9ನೇ ಶತಮಾನ</td>
+                    <td>ಶಬ್ದಾವತಾರ (ಅಲಭ್ಯ)</td>
+                    <td>ಪೂರ್ವಸೂರಿ</td>
+                    <td>ಕನ್ನಡದ ಪ್ರಾಚೀನ ಅಲಭ್ಯ ವ್ಯಾಕರಣ ಪ್ರಯತ್ನಗಳ ಉಲ್ಲೇಖ</td>
+                </tr>
+                <tr>
+                    <td><strong>ಶ್ರೀವಿಜಯ</strong></td>
+                    <td>ಕ್ರಿ.ಶ. 850 (9ನೇ ಶ.)</td>
+                    <td>ಕವಿರಾಜಮಾರ್ಗ</td>
+                    <td>ಪರಮ ಶ್ರೀವಿಜಯ</td>
+                    <td>ಕನ್ನಡದ ಮೊದಲ ಉಪಲಬ್ಧ ಗ್ರಂಥ (ಇದರಲ್ಲಿ ಕೆಲವು ವ್ಯಾಕರಣಾಂಶಗಳಿವೆ)</td>
+                </tr>
+                <tr>
+                    <td><strong>2ನೇ ನಾಗವರ್ಮ</strong></td>
+                    <td>ಕ್ರಿ.ಶ. 1042 / 1145</td>
+                    <td>1. ಶಬ್ದಸ್ಮೃತಿ<br>2. ಕರ್ಣಾಟಕ ಭಾಷಾಭೂಷಣ</td>
+                    <td>ಅಭಿನವ ಶರ್ವವರ್ಮ, ಕವಿಕರ್ಣಪೂರ, ಆದ್ಯ ವ್ಯಾಕರಣಕಾರ</td>
+                    <td>1. ಕನ್ನಡದ ಮೊದಲ ವ್ಯಾಕರಣ (ಕಾವ್ಯಾವಲೋಕನದ ಭಾಗ - 96 ಸೂತ್ರ)<br>2. ಸಂಸ್ಕೃತದಲ್ಲಿ ಬರೆದ ಮೊದಲ ಕನ್ನಡ ವ್ಯಾಕರಣ (280 ಸೂತ್ರ)</td>
+                </tr>
+                <tr>
+                    <td><strong>ಕೇಶಿರಾಜ</strong></td>
+                    <td>ಕ್ರಿ.ಶ. 1260 (13ನೇ ಶ.)</td>
+                    <td>ಶಬ್ದಮಣಿದರ್ಪಣಂ</td>
+                    <td>ಕನ್ನಡದ ಪಾಣಿನಿ, ಸುಕವೀಂದ್ರ</td>
+                    <td>ಕನ್ನಡದ ಮೊದಲ ಸ್ವತಂತ್ರ ಸಮಗ್ರ ವ್ಯಾಕರಣ (ಕಂದಪದ್ಯದಲ್ಲಿ 8 ಪ್ರಕರಣ, 322 ಸೂತ್ರ)</td>
+                </tr>
+                <tr>
+                    <td><strong>ಭಟ್ಟಾಕಳಂಕದೇವ</strong></td>
+                    <td>ಕ್ರಿ.ಶ. 1604 (17ನೇ ಶ.)</td>
+                    <td>ಕರ್ಣಾಟಕ ಶಬ್ದಾನುಶಾಸನಂ</td>
+                    <td>ಅಭಿನವ ಪಾಣಿನಿ, ಸಕಲ ಭಾಷಾ ಚಕ್ರವರ್ತಿ</td>
+                    <td>ಸಂಸ್ಕೃತದಲ್ಲಿ ಕನ್ನಡ ವ್ಯಾಕರಣ (4 ಪಾದ, 592 ಸೂತ್ರಗಳು) - ಬಿ.ಎಲ್. ರೈಸ್ ಇದನ್ನು <strong>'ಕನ್ನಡದ ಅಷ್ಟಾಧ್ಯಾಯಿ'</strong> ಎಂದಿದ್ದಾರೆ.</td>
+                </tr>
+                <tr>
+                    <td><strong>ಮುಳಬಾಗಿಲು ಧರಣಿಪಂಡಿತ</strong></td>
+                    <td>17ನೇ ಶತಮಾನ</td>
+                    <td>ಬಿಜ್ಜಳರಾಯ ಚರಿತೆ / ವ್ಯಾಕರಣ</td>
+                    <td>ಪಂಡಿತ</td>
+                    <td>ನಡುಗನ್ನಡ ವ್ಯಾಕರಣದ ಉಲ್ಲೇಖಗಳು</td>
+                </tr>
+                <tr>
+                    <td><strong>ವಿಲಿಯಂ ಕ್ಯಾರಿ (William Carey)</strong></td>
+                    <td>ಕ್ರಿ.ಶ. 1817</td>
+                    <td>A Grammar of the Kurnata Language</td>
+                    <td>ಪಾಶ್ಚಾತ್ಯ ವಿದ್ವಾಂಸ</td>
+                    <td>ಇಂಗ್ಲಿಷ್‌‌ನಲ್ಲಿ ಮುದ್ರಿತವಾದ ಮೊದಲ ಕನ್ನಡ ವ್ಯಾಕರಣ ಗ್ರಂಥ (ಶ್ರೀರಾಮಪುರ ಮುದ್ರಣ)</td>
+                </tr>
+                <tr>
+                    <td><strong>ಜಾನ್ ಮೆಕೆರೆಲ್ (John McKerrell)</strong></td>
+                    <td>ಕ್ರಿ.ಶ. 1820</td>
+                    <td>A Grammar of the Carnataca Language</td>
+                    <td>ಪಾಶ್ಚಾತ್ಯ ವಿದ್ವಾಂಸ</td>
+                    <td>ಮದ್ರಾಸ್‌ನಲ್ಲಿ ಪ್ರಕಟವಾದ ಪ್ರಮುಖ ಇಂಗ್ಲಿಷ್-ಕನ್ನಡ ವ್ಯಾಕರಣ</td>
+                </tr>
+                <tr>
+                    <td><strong>ರೆವರೆಂಡ್ ಫರ್ಡಿನಾಂಡ್ ಕಿಟ್ಟೆಲ್</strong></td>
+                    <td>ಕ್ರಿ.ಶ. 1903</td>
+                    <td>A Grammar of the Kannada Language</td>
+                    <td>ಕನ್ನಡ ನಿಘಂಟು ಬ್ರಹ್ಮ</td>
+                    <td>ಇಂಗ್ಲಿಷ್‌‌ನಲ್ಲಿ ಕನ್ನಡದ ಮೂರೂ ಅವಸ್ಥೆಗಳ (ಹಳಗನ್ನಡ, ನಡುಗನ್ನಡ, ಹೊಸಗನ್ನಡ) ಐತಿಹಾಸಿಕ ವ್ಯಾಕರಣ</td>
+                </tr>
+                <tr>
+                    <td><strong>ಕೃಷ್ಣಮಾಚಾರ್ಯ</strong></td>
+                    <td>ಕ್ರಿ.ಶ. 1838</td>
+                    <td>ಹೊಸಗನ್ನಡ ನುಡಿಗನ್ನಡಿ</td>
+                    <td>ಆಧುನಿಕ ಆದ್ಯ ವ್ಯಾಕರಣಕಾರ</td>
+                    <td>ಸಂಭಾಷಣಾ ರೂಪದಲ್ಲಿ (ಪ್ರಶ್ನೋತ್ತರ ಶೈಲಿ) ರಚಿತವಾದ ಹೊಸಗನ್ನಡದ ಮೊದಲ ವ್ಯಾಕರಣ ಗ್ರಂಥ</td>
+                </tr>
+                <tr>
+                    <td><strong>ತೀ.ನಂ. ಶ್ರೀಕಂಠಯ್ಯ (ತೀನಂಶ್ರೀ)</strong></td>
+                    <td>20ನೇ ಶತಮಾನ</td>
+                    <td>ಕನ್ನಡ ಮಧ್ಯಮ ವ್ಯಾಕರಣ</td>
+                    <td>ಪಂಪ ಪ್ರಶಸ್ತಿ ಪುರಸ್ಕೃತ</td>
+                    <td>ಆಧುನಿಕ ಕನ್ನಡ ಶಾಲಾ-ಕಾಲೇಜುಗಳ ಅಧಿಕೃತ ವ್ಯಾಕರಣ ಗ್ರಂಥ</td>
+                </tr>
+                <tr>
+                    <td><strong>ಕುವೆಂಪು ಮತ್ತು ತಂಡ</strong></td>
+                    <td>20ನೇ ಶತಮಾನ (1927)</td>
+                    <td>ಕನ್ನಡ ಕೈಪಿಡಿ (ವ್ಯಾಕರಣ ಭಾಗ)</td>
+                    <td>ರಾಷ್ಟ್ರಕವಿ</td>
+                    <td>ಮೈಸೂರು ವಿಶ್ವವಿದ್ಯಾಲಯದ ಪ್ರಸಿದ್ಧ ಕೈಪಿಡಿ (ಬಿ.ಎಂ.ಶ್ರೀ ನೇತೃತ್ವ)</td>
+                </tr>
+                <tr>
+                    <td><strong>ಡಿ.ಎನ್. ಶಂಕರಭಟ್</strong></td>
+                    <td>ಆಧುನಿಕ ಕಾಲ</td>
+                    <td>ಕನ್ನಡಕ್ಕೆ ಬೇಕು ಕನ್ನಡದ್ದೇ ವ್ಯಾಕರಣ</td>
+                    <td>ಆಧುನಿಕ ಭಾಷಾವಿಜ್ಞಾನಿ</td>
+                    <td>ಸಂಸ್ಕೃತದ ಚೌಕಟ್ಟಿನಿಂದ ಹೊರಬಂದು ಬರೆದ ಭಾಷಾವೈಜ್ಞಾನಿಕ ಗ್ರಂಥ</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Section 7: Interactive Quiz (100% Retained + New Questions Added) -->
+    <h2 id="quiz" class="section-title">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        ೭. KEA ಪರೀಕ್ಷಾ ಅಭ್ಯಾಸ ಪ್ರಶ್ನೆಗಳು (ಉತ್ತರದ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ)
+    </h2>
+
+    <div class="quiz-card">
+        <p><strong>1. ಕನ್ನಡದಲ್ಲಿ ದೊರೆತಿರುವ ಮೊಟ್ಟಮೊದಲ ಸ್ವತಂತ್ರ ಹಾಗೂ ಸಮಗ್ರ ವ್ಯಾಕರಣ ಗ್ರಂಥ ಯಾವುದು?</strong></p>
+        <button class="quiz-option" onclick="checkAns(this, false)">A) ಶಬ್ದಸ್ಮೃತಿ</button>
+        <button class="quiz-option" onclick="checkAns(this, true)">B) ಶಬ್ದಮಣಿದರ್ಪಣಂ</button>
+        <button class="quiz-option" onclick="checkAns(this, false)">C) ಕರ್ಣಾಟಕ ಭಾಷಾಭೂಷಣ</button>
+        <button class="quiz-option" onclick="checkAns(this, false)">D) ಕರ್ಣಾಟಕ ಶಬ್ದಾನುಶಾಸನಂ</button>
+    </div>
+
+    <div class="quiz-card">
+        <p><strong>2. ಭಟ್ಟಾಕಳಂಕದೇವನು ತನ್ನ 'ಕರ್ಣಾಟಕ ಶಬ್ದಾನುಶಾಸನ' ಗ್ರಂಥದ ಸೂತ್ರಗಳಿಗೆ ಬರೆದ ವೃತ್ತಿ ಮತ್ತು ವ್ಯಾಖ್ಯಾನದ ಹೆಸರೇನು?</strong></p>
+        <button class="quiz-option" onclick="checkAns(this, false)">A) ಪ್ರಯೋಗಸಾರ ಮತ್ತು ಶಬ್ದಾರ್ಥ</button>
+        <button class="quiz-option" onclick="checkAns(this, false)">B) ಕಾವ್ಯಾವಲೋಕನ ಮತ್ತು ಶಬ್ದಸ್ಮೃತಿ</button>
+        <button class="quiz-option" onclick="checkAns(this, true)">C) ಭಾಷಾಮಂಜರಿ ಮತ್ತು ಮಂಜರೀ ಮಕರಂದ</button>
+        <button class="quiz-option" onclick="checkAns(this, false)">D) ಅಭಿಧಾನ ವಸ್ತುಕೋಶ</button>
+    </div>
+
+    <div class="quiz-card">
+        <p><strong>3. ಕೇಶಿರಾಜನ ಪ್ರಕಾರ ಕನ್ನಡದ 'ಶುದ್ಧಗೆ'ಯಲ್ಲಿರುವ ಒಟ್ಟು ಅಕ್ಷರಗಳ ಸಂಖ್ಯೆ ಎಷ್ಟು?</strong></p>
+        <button class="quiz-option" onclick="checkAns(this, false)">A) 49</button>
+        <button class="quiz-option" onclick="checkAns(this, false)">B) 52</button>
+        <button class="quiz-option" onclick="checkAns(this, true)">C) 47</button>
+        <button class="quiz-option" onclick="checkAns(this, false)">D) 43</button>
+    </div>
+
+    <div class="quiz-card">
+        <p><strong>4. ಭಟ್ಟಾಕಳಂಕದೇವನ 'ಕರ್ಣಾಟಕ ಶಬ್ದಾನುಶಾಸನ' ಗ್ರಂಥವನ್ನು "ಕನ್ನಡದ ಅಷ್ಟಾಧ್ಯಾಯಿ" ಎಂದು ಕರೆದ ವಿದ್ವಾಂಸರು ಯಾರು?</strong></p>
+        <button class="quiz-option" onclick="checkAns(this, true)">A) ಬಿ.ಎಲ್. ರೈಸ್ (B.L. Rice)</button>
+        <button class="quiz-option" onclick="checkAns(this, false)">B) ಫರ್ಡಿನಾಂಡ್ ಕಿಟ್ಟೆಲ್</button>
+        <button class="quiz-option" onclick="checkAns(this, false)">C) ಜಾನ್ ಫ್ಲೀಟ್</button>
+        <button class="quiz-option" onclick="checkAns(this, false)">D) ಡಿ.ಎಲ್. ನರಸಿಂಹಾಚಾರ್</button>
+    </div>
+
+    <div class="quiz-card">
+        <p><strong>5. ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವ ಜೋಡಿಯು ಸರಿಯಾಗಿ ಹೊಂದಾಣಿಕೆಯಾಗಿದೆ?</strong></p>
+        <button class="quiz-option" onclick="checkAns(this, false)">A) 2ನೇ ನಾಗವರ್ಮ - ಅಭಿನವ ಪಾಣಿನಿ</button>
+        <button class="quiz-option" onclick="checkAns(this, true)">B) ಕೇಶಿರಾಜ - ಕನ್ನಡದ ಪಾಣಿನಿ & ಭಟ್ಟಾಕಳಂಕ - ಅಭಿನವ ಪಾಣಿನಿ</button>
+        <button class="quiz-option" onclick="checkAns(this, false)">C) ಕೇಶಿರಾಜ - ಅಭಿನವ ಶರ್ವವರ್ಮ</button>
+        <button class="quiz-option" onclick="checkAns(this, false)">D) ಭಟ್ಟಾಕಳಂಕ - ಕವಿಕರ್ಣಪೂರ</button>
+    </div>
+
+    <div class="quiz-card">
+        <p><strong>6. ಸಂಭಾಷಣಾ ರೂಪದಲ್ಲಿರುವ ಹೊಸಗನ್ನಡದ ಮೊದಲ ವ್ಯಾಕರಣ ಗ್ರಂಥ 'ಹೊಸಗನ್ನಡ ನುಡಿಗನ್ನಡಿ' (1838) ರಚಿಸಿದವರು ಯಾರು?</strong></p>
+        <button class="quiz-option" onclick="checkAns(this, false)">A) ಮುದ್ದಣ</button>
+        <button class="quiz-option" onclick="checkAns(this, true)">B) ಕೃಷ್ಣಮಾಚಾರ್ಯ</button>
+        <button class="quiz-option" onclick="checkAns(this, false)">C) ತೀ.ನಂ. ಶ್ರೀಕಂಠಯ್ಯ</button>
+        <button class="quiz-option" onclick="checkAns(this, false)">D) ಆರ್. ನರಸಿಂಹಾಚಾರ್</button>
+    </div>
+
+</div>
+
+<footer>
+    <p>© KEA / KPSC ಸಾಮಾನ್ಯ ಕನ್ನಡ ಪರೀಕ್ಷಾ ಸಿದ್ಧತಾ ಪೋರ್ಟಲ್ | ಸಂಪೂರ್ಣ ಪರಿಷ್ಕೃತ ಆವೃತ್ತಿ</p>
+</footer>
+
+<script>
+    function checkAns(btn, isCorrect) {
+        const parent = btn.parentElement;
+        const buttons = parent.querySelectorAll('.quiz-option');
+        buttons.forEach(b => b.disabled = true);
+        if (isCorrect) {
+            btn.classList.add('correct');
+            btn.innerHTML += " ✅ (ಸರಿಯಾದ ಉತ್ತರ!)";
+        } else {
+            btn.classList.add('wrong');
+            btn.innerHTML += " ❌ (ತಪ್ಪು ಉತ್ತರ)";
+        }
+    }
+</script>
+
+</body>
+</html>

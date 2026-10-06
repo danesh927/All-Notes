@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಕನ್ನಡ ವ್ಯಾಕರಣ ಪರಂಪರೆ ಮತ್ತು ಭಾಷೆಯ ಪ್ರಾಚೀನತೆ - ಮೆಗಾ ರಸಪ್ರಶ್ನೆ (KEA/KPSC)</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Google Font Noto Sans Kannada -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --kar-red: #b71c1c;
+            --kar-yellow: #fbc02d;
+            --dark-slate: #1e293b;
+        }
+        * {
+            font-family: 'Noto Sans Kannada', sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+        /* Custom Animations */
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(251, 192, 45, 0.5); }
+            50% { box-shadow: 0 0 0 10px rgba(251, 192, 45, 0); }
+        }
+        .animate-card {
+            animation: slideInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .glow-badge {
+            animation: pulseGlow 2.5s infinite;
+        }
+        /* Option Button States */
+        .option-btn {
+            transition: all 0.2s ease;
+        }
+        .option-btn:hover:not(:disabled) {
+            transform: translateX(5px);
+            border-color: #0284c7;
+            background-color: #f0f9ff;
+        }
+        .option-correct {
+            background-color: #dcfce7 !important;
+            border-color: #16a34a !important;
+            color: #14532d !important;
+        }
+        .option-wrong {
+            background-color: #fee2e2 !important;
+            border-color: #dc2626 !important;
+            color: #7f1d1d !important;
+        }
+        .option-selected-exam {
+            background-color: #fef3c7 !important;
+            border-color: #d97706 !important;
+            color: #78350f !important;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <header class="bg-gradient-to-r from-[#881313] via-[#b71c1c] to-[#d97706] text-white shadow-xl relative overflow-hidden">
+        <!-- Decorative SVG Pattern -->
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 py-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+                <div class="text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-1 rounded-full text-xs sm:text-sm font-bold border border-white/30 mb-2 glow-badge">
+                        <span>🏆 KEA | KPSC | FDA | SDA | PSI | PDO | GPSTR | NET/KSET</span>
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight drop-shadow">
+                        ಕನ್ನಡ ವ್ಯಾಕರಣ ಪರಂಪರೆ ಮತ್ತು ಭಾಷೆಯ ಪ್ರಾಚೀನತೆ
+                    </h1>
+                    <p class="text-amber-100 text-sm sm:text-base mt-1 font-medium">
+                        ಮೆಗಾ ರಸಪ್ರಶ್ನೆ ಮತ್ತು ಪರೀಕ್ಷಾ ಸಾರಾಂಶ ಕೋಷ್ಟಕ — ಬಿ.ಎಲ್. ರೈಸ್, ವಿ. ಸೀತಾರಾಮಯ್ಯ ಹೇಳಿಕೆಗಳ ಸಹಿತ ಸಂಪೂರ್ಣ ಆವೃತ್ತಿ
+                    </p>
+                </div>
+
+                <!-- Top Quick Action Buttons -->
+                <div class="flex flex-wrap items-center justify-center gap-2.5">
+                    <button onclick="openNotesModal()" class="flex items-center gap-2 bg-[#fbc02d] hover:bg-amber-300 text-slate-900 font-extrabold px-4 py-2.5 rounded-xl shadow-lg transition transform hover:-translate-y-0.5 text-sm sm:text-base">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                        <span>ಪರೀಕ್ಷಾ ಸಾರಾಂಶ ಕೈಪಿಡಿ (Study Notes)</span>
+                    </button>
+                    <button onclick="toggleBookmarkedFilter()" id="bookmarkFilterBtn" class="flex items-center gap-2 bg-slate-900/80 hover:bg-slate-900 text-white font-bold px-4 py-2.5 rounded-xl border border-white/20 shadow transition text-sm sm:text-base">
+                        <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <span>ಪ್ರಮುಖ ಪ್ರಶ್ನೆಗಳು (<span id="bookmarkCountBadge">0</span>)</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-[#1e293b] text-white sticky top-0 z-30 shadow-md border-b border-slate-700">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+                
+                <!-- Mode Switcher -->
+                <div class="flex items-center bg-slate-800 p-1 rounded-xl border border-slate-600">
+                    <button id="modePracticeBtn" onclick="setQuizMode('practice')" class="px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition bg-[#fbc02d] text-slate-900 shadow">
+                        🎯 ಅಭ್ಯಾಸ ಮೋಡ್ (Practice)
+                    </button>
+                    <button id="modeExamBtn" onclick="setQuizMode('exam')" class="px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition text-slate-300 hover:text-white">
+                        📝 ಪರೀಕ್ಷಾ ಮೋಡ್ (Exam)
+                    </button>
+                </div>
+
+                <!-- Category Filter Pills -->
+                <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 max-w-full">
+                    <button onclick="filterByCategory('all')" data-cat="all" class="cat-pill px-3 py-1.5 rounded-lg text-xs font-bold bg-red-700 text-white whitespace-nowrap transition">
+                        ಎಲ್ಲಾ (30)
+                    </button>
+                    <button onclick="filterByCategory('prachinate')" data-cat="prachinate" class="cat-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 whitespace-nowrap transition">
+                        ಭಾಷೆಯ ಪ್ರಾಚೀನತೆ
+                    </button>
+                    <button onclick="filterByCategory('nagavarma')" data-cat="nagavarma" class="cat-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 whitespace-nowrap transition">
+                        2ನೇ ನಾಗವರ್ಮ
+                    </button>
+                    <button onclick="filterByCategory('keshiraja')" data-cat="keshiraja" class="cat-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 whitespace-nowrap transition">
+                        ಕೇಶಿರಾಜ
+                    </button>
+                    <button onclick="filterByCategory('bhattakalanka')" data-cat="bhattakalanka" class="cat-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 whitespace-nowrap transition">
+                        ಭಟ್ಟಾಕಳಂಕದೇವ
+                    </button>
+                    <button onclick="filterByCategory('scholars')" data-cat="scholars" class="cat-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 whitespace-nowrap transition">
+                        ವಿದ್ವಾಂಸರ ಹೇಳಿಕೆ & ಆಧುನಿಕ
+                    </button>
+                </div>
+
+                <!-- Live Stats & Timer -->
+                <div class="flex items-center gap-3 ml-auto lg:ml-0">
+                    <div id="liveScoreBox" class="flex items-center gap-1.5 bg-emerald-900/60 border border-emerald-500/40 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold text-emerald-200">
+                        <span>ಅಂಕ:</span>
+                        <span id="liveScoreValue" class="text-white font-extrabold">0</span>
+                        <span>/</span>
+                        <span id="liveTotalAttempted">0</span>
+                    </div>
+
+                    <div class="flex items-center gap-2 bg-slate-800 border border-slate-600 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold">
+                        <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                        </svg>
+                        <span id="timerDisplay" class="font-mono text-amber-300">00:00</span>
+                        <button onclick="toggleTimerPause()" id="timerToggleBtn" title=" ವಿರಾಮ / ಪ್ರಾರಂಭ" class="text-slate-300 hover:text-white ml-1">
+                            ⏸️
+                        </button>
+                        <button onclick="resetTimer()" title="ಟೈಮರ್ ಮರುಹೊಂದಿಸಿ" class="text-slate-300 hover:text-white">
+                            🔄
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="w-full bg-slate-700 h-2 rounded-full mt-2.5 overflow-hidden">
+                <div id="progressBar" class="bg-gradient-to-r from-[#fbc02d] to-emerald-400 h-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
+        <div id="quizWorkspace" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- Left/Main Column: Active Question Card -->
+            <div class="lg:col-span-8 flex flex-col gap-5">
+                
+                <!-- Question Card -->
+                <div id="questionCard" class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden animate-card">
+                    <!-- Question Card Header -->
+                    <div class="bg-slate-50 border-b border-slate-200 px-5 py-4 flex flex-wrap items-center justify-between gap-2">
+                        <div class="flex items-center gap-2.5">
+                            <span id="qNumberBadge" class="bg-[#b71c1c] text-white font-extrabold px-3.5 py-1 rounded-lg text-sm shadow-sm">
+                                ಪ್ರಶ್ನೆ 1 / 30
+                            </span>
+                            <span id="qCategoryBadge" class="bg-amber-100 text-amber-900 font-bold px-3 py-1 rounded-lg text-xs border border-amber-300">
+                                ಭಾಷೆಯ ಪ್ರಾಚೀನತೆ
+                            </span>
+                            <span id="qExamTag" class="hidden sm:inline-block bg-slate-200 text-slate-700 font-semibold px-2.5 py-0.5 rounded text-xs">
+                                KEA / KPSC High-Yield
+                            </span>
+                        </div>
+
+                        <!-- Bookmark Star Button -->
+                        <button onclick="toggleBookmarkCurrent()" id="starCurrentBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-amber-50 text-slate-600 text-xs font-bold transition">
+                            <svg id="starIcon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                            </svg>
+                            <span id="starBtnText">ನೆನಪಿಟ್ಟುಕೊಳ್ಳಿ (Star)</span>
+                        </button>
+                    </div>
+
+                    <!-- Question Text & Options Body -->
+                    <div class="p-5 sm:p-7">
+                        <h2 id="questionText" class="text-lg sm:text-xl font-bold text-slate-900 leading-relaxed mb-6">
+                            ಪ್ರಶ್ನೆಯನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...
+                        </h2>
+
+                        <!-- Options List -->
+                        <div id="optionsContainer" class="space-y-3">
+                            <!-- Dynamically populated options -->
+                        </div>
+
+                        <!-- Detailed Explanation Box (Shown in Practice Mode after answer, or during review) -->
+                        <div id="explanationBox" class="hidden mt-6 bg-amber-50/90 border-l-4 border-[#b71c1c] rounded-r-xl p-4 sm:p-5 shadow-inner">
+                            <div class="flex items-center gap-2 text-[#b71c1c] font-extrabold text-sm sm:text-base mb-1.5">
+                                <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <span>ವಿವರಣೆ ಮತ್ತು KEA ಪರೀಕ್ಷಾ ಪಾಯಿಂಟ್:</span>
+                            </div>
+                            <p id="explanationText" class="text-slate-800 text-sm sm:text-base leading-relaxed font-medium"></p>
+                        </div>
+                    </div>
+
+                    <!-- Question Footer Navigation -->
+                    <div class="bg-slate-50 border-t border-slate-200 px-5 py-4 flex flex-wrap items-center justify-between gap-3">
+                        <button onclick="prevQuestion()" id="prevBtn" class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-slate-300 hover:bg-slate-100 text-slate-800 font-bold text-sm shadow-sm disabled:opacity-40 transition">
+                            <span>⬅ ಹಿಂದಿನ ಪ್ರಶ್ನೆ</span>
+                        </button>
+
+                        <div class="flex items-center gap-2.5">
+                            <button onclick="finishQuiz()" id="submitExamBtn" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-md transition">
+                                📊 ಫಲಿತಾಂಶ ನೋಡಿ (Submit Quiz)
+                            </button>
+                            <button onclick="nextQuestion()" id="nextBtn" class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1e293b] hover:bg-slate-800 text-white font-bold text-sm shadow-md transition">
+                                <span>ಮುಂದಿನ ಪ್ರಶ್ನೆ ➡</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Revision Banner Below Question -->
+                <div class="bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-2xl p-5 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4 border-l-8 border-[#fbc02d]">
+                    <div>
+                        <h3 class="font-extrabold text-base sm:text-lg text-amber-300">💡 ಪರೀಕ್ಷಾ ಸೂತ್ರ (Quick Memory Tip):</h3>
+                        <p id="dynamicTipText" class="text-xs sm:text-sm text-slate-200 mt-1">
+                            ಕನ್ನಡದಲ್ಲಿ ಕನ್ನಡ ವ್ಯಾಕರಣ ಬರೆದ ಮೊದಲಿಗ (ಶಬ್ದಸ್ಮೃತಿ) ಮತ್ತು ಸಂಸ್ಕೃತದಲ್ಲಿ ಕನ್ನಡ ವ್ಯಾಕರಣ ಬರೆದ ಮೊದಲಿಗ (ಕರ್ಣಾಟಕ ಭಾಷಾಭೂಷಣ) ಇಬ್ಬರೂ 2ನೇ ನಾಗವರ್ಮನೇ!
+                        </p>
+                    </div>
+                    <button onclick="openNotesModal()" class="flex-shrink-0 bg-white/10 hover:bg-white/20 text-amber-300 border border-amber-400/40 px-4 py-2 rounded-xl text-xs font-bold transition">
+                        ಎಲ್ಲಾ ಕೋಷ್ಟಕಗಳನ್ನು ತೆರೆಯಿರಿ ↗
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Question Palette & Summary Stats -->
+            <div class="lg:col-span-4 flex flex-col gap-5">
+                <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-5 sticky top-24">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-4">
+                        <h3 class="font-extrabold text-slate-800 text-base flex items-center gap-2">
+                            <svg class="w-5 h-5 text-[#b71c1c]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+                            </svg>
+                            <span>ಪ್ರಶ್ನೆಗಳ ಕಣಜ (Question Palette)</span>
+                        </h3>
+                        <button onclick="restartQuiz()" class="text-xs font-bold text-red-700 hover:underline">
+                            ಮರುಪ್ರಾರಂಭಿಸಿ (Reset)
+                        </button>
+                    </div>
+
+                    <!-- Legend -->
+                    <div class="grid grid-cols-2 gap-2 text-xs font-semibold text-slate-600 mb-4 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded bg-emerald-500 inline-block"></span> ಸರಿಯಾದ ಉತ್ತರ (<span id="statCorrect">0</span>)
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded bg-red-500 inline-block"></span> ತಪ್ಪಾದ ಉತ್ತರ (<span id="statWrong">0</span>)
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded bg-amber-400 inline-block"></span> ಗುರುತಿಸಿದ ಉತ್ತರ (<span id="statSelected">0</span>)
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded bg-slate-200 border border-slate-400 inline-block"></span> ಉತ್ತರಿಸಿಲ್ಲ (<span id="statUnanswered">30</span>)
+                        </div>
+                    </div>
+
+                    <!-- Number Grid -->
+                    <div id="paletteGrid" class="grid grid-cols-5 sm:grid-cols-6 lg:grid-cols-5 gap-2 max-h-72 overflow-y-auto pr-1">
+                        <!-- Dynamically populated buttons -->
+                    </div>
+
+                    <!-- Quick Key Scholars Box -->
+                    <div class="mt-5 pt-4 border-t border-slate-200">
+                        <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2.5">
+                            🔥 ಮರೆಯಬಾರದ ಪ್ರಮುಖ ಬಿರುದುಗಳು
+                        </h4>
+                        <div class="space-y-2 text-xs">
+                            <div class="p-2 rounded-lg bg-red-50 border border-red-100 flex justify-between">
+                                <span class="font-bold text-slate-800">2ನೇ ನಾಗವರ್ಮ:</span>
+                                <span class="font-extrabold text-red-800">ಅಭಿನವ ಶರ್ವವರ್ಮ</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-amber-50 border border-amber-200 flex justify-between">
+                                <span class="font-bold text-slate-800">ಕೇಶಿರಾಜ (ವಿ.ಸೀ ಹೇಳಿಕೆ):</span>
+                                <span class="font-extrabold text-amber-900">ಕನ್ನಡದ ಪಾಣಿನಿ</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-sky-50 border border-sky-200 flex justify-between">
+                                <span class="font-bold text-slate-800">ಭಟ್ಟಾಕಳಂಕದೇವ:</span>
+                                <span class="font-extrabold text-sky-900">ಅಭಿನವ ಪಾಣಿನಿ</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-purple-50 border border-purple-200 flex justify-between">
+                                <span class="font-bold text-slate-800">ಶಬ್ದಾನುಶಾಸನ (ಬಿ.ಎಲ್.ರೈಸ್):</span>
+                                <span class="font-extrabold text-purple-900">ಕನ್ನಡದ ಅಷ್ಟಾಧ್ಯಾಯಿ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="resultDashboard" class="hidden animate-card">
+            <div class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden mb-8">
+                <div class="bg-gradient-to-r from-[#1e293b] via-slate-800 to-[#b71c1c] text-white p-8 text-center">
+                    <span id="gradeBadge" class="inline-block bg-[#fbc02d] text-slate-900 font-extrabold px-4 py-1 rounded-full text-sm mb-3 shadow">
+                        ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶ (KEA Scorecard)
+                    </span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold mb-2" id="resultHeadline">ಅಭಿನಂದನೆಗಳು! ನಿಮ್ಮ ಫಲಿತಾಂಶ ಇಲ್ಲಿದೆ</h2>
+                    <p class="text-slate-300 text-sm sm:text-base" id="resultSubtext">ನೀವು ಕನ್ನಡ ವ್ಯಾಕರಣ ಪರಂಪರೆಯ ಪ್ರಶ್ನೆಗಳನ್ನು ಪೂರ್ಣಗೊಳಿಸಿದ್ದೀರಿ.</p>
+                </div>
+
+                <div class="p-6 sm:p-8">
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl text-center">
+                            <p class="text-xs font-bold text-slate-500">ಒಟ್ಟು ಅಂಕಗಳು</p>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1" id="resScore">0 / 30</p>
+                        </div>
+                        <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl text-center">
+                            <p class="text-xs font-bold text-emerald-700">ಶೇಕಡಾವಾರು (Accuracy)</p>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-emerald-700 mt-1" id="resPercent">0%</p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 p-4 rounded-2xl text-center">
+                            <p class="text-xs font-bold text-red-700">ತಪ್ಪಾದ / ಬಿಟ್ಟ ಪ್ರಶ್ನೆಗಳು</p>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-red-700 mt-1" id="resWrong">0</p>
+                        </div>
+                        <div class="bg-amber-50 border border-amber-200 p-4 rounded-2xl text-center">
+                            <p class="text-xs font-bold text-amber-800">ತೆಗೆದುಕೊಂಡ ಸಮಯ</p>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-amber-900 mt-1 font-mono" id="resTime">00:00</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center justify-center gap-4">
+                        <button onclick="returnToQuizReview()" class="px-6 py-3 rounded-xl bg-[#1e293b] hover:bg-slate-800 text-white font-extrabold text-sm sm:text-base shadow-lg transition">
+                            🔍 ಪ್ರಶ್ನೆಗಳನ್ನು ಮರುಪರಿಶೀಲಿಸಿ (Step-by-Step Review)
+                        </button>
+                        <button onclick="restartQuiz()" class="px-6 py-3 rounded-xl bg-[#b71c1c] hover:bg-red-800 text-white font-extrabold text-sm sm:text-base shadow-lg transition">
+                            🔄 ಮತ್ತೆ ರಸಪ್ರಶ್ನೆ ಪ್ರಾರಂಭಿಸಿ (Restart Quiz)
+                        </button>
+                        <button onclick="openNotesModal()" class="px-6 py-3 rounded-xl bg-[#fbc02d] hover:bg-amber-400 text-slate-900 font-extrabold text-sm sm:text-base shadow-lg transition">
+                            📚 ಸಂಪೂರ್ಣ ವ್ಯಾಕರಣ ನೋಟ್ಸ್ ಓದಿ
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Answer Key & Explanations List -->
+            <div class="bg-white rounded-3xl shadow-lg border border-slate-200 p-6 sm:p-8">
+                <h3 class="text-xl font-extrabold text-slate-900 mb-4 pb-3 border-b border-slate-200">
+                    📋 ಎಲ್ಲಾ ಪ್ರಶ್ನೆಗಳ ಉತ್ತರ ಮತ್ತು ವಿವರಣಾತ್ಮಕ ಕೀಲಿ (Complete Answer Key)
+                </h3>
+                <div id="fullReviewList" class="space-y-4">
+                    <!-- Dynamically populated review cards -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="notesModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-6">
+        <div class="bg-white rounded-3xl max-w-6xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-300 overflow-hidden animate-card">
+            
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-[#881313] via-[#b71c1c] to-[#d97706] text-white px-6 py-4 flex items-center justify-between">
+                <div>
+                    <h2 class="text-lg sm:text-2xl font-extrabold">📚 ಕನ್ನಡ ಭಾಷೆಯ ಪ್ರಾಚೀನತೆ ಮತ್ತು ವ್ಯಾಕರಣ ಪರಂಪರೆ (ಸಂಪೂರ್ಣ ಪರೀಕ್ಷಾ ಕೈಪಿಡಿ)</h2>
+                    <p class="text-xs sm:text-sm text-amber-100">ಈ ಹಿಂದೆ ನೀಡಲಾದ ಪ್ರತಿಯೊಂದು ಮಾಹಿತಿ, ಕೋಷ್ಟಕ ಹಾಗೂ ವಿದ್ವಾಂಸರ ಹೇಳಿಕೆಗಳ 100% ಸಂಗ್ರಹ</p>
+                </div>
+                <button onclick="closeNotesModal()" class="bg-white/20 hover:bg-white/30 text-white rounded-full p-2 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Modal Body (All Study Material Preserved) -->
+            <div class="p-5 sm:p-8 overflow-y-auto space-y-8 text-slate-800 text-sm sm:text-base leading-relaxed">
+                
+                <!-- 1. Prachinate & Stages -->
+                <div>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-[#b71c1c] border-b-2 border-[#fbc02d] pb-2 mb-4">
+                        ೧. ಕನ್ನಡ ಭಾಷೆಯ ಪ್ರಾಚೀನತೆ ಮತ್ತು 4 ಅವಸ್ಥೆಗಳು
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-slate-900 mb-2">📜 ಪ್ರಾಚೀನ ಶಾಸನಗಳು ಮತ್ತು ಉಲ್ಲೇಖ</h4>
+                            <ul class="list-disc pl-5 space-y-1.5">
+                                <li><strong>ಗ್ರೀಕ್ ಪ್ರಹಸನ (ಆಕ್ಸಿರಿಂಕಸ್ ಪ್ಯಾಪಿರಸ್ - ಕ್ರಿ.ಶ. 2ನೇ ಶತಮಾನ):</strong> ಈಜಿಪ್ಟ್‌ನಲ್ಲಿ ದೊರೆತ ಗ್ರೀಕ್ ನಾಟಕದಲ್ಲಿ ಕನ್ನಡದ ಪದಗಳ ಉಲ್ಲೇಖವಿದೆ (ಡಾ. ಬಿ.ಎ. ಸಾಲೆತ್ತೂರು ಮತ್ತು ಗೋವಿಂದ ಪೈ ಸಂಶೋಧನೆ).</li>
+                                <li><strong>ಹಲ್ಮಿಡಿ ಶಾಸನ (ಕ್ರಿ.ಶ. 450):</strong> ಕದಂಬರ ಕಾಕುತ್ಸ್ಥವರ್ಮನ ಕಾಲದ ಕನ್ನಡದ ಮೊದಲ ಅಧಿಕೃತ ಗದ್ಯ ಶಾಸನ (ಹಾಸನ ಜಿಲ್ಲೆಯ ಬೇಲೂರು ತಾಲ್ಲೂಕು).</li>
+                                <li><strong>ತಮಟಕಲ್ಲು ಶಾಸನ (ಕ್ರಿ.ಶ. 500):</strong> ಚಿತ್ರದುರ್ಗದಲ್ಲಿ ದೊರೆತ ಪ್ರಾಚೀನ ಶಾಸನ.</li>
+                                <li><strong>ಬಾದಾಮಿ ಶಾಸನ (ಕ್ರಿ.ಶ. 578):</strong> ಮಂಗಳೇಶನ ಕಾಲದ ಶಾಸನ, ಇಲ್ಲಿ ಮೊಟ್ಟಮೊದಲ ಬಾರಿಗೆ <span class="bg-amber-200 px-1.5 rounded font-bold">ತ್ರಿಪದಿ ಛಂದಸ್ಸು</span> ಬಳಕೆಯಾಗಿದೆ (ಕಪ್ಪೆ ಅರೆಭಟ್ಟನ ಶಾಸನ ಕ್ರಿ.ಶ. 700 ರಲ್ಲೂ ತ್ರಿಪದಿ ಇದೆ).</li>
+                                <li><strong>ನಂದಿಸೇನ ಮುನಿಯ ಶಾಸನ (ಕ್ರಿ.ಶ. 600-700):</strong> ಶ್ರವಣಬೆಳಗೊಳದ ಮೊದಲ ಕಾವ್ಯ ಶಾಸನ.</li>
+                                <li><strong>ಕವಿರಾಜಮಾರ್ಗ (ಕ್ರಿ.ಶ. 850):</strong> ಶ್ರೀವಿಜಯ ರಚಿಸಿದ ಕನ್ನಡದ ಮೊದಲ ಉಪಲಬ್ಧ ಗ್ರಂಥ (3 ಅಧಿಕರಣಗಳು: ದೋಷಾದೋಷ, ಶಬ್ದಾಲಂಕಾರ, ಅರ್ಥಾಲಂಕಾರ).</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-slate-900 mb-2">⏳ ಕನ್ನಡ ಭಾಷೆಯ 4 ಪ್ರಮುಖ ಅವಸ್ಥೆಗಳು (ಬಿ.ಎಂ. ಶ್ರೀಕಂಠಯ್ಯ)</h4>
+                            <ul class="list-disc pl-5 space-y-1.5">
+                                <li><strong>ಪೂರ್ವದ ಹಳಗನ್ನಡ:</strong> ಕ್ರಿ.ಶ. 9ನೇ ಶತಮಾನದವರೆಗೆ (ಶಾಸನಗಳ ಕಾಲ).</li>
+                                <li><strong>ಹಳಗನ್ನಡ:</strong> 9ನೇ ಶತಮಾನದಿಂದ 12ನೇ ಶತಮಾನದವರೆಗೆ (ಪಂಪ, ರನ್ನ, ಪೊನ್ನರ ಚಂಪೂ ಯುಗ).</li>
+                                <li><strong>ನಡುಗನ್ನಡ:</strong> 12ನೇ ಶತಮಾನದಿಂದ 18ನೇ ಶತಮಾನದವರೆಗೆ (ವಚನಕಾರರು, ಕೀರ್ತನಕಾರರು, ಷಟ್ಪದಿ ಕಾಲ - 'ಪ' ಕಾರವು 'ಹ' ಕಾರವಾಗುವ ಕಾಲ).</li>
+                                <li><strong>ಹೊಸಗನ್ನಡ:</strong> 19ನೇ ಶತಮಾನದಿಂದ ಇಂದಿನವರೆಗೆ (ಮುದ್ದಣ, ಬಿಎಂಶ್ರೀ, ಕುವೆಂಪು ಕಾಲ).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Three Pillar Grammarians -->
+                <div>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-[#b71c1c] border-b-2 border-[#fbc02d] pb-2 mb-4">
+                        ೨. ಕನ್ನಡದ ವ್ಯಾಕರಣ ರತ್ನತ್ರಯರು (2ನೇ ನಾಗವರ್ಮ, ಕೇಶಿರಾಜ, ಭಟ್ಟಾಕಳಂಕದೇವ)
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-amber-50/70 p-4 rounded-xl border border-amber-200">
+                            <h4 class="font-extrabold text-slate-900">೧. ಎರಡನೆಯ ನಾಗವರ್ಮ (ಕ್ರಿ.ಶ. 1042 / 1145)</h4>
+                            <p class="text-xs font-bold text-red-700 mb-2">ಬಿರುದು: ಅಭಿನವ ಶರ್ವವರ್ಮ, ಕವಿಕರ್ಣಪೂರ, ಕಟಕಾಚಾರ್ಯ, ಆದ್ಯ ವ್ಯಾಕರಣಕಾರ</p>
+                            <ul class="list-disc pl-4 space-y-1 text-xs sm:text-sm">
+                                <li><strong>ಆಶ್ರಯದಾತ:</strong> ಕಲ್ಯಾಣಿ ಚಾಲುಕ್ಯರ ಜಗದೇಕಮಲ್ಲ (ಜನ್ನನಿಗೂ ಗುರು).</li>
+                                <li><strong>ಶಬ್ದಸ್ಮೃತಿ:</strong> 'ಕಾವ್ಯಾವಲೋಕನ'ದ ಮೊದಲ ಅಧಿಕರಣ. ಕನ್ನಡದ ಮೊದಲ ವ್ಯಾಕರಣ (ಕಂದಪದ್ಯ, 5 ಪ್ರಕರಣ, 96 ಸೂತ್ರಗಳು).</li>
+                                <li><strong>ಕರ್ಣಾಟಕ ಭಾಷಾಭೂಷಣ:</strong> ಸಂಸ್ಕೃತದಲ್ಲಿ ಕನ್ನಡ ವ್ಯಾಕರಣ ಹೇಳುವ ಮೊದಲ ಗ್ರಂಥ (10 ಪರಿಚ್ಛೇದ, 280 ಸೂತ್ರಗಳು).</li>
+                                <li><strong>ಇತರ ಕೃತಿಗಳು:</strong> ಅಭಿಧಾನ ವಸ್ತುಕೋಶ, ವಸ್ತುವಿಜ್ಞಾನ, ವರ್ಧಮಾನ ಪುರಾಣ.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-amber-50/70 p-4 rounded-xl border border-amber-200">
+                            <h4 class="font-extrabold text-slate-900">೨. ಕೇಶಿರಾಜ (ಕ್ರಿ.ಶ. 1260 - 13ನೇ ಶ.)</h4>
+                            <p class="text-xs font-bold text-red-700 mb-2">ಬಿರುದು: ಕನ್ನಡದ ಪಾಣಿನಿ, ಸುಕವೀಂದ್ರ, ಶಬ್ದಮಣಿದರ್ಪಣಕಾರ</p>
+                            <ul class="list-disc pl-4 space-y-1 text-xs sm:text-sm">
+                                <li><strong>ಹಿನ್ನೆಲೆ:</strong> ಜನ್ನನ ಸೋದರಳಿಯ, ಮಲ್ಲಿಕಾರ್ಜುನನ ಮಗ, ಸುಮನೋಬಾಣನ ಮೊಮ್ಮಗ. ಹೊಯ್ಸಳ 3ನೇ ನರಸಿಂಹನ ಆಸ್ಥಾನ ಕವಿ.</li>
+                                <li><strong>ಶಬ್ದಮಣಿದರ್ಪಣಂ:</strong> ಕನ್ನಡದ ಮೊದಲ ಸ್ವತಂತ್ರ ಸಮಗ್ರ ವ್ಯಾಕರಣ (ಕಂದಪದ್ಯ + ಸ್ವಯಂ ಗದ್ಯ ವೃತ್ತಿ, 8 ಪ್ರಕರಣ, 322 ಸೂತ್ರಗಳು).</li>
+                                <li><strong>ಶುದ್ಧಗೆ:</strong> 47 ಅಕ್ಷರಗಳು (52 - 9 + 4). ದೇಶೀಯ ಅಕ್ಷರಗಳು 5 (ಱ, ೞ, ಲ, ಎ, ಒ). 9 ಲಿಂಗಗಳು, ಗಮಕ ಸಮಾಸ, ಸತಿಸಪ್ತಮಿ.</li>
+                                <li><strong>5 ಅಲಭ್ಯ ಕೃತಿಗಳು:</strong> ಚೋಳಪಾಲಕ ಚರಿತಂ, ಶ್ರೀ ಚಿತ್ರಮಾಲೆ, ಸುಭದ್ರಾಹರಣಂ, ಪ್ರಬೋಧಚಂದ್ರ, ಕಿರಾತಂ.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-amber-50/70 p-4 rounded-xl border border-amber-200">
+                            <h4 class="font-extrabold text-slate-900">೩. ಭಟ್ಟಾಕಳಂಕದೇವ (ಕ್ರಿ.ಶ. 1604 - 17ನೇ ಶ.)</h4>
+                            <p class="text-xs font-bold text-red-700 mb-2">ಬಿರುದು: ಅಭಿನವ ಪಾಣಿನಿ, ಸಕಲ ಭಾಷಾ ಚಕ್ರವರ್ತಿ, ಪ್ರತಿವಾದಿ ಭಯಂಕರ</p>
+                            <ul class="list-disc pl-4 space-y-1 text-xs sm:text-sm">
+                                <li><strong>ಹಿನ್ನೆಲೆ:</strong> ಹಾಡುವಳ್ಳಿ/ಸಂಗೀತಪುರ ಮಠದ ಜೈನ ಯತಿ, ಅಕಳಂಕ ದೇವನ ಶಿಷ್ಯ.</li>
+                                <li><strong>ಕರ್ಣಾಟಕ ಶಬ್ದಾನುಶಾಸನಂ:</strong> ಸಂಸ್ಕೃತ ಭಾಷೆಯಲ್ಲಿ ಕನ್ನಡ ವ್ಯಾಕರಣ (4 ಪಾದಗಳು, 592 ಸೂತ್ರಗಳು).</li>
+                                <li><strong>ಭಾಷಾಮಂಜರಿ:</strong> ಸೂತ್ರಗಳಿಗೆ ತಾನೇ ಬರೆದ ಸಂಕ್ಷಿಪ್ತ ವೃತ್ತಿ.</li>
+                                <li><strong>ಮಂಜರೀ ಮಕರಂದ:</strong> ತಾನೇ ಬರೆದ ಬೃಹತ್ ವ್ಯಾಖ್ಯಾನ (ಮಹಾಭಾಷ್ಯ).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. B.L. Rice, V. Seetharamaiah & Trimuni Comparison -->
+                <div>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-[#b71c1c] border-b-2 border-[#fbc02d] pb-2 mb-4">
+                        ೩. ಬಿ.ಎಲ್. ರೈಸ್, ಎಂ.ಎಲ್./ವಿ. ಸೀತಾರಾಮಯ್ಯ ಹೇಳಿಕೆಗಳು, ತ್ರಿಮುನಿ ಹೋಲಿಕೆ ಮತ್ತು ಸಂಪಾದಕರು
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-purple-50 p-4 rounded-xl border border-purple-200">
+                            <h4 class="font-bold text-purple-950 mb-2">🌟 ಪ್ರಮುಖ ವಿದ್ವಾಂಸರ ಹೇಳಿಕೆಗಳು</h4>
+                            <ul class="list-disc pl-5 space-y-1.5 text-xs sm:text-sm">
+                                <li><strong>ಬಿ.ಎಲ್. ರೈಸ್ (B.L. Rice):</strong> ಭಟ್ಟಾಕಳಂಕನ 'ಕರ್ಣಾಟಕ ಶಬ್ದಾನುಶಾಸನಂ' ಗ್ರಂಥವನ್ನು ಕ್ರಿ.ಶ. 1890ರಲ್ಲಿ ಮೊದಲು ಸಂಪಾದಿಸಿ ಪ್ರಕಟಿಸಿ, ಅದನ್ನು <strong>"ಕನ್ನಡದ ಅಷ್ಟಾಧ್ಯಾಯಿ"</strong> ಎಂದು ಕರೆದರು (1884ರಲ್ಲಿ ನಾಗವರ್ಮನ ಭಾಷಾಭೂಷಣವನ್ನೂ ಸಂಪಾದಿಸಿದರು).</li>
+                                <li><strong>ಎಂ.ಎಲ್. / ವಿ. ಸೀತಾರಾಮಯ್ಯ ಮತ್ತು ವಿದ್ವಾಂಸರು:</strong> ಕೇಶಿರಾಜನನ್ನು <strong>"ಕನ್ನಡದ ಪಾಣಿನಿ"</strong> ಎಂದೂ, ಭಟ್ಟಾಕಳಂಕದೇವನನ್ನು <strong>"ಅಭಿನವ ಪಾಣಿನಿ"</strong> ಎಂದೂ ಕರೆದಿದ್ದಾರೆ.</li>
+                                <li><strong>2ನೇ ನಾಗವರ್ಮನಿಗೆ 'ಅಭಿನವ ಶರ್ವವರ್ಮ' ಬಿರುದು:</strong> ಸಂಸ್ಕೃತದ 'ಕಾತಂತ್ರ ವ್ಯಾಕರಣ' ಬರೆದ ಶರ್ವವರ್ಮನ ಮಾದರಿಯನ್ನು ಅನುಸರಿಸಿದ್ದಕ್ಕಾಗಿ.</li>
+                                <li><strong>ಆರ್. ನರಸಿಂಹಾಚಾರ್:</strong> 2ನೇ ನಾಗವರ್ಮ, ಕೇಶಿರಾಜ ಮತ್ತು ಭಟ್ಟಾಕಳಂಕದೇವರನ್ನು ಕನ್ನಡ ವ್ಯಾಕರಣದ <strong>"ರತ್ನತ್ರಯರು / ತ್ರಿಮುನಿಗಳು"</strong> ಎಂದು ಗುರುತಿಸಿದ್ದಾರೆ.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-sky-50 p-4 rounded-xl border border-sky-200">
+                            <h4 class="font-bold text-sky-950 mb-2">⚖ ಸಂಸ್ಕೃತದ ತ್ರಿಮುನಿಗಳು vs ಭಟ್ಟಾಕಳಂಕನ ಏಕವ್ಯಕ್ತಿ ಸಾಧನೆ & ಟೀಕಾಕಾರರು</h4>
+                            <ul class="list-disc pl-5 space-y-1.5 text-xs sm:text-sm">
+                                <li><strong>1. ಪಾಣಿನಿ (ಸೂತ್ರಕಾರ):</strong> ಅಷ್ಟಾಧ್ಯಾಯಿ ➔ ಭಟ್ಟಾಕಳಂಕನ <strong>592 ಸೂತ್ರಗಳು (ಶಬ್ದಾನುಶಾಸನ)</strong>.</li>
+                                <li><strong>2. ಕಾತ್ಯಾಯನ / ವರರುಚಿ (ವಾರ್ತಿಕಕಾರ):</strong> ವಾರ್ತಿಕ ➔ ಭಟ್ಟಾಕಳಂಕನ <strong>'ಭಾಷಾಮಂಜರಿ' (ವೃತ್ತಿ)</strong>.</li>
+                                <li><strong>3. ಪತಂಜಲಿ (ಮಹಾಭಾಷ್ಯಕಾರ):</strong> ಮಹಾಭಾಷ್ಯ ➔ ಭಟ್ಟಾಕಳಂಕನ <strong>'ಮಂಜರೀ ಮಕರಂದ' (ವ್ಯಾಖ್ಯಾನ)</strong>.</li>
+                                <li><strong>ಶಬ್ದಮಣಿದರ್ಪಣದ ಟೀಕಾಕಾರರು:</strong> ನಿಟ್ಟೂರು ನಂಜಯ್ಯ ಮತ್ತು ಲಿಂಗಣಾರಾಧ್ಯ. (ಮುದ್ರಕರು/ಸಂಪಾದಕರು: ಜೆ. ಗ್ಯಾರೆಟ್ 1868, ಎಫ್. ಕಿಟ್ಟೆಲ್ 1872, ಡಿ.ಎಲ್. ನರಸಿಂಹಾಚಾರ್, ದೇಜಗೌ).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Master Comparison Table -->
+                <div>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-[#b71c1c] border-b-2 border-[#fbc02d] pb-2 mb-4">
+                        ೪. ಪ್ರಾಚೀನ ಮತ್ತು ಆಧುನಿಕ ವ್ಯಾಕರಣಕಾರರ ಸಮಗ್ರ ಕೋಷ್ಟಕ
+                    </h3>
+                    <div class="overflow-x-auto rounded-xl border border-slate-300">
+                        <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                            <thead class="bg-slate-800 text-white">
+                                <tr>
+                                    <th class="p-3">ವ್ಯಾಕರಣಕಾರ</th>
+                                    <th class="p-3">ಕಾಲ</th>
+                                    <th class="p-3">ವ್ಯಾಕರಣ ಗ್ರಂಥ</th>
+                                    <th class="p-3">ವಿಶೇಷತೆ / ಬಿರುದು</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200">
+                                <tr><td class="p-2.5 font-bold">ದುರ್ವಿನೀತ / ಗುಣಗಾಂಕ</td><td class="p-2.5">6-9ನೇ ಶ.</td><td class="p-2.5">ಶಬ್ದಾವತಾರ (ಅಲಭ್ಯ)</td><td class="p-2.5">ಪ್ರಾಚೀನ ಅಲಭ್ಯ ವ್ಯಾಕರಣ ಉಲ್ಲೇಖ</td></tr>
+                                <tr><td class="p-2.5 font-bold">ಶ್ರೀವಿಜಯ</td><td class="p-2.5">ಕ್ರಿ.ಶ. 850</td><td class="p-2.5">ಕವಿರಾಜಮಾರ್ಗ</td><td class="p-2.5">ಮೊದಲ ಉಪಲಬ್ಧ ಗ್ರಂಥ (3 ಅಧಿಕರಣ)</td></tr>
+                                <tr><td class="p-2.5 font-bold">2ನೇ ನಾಗವರ್ಮ</td><td class="p-2.5">1042 / 1145</td><td class="p-2.5">ಶಬ್ದಸ್ಮೃತಿ & ಭಾಷಾಭೂಷಣ</td><td class="p-2.5">ಅಭಿನವ ಶರ್ವವರ್ಮ, ಕವಿಕರ್ಣಪೂರ</td></tr>
+                                <tr><td class="p-2.5 font-bold">ಕೇಶಿರಾಜ</td><td class="p-2.5">ಕ್ರಿ.ಶ. 1260</td><td class="p-2.5">ಶಬ್ದಮಣಿದರ್ಪಣಂ</td><td class="p-2.5">ಕನ್ನಡದ ಪಾಣಿನಿ (8 ಪ್ರಕರಣ: ಸಂಧಿ, ನಾಮ, ಸಮಾಸ, ತದ್ಧಿತ, ಆಖ್ಯಾತ, ಧಾತು, ಅಪಭ್ರಂಶ, ಅವ್ಯಯ)</td></tr>
+                                <tr><td class="p-2.5 font-bold">ಭಟ್ಟಾಕಳಂಕದೇವ</td><td class="p-2.5">ಕ್ರಿ.ಶ. 1604</td><td class="p-2.5">ಕರ್ಣಾಟಕ ಶಬ್ದಾನುಶಾಸನಂ</td><td class="p-2.5">ಅಭಿನವ ಪಾಣಿನಿ, ಕನ್ನಡದ ಅಷ್ಟಾಧ್ಯಾಯಿ (ಬಿ.ಎಲ್. ರೈಸ್)</td></tr>
+                                <tr><td class="p-2.5 font-bold">ವಿಲಿಯಂ ಕ್ಯಾರಿ</td><td class="p-2.5">ಕ್ರಿ.ಶ. 1817</td><td class="p-2.5">A Grammar of the Kurnata Language</td><td class="p-2.5">ಮುದ್ರಣ ಕಂಡ ಮೊದಲ ಇಂಗ್ಲಿಷ್-ಕನ್ನಡ ವ್ಯಾಕರಣ (ಶ್ರೀರಾಮಪುರ)</td></tr>
+                                <tr><td class="p-2.5 font-bold">ಜಾನ್ ಮೆಕೆರೆಲ್</td><td class="p-2.5">ಕ್ರಿ.ಶ. 1820</td><td class="p-2.5">A Grammar of the Carnataca Language</td><td class="p-2.5">ಮದ್ರಾಸ್‌ನಲ್ಲಿ ಪ್ರಕಟವಾದ ವ್ಯಾಕರಣ ಗ್ರಂಥ</td></tr>
+                                <tr><td class="p-2.5 font-bold">ಕೃಷ್ಣಮಾಚಾರ್ಯ</td><td class="p-2.5">ಕ್ರಿ.ಶ. 1838</td><td class="p-2.5">ಹೊಸಗನ್ನಡ ನುಡಿಗನ್ನಡಿ</td><td class="p-2.5">ಸಂಭಾಷಣಾ ರೂಪದಲ್ಲಿರುವ ಹೊಸಗನ್ನಡದ ಮೊದಲ ವ್ಯಾಕರಣ</td></tr>
+                                <tr><td class="p-2.5 font-bold">ರೆವರೆಂಡ್ ಎಫ್. ಕಿಟ್ಟೆಲ್</td><td class="p-2.5">ಕ್ರಿ.ಶ. 1903</td><td class="p-2.5">A Grammar of the Kannada Language</td><td class="p-2.5">ಕನ್ನಡದ ಮೂರೂ ಅವಸ್ಥೆಗಳ ಐತಿಹಾಸಿಕ ವ್ಯಾಕರಣ</td></tr>
+                                <tr><td class="p-2.5 font-bold">ತೀ.ನಂ. ಶ್ರೀಕಂಠಯ್ಯ</td><td class="p-2.5">20ನೇ ಶ.</td><td class="p-2.5">ಕನ್ನಡ ಮಧ್ಯಮ ವ್ಯಾಕರಣ</td><td class="p-2.5">ಆಧುನಿಕ ಶಾಲಾ-ಕಾಲೇಜುಗಳ ಪ್ರಮಾಣಿತ ವ್ಯಾಕರಣ</td></tr>
+                                <tr><td class="p-2.5 font-bold">ಕುವೆಂಪು (ಬಿಎಂಶ್ರೀ ತಂಡ)</td><td class="p-2.5">ಕ್ರಿ.ಶ. 1927</td><td class="p-2.5">ಕನ್ನಡ ಕೈಪಿಡಿ (ವ್ಯಾಕರಣ ಭಾಗ)</td><td class="p-2.5">ಮೈಸೂರು ವಿಶ್ವವಿದ್ಯಾಲಯದ ಪ್ರಸಿದ್ಧ ಕೈಪಿಡಿ</td></tr>
+                                <tr><td class="p-2.5 font-bold">ಡಿ.ಎನ್. ಶಂಕರಭಟ್</td><td class="p-2.5">ಆಧುನಿಕ ಕಾಲ</td><td class="p-2.5">ಕನ್ನಡಕ್ಕೆ ಬೇಕು ಕನ್ನಡದ್ದೇ ವ್ಯಾಕರಣ</td><td class="p-2.5">ಸಂಸ್ಕೃತ ಚೌಕಟ್ಟಿನಿಂದ ಹೊರಬಂದ ಭಾಷಾವೈಜ್ಞಾನಿಕ ಕೃತಿ</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="bg-slate-100 border-t border-slate-300 px-6 py-3 flex justify-end">
+                <button onclick="closeNotesModal()" class="bg-[#b71c1c] hover:bg-red-800 text-white font-extrabold px-6 py-2 rounded-xl shadow transition">
+                    ರಸಪ್ರಶ್ನೆಗೆ ಹಿಂತಿರುಗಿ (Close)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-[#1e293b] text-slate-300 text-center py-5 mt-10 text-xs sm:text-sm border-t border-slate-700">
+        <p>© KEA / KPSC ಸಾಮಾನ್ಯ ಕನ್ನಡ ಪರೀಕ್ಷಾ ಸಿದ್ಧತಾ ಪೋರ್ಟಲ್ | ವ್ಯಾಕರಣ ಪರಂಪರೆ ಮೆಗಾ ಕ್ವಿಜ್ ಮತ್ತು ಸ್ಟಡಿ ಕೈಪಿಡಿ</p>
+    </footer>
+
+    <script>
+        const ALL_QUESTIONS = [
+            // 1. ಭಾಷೆಯ ಪ್ರಾಚೀನತೆ (Prachinate)
+            {
+                id: 1,
+                category: 'prachinate',
+                categoryLabel: 'ಭಾಷೆಯ ಪ್ರಾಚೀನತೆ',
+                q: "ಕ್ರಿ.ಶ. 450ರ 'ಹಲ್ಮಿಡಿ ಶಾಸನ'ವು ಯಾವ ರಾಜವಂಶದ ಯಾವ ಅರಸನ ಕಾಲಕ್ಕೆ ಸೇರಿದೆ?",
+                options: [
+                    "ಚಾಲುಕ್ಯರ ಇಮ್ಮಡಿ ಪುಲಿಕೇಶಿ",
+                    "ಕದಂಬರ ಕಾಕುತ್ಸ್ಥವರ್ಮ",
+                    "ಗಂಗರ ದುರ್ವಿನೀತ",
+                    "ರಾಷ್ಟ್ರಕೂಟರ ಅಮೋಘವರ್ಷ ನೃಪತುಂಗ"
+                ],
+                ans: 1,
+                exp: "ಹಾಸನ ಜಿಲ್ಲೆಯ ಬೇಲೂರು ತಾಲ್ಲೂಕಿನ ಹಲ್ಮಿಡಿ ಗ್ರಾಮದಲ್ಲಿ ದೊರೆತ ಹಲ್ಮಿಡಿ ಶಾಸನವು (ಕ್ರಿ.ಶ. 450) ಕದಂಬ ವಂಶದ ಕಾಕುತ್ಸ್ಥವರ್ಮನ ಕಾಲದ್ದಾಗಿದ್ದು, ಇದು ಕನ್ನಡದ ಮೊಟ್ಟಮೊದಲ ಅಧಿಕೃತ ಗದ್ಯ ಶಾಸನವಾಗಿದೆ."
+            },
+            {
+                id: 2,
+                category: 'prachinate',
+                categoryLabel: 'ಭಾಷೆಯ ಪ್ರಾಚೀನತೆ',
+                q: "ಕನ್ನಡದ ದೇಸಿ ಛಂದಸ್ಸಾದ 'ತ್ರಿಪದಿ'ಯು ಮೊಟ್ಟಮೊದಲ ಬಾರಿಗೆ ಯಾವ ಶಾಸನದಲ್ಲಿ ಕಂಡುಬರುತ್ತದೆ?",
+                options: [
+                    "ಹಲ್ಮಿಡಿ ಶಾಸನ (ಕ್ರಿ.ಶ. 450)",
+                    "ತಮಟಕಲ್ಲು ಶಾಸನ (ಕ್ರಿ.ಶ. 500)",
+                    "ಬಾದಾಮಿ ಶಾಸನ (ಕ್ರಿ.ಶ. 578) ಹಾಗೂ ಕಪ್ಪೆ ಅರೆಭಟ್ಟನ ಶಾಸನ",
+                    "ಚಿಕ್ಕಮಗಳೂರು ಶಾಸನ"
+                ],
+                ans: 2,
+                exp: "ಚಾಲುಕ್ಯರ ಮಂಗಳೇಶನ ಕಾಲದ ಬಾದಾಮಿ ಶಾಸನ (ಕ್ರಿ.ಶ. 578) ಹಾಗೂ ಕ್ರಿ.ಶ. 700ರ ಬಾದಾಮಿಯ ಕಪ್ಪೆ ಅರೆಭಟ್ಟನ ಶಾಸನದಲ್ಲಿ ಮೊಟ್ಟಮೊದಲ ಬಾರಿಗೆ ತ್ರಿಪದಿ ಛಂದಸ್ಸು ಬಳಕೆಯಾಗಿದೆ."
+            },
+            {
+                id: 3,
+                category: 'prachinate',
+                categoryLabel: 'ಭಾಷೆಯ ಪ್ರಾಚೀನತೆ',
+                q: "ಭಾಷಾವಿಜ್ಞಾನಿ ಬಿ.ಎಂ. ಶ್ರೀಕಂಠಯ್ಯ (ಬಿಎಂಶ್ರೀ) ಅವರ ಪ್ರಕಾರ ಕನ್ನಡ ಭಾಷೆಯ ಬೆಳವಣಿಗೆಯ 4 ಪ್ರಮುಖ ಅವಸ್ಥೆಗಳ ಸರಿಯಾದ ಕಾಲಾನುಕ್ರಮ ಯಾವುದು?",
+                options: [
+                    "ಹಳಗನ್ನಡ ➔ ಪೂರ್ವದ ಹಳಗನ್ನಡ ➔ ನಡುಗನ್ನಡ ➔ ಹೊಸಗನ್ನಡ",
+                    "ಪೂರ್ವದ ಹಳಗನ್ನಡ ➔ ಹಳಗನ್ನಡ ➔ ನಡುಗನ್ನಡ ➔ ಹೊಸಗನ್ನಡ",
+                    "ಪ್ರಾಕೃತ ಕನ್ನಡ ➔ ಹಳಗನ್ನಡ ➔ ನಡುಗನ್ನಡ ➔ ಆಧುನಿಕ ಕನ್ನಡ",
+                    "ಮೂಲ ದ್ರಾವಿಡ ➔ ಹಳಗನ್ನಡ ➔ ಹೊಸಗನ್ನಡ ➔ ನಡುಗನ್ನಡ"
+                ],
+                ans: 1,
+                exp: "ಬಿ.ಎಂ.ಶ್ರೀ ಅವರ ಪ್ರಕಾರ ಕನ್ನಡದ 4 ಹಂತಗಳು: 1) ಪೂರ್ವದ ಹಳಗನ್ನಡ (9ನೇ ಶತಮಾನದವರೆಗೆ), 2) ಹಳಗನ್ನಡ (9 ರಿಂದ 12ನೇ ಶತಮಾನ), 3) ನಡುಗನ್ನಡ (12 ರಿಂದ 18ನೇ ಶತಮಾನ), 4) ಹೊಸಗನ್ನಡ (19ನೇ ಶತಮಾನದಿಂದ ಇಂದಿನವರೆಗೆ)."
+            },
+            {
+                id: 4,
+                category: 'prachinate',
+                categoryLabel: 'ಭಾಷೆಯ ಪ್ರಾಚೀನತೆ',
+                q: "ಕ್ರಿ.ಶ. 2ನೇ ಶತಮಾನದ ಈಜಿಪ್ಟ್‌ನ 'ಆಕ್ಸಿರಿಂಕಸ್ ಪ್ಯಾಪಿರಸ್' (ಗ್ರೀಕ್ ಪ್ರಹಸನ) ನಾಟಕದಲ್ಲಿ ಕನ್ನಡ ಪದಗಳಿವೆ ಎಂದು ಮೊದಲು ಗುರುತಿಸಿದ ವಿದ್ವಾಂಸರು ಯಾರು?",
+                options: [
+                    "ಡಾ. ಬಿ.ಎ. ಸಾಲೆತ್ತೂರು ಮತ್ತು ಎಂ. ಗೋವಿಂದ ಪೈ",
+                    "ಡಿ.ಎಲ್. ನರಸಿಂಹಾಚಾರ್ ಮತ್ತು ತೀ.ನಂ.ಶ್ರೀ",
+                    "ಬಿ.ಎಲ್. ರೈಸ್ ಮತ್ತು ಜಾನ್ ಫ್ಲೀಟ್",
+                    "ಕುವೆಂಪು ಮತ್ತು ದ.ರಾ. ಬೇಂದ್ರೆ"
+                ],
+                ans: 0,
+                exp: "ಗ್ರೀಕ್ ಪ್ರಹಸನದಲ್ಲಿ ಕರಾವಳಿ ಕರ್ನಾಟಕದ ಮಲ್ಪೆ ಮತ್ತು ಕನ್ನಡದ ವಾಕ್ಯಗಳ ಉಲ್ಲೇಖವಿದೆ ಎಂದು ಡಾ. ಬಿ.ಎ. ಸಾಲೆತ್ತೂರು ಮತ್ತು ರಾಷ್ಟ್ರಕವಿ ಎಂ. ಗೋವಿಂದ ಪೈ ಅವರು ಪ್ರತಿಪಾದಿಸಿದ್ದಾರೆ."
+            },
+            {
+                id: 5,
+                category: 'prachinate',
+                categoryLabel: 'ಭಾಷೆಯ ಪ್ರಾಚೀನತೆ',
+                q: "ಕ್ರಿ.ಶ. 850ರ ಶ್ರೀವಿಜಯನ 'ಕವಿರಾಜಮಾರ್ಗ' ಗ್ರಂಥದಲ್ಲಿ ಒಟ್ಟು ಎಷ್ಟು ಅಧಿಕರಣಗಳಿವೆ (ಪರಿಚ್ಛೇದಗಳಿವೆ)?",
+                options: [
+                    "5 ಅಧಿಕರಣಗಳು",
+                    "8 ಅಧಿಕರಣಗಳು",
+                    "3 ಅಧಿಕರಣಗಳು (ದೋಷಾದೋಷ, ಶಬ್ದಾಲಂಕಾರ, ಅರ್ಥಾಲಂಕಾರ)",
+                    "4 ಅಧಿಕರಣಗಳು"
+                ],
+                ans: 2,
+                exp: "ಕನ್ನಡದ ಮೊದಲ ಉಪಲಬ್ಧ ಗ್ರಂಥವಾದ 'ಕವಿರಾಜಮಾರ್ಗ'ದಲ್ಲಿ 3 ಅಧಿಕರಣಗಳಿವೆ: 1) ದೋಷಾದೋಷ ಪ್ರಕರಣ (ಇದರಲ್ಲಿ ವ್ಯಾಕರಣಾಂಶಗಳಿವೆ), 2) ಶಬ್ದಾಲಂಕಾರ ಪ್ರಕರಣ, 3) ಅರ್ಥಾಲಂಕಾರ ಪ್ರಕರಣ."
+            },
+
+            // 2. ಎರಡನೆಯ ನಾಗವರ್ಮ (Nagavarma II)
+            {
+                id: 6,
+                category: 'nagavarma',
+                categoryLabel: '2ನೇ ನಾಗವರ್ಮ',
+                q: "ಕನ್ನಡ ಭಾಷೆಯಲ್ಲಿ ದೊರೆತಿರುವ ಮೊಟ್ಟಮೊದಲ ವ್ಯಾಕರಣ ಭಾಗವಾದ 'ಶಬ್ದಸ್ಮೃತಿ'ಯು ಯಾವ ಗ್ರಂಥದ ಮೊದಲ ಅಧಿಕರಣವಾಗಿದೆ?",
+                options: [
+                    "ಕವಿರಾಜಮಾರ್ಗ",
+                    "ಕಾವ್ಯಾವಲೋಕನ (2ನೇ ನಾಗವರ್ಮ)",
+                    "ಕರ್ಣಾಟಕ ಭಾಷಾಭೂಷಣ",
+                    "ಶಬ್ದಮಣಿದರ್ಪಣಂ"
+                ],
+                ans: 1,
+                exp: "ಎರಡನೆಯ ನಾಗವರ್ಮನು ರಚಿಸಿದ 'ಕಾವ್ಯಾವಲೋಕನ' (5 ಅಧಿಕರಣಗಳ ಕಾವ್ಯಮೀಮಾಂಸೆ ಗ್ರಂಥ) ಕೃತಿಯ ಮೊದಲ ಅಧಿಕರಣವೇ 'ಶಬ್ದಸ್ಮೃತಿ'. ಇದರಲ್ಲಿ 5 ಪ್ರಕರಣಗಳು ಹಾಗೂ 96 ಕಂದಪದ್ಯ ಸೂತ್ರಗಳಿವೆ."
+            },
+            {
+                id: 7,
+                category: 'nagavarma',
+                categoryLabel: '2ನೇ ನಾಗವರ್ಮ',
+                q: "ಸಂಸ್ಕೃತ ಭಾಷೆಯ ಸೂತ್ರಗಳ ಮೂಲಕ ಕನ್ನಡ ವ್ಯಾಕರಣವನ್ನು ತಿಳಿಸುವ ಮೊದಲ ಗ್ರಂಥವಾದ 2ನೇ ನಾಗವರ್ಮನ 'ಕರ್ಣಾಟಕ ಭಾಷಾಭೂಷಣ'ದಲ್ಲಿ ಎಷ್ಟು ಪರಿಚ್ಛೇದ ಮತ್ತು ಸೂತ್ರಗಳಿವೆ?",
+                options: [
+                    "8 ಪರಿಚ್ಛೇದಗಳು ಮತ್ತು 322 ಸೂತ್ರಗಳು",
+                    "10 ಪರಿಚ್ಛೇದಗಳು ಮತ್ತು 280 ಸೂತ್ರಗಳು",
+                    "4 ಪಾದಗಳು ಮತ್ತು 592 ಸೂತ್ರಗಳು",
+                    "5 ಪ್ರಕರಣಗಳು ಮತ್ತು 96 ಸೂತ್ರಗಳು"
+                ],
+                ans: 1,
+                exp: "2ನೇ ನಾಗವರ್ಮನ 'ಕರ್ಣಾಟಕ ಭಾಷಾಭೂಷಣ'ದಲ್ಲಿ ಒಟ್ಟು 10 ಪರಿಚ್ಛೇದಗಳು (ಸಂಜ್ಞಾ, ಸಂಧಿ, ವಿಭಕ್ತಿ, ಕಾರಕ, ಸಮಾಸ, ತದ್ಧಿತ, ಆಖ್ಯಾತ, ಅವ್ಯಯ, ನಿಪಾತ, ಪ್ರಯೋಗ) ಮತ್ತು ಸುಮಾರು 280 ಸಂಸ್ಕೃತ ಸೂತ್ರಗಳಿವೆ."
+            },
+            {
+                id: 8,
+                category: 'nagavarma',
+                categoryLabel: '2ನೇ ನಾಗವರ್ಮ',
+                q: "ಎರಡನೆಯ ನಾಗವರ್ಮನಿಗೆ 'ಅಭಿನವ ಶರ್ವವರ್ಮ' ಎಂಬ ಬಿರುದು ಬರಲು ಮುಖ್ಯ ಕಾರಣವೇನು?",
+                options: [
+                    "ಪಾಣಿನಿಯ ಅಷ್ಟಾಧ್ಯಾಯಿಯನ್ನು ಕನ್ನಡಕ್ಕೆ ಅನುವಾದಿಸಿದ್ದಕ್ಕಾಗಿ",
+                    "ಸಂಸ್ಕೃತದ 'ಕಾತಂತ್ರ ವ್ಯಾಕರಣ'ದ ಕರ್ತೃ ಶರ್ವವರ್ಮನ ಮಾದರಿಯಲ್ಲಿ ಕನ್ನಡಕ್ಕೆ ವ್ಯಾಕರಣ ರಚಿಸಿದ್ದಕ್ಕಾಗಿ",
+                    "ಶರ್ವವರ್ಮ ಎಂಬ ರಾಜನ ಆಸ್ಥಾನದಲ್ಲಿ ಇದ್ದುದಕ್ಕಾಗಿ",
+                    "ಛಂದೋಂಬುಧಿ ಕೃತಿಯನ್ನು ರಚಿಸಿದ್ದಕ್ಕಾಗಿ"
+                ],
+                ans: 1,
+                exp: "ಸಂಸ್ಕೃತದಲ್ಲಿ ಕಾತಂತ್ರ ವ್ಯಾಕರಣ ಬರೆದವನು ಶರ್ವವರ್ಮ. ಆತನ ವ್ಯಾಕರಣ ಪದ್ಧತಿಯನ್ನು ಅನುಸರಿಸಿ ಕನ್ನಡಕ್ಕೆ ಶಬ್ದಸ್ಮೃತಿ ಮತ್ತು ಭಾಷಾಭೂಷಣ ರಚಿಸಿದ್ದರಿಂದ 2ನೇ ನಾಗವರ್ಮನನ್ನು 'ಅಭಿನವ ಶರ್ವವರ್ಮ' ಎನ್ನುತ್ತಾರೆ."
+            },
+            {
+                id: 9,
+                category: 'nagavarma',
+                categoryLabel: '2ನೇ ನಾಗವರ್ಮ',
+                q: "ಎರಡನೆಯ ನಾಗವರ್ಮನ ಇತರ ಪ್ರಮುಖ ಬಿರುದುಗಳು ಮತ್ತು ಆಶ್ರಯದಾತ ಯಾರು?",
+                options: [
+                    "ಕವಿಕರ್ಣಪೂರ, ಕಟಕಾಚಾರ್ಯ — ಕಲ್ಯಾಣಿ ಚಾಲುಕ್ಯರ ಜಗದೇಕಮಲ್ಲ",
+                    "ಸುಕವೀಂದ್ರ — ಹೊಯ್ಸಳರ 3ನೇ ನರಸಿಂಹ",
+                    "ಸಕಲ ಭಾಷಾ ಚಕ್ರವರ್ತಿ — ವೆಂಕಟಪತಿರಾಯ",
+                    "ಕವಿಚಕ್ರವರ್ತಿ — ತೈಲಪ"
+                ],
+                ans: 0,
+                exp: "2ನೇ ನಾಗವರ್ಮನಿಗೆ 'ಕವಿಕರ್ಣಪೂರ', 'ಕಟಕಾಚಾರ್ಯ' ಮತ್ತು 'ಅಭಿನವ ಶರ್ವವರ್ಮ' ಎಂಬ ಬಿರುದುಗಳಿದ್ದವು. ಈತ ಕಲ್ಯಾಣಿ ಚಾಲುಕ್ಯರ ಇಮ್ಮಡಿ ಜಗದೇಕಮಲ್ಲನ ಆಸ್ಥಾನದಲ್ಲಿದ್ದನು ಹಾಗೂ ಜನ್ನ ಕವಿಗೆ ಗುರುವಾಗಿದ್ದನು."
+            },
+
+            // 3. ಕೇಶಿರಾಜ (Keshiraja)
+            {
+                id: 10,
+                category: 'keshiraja',
+                categoryLabel: 'ಕೇಶಿರಾಜ',
+                q: "ಕನ್ನಡ ಭಾಷೆಯಲ್ಲೇ ರಚಿತವಾದ ಮೊಟ್ಟಮೊದಲ ಸ್ವತಂತ್ರ ಹಾಗೂ ಸಮಗ್ರ ವ್ಯಾಕರಣ ಗ್ರಂಥ 'ಶಬ್ದಮಣಿದರ್ಪಣಂ' (ಕ್ರಿ.ಶ. 1260) ಅನ್ನು ಕೇಶಿರಾಜನು ಯಾವ ಛಂದಸ್ಸಿನಲ್ಲಿ ರಚಿಸಿದ್ದಾನೆ?",
+                options: [
+                    "ಭಾಮಿನಿ ಷಟ್ಪದಿ",
+                    "ತ್ರಿಪದಿ",
+                    "ಕಂದಪದ್ಯ (ಮತ್ತು ಸ್ವಯಂ ಗದ್ಯ ವೃತ್ತಿ)",
+                    "ರಗಳೆ"
+                ],
+                ans: 2,
+                exp: "ಕೇಶಿರಾಜನು 'ಶಬ್ದಮಣಿದರ್ಪಣಂ' ಗ್ರಂಥದ ಸೂತ್ರಗಳನ್ನು 'ಕಂದಪದ್ಯ'ದಲ್ಲಿ ರಚಿಸಿ, ಅವುಗಳ ಅರ್ಥವನ್ನು ಸ್ಪಷ್ಟಪಡಿಸಲು ತಾನೇ ಗದ್ಯದಲ್ಲಿ 'ವೃತ್ತಿ' (ವಿವರಣೆ) ಬರೆದಿದ್ದಾನೆ."
+            },
+            {
+                id: 11,
+                category: 'keshiraja',
+                categoryLabel: 'ಕೇಶಿರಾಜ',
+                q: "ಕೇಶಿರಾಜನ 'ಶಬ್ದಮಣಿದರ್ಪಣಂ' ಗ್ರಂಥದಲ್ಲಿರುವ 8 ಪ್ರಕರಣಗಳ ಸರಿಯಾದ ಅನುಕ್ರಮ ಯಾವುದು?",
+                options: [
+                    "ಸಂಧಿ, ನಾಮ, ಸಮಾಸ, ತದ್ಧಿತ, ಆಖ್ಯಾತ, ಧಾತು, ಅಪಭ್ರಂಶ, ಅವ್ಯಯ",
+                    "ಸಂಜ್ಞಾ, ಸಂಧಿ, ಸಮಾಸ, ನಾಮ, ಧಾತು, ಆಖ್ಯಾತ, ಅವ್ಯಯ, ತದ್ಧಿತ",
+                    "ನಾಮ, ಸಂಧಿ, ಸಮಾಸ, ಆಖ್ಯಾತ, ಧಾತು, ತದ್ಧಿತ, ಅವ್ಯಯ, ಅಪಭ್ರಂಶ",
+                    "ಸಂಧಿ, ಸಮಾಸ, ನಾಮ, ತದ್ಧಿತ, ಧಾತು, ಆಖ್ಯಾತ, ಅಪಭ್ರಂಶ, ಅವ್ಯಯ"
+                ],
+                ans: 0,
+                exp: "ಶಬ್ದಮಣಿದರ್ಪಣದ 8 ಪ್ರಕರಣಗಳ ಕ್ರಮ: 1) ಸಂಧಿ, 2) ನಾಮ, 3) ಸಮಾಸ, 4) ತದ್ಧಿತ, 5) ಆಖ್ಯಾತ, 6) ಧಾತು, 7) ಅಪಭ್ರಂಶ, 8) ಅವ್ಯಯ ಪ್ರಕರಣ (+ ಪ್ರಯೋಗಸಾರ). ಒಟ್ಟು 322 ಸೂತ್ರಗಳಿವೆ."
+            },
+            {
+                id: 12,
+                category: 'keshiraja',
+                categoryLabel: 'ಕೇಶಿರಾಜ',
+                q: "ಕೇಶಿರಾಜನ ಪ್ರಕಾರ ಕನ್ನಡದ 'ಶುದ್ಧಗೆ'ಯಲ್ಲಿರುವ (ಶುದ್ಧ ಕನ್ನಡ ವರ್ಣಮಾಲೆ) ಒಟ್ಟು ಅಕ್ಷರಗಳ ಸಂಖ್ಯೆ ಎಷ್ಟು ಮತ್ತು ಅವುಗಳ ಲೆಕ್ಕಾಚಾರ ಹೇಗೆ?",
+                options: [
+                    "49 ಅಕ್ಷರಗಳು (15 ಸ್ವರ + 34 ವ್ಯಂಜನ)",
+                    "47 ಅಕ್ಷರಗಳು (ಸಂಸ್ಕೃತದ 52 ರಲ್ಲಿ 9 ಕಳೆದು, ಕನ್ನಡದ 4 ಅಕ್ಷರ ಸೇರಿಸಿ: 52 - 9 + 4 = 47)",
+                    "52 ಅಕ್ಷರಗಳು",
+                    "43 ಅಕ್ಷರಗಳು"
+                ],
+                ans: 1,
+                exp: "ಕೇಶಿರಾಜನು ಸಂಸ್ಕೃತದ 52 ಅಕ್ಷರಗಳಲ್ಲಿ ಕನ್ನಡಕ್ಕೆಲ್ಲದ 9 ಅಕ್ಷರಗಳನ್ನು (ಋ, ೠ, ಌ, ೡ, ಶ, ಷ, ವಿಸರ್ಗ, ಜಿಹ್ವಾಮೂಲೀಯ, ಉಪಧ್ಮಾನೀಯ) ಕಳೆದು, ಕನ್ನಡದ ಹ್ರಸ್ವ ಎ, ಒ ಮತ್ತು ಱ, ೞ (4 ಅಕ್ಷರ) ಸೇರಿಸಿ 47 ಅಕ್ಷರಗಳನ್ನು 'ಶುದ್ಧಗೆ' ಎಂದಿದ್ದಾನೆ."
+            },
+            {
+                id: 13,
+                category: 'keshiraja',
+                categoryLabel: 'ಕೇಶಿರಾಜ',
+                q: "ಕೇಶಿರಾಜನು ಗುರುತಿಸಿರುವ ಕನ್ನಡಕ್ಕೆ ಮಾತ್ರ ವಿಶಿಷ್ಟವಾದ 5 'ದೇಶೀಯ ಅಕ್ಷರಗಳು' (ಪಂಚವರ್ಣಗಳು) ಯಾವುವು?",
+                options: [
+                    "ಅ, ಆ, ಇ, ಈ, ಉ",
+                    "ಕ, ಚ, ಟ, ತ, ಪ",
+                    "ಱ (ರ), ೞ (ಳ), ಲ, ಎ (ಹ್ರಸ್ವ), ಒ (ಹ್ರಸ್ವ)",
+                    "ಯ, ರ, ಲ, ವ, ಶ"
+                ],
+                ans: 2,
+                exp: "ಕೇಶಿರಾಜನು ಹ್ರಸ್ವ 'ಎ', ಹ್ರಸ್ವ 'ಒ', ಕುಳ 'ಲ' (ಳ), ಶಕಟರೇಫ 'ಱ' ಮತ್ತು ರಳ 'ೞ' — ಈ 5 ಅಕ್ಷರಗಳನ್ನು ಕನ್ನಡದ ದೇಶೀಯ ಅಕ್ಷರಗಳೆಂದು ಗುರುತಿಸಿದ್ದಾನೆ."
+            },
+            {
+                id: 14,
+                category: 'keshiraja',
+                categoryLabel: 'ಕೇಶಿರಾಜ',
+                q: "\"ಕವಿ ಕೇಶಿರಾಜಂಗೆ ವಾಗ್ದೇವಿ ಭಂಡಾರದ ಮುದ್ರೆಯನಿತ್ತಳ್\" ಎಂದು ಹೇಳಿಕೊಂಡ ಕೇಶಿರಾಜನ ಕವಿ ಕುಟುಂಬದ ಹಿನ್ನೆಲೆ ಯಾವುದು?",
+                options: [
+                    "ಪಂಪನ ತಮ್ಮ, ರನ್ನನ ಅಳಿಯ",
+                    "ಸುಮನೋಬಾಣನ ಮೊಮ್ಮಗ, ಮಲ್ಲಿಕಾರ್ಜುನನ (ಚಿದಾನಂದ ಕವಿ) ಮಗ ಮತ್ತು ಜನ್ನ ಕವಿಯ ಸೋದರಳಿಯ",
+                    "2ನೇ ನಾಗವರ್ಮನ ಮಗ",
+                    "ಹರಿಹರನ ಸೋದರಳಿಯ"
+                ],
+                ans: 1,
+                exp: "ಕೇಶಿರಾಜನು ಯಾದವ ಕಟಕದ ಆಚಾರ್ಯ ಸುಮನೋಬಾಣನ ಮೊಮ್ಮಗ, 'ಸೂಕ್ತಿಸುಧಾರ್ಣವ' ಬರೆದ ಮಲ್ಲಿಕಾರ್ಜುನನ ಮಗ ಮತ್ತು ಕವಿಚಕ್ರವರ್ತಿ ಜನ್ನನ ಸೋದರಳಿಯನಾಗಿದ್ದನು."
+            },
+            {
+                id: 15,
+                category: 'keshiraja',
+                categoryLabel: 'ಕೇಶಿರಾಜ',
+                q: "ಕೇಶಿರಾಜನು ಶಬ್ದಮಣಿದರ್ಪಣದಲ್ಲಿ ಉಲ್ಲೇಖಿಸಿರುವ ತನ್ನ 5 ಇತರ (ಅಲಭ್ಯ) ಕಾವ್ಯಗಳು ಯಾವುವು?",
+                options: [
+                    "ಚೋಳಪಾಲಕ ಚರಿತಂ, ಶ್ರೀ ಚಿತ್ರಮಾಲೆ, ಸುಭದ್ರಾಹರಣಂ, ಪ್ರಬೋಧಚಂದ್ರ, ಕಿರಾತಂ",
+                    "ಯಶೋಧರ ಚರಿತೆ, ಅನಂತನಾಥ ಪುರಾಣ, ಅನುಭವ ಮುಕುರ",
+                    "ವರ್ಧಮಾನ ಪುರಾಣ, ವಸ್ತುವಿಜ್ಞಾನ, ಅಭಿಧಾನ ವಸ್ತುಕೋಶ",
+                    "ಕಾವ್ಯಾವಲೋಕನ, ಛಂದೋಂಬುಧಿ, ಕರ್ಣಾಟಕ ಕಾದಂಬರಿ"
+                ],
+                ans: 0,
+                exp: "ಕೇಶಿರಾಜನು ಶಬ್ದಮಣಿದರ್ಪಣದ ಪೀಠಿಕೆಯಲ್ಲಿ ತನ್ನ ಇತರ 5 ಕೃತಿಗಳಾದ ಚೋಳಪಾಲಕ ಚರಿತಂ, ಶ್ರೀ ಚಿತ್ರಮಾಲೆ, ಸುಭದ್ರಾಹರಣಂ, ಪ್ರಬೋಧಚಂದ್ರ ಮತ್ತು ಕಿರಾತಂ ಬಗ್ಗೆ ಹೇಳಿಕೊಂಡಿದ್ದಾನೆ (ಇವು ಇಂದು ಅಲಭ್ಯ)."
+            },
+            {
+                id: 16,
+                category: 'keshiraja',
+                categoryLabel: 'ಕೇಶಿರಾಜ',
+                q: "ಕನ್ನಡ ವ್ಯಾಕರಣಕ್ಕೆ 'ಗಮಕ ಸಮಾಸ', 'ಸತಿಸಪ್ತಮಿ' ಮತ್ತು '9 ಲಿಂಗಗಳ ವ್ಯವಸ್ಥೆ'ಯನ್ನು ಪರಿಚಯಿಸಿದ ಹಾಗೂ 'ಅರಿಸಮಾಸ'ವನ್ನು ನಿಷೇಧಿಸಿದ ವ್ಯಾಕರಣಕಾರ ಯಾರು?",
+                options: [
+                    "2ನೇ ನಾಗವರ್ಮ",
+                    "ಭಟ್ಟಾಕಳಂಕದೇವ",
+                    "ಕೇಶಿರಾಜ",
+                    "ಶ್ರೀವಿಜಯ"
+                ],
+                ans: 2,
+                exp: "ಗಮಕ ಸಮಾಸ, ಸತಿಸಪ್ತಮಿ ಮತ್ತು 9 ಲಿಂಗಗಳನ್ನು (3 ವಿಶೇಷ್ಯಧೀನ + 6 ವಿಶಿಷ್ಟ ಲಿಂಗ) ಗುರುತಿಸಿದವನು ಕೇಶಿರಾಜ. ಹಾಗೆಯೇ 'ಸಮಸಂಸ್ಕೃತದೊಳ್ ಕನ್ನಡಮಂ ಸಮಾಸಿಸಲ್ ಆಗದು' ಎಂದು ಅರಿಸಮಾಸವನ್ನು ನಿಷೇಧಿಸಿದನು."
+            },
+
+            // 4. ಭಟ್ಟಾಕಳಂಕದೇವ (Bhattakalankadeva)
+            {
+                id: 17,
+                category: 'bhattakalanka',
+                categoryLabel: 'ಭಟ್ಟಾಕಳಂಕದೇವ',
+                q: "ಕ್ರಿ.ಶ. 1604ರಲ್ಲಿ ಭಟ್ಟಾಕಳಂಕದೇವನು ರಚಿಸಿದ 'ಕರ್ಣಾಟಕ ಶಬ್ದಾನುಶಾಸನಂ' ಗ್ರಂಥದಲ್ಲಿ ಒಟ್ಟು ಎಷ್ಟು ಪಾದಗಳು ಮತ್ತು ಸೂತ್ರಗಳಿವೆ?",
+                options: [
+                    "8 ಪಾದಗಳು ಮತ್ತು 322 ಸೂತ್ರಗಳು",
+                    "4 ಪಾದಗಳು ಮತ್ತು 592 ಸಂಸ್ಕೃತ ಸೂತ್ರಗಳು",
+                    "10 ಪಾದಗಳು ಮತ್ತು 280 ಸೂತ್ರಗಳು",
+                    "5 ಪಾದಗಳು ಮತ್ತು 500 ಸೂತ್ರಗಳು"
+                ],
+                ans: 1,
+                exp: "ಭಟ್ಟಾಕಳಂಕದೇವನ 'ಕರ್ಣಾಟಕ ಶಬ್ದಾನುಶಾಸನಂ' ಗ್ರಂಥದಲ್ಲಿ ಒಟ್ಟು 4 ಪಾದಗಳು ಮತ್ತು 592 ಸಂಸ್ಕೃತ ಸೂತ್ರಗಳಿವೆ. ಇದು ಸಂಸ್ಕೃತ ಭಾಷೆಯಲ್ಲಿ ಕನ್ನಡ ವ್ಯಾಕರಣವನ್ನು ವಿವರಿಸುವ ಅತ್ಯಂತ ಬೃಹತ್ ಗ್ರಂಥವಾಗಿದೆ."
+            },
+            {
+                id: 18,
+                category: 'bhattakalanka',
+                categoryLabel: 'ಭಟ್ಟಾಕಳಂಕದೇವ',
+                q: "ಭಟ್ಟಾಕಳಂಕದೇವನು ತನ್ನ 'ಕರ್ಣಾಟಕ ಶಬ್ದಾನುಶಾಸನ'ದ ಸೂತ್ರಗಳಿಗೆ ತಾನೇ ಬರೆದ ಸಂಕ್ಷಿಪ್ತ ವೃತ್ತಿ ಮತ್ತು ಬೃಹತ್ ವ್ಯಾಖ್ಯಾನದ ಹೆಸರೇನು?",
+                options: [
+                    "ವೃತ್ತಿ: ಶಬ್ದಸ್ಮೃತಿ | ವ್ಯಾಖ್ಯಾನ: ಕಾವ್ಯಾವಲೋಕನ",
+                    "ವೃತ್ತಿ: ಭಾಷಾಮಂಜರಿ | ವ್ಯಾಖ್ಯಾನ: ಮಂಜರೀ ಮಕರಂದ",
+                    "ವೃತ್ತಿ: ಪ್ರಯೋಗಸಾರ | ವ್ಯಾಖ್ಯಾನ: ಶಬ್ದಮಣಿ",
+                    "ವೃತ್ತಿ: ಭಾಷಾಭೂಷಣ | ವ್ಯಾಖ್ಯಾನ: ಶಬ್ದಾವತಾರ"
+                ],
+                ans: 1,
+                exp: "ಭಟ್ಟಾಕಳಂಕನು ತನ್ನ 592 ಸೂತ್ರಗಳಿಗೆ ತಾನೇ 'ಭಾಷಾಮಂಜರಿ' ಎಂಬ ವೃತ್ತಿಯನ್ನೂ ಮತ್ತು 'ಮಂಜರೀ ಮಕರಂದ' ಎಂಬ ಬೃಹತ್ ವ್ಯಾಖ್ಯಾನವನ್ನೂ (ಮಹಾಭಾಷ್ಯ) ಸಂಸ್ಕೃತದಲ್ಲಿ ಬರೆದಿದ್ದಾನೆ."
+            },
+            {
+                id: 19,
+                category: 'bhattakalanka',
+                categoryLabel: 'ಭಟ್ಟಾಕಳಂಕದೇವ',
+                q: "ಸಂಸ್ಕೃತ ವ್ಯಾಕರಣದ 'ತ್ರಿಮುನಿ'ಗಳಾದ ಪಾಣಿನಿ (ಸೂತ್ರಕಾರ), ಕಾತ್ಯಾಯನ (ವಾರ್ತಿಕಕಾರ) ಮತ್ತು ಪತಂಜಲಿ (ಮಹಾಭಾಷ್ಯಕಾರ) ಈ ಮೂವರ ಕೆಲಸವನ್ನೂ ಕನ್ನಡಕ್ಕಾಗಿ ಏಕಾಂಗಿಯಾಗಿ ನಿರ್ವಹಿಸಿದ ವ್ಯಾಕರಣಕಾರ ಯಾರು?",
+                options: [
+                    "2ನೇ ನಾಗವರ್ಮ",
+                    "ಕೇಶಿರಾಜ",
+                    "ಭಟ್ಟಾಕಳಂಕದೇವ",
+                    "ತೀ.ನಂ. ಶ್ರೀಕಂಠಯ್ಯ"
+                ],
+                ans: 2,
+                exp: "ಭಟ್ಟಾಕಳಂಕದೇವನು ಸೂತ್ರಗಳನ್ನು (ಶಬ್ದಾನುಶಾಸನ - ಪಾಣಿನಿಯಂತೆ), ವೃತ್ತಿಯನ್ನು (ಭಾಷಾಮಂಜರಿ - ಕಾತ್ಯಾಯನನಂತೆ) ಮತ್ತು ಮಹಾಭಾಷ್ಯವನ್ನು (ಮಂಜರೀ ಮಕರಂದ - ಪತಂಜಲಿಯಂತೆ) ಒಬ್ಬನೇ ರಚಿಸಿ ತ್ರಿಮುನಿ ಸ್ವರೂಪನಾಗಿದ್ದಾನೆ."
+            },
+            {
+                id: 20,
+                category: 'bhattakalanka',
+                categoryLabel: 'ಭಟ್ಟಾಕಳಂಕದೇವ',
+                q: "ವಿಜಯನಗರದ ಮೊದಲನೇ ವೆಂಕಟಪತಿರಾಯನ ಕಾಲದಲ್ಲಿದ್ದ ಭಟ್ಟಾಕಳಂಕದೇವನ ಪ್ರಮುಖ ಬಿರುದುಗಳು ಯಾವುವು?",
+                options: [
+                    "ಸಕಲ ಭಾಷಾ ಚಕ್ರವರ್ತಿ, ಪ್ರತಿವಾದಿ ಭಯಂಕರ, ಅಭಿನವ ಪಾಣಿನಿ",
+                    "ಕವಿಕರ್ಣಪೂರ, ಕಟಕಾಚಾರ್ಯ",
+                    "ಸುಕವೀಂದ್ರ, ಶಬ್ದಮಣಿದರ್ಪಣಕಾರ",
+                    "ಕವಿಚಕ್ರವರ್ತಿ, ಉಭಯಕವಿ ಕಮಲರವಿ"
+                ],
+                ans: 0,
+                exp: "ಆರು ಭಾಷೆಗಳಲ್ಲಿ ಪಾಂಡಿತ್ಯ ಹೊಂದಿದ್ದ ಭಟ್ಟಾಕಳಂಕನಿಗೆ 'ಸಕಲ ಭಾಷಾ ಚಕ್ರವರ್ತಿ', 'ಪ್ರತಿವಾದಿ ಭಯಂಕರ', 'ವಿದ್ಯಾ ನದೀಶ್ವರ' ಹಾಗೂ 'ಅಭಿನವ ಪಾಣಿನಿ' ಎಂಬ ಬಿರುದುಗಳಿದ್ದವು."
+            },
+
+            // 5. ವಿದ್ವಾಂಸರ ಹೇಳಿಕೆಗಳು & ಆಧುನಿಕ ವ್ಯಾಕರಣ (Scholar Statements & Modern Grammar)
+            {
+                id: 21,
+                category: 'scholars',
+                categoryLabel: 'ವಿದ್ವಾಂಸರ ಹೇಳಿಕೆ & ಆಧುನಿಕ',
+                q: "ಭಟ್ಟಾಕಳಂಕದೇವನ 'ಕರ್ಣಾಟಕ ಶಬ್ದಾನುಶಾಸನಂ' ಗ್ರಂಥವನ್ನು ಕ್ರಿ.ಶ. 1890ರಲ್ಲಿ ಮೊದಲು ಸಂಪಾದಿಸಿ ಪ್ರಕಟಿಸಿ, ಅದನ್ನು \"ಕನ್ನಡದ ಅಷ್ಟಾಧ್ಯಾಯಿ\" ಎಂದು ಕರೆದ ವಿದ್ವಾಂಸರು ಯಾರು?",
+                options: [
+                    "ರೆವರೆಂಡ್ ಎಫ್. ಕಿಟ್ಟೆಲ್",
+                    "ಬಿ.ಎಲ್. ರೈಸ್ (ಬೆಂಜಮಿನ್ ಲೂಯಿಸ್ ರೈಸ್)",
+                    "ಜಾನ್ ಫ್ಲೀಟ್",
+                    "ವಿಲಿಯಂ ಕ್ಯಾರಿ"
+                ],
+                ans: 1,
+                exp: "ಬಿ.ಎಲ್. ರೈಸ್ (B.L. Rice) ಅವರು ಕ್ರಿ.ಶ. 1890ರಲ್ಲಿ 'ಕರ್ಣಾಟಕ ಶಬ್ದಾನುಶಾಸನ'ವನ್ನು ಸಂಪಾದಿಸಿ ಪ್ರಕಟಿಸಿದರು ಮತ್ತು ಪಾಣಿನಿಯ ಅಷ್ಟಾಧ್ಯಾಯಿಗೆ ಹೋಲಿಸಿ ಇದನ್ನು 'ಕನ್ನಡದ ಅಷ್ಟಾಧ್ಯಾಯಿ' ಎಂದು ಕರೆದರು."
+            },
+            {
+                id: 22,
+                category: 'scholars',
+                categoryLabel: 'ವಿದ್ವಾಂಸರ ಹೇಳಿಕೆ & ಆಧುನಿಕ',
+                q: "ಎಂ.ಎಲ್. / ವಿ. ಸೀತಾರಾಮಯ್ಯ ಹಾಗೂ ಕನ್ನಡ ಸಾಹಿತ್ಯ ಚರಿತ್ರೆಕಾರರು ಯಾರನ್ನು \"ಕನ್ನಡದ ಪಾಣಿನಿ\" ಮತ್ತು ಯಾರನ್ನು \"ಅಭಿನವ ಪಾಣಿನಿ\" ಎಂದು ಕರೆದಿದ್ದಾರೆ?",
+                options: [
+                    "ಕೇಶಿರಾಜ - ಕನ್ನಡದ ಪಾಣಿನಿ | ಭಟ್ಟಾಕಳಂಕದೇವ - ಅಭಿನವ ಪಾಣಿನಿ",
+                    "2ನೇ ನಾಗವರ್ಮ - ಕನ್ನಡದ ಪಾಣಿನಿ | ಕೇಶಿರಾಜ - ಅಭಿನವ ಪಾಣಿನಿ",
+                    "ಭಟ್ಟಾಕಳಂಕದೇವ - ಕನ್ನಡದ ಪಾಣಿನಿ | 2ನೇ ನಾಗವರ್ಮ - ಅಭಿನವ ಪಾಣಿನಿ",
+                    "ಶ್ರೀವಿಜಯ - ಕನ್ನಡದ ಪಾಣಿನಿ | ಕೇಶಿರಾಜ - ಅಭಿನವ ಶರ್ವವರ್ಮ"
+                ],
+                ans: 0,
+                exp: "ಸೀತಾರಾಮಯ್ಯ ಹಾಗೂ ವಿದ್ವಾಂಸರು ಕನ್ನಡದಲ್ಲೇ ಸಮಗ್ರ ಸೂತ್ರ ಬರೆದ ಕೇಶಿರಾಜನನ್ನು 'ಕನ್ನಡದ ಪಾಣಿನಿ' ಎಂದೂ, ಪಾಣಿನಿಯ ಮಾದರಿಯಲ್ಲಿ ಸಂಸ್ಕೃತದಲ್ಲಿ ಕನ್ನಡ ವ್ಯಾಕರಣ ಬರೆದ ಭಟ್ಟಾಕಳಂಕನನ್ನು 'ಅಭಿನವ ಪಾಣಿನಿ' ಎಂದೂ ಕರೆದಿದ್ದಾರೆ."
+            },
+            {
+                id: 23,
+                category: 'scholars',
+                categoryLabel: 'ವಿದ್ವಾಂಸರ ಹೇಳಿಕೆ & ಆಧುನಿಕ',
+                q: "2ನೇ ನಾಗವರ್ಮನ 'ಕರ್ಣಾಟಕ ಭಾಷಾಭೂಷಣ' ಗ್ರಂಥವನ್ನು ಕ್ರಿ.ಶ. 1884ರಲ್ಲಿ ಮೊಟ್ಟಮೊದಲ ಬಾರಿಗೆ ಸಂಪಾದಿಸಿ ಪ್ರಕಟಿಸಿದ ವಿದ್ವಾಂಸರು ಯಾರು?",
+                options: [
+                    "ಬಿ.ಎಲ್. ರೈಸ್ (B.L. Rice)",
+                    "ಎಫ್. ಕಿಟ್ಟೆಲ್",
+                    "ಜೆ. ಗ್ಯಾರೆಟ್",
+                    "ಡಿ.ಎಲ್. ನರಸಿಂಹಾಚಾರ್"
+                ],
+                ans: 0,
+                exp: "ಬಿ.ಎಲ್. ರೈಸ್ ಅವರು 1884ರಲ್ಲಿ 2ನೇ ನಾಗವರ್ಮನ 'ಕರ್ಣಾಟಕ ಭಾಷಾಭೂಷಣ'ವನ್ನೂ ಮತ್ತು 1890ರಲ್ಲಿ ಭಟ್ಟಾಕಳಂಕನ 'ಕರ್ಣಾಟಕ ಶಬ್ದಾನುಶಾಸನ'ವನ್ನೂ ಮೊಟ್ಟಮೊದಲ ಬಾರಿಗೆ ಸಂಪಾದಿಸಿ ಪ್ರಕಟಿಸಿದರು."
+            },
+            {
+                id: 24,
+                category: 'scholars',
+                categoryLabel: 'ವಿದ್ವಾಂಸರ ಹೇಳಿಕೆ & ಆಧುನಿಕ',
+                q: "ಕೇಶಿರಾಜನ 'ಶಬ್ದಮಣಿದರ್ಪಣಂ' ಗ್ರಂಥಕ್ಕೆ ಪ್ರಾಚೀನ ಕಾಲದಲ್ಲಿ ಟೀಕೆ / ವ್ಯಾಖ್ಯಾನ ಬರೆದ ಪ್ರಮುಖ ವ್ಯಾಖ್ಯಾನಕಾರರು ಯಾರು?",
+                options: [
+                    "ನಿಟ್ಟೂರು ನಂಜಯ್ಯ ಮತ್ತು ಲಿಂಗಣಾರಾಧ್ಯ",
+                    "ಭಟ್ಟಾಕಳಂಕ ಮತ್ತು ಧರಣಿಪಂಡಿತ",
+                    "ಮಲ್ಲಿಕಾರ್ಜುನ ಮತ್ತು ಸುಮನೋಬಾಣ",
+                    "ಕೃಷ್ಣಮಾಚಾರ್ಯ ಮತ್ತು ಮುಳಬಾಗಿಲು"
+                ],
+                ans: 0,
+                exp: "ಶಬ್ದಮಣಿದರ್ಪಣಕ್ಕೆ 17ನೇ ಶತಮಾನದ ನಿಟ್ಟೂರು ನಂಜಯ್ಯ ಮತ್ತು ಲಿಂಗಣಾರಾಧ್ಯ ಎಂಬುವವರು ವ್ಯಾಖ್ಯಾನ ಬರೆದಿದ್ದಾರೆ. ಆಧುನಿಕ ಕಾಲದಲ್ಲಿ ಜೆ. ಗ್ಯಾರೆಟ್ (1868), ಕಿಟ್ಟೆಲ್ (1872), ಡಿ.ಎಲ್.ಎನ್ ಮತ್ತು ದೇಜಗೌ ಸಂಪಾದಿಸಿದ್ದಾರೆ."
+            },
+            {
+                id: 25,
+                category: 'scholars',
+                categoryLabel: 'ವಿದ್ವಾಂಸರ ಹೇಳಿಕೆ & ಆಧುನಿಕ',
+                q: "ಕನ್ನಡ ಕವಿಚರಿತೆಕಾರರಾದ ಆರ್. ನರಸಿಂಹಾಚಾರ್ ಅವರು ಯಾವ ಮೂವರನ್ನು ಕನ್ನಡ ವ್ಯಾಕರಣ ಲೋಕದ 'ರತ್ನತ್ರಯರು / ತ್ರಿಮುನಿಗಳು' ಎಂದು ಗುರುತಿಸಿದ್ದಾರೆ?",
+                options: [
+                    "ಪಂಪ, ರನ್ನ, ಪೊನ್ನ",
+                    "2ನೇ ನಾಗವರ್ಮ, ಕೇಶಿರಾಜ ಮತ್ತು ಭಟ್ಟಾಕಳಂಕದೇವ",
+                    "ಶ್ರೀವಿಜಯ, ಕೇಶಿರಾಜ ಮತ್ತು ತೀ.ನಂ.ಶ್ರೀ",
+                    "ಕಿಟ್ಟೆಲ್, ರೈಸ್ ಮತ್ತು ಗ್ಯಾರೆಟ್"
+                ],
+                ans: 1,
+                exp: "2ನೇ ನಾಗವರ್ಮ (11-12ನೇ ಶ.), ಕೇಶಿರಾಜ (13ನೇ ಶ.) ಮತ್ತು ಭಟ್ಟಾಕಳಂಕದೇವ (17ನೇ ಶ.) — ಈ ಮೂವರನ್ನು ಪ್ರಾಚೀನ ಕನ್ನಡ ವ್ಯಾಕರಣ ಪರಂಪರೆಯ ರತ್ನತ್ರಯರು ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ."
+            },
+            {
+                id: 26,
+                category: 'scholars',
+                categoryLabel: 'ವಿದ್ವಾಂಸರ ಹೇಳಿಕೆ & ಆಧುನಿಕ',
+                q: "ಕ್ರಿ.ಶ. 1817ರಲ್ಲಿ ಬಂಗಾಳದ ಶ್ರೀರಾಮಪುರದಲ್ಲಿ ಮುದ್ರಣ ಕಂಡ ಮೊದಲ ಇಂಗ್ಲಿಷ್-ಕನ್ನಡ ವ್ಯಾಕರಣ ಗ್ರಂಥ 'A Grammar of the Kurnata Language' ರಚಿಸಿದವರು ಯಾರು?",
+                options: [
+                    "ಜಾನ್ ಮೆಕೆರೆಲ್ (1820)",
+                    "ರೆವರೆಂಡ್ ವಿಲಿಯಂ ಕ್ಯಾರಿ (William Carey - 1817)",
+                    "ರೆವರೆಂಡ್ ಎಫ್. ಕಿಟ್ಟೆಲ್ (1903)",
+                    "ಬಿ.ಎಲ್. ರೈಸ್"
+                ],
+                ans: 1,
+                exp: "ವಿಲಿಯಂ ಕ್ಯಾರಿ ಅವರು 1817ರಲ್ಲಿ 'A Grammar of the Kurnata Language' ಪ್ರಕಟಿಸಿದರು (ಮುದ್ರಿತ ಮೊದಲ ಕನ್ನಡ ವ್ಯಾಕರಣ). ಜಾನ್ ಮೆಕೆರೆಲ್ 1820ರಲ್ಲಿ 'A Grammar of the Carnataca Language' ಬರೆದರು."
+            },
+            {
+                id: 27,
+                category: 'scholars',
+                categoryLabel: 'ವಿದ್ವಾಂಸರ ಹೇಳಿಕೆ & ಆಧುನಿಕ',
+                q: "ಕ್ರಿ.ಶ. 1838ರಲ್ಲಿ ಸಂಭಾಷಣಾ ರೂಪದಲ್ಲಿ (ಗುರು-ಶಿಷ್ಯ ಪ್ರಶ್ನೋತ್ತರ ಶೈಲಿಯಲ್ಲಿ) ಹೊಸಗನ್ನಡದ ಮೊದಲ ವ್ಯಾಕರಣ ಗ್ರಂಥ 'ಹೊಸಗನ್ನಡ ನುಡಿಗನ್ನಡಿ' ರಚಿಸಿದ ಕನ್ನಡಿಗ ಯಾರು?",
+                options: [
+                    "ಕೃಷ್ಣಮಾಚಾರ್ಯ",
+                    "ಧೋಂಡೊ ನರಸಿಂಹ ಮುಳಬಾಗಿಲು",
+                    "ಮುದ್ದಣ",
+                    "ತೀ.ನಂ. ಶ್ರೀಕಂಠಯ್ಯ"
+                ],
+                ans: 0,
+                exp: "ಕೃಷ್ಣಮಾಚಾರ್ಯರು ಕ್ರಿ.ಶ. 1838ರಲ್ಲಿ 'ಹೊಸಗನ್ನಡ ನುಡಿಗನ್ನಡಿ' ಎಂಬ ಗ್ರಂಥವನ್ನು ಸಂಭಾಷಣಾ ರೂಪದಲ್ಲಿ ರಚಿಸಿದರು. ಇದು ಕನ್ನಡಿಗನೊಬ್ಬ ಬರೆದ ಹೊಸಗನ್ನಡದ ಮೊದಲ ವ್ಯಾಕರಣ ಗ್ರಂಥವಾಗಿದೆ."
+            },
+            {
+                id: 28,
+                category: 'scholars',
+                categoryLabel: 'ವಿದ್ವಾಂಸರ ಹೇಳಿಕೆ & ಆಧುನಿಕ',
+                q: "ಕ್ರಿ.ಶ. 1903ರಲ್ಲಿ ಪ್ರಕಟವಾದ 'A Grammar of the Kannada Language' ಗ್ರಂಥದಲ್ಲಿ ಹಳಗನ್ನಡ, ನಡುಗನ್ನಡ ಮತ್ತು ಹೊಸಗನ್ನಡ ಮೂರೂ ಅವಸ್ಥೆಗಳ ವ್ಯಾಕರಣವನ್ನು ವಿವರಿಸಿದವರು ಯಾರು?",
+                options: [
+                    "ರೆವರೆಂಡ್ ಫರ್ಡಿನಾಂಡ್ ಕಿಟ್ಟೆಲ್ (Rev. F. Kittel)",
+                    "ಹೆರ್ಮನ್ ಮೊಗ್ಲಿಂಗ್",
+                    "ಬಿ.ಎಲ್. ರೈಸ್",
+                    "ಜೆ. ಗ್ಯಾರೆಟ್"
+                ],
+                ans: 0,
+                exp: "ಕನ್ನಡ-ಇಂಗ್ಲಿಷ್ ನಿಘಂಟು ರಚಿಸಿದ ರೆವರೆಂಡ್ ಎಫ್. ಕಿಟ್ಟೆಲ್ ಅವರು 1903ರಲ್ಲಿ 'A Grammar of the Kannada Language' ರಚಿಸಿ ಕನ್ನಡದ ಮೂರೂ ಭಾಷಾ ಹಂತಗಳನ್ನು ಐತಿಹಾಸಿಕವಾಗಿ ವಿಶ್ಲೇಷಿಸಿದರು."
+            },
+            {
+                id: 29,
+                category: 'scholars',
+                categoryLabel: 'ವಿದ್ವಾಂಸರ ಹೇಳಿಕೆ & ಆಧುನಿಕ',
+                q: "ಆಧುನಿಕ ಕನ್ನಡ ಶಾಲಾ-ಕಾಲೇಜುಗಳಲ್ಲಿ ಅಧಿಕೃತವಾಗಿ ಬಳಸಲಾಗುವ 'ಕನ್ನಡ ಮಧ್ಯಮ ವ್ಯಾಕರಣ' ಗ್ರಂಥದ ಕರ್ತೃ ಯಾರು?",
+                options: [
+                    "ಕುವೆಂಪು",
+                    "ತೀ.ನಂ. ಶ್ರೀಕಂಠಯ್ಯ (ತೀನಂಶ್ರೀ)",
+                    "ಡಿ.ಎಲ್. ನರಸಿಂಹಾಚಾರ್",
+                    "ಬಿ.ಎಂ. ಶ್ರೀಕಂಠಯ್ಯ"
+                ],
+                ans: 1,
+                exp: "ತೀ.ನಂ. ಶ್ರೀಕಂಠಯ್ಯ (ತೀನಂಶ್ರೀ) ಅವರು ರಚಿಸಿದ 'ಕನ್ನಡ ಮಧ್ಯಮ ವ್ಯಾಕರಣ'ವು ಆಧುನಿಕ ಕನ್ನಡದ ಅತ್ಯಂತ ಪ್ರಮಾಣಿತ ವ್ಯಾಕರಣ ಗ್ರಂಥವಾಗಿದೆ."
+            },
+            {
+                id: 30,
+                category: 'scholars',
+                categoryLabel: 'ವಿದ್ವಾಂಸರ ಹೇಳಿಕೆ & ಆಧುನಿಕ',
+                q: "ಸಂಸ್ಕೃತ ವ್ಯಾಕರಣದ ಚೌಕಟ್ಟಿನಿಂದ ಹೊರಬಂದು ದ್ರಾವಿಡ ಭಾಷಾ ವೈಜ್ಞಾನಿಕ ನೆಲೆಯಲ್ಲಿ 'ಕನ್ನಡಕ್ಕೆ ಬೇಕು ಕನ್ನಡದ್ದೇ ವ್ಯಾಕರಣ' ಎಂಬ ಕ್ರಾಂತಿಕಾರಿ ಗ್ರಂಥ ಬರೆದ ಆಧುನಿಕ ಭಾಷಾವಿಜ್ಞಾನಿ ಯಾರು?",
+                options: [
+                    "ಡಾ. ಹಂಪ ನಾಗರಾಜಯ್ಯ",
+                    "ಡಾ. ಡಿ.ಎನ್. ಶಂಕರಭಟ್",
+                    "ಡಾ. ಚಿದಾನಂದ ಮೂರ್ತಿ",
+                    "ಪ್ರೊ. ಜಿ. ವೆಂಕಟಸುಬ್ಬಯ್ಯ"
+                ],
+                ans: 1,
+                exp: "ಖ್ಯಾತ ಭಾಷಾವಿಜ್ಞಾನಿ ಡಾ. ಡಿ.ಎನ್. ಶಂಕರಭಟ್ ಅವರು 'ಕನ್ನಡಕ್ಕೆ ಬೇಕು ಕನ್ನಡದ್ದೇ ವ್ಯಾಕರಣ' ಹಾಗೂ 'ಕನ್ನಡ ಬರಹವನ್ನು ಸರಿಪಡಿಸೋಣ' ಮುಂತಾದ ಕೃತಿಗಳ ಮೂಲಕ ಕನ್ನಡದ ಸ್ವಂತಿಕೆಯ ವ್ಯಾಕರಣವನ್ನು ಪ್ರತಿಪಾದಿಸಿದ್ದಾರೆ."
+            }
+        ];
+
+        const QUICK_TIPS = [
+            "ಬಿ.ಎಲ್. ರೈಸ್ ಅವರು ಭಟ್ಟಾಕಳಂಕನ 'ಕರ್ಣಾಟಕ ಶಬ್ದಾನುಶಾಸನ'ವನ್ನು (1890) 'ಕನ್ನಡದ ಅಷ್ಟಾಧ್ಯಾಯಿ' ಎಂದು ಕರೆದಿದ್ದಾರೆ!",
+            "ವಿ. ಸೀತಾರಾಮಯ್ಯ ಮತ್ತು ವಿದ್ವಾಂಸರು ಕೇಶಿರಾಜನನ್ನು 'ಕನ್ನಡದ ಪಾಣಿನಿ' ಎಂದೂ, ಭಟ್ಟಾಕಳಂಕನನ್ನು 'ಅಭಿನವ ಪಾಣಿನಿ' ಎಂದೂ ಕರೆದಿದ್ದಾರೆ.",
+            "2ನೇ ನಾಗವರ್ಮನು ಕಾತಂತ್ರ ವ್ಯಾಕರಣದ ಶರ್ವವರ್ಮನನ್ನು ಅನುಸರಿಸಿದ್ದರಿಂದ 'ಅಭಿನವ ಶರ್ವವರ್ಮ' ಎನಿಸಿಕೊಂಡಿದ್ದಾನೆ.",
+            "ಕೇಶಿರಾಜನ ಶಬ್ದಮಣಿದರ್ಪಣದಲ್ಲಿ 8 ಪ್ರಕರಣಗಳು, 322 ಸೂತ್ರಗಳು, 47 ಶುದ್ಧಗೆ ಅಕ್ಷರಗಳು ಮತ್ತು 5 ದೇಶೀಯ ಅಕ್ಷರಗಳಿವೆ (ಱ, ೞ, ಲ, ಎ, ಒ).",
+            "ಭಟ್ಟಾಕಳಂಕದೇವನ ಶಬ್ದಾನುಶಾಸನದಲ್ಲಿ 4 ಪಾದ, 592 ಸೂತ್ರಗಳಿವೆ. ಅದರ ವೃತ್ತಿ 'ಭಾಷಾಮಂಜರಿ' ಮತ್ತು ವ್ಯಾಖ್ಯಾನ 'ಮಂಜರೀ ಮಕರಂದ'.",
+            "ಕೃಷ್ಣಮಾಚಾರ್ಯರ 'ಹೊಸಗನ್ನಡ ನುಡಿಗನ್ನಡಿ' (1838) ಸಂಭಾಷಣಾ ರೂಪದಲ್ಲಿರುವ ಹೊಸಗನ್ನಡದ ಮೊದಲ ವ್ಯಾಕರಣ ಗ್ರಂಥ."
+        ];
+
+        let quizMode = 'practice'; // 'practice' or 'exam'
+        let activeCategory = 'all';
+        let onlyBookmarked = false;
+        let filteredQuestions = [...ALL_QUESTIONS];
+        let currentIndex = 0;
+
+        // Map questionId -> selected option index
+        let userAnswers = {};
+        // Set of bookmarked questionIds
+        let bookmarkedIds = new Set();
+
+        // Timer state
+        let timerSeconds = 0;
+        let timerPaused = false;
+        let timerInterval = null;
+
+        function initApp() {
+            startTimer();
+            applyFilters();
+        }
+
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                if (!timerPaused) {
+                    timerSeconds++;
+                    updateTimerUI();
+                }
+            }, 1000);
+        }
+
+        function updateTimerUI() {
+            const mins = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+            const secs = String(timerSeconds % 60).padStart(2, '0');
+            document.getElementById('timerDisplay').textContent = `${mins}:${secs}`;
+        }
+
+        function toggleTimerPause() {
+            timerPaused = !timerPaused;
+            document.getElementById('timerToggleBtn').textContent = timerPaused ? '▶️' : '⏸️';
+        }
+
+        function resetTimer() {
+            timerSeconds = 0;
+            timerPaused = false;
+            document.getElementById('timerToggleBtn').textContent = '⏸️';
+            updateTimerUI();
+        }
+
+        function setQuizMode(mode) {
+            quizMode = mode;
+            const pBtn = document.getElementById('modePracticeBtn');
+            const eBtn = document.getElementById('modeExamBtn');
+            const scoreBox = document.getElementById('liveScoreBox');
+
+            if (mode === 'practice') {
+                pBtn.className = "px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition bg-[#fbc02d] text-slate-900 shadow";
+                eBtn.className = "px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition text-slate-300 hover:text-white";
+                scoreBox.classList.remove('hidden');
+            } else {
+                eBtn.className = "px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition bg-[#fbc02d] text-slate-900 shadow";
+                pBtn.className = "px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition text-slate-300 hover:text-white";
+                scoreBox.classList.add('hidden');
+            }
+            renderCurrentQuestion();
+            renderPalette();
+            updateStatsUI();
+        }
+
+        function filterByCategory(cat) {
+            activeCategory = cat;
+            onlyBookmarked = false;
+            updateBookmarkBtnUI();
+
+            document.querySelectorAll('.cat-pill').forEach(btn => {
+                if (btn.getAttribute('data-cat') === cat) {
+                    btn.className = "cat-pill px-3 py-1.5 rounded-lg text-xs font-bold bg-red-700 text-white whitespace-nowrap transition";
+                } else {
+                    btn.className = "cat-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 whitespace-nowrap transition";
+                }
+            });
+
+            applyFilters();
+        }
+
+        function toggleBookmarkedFilter() {
+            if (bookmarkedIds.size === 0 && !onlyBookmarked) {
+                // Show subtle notification inside tip banner instead of alert
+                document.getElementById('dynamicTipText').textContent = "⭐ ನೀವು ಇನ್ನೂ ಯಾವುದೇ ಪ್ರಶ್ನೆಯನ್ನು 'ನೆನಪಿಟ್ಟುಕೊಳ್ಳಿ (Star)' ಎಂದು ಗುರುತಿಸಿಲ್ಲ. ಪ್ರಶ್ನೆಯ ಮೇಲ್ಭಾಗದ Star ಬಟನ್ ಒತ್ತಿರಿ!";
+                return;
+            }
+            onlyBookmarked = !onlyBookmarked;
+            updateBookmarkBtnUI();
+            applyFilters();
+        }
+
+        function updateBookmarkBtnUI() {
+            const btn = document.getElementById('bookmarkFilterBtn');
+            document.getElementById('bookmarkCountBadge').textContent = bookmarkedIds.size;
+            if (onlyBookmarked) {
+                btn.className = "flex items-center gap-2 bg-amber-400 text-slate-900 font-extrabold px-4 py-2.5 rounded-xl border border-amber-600 shadow transition text-sm sm:text-base";
+            } else {
+                btn.className = "flex items-center gap-2 bg-slate-900/80 hover:bg-slate-900 text-white font-bold px-4 py-2.5 rounded-xl border border-white/20 shadow transition text-sm sm:text-base";
+            }
+        }
+
+        function applyFilters() {
+            document.getElementById('resultDashboard').classList.add('hidden');
+            document.getElementById('quizWorkspace').classList.remove('hidden');
+
+            filteredQuestions = ALL_QUESTIONS.filter(item => {
+                const catMatch = (activeCategory === 'all') || (item.category === activeCategory);
+                const bookMatch = !onlyBookmarked || bookmarkedIds.has(item.id);
+                return catMatch && bookMatch;
+            });
+
+            if (filteredQuestions.length === 0) {
+                onlyBookmarked = false;
+                updateBookmarkBtnUI();
+                filteredQuestions = [...ALL_QUESTIONS];
+            }
+
+            currentIndex = 0;
+            renderCurrentQuestion();
+            renderPalette();
+            updateStatsUI();
+        }
+
+        function renderCurrentQuestion() {
+            const qObj = filteredQuestions[currentIndex];
+            if (!qObj) return;
+
+            // Update Header Badges
+            document.getElementById('qNumberBadge').textContent = `ಪ್ರಶ್ನೆ ${currentIndex + 1} / ${filteredQuestions.length}`;
+            document.getElementById('qCategoryBadge').textContent = qObj.categoryLabel;
+            document.getElementById('questionText').textContent = `${qObj.id}. ${qObj.q}`;
+
+            // Update Bookmark Star state
+            const isStarred = bookmarkedIds.has(qObj.id);
+            const starIcon = document.getElementById('starIcon');
+            const starText = document.getElementById('starBtnText');
+            if (isStarred) {
+                starIcon.setAttribute('fill', '#f59e0b');
+                starIcon.classList.add('text-amber-500');
+                starText.textContent = 'ಗುರುತಿಸಲಾಗಿದೆ (Starred)';
+            } else {
+                starIcon.setAttribute('fill', 'none');
+                starIcon.classList.remove('text-amber-500');
+                starText.textContent = 'ನೆನಪಿಟ್ಟುಕೊಳ್ಳಿ (Star)';
+            }
+
+            // Render Options
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+            const letters = ['A', 'B', 'C', 'D'];
+            const userSelected = userAnswers[qObj.id];
+            const hasAnswered = userSelected !== undefined;
+
+            qObj.options.forEach((optText, idx) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                let stateClass = "bg-slate-50 border-slate-300 text-slate-800";
+                let badgeIcon = "";
+
+                if (hasAnswered) {
+                    if (quizMode === 'practice') {
+                        btn.disabled = true;
+                        if (idx === qObj.ans) {
+                            stateClass = "option-correct font-extrabold";
+                            badgeIcon = `<span class="ml-auto text-emerald-700 font-extrabold text-sm">✅ ಸರಿಯಾದ ಉತ್ತರ</span>`;
+                        } else if (idx === userSelected && userSelected !== qObj.ans) {
+                            stateClass = "option-wrong font-bold";
+                            badgeIcon = `<span class="ml-auto text-red-700 font-extrabold text-sm">❌ ನಿಮ್ಮ ಆಯ್ಕೆ</span>`;
+                        }
+                    } else {
+                        // Exam mode allows changing answer before final submit
+                        if (idx === userSelected) {
+                            stateClass = "option-selected-exam font-extrabold";
+                            badgeIcon = `<span class="ml-auto text-amber-800 font-bold text-xs">ಗುರುತಿಸಲಾಗಿದೆ ✓</span>`;
+                        }
+                    }
+                }
+
+                btn.className = `option-btn w-full text-left p-4 rounded-xl border-2 flex items-center gap-3.5 text-sm sm:text-base font-semibold shadow-sm ${stateClass}`;
+                btn.innerHTML = `
+                    <span class="w-8 h-8 rounded-lg bg-slate-200 text-slate-800 font-extrabold flex items-center justify-center flex-shrink-0 text-sm">
+                        ${letters[idx]}
+                    </span>
+                    <span class="flex-grow">${optText}</span>
+                    ${badgeIcon}
+                `;
+                btn.onclick = () => selectOption(qObj.id, idx);
+                optionsContainer.appendChild(btn);
+            });
+
+            // Show or Hide Explanation Box
+            const expBox = document.getElementById('explanationBox');
+            const expText = document.getElementById('explanationText');
+            if (quizMode === 'practice' && hasAnswered) {
+                expText.textContent = qObj.exp;
+                expBox.classList.remove('hidden');
+            } else {
+                expBox.classList.add('hidden');
+            }
+
+            // Prev / Next button states
+            document.getElementById('prevBtn').disabled = (currentIndex === 0);
+            document.getElementById('nextBtn').textContent = (currentIndex === filteredQuestions.length - 1) ? 'ಫಲಿತಾಂಶ ನೋಡಿ 🏁' : 'ಮುಂದಿನ ಪ್ರಶ್ನೆ ➡';
+
+            // Rotate Quick Tip
+            document.getElementById('dynamicTipText').textContent = QUICK_TIPS[currentIndex % QUICK_TIPS.length];
+        }
+
+        function selectOption(questionId, optionIndex) {
+            userAnswers[questionId] = optionIndex;
+            renderCurrentQuestion();
+            renderPalette();
+            updateStatsUI();
+        }
+
+        function toggleBookmarkCurrent() {
+            const qObj = filteredQuestions[currentIndex];
+            if (!qObj) return;
+            if (bookmarkedIds.has(qObj.id)) {
+                bookmarkedIds.delete(qObj.id);
+            } else {
+                bookmarkedIds.add(qObj.id);
+            }
+            updateBookmarkBtnUI();
+            renderCurrentQuestion();
+            renderPalette();
+        }
+
+        function prevQuestion() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderCurrentQuestion();
+                renderPalette();
+            }
+        }
+
+        function nextQuestion() {
+            if (currentIndex < filteredQuestions.length - 1) {
+                currentIndex++;
+                renderCurrentQuestion();
+                renderPalette();
+            } else {
+                finishQuiz();
+            }
+        }
+
+        function jumpToQuestion(idx) {
+            currentIndex = idx;
+            renderCurrentQuestion();
+            renderPalette();
+        }
+
+        function renderPalette() {
+            const grid = document.getElementById('paletteGrid');
+            grid.innerHTML = '';
+
+            filteredQuestions.forEach((qObj, idx) => {
+                const btn = document.createElement('button');
+                const userAns = userAnswers[qObj.id];
+                const isCurrent = (idx === currentIndex);
+                const isStarred = bookmarkedIds.has(qObj.id);
+
+                let colorClass = "bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200";
+                if (userAns !== undefined) {
+                    if (quizMode === 'practice') {
+                        colorClass = (userAns === qObj.ans)
+                            ? "bg-emerald-500 text-white border-emerald-600"
+                            : "bg-red-500 text-white border-red-600";
+                    } else {
+                        colorClass = "bg-amber-400 text-slate-900 border-amber-500";
+                    }
+                }
+
+                const ringClass = isCurrent ? "ring-2 ring-offset-2 ring-[#b71c1c] scale-105" : "";
+
+                btn.className = `relative h-10 rounded-lg font-extrabold text-xs border transition flex items-center justify-center ${colorClass} ${ringClass}`;
+                btn.innerHTML = `
+                    <span>${qObj.id}</span>
+                    ${isStarred ? '<span class="absolute -top-1 -right-1 text-[10px]">⭐</span>' : ''}
+                `;
+                btn.onclick = () => jumpToQuestion(idx);
+                grid.appendChild(btn);
+            });
+        }
+
+        function updateStatsUI() {
+            let correct = 0;
+            let wrong = 0;
+            let selected = 0;
+
+            filteredQuestions.forEach(qObj => {
+                const uAns = userAnswers[qObj.id];
+                if (uAns !== undefined) {
+                    selected++;
+                    if (uAns === qObj.ans) correct++;
+                    else wrong++;
+                }
+            });
+
+            const unanswered = filteredQuestions.length - selected;
+            const progressPct = Math.round((selected / filteredQuestions.length) * 100);
+
+            document.getElementById('liveScoreValue').textContent = correct;
+            document.getElementById('liveTotalAttempted').textContent = selected;
+            document.getElementById('progressBar').style.width = `${progressPct}%`;
+
+            if (quizMode === 'practice') {
+                document.getElementById('statCorrect').textContent = correct;
+                document.getElementById('statWrong').textContent = wrong;
+                document.getElementById('statSelected').textContent = selected;
+            } else {
+                document.getElementById('statCorrect').textContent = '-';
+                document.getElementById('statWrong').textContent = '-';
+                document.getElementById('statSelected').textContent = selected;
+            }
+            document.getElementById('statUnanswered').textContent = unanswered;
+        }
+
+        function finishQuiz() {
+            timerPaused = true;
+            document.getElementById('quizWorkspace').classList.add('hidden');
+            const dashboard = document.getElementById('resultDashboard');
+            dashboard.classList.remove('hidden');
+
+            let correct = 0;
+            let wrongOrSkipped = 0;
+
+            filteredQuestions.forEach(qObj => {
+                if (userAnswers[qObj.id] === qObj.ans) {
+                    correct++;
+                } else {
+                    wrongOrSkipped++;
+                }
+            });
+
+            const total = filteredQuestions.length;
+            const pct = Math.round((correct / total) * 100);
+
+            document.getElementById('resScore').textContent = `${correct} / ${total}`;
+            document.getElementById('resPercent').textContent = `${pct}%`;
+            document.getElementById('resWrong').textContent = wrongOrSkipped;
+            document.getElementById('resTime').textContent = document.getElementById('timerDisplay').textContent;
+
+            const headline = document.getElementById('resultHeadline');
+            const badge = document.getElementById('gradeBadge');
+            if (pct >= 85) {
+                badge.textContent = "🏆 ಶ್ರೇಣಿ: ಅತ್ಯುತ್ತಮ (KEA Topper Level)";
+                headline.textContent = "ಅದ್ಭುತ ಸಾಧನೆ! ನೀವು ಪರೀಕ್ಷೆಗೆ ಸಂಪೂರ್ಣ ಸಿದ್ಧರಾಗಿದ್ದೀರಿ!";
+            } else if (pct >= 60) {
+                badge.textContent = "🥈 ಶ್ರೇಣಿ: ಉತ್ತಮ (Good Progress)";
+                headline.textContent = "ಉತ್ತಮ ಪ್ರಯತ್ನ! ಕೆಳಗಿನ ವಿವರಣೆಗಳನ್ನು ಒಮ್ಮೆ ಪರಿಶೀಲಿಸಿ.";
+            } else {
+                badge.textContent = "📘 ಶ್ರೇಣಿ: ಮತ್ತಷ್ಟು ಅಭ್ಯಾಸ ಅಗತ್ಯ";
+                headline.textContent = "ಧೈರ್ಯಗೆಡಬೇಡಿ! ಪರೀಕ್ಷಾ ಸಾರಾಂಶ ಕೈಪಿಡಿ ಓದಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.";
+            }
+
+            // Populate Full Review List
+            const reviewList = document.getElementById('fullReviewList');
+            reviewList.innerHTML = '';
+            const letters = ['A', 'B', 'C', 'D'];
+
+            filteredQuestions.forEach(qObj => {
+                const uAns = userAnswers[qObj.id];
+                const isCorrect = (uAns === qObj.ans);
+                const statusBadge = isCorrect
+                    ? `<span class="bg-emerald-100 text-emerald-800 font-extrabold px-3 py-1 rounded-full text-xs">✅ ಸರಿ</span>`
+                    : (uAns === undefined
+                        ? `<span class="bg-slate-200 text-slate-700 font-extrabold px-3 py-1 rounded-full text-xs">⚪ ಉತ್ತರಿಸಿಲ್ಲ</span>`
+                        : `<span class="bg-red-100 text-red-800 font-extrabold px-3 py-1 rounded-full text-xs">❌ ತಪ್ಪು</span>`);
+
+                const card = document.createElement('div');
+                card.className = `p-5 rounded-2xl border ${isCorrect ? 'bg-emerald-50/40 border-emerald-200' : 'bg-red-50/40 border-red-200'}`;
+                card.innerHTML = `
+                    <div class="flex items-start justify-between gap-3 mb-2">
+                        <h4 class="font-extrabold text-slate-900 text-sm sm:text-base">${qObj.id}. ${qObj.q}</h4>
+                        ${statusBadge}
+                    </div>
+                    <div class="text-xs sm:text-sm space-y-1 mb-3">
+                        <p class="font-bold text-emerald-800">✔ ಸರಿಯಾದ ಉತ್ತರ: (${letters[qObj.ans]}) ${qObj.options[qObj.ans]}</p>
+                        ${(!isCorrect && uAns !== undefined) ? `<p class="font-bold text-red-700">✖ ನಿಮ್ಮ ಉತ್ತರ: (${letters[uAns]}) ${qObj.options[uAns]}</p>` : ''}
+                    </div>
+                    <div class="bg-white/90 p-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-700">
+                        <strong class="text-[#b71c1c]">ವಿವರಣೆ:</strong> ${qObj.exp}
+                    </div>
+                `;
+                reviewList.appendChild(card);
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function returnToQuizReview() {
+            setQuizMode('practice');
+            document.getElementById('resultDashboard').classList.add('hidden');
+            document.getElementById('quizWorkspace').classList.remove('hidden');
+            currentIndex = 0;
+            renderCurrentQuestion();
+            renderPalette();
+        }
+
+        function restartQuiz() {
+            userAnswers = {};
+            currentIndex = 0;
+            resetTimer();
+            document.getElementById('resultDashboard').classList.add('hidden');
+            document.getElementById('quizWorkspace').classList.remove('hidden');
+            renderCurrentQuestion();
+            renderPalette();
+            updateStatsUI();
+        }
+
+        function openNotesModal() {
+            document.getElementById('notesModal').classList.remove('hidden');
+        }
+
+        function closeNotesModal() {
+            document.getElementById('notesModal').classList.add('hidden');
+        }
+
+        window.onload = initApp;
+    </script>
+</body>
+</html>
