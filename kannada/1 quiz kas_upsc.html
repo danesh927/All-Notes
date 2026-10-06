@@ -1,0 +1,1758 @@
+<!DOCTYPE html>
+<html lang="kn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಕನ್ನಡ ವರ್ಣಮಾಲೆ ಮಹಾ ರಸಪ್ರಶ್ನೆ | KAS / UPSC / FDA / PSI Exam Simulator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@300;400;500;600;700;800;900&family=Noto+Serif+Kannada:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans Kannada"', 'sans-serif'],
+                        serif: ['"Noto Serif Kannada"', 'serif'],
+                    },
+                    colors: {
+                        royal: {
+                            maroon: '#680707',
+                            deep: '#3A0303',
+                            gold: '#D4AF37',
+                            amber: '#F59E0B',
+                            cream: '#FDFBF7'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Noto Sans Kannada', sans-serif;
+            background-color: #F8FAFC;
+            color: #0F172A;
+            overflow-x: hidden;
+        }
+        .serif-kn {
+            font-family: 'Noto Serif Kannada', serif;
+        }
+        .royal-header-bg {
+            background: linear-gradient(135deg, #3A0303 0%, #680707 50%, #8B0000 100%);
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #F59E0B 50%, #B45309 100%);
+        }
+        .card-hover {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -6px rgba(104, 7, 7, 0.18);
+        }
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 0.85; }
+            50% { transform: scale(1.35); opacity: 0.35; }
+        }
+        .svg-pulse {
+            transform-origin: center;
+            animation: pulseGlow 1.8s infinite ease-in-out;
+        }
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(14px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide-up {
+            animation: slideInUp 0.35s ease-out forwards;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8B0000;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-red-900 selection:text-amber-200">
+
+    <header class="sticky top-0 z-50 royal-header-bg text-white border-b-2 border-[#D4AF37] shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="showScreen('homeScreen')">
+                <div class="w-11 h-11 rounded-xl gold-gradient flex items-center justify-center text-red-950 font-black text-2xl shadow-md border border-amber-200">
+                    ಕ
+                </div>
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <h1 class="font-extrabold text-base sm:text-lg text-amber-300 serif-kn tracking-wide">ಕನ್ನಡ ವರ್ಣಮಾಲೆ ಮಹಾ ರಸಪ್ರಶ್ನೆ</h1>
+                        <span class="hidden md:inline-block px-2 py-0.5 text-[10px] font-black uppercase bg-amber-400 text-red-950 rounded-full">KAS / UPSC / FDA</span>
+                    </div>
+                    <p class="text-[11px] text-amber-100/80">ಮೂಲಾಕ್ಷರಗಳು, ಧ್ವನ್ಯಂಗಗಳು ಮತ್ತು ಶಬ್ದಮಣಿದರ್ಪಣ ಪರೀಕ್ಷಾ ಸಿಮ್ಯುಲೇಟರ್</p>
+                </div>
+            </div>
+
+            <!-- Live Stats & Controls -->
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                <div class="hidden sm:flex items-center space-x-1.5 bg-black/30 px-3 py-1.5 rounded-full border border-amber-400/30 text-xs">
+                    <span>🔥 ಸರಣಿ (Streak):</span>
+                    <span id="navStreakCount" class="font-black text-amber-400 text-sm">0</span>
+                </div>
+                <div class="hidden sm:flex items-center space-x-1.5 bg-black/30 px-3 py-1.5 rounded-full border border-amber-400/30 text-xs">
+                    <span>⭐ ಅಂಕ (XP):</span>
+                    <span id="navXpCount" class="font-black text-emerald-400 text-sm">0</span>
+                </div>
+                <button onclick="toggleSound()" id="soundBtn" class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-amber-300/40 text-xs font-bold flex items-center space-x-1 transition" title="ಧ್ವನಿ ಆನ್/ಆಫ್">
+                    <span id="soundIcon">🔊</span>
+                    <span id="soundText" class="hidden md:inline">ಧ್ವನಿ</span>
+                </button>
+                <button onclick="showScreen('homeScreen')" class="px-3 py-1.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-red-950 font-extrabold text-xs transition shadow">
+                    🏠 ಮುಖಪುಟ
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+
+        <!-- ================= SCREEN 1: HOME DASHBOARD & MODE SELECTOR ================= -->
+        <section id="homeScreen" class="space-y-8 animate-slide-up">
+            <!-- Hero Banner -->
+            <div class="royal-header-bg rounded-3xl p-6 sm:p-10 text-white border-2 border-[#D4AF37] shadow-2xl relative overflow-hidden">
+                <div class="absolute -right-6 -bottom-8 text-[150px] font-black text-white/5 select-none pointer-events-none">ೞ</div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                    <div class="lg:col-span-8 space-y-4">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-bold">
+                            <span>🎯</span>
+                            <span>KPSC (KAS, FDA, SDA, PSI, PDO) & UPSC ಕನ್ನಡ ಸಾಹಿತ್ಯ ಮತ್ತು ಸಾಮಾನ್ಯ ಕನ್ನಡ</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black leading-tight serif-kn">
+                            ವರ್ಣಮಾಲೆಯ ಪ್ರತಿಯೊಂದು ಪ್ರಶ್ನೆಯನ್ನೂ <span class="text-amber-400">ದೃಶ್ಯ ಮತ್ತು ತರ್ಕದೊಂದಿಗೆ</span> ಜಯಿಸಿ!
+                        </h2>
+                        <p class="text-sm sm:text-base text-amber-100/90 leading-relaxed max-w-2xl">
+                            ಕೇವಲ ಬಾಯಿಪಾಠವಲ್ಲ! ಧ್ವನ್ಯಂಗಗಳ ನಕ್ಷೆ (SVG Vocal Tract), ಕೇಶಿರಾಜನ ಶಬ್ದಮಣಿದರ್ಪಣದ ಸೂತ್ರಗಳು, ಸಂಯುಕ್ತಾಕ್ಷರಗಳ ಬಿಡಿಸುವಿಕೆ, ಹೇಳಿಕೆ-ಕಾರಣ (Assertion-Reason) ಮತ್ತು ಹೊಂದಿಸಿ ಬರೆಯುವ ಪ್ರಶ್ನೆಗಳ ಮೂಲಕ ಪರೀಕ್ಷೆಗೆ ಸನ್ನದ್ಧರಾಗಿ.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-3 pt-2">
+                            <button onclick="startQuizSession('all', 'practice')" class="px-6 py-3.5 rounded-2xl gold-gradient text-red-950 font-black text-sm sm:text-base shadow-xl hover:opacity-95 transition flex items-center space-x-2">
+                                <span>🚀 ಸಂಪೂರ್ಣ ಅಭ್ಯಾಸ ಪ್ರಾರಂಭಿಸಿ (30 ಪ್ರಶ್ನೆಗಳು)</span>
+                            </button>
+                            <button onclick="startQuizSession('all', 'exam')" class="px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-sm sm:text-base shadow-xl border border-emerald-400 transition flex items-center space-x-2">
+                                <span>⏱️ KAS / FDA ನೈಜ ಪರೀಕ್ಷಾ ಮೋಡ್ (Timer + Negative Mark)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Settings & Mode Configuration Card -->
+                    <div class="lg:col-span-4 bg-white/95 text-slate-900 p-5 rounded-2xl border-2 border-[#D4AF37] shadow-xl space-y-4">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2.5">
+                            <h3 class="font-extrabold text-base text-red-950">⚙️ ರಸಪ್ರಶ್ನೆ ಗ್ರಾಹಕೀಕರಣ (Settings)</h3>
+                            <span class="text-xs font-bold px-2 py-0.5 bg-red-100 text-red-800 rounded">ಕಸ್ಟಮ್</span>
+                        </div>
+
+                        <div class="space-y-3 text-xs sm:text-sm">
+                            <div>
+                                <label class="font-bold text-slate-700 block mb-1">೧. ರಸಪ್ರಶ್ನೆ ವಿಧಾನ (Mode):</label>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <button id="modeBtnPractice" onclick="setPreferredMode('practice')" class="p-2.5 rounded-xl border-2 border-red-800 bg-red-900 text-white font-bold text-xs text-center transition">
+                                        📖 ಅಭ್ಯಾಸ ಮೋಡ್<br><span class="text-[10px] font-normal opacity-80">(ತಕ್ಷಣ ಉತ್ತರ + ಸುಳಿವು)</span>
+                                    </button>
+                                    <button id="modeBtnExam" onclick="setPreferredMode('exam')" class="p-2.5 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-700 font-bold text-xs text-center transition">
+                                        ⏱️ ಪರೀಕ್ಷಾ ಮೋಡ್<br><span class="text-[10px] font-normal opacity-80">(ಟೈಮರ್ + ಅಂತಿಮ ಫಲಿತಾಂಶ)</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between bg-slate-100 p-2.5 rounded-xl border border-slate-200">
+                                <div>
+                                    <div class="font-bold text-slate-800 text-xs">ಋಣಾತ್ಮಕ ಅಂಕ (Negative Marking)</div>
+                                    <div class="text-[11px] text-slate-500">ತಪ್ಪು ಉತ್ತರಕ್ಕೆ -0.25 ಅಂಕ ಕಡಿತ</div>
+                                </div>
+                                <input type="checkbox" id="negativeMarkToggle" class="w-5 h-5 accent-red-800 rounded cursor-pointer">
+                            </div>
+
+                            <div class="flex items-center justify-between bg-slate-100 p-2.5 rounded-xl border border-slate-200">
+                                <div>
+                                    <div class="font-bold text-slate-800 text-xs">ಪ್ರಶ್ನೆಗಳ ಮಿಶ್ರಣ (Shuffle Questions)</div>
+                                    <div class="text-[11px] text-slate-500">ಪ್ರತಿ ಬಾರಿ ಹೊಸ ಕ್ರಮದಲ್ಲಿ ಪ್ರಶ್ನೆಗಳು</div>
+                                </div>
+                                <input type="checkbox" id="shuffleToggle" class="w-5 h-5 accent-red-800 rounded cursor-pointer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic-Wise Quiz Selection Cards -->
+            <div>
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-5">
+                    <div>
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-red-800 bg-red-100 px-3 py-1 rounded-full">ವಿಷಯವಾರು ಪರೀಕ್ಷೆಗಳು</span>
+                        <h3 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2 serif-kn">ನಿಮಗೆ ಬೇಕಾದ ಅಧ್ಯಾಯವನ್ನು ಆರಿಸಿ</h3>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-600 mt-1 sm:mt-0">ಪ್ರತಿಯೊಂದು ಪ್ರಶ್ನೆಗೂ ಪರೀಕ್ಷಾ ದೃಷ್ಟಿಕೋನದ ಸವಿವರಣೆ ಮತ್ತು ಸ್ಮರಣ ತಂತ್ರವಿದೆ</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- Topic 1: Swaragalu & Matrakala -->
+                    <div class="bg-white rounded-2xl p-5 border-2 border-amber-200 card-hover flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-900 font-black text-2xl flex items-center justify-center border border-amber-300">ಅ</span>
+                                <span class="px-2.5 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200 text-xs font-bold">6 ಪ್ರಶ್ನೆಗಳು</span>
+                            </div>
+                            <h4 class="text-lg font-extrabold text-slate-900">೧. ಸ್ವರಗಳು, ಮಾತ್ರಾಕಾಲ ಮತ್ತು ಸಂಧಿಸ್ವರ</h4>
+                            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+                                ಹ್ರಸ್ವ, ದೀರ್ಘ, ಪ್ಲುತಸ್ವರಗಳು, ಮಾತ್ರಾಕಾಲ ಮಾಪನ, ಸಂಧಿಸ್ವರಗಳ (ಏ, ಐ, ಓ, ಔ) ನಿರ್ಮಾಣ ಮತ್ತು ದ್ರಾವಿಡ ಹ್ರಸ್ವಸ್ವರಗಳ (ಎ, ಒ) ವಿಶೇಷ ಪ್ರಶ್ನೆಗಳು.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex gap-2">
+                            <button onclick="startQuizSession('swara', 'practice')" class="flex-1 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs transition">📖 ಅಭ್ಯಾಸ</button>
+                            <button onclick="startQuizSession('swara', 'exam')" class="flex-1 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-300 font-bold text-xs transition">⏱️ ಟೆಸ್ಟ್</button>
+                        </div>
+                    </div>
+
+                    <!-- Topic 2: Vyanjanagalu (Alpaprana, Mahaprana, Shwasa, Nada) -->
+                    <div class="bg-white rounded-2xl p-5 border-2 border-red-200 card-hover flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="w-12 h-12 rounded-2xl bg-red-100 text-red-900 font-black text-2xl flex items-center justify-center border border-red-300">ಕ</span>
+                                <span class="px-2.5 py-1 rounded-full bg-red-50 text-red-900 border border-red-200 text-xs font-bold">7 ಪ್ರಶ್ನೆಗಳು</span>
+                            </div>
+                            <h4 class="text-lg font-extrabold text-slate-900">೨. ವ್ಯಂಜನಗಳ ವಿಜ್ಞಾನ (ಶ್ವಾಸ vs ನಾದ)</h4>
+                            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+                                ವರ್ಗೀಯ (25) ಮತ್ತು ಅವರ್ಗೀಯ (9) ವ್ಯಂಜನಗಳು, ಅಲ್ಪಪ್ರಾಣ-ಮಹಾಪ್ರಾಣ, ಅನುನಾಸಿಕ, ಶ್ವಾಸಾಕ್ಷರ (ಅಘೋಷ), ನಾದಾಕ್ಷರ (ಘೋಷ), ಅಂತಸ್ಥ ಮತ್ತು ಊಷ್ಮಾಕ್ಷರಗಳು.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex gap-2">
+                            <button onclick="startQuizSession('vyanjana', 'practice')" class="flex-1 py-2 rounded-xl bg-red-800 hover:bg-red-900 text-white font-bold text-xs transition">📖 ಅಭ್ಯಾಸ</button>
+                            <button onclick="startQuizSession('vyanjana', 'exam')" class="flex-1 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-300 font-bold text-xs transition">⏱️ ಟೆಸ್ಟ್</button>
+                        </div>
+                    </div>
+
+                    <!-- Topic 3: Articulation & Visual SVG Vocal Tract -->
+                    <div class="bg-white rounded-2xl p-5 border-2 border-emerald-200 card-hover flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-900 font-black text-2xl flex items-center justify-center border border-emerald-300">🗣️</span>
+                                <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200 text-xs font-bold">6 ಪ್ರಶ್ನೆಗಳು (SVG ಚಿತ್ರಸಹಿತ)</span>
+                            </div>
+                            <h4 class="text-lg font-extrabold text-slate-900">೩. ಉಚ್ಚಾರಣಾ ಸ್ಥಾನಗಳು (ಧ್ವನ್ಯಂಗ ನಕ್ಷೆ)</h4>
+                            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+                                ಮಾನವನ ಧ್ವನ್ಯಂಗದ SVG ಚಿತ್ರದಲ್ಲಿ ಗುರುತಿಸಲಾದ ಸ್ಥಾನವನ್ನು ಪತ್ತೆಹಚ್ಚುವ ದೃಶ್ಯ ಪ್ರಶ್ನೆಗಳು! ಕಂಠ್ಯ, ತಾಲವ್ಯ, ಮೂರ್ಧನ್ಯ, ದಂತ್ಯ, ಓಷ್ಠ್ಯ, ದಂತೋಷ್ಠ್ಯ ('ವ').
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex gap-2">
+                            <button onclick="startQuizSession('articulation', 'practice')" class="flex-1 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs transition">📖 ಅಭ್ಯಾಸ</button>
+                            <button onclick="startQuizSession('articulation', 'exam')" class="flex-1 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-300 font-bold text-xs transition">⏱️ ಟೆಸ್ಟ್</button>
+                        </div>
+                    </div>
+
+                    <!-- Topic 4: Gunitakshara, Ottakshara & Yogavaha -->
+                    <div class="bg-white rounded-2xl p-5 border-2 border-purple-200 card-hover flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-900 font-black text-2xl flex items-center justify-center border border-purple-300">ಜ್ಞ</span>
+                                <span class="px-2.5 py-1 rounded-full bg-purple-50 text-purple-900 border border-purple-200 text-xs font-bold">6 ಪ್ರಶ್ನೆಗಳು</span>
+                            </div>
+                            <h4 class="text-lg font-extrabold text-slate-900">೪. ಯೋಗವಾಹ, ಕಾಗುಣಿತ ಮತ್ತು ಒತ್ತಕ್ಷರ</h4>
+                            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+                                ಅನುಸ್ವಾರ-ವಿಸರ್ಗ ನಿಯಮಗಳು, ಸಜಾತೀಯ ಮತ್ತು ವಿಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರಗಳ ಅಂಗವಿಭಜನೆ (ಕ್ಷ, ಜ್ಞ, ರ್ಯ, ಸ್ತ್ರೀ, ಕ್ಷ್ಮಿ, ಅರ್ಕಾವತ್ತು ನಿಯಮ).
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex gap-2">
+                            <button onclick="startQuizSession('ottakshara', 'practice')" class="flex-1 py-2 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs transition">📖 ಅಭ್ಯಾಸ</button>
+                            <button onclick="startQuizSession('ottakshara', 'exam')" class="flex-1 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-300 font-bold text-xs transition">⏱️ ಟೆಸ್ಟ್</button>
+                        </div>
+                    </div>
+
+                    <!-- Topic 5: Keshiraja's Shabdamani Darpana & Halagannada -->
+                    <div class="bg-white rounded-2xl p-5 border-2 border-sky-200 card-hover flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-900 font-black text-2xl flex items-center justify-center border border-sky-300">ಱ</span>
+                                <span class="px-2.5 py-1 rounded-full bg-sky-50 text-sky-900 border border-sky-200 text-xs font-bold">5 ಪ್ರಶ್ನೆಗಳು</span>
+                            </div>
+                            <h4 class="text-lg font-extrabold text-slate-900">೫. ಶಬ್ದಮಣಿದರ್ಪಣ ಮತ್ತು ಪ್ರಾಚೀನ ವರ್ಣಗಳು</h4>
+                            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+                                ಕೇಶಿರಾಜನ 47 ಶುದ್ಧಾಕ್ಷರಗಳು, ದೇಸಿಯ ಅಕ್ಷರಗಳು, ರಳ (ಱ), ಕುಳ (ಳ), ಕ್ಷಳ (ೞ), ಅಚ್ಚಕನ್ನಡದಲ್ಲಿಲ್ಲದ ಸಂಸ್ಕೃತ ಅಕ್ಷರಗಳ ಗುರುತಿಸುವಿಕೆ.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex gap-2">
+                            <button onclick="startQuizSession('shabdamanidarpana', 'practice')" class="flex-1 py-2 rounded-xl bg-sky-700 hover:bg-sky-800 text-white font-bold text-xs transition">📖 ಅಭ್ಯಾಸ</button>
+                            <button onclick="startQuizSession('shabdamanidarpana', 'exam')" class="flex-1 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-300 font-bold text-xs transition">⏱️ ಟೆಸ್ಟ್</button>
+                        </div>
+                    </div>
+
+                    <!-- Topic 6: Full Grand Mock Test -->
+                    <div class="royal-header-bg text-white rounded-2xl p-5 border-2 border-[#D4AF37] card-hover flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="w-12 h-12 rounded-2xl gold-gradient text-red-950 font-black text-2xl flex items-center justify-center">🏆</span>
+                                <span class="px-2.5 py-1 rounded-full bg-amber-400 text-red-950 text-xs font-black">30 ಸಮಗ್ರ ಪ್ರಶ್ನೆಗಳು</span>
+                            </div>
+                            <h4 class="text-lg font-extrabold text-amber-300">೬. ಸಮಗ್ರ ವರ್ಣಮಾಲೆ ಮಹಾ ಪರೀಕ್ಷೆ (All-in-One)</h4>
+                            <p class="text-xs text-amber-100/90 mt-1.5 leading-relaxed">
+                                ಎಲ್ಲಾ 5 ವಿಭಾಗಗಳ ಪ್ರಶ್ನೆಗಳನ್ನು ಒಳಗೊಂಡ ಪೂರ್ಣ ಪ್ರಮಾಣದ KAS / UPSC / FDA / PSI ಮಾದರಿ ಪರೀಕ್ಷೆ. ವಿಷಯವಾರು ನಿಖರತೆಯ ಗ್ರಾಫ್ ಪಡೆಯಿರಿ!
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-red-800 flex gap-2">
+                            <button onclick="startQuizSession('all', 'practice')" class="flex-1 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs transition">📖 ಅಭ್ಯಾಸ ಮೋಡ್</button>
+                            <button onclick="startQuizSession('all', 'exam')" class="flex-1 py-2 rounded-xl gold-gradient text-red-950 font-black text-xs transition">⏱️ ಪರೀಕ್ಷೆ ಪ್ರಾರಂಭಿಸಿ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Quick Reference Formula Strip -->
+            <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+                <div class="flex items-center justify-between mb-3">
+                    <h4 class="font-extrabold text-sm sm:text-base text-slate-800">⚡ ಪರೀಕ್ಷಾ ಪೂರ್ವ ತ್ವರಿತ ಸ್ಮರಣಿಕೆ (Quick Revision Cheat-Bar)</h4>
+                    <span class="text-xs text-slate-500">ನೆನಪಿಟ್ಟುಕೊಳ್ಳಬೇಕಾದ ಸಂಖ್ಯೆಗಳು</span>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5 text-center text-xs">
+                    <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                        <div class="text-lg font-black text-red-800">49</div>
+                        <div class="text-[11px] font-semibold text-slate-600">ಒಟ್ಟು ಮೂಲಾಕ್ಷರ</div>
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-amber-50 border border-amber-200">
+                        <div class="text-lg font-black text-amber-800">13</div>
+                        <div class="text-[11px] font-semibold text-slate-600">ಸ್ವರಗಳು (6+7)</div>
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-purple-50 border border-purple-200">
+                        <div class="text-lg font-black text-purple-800">02</div>
+                        <div class="text-[11px] font-semibold text-slate-600">ಯೋಗವಾಹ (ಂ, ಃ)</div>
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-red-50 border border-red-200">
+                        <div class="text-lg font-black text-red-800">34</div>
+                        <div class="text-[11px] font-semibold text-slate-600">ವ್ಯಂಜನ (25+9)</div>
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200">
+                        <div class="text-lg font-black text-emerald-800">10 / 10</div>
+                        <div class="text-[11px] font-semibold text-slate-600">ಅಲ್ಪ / ಮಹಾಪ್ರಾಣ</div>
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-pink-50 border border-pink-200">
+                        <div class="text-lg font-black text-pink-800">13</div>
+                        <div class="text-[11px] font-semibold text-slate-600">ಶ್ವಾಸಾಕ್ಷರ (10+3)</div>
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-indigo-50 border border-indigo-200">
+                        <div class="text-lg font-black text-indigo-800">21</div>
+                        <div class="text-[11px] font-semibold text-slate-600">ನಾದ ವ್ಯಂಜನ (15+6)</div>
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-sky-50 border border-sky-200">
+                        <div class="text-lg font-black text-sky-800">47</div>
+                        <div class="text-[11px] font-semibold text-slate-600">ಶಬ್ದಮಣಿದರ್ಪಣ</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SCREEN 2: ACTIVE QUIZ & EXAM SIMULATOR ARENA ================= -->
+        <section id="quizScreen" class="hidden space-y-6 animate-slide-up">
+            <!-- Top Quiz Status Bar -->
+            <div class="bg-white rounded-2xl p-4 shadow-md border border-slate-200 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center space-x-3">
+                    <span id="activeModeBadge" class="px-3 py-1 rounded-lg bg-red-900 text-amber-300 font-black text-xs">📖 ಅಭ್ಯಾಸ ಮೋಡ್</span>
+                    <div>
+                        <h3 id="activeTopicTitle" class="font-extrabold text-sm sm:text-base text-slate-900">ಸಮಗ್ರ ಕನ್ನಡ ವರ್ಣಮಾಲೆ</h3>
+                        <p id="activeSubInfo" class="text-[11px] text-slate-500">ಪ್ರಶ್ನೆ 1 / 30</p>
+                    </div>
+                </div>
+
+                <!-- Progress Bar & Timer -->
+                <div class="flex items-center space-x-4 flex-grow max-w-md">
+                    <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
+                        <div id="quizProgressBar" class="h-full gold-gradient transition-all duration-300" style="width: 5%;"></div>
+                    </div>
+                    <div class="flex items-center space-x-1.5 bg-slate-900 text-amber-300 px-3 py-1.5 rounded-xl font-mono font-bold text-xs sm:text-sm shrink-0">
+                        <span>⏱️</span>
+                        <span id="timerDisplay">00:00</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-2">
+                    <button onclick="finishQuizSession()" class="px-4 py-2 rounded-xl bg-red-700 hover:bg-red-800 text-white font-bold text-xs transition shadow">
+                        🏁 ಪರೀಕ್ಷೆ ಮುಗಿಸಿ (Submit)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Quiz Grid: Left 8 Cols Question Card | Right 4 Cols Question Palette & Lifelines -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <!-- Left 8 Cols: Question Arena -->
+                <div class="lg:col-span-8 space-y-5">
+                    <div class="bg-white rounded-3xl p-5 sm:p-8 shadow-xl border-2 border-slate-200 relative">
+                        <!-- Question Meta Tags -->
+                        <div class="flex flex-wrap items-center justify-between gap-2 pb-4 mb-4 border-b border-slate-100">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span id="qNumberBadge" class="px-3 py-1 rounded-lg bg-red-950 text-amber-300 font-black text-xs sm:text-sm">ಪ್ರಶ್ನೆ #1</span>
+                                <span id="qExamTag" class="px-2.5 py-1 rounded-md bg-amber-100 text-amber-900 font-bold text-xs border border-amber-300">KAS / FDA Standard</span>
+                                <span id="qTypeTag" class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-semibold text-xs">ಬಹು ಆಯ್ಕೆ ಪ್ರಶ್ನೆ</span>
+                            </div>
+                            <button onclick="toggleMarkForReview()" id="markReviewBtn" class="px-3 py-1 rounded-lg border border-purple-300 bg-purple-50 text-purple-800 hover:bg-purple-100 font-bold text-xs transition flex items-center space-x-1">
+                                <span>🔖</span>
+                                <span id="markReviewText">ಪುನರ್‌ಪರಿಶೀಲನೆಗೆ ಗುರುತಿಸಿ</span>
+                            </button>
+                        </div>
+
+                        <!-- Question Stem -->
+                        <div id="questionText" class="text-base sm:text-xl font-extrabold text-slate-900 leading-relaxed mb-5">
+                            <!-- Question Text Injected Here -->
+                        </div>
+
+                        <!-- Optional Visual SVG / Matrix Diagram Container inside Question -->
+                        <div id="questionVisualBox" class="hidden mb-6 p-4 rounded-2xl bg-slate-900 text-white border-2 border-[#D4AF37]">
+                            <!-- Dynamic SVG or Table Injected Here -->
+                        </div>
+
+                        <!-- Lifeline Hint Box (When Activated) -->
+                        <div id="activeHintBox" class="hidden mb-5 p-4 rounded-2xl bg-amber-50 border-l-4 border-amber-500 text-amber-950 text-xs sm:text-sm">
+                            <div class="font-extrabold text-amber-900 mb-0.5">💡 ವ್ಯಾಕರಣ ಸುಳಿವು (Grammar Clue):</div>
+                            <div id="activeHintText"></div>
+                        </div>
+
+                        <!-- 4 Options Container -->
+                        <div id="optionsContainer" class="space-y-3">
+                            <!-- Options Injected Here -->
+                        </div>
+
+                        <!-- Detailed Explanation Box (Shown Immediately in Practice Mode or Review Mode) -->
+                        <div id="explanationBox" class="hidden mt-6 p-5 rounded-2xl border-2 animate-slide-up">
+                            <div class="flex items-center justify-between mb-2">
+                                <span id="expStatusTitle" class="font-black text-sm sm:text-base"></span>
+                                <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-white/80 text-slate-800 border">ಪರೀಕ್ಷಾ ವಿಶ್ಲೇಷಣೆ</span>
+                            </div>
+                            <p id="expBodyText" class="text-xs sm:text-sm leading-relaxed font-medium"></p>
+                            <div id="expTrickBox" class="mt-3 p-3 rounded-xl bg-white/90 border border-amber-300 text-xs text-slate-800">
+                                <strong class="text-red-900">🧠 ನೆನಪಿಡುವ ತಂತ್ರ (Memory Formula): </strong>
+                                <span id="expTrickText" class="font-bold"></span>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Navigation Buttons -->
+                        <div class="mt-8 pt-4 border-t border-slate-200 flex items-center justify-between gap-3">
+                            <button onclick="navigateQuestion(-1)" id="prevQBtn" class="px-4 sm:px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs sm:text-sm transition flex items-center space-x-1">
+                                <span>←</span>
+                                <span>ಹಿಂದಿನ ಪ್ರಶ್ನೆ</span>
+                            </button>
+
+                            <button onclick="clearCurrentResponse()" id="clearRespBtn" class="px-3 sm:px-4 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-600 font-semibold text-xs transition">
+                                ಆಯ್ಕೆ ಅಳಿಸಿ
+                            </button>
+
+                            <button onclick="navigateQuestion(1)" id="nextQBtn" class="px-5 sm:px-6 py-2.5 rounded-xl royal-header-bg text-amber-300 font-black text-xs sm:text-sm shadow-lg hover:opacity-95 transition flex items-center space-x-1">
+                                <span id="nextQBtnText">ಮುಂದಿನ ಪ್ರಶ್ನೆ</span>
+                                <span>→</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right 4 Cols: Lifelines & Interactive Question Palette -->
+                <div class="lg:col-span-4 space-y-5">
+                    <!-- Lifelines Card -->
+                    <div class="bg-white rounded-3xl p-5 shadow-lg border border-slate-200">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-extrabold text-sm text-slate-900">🪄 ಸಹಾಯವಾಣಿಗಳು (Lifelines)</h4>
+                            <span class="text-[11px] text-slate-500">ಸಂಕೀರ್ಣ ಪ್ರಶ್ನೆಗಳಿಗೆ ಬಳಸಿ</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <button onclick="useFiftyFifty()" id="lifeline5050Btn" class="p-3 rounded-2xl bg-gradient-to-br from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 border border-indigo-200 text-left transition">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-black text-indigo-900 text-sm">50 : 50</span>
+                                    <span id="count5050" class="px-2 py-0.5 rounded-full bg-indigo-700 text-white text-[10px] font-bold">3 ಬಾಕಿ</span>
+                                </div>
+                                <div class="text-[11px] text-indigo-800 mt-1">೨ ತಪ್ಪು ಆಯ್ಕೆಗಳನ್ನು ತೆಗೆದುಹಾಕಿ</div>
+                            </button>
+
+                            <button onclick="useGrammarHint()" id="lifelineHintBtn" class="p-3 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 hover:from-amber-100 hover:to-orange-100 border border-amber-200 text-left transition">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-black text-amber-950 text-sm">💡 ಸೂತ್ರ ಸುಳಿವು</span>
+                                    <span id="countHint" class="px-2 py-0.5 rounded-full bg-amber-700 text-white text-[10px] font-bold">3 ಬಾಕಿ</span>
+                                </div>
+                                <div class="text-[11px] text-amber-900 mt-1">ವ್ಯಾಕರಣ ಸೂತ್ರದ ಸುಳಿವು ಪಡೆಯಿರಿ</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Question Palette Card -->
+                    <div class="bg-white rounded-3xl p-5 shadow-lg border border-slate-200">
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-3">
+                            <h4 class="font-extrabold text-sm text-slate-900">🧭 ಪ್ರಶ್ನೆಗಳ ಫಲಕ (Question Palette)</h4>
+                            <span id="paletteAnsweredCount" class="text-xs font-bold text-emerald-700">0 ಉತ್ತರಿಸಲಾಗಿದೆ</span>
+                        </div>
+
+                        <!-- Legend -->
+                        <div class="grid grid-cols-2 gap-2 text-[11px] font-semibold text-slate-600 mb-4">
+                            <div class="flex items-center space-x-1.5">
+                                <span class="w-3.5 h-3.5 rounded bg-emerald-600 inline-block"></span>
+                                <span>ಉತ್ತರಿಸಿದ ಪ್ರಶ್ನೆ</span>
+                            </div>
+                            <div class="flex items-center space-x-1.5">
+                                <span class="w-3.5 h-3.5 rounded bg-red-600 inline-block"></span>
+                                <span id="legendWrongOrCurrent">ಪ್ರಸ್ತುತ / ತಪ್ಪು</span>
+                            </div>
+                            <div class="flex items-center space-x-1.5">
+                                <span class="w-3.5 h-3.5 rounded bg-purple-600 inline-block"></span>
+                                <span>ಪರಿಶೀಲನೆಗೆ ಗುರುತು</span>
+                            </div>
+                            <div class="flex items-center space-x-1.5">
+                                <span class="w-3.5 h-3.5 rounded bg-slate-200 border border-slate-300 inline-block"></span>
+                                <span>ಇನ್ನೂ ಉತ್ತರಿಸಿಲ್ಲ</span>
+                            </div>
+                        </div>
+
+                        <!-- Palette Grid -->
+                        <div id="questionPaletteGrid" class="grid grid-cols-5 sm:grid-cols-6 gap-2 max-h-64 overflow-y-auto p-1">
+                            <!-- Palette Buttons Injected Here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SCREEN 3: RESULTS ANALYTICS & ANSWER KEY REVIEW ================= -->
+        <section id="resultScreen" class="hidden space-y-8 animate-slide-up">
+            <!-- Top Scorecard Banner -->
+            <div class="royal-header-bg text-white rounded-3xl p-6 sm:p-10 border-2 border-[#D4AF37] shadow-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-400 text-red-950 font-black text-xs">
+                            <span>🎓 ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶ ವರದಿ (Performance Report)</span>
+                        </div>
+                        <h2 id="resultGradeTitle" class="text-2xl sm:text-4xl font-black text-amber-300 serif-kn">
+                            ಅತ್ಯುತ್ತಮ ಪ್ರಯತ್ನ! ಕನ್ನಡ ವ್ಯಾಕರಣ ಕೇಸರಿ 🏆
+                        </h2>
+                        <p id="resultSummarySub" class="text-sm sm:text-base text-amber-100/90 leading-relaxed">
+                            ನೀವು ವರ್ಣಮಾಲೆಯ ಮೂಲಾಕ್ಷರಗಳು ಮತ್ತು ಧ್ವನಿಶಾಸ್ತ್ರದ ಪ್ರಶ್ನೆಗಳನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಪೂರ್ಣಗೊಳಿಸಿದ್ದೀರಿ. ಕೆಳಗೆ ನಿಮ್ಮ ವಿಷಯವಾರು ನಿಖರತೆ ಮತ್ತು ಸಂಪೂರ್ಣ ಕೀ-ಉತ್ತರಗಳನ್ನು ಪರಿಶೀಲಿಸಿ.
+                        </p>
+
+                        <!-- Key Stats Boxes -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                            <div class="bg-black/30 p-3.5 rounded-2xl border border-amber-400/30">
+                                <div class="text-[11px] text-amber-200">ಒಟ್ಟು ಅಂಕಗಳು</div>
+                                <div id="resFinalScore" class="text-2xl font-black text-amber-400 mt-0.5">0 / 0</div>
+                            </div>
+                            <div class="bg-black/30 p-3.5 rounded-2xl border border-emerald-400/30">
+                                <div class="text-[11px] text-emerald-200">ಸರಿಯಾದ ಉತ್ತರ</div>
+                                <div id="resCorrectCount" class="text-2xl font-black text-emerald-400 mt-0.5">0</div>
+                            </div>
+                            <div class="bg-black/30 p-3.5 rounded-2xl border border-rose-400/30">
+                                <div class="text-[11px] text-rose-200">ತಪ್ಪು ಉತ್ತರ</div>
+                                <div id="resWrongCount" class="text-2xl font-black text-rose-400 mt-0.5">0</div>
+                            </div>
+                            <div class="bg-black/30 p-3.5 rounded-2xl border border-sky-400/30">
+                                <div class="text-[11px] text-sky-200">ತೆಗೆದುಕೊಂಡ ಸಮಯ</div>
+                                <div id="resTimeTaken" class="text-2xl font-black text-sky-300 mt-0.5">00:00</div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-3 pt-2">
+                            <button onclick="restartCurrentQuiz()" class="px-5 py-3 rounded-xl gold-gradient text-red-950 font-black text-xs sm:text-sm shadow-lg hover:opacity-95 transition">
+                                🔄 ಇದೇ ಪರೀಕ್ಷೆಯನ್ನು ಮತ್ತೆ ಬರೆಯಿರಿ
+                            </button>
+                            <button onclick="showScreen('homeScreen')" class="px-5 py-3 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs sm:text-sm border border-amber-300/40 transition">
+                                📚 ಬೇರೆ ಅಧ್ಯಾಯ ಆರಿಸಿ
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Topic-wise Accuracy Breakdown Panel -->
+                    <div class="lg:col-span-5 bg-white text-slate-900 rounded-2xl p-5 sm:p-6 border-2 border-[#D4AF37] shadow-xl">
+                        <h3 class="font-extrabold text-base text-slate-900 border-b border-slate-200 pb-2.5 mb-4">
+                            📊 ವಿಷಯವಾರು ನಿಖರತೆ ವಿಶ್ಲೇಷಣೆ (Topic Mastery)
+                        </h3>
+                        <div id="topicBreakdownContainer" class="space-y-3 text-xs">
+                            <!-- Topic Accuracy Bars Injected Here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Answer Key Review Section -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4 mb-6">
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-black text-slate-900 serif-kn">📖 ಸಂಪೂರ್ಣ ಕೀ-ಉತ್ತರಗಳು ಮತ್ತು ಸವಿವರಣೆ (Answer Key Review)</h3>
+                        <p class="text-xs text-slate-500 mt-0.5">ಪ್ರತಿಯೊಂದು ಪ್ರಶ್ನೆಯ ವ್ಯಾಕರಣ ನಿಯಮ ಮತ್ತು ನೆನಪಿಡುವ ಸೂತ್ರವನ್ನು ಇಲ್ಲಿ ಓದಿ</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="filterReviewList('all')" id="revFilter-all" class="rev-filter-btn px-3 py-1.5 rounded-xl bg-red-900 text-white text-xs font-bold">ಎಲ್ಲಾ ಪ್ರಶ್ನೆಗಳು</button>
+                        <button onclick="filterReviewList('correct')" id="revFilter-correct" class="rev-filter-btn px-3 py-1.5 rounded-xl bg-emerald-100 text-emerald-900 text-xs font-bold">✅ ಸರಿ ಉತ್ತರಗಳು</button>
+                        <button onclick="filterReviewList('wrong')" id="revFilter-wrong" class="rev-filter-btn px-3 py-1.5 rounded-xl bg-rose-100 text-rose-900 text-xs font-bold">❌ ತಪ್ಪು ಉತ್ತರಗಳು</button>
+                        <button onclick="filterReviewList('skipped')" id="revFilter-skipped" class="rev-filter-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold">⏭️ ಬಿಟ್ಟ ಪ್ರಶ್ನೆಗಳು</button>
+                    </div>
+                </div>
+
+                <div id="reviewQuestionsList" class="space-y-4">
+                    <!-- Detailed Review Cards Injected Here -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#2A0202] text-amber-100/80 py-6 border-t-2 border-[#D4AF37] text-center text-xs mt-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="font-bold text-amber-300">ಕನ್ನಡ ವರ್ಣಮಾಲೆ ಮತ್ತು ಧ್ವನಿಶಾಸ್ತ್ರ ಮಹಾ ರಸಪ್ರಶ್ನೆ | KAS, UPSC, FDA, SDA, PSI, PDO ಮತ್ತು TET ಪರೀಕ್ಷಾರ್ಥಿಗಳಿಗಾಗಿ ವಿಶೇಷವಾಗಿ ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Helper function to generate dynamic SVG Vocal Tract highlighting a specific place of articulation
+        function getVocalTractSVG(highlightSpot, labelText) {
+            const spots = {
+                kanthya: { cx: 198, cy: 265, color: '#EF4444' },
+                talavya: { cx: 168, cy: 175, color: '#F59E0B' },
+                murdhanya: { cx: 132, cy: 165, color: '#10B981' },
+                dantya: { cx: 92, cy: 190, color: '#06B6D4' },
+                oshthya: { cx: 74, cy: 208, color: '#EC4899' },
+                nasikya: { cx: 92, cy: 138, color: '#38BDF8' },
+                dantoshthya: { cx: 82, cy: 200, color: '#A855F7' }
+            };
+            const target = spots[highlightSpot] || spots.kanthya;
+
+            return `
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                    <svg viewBox="0 0 320 310" class="w-56 h-52 bg-slate-800 rounded-2xl border border-amber-400/40 shrink-0">
+                        <!-- Silhouette -->
+                        <path d="M115,25 C180,20 245,50 260,110 C270,150 260,195 240,235 L230,295 L130,295 L130,260 C102,255 82,242 78,225 C73,205 88,195 82,188 C72,180 68,170 74,162 C80,152 58,142 54,130 C50,118 78,90 82,68 C88,42 98,28 115,25 Z" 
+                              fill="#334155" stroke="#94A3B8" stroke-width="2"/>
+                        <!-- Nasal Passage -->
+                        <path d="M64,132 Q120,115 175,138 Q185,148 172,158 Q120,148 80,154 Z" fill="#0F172A" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="3,2"/>
+                        <!-- Oral & Pharyngeal Cavity -->
+                        <path d="M78,185 Q125,158 178,168 Q205,178 205,222 L205,290 L175,290 L175,230 Q170,208 130,208 L82,202 Z" fill="#0F172A" stroke="#F59E0B" stroke-width="1.5"/>
+                        <!-- Tongue -->
+                        <path d="M88,202 Q130,182 168,198 Q182,212 172,230 Q135,222 88,202 Z" fill="#E11D48" opacity="0.8"/>
+                        <!-- Highlighted Pulse Point -->
+                        <circle cx="${target.cx}" cy="${target.cy}" r="18" fill="${target.color}" class="svg-pulse"/>
+                        <circle cx="${target.cx}" cy="${target.cy}" r="8" fill="${target.color}" stroke="#FFFFFF" stroke-width="2.5"/>
+                        <text x="${target.cx + 14}" y="${target.cy + 4}" fill="#FDE047" font-size="13" font-weight="bold">❓ ಗುರುತಿಸಿ</text>
+                    </svg>
+                    <div class="text-left space-y-2 max-w-sm">
+                        <span class="px-2.5 py-0.5 rounded bg-amber-400 text-red-950 font-black text-xs">ದೃಶ್ಯ ಧ್ವನ್ಯಂಗ ವಿಶ್ಲೇಷಣೆ (Visual Phonetics)</span>
+                        <p class="text-xs sm:text-sm text-amber-100 leading-relaxed">${labelText}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        const masterQuestionBank = [
+            // ================= 1. SWARAGALU & MATRAKALA (6 Questions) =================
+            {
+                id: 1,
+                topic: 'swara',
+                topicName: 'ಸ್ವರಗಳು ಮತ್ತು ಮಾತ್ರಾಕಾಲ',
+                examTag: 'KAS / FDA / TET',
+                typeTag: 'ಮೂಲ ಪರಿಕಲ್ಪನೆ',
+                q: 'ಆಧುನಿಕ ಕನ್ನಡ ವರ್ಣಮಾಲೆಯಲ್ಲಿರುವ ಒಟ್ಟು ಸ್ವರಗಳ ಸಂಖ್ಯೆ ಮತ್ತು ಅವುಗಳ ಸರಿಯಾದ ವಿಂಗಡಣೆ ಯಾವುದು?',
+                options: [
+                    'ಒಟ್ಟು 14 ಸ್ವರಗಳು (7 ಹ್ರಸ್ವಸ್ವರ + 7 ದೀರ್ಘಸ್ವರ)',
+                    'ಒಟ್ಟು 13 ಸ್ವರಗಳು (6 ಹ್ರಸ್ವಸ್ವರ + 7 ದೀರ್ಘಸ್ವರ)',
+                    'ಒಟ್ಟು 15 ಸ್ವರಗಳು (6 ಹ್ರಸ್ವಸ್ವರ + 7 ದೀರ್ಘಸ್ವರ + 2 ಯೋಗವಾಹ)',
+                    'ಒಟ್ಟು 13 ಸ್ವರಗಳು (7 ಹ್ರಸ್ವಸ್ವರ + 6 ದೀರ್ಘಸ್ವರ)'
+                ],
+                correct: 1,
+                hint: 'ಸಂಸ್ಕೃತದಲ್ಲಿದ್ದ ದೀರ್ಘ "ೠ" ಕೈಬಿಟ್ಟ ನಂತರ ಕನ್ನಡದಲ್ಲಿ 6 ಹ್ರಸ್ವ ಮತ್ತು 7 ದೀರ್ಘ ಸ್ವರಗಳಿವೆ.',
+                explanation: 'ಆಧುನಿಕ ಕನ್ನಡ ವರ್ಣಮಾಲೆಯಲ್ಲಿ ಒಟ್ಟು 13 ಸ್ವರಗಳಿವೆ. ಅವುಗಳಲ್ಲಿ ಒಂದು ಮಾತ್ರಾಕಾಲದ ಹ್ರಸ್ವಸ್ವರಗಳು 6 (ಅ, ಇ, ಉ, ಋ, ಎ, ಒ) ಮತ್ತು ಎರಡು ಮಾತ್ರಾಕಾಲದ ದೀರ್ಘಸ್ವರಗಳು 7 (ಆ, ಈ, ಊ, ಏ, ಐ, ಓ, ಔ). ಯೋಗವಾಹಗಳು (ಂ, ಃ) ಸ್ವರಗಳಲ್ಲ.',
+                trick: '13 ಸ್ವರ = 6 ಹ್ರಸ್ವ (ಅ,ಇ,ಉ,ಋ,ಎ,ಒ) + 7 ದೀರ್ಘ (ಆ,ಈ,ಊ,ಏ,ಐ,ಓ,ಔ).'
+            },
+            {
+                id: 2,
+                topic: 'swara',
+                topicName: 'ಸ್ವರಗಳು ಮತ್ತು ಮಾತ್ರಾಕಾಲ',
+                examTag: 'KAS Prelims / PSI',
+                typeTag: 'ಹೇಳಿಕೆ ಮತ್ತು ಕಾರಣ',
+                q: 'ಕೆಳಗಿನ ಹೇಳಿಕೆಗಳನ್ನು ಗಮನಿಸಿ ಸರಿಯಾದ ಉತ್ತರವನ್ನು ಆರಿಸಿ:\nಹೇಳಿಕೆ (A): ಕನ್ನಡದ ದೀರ್ಘಸ್ವರಗಳಾದ "ಏ, ಐ, ಓ, ಔ" ಅಕ್ಷರಗಳನ್ನು "ಸಂಧಿಸ್ವರಗಳು" (ಸಂಯುಕ್ತ ಸ್ವರಗಳು) ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.\nಕಾರಣ (R): ಈ ನಾಲ್ಕು ಸ್ವರಗಳು ಎರಡು ಭಿನ್ನ ಮೂಲಸ್ವರಗಳ ಸಂಧಿಸುವಿಕೆಯಿಂದ (ಸೇರಿಸುವಿಕೆಯಿಂದ) ನಿರ್ಮಾಣವಾಗಿವೆ.',
+                options: [
+                    'ಹೇಳಿಕೆ (A) ಮಾತ್ರ ಸರಿ, ಕಾರಣ (R) ತಪ್ಪು',
+                    'ಹೇಳಿಕೆ (A) ತಪ್ಪು, ಆದರೆ ಕಾರಣ (R) ಸರಿ',
+                    'ಹೇಳಿಕೆ (A) ಮತ್ತು ಕಾರಣ (R) ಎರಡೂ ಸರಿ ಹಾಗೂ (R) ಸರಿಯಾದ ವಿವರಣೆಯಾಗಿದೆ',
+                    'ಹೇಳಿಕೆ (A) ಮತ್ತು ಕಾರಣ (R) ಎರಡೂ ತಪ್ಪು'
+                ],
+                correct: 2,
+                hint: 'ಅ + ಇ = ಏ, ಅ + ಉ = ಓ... ಹೀಗೆ ಎರಡು ವಿಭಿನ್ನ ಸ್ವರಗಳು ಸೇರಿ ಹುಟ್ಟುವುದರಿಂದ ಅವು ಸಂಧಿಸ್ವರಗಳು.',
+                explanation: 'ಸಂಸ್ಕೃತ ಮತ್ತು ಕನ್ನಡ ವ್ಯಾಕರಣದ ಪ್ರಕಾರ ಏ (ಅ+ಇ), ಐ (ಅ+ಏ), ಓ (ಅ+ಉ), ಮತ್ತು ಔ (ಅ+ಓ) ಎಂಬ ನಾಲ್ಕು ದೀರ್ಘಸ್ವರಗಳು ವಿಭಿನ್ನ ಸ್ವರಗಳ ಸಂಯೋಗದಿಂದ ಹುಟ್ಟಿರುವುದರಿಂದ ಇವನ್ನು "ಸಂಧಿಸ್ವರ" ಅಥವಾ "ಸಂಯುಕ್ತ ಸ್ವರ" ಎನ್ನುವರು.',
+                trick: 'ಸಂಧಿಸ್ವರ ಸೂತ್ರ: ಅ+ಇ=ಏ | ಅ+ಏ=ಐ | ಅ+ಉ=ಓ | ಅ+ಓ=ಔ (ಒಟ್ಟು 4).'
+            },
+            {
+                id: 3,
+                topic: 'swara',
+                topicName: 'ಸ್ವರಗಳು ಮತ್ತು ಮಾತ್ರಾಕಾಲ',
+                examTag: 'FDA / SDA / PDO',
+                typeTag: 'ಮಾತ್ರಾಕಾಲ ವಿಶ್ಲೇಷಣೆ',
+                q: '"ಮಗು ಜೋರಾಗಿ ಅಮ್ಮಾऽऽऽ ಎಂದು ಕರೆಯಿತು" — ಈ ವಾಕ್ಯದಲ್ಲಿರುವ "ಅಮ್ಮಾऽऽऽ" ಪದದ ಕೊನೆಯ ಸ್ವರವು ಯಾವ ಪ್ರಕಾರಕ್ಕೆ ಸೇರಿದೆ ಮತ್ತು ಅದರ ಮಾತ್ರಾಕಾಲವೆಷ್ಟು?',
+                options: [
+                    'ದೀರ್ಘಸ್ವರ — 2 ಮಾತ್ರಾಕಾಲ',
+                    'ಪ್ಲುತಸ್ವರ — 3 ಮಾತ್ರಾಕಾಲ (ಅಥವಾ 2ಕ್ಕಿಂತ ಹೆಚ್ಚು ಮಾತ್ರೆ)',
+                    'ಗುರುಸ್ವರ — 4 ಮಾತ್ರಾಕಾಲ',
+                    'ಸಂಧಿಸ್ವರ — 2.5 ಮಾತ್ರಾಕಾಲ'
+                ],
+                correct: 1,
+                hint: 'ದೂರದಿಂದ ಕರೆಯುವಾಗ ಅಥವಾ ರಾಗವಾಗಿ ಎಳೆದು ಉಚ್ಚರಿಸುವಾಗ ಬಳಸುವ ಸ್ವರ.',
+                explanation: 'ದೂರದಲ್ಲಿರುವವರನ್ನು ಕರೆಯುವಾಗ, ಸಂಗೀತದಲ್ಲಿ ಆಲಾಪನೆ ಮಾಡುವಾಗ ಅಥವಾ ಅಳುವಾಗ ಸ್ವರವನ್ನು 3 ಮಾತ್ರೆಗಳ ಕಾಲ ಎಳೆದು ಉಚ್ಚರಿಸುತ್ತೇವೆ. ಇದಕ್ಕೆ "ಪ್ಲುತಸ್ವರ" ಎನ್ನುವರು. ಇದನ್ನು ಸೂಚಿಸಲು "ऽ" (ಅವಗ್ರಹ) ಚಿಹ್ನೆ ಬಳಸುತ್ತಾರೆ.',
+                trick: 'ಹ್ರಸ್ವ = 1 ಮಾತ್ರೆ | ದೀರ್ಘ = 2 ಮಾತ್ರೆ | ಪ್ಲುತ = 3 ಮಾತ್ರೆ (ಕರೆಯುವ ಸ್ವರ).'
+            },
+            {
+                id: 4,
+                topic: 'swara',
+                topicName: 'ಸ್ವರಗಳು ಮತ್ತು ಮಾತ್ರಾಕಾಲ',
+                examTag: 'UPSC / KAS Optional',
+                typeTag: 'ದ್ರಾವಿಡ ಭಾಷಾ ವೈಶಿಷ್ಟ್ಯ',
+                q: 'ಸಂಸ್ಕೃತ ವರ್ಣಮಾಲೆಯಲ್ಲಿ ಇಲ್ಲದಿರುವ, ಆದರೆ ಕನ್ನಡ (ದ್ರಾವಿಡ) ಭಾಷೆಗೆ ಮಾತ್ರ ವಿಶೇಷವಾಗಿರುವ ಎರಡು ಹ್ರಸ್ವಸ್ವರಗಳು ಯಾವುವು?',
+                options: [
+                    'ಇ ಮತ್ತು ಉ',
+                    'ಎ ಮತ್ತು ಒ',
+                    'ಐ ಮತ್ತು ಔ',
+                    'ಅ ಮತ್ತು ಋ'
+                ],
+                correct: 1,
+                hint: 'ಸಂಸ್ಕೃತದಲ್ಲಿ "ಏ" ಮತ್ತು "ಓ" ದೀರ್ಘಗಳಷ್ಟೇ ಇವೆ; ಅವುಗಳ ಹ್ರಸ್ವ ರೂಪಗಳು ದ್ರಾವಿಡ ಭಾಷೆಯ ಆಸ್ತಿ.',
+                explanation: 'ಸಂಸ್ಕೃತ ಭಾಷೆಯಲ್ಲಿ ಏ, ಐ, ಓ, ಔ ಎಂಬ ದೀರ್ಘಸ್ವರಗಳು ಮಾತ್ರ ಇವೆ. ಆದರೆ ಕನ್ನಡ ಹಾಗೂ ಇತರ ದ್ರಾವಿಡ ಭಾಷೆಗಳಲ್ಲಿ ಎಲೆ, ಎರಡು, ಒಂದು, ಒಂಟೆ ಮುಂತಾದ ಪದಗಳನ್ನು ಉಚ್ಚರಿಸಲು "ಎ" ಮತ್ತು "ಒ" ಎಂಬ ಎರಡು ಹ್ರಸ್ವಸ್ವರಗಳಿವೆ.',
+                trick: 'ದ್ರಾವಿಡ ವಿಶೇಷ ಹ್ರಸ್ವಸ್ವರಗಳು = "ಎ" ಮತ್ತು "ಒ" (ಕೇಶಿರಾಜನು ಇವನ್ನು ದೇಸಿಯ ಸ್ವರಗಳೆಂದಿದ್ದಾನೆ).'
+            },
+            {
+                id: 5,
+                topic: 'swara',
+                topicName: 'ಸ್ವರಗಳು ಮತ್ತು ಮಾತ್ರಾಕಾಲ',
+                examTag: 'KPSC Group-C / PSI',
+                typeTag: 'ಸಜಾತೀಯ ಮತ್ತು ವಿಜಾತೀಯ ಸ್ವರ',
+                q: 'ಒಂದೇ ಉಚ್ಚಾರಣಾ ಸ್ಥಾನದಲ್ಲಿ ಹುಟ್ಟುವ "ಅ-ಆ, ಇ-ಈ, ಉ-ಊ, ಎ-ಏ, ಒ-ಓ" ಎಂಬ ಸ್ವರ ಜೋಡಿಗಳನ್ನು ವ್ಯಾಕರಣದಲ್ಲಿ ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?',
+                options: [
+                    'ವಿಜಾತೀಯ ಸ್ವರಗಳು (ಅಸವರ್ಣ ಸ್ವರಗಳು)',
+                    'ಸಜಾತೀಯ ಸ್ವರಗಳು (ಸವರ್ಣ ಸ್ವರಗಳು)',
+                    'ಅಂತಸ್ಥ ಸ್ವರಗಳು',
+                    'ಯೋಗವಾಹ ಸ್ವರಗಳು'
+                ],
+                correct: 1,
+                hint: 'ಒಂದೇ ಜಾತಿಯ (ಸ್ಥಾನದ) ಹ್ರಸ್ವ ಮತ್ತು ದೀರ್ಘ ಸ್ವರಗಳ ಜೋಡಿ.',
+                explanation: 'ಒಂದೇ ಉತ್ಪತ್ತಿ ಸ್ಥಾನದಿಂದ ಹುಟ್ಟುವ ಹ್ರಸ್ವ ಮತ್ತು ದೀರ್ಘ ಸ್ವರಗಳ ಜೋಡಿಯನ್ನು "ಸಜಾತೀಯ ಸ್ವರಗಳು" ಅಥವಾ "ಸವರ್ಣ ಸ್ವರಗಳು" ಎನ್ನುತ್ತಾರೆ. ಬೇರೆ ಬೇರೆ ಸ್ಥಾನಗಳಲ್ಲಿ ಹುಟ್ಟುವ ಸ್ವರಗಳನ್ನು (ಉದಾ: ಅ ಮತ್ತು ಇ) ವಿಜಾತೀಯ ಸ್ವರಗಳೆನ್ನುವರು.',
+                trick: 'ಸಮಾನ ಜಾತಿ = ಸಜಾತೀಯ (ಅ-ಆ, ಇ-ಈ, ಉ-ಊ, ಎ-ಏ, ಒ-ಓ).'
+            },
+            {
+                id: 6,
+                topic: 'swara',
+                topicName: 'ಸ್ವರಗಳು ಮತ್ತು ಮಾತ್ರಾಕಾಲ',
+                examTag: 'FDA / TET Special',
+                typeTag: 'ಗುಂಪಿಗೆ ಸೇರದ ಪದ',
+                q: 'ಕೆಳಗಿನ ಸ್ವರಗಳ ಗುಂಪಿನಲ್ಲಿ ಯಾವ ಸ್ವರಗಳಿಗೆ ಸಮಾನವಾದ ಹ್ರಸ್ವಸ್ವರಗಳು ಕನ್ನಡ ವರ್ಣಮಾಲೆಯಲ್ಲಿ ಇಲ್ಲ?',
+                options: [
+                    'ಆ ಮತ್ತು ಈ',
+                    'ಏ ಮತ್ತು ಓ',
+                    'ಐ ಮತ್ತು ಔ',
+                    'ಊ ಮತ್ತು ಏ'
+                ],
+                correct: 2,
+                hint: 'ಆ->ಅ, ಈ->ಇ, ಊ->ಉ, ಏ->ಎ, ಓ->ಒ ಇವೆ. ಉಳಿದ ಎರಡು ದೀರ್ಘಸ್ವರಗಳು ಯಾವುವು?',
+                explanation: 'ಕನ್ನಡದಲ್ಲಿ ಆ(ಅ), ಈ(ಇ), ಊ(ಉ), ಏ(ಎ), ಓ(ಒ) ಎಂಬ 5 ದೀರ್ಘಸ್ವರಗಳಿಗೆ ಸಂವಾದಿಯಾದ ಹ್ರಸ್ವಸ್ವರಗಳಿವೆ. ಆದರೆ "ಐ" ಮತ್ತು "ಔ" ಎಂಬ ಎರಡು ಸಂಧಿಸ್ವರಗಳಿಗೆ ಸಮಾನವಾದ ಹ್ರಸ್ವಸ್ವರಗಳಿಲ್ಲ.',
+                trick: 'ಹ್ರಸ್ವರಹಿತ ದೀರ್ಘಸ್ವರಗಳು = ಐ ಮತ್ತು ಔ.'
+            },
+
+            // ================= 2. VYANJANAGALU (7 Questions) =================
+            {
+                id: 7,
+                topic: 'vyanjana',
+                topicName: 'ವರ್ಗೀಯ ಮತ್ತು ಅವರ್ಗೀಯ ವ್ಯಂಜನಗಳು',
+                examTag: 'KAS / PSI / FDA',
+                typeTag: 'ಧ್ವನಿಶಾಸ್ತ್ರ ವರ್ಗೀಕರಣ',
+                q: 'ವರ್ಗೀಯ ವ್ಯಂಜನಗಳಲ್ಲಿ ಪ್ರತಿ ವರ್ಗದ 1ನೇ ಮತ್ತು 2ನೇ ಅಕ್ಷರಗಳನ್ನು (ಕ, ಖ, ಚ, ಛ, ಟ, ಠ, ತ, ಥ, ಪ, ಫ) ಧ್ವನಿ ತಂತುಗಳ ಕಂಪನದ ಆಧಾರದ ಮೇಲೆ ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?',
+                options: [
+                    'ನಾದಾಕ್ಷರಗಳು (ಘೋಷ ವರ್ಣಗಳು)',
+                    'ಶ್ವಾಸಾಕ್ಷರಗಳು (ಅಘೋಷ ವರ್ಣಗಳು / ಕರ್ಕಶ ವರ್ಣಗಳು)',
+                    'ಅನುನಾಸಿಕಾಕ್ಷರಗಳು',
+                    'ಅಂತಸ್ಥ ವ್ಯಂಜನಗಳು'
+                ],
+                correct: 1,
+                hint: 'ಗಂಟಲಿನಲ್ಲಿ ನಾದ (ಕಂಪನ) ಇಲ್ಲದೆ ಕೇವಲ ಉಸಿರಿನಿಂದ (ಶ್ವಾಸದಿಂದ) ಹುಟ್ಟುವ ಅಕ್ಷರಗಳು.',
+                explanation: 'ವ್ಯಂಜನಗಳನ್ನು ಉಚ್ಚರಿಸುವಾಗ ಗಂಟಲಿನ ಧ್ವನಿಪೆಟ್ಟಿಗೆಯಲ್ಲಿ ಕಂಪನ ಉಂಟಾಗದಿದ್ದರೆ ಅವುಗಳನ್ನು "ಶ್ವಾಸಾಕ್ಷರಗಳು" ಅಥವಾ "ಅಘೋಷ ವರ್ಣಗಳು" ಎನ್ನುತ್ತಾರೆ. ಪ್ರತಿ ವರ್ಗದ 1, 2ನೇ ಅಕ್ಷರಗಳು (10) ಹಾಗೂ ಶ, ಷ, ಸ (3) ಸೇರಿ ಒಟ್ಟು 13 ಶ್ವಾಸಾಕ್ಷರಗಳಿವೆ.',
+                trick: 'ಶ್ವಾಸ (ಅಘೋಷ) = ವರ್ಗದ 1, 2ನೇ ಸಾಲು (10) + ಶ, ಷ, ಸ (3) = ಒಟ್ಟು 13 ಅಕ್ಷರಗಳು.'
+            },
+            {
+                id: 8,
+                topic: 'vyanjana',
+                topicName: 'ವರ್ಗೀಯ ಮತ್ತು ಅವರ್ಗೀಯ ವ್ಯಂಜನಗಳು',
+                examTag: 'KAS / UPSC Optional',
+                typeTag: 'ಸಂಖ್ಯಾ ವಿಶ್ಲೇಷಣೆ',
+                q: 'ಕನ್ನಡ ವರ್ಣಮಾಲೆಯ 34 ವ್ಯಂಜನಗಳಲ್ಲಿರುವ ಒಟ್ಟು "ನಾದಾಕ್ಷರಗಳ" (ಘೋಷ ವ್ಯಂಜನಗಳ) ಸಂಖ್ಯೆ ಎಷ್ಟು? (ಸ್ವರಗಳನ್ನು ಹೊರತುಪಡಿಸಿ)',
+                options: [
+                    '15 ನಾದಾಕ್ಷರಗಳು',
+                    '21 ನಾದಾಕ್ಷರಗಳು (15 ವರ್ಗೀಯ + 6 ಅವರ್ಗೀಯ)',
+                    '10 ನಾದಾಕ್ಷರಗಳು',
+                    '25 ನಾದಾಕ್ಷರಗಳು'
+                ],
+                correct: 1,
+                hint: 'ವರ್ಗೀಯ ವ್ಯಂಜನಗಳ 3, 4, 5ನೇ ಸಾಲು (15) + ಅವರ್ಗೀಯಗಳಲ್ಲಿ ಶ,ಷ,ಸ ಹೊರತುಪಡಿಸಿ ಉಳಿದ 6 ಅಕ್ಷರಗಳು (ಯ,ರ,ಲ,ವ,ಹ,ಳ).',
+                explanation: 'ವ್ಯಂಜನಗಳಲ್ಲಿ ಪ್ರತಿ ವರ್ಗದ 3, 4 ಮತ್ತು 5ನೇ ಸಾಲಿನ ಅಕ್ಷರಗಳು (5x3 = 15) ಹಾಗೂ ಅವರ್ಗೀಯ ವ್ಯಂಜನಗಳಲ್ಲಿ "ಯ, ರ, ಲ, ವ, ಹ, ಳ" (6) ಸೇರಿ ಒಟ್ಟು 21 ನಾದಾಕ್ಷರಗಳಿವೆ (ಘೋಷ ವ್ಯಂಜನಗಳು). ಎಲ್ಲಾ 13 ಸ್ವರಗಳೂ ನಾದಾಕ್ಷರಗಳೇ ಆಗಿವೆ.',
+                trick: '34 ವ್ಯಂಜನ = 13 ಶ್ವಾಸಾಕ್ಷರ (1,2ನೇ ಸಾಲು + ಶ,ಷ,ಸ) + 21 ನಾದಾಕ್ಷರ (3,4,5ನೇ ಸಾಲು + ಯ,ರ,ಲ,ವ,ಹ,ಳ).'
+            },
+            {
+                id: 9,
+                topic: 'vyanjana',
+                topicName: 'ವರ್ಗೀಯ ಮತ್ತು ಅವರ್ಗೀಯ ವ್ಯಂಜನಗಳು',
+                examTag: 'FDA / SDA / TET',
+                typeTag: 'ದೃಶ್ಯ ಜಾಲರಿ ಪ್ರಶ್ನೆ',
+                visualHTML: `
+                    <div class="text-center space-y-2">
+                        <div class="text-xs font-bold text-amber-300">ವರ್ಗೀಯ ವ್ಯಂಜನಗಳ 5x5 ವಿನ್ಯಾಸದಲ್ಲಿ ಹೈಲೈಟ್ ಮಾಡಲಾದ ಸಾಲುಗಳನ್ನು ಗಮನಿಸಿ:</div>
+                        <div class="grid grid-cols-5 gap-2 max-w-md mx-auto text-sm font-black">
+                            <div class="p-2 rounded bg-slate-800 text-slate-400">ಕ</div>
+                            <div class="p-2 rounded bg-orange-600 text-white ring-2 ring-amber-300">ಖ</div>
+                            <div class="p-2 rounded bg-slate-800 text-slate-400">ಗ</div>
+                            <div class="p-2 rounded bg-orange-600 text-white ring-2 ring-amber-300">ಘ</div>
+                            <div class="p-2 rounded bg-slate-800 text-slate-400">ಙ</div>
+                            <div class="p-2 rounded bg-slate-800 text-slate-400">ಚ</div>
+                            <div class="p-2 rounded bg-orange-600 text-white ring-2 ring-amber-300">ಛ</div>
+                            <div class="p-2 rounded bg-slate-800 text-slate-400">ಜ</div>
+                            <div class="p-2 rounded bg-orange-600 text-white ring-2 ring-amber-300">ಝ</div>
+                            <div class="p-2 rounded bg-slate-800 text-slate-400">ಞ</div>
+                        </div>
+                    </div>
+                `,
+                q: 'ಮೇಲಿನ ಜಾಲರಿಯಲ್ಲಿ ಕಿತ್ತಳೆ ಬಣ್ಣದಿಂದ ಗುರುತಿಸಲಾದ 2ನೇ ಮತ್ತು 4ನೇ ಕಂಬಸಾಲಿನ ಅಕ್ಷರಗಳು (ಖ, ಘ, ಛ, ಝ, ಠ, ಢ, ಥ, ಧ, ಫ, ಭ) ಯಾವ ಗುಂಪಿಗೆ ಸೇರುತ್ತವೆ?',
+                options: [
+                    'ಅಲ್ಪಪ್ರಾಣಾಕ್ಷರಗಳು (10)',
+                    'ಮಹಾಪ್ರಾಣಾಕ್ಷರಗಳು (10)',
+                    'ಅನುನಾಸಿಕಾಕ್ಷರಗಳು (5)',
+                    'ಊಷ್ಮಾಕ್ಷರಗಳು (4)'
+                ],
+                correct: 1,
+                hint: 'ಹೆಚ್ಚು ಉಸಿರಿನ ಒತ್ತಡದಿಂದ ಉಚ್ಚರಿಸಲ್ಪಡುವ ಪ್ರತಿ ವರ್ಗದ 2 ಮತ್ತು 4ನೇ ಅಕ್ಷರಗಳು.',
+                explanation: 'ವರ್ಗೀಯ ವ್ಯಂಜನಗಳಲ್ಲಿ ಪ್ರತಿ ವರ್ಗದ 2ನೇ ಮತ್ತು 4ನೇ ಅಕ್ಷರಗಳನ್ನು ಉಚ್ಚರಿಸಲು ಹೆಚ್ಚು ಉಸಿರು (ಮಹಾ + ಪ್ರಾಣ) ಬೇಕಾಗುತ್ತದೆ. ಆದ್ದರಿಂದ ಖ, ಘ, ಛ, ಝ, ಠ, ಢ, ಥ, ಧ, ಫ, ಭ ಎಂಬ 10 ಅಕ್ಷರಗಳನ್ನು ಮಹಾಪ್ರಾಣಾಕ್ಷರಗಳೆನ್ನುವರು.',
+                trick: '1, 3ನೇ ಸಾಲು = ಅಲ್ಪಪ್ರಾಣ (10) | 2, 4ನೇ ಸಾಲು = ಮಹಾಪ್ರಾಣ (10) | 5ನೇ ಸಾಲು = ಅನುನಾಸಿಕ (5).'
+            },
+            {
+                id: 10,
+                topic: 'vyanjana',
+                topicName: 'ವರ್ಗೀಯ ಮತ್ತು ಅವರ್ಗೀಯ ವ್ಯಂಜನಗಳು',
+                examTag: 'PSI / PDO / Group-C',
+                typeTag: 'ಅವರ್ಗೀಯ ವರ್ಗೀಕರಣ',
+                q: 'ಅವರ್ಗೀಯ ವ್ಯಂಜನಗಳಲ್ಲಿ (ಯ ರಿಂದ ಳ ವರೆಗೆ) "ಅಂತಸ್ಥಗಳು" (ಅರ್ಧಸ್ವರಗಳು) ಮತ್ತು "ಊಷ್ಮಾಕ್ಷರಗಳು" (ಘರ್ಷಣಾಕ್ಷರಗಳು) ಯಾವುವು?',
+                options: [
+                    'ಅಂತಸ್ಥಗಳು: ಶ, ಷ, ಸ, ಹ | ಊಷ್ಮಾಕ್ಷರಗಳು: ಯ, ರ, ಲ, ವ',
+                    'ಅಂತಸ್ಥಗಳು: ಯ, ರ, ಲ, ವ | ಊಷ್ಮಾಕ್ಷರಗಳು: ಶ, ಷ, ಸ, ಹ',
+                    'ಅಂತಸ್ಥಗಳು: ಙ, ಞ, ಣ, ನ | ಊಷ್ಮಾಕ್ಷರಗಳು: ಶ, ಷ, ಸ, ಳ',
+                    'ಅಂತಸ್ಥಗಳು: ಯ, ವ, ಹ, ಳ | ಊಷ್ಮಾಕ್ಷರಗಳು: ರ, ಲ, ಶ, ಷ'
+                ],
+                correct: 1,
+                hint: 'ಸ್ವರ ಮತ್ತು ವ್ಯಂಜನಗಳ ನಡುವೆ ನಿಲ್ಲುವ ಕೋಮಲ ಅಕ್ಷರಗಳು ಯ,ರ,ಲ,ವ; ಬಿಸಿ ಉಸಿರಿನ ಘರ್ಷಣೆಯಿಂದ ಹುಟ್ಟುವವು ಶ,ಷ,ಸ,ಹ.',
+                explanation: 'ಅವರ್ಗೀಯ ವ್ಯಂಜನಗಳಲ್ಲಿ "ಯ, ರ, ಲ, ವ" ಎಂಬ 4 ಅಕ್ಷರಗಳನ್ನು ಅಂತಸ್ಥಗಳು (ಅಥವಾ ಅರ್ಧಸ್ವರಗಳು) ಎನ್ನುವರು. "ಶ, ಷ, ಸ, ಹ" ಎಂಬ 4 ಅಕ್ಷರಗಳನ್ನು ಉಚ್ಚರಿಸುವಾಗ ಗಾಳಿಯು ಉಜ್ಜಿಕೊಂಡು ಬಿಸಿ ಉಸಿರಿನಂತೆ ಬರುವುದರಿಂದ "ಊಷ್ಮಾಕ್ಷರಗಳು" ಎನ್ನುವರು.',
+                trick: 'ಯ, ರ, ಲ, ವ = ಅಂತಸ್ಥ (4) | ಶ, ಷ, ಸ, ಹ = ಊಷ್ಮ (4) | ಳ = ದ್ರಾವಿಡ ವಿಶೇಷ (1).'
+            },
+            {
+                id: 11,
+                topic: 'vyanjana',
+                topicName: 'ವರ್ಗೀಯ ಮತ್ತು ಅವರ್ಗೀಯ ವ್ಯಂಜನಗಳು',
+                examTag: 'KAS / NET / SET',
+                typeTag: 'ಆಧುನಿಕ ಭಾಷಾವಿಜ್ಞಾನ',
+                q: 'ಆಧುನಿಕ ಭಾಷಾವಿಜ್ಞಾನದ ಪ್ರಕಾರ "ಲ" ಮತ್ತು "ಳ" ಅಕ್ಷರಗಳನ್ನು ಉಚ್ಚರಿಸುವಾಗ ಗಾಳಿಯು ನಾಲಿಗೆಯ ಎರಡೂ ಪಕ್ಕಗಳಿಂದ ಹೊರಬರುವ ಕಾರಣ ಅವುಗಳನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?',
+                options: [
+                    'ಕಂಪಿತ ವ್ಯಂಜನಗಳು (Trills)',
+                    'ಪಾರ್ಶ್ವಿಕ ವ್ಯಂಜನಗಳು (Laterals)',
+                    'ಅನುನಾಸಿಕ ವ್ಯಂಜನಗಳು (Nasals)',
+                    'ಸ್ಪರ್ಶ ವ್ಯಂಜನಗಳು (Stops)'
+                ],
+                correct: 1,
+                hint: '"ಪಾರ್ಶ್ವ" ಎಂದರೆ ಪಕ್ಕ ಅಥವಾ ಬದಿ. ನಾಲಿಗೆಯ ಪಕ್ಕದಿಂದ ಗಾಳಿ ಹಾದುಹೋಗುತ್ತದೆ.',
+                explanation: '"ಲ" ಮತ್ತು "ಳ" ಉಚ್ಚರಿಸುವಾಗ ನಾಲಿಗೆಯ ತುದಿ ಮೇಲ್ಭಾಗವನ್ನು ತಾಗಿದರೂ, ಉಸಿರು ನಾಲಿಗೆಯ ಎರಡೂ ಪಕ್ಕಗಳಿಂದ (ಪಾರ್ಶ್ವಗಳಿಂದ) ಹೊರಬರುತ್ತದೆ. ಆದ್ದರಿಂದ ಇವುಗಳನ್ನು "ಪಾರ್ಶ್ವಿಕ" (Laterals) ಎನ್ನುತ್ತಾರೆ. "ರ" ಅಕ್ಷರವನ್ನು "ಕಂಪಿತ" (Trill) ಎನ್ನುತ್ತಾರೆ.',
+                trick: 'ಲ, ಳ = ಪಾರ್ಶ್ವಿಕ (ಪಕ್ಕದಿಂದ ಗಾಳಿ) | ರ = ಕಂಪಿತ (ನಾಲಿಗೆ ತುದಿ ಕಂಪನ).'
+            },
+            {
+                id: 12,
+                topic: 'vyanjana',
+                topicName: 'ವರ್ಗೀಯ ಮತ್ತು ಅವರ್ಗೀಯ ವ್ಯಂಜನಗಳು',
+                examTag: 'FDA / SDA',
+                typeTag: 'ಗುಂಪಿಗೆ ಸೇರದ ಪದ',
+                q: 'ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಗುಂಪಿಗೆ ಸೇರದ (Odd one out) ಅಕ್ಷರಗಳ ಜೋಡಿಯನ್ನು ಗುರುತಿಸಿ:',
+                options: [
+                    'ಕ - ಗ (ಕ-ವರ್ಗದ ಅಲ್ಪಪ್ರಾಣಗಳು)',
+                    'ಚ - ಜ (ಚ-ವರ್ಗದ ಅಲ್ಪಪ್ರಾಣಗಳು)',
+                    'ಟ - ಢ (ಟ-ವರ್ಗದ ಅಲ್ಪಪ್ರಾಣಗಳು)',
+                    'ಪ - ಬ (ಪ-ವರ್ಗದ ಅಲ್ಪಪ್ರಾಣಗಳು)'
+                ],
+                correct: 2,
+                hint: 'ಟ-ವರ್ಗದ ಅಲ್ಪಪ್ರಾಣಗಳು ಟ ಮತ್ತು ಡ ಆಗಿರಬೇಕು, ಆದರೆ ಇಲ್ಲಿ "ಢ" (ಮಹಾಪ್ರಾಣ) ನೀಡಲಾಗಿದೆ.',
+                explanation: 'ಪ್ರತಿ ವರ್ಗದ 1 ಮತ್ತು 3ನೇ ಅಕ್ಷರಗಳು ಅಲ್ಪಪ್ರಾಣಗಳಾಗಿವೆ: ಕ-ಗ, ಚ-ಜ, ಟ-ಡ, ತ-ದ, ಪ-ಬ. ಆದರೆ ಆಯ್ಕೆ 3 ರಲ್ಲಿ "ಢ" ನೀಡಲಾಗಿದ್ದು ಅದು 4ನೇ ಸಾಲಿನ ಮಹಾಪ್ರಾಣಾಕ್ಷರವಾಗಿದೆ.',
+                trick: 'ಟ-ವರ್ಗ: ಟ(1), ಠ(2), ಡ(3), ಢ(4), ಣ(5). ಆದ್ದರಿಂದ ಟ-ಡ ಅಲ್ಪಪ್ರಾಣಗಳು.'
+            },
+            {
+                id: 13,
+                topic: 'vyanjana',
+                topicName: 'ವರ್ಗೀಯ ಮತ್ತು ಅವರ್ಗೀಯ ವ್ಯಂಜನಗಳು',
+                examTag: 'KPSC / TET',
+                typeTag: 'ಅನುನಾಸಿಕ ವಿಶ್ಲೇಷಣೆ',
+                q: 'ಚ-ವರ್ಗ ಮತ್ತು ಕ-ವರ್ಗಗಳ ಅನುನಾಸಿಕ ಅಕ್ಷರಗಳನ್ನು ಕ್ರಮವಾಗಿ ಗುರುತಿಸಿ (ಅನೇಕ ವಿದ್ಯಾರ್ಥಿಗಳು ಗೊಂದಲಕ್ಕೊಳಗಾಗುವ ಪ್ರಶ್ನೆ!):',
+                options: [
+                    'ಚ-ವರ್ಗ: ಙ | ಕ-ವರ್ಗ: ಞ',
+                    'ಚ-ವರ್ಗ: ಞ | ಕ-ವರ್ಗ: ಙ',
+                    'ಚ-ವರ್ಗ: ಣ | ಕ-ವರ್ಗ: ಙ',
+                    'ಚ-ವರ್ಗ: ನ | ಕ-ವರ್ಗ: ಮ'
+                ],
+                correct: 1,
+                hint: 'ಕ ಖ ಗ ಘ ಙ (ಕ-ವರ್ಗ) ಮತ್ತು ಚ ಛ ಜ ಝ ಞ (ಚ-ವರ್ಗ). ಪ್ರಶ್ನೆಯಲ್ಲಿ ಮೊದಲು ಚ-ವರ್ಗ ಕೇಳಲಾಗಿದೆ!',
+                explanation: 'ಕ-ವರ್ಗದ ಕೊನೆಯ ಅನುನಾಸಿಕ "ಙ" (ಞ್ಞಂಗ) ಮತ್ತು ಚ-ವರ್ಗದ ಕೊನೆಯ ಅನುನಾಸಿಕ "ಞ" (ಞಾನ/ಪಂಚ). ಪ್ರಶ್ನೆಯಲ್ಲಿ "ಚ-ವರ್ಗ ಮತ್ತು ಕ-ವರ್ಗ ಕ್ರಮವಾಗಿ" ಎಂದು ಕೇಳಿರುವುದರಿಂದ "ಞ ಮತ್ತು ಙ" ಸರಿಯಾದ ಉತ್ತರ.',
+                trick: 'ಕ-ವರ್ಗ = ಙ ("ಇ" ಹೋಲುವ ರೂಪ) | ಚ-ವರ್ಗ = ಞ ("ಇ" ಗೆ ಕೊಂಬು ಸುತ್ತಿದ ರೂಪ).'
+            },
+
+            // ================= 3. ARTICULATION PLACES - SVG VISUALS (6 Questions) =================
+            {
+                id: 14,
+                topic: 'articulation',
+                topicName: 'ಉಚ್ಚಾರಣಾ ಸ್ಥಾನಗಳು (ಧ್ವನ್ಯಂಗಗಳು)',
+                examTag: 'KAS / FDA Visual',
+                typeTag: 'ಚಿತ್ರಾತ್ಮಕ ಧ್ವನ್ಯಂಗ ಪ್ರಶ್ನೆ',
+                visualHTML: getVocalTractSVG('talavya', 'ಚಿತ್ರದಲ್ಲಿ ಬಾಯಿಯ ಮೇಲ್ಭಾಗದ ಕಠಿಣ ದವಡೆಯನ್ನು (ತಾಲು / Hard Palate) ಹಳದಿ ಬಣ್ಣದ ಮಿಂಚುವ ಬಿಂದುವಿನಿಂದ ಗುರುತಿಸಲಾಗಿದೆ.'),
+                q: 'ಮೇಲಿನ ಧ್ವನ್ಯಂಗ ನಕ್ಷೆಯಲ್ಲಿ ಗುರುತಿಸಲಾದ "ತಾಲು" (ದವಡೆ) ಸ್ಥಾನದಿಂದ ಉತ್ಪತ್ತಿಯಾಗುವ "ತಾಲವ್ಯ" ಅಕ್ಷರಗಳ ಗುಂಪು ಯಾವುದು?',
+                options: [
+                    'ಅ, ಆ, ಕ, ಖ, ಗ, ಘ, ಙ, ಹ, ಃ',
+                    'ಇ, ಈ, ಚ, ಛ, ಜ, ಝ, ಞ, ಯ, ಶ',
+                    'ಋ, ಟ, ಠ, ಡ, ಢ, ಣ, ರ, ಷ, ಳ',
+                    'ಉ, ಊ, ಪ, ಫ, ಬ, ಭ, ಮ'
+                ],
+                correct: 1,
+                hint: 'ಸಂಸ್ಕೃತ ಸೂತ್ರ: "ಇಚುಯಶಾನಾಂ ತಾಲುಃ" — ಇ, ಈ, ಚ-ವರ್ಗ, ಯ ಮತ್ತು ಶ.',
+                explanation: 'ನಾಲಿಗೆಯ ಮಧ್ಯಭಾಗವು ಮೇಲಿನ ದವಡೆಯನ್ನು (ತಾಲು) ಸ್ಪರ್ಶಿಸಿದಾಗ "ಇ, ಈ, ಚ, ಛ, ಜ, ಝ, ಞ, ಯ, ಶ" ಎಂಬ 9 ಅಕ್ಷರಗಳು ಹುಟ್ಟುತ್ತವೆ. ಇವಕ್ಕೆ ತಾಲವ್ಯ ವರ್ಣಗಳೆನ್ನುವರು.',
+                trick: 'ಸೂತ್ರ: "ಇ-ಚು-ಯ-ಶ ತಾಲು" -> ಇ, ಈ + ಚ-ವರ್ಗ (5) + ಯ + ಶ.'
+            },
+            {
+                id: 15,
+                topic: 'articulation',
+                topicName: 'ಉಚ್ಚಾರಣಾ ಸ್ಥಾನಗಳು (ಧ್ವನ್ಯಂಗಗಳು)',
+                examTag: 'KAS / PSI Most Asked',
+                typeTag: 'ಚಿತ್ರಾತ್ಮಕ ಧ್ವನ್ಯಂಗ ಪ್ರಶ್ನೆ',
+                visualHTML: getVocalTractSVG('dantoshthya', 'ಚಿತ್ರದಲ್ಲಿ ಮೇಲಿನ ಹಲ್ಲುಗಳು ಮತ್ತು ಕೆಳಗಿನ ತುಟಿ ಸಂಧಿಸುವ ಭಾಗವನ್ನು ನೇರಳೆ ಬಣ್ಣದ ಬಿಂದುವಿನಿಂದ ಗುರುತಿಸಲಾಗಿದೆ.'),
+                q: 'ಮೇಲಿನ ಚಿತ್ರದಲ್ಲಿ ತೋರಿಸಿರುವಂತೆ "ದಂತ" (ಮೇಲಿನ ಹಲ್ಲು) ಮತ್ತು "ಓಷ್ಠ" (ಕೆಳಗಿನ ತುಟಿ) ಇವೆರಡರ ಸಹಾಯದಿಂದ ಉಚ್ಚರಿಸಲ್ಪಡುವ ಏಕೈಕ "ದಂತೋಷ್ಠ್ಯ" ಅಕ್ಷರ ಯಾವುದು?',
+                options: [
+                    'ಪ',
+                    'ವ',
+                    'ಲ',
+                    'ಯ'
+                ],
+                correct: 1,
+                hint: 'ಸೂತ್ರ: "ವಕಾರಸ್ಯ ದಂತೋಷ್ಠಮ್".',
+                explanation: 'ಕನ್ನಡ ವರ್ಣಮಾಲೆಯಲ್ಲಿ ಮೇಲಿನ ಹಲ್ಲುಗಳು ಕೆಳಗಿನ ತುಟಿಯನ್ನು ತಾಗುವುದರಿಂದ ಹುಟ್ಟುವ ಏಕೈಕ ದಂತೋಷ್ಠ್ಯ ಅಕ್ಷರ "ವ". ಇದು KAS, FDA, PSI ಮತ್ತು TET ಪರೀಕ್ಷೆಗಳಲ್ಲಿ ಅತಿ ಹೆಚ್ಚು ಬಾರಿ ಕೇಳಲಾದ ಪ್ರಶ್ನೆಯಾಗಿದೆ!',
+                trick: 'ದಂತ (ಹಲ್ಲು) + ಓಷ್ಠ (ತುಟಿ) = ದಂತೋಷ್ಠ್ಯ -> "ವ" ಮಾತ್ರ!'
+            },
+            {
+                id: 16,
+                topic: 'articulation',
+                topicName: 'ಉಚ್ಚಾರಣಾ ಸ್ಥಾನಗಳು (ಧ್ವನ್ಯಂಗಗಳು)',
+                examTag: 'UPSC / KAS Prelims',
+                typeTag: 'ಚಿತ್ರಾತ್ಮಕ ಧ್ವನ್ಯಂಗ ಪ್ರಶ್ನೆ',
+                visualHTML: getVocalTractSVG('murdhanya', 'ಚಿತ್ರದಲ್ಲಿ ನಾಲಿಗೆಯ ತುದಿ ಹಿಂದಕ್ಕೆ ಮಡಚಿ ಬಾಯಿಯ ಮೇಲ್ಛಾವಣಿಯನ್ನು (ಮೂರ್ಧನ್ / ಅಂಗುಳ) ತಾಗುವ ಸ್ಥಳವನ್ನು ಹಸಿರು ಬಣ್ಣದಿಂದ ಗುರುತಿಸಲಾಗಿದೆ.'),
+                q: 'ಮೇಲಿನ ಚಿತ್ರದಲ್ಲಿ ಗುರುತಿಸಲಾದ "ಮೂರ್ಧನ್ಯ" (ಅಂಗುಳ) ಸ್ಥಾನದಲ್ಲಿ ಹುಟ್ಟುವ ಅಕ್ಷರಗಳ ಸರಿಯಾದ ಗುಂಪನ್ನು ಆರಿಸಿ:',
+                options: [
+                    'ತ, ಥ, ದ, ಧ, ನ, ಲ, ಸ',
+                    'ಋ, ಟ, ಠ, ಡ, ಢ, ಣ, ರ, ಷ, ಳ',
+                    'ಅ, ಆ, ಕ, ಖ, ಗ, ಘ, ಙ, ಹ',
+                    'ಎ, ಏ, ಐ, ಒ, ಓ, ಔ'
+                ],
+                correct: 1,
+                hint: 'ಸೂತ್ರ: "ಋಟುರಷಾಣಾಂ ಮೂರ್ಧಾ" ಜೊತೆಗೆ ದ್ರಾವಿಡ ವಿಶೇಷ ಅಕ್ಷರ "ಳ".',
+                explanation: 'ನಾಲಿಗೆಯ ತುದಿಯು ಮೇಲ್ಮುಖವಾಗಿ ಮಡಚಿ ಮೇಲಂಗುಳನ್ನು (ಮೂರ್ಧ) ಸ್ಪರ್ಶಿಸಿದಾಗ "ಋ, ಟ, ಠ, ಡ, ಢ, ಣ, ರ, ಷ, ಳ" ಎಂಬ ಅಕ್ಷರಗಳು ಉತ್ಪತ್ತಿಯಾಗುತ್ತವೆ. ಇವಕ್ಕೆ ಮೂರ್ಧನ್ಯ ವರ್ಣಗಳೆನ್ನುವರು.',
+                trick: 'ಸೂತ್ರ: "ಋ-ಟು-ರ-ಷ-ಳ ಮೂರ್ಧನ್ಯ" -> ಋ + ಟ-ವರ್ಗ + ರ, ಷ, ಳ.'
+            },
+            {
+                id: 17,
+                topic: 'articulation',
+                topicName: 'ಉಚ್ಚಾರಣಾ ಸ್ಥಾನಗಳು (ಧ್ವನ್ಯಂಗಗಳು)',
+                examTag: 'FDA / SDA / PDO',
+                typeTag: 'ಹೊಂದಿಸಿ ಬರೆಯಿರಿ',
+                q: 'ಕೆಳಗಿನ ಸ್ವರಗಳನ್ನು ಅವುಗಳ ಉತ್ಪತ್ತಿ ಸ್ಥಾನಗಳೊಂದಿಗೆ ಸರಿಯಾಗಿ ಹೊಂದಿಸಿ:\n1) ಎ, ಏ, ಐ  —  ಅ) ಕಂಠೋಷ್ಠ್ಯ\n2) ಒ, ಓ, ಔ  —  ಆ) ಕಂಠತಾಲವ್ಯ\n3) ಉ, ಊ     —  ಇ) ಕಂಠ್ಯ\n4) ಅ, ಆ     —  ಈ) ಓಷ್ಠ್ಯ',
+                options: [
+                    '1-ಆ, 2-ಅ, 3-ಈ, 4-ಇ',
+                    '1-ಅ, 2-ಆ, 3-ಇ, 4-ಈ',
+                    '1-ಆ, 2-ಈ, 3-ಅ, 4-ಇ',
+                    '1-ಇ, 2-ಆ, 3-ಈ, 4-ಅ'
+                ],
+                correct: 0,
+                hint: 'ಎ,ಏ,ಐ = ಅ(ಕಂಠ)+ಇ(ತಾಲು) ಆದ್ದರಿಂದ ಕಂಠತಾಲವ್ಯ. ಒ,ಓ,ಔ = ಅ(ಕಂಠ)+ಉ(ಓಷ್ಠ) ಆದ್ದರಿಂದ ಕಂಠೋಷ್ಠ್ಯ.',
+                explanation: '1) ಎ, ಏ, ಐ -> ಕಂಠತಾಲವ್ಯ (ಗಂಟಲು ಮತ್ತು ದವಡೆ)\n2) ಒ, ಓ, ಔ -> ಕಂಠೋಷ್ಠ್ಯ (ಗಂಟಲು ಮತ್ತು ತುಟಿ)\n3) ಉ, ಊ -> ಓಷ್ಠ್ಯ (ತುಟಿಗಳು)\n4) ಅ, ಆ -> ಕಂಠ್ಯ (ಗಂಟಲು).',
+                trick: 'ಎ,ಏ,ಐ = ಕಂಠತಾಲವ್ಯ | ಒ,ಓ,ಔ = ಕಂಠೋಷ್ಠ್ಯ.'
+            },
+            {
+                id: 18,
+                topic: 'articulation',
+                topicName: 'ಉಚ್ಚಾರಣಾ ಸ್ಥಾನಗಳು (ಧ್ವನ್ಯಂಗಗಳು)',
+                examTag: 'PSI / TET',
+                typeTag: 'ಮೂಲ ಸೂತ್ರ',
+                q: 'ಕನ್ನಡದ ಮೂರು "ಶ, ಷ, ಸ" ಅಕ್ಷರಗಳ ಉಚ್ಚಾರಣಾ ಸ್ಥಾನಗಳ ಸರಿಯಾದ ಕ್ರಮ ಯಾವುದು?',
+                options: [
+                    'ಶ - ದಂತ್ಯ | ಷ - ಮೂರ್ಧನ್ಯ | ಸ - ತಾಲವ್ಯ',
+                    'ಶ - ತಾಲವ್ಯ | ಷ - ಮೂರ್ಧನ್ಯ | ಸ - ದಂತ್ಯ',
+                    'ಶ - ಕಂಠ್ಯ | ಷ - ತಾಲವ್ಯ | ಸ - ದಂತ್ಯ',
+                    'ಶ - ಮೂರ್ಧನ್ಯ | ಷ - ತಾಲವ್ಯ | ಸ - ಓಷ್ಠ್ಯ'
+                ],
+                correct: 1,
+                hint: 'ಶ (ಚ-ವರ್ಗದ ಜೊತೆ ತಾಲವ್ಯ), ಷ (ಟ-ವರ್ಗದ ಜೊತೆ ಮೂರ್ಧನ್ಯ), ಸ (ತ-ವರ್ಗದ ಜೊತೆ ದಂತ್ಯ).',
+                explanation: 'ಉಚ್ಚಾರಣಾ ದೋಷಗಳನ್ನು ತಪ್ಪಿಸಲು ಈ ಕ್ರಮ ಅತಿ ಮುಖ್ಯ:\n• "ಶ" (ಶಾಂತಿ) -> ತಾಲವ್ಯ (ದವಡೆ)\n• "ಷ" (ಕಷ್ಟ/ಷಣ್ಮುಖ) -> ಮೂರ್ಧನ್ಯ (ಮೇಲಂಗುಳ)\n• "ಸ" (ಸರಸ್ವತಿ) -> ದಂತ್ಯ (ಹಲ್ಲು).',
+                trick: 'ಶ-ಷ-ಸ = ತಾ-ಮೂ-ದಂ (ತಾಲವ್ಯ - ಮೂರ್ಧನ್ಯ - ದಂತ್ಯ).'
+            },
+            {
+                id: 19,
+                topic: 'articulation',
+                topicName: 'ಉಚ್ಚಾರಣಾ ಸ್ಥಾನಗಳು (ಧ್ವನ್ಯಂಗಗಳು)',
+                examTag: 'KAS / Group-C',
+                typeTag: 'ಚಿತ್ರಾತ್ಮಕ ಧ್ವನ್ಯಂಗ ಪ್ರಶ್ನೆ',
+                visualHTML: getVocalTractSVG('kanthya', 'ಚಿತ್ರದಲ್ಲಿ ಧ್ವನಿಪೆಟ್ಟಿಗೆಯಿರುವ ಗಂಟಲಿನ (ಕಂಠ / Glottis & Velum) ಭಾಗವನ್ನು ಕೆಂಪು ಬಣ್ಣದ ಬಿಂದುವಿನಿಂದ ಗುರುತಿಸಲಾಗಿದೆ.'),
+                q: 'ಮೇಲಿನ ಚಿತ್ರದಲ್ಲಿ ತೋರಿಸಲಾದ "ಕಂಠ" (ಗಂಟಲು) ಸ್ಥಾನದಿಂದ ಉಚ್ಚಾರವಾಗುವ "ಹ" ಮತ್ತು "ಃ" (ವಿಸರ್ಗ) ಅಕ್ಷರಗಳ ಜೊತೆಗೆ ಇನ್ನಾವ ವರ್ಗವು ಕಂಠ್ಯವಾಗಿದೆ?',
+                options: [
+                    'ಚ-ವರ್ಗ ಮತ್ತು ಇ, ಈ',
+                    'ಕ-ವರ್ಗ (ಕ, ಖ, ಗ, ಘ, ಙ) ಮತ್ತು ಅ, ಆ',
+                    'ತ-ವರ್ಗ ಮತ್ತು ಲ, ಸ',
+                    'ಪ-ವರ್ಗ ಮತ್ತು ಉ, ಊ'
+                ],
+                correct: 1,
+                hint: 'ಸೂತ್ರ: "ಅಕುಹವಿಸರ್ಜನೀಯಾನಾಂ ಕಂಠಃ" (ಅ, ಆ, ಕ-ವರ್ಗ, ಹ ಮತ್ತು ವಿಸರ್ಗ).',
+                explanation: 'ಗಂಟಲಿನಲ್ಲಿ (ಕಂಠದಲ್ಲಿ) ನೇರವಾಗಿ ಉಸಿರು ತಡೆದು ಹುಟ್ಟುವ ವರ್ಣಗಳು: ಅ, ಆ (ಸ್ವರಗಳು), ಕ, ಖ, ಗ, ಘ, ಙ (ಕ-ವರ್ಗ), ಹ (ಊಷ್ಮ) ಮತ್ತು ಃ (ವಿಸರ್ಗ).',
+                trick: 'ಸೂತ್ರ: "ಅ-ಕು-ಹ-ವಿಸರ್ಗ ಕಂಠ್ಯ".'
+            },
+
+            // ================= 4. YOGAVAHA, GUNITAKSHARA & OTTAKSHARA (6 Questions) =================
+            {
+                id: 20,
+                topic: 'ottakshara',
+                topicName: 'ಯೋಗವಾಹ, ಕಾಗುಣಿತ ಮತ್ತು ಒತ್ತಕ್ಷರ',
+                examTag: 'KAS / FDA / PSI',
+                typeTag: 'ಸಂಯುಕ್ತಾಕ್ಷರ ವಿಶ್ಲೇಷಣೆ',
+                q: '"ವಿಜ್ಞಾನ" ಪದದಲ್ಲಿರುವ "ಜ್ಞ" ಮತ್ತು "ಕ್ಷಮೆ" ಪದದಲ್ಲಿರುವ "ಕ್ಷ" ಎಂಬ ವಿಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರಗಳ ಸರಿಯಾದ ಅಂಗವಿಭಜನೆ ಯಾವುದು?',
+                options: [
+                    'ಜ್ಞ = ಗ್ + ನ್ಯ + ಅ  |  ಕ್ಷ = ಕ್ + ಶ್ + ಅ',
+                    'ಜ್ಞ = ಜ್ + ಞ್ + ಅ  |  ಕ್ಷ = ಕ್ + ಷ್ + ಅ',
+                    'ಜ್ಞ = ಜ್ + ನ + ಅ  |  ಕ್ಷ = ಖ್ + ಷ್ + ಅ',
+                    'ಜ್ಞ = ದ್ + ಞ್ + ಅ  |  ಕ್ಷ = ಕ್ + ಸ್ + ಅ'
+                ],
+                correct: 1,
+                hint: '"ಜ್ಞ" ದಲ್ಲಿ ಚ-ವರ್ಗದ ಜ್ ಮತ್ತು ಅದೇ ವರ್ಗದ ಅನುನಾಸಿಕ ಞ್ ಇದೆ. "ಕ್ಷ" ದಲ್ಲಿ ಕ್ ಮತ್ತು ಮೂರ್ಧನ್ಯ ಷ್ ಇದೆ.',
+                explanation: 'ಸಾಮಾನ್ಯವಾಗಿ ಜನರು "ಜ್ಞ" ವನ್ನು "ಗ್ನ್ಯ" ಎಂದು ಉಚ್ಚರಿಸಿದರೂ, ವ್ಯಾಕರಣಬದ್ಧವಾಗಿ ಅದು ಜ್ + ಞ್ + ಅ = ಜ್ಞ ಆಗಿದೆ. ಹಾಗೆಯೇ ಕ್ + ಷ್ + ಅ = ಕ್ಷ ಆಗಿದೆ. ಇವೆರಡೂ ಮೂಲಾಕ್ಷರಗಳಲ್ಲ, ವಿಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರಗಳು.',
+                trick: 'ಜ್ಞ = ಜ್ + ಞ್ + ಅ | ಕ್ಷ = ಕ್ + ಷ್ + ಅ (ನೆನಪಿಡಿ: ಶ್ ಅಲ್ಲ, ಷ್!).'
+            },
+            {
+                id: 21,
+                topic: 'ottakshara',
+                topicName: 'ಯೋಗವಾಹ, ಕಾಗುಣಿತ ಮತ್ತು ಒತ್ತಕ್ಷರ',
+                examTag: 'FDA / SDA / TET',
+                typeTag: 'ಅರ್ಕಾವತ್ತು ನಿಯಮ',
+                q: '"ಸೂರ್ಯ" ಮತ್ತು "ಪ್ರೇಮ" ಪದಗಳಲ್ಲಿರುವ "ರ್ಯ" ಮತ್ತು "ಪ್ರೇ" ಒತ್ತಕ್ಷರಗಳಲ್ಲಿ ಧ್ವನಿಗಳ ಸರಿಯಾದ ಅನುಕ್ರಮ ಯಾವುದು?',
+                options: [
+                    'ರ್ಯ = ಯ್ + ರ್ + ಅ  |  ಪ್ರೇ = ಪ್ + ರ್ + ಏ',
+                    'ರ್ಯ = ರ್ + ಯ್ + ಅ  |  ಪ್ರೇ = ಪ್ + ರ್ + ಏ',
+                    'ರ್ಯ = ರ್ + ಯ್ + ಅ  |  ಪ್ರೇ = ರ್ + ಪ್ + ಏ',
+                    'ರ್ಯ = ಯ್ + ರ್ + ಆ  |  ಪ್ರೇ = ಪ್ + ರ್ + ಎ'
+                ],
+                correct: 1,
+                hint: 'ಅರ್ಕಾವತ್ತು (ರ್ಯ) ಬಂದಾಗ ರೇಫ (ರ್) ಮೊದಲು ಉಚ್ಚಾರವಾಗುತ್ತದೆ; ರ-ಒತ್ತು (ಪ್ರೇ) ಬಂದಾಗ ರೇಫ ಎರಡನೆಯದಾಗಿ ಉಚ್ಚಾರವಾಗುತ್ತದೆ.',
+                explanation: '"ಸೂರ್ಯ" (ಸೂ + ರ್ + ಯ್ + ಅ) ಪದದಲ್ಲಿ ರೇಫ (ರ್) ಮೊದಲು ಬಂದು ನಂತರ ಯ-ಕಾರ ಬರುತ್ತದೆ (ಇದನ್ನು ಅರ್ಕಾವತ್ತು ಎನ್ನುವರು). ಆದರೆ "ಪ್ರೇಮ" (ಪ್ + ರ್ + ಏ + ಮ್ + ಅ) ಪದದಲ್ಲಿ ಪ-ಕಾರ ಮೊದಲು ಬಂದು ನಂತರ ರೇಫ ಬರುತ್ತದೆ.',
+                trick: 'ಅರ್ಕಾವತ್ತು (ರ್ಯ) = ರ್ ಮೊದಲು (ರ್+ಯ್+ಅ) | ಕೆಳಗಿನ ರ-ಒತ್ತು (ಪ್ರ) = ರ್ ನಂತರ (ಪ್+ರ್+ಅ).'
+            },
+            {
+                id: 22,
+                topic: 'ottakshara',
+                topicName: 'ಯೋಗವಾಹ, ಕಾಗುಣಿತ ಮತ್ತು ಒತ್ತಕ್ಷರ',
+                examTag: 'KAS / PDO',
+                typeTag: 'ಗುಣಿತಾಕ್ಷರ ನಿಯಮ',
+                q: 'ಆಧುನಿಕ ಕನ್ನಡ ವ್ಯಾಕರಣದ ಪ್ರಕಾರ ಒಂದು ವ್ಯಂಜನಕ್ಕೆ ಎಲ್ಲಾ ಸ್ವರಗಳು ಸೇರಿದಾಗ ಉಂಟಾಗುವ "ಗುಣಿತಾಕ್ಷರಗಳ" ನಿಖರ ಸಂಖ್ಯೆ ಎಷ್ಟು ಮತ್ತು ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಗುಣಿತಾಕ್ಷರವಲ್ಲ?',
+                options: [
+                    '15 ಗುಣಿತಾಕ್ಷರಗಳು — "ಕೈ" ಗುಣಿತಾಕ್ಷರವಲ್ಲ',
+                    '13 ಗುಣಿತಾಕ್ಷರಗಳು — "ಕಂ" ಮತ್ತು "ಕಃ" ಗುಣಿತಾಕ್ಷರಗಳಲ್ಲ',
+                    '14 ಗುಣಿತಾಕ್ಷರಗಳು — "ಕೃ" ಗುಣಿತಾಕ್ಷರವಲ್ಲ',
+                    '12 ಗುಣಿತಾಕ್ಷರಗಳು — "ಕೌ" ಗುಣಿತಾಕ್ಷರವಲ್ಲ'
+                ],
+                correct: 1,
+                hint: 'ವ್ಯಂಜನ + ಸ್ವರ = ಗುಣಿತಾಕ್ಷರ. ಸ್ವರಗಳು 13 ಇರುವುದರಿಂದ ಗುಣಿತಾಕ್ಷರಗಳೂ 13. "ಂ" ಮತ್ತು "ಃ" ಯೋಗವಾಹಗಳು!',
+                explanation: 'ವ್ಯಂಜನಕ್ಕೆ ಸ್ವರ ಸೇರಿದಾಗ ಮಾತ್ರ ಗುಣಿತಾಕ್ಷರ ಹುಟ್ಟುತ್ತದೆ. ಕನ್ನಡದಲ್ಲಿ 13 ಸ್ವರಗಳಿರುವುದರಿಂದ ಪ್ರತಿ ವ್ಯಂಜನಕ್ಕೂ 13 ಗುಣಿತಾಕ್ಷರಗಳಿರುತ್ತವೆ (ಕ ರಿಂದ ಕೌ ವರೆಗೆ). "ಕಂ" ಮತ್ತು "ಕಃ" ಗಳಲ್ಲಿ ಯೋಗವಾಹಗಳು ಸೇರಿರುವುದರಿಂದ ಅವು ಕಟ್ಟುನಿಟ್ಟಾದ ಅರ್ಥದಲ್ಲಿ ಗುಣಿತಾಕ್ಷರಗಳಲ್ಲ.',
+                trick: 'ಗುಣಿತಾಕ್ಷರ = ವ್ಯಂಜನ + 13 ಸ್ವರಗಳು (ಕಂ, ಕಃ ಯೋಗವಾಹ ಸೇರ್ಪಡೆಗಳು).'
+            },
+            {
+                id: 23,
+                topic: 'ottakshara',
+                topicName: 'ಯೋಗವಾಹ, ಕಾಗುಣಿತ ಮತ್ತು ಒತ್ತಕ್ಷರ',
+                examTag: 'PSI / Group-C',
+                typeTag: 'ಅನುಸ್ವಾರದ ಧ್ವನಿ ಬದಲಾವಣೆ',
+                q: '"ಪಂಚಾಂಗ" ಎಂಬ ಪದದಲ್ಲಿರುವ ಎರಡು ಅನುಸ್ವಾರಗಳು (ಸೊನ್ನೆಗಳು) ಉಚ್ಚಾರಣೆಯಲ್ಲಿ ಯಾವ ಎರಡು ಅನುನಾಸಿಕ ವ್ಯಂಜನಗಳಂತೆ ಧ್ವನಿಸುತ್ತವೆ?',
+                options: [
+                    'ಮೊದಲ ಸೊನ್ನೆ "ನ್" ನಂತೆ, ಎರಡನೇ ಸೊನ್ನೆ "ಮ್" ನಂತೆ',
+                    'ಮೊದಲ ಸೊನ್ನೆ "ಞ್" (ಚ-ವರ್ಗ) ನಂತೆ, ಎರಡನೇ ಸೊನ್ನೆ "ಙ್" (ಕ-ವರ್ಗ) ನಂತೆ',
+                    'ಎರಡೂ ಸೊನ್ನೆಗಳು "ಮ್" ನಂತೆ',
+                    'ಮೊದಲ ಸೊನ್ನೆ "ಣ್" ನಂತೆ, ಎರಡನೇ ಸೊನ್ನೆ "ನ್" ನಂತೆ'
+                ],
+                correct: 1,
+                hint: 'ಸೊನ್ನೆಯ ಮುಂದೆ "ಚ" ಇರುವುದರಿಂದ ಮೊದಲನೆಯದು ಚ-ವರ್ಗದ ಅನುನಾಸಿಕ; ಎರಡನೇ ಸೊನ್ನೆಯ ಮುಂದೆ "ಗ" ಇರುವುದರಿಂದ ಕ-ವರ್ಗದ ಅನುನಾಸಿಕ.',
+                explanation: 'ವ್ಯಾಕರಣ ನಿಯಮದಂತೆ ಅನುಸ್ವಾರದ (ಂ) ಮುಂದೆ ಯಾವ ವರ್ಗದ ವ್ಯಂಜನ ಬರುತ್ತದೆಯೋ, ಆ ಅನುಸ್ವಾರವು ಅದೇ ವರ್ಗದ ಅನುನಾಸಿಕದಂತೆ ಉಚ್ಚರಿಸಲ್ಪಡುತ್ತದೆ. ಪಂ+ಚ (ಚ-ವರ್ಗ -> ಞ್) ಮತ್ತು ಅಂ+ಗ (ಕ-ವರ್ಗ -> ಙ್).',
+                trick: 'ಸೊನ್ನೆಯ ಮುಂದಿನ ಅಕ್ಷರದ ವರ್ಗ ನೋಡಿ: ಚ ಮುಂದೆ ಞ್ | ಗ ಮುಂದೆ ಙ್ | ಟ ಮುಂದೆ ಣ್ | ತ ಮುಂದೆ ನ್ | ಪ ಮುಂದೆ ಮ್.'
+            },
+            {
+                id: 24,
+                topic: 'ottakshara',
+                topicName: 'ಯೋಗವಾಹ, ಕಾಗುಣಿತ ಮತ್ತು ಒತ್ತಕ್ಷರ',
+                examTag: 'FDA / TET',
+                typeTag: 'ಸಜಾತೀಯ vs ವಿಜಾತೀಯ ಒತ್ತಕ್ಷರ',
+                q: 'ಕೆಳಗಿನ ಪದಗಳಲ್ಲಿ ಕೇವಲ "ಸಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರಗಳನ್ನು" (ದ್ವಿತ್ವಾಕ್ಷರಗಳನ್ನು) ಮಾತ್ರ ಒಳಗೊಂಡಿರುವ ಪದಗಳ ಗುಂಪು ಯಾವುದು?',
+                options: [
+                    'ಅಕ್ಕ, ಅಮ್ಮ, ಹಗ್ಗ, ಕತ್ತೆ',
+                    'ಭಕ್ತಿ, ಶಕ್ತಿ, ಮುಕ್ತಿ, ಯುಕ್ತಿ',
+                    'ಸೂರ್ಯ, ಕಾರ್ಯ, ಧೈರ್ಯ, ಆರ್ಯ',
+                    'ಅಪ್ಪ, ಶಾಸ್ತ್ರ, ಕನ್ನಡ, ಲಕ್ಷ್ಮಿ'
+                ],
+                correct: 0,
+                hint: 'ಒಂದೇ ಜಾತಿಯ ವ್ಯಂಜನಕ್ಕೆ ಅದೇ ವ್ಯಂಜನದ ಒತ್ತು ಬಂದಿರುವ ಪದಗಳು (ಕ್+ಕ್, ಮ್+ಮ್, ಗ್+ಗ್, ತ್+ತ್).',
+                explanation: 'ಒಂದೇ ಜಾತಿಯ ಎರಡು ವ್ಯಂಜನಗಳು ಸೇರಿ ಆಗುವ ಒತ್ತಕ್ಷರವನ್ನು "ಸಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರ" ಅಥವಾ "ದ್ವಿತ್ವ" ಎನ್ನುವರು. ಉದಾ: ಅಕ್ಕ (ಕ್+ಕ್+ಅ), ಅಮ್ಮ (ಮ್+ಮ್+ಅ), ಹಗ್ಗ (ಗ್+ಗ್+ಅ), ಕತ್ತೆ (ತ್+ತ್+ಎ).',
+                trick: 'ತನ್ನದೇ ಒತ್ತು = ಸಜಾತೀಯ (ಅಕ್ಕ, ಅಣ್ಣ) | ಬೇರೆ ಅಕ್ಷರದ ಒತ್ತು = ವಿಜಾತೀಯ (ಭಕ್ತಿ, ರತ್ನ).'
+            },
+            {
+                id: 25,
+                topic: 'ottakshara',
+                topicName: 'ಯೋಗವಾಹ, ಕಾಗುಣಿತ ಮತ್ತು ಒತ್ತಕ್ಷರ',
+                examTag: 'KAS / High School TET',
+                typeTag: 'ಸಂಕೀರ್ಣ ಅಂಗವಿಭಜನೆ',
+                q: '"ಲಕ್ಷ್ಮಿ" ಎಂಬ ಪದದಲ್ಲಿರುವ "ಕ್ಷ್ಮಿ" ಎಂಬ ಸಂಯುಕ್ತಾಕ್ಷರದಲ್ಲಿ ಎಷ್ಟು ವ್ಯಂಜನಗಳು ಮತ್ತು ಯಾವ ಸ್ವರ ಅಡಗಿದೆ?',
+                options: [
+                    '2 ವ್ಯಂಜನಗಳು (ಕ್ + ಮ್) ಮತ್ತು "ಇ" ಸ್ವರ',
+                    '3 ವ್ಯಂಜನಗಳು (ಕ್ + ಷ್ + ಮ್) ಮತ್ತು "ಇ" ಸ್ವರ',
+                    '3 ವ್ಯಂಜನಗಳು (ಕ್ + ಶ್ + ಮ್) ಮತ್ತು "ಈ" ಸ್ವರ',
+                    '4 ವ್ಯಂಜನಗಳು (ಲ್ + ಕ್ + ಷ್ + ಮ್) ಮತ್ತು "ಇ" ಸ್ವರ'
+                ],
+                correct: 1,
+                hint: 'ಕ್ಷ = ಕ್ + ಷ್, ಅದಕ್ಕೆ ಮ-ಒತ್ತು (ಮ್) ಮತ್ತು ಗುಡಿಸು (ಇ) ಸೇರಿದೆ.',
+                explanation: '"ಕ್ಷ್ಮಿ" ಎಂಬುದು ಮೂರು ವಿಭಿನ್ನ ವ್ಯಂಜನಗಳು ಮತ್ತು ಒಂದು ಹ್ರಸ್ವಸ್ವರ ಸೇರಿ ನಿರ್ಮಾಣವಾದ ವಿಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರವಾಗಿದೆ: ಕ್ + ಷ್ + ಮ್ + ಇ = ಕ್ಷ್ಮಿ. ಅದೇ ರೀತಿ "ಸ್ತ್ರೀ" = ಸ್ + ತ್ + ರ್ + ಈ.',
+                trick: 'ಕ್ಷ್ಮಿ = ಕ್ + ಷ್ + ಮ್ + ಇ (3 ವ್ಯಂಜನ + 1 ಸ್ವರ).'
+            },
+
+            // ================= 5. SHABDAMANIDARPANA & HALAGANNADA (5 Questions) =================
+            {
+                id: 26,
+                topic: 'shabdamanidarpana',
+                topicName: 'ಶಬ್ದಮಣಿದರ್ಪಣ ಮತ್ತು ಪ್ರಾಚೀನ ವರ್ಣಗಳು',
+                examTag: 'KAS / UPSC / NET',
+                typeTag: 'ಶಬ್ದಮಣಿದರ್ಪಣ ಸೂತ್ರ',
+                q: 'ಕೇಶಿರಾಜನು ತನ್ನ "ಶಬ್ದಮಣಿದರ್ಪಣ" ಗ್ರಂಥದ ಸಂಜ್ಞಾ ಪ್ರಕರಣದಲ್ಲಿ "ಶುದ್ಧಗೆಯೊಳ್ ನಾಲ್ವತ್ತೇಳು ಅಕ್ಷರಂ" ಎಂದು ಹೇಳುವಾಗ ಸಂಸ್ಕೃತದ 52 ಅಕ್ಷರಗಳಿಂದ ಯಾವ 5 ಅಕ್ಷರಗಳನ್ನು ಕೈಬಿಟ್ಟು 47 ಶುದ್ಧಾಕ್ಷರಗಳನ್ನು ಲೆಕ್ಕ ಹಾಕಿದ್ದಾನೆ?',
+                options: [
+                    'ಋ, ೠ, ಌ, ೡ ಮತ್ತು ವಿಸರ್ಗ',
+                    'ಌ, ೡ (ಸ್ವರಗಳು), ಜಿಹ್ವಾಮೂಲೀಯ, ಉಪಧ್ಮಾನೀಯ ಮತ್ತು ಕ್ಷ (ಅಥವಾ ಯೋಗವಾಹ ಭೇದಗಳು)',
+                    'ಎ, ಒ, ಱ, ಳ ಮತ್ತು ೞ',
+                    'ಶ, ಷ, ಸ, ಹ ಮತ್ತು ಳ'
+                ],
+                correct: 1,
+                hint: 'ಕೇಶಿರಾಜನು 14 ಸ್ವರ + 25 ವರ್ಗೀಯ + 8 ಅವರ್ಗೀಯ = 47 ಶುದ್ಧಾಕ್ಷರಗಳನ್ನು ಗುರುತಿಸಿ, ಌ, ೡ ಹಾಗೂ ಯೋಗವಾಹ ಭೇದಗಳನ್ನು ಕೈಬಿಟ್ಟಿದ್ದಾನೆ.',
+                explanation: 'ಕೇಶಿರಾಜನ ಪ್ರಕಾರ ಶುದ್ಧ ಕನ್ನಡ ವರ್ಣಮಾಲೆಯಲ್ಲಿ 47 ಅಕ್ಷರಗಳಿವೆ: ಸ್ವರಗಳು 14 (ೠ ಸೇರಿಸಿ, ಆದರೆ ಸಂಸ್ಕೃತದ ಌ, ೡ ಬಿಟ್ಟು), ವರ್ಗೀಯ ವ್ಯಂಜನಗಳು 25, ಮತ್ತು ಅವರ್ಗೀಯ ವ್ಯಂಜನಗಳು 8 (ಯ ರಿಂದ ಹ ವರೆಗೆ) -> 14 + 25 + 8 = 47.',
+                trick: 'ಕೇಶಿರಾಜನ 47 ಶುದ್ಧಾಕ್ಷರ = 14 ಸ್ವರ + 25 ವರ್ಗೀಯ + 8 ಅವರ್ಗೀಯ.'
+            },
+            {
+                id: 27,
+                topic: 'shabdamanidarpana',
+                topicName: 'ಶಬ್ದಮಣಿದರ್ಪಣ ಮತ್ತು ಪ್ರಾಚೀನ ವರ್ಣಗಳು',
+                examTag: 'KAS / FDA / PSI',
+                typeTag: 'ಹಳಗನ್ನಡ ವಿಶೇಷ ವರ್ಣಗಳು',
+                q: 'ಹಳಗನ್ನಡ ಕಾವ್ಯಗಳಲ್ಲಿ ವ್ಯಾಪಕವಾಗಿ ಬಳಕೆಯಲ್ಲಿದ್ದ ದ್ರಾವಿಡ ವಿಶೇಷ ವ್ಯಂಜನಗಳಾದ "ಱ" ಮತ್ತು "ೞ" ಅಕ್ಷರಗಳನ್ನು ವ್ಯಾಕರಣದಲ್ಲಿ ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?',
+                options: [
+                    'ಱ = ಕುಳ  |  ೞ = ರಳ',
+                    'ಱ = ರಳ (ಶಕಟರೇಫ / ದೊಡ್ಡ ರ)  |  ೞ = ಕ್ಷಳ (ಳ್ಹ / ೞಕಾರ)',
+                    'ಱ = ಸಾಧು ರೇಫ  |  ೞ = ದಂತ್ಯ ಳಕಾರ',
+                    'ಱ = ಅರ್ಕಾವತ್ತು  |  ೞ = ವಟ್ರುಸುಳಿ'
+                ],
+                correct: 1,
+                hint: 'ರಳ (ಱ), ಕುಳ (ಳ), ಕ್ಷಳ (ೞ) — ಈ ಅನುಕ್ರಮವನ್ನು ನೆನಪಿಸಿಕೊಳ್ಳಿ.',
+                explanation: 'ಕನ್ನಡದ ಪ್ರಾಚೀನ ವಿಶೇಷ ವ್ಯಂಜನಗಳು ಮೂರು: "ಱ" (ರಳ ಅಥವಾ ಶಕಟರೇಫ), "ಳ" (ಕುಳ), ಮತ್ತು "ೞ" (ಕ್ಷಳ ಅಥವಾ ಳ್ಹ). ಸಾಮಾನ್ಯ "ರ" ಅಕ್ಷರವನ್ನು ಸಾಧುರೇಫ ಎಂದೂ, "ಱ" ಅನ್ನು ಶಕಟರೇಫ ಎಂದೂ ಕರೆಯುತ್ತಾರೆ.',
+                trick: 'ರಳ = ಱ (ಶಕಟರೇಫ) | ಕುಳ = ಳ | ಕ್ಷಳ = ೞ.'
+            },
+            {
+                id: 28,
+                topic: 'shabdamanidarpana',
+                topicName: 'ಶಬ್ದಮಣಿದರ್ಪಣ ಮತ್ತು ಪ್ರಾಚೀನ ವರ್ಣಗಳು',
+                examTag: 'FDA / SDA / PDO',
+                typeTag: 'ಅಚ್ಚಕನ್ನಡ vs ಸಂಸ್ಕೃತ ಪದ',
+                q: 'ವರ್ಣಮಾಲೆಯ ಅಕ್ಷರಗಳ ಆಧಾರದ ಮೇಲೆ ಒಂದು ಪದವು "ಸಂಸ್ಕೃತ ಪದ" (ತತ್ಸಮ) ಎಂದು ತಕ್ಷಣ ಗುರುತಿಸಲು ಸಹಾಯ ಮಾಡುವ ಅಕ್ಷರಗಳ ಗುಂಪು ಯಾವುದು?',
+                options: [
+                    'ಎ, ಒ, ಳ, ಕ, ಗ, ಚ, ಜ',
+                    'ಋ, ವಿಸರ್ಗ (ಃ), ಶ, ಷ ಮತ್ತು ಮಹಾಪ್ರಾಣಾಕ್ಷರಗಳು',
+                    'ಅ, ಆ, ಇ, ಈ, ಉ, ಊ, ಯ, ರ, ಲ, ವ',
+                    'ಣ, ನ, ಮ, ಸ, ತ, ದ, ಪ, ಬ'
+                ],
+                correct: 1,
+                hint: 'ಅಚ್ಚಕನ್ನಡದಲ್ಲಿ "ಋ", "ಃ", "ಶ", "ಷ" ಇರುವುದಿಲ್ಲ!',
+                explanation: 'ಕೇಶಿರಾಜನು ತಿಳಿಸಿರುವಂತೆ ಅಚ್ಚಕನ್ನಡ (ದೇಸಿಯ) ಪದಗಳಲ್ಲಿ "ಋ" ಸ್ವರ, ವಿಸರ್ಗ (ಃ), ಮಹಾಪ್ರಾಣಾಕ್ಷರಗಳು (ಖ, ಘ...) ಹಾಗೂ "ಶ, ಷ" ಅಕ್ಷರಗಳು ಸಹಜವಾಗಿ ಬರುವುದಿಲ್ಲ. ಇವು ಕಂಡುಬಂದರೆ ಆ ಪದವು ಸಂಸ್ಕೃತದಿಂದ ಬಂದ ತತ್ಸಮ ಪದವಾಗಿರುತ್ತದೆ (ಉದಾ: ಋಷಿ, ದುಃಖ, ಶಾಂತಿ, ಕಷ್ಟ).',
+                trick: 'ಪದದಲ್ಲಿ ಋ, ಃ, ಶ, ಷ ಕಂಡರೆ = 100% ಸಂಸ್ಕೃತ ಪದ!'
+            },
+            {
+                id: 29,
+                topic: 'shabdamanidarpana',
+                topicName: 'ಶಬ್ದಮಣಿದರ್ಪಣ ಮತ್ತು ಪ್ರಾಚೀನ ವರ್ಣಗಳು',
+                examTag: 'UPSC / KAS Mains',
+                typeTag: 'ಕೇಶಿರಾಜನ ದೇಸಿಯ ಅಕ್ಷರಗಳು',
+                q: 'ಕೇಶಿರಾಜನು "ಶಬ್ದಮಣಿದರ್ಪಣ"ದಲ್ಲಿ ಕನ್ನಡಕ್ಕೆ ಮಾತ್ರ ವಿಶಿಷ್ಟವಾದ "ದೇಸಿಯ ಅಕ್ಷರಗಳು" (ಸಂಸ್ಕೃತದಲ್ಲಿ ಇಲ್ಲದ ಕನ್ನಡದ ಸ್ವಂತ ಅಕ್ಷರಗಳು) ಎಂದು ಯಾವ ಐದು ವರ್ಣಗಳನ್ನು ಹೆಸರಿಸಿದ್ದಾನೆ?',
+                options: [
+                    'ಅ, ಇ, ಉ, ಎ, ಒ',
+                    'ಎ, ಒ (ಹ್ರಸ್ವಸ್ವರಗಳು) ಹಾಗೂ ಱ, ಳ, ೞ (ವ್ಯಂಜನಗಳು)',
+                    'ಯ, ರ, ಲ, ವ, ಳ',
+                    'ಙ, ಞ, ಣ, ನ, ಮ'
+                ],
+                correct: 1,
+                hint: 'ಎರಡು ದ್ರಾವಿಡ ಹ್ರಸ್ವಸ್ವರಗಳು + ಮೂರು ದ್ರಾವಿಡ ವಿಶೇಷ ವ್ಯಂಜನಗಳು = 5 ದೇಸಿಯ ಅಕ್ಷರಗಳು.',
+                explanation: 'ಸಂಸ್ಕೃತ ವರ್ಣಮಾಲೆಯಲ್ಲಿ ಇಲ್ಲದಿರುವ, ಆದರೆ ಕನ್ನಡದಲ್ಲೇ ಹುಟ್ಟಿ ಬೆಳೆದ 5 ಅಕ್ಷರಗಳೆಂದರೆ: ಹ್ರಸ್ವ "ಎ", ಹ್ರಸ್ವ "ಒ", ರಳ (ಱ), ಕುಳ (ಳ) ಮತ್ತು ಕ್ಷಳ (ೞ). ಕೇಶಿರಾಜನು ಇವುಗಳನ್ನು ಕನ್ನಡದ ಜೀವನಾಡಿಯಾದ "ದೇಸಿಯ ಅಕ್ಷರಗಳು" ಎಂದು ಕರೆದಿದ್ದಾನೆ.',
+                trick: '5 ದೇಸಿಯ ವರ್ಣಗಳು = ಎ, ಒ + ಱ, ಳ, ೞ.'
+            },
+            {
+                id: 30,
+                topic: 'shabdamanidarpana',
+                topicName: 'ಶಬ್ದಮಣಿದರ್ಪಣ ಮತ್ತು ಪ್ರಾಚೀನ ವರ್ಣಗಳು',
+                examTag: 'KAS / NET / SET',
+                typeTag: 'ಯೋಗವಾಹಗಳ ಇತಿಹಾಸ',
+                q: 'ಆಧುನಿಕ ಕನ್ನಡದಲ್ಲಿ ಅನುಸ್ವಾರ (ಂ) ಮತ್ತು ವಿಸರ್ಗ (ಃ) ಎಂಬ 2 ಯೋಗವಾಹಗಳಿವೆ. ಆದರೆ ಕೇಶಿರಾಜ ಮತ್ತು ಪ್ರಾಚೀನ ವೈಯಾಕರಣಿಗಳು ಒಟ್ಟು ಎಷ್ಟು ಯೋಗವಾಹಗಳನ್ನು ಗುರುತಿಸಿದ್ದರು?',
+                options: [
+                    '3 ಯೋಗವಾಹಗಳು',
+                    '4 ಯೋಗವಾಹಗಳು (ಅನುಸ್ವಾರ, ವಿಸರ್ಗ, ಜಿಹ್ವಾಮೂಲೀಯ ಮತ್ತು ಉಪಧ್ಮಾನೀಯ)',
+                    '5 ಯೋಗವಾಹಗಳು',
+                    '1 ಯೋಗವಾಹ ಮಾತ್ರ'
+                ],
+                correct: 1,
+                hint: 'ಕ,ಖ ಅಕ್ಷರಗಳ ಹಿಂದೆ ಬರುವ ಅರ್ಧವಿಸರ್ಗ (ಜಿಹ್ವಾಮೂಲೀಯ) ಮತ್ತು ಪ,ಫ ಹಿಂದೆ ಬರುವ ಅರ್ಧವಿಸರ್ಗ (ಉಪಧ್ಮಾನೀಯ) ಸೇರಿಸಿ.',
+                explanation: 'ಪ್ರಾಚೀನ ವ್ಯಾಕರಣದಲ್ಲಿ 4 ಯೋಗವಾಹಗಳಿದ್ದವು: 1) ಅನುಸ್ವಾರ (ಂ), 2) ವಿಸರ್ಗ (ಃ), 3) ಜಿಹ್ವಾಮೂಲೀಯ (ಕ, ಖ ಅಕ್ಷರಗಳ ಹಿಂದಿನ ಅರ್ಧವಿಸರ್ಗ), 4) ಉಪಧ್ಮಾನೀಯ (ಪ, ಫ ಅಕ್ಷರಗಳ ಹಿಂದಿನ ಅರ್ಧವಿಸರ್ಗ). ಆಧುನಿಕ ಕನ್ನಡದಲ್ಲಿ ಮೊದಲೆರಡು ಮಾತ್ರ ಉಳಿದಿವೆ.',
+                trick: 'ಪ್ರಾಚೀನ ಯೋಗವಾಹ = 4 | ಆಧುನಿಕ ಯೋಗವಾಹ = 2 (ಂ, ಃ).'
+            }
+        ];
+
+        let currentQuestions = [];
+        let currentIndex = 0;
+        let currentMode = 'practice'; // 'practice' or 'exam'
+        let currentTopicFilter = 'all';
+        let userAnswers = {};      // { qIndex: selectedOptionIndex }
+        let reviewMarks = {};      // { qIndex: true/false }
+        let hiddenOptions = {};    // { qIndex: [idx1, idx2] } for 50:50
+        let shownHints = {};       // { qIndex: true }
+        let lifelinesLeft = { fifty: 3, hint: 3 };
+
+        let streakCount = 0;
+        let totalXP = 0;
+        let soundOn = true;
+        let timerInterval = null;
+        let elapsedSeconds = 0;
+
+        // Web Audio API Sound Effects
+        function playTone(type) {
+            if (!soundOn) return;
+            try {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (!AudioCtx) return;
+                const ctx = new AudioCtx();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'correct') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
+                    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1); // E5
+                    gain.gain.setValueAtTime(0.1, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.35);
+                } else if (type === 'wrong') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(220, ctx.currentTime);
+                    osc.frequency.setValueAtTime(180, ctx.currentTime + 0.12);
+                    gain.gain.setValueAtTime(0.1, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.3);
+                } else if (type === 'click') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(440, ctx.currentTime);
+                    gain.gain.setValueAtTime(0.04, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.08);
+                }
+            } catch (e) {}
+        }
+
+        function toggleSound() {
+            soundOn = !soundOn;
+            document.getElementById('soundIcon').textContent = soundOn ? '🔊' : '🔇';
+        }
+
+        function setPreferredMode(mode) {
+            currentMode = mode;
+            const pBtn = document.getElementById('modeBtnPractice');
+            const eBtn = document.getElementById('modeBtnExam');
+            if (mode === 'practice') {
+                pBtn.className = 'p-2.5 rounded-xl border-2 border-red-800 bg-red-900 text-white font-bold text-xs text-center transition';
+                eBtn.className = 'p-2.5 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-700 font-bold text-xs text-center transition';
+            } else {
+                eBtn.className = 'p-2.5 rounded-xl border-2 border-emerald-700 bg-emerald-800 text-white font-bold text-xs text-center transition';
+                pBtn.className = 'p-2.5 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-700 font-bold text-xs text-center transition';
+            }
+        }
+
+        function showScreen(screenId) {
+            ['homeScreen', 'quizScreen', 'resultScreen'].forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+            document.getElementById(screenId).classList.remove('hidden');
+            if (screenId === 'homeScreen' && timerInterval) {
+                clearInterval(timerInterval);
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function startQuizSession(topicKey, forcedMode) {
+            currentTopicFilter = topicKey;
+            if (forcedMode) currentMode = forcedMode;
+
+            // Filter questions
+            let pool = topicKey === 'all'
+                ? [...masterQuestionBank]
+                : masterQuestionBank.filter(q => q.topic === topicKey);
+
+            // Shuffle if enabled
+            const shouldShuffle = document.getElementById('shuffleToggle').checked;
+            if (shouldShuffle) {
+                pool.sort(() => Math.random() - 0.5);
+            }
+
+            currentQuestions = pool;
+            currentIndex = 0;
+            userAnswers = {};
+            reviewMarks = {};
+            hiddenOptions = {};
+            shownHints = {};
+            lifelinesLeft = { fifty: 3, hint: 3 };
+            elapsedSeconds = 0;
+
+            // Update Mode UI
+            const modeBadge = document.getElementById('activeModeBadge');
+            if (currentMode === 'practice') {
+                modeBadge.textContent = '📖 ಅಭ್ಯಾಸ ಮೋಡ್ (Practice)';
+                modeBadge.className = 'px-3 py-1 rounded-lg bg-amber-500 text-red-950 font-black text-xs';
+                document.getElementById('legendWrongOrCurrent').textContent = 'ತಪ್ಪು ಉತ್ತರ';
+            } else {
+                modeBadge.textContent = '⏱️ ಪರೀಕ್ಷಾ ಮೋಡ್ (KAS Exam)';
+                modeBadge.className = 'px-3 py-1 rounded-lg bg-emerald-600 text-white font-black text-xs';
+                document.getElementById('legendWrongOrCurrent').textContent = 'ಪ್ರಸ್ತುತ ಪ್ರಶ್ನೆ';
+            }
+
+            const topicTitles = {
+                all: 'ಸಮಗ್ರ ಕನ್ನಡ ವರ್ಣಮಾಲೆ ಮಹಾ ಪರೀಕ್ಷೆ (All Topics)',
+                swara: '೧. ಸ್ವರಗಳು, ಮಾತ್ರಾಕಾಲ ಮತ್ತು ಸಂಧಿಸ್ವರ',
+                vyanjana: '೨. ವರ್ಗೀಯ ಮತ್ತು ಅವರ್ಗೀಯ ವ್ಯಂಜನಗಳ ವಿಜ್ಞಾನ',
+                articulation: '೩. ಉಚ್ಚಾರಣಾ ಸ್ಥಾನಗಳು (ಧ್ವನ್ಯಂಗ ನಕ್ಷೆ)',
+                ottakshara: '೪. ಯೋಗವಾಹ, ಕಾಗುಣಿತ ಮತ್ತು ಸಂಯುಕ್ತಾಕ್ಷರ',
+                shabdamanidarpana: '೫. ಶಬ್ದಮಣಿದರ್ಪಣ ಮತ್ತು ಪ್ರಾಚೀನ ವರ್ಣಗಳು'
+            };
+            document.getElementById('activeTopicTitle').textContent = topicTitles[topicKey] || topicTitles.all;
+
+            updateLifelineUI();
+            startTimer();
+            showScreen('quizScreen');
+            renderCurrentQuestion();
+            renderQuestionPalette();
+        }
+
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                elapsedSeconds++;
+                updateTimerDisplay();
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const mins = String(Math.floor(elapsedSeconds / 60)).padStart(2, '0');
+            const secs = String(elapsedSeconds % 60).padStart(2, '0');
+            document.getElementById('timerDisplay').textContent = `${mins}:${secs}`;
+        }
+
+        function renderCurrentQuestion() {
+            const qObj = currentQuestions[currentIndex];
+            const total = currentQuestions.length;
+
+            // Header & Progress
+            document.getElementById('activeSubInfo').textContent = `ಪ್ರಶ್ನೆ ${currentIndex + 1} / ${total}`;
+            document.getElementById('qNumberBadge').textContent = `ಪ್ರಶ್ನೆ #${currentIndex + 1}`;
+            document.getElementById('qExamTag').textContent = qObj.examTag;
+            document.getElementById('qTypeTag').textContent = qObj.typeTag;
+            document.getElementById('quizProgressBar').style.width = `${((currentIndex + 1) / total) * 100}%`;
+
+            // Mark for Review Button State
+            const isMarked = !!reviewMarks[currentIndex];
+            const markBtn = document.getElementById('markReviewBtn');
+            const markText = document.getElementById('markReviewText');
+            if (isMarked) {
+                markBtn.className = 'px-3 py-1 rounded-lg border-2 border-purple-600 bg-purple-700 text-white font-bold text-xs transition flex items-center space-x-1';
+                markText.textContent = 'ಪರಿಶೀಲನೆಗೆ ಗುರುತಿಸಲಾಗಿದೆ ✓';
+            } else {
+                markBtn.className = 'px-3 py-1 rounded-lg border border-purple-300 bg-purple-50 text-purple-800 hover:bg-purple-100 font-bold text-xs transition flex items-center space-x-1';
+                markText.textContent = 'ಪುನರ್‌ಪರಿಶೀಲನೆಗೆ ಗುರುತಿಸಿ';
+            }
+
+            // Question Text (preserve line breaks)
+            document.getElementById('questionText').innerHTML = qObj.q.replace(/\n/g, '<br>');
+
+            // Optional Visual SVG / Diagram
+            const visualBox = document.getElementById('questionVisualBox');
+            if (qObj.visualHTML) {
+                visualBox.innerHTML = qObj.visualHTML;
+                visualBox.classList.remove('hidden');
+            } else {
+                visualBox.classList.add('hidden');
+                visualBox.innerHTML = '';
+            }
+
+            // Hint Box State
+            const hintBox = document.getElementById('activeHintBox');
+            if (shownHints[currentIndex]) {
+                document.getElementById('activeHintText').textContent = qObj.hint;
+                hintBox.classList.remove('hidden');
+            } else {
+                hintBox.classList.add('hidden');
+            }
+
+            // Render Options
+            const optContainer = document.getElementById('optionsContainer');
+            optContainer.innerHTML = '';
+            const selectedIdx = userAnswers[currentIndex];
+            const isAnswered = selectedIdx !== undefined;
+            const hiddenArr = hiddenOptions[currentIndex] || [];
+            const kannadaLabels = ['ಅ', 'ಆ', 'ಇ', 'ಈ'];
+
+            qObj.options.forEach((optText, idx) => {
+                if (hiddenArr.includes(idx)) {
+                    const hiddenDiv = document.createElement('div');
+                    hiddenDiv.className = 'p-3.5 rounded-2xl border border-dashed border-slate-200 bg-slate-50 text-slate-300 text-xs font-semibold select-none';
+                    hiddenDiv.textContent = `${kannadaLabels[idx]}) [50:50 ಸಹಾಯವಾಣಿಯಿಂದ ತೆಗೆದುಹಾಕಲಾಗಿದೆ]`;
+                    optContainer.appendChild(hiddenDiv);
+                    return;
+                }
+
+                const btn = document.createElement('button');
+                btn.onclick = () => selectOption(idx);
+
+                let btnStyle = 'bg-slate-50 hover:bg-amber-50/70 border-slate-300 text-slate-800';
+                let badgeStyle = 'bg-slate-200 text-slate-800';
+                let statusIcon = '';
+
+                if (currentMode === 'practice' && isAnswered) {
+                    btn.disabled = true;
+                    if (idx === qObj.correct) {
+                        btnStyle = 'bg-emerald-50 border-emerald-500 text-emerald-950 ring-2 ring-emerald-400/40';
+                        badgeStyle = 'bg-emerald-600 text-white';
+                        statusIcon = '✅ ಸರಿ ಉತ್ತರ';
+                    } else if (idx === selectedIdx && idx !== qObj.correct) {
+                        btnStyle = 'bg-rose-50 border-rose-500 text-rose-950 ring-2 ring-rose-400/40';
+                        badgeStyle = 'bg-rose-600 text-white';
+                        statusIcon = '❌ ನಿಮ್ಮ ಆಯ್ಕೆ';
+                    } else {
+                        btnStyle = 'bg-slate-50 border-slate-200 text-slate-400 opacity-75';
+                    }
+                } else if (currentMode === 'exam' && isAnswered) {
+                    if (idx === selectedIdx) {
+                        btnStyle = 'bg-amber-50 border-red-800 text-slate-900 ring-2 ring-red-800/30';
+                        badgeStyle = 'bg-red-900 text-amber-300';
+                        statusIcon = '✓ ಆಯ್ಕೆ ಮಾಡಲಾಗಿದೆ';
+                    }
+                }
+
+                btn.className = `w-full text-left p-3.5 sm:p-4 rounded-2xl border-2 transition flex items-center justify-between gap-3 ${btnStyle}`;
+                btn.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <span class="w-8 h-8 rounded-xl font-black text-xs sm:text-sm flex items-center justify-center shrink-0 ${badgeStyle}">
+                            ${kannadaLabels[idx]}
+                        </span>
+                        <span class="text-xs sm:text-base font-bold leading-snug">${optText}</span>
+                    </div>
+                    <span class="text-xs font-extrabold shrink-0">${statusIcon}</span>
+                `;
+                optContainer.appendChild(btn);
+            });
+
+            // Explanation Box (Practice Mode Only)
+            const expBox = document.getElementById('explanationBox');
+            if (currentMode === 'practice' && isAnswered) {
+                const isCorrect = selectedIdx === qObj.correct;
+                expBox.classList.remove('hidden');
+                expBox.className = `mt-6 p-5 rounded-2xl border-2 animate-slide-up ${
+                    isCorrect ? 'bg-emerald-50/90 border-emerald-400 text-emerald-950' : 'bg-rose-50/90 border-rose-400 text-rose-950'
+                }`;
+                document.getElementById('expStatusTitle').textContent = isCorrect
+                    ? '🎉 ಅದ್ಭುತ! ನಿಮ್ಮ ಉತ್ತರ ಸರಿಯಾಗಿದೆ (+10 XP)'
+                    : '⚠️ ತಪ್ಪು ಉತ್ತರ! ಸರಿಯಾದ ನಿಯಮವನ್ನು ಕೆಳಗೆ ಗಮನಿಸಿ:';
+                document.getElementById('expBodyText').textContent = qObj.explanation;
+                document.getElementById('expTrickText').textContent = qObj.trick;
+            } else {
+                expBox.classList.add('hidden');
+            }
+
+            // Prev / Next Button States
+            document.getElementById('prevQBtn').disabled = currentIndex === 0;
+            document.getElementById('prevQBtn').classList.toggle('opacity-40', currentIndex === 0);
+            document.getElementById('nextQBtnText').textContent = currentIndex === total - 1 ? 'ಫಲಿತಾಂಶ ನೋಡಿ' : 'ಮುಂದಿನ ಪ್ರಶ್ನೆ';
+
+            renderQuestionPalette();
+        }
+
+        function selectOption(optIdx) {
+            if (currentMode === 'practice' && userAnswers[currentIndex] !== undefined) return;
+
+            userAnswers[currentIndex] = optIdx;
+            const qObj = currentQuestions[currentIndex];
+
+            if (currentMode === 'practice') {
+                if (optIdx === qObj.correct) {
+                    streakCount++;
+                    totalXP += 10;
+                    playTone('correct');
+                } else {
+                    streakCount = 0;
+                    playTone('wrong');
+                }
+                document.getElementById('navStreakCount').textContent = streakCount;
+                document.getElementById('navXpCount').textContent = totalXP;
+            } else {
+                playTone('click');
+            }
+
+            renderCurrentQuestion();
+        }
+
+        function clearCurrentResponse() {
+            if (currentMode === 'practice' && userAnswers[currentIndex] !== undefined) return;
+            delete userAnswers[currentIndex];
+            renderCurrentQuestion();
+        }
+
+        function toggleMarkForReview() {
+            reviewMarks[currentIndex] = !reviewMarks[currentIndex];
+            playTone('click');
+            renderCurrentQuestion();
+        }
+
+        function navigateQuestion(delta) {
+            const nextIdx = currentIndex + delta;
+            if (nextIdx >= 0 && nextIdx < currentQuestions.length) {
+                currentIndex = nextIdx;
+                renderCurrentQuestion();
+            } else if (nextIdx >= currentQuestions.length) {
+                finishQuizSession();
+            }
+        }
+
+        function renderQuestionPalette() {
+            const grid = document.getElementById('questionPaletteGrid');
+            grid.innerHTML = '';
+
+            const answeredTotal = Object.keys(userAnswers).length;
+            document.getElementById('paletteAnsweredCount').textContent = `${answeredTotal} / ${currentQuestions.length} ಉತ್ತರಿಸಲಾಗಿದೆ`;
+
+            currentQuestions.forEach((q, idx) => {
+                const btn = document.createElement('button');
+                btn.textContent = idx + 1;
+                btn.onclick = () => {
+                    currentIndex = idx;
+                    renderCurrentQuestion();
+                };
+
+                let style = 'bg-slate-100 text-slate-700 border-slate-300';
+                const isAns = userAnswers[idx] !== undefined;
+                const isMarked = !!reviewMarks[idx];
+
+                if (isMarked) {
+                    style = 'bg-purple-600 text-white border-purple-700';
+                } else if (isAns) {
+                    if (currentMode === 'practice') {
+                        style = userAnswers[idx] === q.correct
+                            ? 'bg-emerald-600 text-white border-emerald-700'
+                            : 'bg-rose-600 text-white border-rose-700';
+                    } else {
+                        style = 'bg-emerald-600 text-white border-emerald-700';
+                    }
+                }
+
+                if (idx === currentIndex) {
+                    style += ' ring-2 ring-offset-2 ring-red-900 font-black scale-105';
+                }
+
+                btn.className = `h-9 rounded-xl border text-xs font-bold transition ${style}`;
+                grid.appendChild(btn);
+            });
+        }
+
+        function useFiftyFifty() {
+            if (lifelinesLeft.fifty <= 0) return;
+            if (hiddenOptions[currentIndex] || userAnswers[currentIndex] !== undefined) return;
+
+            const qObj = currentQuestions[currentIndex];
+            const wrongIndices = [0, 1, 2, 3].filter(i => i !== qObj.correct);
+            wrongIndices.sort(() => Math.random() - 0.5);
+            hiddenOptions[currentIndex] = wrongIndices.slice(0, 2);
+
+            lifelinesLeft.fifty--;
+            playTone('click');
+            updateLifelineUI();
+            renderCurrentQuestion();
+        }
+
+        function useGrammarHint() {
+            if (lifelinesLeft.hint <= 0) return;
+            if (shownHints[currentIndex]) return;
+
+            shownHints[currentIndex] = true;
+            lifelinesLeft.hint--;
+            playTone('click');
+            updateLifelineUI();
+            renderCurrentQuestion();
+        }
+
+        function updateLifelineUI() {
+            document.getElementById('count5050').textContent = `${lifelinesLeft.fifty} ಬಾಕಿ`;
+            document.getElementById('countHint').textContent = `${lifelinesLeft.hint} ಬಾಕಿ`;
+            document.getElementById('lifeline5050Btn').classList.toggle('opacity-50', lifelinesLeft.fifty <= 0);
+            document.getElementById('lifelineHintBtn').classList.toggle('opacity-50', lifelinesLeft.hint <= 0);
+        }
+
+        function finishQuizSession() {
+            if (timerInterval) clearInterval(timerInterval);
+
+            const total = currentQuestions.length;
+            let correctCount = 0;
+            let wrongCount = 0;
+            let skippedCount = 0;
+
+            const topicStats = {};
+
+            currentQuestions.forEach((q, idx) => {
+                if (!topicStats[q.topic]) {
+                    topicStats[q.topic] = { name: q.topicName, correct: 0, total: 0 };
+                }
+                topicStats[q.topic].total++;
+
+                const ans = userAnswers[idx];
+                if (ans === undefined) {
+                    skippedCount++;
+                } else if (ans === q.correct) {
+                    correctCount++;
+                    topicStats[q.topic].correct++;
+                } else {
+                    wrongCount++;
+                }
+            });
+
+            const negEnabled = document.getElementById('negativeMarkToggle').checked || currentMode === 'exam';
+            const penalty = negEnabled ? (wrongCount * 0.25) : 0;
+            const finalMarks = Math.max(0, (correctCount - penalty)).toFixed(2).replace(/\.00$/, '');
+
+            // Update Result Banner
+            document.getElementById('resFinalScore').textContent = `${finalMarks} / ${total}`;
+            document.getElementById('resCorrectCount').textContent = `${correctCount}`;
+            document.getElementById('resWrongCount').textContent = `${wrongCount}${negEnabled && wrongCount > 0 ? ` (-${(wrongCount * 0.25).toFixed(2)})` : ''}`;
+            document.getElementById('resTimeTaken').textContent = document.getElementById('timerDisplay').textContent;
+
+            const pct = Math.round((correctCount / total) * 100);
+            const titleEl = document.getElementById('resultGradeTitle');
+            if (pct >= 85) {
+                titleEl.textContent = `ಅತ್ಯುತ್ತಮ ಸಾಧನೆ! (${pct}%) — ಕನ್ನಡ ವ್ಯಾಕರಣ ರತ್ನ 🏆`;
+            } else if (pct >= 65) {
+                titleEl.textContent = `ಉತ್ತಮ ಪ್ರಯತ್ನ! (${pct}%) — KAS / FDA ಪರೀಕ್ಷೆಗೆ ಸನ್ನದ್ಧ 🎯`;
+            } else {
+                titleEl.textContent = `ಇನ್ನಷ್ಟು ಅಭ್ಯಾಸ ಅಗತ್ಯ (${pct}%) — ಕೆಳಗಿನ ವಿವರಣೆಗಳನ್ನು ಓದಿ 📖`;
+            }
+
+            // Render Topic-wise Mastery Bars
+            const topicContainer = document.getElementById('topicBreakdownContainer');
+            topicContainer.innerHTML = '';
+            Object.values(topicStats).forEach(st => {
+                const tPct = Math.round((st.correct / st.total) * 100);
+                const barColor = tPct >= 75 ? 'bg-emerald-600' : (tPct >= 50 ? 'bg-amber-500' : 'bg-rose-600');
+                const row = document.createElement('div');
+                row.innerHTML = `
+                    <div class="flex justify-between font-bold text-slate-700 mb-1">
+                        <span>${st.name}</span>
+                        <span>${st.correct}/${st.total} (${tPct}%)</span>
+                    </div>
+                    <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
+                        <div class="h-full ${barColor} rounded-full transition-all duration-500" style="width: ${tPct}%;"></div>
+                    </div>
+                `;
+                topicContainer.appendChild(row);
+            });
+
+            renderReviewList('all');
+            showScreen('resultScreen');
+        }
+
+        function filterReviewList(filterType) {
+            renderReviewList(filterType);
+        }
+
+        function renderReviewList(filterType) {
+            const list = document.getElementById('reviewQuestionsList');
+            list.innerHTML = '';
+            const kannadaLabels = ['ಅ', 'ಆ', 'ಇ', 'ಈ'];
+
+            currentQuestions.forEach((q, idx) => {
+                const userAns = userAnswers[idx];
+                const isSkipped = userAns === undefined;
+                const isCorrect = userAns === q.correct;
+
+                if (filterType === 'correct' && !isCorrect) return;
+                if (filterType === 'wrong' && (isSkipped || isCorrect)) return;
+                if (filterType === 'skipped' && !isSkipped) return;
+
+                let statusBadge = '';
+                let borderStyle = 'border-slate-200';
+                if (isSkipped) {
+                    statusBadge = '<span class="px-2.5 py-1 rounded-lg bg-slate-200 text-slate-700 font-bold text-xs">⏭️ ಉತ್ತರಿಸಿಲ್ಲ (Skipped)</span>';
+                } else if (isCorrect) {
+                    statusBadge = '<span class="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-900 font-bold text-xs">✅ ಸರಿ ಉತ್ತರ</span>';
+                    borderStyle = 'border-emerald-300';
+                } else {
+                    statusBadge = '<span class="px-2.5 py-1 rounded-lg bg-rose-100 text-rose-900 font-bold text-xs">❌ ತಪ್ಪು ಉತ್ತರ</span>';
+                    borderStyle = 'border-rose-300';
+                }
+
+                const card = document.createElement('div');
+                card.className = `p-5 rounded-2xl bg-slate-50 border-2 ${borderStyle} space-y-3`;
+                card.innerHTML = `
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div class="flex items-center space-x-2">
+                            <span class="px-2.5 py-0.5 rounded bg-red-900 text-amber-300 font-black text-xs">ಪ್ರಶ್ನೆ #${idx + 1}</span>
+                            <span class="text-xs font-bold text-slate-500">${q.topicName}</span>
+                        </div>
+                        ${statusBadge}
+                    </div>
+                    <h4 class="font-extrabold text-sm sm:text-base text-slate-900 leading-relaxed">${q.q.replace(/\n/g, '<br>')}</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-950">
+                            <span class="font-bold">✔ ಸರಿಯಾದ ಉತ್ತರ:</span> (${kannadaLabels[q.correct]}) ${q.options[q.correct]}
+                        </div>
+                        <div class="p-3 rounded-xl ${isCorrect ? 'bg-emerald-50 border-emerald-300 text-emerald-950' : 'bg-white border-slate-300 text-slate-700'} border">
+                            <span class="font-bold">👤 ನಿಮ್ಮ ಆಯ್ಕೆ:</span> ${isSkipped ? 'ಯಾವುದೂ ಇಲ್ಲ' : `(${kannadaLabels[userAns]}) ${q.options[userAns]}`}
+                        </div>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-xs text-slate-700 leading-relaxed space-y-1.5">
+                        <div><strong class="text-slate-900">📖 ವಿವರಣೆ:</strong> ${q.explanation}</div>
+                        <div class="text-red-900 font-bold">🧠 ಸೂತ್ರ / ಟ್ರಿಕ್: ${q.trick}</div>
+                    </div>
+                `;
+                list.appendChild(card);
+            });
+
+            if (list.children.length === 0) {
+                list.innerHTML = `<div class="text-center py-8 text-slate-500 font-bold text-sm">ಈ ವಿಭಾಗದಲ್ಲಿ ಯಾವುದೇ ಪ್ರಶ್ನೆಗಳಿಲ್ಲ.</div>`;
+            }
+        }
+
+        function restartCurrentQuiz() {
+            startQuizSession(currentTopicFilter, currentMode);
+        }
+    </script>
+</body>
+</html>
