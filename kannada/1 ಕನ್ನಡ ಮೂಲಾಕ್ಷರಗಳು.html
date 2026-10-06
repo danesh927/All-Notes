@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="kn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಕನ್ನಡ ವರ್ಣಮಾಲೆ ಮತ್ತು ಮೂಲಾಕ್ಷರಗಳ ಸಮಗ್ರ ದರ್ಶನ | UPSC & KAS Special</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@300;400;500;600;700;800;900&family=Noto+Serif+Kannada:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans Kannada"', 'sans-serif'],
+                        serif: ['"Noto Serif Kannada"', 'serif'],
+                    },
+                    colors: {
+                        mysore: {
+                            crimson: '#8B0000',
+                            deep: '#4A0404',
+                            gold: '#D4AF37',
+                            goldlight: '#F3E5AB',
+                            sandal: '#FDFBF7',
+                            stone: '#1E293B'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Noto Sans Kannada', sans-serif;
+            background-color: #FAF8F5;
+            color: #1E293B;
+            overflow-x: hidden;
+        }
+        .serif-heading {
+            font-family: 'Noto Serif Kannada', serif;
+        }
+        /* Royal Karnataka Gradient */
+        .royal-gradient {
+            background: linear-gradient(135deg, #580808 0%, #8B0000 55%, #b91c1c 100%);
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #F59E0B 50%, #B45309 100%);
+        }
+        .gold-border {
+            border: 2px solid #D4AF37;
+        }
+        
+        /* Floating background letters animation */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(4deg); }
+        }
+        .float-anim {
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+
+        /* Pulse Ring for Articulation Points */
+        @keyframes pulseRing {
+            0% { transform: scale(0.8); opacity: 0.9; }
+            70% { transform: scale(2.2); opacity: 0; }
+            100% { transform: scale(2.2); opacity: 0; }
+        }
+        .pulse-circle {
+            transform-origin: center;
+            animation: pulseRing 2s infinite;
+        }
+
+        /* Breath Wave Animation for Alpaprana vs Mahaprana */
+        @keyframes breathFlowLow {
+            0% { width: 10%; opacity: 0.4; }
+            50% { width: 45%; opacity: 0.85; }
+            100% { width: 10%; opacity: 0.4; }
+        }
+        @keyframes breathFlowHigh {
+            0% { width: 15%; opacity: 0.6; }
+            50% { width: 98%; opacity: 1; }
+            100% { width: 15%; opacity: 0.6; }
+        }
+        .breath-low {
+            animation: breathFlowLow 2s ease-in-out infinite;
+        }
+        .breath-high {
+            animation: breathFlowHigh 1.1s ease-in-out infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #991B1B;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7F1D1D;
+        }
+
+        .letter-card {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .letter-card:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 12px 24px -6px rgba(139, 0, 0, 0.2);
+        }
+        .active-filter-btn {
+            background-color: #8B0000 !important;
+            color: #FFFFFF !important;
+            border-color: #D4AF37 !important;
+            box-shadow: 0 4px 14px rgba(139, 0, 0, 0.35);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-red-900 selection:text-amber-200">
+
+    <header class="sticky top-0 z-50 bg-[#4A0404]/95 backdrop-blur-md text-white border-b-2 border-[#D4AF37] shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand Title -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl gold-gradient flex items-center justify-center text-[#4A0404] font-black text-2xl shadow-md">
+                        ಅ
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-base sm:text-lg leading-tight text-amber-300 serif-heading">ಕನ್ನಡ ವ್ಯಾಕರಣ ವಿಶ್ವಕೋಶ</h1>
+                        <p class="text-[11px] text-amber-100/80">ಮೂಲಾಕ್ಷರಗಳಿಂದ UPSC / KAS / FDA / PSI ಪರೀಕ್ಷಾ ಮಟ್ಟದವರೆಗೆ</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Links (Desktop) -->
+                <nav class="hidden lg:flex items-center space-x-1 text-xs xl:text-sm font-medium">
+                    <a href="#overview" class="px-3 py-2 rounded-lg hover:bg-red-900/60 hover:text-amber-300 transition">೧. ವರ್ಣಮಾಲೆ ನೋಟ</a>
+                    <a href="#swaragalu" class="px-3 py-2 rounded-lg hover:bg-red-900/60 hover:text-amber-300 transition">೨. ಸ್ವರಗಳು (13)</a>
+                    <a href="#yogavaha" class="px-3 py-2 rounded-lg hover:bg-red-900/60 hover:text-amber-300 transition">೩. ಯೋಗವಾಹಗಳು (2)</a>
+                    <a href="#vyanjanagalu" class="px-3 py-2 rounded-lg hover:bg-red-900/60 hover:text-amber-300 transition">೪. ವ್ಯಂಜನಗಳು (34)</a>
+                    <a href="#articulation" class="px-3 py-2 rounded-lg hover:bg-red-900/60 hover:text-amber-300 transition">೫. ಉಚ್ಚಾರಣಾ ಸ್ಥಾನ</a>
+                    <a href="#lab" class="px-3 py-2 rounded-lg hover:bg-red-900/60 hover:text-amber-300 transition">೬. ಪ್ರಯೋಗಶಾಲೆ</a>
+                    <a href="#upsc-kas" class="px-3 py-2 rounded-lg bg-amber-500 text-red-950 font-bold hover:bg-amber-400 transition">೭. KAS/UPSC ಕಾರ್ನರ್</a>
+                </nav>
+
+                <!-- Sound Toggle Button -->
+                <div class="flex items-center space-x-2">
+                    <button id="soundToggleBtn" onclick="toggleAudioState()" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/50 text-amber-200 text-xs hover:bg-amber-500/30 transition" title="ಧ್ವನಿ ಮತ್ತು ಉಚ್ಚಾರಣೆ ಆನ್/ಆಫ್">
+                        <span id="soundIcon">🔊</span>
+                        <span id="soundLabel" class="hidden sm:inline font-semibold">ಧ್ವನಿ ಸಕ್ರಿಯ</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Horizontal Scroll Menu -->
+        <div class="lg:hidden flex overflow-x-auto py-2 px-3 space-x-2 bg-[#360303] border-t border-red-900/60 text-xs whitespace-nowrap">
+            <a href="#overview" class="px-2.5 py-1 rounded bg-red-950 text-amber-200">೧. ವರ್ಣಮಾಲೆ</a>
+            <a href="#swaragalu" class="px-2.5 py-1 rounded bg-red-950 text-amber-200">೨. ಸ್ವರಗಳು (13)</a>
+            <a href="#yogavaha" class="px-2.5 py-1 rounded bg-red-950 text-amber-200">೩. ಯೋಗವಾಹ (2)</a>
+            <a href="#vyanjanagalu" class="px-2.5 py-1 rounded bg-red-950 text-amber-200">೪. ವ್ಯಂಜನ (34)</a>
+            <a href="#articulation" class="px-2.5 py-1 rounded bg-red-950 text-amber-200">೫. ಉಚ್ಚಾರಣಾ ಸ್ಥಾನ</a>
+            <a href="#lab" class="px-2.5 py-1 rounded bg-red-950 text-amber-200">೬. ಒತ್ತಕ್ಷರ ಪ್ರಯೋಗಶಾಲೆ</a>
+            <a href="#upsc-kas" class="px-2.5 py-1 rounded bg-amber-500 text-red-950 font-bold">೭. KAS/UPSC ಪರೀಕ್ಷೆ</a>
+        </div>
+    </header>
+
+    <section class="relative royal-gradient text-white py-12 lg:py-16 overflow-hidden border-b-4 border-[#D4AF37]">
+        <!-- Decorative Background Kannada Characters -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-10 select-none">
+            <span class="absolute top-6 left-10 text-8xl font-black float-anim">ಅ</span>
+            <span class="absolute top-20 right-16 text-9xl font-black float-anim" style="animation-delay: 1s;">ಕ</span>
+            <span class="absolute bottom-8 left-1/4 text-8xl font-black float-anim" style="animation-delay: 2s;">ೞ</span>
+            <span class="absolute bottom-10 right-1/3 text-7xl font-black float-anim" style="animation-delay: 3s;">ಜ್ಞ</span>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-5">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs sm:text-sm font-medium">
+                        <span>🏛️</span>
+                        <span>ಶಬ್ದಮಣಿದರ್ಪಣದಿಂದ ಆಧುನಿಕ ವ್ಯಾಕರಣದವರೆಗೆ ಸಂಪೂರ್ಣ ವಿಶ್ಲೇಷಣೆ</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight serif-heading text-white">
+                        ಕನ್ನಡ ವರ್ಣಮಾಲೆ <span class="text-amber-400">(ಮೂಲಾಕ್ಷರಗಳು)</span>
+                    </h2>
+                    <p class="text-base sm:text-lg text-amber-50/90 leading-relaxed">
+                        ಭಾಷೆಯ ಮೂಲ ಘಟಕವೇ <strong>'ವರ್ಣ'</strong> ಅಥವಾ <strong>'ಅಕ್ಷರ'</strong>. ನಾಲಿಗೆಯಿಂದ ಉಚ್ಚರಿಸುವ ಧ್ವನಿರೂಪಗಳಿಗೆ ಬರವಣಿಗೆಯಲ್ಲಿ ನೀಡುವ ಸಂಕೇತಗಳೇ ಅಕ್ಷರಗಳು. ಅಕ್ಷರಗಳ ಕ್ರಮಬದ್ಧ ಜೋಡಣೆಯನ್ನು <strong>'ವರ್ಣಮಾಲೆ'</strong> ಅಥವಾ <strong>'ಅಕ್ಷರಮಾಲೆ'</strong> ಎನ್ನುವರು.
+                    </p>
+                    
+                    <!-- Exam Highlight Quote Box -->
+                    <div class="bg-black/30 backdrop-blur-sm border-l-4 border-amber-400 p-4 rounded-r-xl">
+                        <p class="text-xs uppercase tracking-wider text-amber-300 font-bold mb-1">📜 ಕೇಶಿರಾಜನ 'ಶಬ್ದಮಣಿದರ್ಪಣ' ಸೂತ್ರ (KAS / UPSC ಐಚ್ಛಿಕ ಕನ್ನಡ):</p>
+                        <p class="text-sm sm:text-base italic font-medium text-amber-100">
+                            "ಶುದ್ಧಗೆಯೊಳ್ ನಾಲ್ವತ್ತೇಳು ಅಕ್ಷರಂ..." — ಪ್ರಾಚೀನ ಕನ್ನಡದಲ್ಲಿ ೪೭ ಶುದ್ಧಾಕ್ಷರಗಳು (ಸಂಸ್ಕೃತದ ೫೨ ಅಕ್ಷರಗಳಿಂದ ಕೆಲವನ್ನು ಬಿಟ್ಟು, ದ್ರಾವಿಡ ವಿಶೇಷ ಅಕ್ಷರಗಳಾದ ಱ, ಳ, ೞ ಸೇರಿಸಿ) ಇದ್ದವು. ಪ್ರಸ್ತುತ ಆಧುನಿಕ ಕನ್ನಡ ವರ್ಣಮಾಲೆಯಲ್ಲಿ ಒಟ್ಟು <strong>೪೯ (49) ಅಕ್ಷರಗಳಿವೆ</strong>.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <a href="#overview" class="px-6 py-3 rounded-xl gold-gradient text-red-950 font-extrabold text-sm sm:text-base shadow-lg hover:opacity-95 transition flex items-center space-x-2">
+                            <span>ಅಧ್ಯಯನ ಪ್ರಾರಂಭಿಸಿ</span>
+                            <span>↓</span>
+                        </a>
+                        <a href="#articulation" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-amber-300/40 text-white font-semibold text-sm sm:text-base transition flex items-center space-x-2">
+                            <span>🗣️ ಧ್ವನ್ಯಂಗ ನಕ್ಷೆ (SVG)</span>
+                        </a>
+                        <a href="#quiz-section" class="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm sm:text-base shadow-lg transition flex items-center space-x-2">
+                            <span>🎯 KAS/FDA ರಸಪ್ರಶ್ನೆ</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Side Quick Breakdown Card -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white/95 text-slate-900 rounded-2xl p-6 shadow-2xl border-2 border-[#D4AF37]">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-4">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-red-800">ಆಧುನಿಕ ಕನ್ನಡ ವರ್ಣಮಾಲೆ</span>
+                                <h3 class="text-xl font-extrabold text-slate-900">ಒಟ್ಟು ೪೯ (49) ಮೂಲಾಕ್ಷರಗಳು</h3>
+                            </div>
+                            <span class="text-3xl font-black text-red-800 bg-red-50 px-3 py-1 rounded-xl border border-red-200">49</span>
+                        </div>
+
+                        <!-- Interactive Tree Summary -->
+                        <div class="space-y-3 text-sm">
+                            <a href="#swaragalu" class="block p-3 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 transition">
+                                <div class="flex justify-between items-center font-bold text-amber-950">
+                                    <span>೧. ಸ್ವರಗಳು (Vowels)</span>
+                                    <span class="bg-amber-600 text-white px-2.5 py-0.5 rounded-full text-xs">13 ಅಕ್ಷರಗಳು</span>
+                                </div>
+                                <p class="text-xs text-amber-800 mt-1">ಹ್ರಸ್ವಸ್ವರ (6) + ದೀರ್ಘಸ್ವರ (7) | ಸ್ವತಂತ್ರವಾಗಿ ಉಚ್ಚರಿಸಲ್ಪಡುವ ಅಕ್ಷರಗಳು</p>
+                            </a>
+
+                            <a href="#yogavaha" class="block p-3 rounded-xl bg-purple-50 hover:bg-purple-100 border border-purple-200 transition">
+                                <div class="flex justify-between items-center font-bold text-purple-950">
+                                    <span>೨. ಯೋಗವಾಹಗಳು (Partly Dependent)</span>
+                                    <span class="bg-purple-700 text-white px-2.5 py-0.5 rounded-full text-xs">2 ಅಕ್ಷರಗಳು</span>
+                                </div>
+                                <p class="text-xs text-purple-800 mt-1">ಅನುಸ್ವಾರ (ಂ) + ವಿಸರ್ಗ (ಃ) | ಸ್ವರದ ಸಹಾಯದಿಂದಲೇ ನಡೆಯುವ ಅಕ್ಷರಗಳು</p>
+                            </a>
+
+                            <a href="#vyanjanagalu" class="block p-3 rounded-xl bg-red-50 hover:bg-red-100 border border-red-200 transition">
+                                <div class="flex justify-between items-center font-bold text-red-950">
+                                    <span>೩. ವ್ಯಂಜನಗಳು (Consonants)</span>
+                                    <span class="bg-red-800 text-white px-2.5 py-0.5 rounded-full text-xs">34 ಅಕ್ಷರಗಳು</span>
+                                </div>
+                                <p class="text-xs text-red-800 mt-1">ವರ್ಗೀಯ ವ್ಯಂಜನಗಳು (25) + ಅವರ್ಗೀಯ ವ್ಯಂಜನಗಳು (9)</p>
+                            </a>
+                        </div>
+
+                        <!-- Formula Box -->
+                        <div class="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-slate-600">
+                            <span>ಸೂತ್ರ: 13 (ಸ್ವರ) + 2 (ಯೋಗವಾಹ) + 34 (ವ್ಯಂಜನ)</span>
+                            <span class="text-emerald-700 bg-emerald-50 px-2 py-1 rounded border border-emerald-200">= 49 ಅಕ್ಷರಗಳು</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="overview" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+            <span class="px-3 py-1 rounded-full bg-red-100 text-red-900 font-bold text-xs uppercase tracking-wider">ಅಧ್ಯಾಯ ೧ : ಸಂಪೂರ್ಣ ವರ್ಗೀಕರಣ</span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-2 serif-heading">ಕನ್ನಡ ವರ್ಣಮಾಲೆಯ ಸಮಗ್ರ ವಂಶವೃಕ್ಷ</h2>
+            <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                ಸ್ಪರ್ಧಾತ್ಮಕ ಪರೀಕ್ಷೆಗಳಲ್ಲಿ (KAS, FDA, SDA, TET, CET) ಅಕ್ಷರಗಳ ಸಂಖ್ಯೆ ಮತ್ತು ಉಪ-ವಿಭಾಗಗಳ ಮೇಲೆ ನೇರ ಪ್ರಶ್ನೆಗಳನ್ನು ಕೇಳಲಾಗುತ್ತದೆ. ಕೆಳಗಿನ ಯಾವುದೇ ವಿಭಾಗದ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ ಅದರ ಸಂಪೂರ್ಣ ಮಾಹಿತಿ ಪಡೆಯಿರಿ.
+            </p>
+        </div>
+
+        <!-- Visual Tree Architecture -->
+        <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-6 sm:p-8">
+            <!-- Root Node -->
+            <div class="flex justify-center mb-8">
+                <div class="royal-gradient text-white px-8 py-4 rounded-2xl shadow-lg border-2 border-[#D4AF37] text-center">
+                    <div class="text-xs text-amber-300 font-bold uppercase">ಆಧುನಿಕ ಕನ್ನಡ ಅಕ್ಷರಮಾಲೆ</div>
+                    <div class="text-2xl sm:text-3xl font-black">ಕನ್ನಡ ವರ್ಣಮಾಲೆ (೪೯ / 49)</div>
+                </div>
+            </div>
+
+            <!-- 3 Main Branches -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 relative">
+                <!-- Branch 1: Swaragalu -->
+                <div class="bg-amber-50/70 rounded-2xl p-5 border-2 border-amber-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-lg font-extrabold text-amber-950">೧. ಸ್ವರಗಳು (Vowels)</h3>
+                            <span class="px-3 py-1 rounded-lg bg-amber-600 text-white font-black text-sm">13</span>
+                        </div>
+                        <p class="text-xs text-amber-900 mb-4 leading-relaxed">
+                            ಬೇರೊಂದು ಅಕ್ಷರದ ಸಹಾಯವಿಲ್ಲದೆ <strong>ಸ್ವತಂತ್ರವಾಗಿ</strong> ಉಚ್ಚರಿಸಲು ಬರುವ ಅಕ್ಷರಗಳು. ("ಸ್ವಯಂ ರಾಜಂತೇ ಇತಿ ಸ್ವರಾಃ")
+                        </p>
+                        <div class="space-y-2.5">
+                            <div class="bg-white p-3 rounded-xl border border-amber-200 shadow-sm">
+                                <div class="flex justify-between font-bold text-sm text-slate-800">
+                                    <span>ಅ) ಹ್ರಸ್ವಸ್ವರ (೧ ಮಾತ್ರೆ)</span>
+                                    <span class="text-amber-700 font-extrabold">6</span>
+                                </div>
+                                <div class="mt-1.5 flex flex-wrap gap-1.5 font-bold text-base text-amber-900">
+                                    <span class="px-2 py-0.5 bg-amber-100 rounded">ಅ</span>
+                                    <span class="px-2 py-0.5 bg-amber-100 rounded">ಇ</span>
+                                    <span class="px-2 py-0.5 bg-amber-100 rounded">ಉ</span>
+                                    <span class="px-2 py-0.5 bg-amber-100 rounded">ಋ</span>
+                                    <span class="px-2 py-0.5 bg-amber-100 rounded">ಎ</span>
+                                    <span class="px-2 py-0.5 bg-amber-100 rounded">ಒ</span>
+                                </div>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-amber-200 shadow-sm">
+                                <div class="flex justify-between font-bold text-sm text-slate-800">
+                                    <span>ಆ) ದೀರ್ಘಸ್ವರ (೨ ಮಾತ್ರೆ)</span>
+                                    <span class="text-amber-700 font-extrabold">7</span>
+                                </div>
+                                <div class="mt-1.5 flex flex-wrap gap-1.5 font-bold text-base text-amber-900">
+                                    <span class="px-2 py-0.5 bg-amber-100 rounded">ಆ</span>
+                                    <span class="px-2 py-0.5 bg-amber-100 rounded">ಈ</span>
+                                    <span class="px-2 py-0.5 bg-amber-100 rounded">ಊ</span>
+                                    <span class="px-2 py-0.5 bg-amber-100 rounded">ಏ</span>
+                                    <span class="px-2 py-0.5 bg-amber-100 rounded">ಐ</span>
+                                    <span class="px-2 py-0.5 bg-amber-100 rounded">ಓ</span>
+                                    <span class="px-2 py-0.5 bg-amber-100 rounded">ಔ</span>
+                                </div>
+                            </div>
+                            <div class="bg-amber-100/80 p-2.5 rounded-xl border border-amber-300 text-xs text-amber-950">
+                                <strong>ಇ) ಪ್ಲುತಸ್ವರ (೩ ಮಾತ್ರೆ):</strong> ವರ್ಣಮಾಲೆಯಲ್ಲಿ ಪ್ರತ್ಯೇಕ ಅಕ್ಷರವಿಲ್ಲ, ಆದರೆ ದೂರದಿಂದ ಕರೆಯುವಾಗ ಬಳಸುತ್ತೇವೆ (ಉದಾ: ಅಮ್ಮಾऽऽऽ, ರಾಮಾऽऽऽ).
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#swaragalu" class="mt-4 text-center py-2 rounded-lg bg-amber-600 text-white text-xs font-bold hover:bg-amber-700 transition">ಮಾತ್ರಾಕಾಲ ಅನಿಮೇಷನ್ ನೋಡಿ →</a>
+                </div>
+
+                <!-- Branch 2: Yogavahagalu -->
+                <div class="bg-purple-50/70 rounded-2xl p-5 border-2 border-purple-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-lg font-extrabold text-purple-950">೨. ಯೋಗವಾಹಗಳು</h3>
+                            <span class="px-3 py-1 rounded-lg bg-purple-700 text-white font-black text-sm">2</span>
+                        </div>
+                        <p class="text-xs text-purple-900 mb-4 leading-relaxed">
+                            <strong>'ಯೋಗ'</strong> ಎಂದರೆ ಸಂಬಂಧ, <strong>'ವಾಹ'</strong> ಎಂದರೆ ಹೊಂದಿರುವುದು. ಸ್ವರಗಳ ಸಂಬಂಧವಿಲ್ಲದೆ ಇವುಗಳ ಉಚ್ಚಾರಣೆ ಸಾಧ್ಯವೇ ಇಲ್ಲ. ಇವು ಸ್ವರಗಳೂ ಅಲ್ಲ, ವ್ಯಂಜನಗಳೂ ಅಲ್ಲ.
+                        </p>
+                        <div class="space-y-2.5">
+                            <div class="bg-white p-3.5 rounded-xl border border-purple-200 shadow-sm flex items-center justify-between">
+                                <div>
+                                    <div class="font-bold text-sm text-purple-950">೧. ಅನುಸ್ವಾರ (ಒಂದು ಸೊನ್ನೆ)</div>
+                                    <p class="text-xs text-slate-600 mt-0.5">ಉದಾ: ಸಂತೋಷ, ಬಂಧನ, ಕನ್ನಡಂ</p>
+                                </div>
+                                <span class="text-3xl font-black text-purple-800 bg-purple-100 w-12 h-12 rounded-xl flex items-center justify-center">ಂ</span>
+                            </div>
+                            <div class="bg-white p-3.5 rounded-xl border border-purple-200 shadow-sm flex items-center justify-between">
+                                <div>
+                                    <div class="font-bold text-sm text-purple-950">೨. ವಿಸರ್ಗ (ಎರಡು ಸೊನ್ನೆ)</div>
+                                    <p class="text-xs text-slate-600 mt-0.5">ಉದಾ: ದುಃಖ, ಅಂತಃಕರಣ, ಪುನಃ</p>
+                                </div>
+                                <span class="text-3xl font-black text-purple-800 bg-purple-100 w-12 h-12 rounded-xl flex items-center justify-center">ಃ</span>
+                            </div>
+                            <div class="bg-purple-100/80 p-2.5 rounded-xl border border-purple-300 text-xs text-purple-950">
+                                <strong>💡 ಪರೀಕ್ಷಾ ರಹಸ್ಯ (KAS/NET):</strong> ಪ್ರಾಚೀನ ವ್ಯಾಕರಣದಲ್ಲಿ ಜಿಹ್ವಾಮೂಲೀಯ ಮತ್ತು ಉಪಧ್ಮಾನೀಯ ಸೇರಿಸಿ <strong>೪ ಯೋಗವಾಹಗಳನ್ನು</strong> ಗುರುತಿಸಲಾಗುತ್ತಿತ್ತು.
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#yogavaha" class="mt-4 text-center py-2 rounded-lg bg-purple-700 text-white text-xs font-bold hover:bg-purple-800 transition">ಯೋಗವಾಹ ವಿಶ್ಲೇಷಣೆ ನೋಡಿ →</a>
+                </div>
+
+                <!-- Branch 3: Vyanjanagalu -->
+                <div class="bg-red-50/70 rounded-2xl p-5 border-2 border-red-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-lg font-extrabold text-red-950">೩. ವ್ಯಂಜನಗಳು (Consonants)</h3>
+                            <span class="px-3 py-1 rounded-lg bg-red-800 text-white font-black text-sm">34</span>
+                        </div>
+                        <p class="text-xs text-red-900 mb-4 leading-relaxed">
+                            ಸ್ವರಗಳ ಸಹಾಯದಿಂದ ಮಾತ್ರ ಸ್ಪಷ್ಟವಾಗಿ ಉಚ್ಚರಿಸಲು ಬರುವ ಅಕ್ಷರಗಳು. ಮೂಲ ರೂಪ ತಲೆಕಟ್ಟಿಲ್ಲದ <strong>ಹಲ್ (ಕ್, ಚ್, ಟ್...)</strong> ರೂಪದಲ್ಲಿರುತ್ತದೆ.
+                        </p>
+                        <div class="space-y-2.5">
+                            <div class="bg-white p-3 rounded-xl border border-red-200 shadow-sm">
+                                <div class="flex justify-between font-bold text-sm text-slate-800">
+                                    <span>ಅ) ವರ್ಗೀಯ ವ್ಯಂಜನಗಳು (ಕ - ಮ)</span>
+                                    <span class="text-red-700 font-extrabold">25</span>
+                                </div>
+                                <div class="mt-1.5 grid grid-cols-3 gap-1.5 text-[11px] font-bold text-center">
+                                    <div class="bg-emerald-50 text-emerald-900 p-1.5 rounded border border-emerald-200">ಅಲ್ಪಪ್ರಾಣ: 10</div>
+                                    <div class="bg-orange-50 text-orange-900 p-1.5 rounded border border-orange-200">ಮಹಾಪ್ರಾಣ: 10</div>
+                                    <div class="bg-blue-50 text-blue-900 p-1.5 rounded border border-blue-200">ಅನುನಾಸಿಕ: 5</div>
+                                </div>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-red-200 shadow-sm">
+                                <div class="flex justify-between font-bold text-sm text-slate-800">
+                                    <span>ಆ) ಅವರ್ಗೀಯ ವ್ಯಂಜನಗಳು (ಯ - ಳ)</span>
+                                    <span class="text-red-700 font-extrabold">9</span>
+                                </div>
+                                <p class="text-xs text-slate-600 mt-1">ಯ, ರ, ಲ, ವ (ಅಂತಸ್ಥ) + ಶ, ಷ, ಸ, ಹ (ಊಷ್ಮ) + ಳ (ದ್ರಾವಿಡ ವಿಶೇಷ)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#vyanjanagalu" class="mt-4 text-center py-2 rounded-lg bg-red-800 text-white text-xs font-bold hover:bg-red-900 transition">5x5 ವ್ಯಂಜನ ಜಾಲರಿ ನೋಡಿ →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="swaragalu" class="py-12 bg-amber-50/50 border-y border-amber-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+                <div>
+                    <span class="px-3 py-1 rounded-full bg-amber-200 text-amber-950 font-bold text-xs uppercase tracking-wider">ಅಧ್ಯಾಯ ೨ : ಸ್ವರಗಳ ಆಳವಾದ ಅಧ್ಯಯನ</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-2 serif-heading">ಸ್ವರಗಳು (೧೩) ಮತ್ತು ಮಾತ್ರಾಕಾಲದ ಪ್ರಯೋಗ</h2>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 mt-2 md:mt-0 max-w-md">
+                    💡 ಯಾವುದೇ ಅಕ್ಷರದ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ ಅದರ ಉಚ್ಚಾರಣೆ, ಮಾತ್ರಾಕಾಲ ಮತ್ತು ಧ್ವನಿ ತರಂಗದ ಅನಿಮೇಷನ್ ವೀಕ್ಷಿಸಿ!
+                </p>
+            </div>
+
+            <!-- Interactive Matra Wave Visualizer & Swara Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Left 7 Cols: Clickable Swara Cards -->
+                <div class="lg:col-span-7 space-y-6">
+                    <!-- Filter Tabs for Swaras -->
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="filterSwaras('all')" id="swara-btn-all" class="swara-filter active-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white border border-slate-300 text-slate-700 transition">ಎಲ್ಲಾ ಸ್ವರಗಳು (13)</button>
+                        <button onclick="filterSwaras('hraswa')" id="swara-btn-hraswa" class="swara-filter px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white border border-slate-300 text-slate-700 transition">ಹ್ರಸ್ವಸ್ವರಗಳು (6) - 1 ಮಾತ್ರೆ</button>
+                        <button onclick="filterSwaras('deergha')" id="swara-btn-deergha" class="swara-filter px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white border border-slate-300 text-slate-700 transition">ದೀರ್ಘಸ್ವರಗಳು (7) - 2 ಮಾತ್ರೆ</button>
+                        <button onclick="filterSwaras('sandhi')" id="swara-btn-sandhi" class="swara-filter px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white border border-slate-300 text-slate-700 transition">ಸಂಧಿಸ್ವರಗಳು (4) [ಏ, ಐ, ಓ, ಔ]</button>
+                    </div>
+
+                    <!-- 13 Swaras Interactive Grid -->
+                    <div id="swaraGridContainer" class="grid grid-cols-3 sm:grid-cols-5 gap-3">
+                        <!-- Dynamically populated by JS -->
+                    </div>
+
+                    <!-- Plutaswara Interactive Demo Card -->
+                    <div class="bg-gradient-to-r from-amber-100 to-orange-100 p-5 rounded-2xl border-2 border-amber-400 shadow-sm">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div>
+                                <span class="px-2.5 py-0.5 rounded bg-amber-800 text-white text-[11px] font-bold">೩ ಮಾತ್ರಾಕಾಲ (Pluta Swara)</span>
+                                <h4 class="text-lg font-extrabold text-amber-950 mt-1">ಪ್ಲುತಸ್ವರ ಎಂದರೇನು? (ಕರೆವ ಸ್ವರ)</h4>
+                                <p class="text-xs sm:text-sm text-amber-900 mt-1 leading-relaxed">
+                                    ಎರಡು ಮಾತ್ರೆಗಳಿಗಿಂತ ಹೆಚ್ಚಿನ ಕಾಲ (೩ ಮಾತ್ರೆಗಳ ಕಾಲ) ಎಳೆದು ಉಚ್ಚರಿಸುವ ಸ್ವರವೇ <strong>ಪ್ಲುತಸ್ವರ</strong>. ದೂರದಲ್ಲಿರುವವರನ್ನು ಕರೆಯುವಾಗ, ರಾಗವಾಗಿ ಹಾಡುವಾಗ ಅಥವಾ ಅಳುವಾಗ ಇದು ಬಳಕೆಯಾಗುತ್ತದೆ. ಚಿಹ್ನೆ: <strong>ऽ (ಅವಗ್ರಹ)</strong> ಅಥವಾ <strong>೩</strong>.
+                                </p>
+                            </div>
+                            <button onclick="playPlutaDemo()" class="shrink-0 px-4 py-3 rounded-xl bg-amber-900 hover:bg-amber-800 text-amber-100 font-bold text-xs sm:text-sm shadow-md transition flex items-center space-x-2">
+                                <span>📢</span>
+                                <span>"ರಾಮಾऽऽऽ" (೩ ಮಾತ್ರೆ) ಕೇಳಿ</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right 5 Cols: Live Matra Wave Visualizer & Sandhiswara Combiner -->
+                <div class="lg:col-span-5 space-y-6">
+                    <!-- Matra Duration Analyzer Card -->
+                    <div class="bg-slate-900 text-white rounded-2xl p-6 shadow-xl border-2 border-amber-400/60">
+                        <div class="flex items-center justify-between border-b border-slate-700 pb-3 mb-4">
+                            <div>
+                                <span class="text-xs text-amber-400 font-bold uppercase tracking-wider">ಮಾತ್ರಾಕಾಲ ಮಾಪನ (Matra Meter)</span>
+                                <h3 class="text-lg font-bold text-white">ಉಚ್ಚಾರಣಾ ಕಾಲಮಾನ ಪ್ರದರ್ಶಕ</h3>
+                            </div>
+                            <div id="activeSwaraBadge" class="w-14 h-14 rounded-2xl gold-gradient text-red-950 font-black text-3xl flex items-center justify-center shadow-lg">
+                                ಅ
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-slate-300 mb-4">
+                            <strong>'ಮಾತ್ರೆ'</strong> ಎಂದರೆ ಕಣ್ಣನ್ನು ಒಮ್ಮೆ ಮುಚ್ಚಿ ತೆರೆಯುವಷ್ಟು ಅಥವಾ ಬೆರಳನ್ನು ಒಮ್ಮೆ ಚಿಟಿಕೆ ಹೊಡೆಯುವಷ್ಟು ಕಾಲಾವಧಿ (ಸುಮಾರು 1 ಸೆಕೆಂಡ್).
+                        </p>
+
+                        <!-- Selected Letter Details -->
+                        <div id="swaraDetailBox" class="bg-slate-800/90 rounded-xl p-4 border border-slate-700 mb-4 space-y-2 text-xs sm:text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">ಅಕ್ಷರದ ವಿಧ:</span>
+                                <span id="swaraTypeLabel" class="font-bold text-amber-300">ಹ್ರಸ್ವಸ್ವರ (ಮೂಲಸ್ವರ)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">ಮಾತ್ರಾಕಾಲ:</span>
+                                <span id="swaraMatraLabel" class="font-bold text-emerald-400">೧ ಮಾತ್ರಾಕಾಲ (ಕಿರಿದಾದ ಉಚ್ಚಾರಣೆ)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">ಉಚ್ಚಾರಣಾ ಸ್ಥಾನ:</span>
+                                <span id="swaraPlaceLabel" class="font-bold text-sky-300">ಕಂಠ್ಯ (ಗಂಟಲು)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">ಉದಾಹರಣೆ ಪದ:</span>
+                                <span id="swaraExampleLabel" class="font-bold text-white">ಅರಸ, ಅಮ್ಮ, ಅಳಿಲು</span>
+                            </div>
+                        </div>
+
+                        <!-- Animated Progress Bar for 1, 2, 3 Matras -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span class="text-amber-300">ಧ್ವನಿ ತರಂಗದ ಅವಧಿ:</span>
+                                <span id="matraTimerCount" class="text-white">1.0 ಮಾತ್ರೆ</span>
+                            </div>
+                            <div class="w-full h-5 bg-slate-800 rounded-full overflow-hidden border border-slate-600 p-0.5">
+                                <div id="matraProgressBar" class="h-full rounded-full gold-gradient transition-all duration-700" style="width: 33%;"></div>
+                            </div>
+                            <div class="grid grid-cols-3 text-[11px] text-slate-400 font-semibold pt-1">
+                                <span>| ೧ ಮಾತ್ರೆ (ಹ್ರಸ್ವ)</span>
+                                <span class="text-center">| ೨ ಮಾತ್ರೆ (ದೀರ್ಘ)</span>
+                                <span class="text-right">೩ ಮಾತ್ರೆ (ಪ್ಲುತ) |</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sandhiswara (ಸಂಧಿಸ್ವರ / ಸಂಯುಕ್ತ ಸ್ವರ) Interactive Equation Card -->
+                    <div class="bg-white rounded-2xl p-5 shadow-lg border border-slate-200">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="font-extrabold text-slate-900 text-base">🔬 ಸಂಧಿಸ್ವರಗಳ (ಸಂಯುಕ್ತ ಸ್ವರ) ನಿರ್ಮಾಣ</h4>
+                            <span class="px-2 py-0.5 bg-red-100 text-red-800 rounded text-xs font-bold">KAS / FDA ಪ್ರಶ್ನೆ</span>
+                        </div>
+                        <p class="text-xs text-slate-600 mb-3">
+                            ಸಂಸ್ಕೃತ ವ್ಯಾಕರಣದ ಪ್ರಕಾರ <strong>ಏ, ಐ, ಓ, ಔ</strong> ಎಂಬ ನಾಲ್ಕು ದೀರ್ಘಸ್ವರಗಳು ಎರಡು ಭಿನ್ನ ಸ್ವರಗಳ ಸಂಧಿಸುವಿಕೆಯಿಂದ ಹುಟ್ಟಿವೆ. ಆದ್ದರಿಂದ ಇವಕ್ಕೆ <strong>'ಸಂಧಿಸ್ವರಗಳು'</strong> ಎನ್ನುತ್ತಾರೆ:
+                        </p>
+                        <div class="grid grid-cols-2 gap-2.5 text-xs font-bold">
+                            <button onclick="selectSwaraByChar('ಏ')" class="p-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-300 flex items-center justify-between transition">
+                                <span>ಅ + ಇ (ಈ)</span>
+                                <span class="text-lg font-black text-red-800">= ಏ</span>
+                            </button>
+                            <button onclick="selectSwaraByChar('ಐ')" class="p-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-300 flex items-center justify-between transition">
+                                <span>ಅ + ಏ (ಇ)</span>
+                                <span class="text-lg font-black text-red-800">= ಐ</span>
+                            </button>
+                            <button onclick="selectSwaraByChar('ಓ')" class="p-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-300 flex items-center justify-between transition">
+                                <span>ಅ + ಉ (ಊ)</span>
+                                <span class="text-lg font-black text-red-800">= ಓ</span>
+                            </button>
+                            <button onclick="selectSwaraByChar('ಔ')" class="p-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-300 flex items-center justify-between transition">
+                                <span>ಅ + ಓ (ಉ)</span>
+                                <span class="text-lg font-black text-red-800">= ಔ</span>
+                            </button>
+                        </div>
+                        <p class="text-[11px] text-slate-500 mt-2.5">
+                            * ಸೂಚನೆ: <strong>ಐ</strong> ಮತ್ತು <strong>ಔ</strong> ಅಕ್ಷರಗಳಿಗೆ ಸಮಾನವಾದ ಹ್ರಸ್ವಸ್ವರಗಳಿಲ್ಲ. ಕನ್ನಡದಲ್ಲಿ 'ಎ' ಮತ್ತು 'ಒ' ಹ್ರಸ್ವಗಳಿವೆ (ಇವು ದ್ರಾವಿಡ ಭಾಷೆಯ ವೈಶಿಷ್ಟ್ಯ).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="yogavaha" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-8">
+            <span class="px-3 py-1 rounded-full bg-purple-100 text-purple-900 font-bold text-xs uppercase tracking-wider">ಅಧ್ಯಾಯ ೩ : ಯೋಗವಾಹಗಳು (೨)</span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-2 serif-heading">ಯೋಗವಾಹಗಳು : ಅನುಸ್ವಾರ (ಂ) ಮತ್ತು ವಿಸರ್ಗ (ಃ)</h2>
+            <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                "ಯೋಗಂ ವಹಂತಿ ಇತಿ ಯೋಗವಾಹಾಃ" — ಅಂದರೆ ಸ್ವರದ ಸಂಬಂಧವನ್ನು ಪಡೆದುಕೊಂಡು ಮಾತ್ರ ಉಚ್ಚಾರಣೆಗೊಳ್ಳುವ ವರ್ಣಗಳು.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Anuswara Card -->
+            <div class="bg-white rounded-3xl p-6 shadow-lg border-2 border-purple-200 hover:border-purple-400 transition">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <span class="px-2.5 py-1 rounded-md bg-purple-100 text-purple-800 font-bold text-xs">ಯೋಗವಾಹ - ೧</span>
+                        <h3 class="text-2xl font-black text-slate-900 mt-2">ಅನುಸ್ವಾರ ( ಂ - ಸೊನ್ನೆ )</h3>
+                        <p class="text-xs text-purple-700 font-semibold mt-0.5">ಇನ್ನೊಂದು ಹೆಸರು: 'ಬಿಂದು' ಅಥವಾ 'ಪೂರ್ಣಬಿಂದು'</p>
+                    </div>
+                    <button onclick="speakKannada('ಅಂ, ಅನುಸ್ವಾರ')" class="w-16 h-16 rounded-2xl bg-purple-700 text-white font-black text-4xl flex items-center justify-center shadow-md hover:scale-105 transition">
+                        ಂ
+                    </button>
+                </div>
+                <p class="text-sm text-slate-700 mt-4 leading-relaxed">
+                    ಸ್ವರದ ಬೆನ್ನಹಿಂದೆಯೇ (ಅನು = ಹಿಂದೆ, ಸ್ವಾರ = ಸ್ವರವನ್ನು ಹೊಂದಿಕೊಂಡು) ಮೂಗಿನ ಸಹಾಯದಿಂದ ಉಚ್ಚರಿಸುವ ಧ್ವನಿ. ಇದಕ್ಕೆ ಸ್ವತಂತ್ರ ಉಚ್ಚಾರಣೆ ಇಲ್ಲ; <strong>ಅ + ಂ = ಅಂ</strong> ಎಂದೇ ಉಚ್ಚರಿಸಬೇಕು.
+                </p>
+                <div class="mt-4 bg-purple-50 p-4 rounded-2xl border border-purple-200 text-xs space-y-2">
+                    <div class="font-bold text-purple-950">🎯 ಸ್ಪರ್ಧಾತ್ಮಕ ಪರೀಕ್ಷೆಯ ಪ್ರಮುಖ ನಿಯಮ:</div>
+                    <p class="text-slate-700">
+                        ವರ್ಗೀಯ ವ್ಯಂಜನಗಳ ಮುಂದೆ ಅನುಸ್ವಾರ ಬಂದರೆ, ಅದು ಆ ವರ್ಗದ <strong>ಅನುನಾಸಿಕದಂತೆ</strong> ಉಚ್ಚರಿಸಲ್ಪಡುತ್ತದೆ!
+                    </p>
+                    <div class="grid grid-cols-2 gap-2 pt-1 font-semibold text-purple-900">
+                        <div class="bg-white p-2 rounded border">ಅಂಗ = ಅ + <strong>ङ्</strong> + ಗ (ಕ-ವರ್ಗ)</div>
+                        <div class="bg-white p-2 rounded border">ಪಂಚ = ಪ + <strong>ञ्</strong> + ಚ (ಚ-ವರ್ಗ)</div>
+                        <div class="bg-white p-2 rounded border">ಗಂಟೆ = ಗ + <strong>ण्</strong> + ಟೆ (ಟ-ವರ್ಗ)</div>
+                        <div class="bg-white p-2 rounded border">ಸಂತ = ಸ + <strong>न्</strong> + ತ (ತ-ವರ್ಗ)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visarga Card -->
+            <div class="bg-white rounded-3xl p-6 shadow-lg border-2 border-purple-200 hover:border-purple-400 transition">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <span class="px-2.5 py-1 rounded-md bg-purple-100 text-purple-800 font-bold text-xs">ಯೋಗವಾಹ - ೨</span>
+                        <h3 class="text-2xl font-black text-slate-900 mt-2">ವಿಸರ್ಗ ( ಃ - ಎರಡು ಸೊನ್ನೆ )</h3>
+                        <p class="text-xs text-purple-700 font-semibold mt-0.5">ಉಚ್ಚಾರಣಾ ಸ್ಥಾನ: ಕಂಠ್ಯ (ಗಂಟಲಿನಿಂದ ಉಸಿರು ಹೊರಹಾಕುವುದು)</p>
+                    </div>
+                    <button onclick="speakKannada('ಅಃ, ವಿಸರ್ಗ')" class="w-16 h-16 rounded-2xl bg-purple-700 text-white font-black text-4xl flex items-center justify-center shadow-md hover:scale-105 transition">
+                        ಃ
+                    </button>
+                </div>
+                <p class="text-sm text-slate-700 mt-4 leading-relaxed">
+                    'ವಿಸರ್ಗ' ಎಂದರೆ ಹೊರಹಾಕುವುದು (ಉಸಿರನ್ನು ಬಿಡುವುದು). ಇದು ಸಾಮಾನ್ಯವಾಗಿ <strong>'ಹ್'</strong> ಧ್ವನಿಯಂತೆ ಕೇಳಿಸುತ್ತದೆ. ಇದು ಸಂಸ್ಕೃತ ತತ್ಸಮ ಪದಗಳಲ್ಲಿ ಮಾತ್ರ ಕಂಡುಬರುತ್ತದೆ; ಅಚ್ಚಕನ್ನಡ ಪದಗಳಲ್ಲಿ ವಿಸರ್ಗವಿಲ್ಲ!
+                </p>
+                <div class="mt-4 bg-purple-50 p-4 rounded-2xl border border-purple-200 text-xs space-y-2">
+                    <div class="font-bold text-purple-950">🎯 KAS / FDA / PSI ಪರೀಕ್ಷಾ ಮುಖ್ಯಾಂಶ:</div>
+                    <p class="text-slate-700">
+                        ವಿಸರ್ಗವಿರುವ ಯಾವುದೇ ಪದವು <strong>ಅಚ್ಚಕನ್ನಡ ಪದವಲ್ಲ</strong>, ಅದು ನೂರಕ್ಕೆ ನೂರರಷ್ಟು ಸಂಸ್ಕೃತದಿಂದ ಬಂದ ಪದವಾಗಿರುತ್ತದೆ (ಉದಾ: ದುಃಖ, ಅಂತಃಪುರ, ತಪಃಫಲ, ಮನಃಶಾಂತಿ, ಪ್ರಾತಃಕಾಲ).
+                    </p>
+                    <div class="bg-white p-2.5 rounded border text-purple-950 font-medium">
+                        <strong>ಕೇಶಿರಾಜನ ಮತ:</strong> ಶಬ್ದಮಣಿದರ್ಪಣದಲ್ಲಿ ಕೇಶಿರಾಜನು ಸೊನ್ನೆ (ಂ), ವಿಸರ್ಗ (ಃ), ಜಿಹ್ವಾಮೂಲೀಯ ಮತ್ತು ಉಪಧ್ಮಾನೀಯಗಳನ್ನು <strong>'ಯೋಗವಾಹಗಳು'</strong> ಎಂದು ಕರೆದಿದ್ದಾನೆ.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vyanjanagalu" class="py-12 bg-slate-900 text-white border-y-4 border-[#D4AF37]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-8">
+                <span class="px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/40 font-bold text-xs uppercase tracking-wider">ಅಧ್ಯಾಯ ೪ : ವ್ಯಂಜನಗಳ (೩೪) ವಿಜ್ಞಾನ</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-2 serif-heading">ವರ್ಗೀಯ (೨೫) ಮತ್ತು ಅವರ್ಗೀಯ (೯) ವ್ಯಂಜನಗಳ ಜಾಲರಿ</h2>
+                <p class="text-slate-300 mt-2 text-sm sm:text-base">
+                    ಕೆಳಗಿನ ಫಿಲ್ಟರ್ ಬಟನ್‌ಗಳನ್ನು ಒತ್ತಿ <strong>ಅಲ್ಪಪ್ರಾಣ, ಮಹಾಪ್ರಾಣ, ಅನುನಾಸಿಕ, ಶ್ವಾಸ (ಅಘೋಷ) ಮತ್ತು ನಾದ (ಘೋಷ)</strong> ಅಕ್ಷರಗಳನ್ನು ತಕ್ಷಣ ಗುರುತಿಸಿ!
+                </p>
+            </div>
+
+            <!-- Interactive Filter Bar for 25 Vargiya Vyanjanas -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <button onclick="filterVyanjana('all')" id="vy-btn-all" class="vy-filter active-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 border border-slate-600 text-slate-200 transition">ಎಲ್ಲಾ ವರ್ಗೀಯ ವ್ಯಂಜನಗಳು (25)</button>
+                <button onclick="filterVyanjana('alpa')" id="vy-btn-alpa" class="vy-filter px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 border border-emerald-500/50 text-emerald-300 transition">🌱 ಅಲ್ಪಪ್ರಾಣಾಕ್ಷರಗಳು (10) [1, 3ನೇ ಸಾಲು]</button>
+                <button onclick="filterVyanjana('maha')" id="vy-btn-maha" class="vy-filter px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 border border-orange-500/50 text-orange-300 transition">🔥 ಮಹಾಪ್ರಾಣಾಕ್ಷರಗಳು (10) [2, 4ನೇ ಸಾಲು]</button>
+                <button onclick="filterVyanjana('anunasika')" id="vy-btn-anunasika" class="vy-filter px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 border border-sky-500/50 text-sky-300 transition">👃 ಅನುನಾಸಿಕಗಳು (5) [5ನೇ ಸಾಲು]</button>
+                <button onclick="filterVyanjana('shwasa')" id="vy-btn-shwasa" class="vy-filter px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 border border-pink-500/50 text-pink-300 transition">💨 ಶ್ವಾಸ / ಅಘೋಷ (10) [1, 2ನೇ ಸಾಲು]</button>
+                <button onclick="filterVyanjana('nada')" id="vy-btn-nada" class="vy-filter px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 border border-purple-500/50 text-purple-300 transition">🔔 ನಾದ / ಘೋಷ (15) [3, 4, 5ನೇ ಸಾಲು]</button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Left 8 Cols: 5x5 Vargiya Vyanjana Interactive Matrix -->
+                <div class="lg:col-span-8 bg-slate-800/90 rounded-3xl p-4 sm:p-6 border border-slate-700 shadow-2xl">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-base sm:text-lg font-extrabold text-amber-300">ಅ) ವರ್ಗೀಯ ವ್ಯಂಜನಗಳು (೨೫) - ಸ್ಪರ್ಶ ವ್ಯಂಜನಗಳು</h3>
+                        <span class="text-xs text-slate-400">ಅಕ್ಷರದ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ ಧ್ವನಿ ಕೇಳಿ 🔊</span>
+                    </div>
+
+                    <!-- Column Headers -->
+                    <div class="grid grid-cols-6 gap-2 mb-2 text-center text-[10px] sm:text-xs font-bold">
+                        <div class="p-2 rounded-lg bg-slate-900 text-amber-400 flex items-center justify-center">ವರ್ಗ / ಸ್ಥಾನ</div>
+                        <div class="p-2 rounded-lg bg-emerald-950/80 text-emerald-300 border border-emerald-700/50">೧. ಅಲ್ಪಪ್ರಾಣ<br><span class="text-[10px] text-pink-300">(ಶ್ವಾಸ/ಅಘೋಷ)</span></div>
+                        <div class="p-2 rounded-lg bg-orange-950/80 text-orange-300 border border-orange-700/50">೨. ಮಹಾಪ್ರಾಣ<br><span class="text-[10px] text-pink-300">(ಶ್ವಾಸ/ಅಘೋಷ)</span></div>
+                        <div class="p-2 rounded-lg bg-emerald-950/80 text-emerald-300 border border-emerald-700/50">೩. ಅಲ್ಪಪ್ರಾಣ<br><span class="text-[10px] text-purple-300">(ನಾದ/ಘೋಷ)</span></div>
+                        <div class="p-2 rounded-lg bg-orange-950/80 text-orange-300 border border-orange-700/50">೪. ಮಹಾಪ್ರಾಣ<br><span class="text-[10px] text-purple-300">(ನಾದ/ಘೋಷ)</span></div>
+                        <div class="p-2 rounded-lg bg-sky-950/80 text-sky-300 border border-sky-700/50">೫. ಅನುನಾಸಿಕ<br><span class="text-[10px] text-purple-300">(ನಾದ/ಘೋಷ)</span></div>
+                    </div>
+
+                    <!-- 5x5 Grid Rows populated by JS -->
+                    <div id="vargiyaMatrixContainer" class="space-y-2">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+
+                <!-- Right 4 Cols: Breath Flow Simulator & Explanation Panel -->
+                <div class="lg:col-span-4 space-y-6">
+                    <!-- Breath Intensity Animation Card -->
+                    <div class="bg-slate-800 rounded-3xl p-5 border border-slate-700 shadow-xl">
+                        <span class="text-xs font-bold uppercase text-amber-400">ಉಸಿರಿನ ಪ್ರಮಾಣದ ಪ್ರಾತ್ಯಕ್ಷಿಕೆ</span>
+                        <h4 id="vyFilterTitle" class="text-lg font-extrabold text-white mt-1">ವರ್ಗೀಯ ವ್ಯಂಜನಗಳ ವರ್ಗೀಕರಣ</h4>
+                        <p id="vyFilterDesc" class="text-xs text-slate-300 mt-2 leading-relaxed">
+                            'ಪ್ರಾಣ' ಎಂದರೆ ಉಸಿರು. ವ್ಯಂಜನಗಳನ್ನು ಉಚ್ಚರಿಸುವಾಗ ಶ್ವಾಸಕೋಶದಿಂದ ಹೊರಬರುವ ಉಸಿರಿನ ಪ್ರಮಾಣವನ್ನು ಆಧರಿಸಿ ಅಲ್ಪಪ್ರಾಣ ಮತ್ತು ಮಹಾಪ್ರಾಣಗಳೆಂದು ವಿಂಗಡಿಸಲಾಗಿದೆ.
+                        </p>
+
+                        <!-- Animated Lung / Air Flow Meter -->
+                        <div class="mt-4 space-y-3 bg-slate-900 p-4 rounded-2xl border border-slate-700">
+                            <div>
+                                <div class="flex justify-between text-xs font-bold text-emerald-300 mb-1">
+                                    <span>🌱 ಅಲ್ಪಪ್ರಾಣ (ಕಡಿಮೆ ಉಸಿರು)</span>
+                                    <span>ಕ, ಗ, ಚ, ಜ, ಟ, ಡ...</span>
+                                </div>
+                                <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-emerald-500 rounded-full breath-low"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-xs font-bold text-orange-300 mb-1">
+                                    <span>🔥 ಮಹಾಪ್ರಾಣ (ಹೆಚ್ಚು ಉಸಿರು / ಒತ್ತು)</span>
+                                    <span>ಖ, ಘ, ಛ, ಝ, ಠ, ಢ...</span>
+                                </div>
+                                <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-orange-500 to-red-500 rounded-full breath-high"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-xs font-bold text-sky-300 mb-1">
+                                    <span>👃 ಅನುನಾಸಿಕ (ಮೂಗಿನ ಸಹಾಯ)</span>
+                                    <span>ಙ, ಞ, ಣ, ನ, ಮ</span>
+                                </div>
+                                <p class="text-[11px] text-slate-400">ಬಾಯಿಯ ಜೊತೆಗೆ ಮೂಗಿನ ಹೊಳ್ಳೆಯ ಮೂಲಕ ಉಸಿರು ಹೊರಬರುತ್ತದೆ.</p>
+                            </div>
+                        </div>
+
+                        <!-- KAS Advanced Concept: Shwasa vs Nada -->
+                        <div class="mt-4 p-3.5 rounded-2xl bg-amber-500/10 border border-amber-400/30 text-xs space-y-1.5">
+                            <div class="font-bold text-amber-300">🎓 KAS / UPSC ವಿಶೇಷಾಂಶ (ಶ್ವಾಸ vs ನಾದ):</div>
+                            <p class="text-slate-300">
+                                • <strong>ಶ್ವಾಸಾಕ್ಷರಗಳು (ಅಘೋಷ - Voiceless):</strong> ಗಂಟಲಿನ ಧ್ವನಿಪೆಟ್ಟಿಗೆಯ ತಂತಿಗಳು ಕಂಪಿಸದೆ ಕೇವಲ ಉಸಿರಿನಿಂದ ಹುಟ್ಟುವ ಅಕ್ಷರಗಳು (ಪ್ರತಿ ವರ್ಗದ 1, 2ನೇ ಅಕ್ಷರ + ಶ, ಷ, ಸ = ಒಟ್ಟು 13).
+                            </p>
+                            <p class="text-slate-300">
+                                • <strong>ನಾದಾಕ್ಷರಗಳು (ಘೋಷ - Voiced):</strong> ಧ್ವನಿಪೆಟ್ಟಿಗೆಯಲ್ಲಿ ನಾದ/ಕಂಪನ ಉಂಟಾಗಿ ಹುಟ್ಟುವ ಅಕ್ಷರಗಳು (ಪ್ರತಿ ವರ್ಗದ 3, 4, 5ನೇ ಅಕ್ಷರ + ಯ, ರ, ಲ, ವ, ಹ, ಳ + ಎಲ್ಲಾ ಸ್ವರಗಳು).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Avargiya Vyanjanagalu (9) Interactive Section -->
+            <div class="mt-10 bg-slate-800/90 rounded-3xl p-6 border border-slate-700 shadow-xl">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <span class="px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 text-xs font-bold">ಯ ರಿಂದ ಳ ವರೆಗೆ (೯ ಅಕ್ಷರಗಳು)</span>
+                        <h3 class="text-xl sm:text-2xl font-extrabold text-white mt-1">ಆ) ಅವರ್ಗೀಯ ವ್ಯಂಜನಗಳು (೯) — ವರ್ಗಕ್ಕೆ ಸೇರದ ವ್ಯಂಜನಗಳು</h3>
+                        <p class="text-xs sm:text-sm text-slate-300 mt-1">
+                            ಇವುಗಳನ್ನು ಕ-ವರ್ಗ, ಚ-ವರ್ಗಗಳಂತೆ ನಿರ್ದಿಷ್ಟ ಗುಂಪುಗಳಾಗಿ (ವರ್ಗಗಳಾಗಿ) ವಿಂಗಡಿಸಲು ಸಾಧ್ಯವಿಲ್ಲದ ಕಾರಣ <strong>'ಅವರ್ಗೀಯ ವ್ಯಂಜನಗಳು'</strong> ಎನ್ನುವರು. ಆದರೆ ಧ್ವನಿಶಾಸ್ತ್ರದ ಪ್ರಕಾರ ಇವುಗಳಲ್ಲಿ ೩ ಮುಖ್ಯ ವಿಭಾಗಗಳಿವೆ:
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Group 1: Antasthagalu -->
+                    <div class="bg-slate-900/90 p-5 rounded-2xl border border-teal-500/40">
+                        <div class="flex justify-between items-center mb-3">
+                            <h4 class="font-extrabold text-teal-300 text-base">೧. ಅಂತಸ್ಥಗಳು (ಅರ್ಧಸ್ವರಗಳು)</h4>
+                            <span class="px-2.5 py-0.5 bg-teal-900 text-teal-200 rounded-full text-xs font-bold">4 ಅಕ್ಷರಗಳು</span>
+                        </div>
+                        <p class="text-xs text-slate-300 mb-4 leading-relaxed">
+                            ಸ್ವರ ಮತ್ತು ವ್ಯಂಜನಗಳ ನಡುವೆ ನಿಲ್ಲುವಂತಹ (ಅಂತಃ = ನಡುವೆ ಇರುವ) ಕೋಮಲ ವ್ಯಂಜನಗಳು.
+                        </p>
+                        <div class="grid grid-cols-4 gap-2 text-center">
+                            <button onclick="speakKannada('ಯ')" class="p-3 rounded-xl bg-teal-950 hover:bg-teal-800 border border-teal-600 text-2xl font-black text-white transition">ಯ</button>
+                            <button onclick="speakKannada('ರ')" class="p-3 rounded-xl bg-teal-950 hover:bg-teal-800 border border-teal-600 text-2xl font-black text-white transition">ರ</button>
+                            <button onclick="speakKannada('ಲ')" class="p-3 rounded-xl bg-teal-950 hover:bg-teal-800 border border-teal-600 text-2xl font-black text-white transition">ಲ</button>
+                            <button onclick="speakKannada('ವ')" class="p-3 rounded-xl bg-teal-950 hover:bg-teal-800 border border-teal-600 text-2xl font-black text-white transition">ವ</button>
+                        </div>
+                    </div>
+
+                    <!-- Group 2: Ushmaksharagalu -->
+                    <div class="bg-slate-900/90 p-5 rounded-2xl border border-rose-500/40">
+                        <div class="flex justify-between items-center mb-3">
+                            <h4 class="font-extrabold text-rose-300 text-base">೨. ಊಷ್ಮಾಕ್ಷರಗಳು (ಘರ್ಷಣಾಕ್ಷರ)</h4>
+                            <span class="px-2.5 py-0.5 bg-rose-900 text-rose-200 rounded-full text-xs font-bold">4 ಅಕ್ಷರಗಳು</span>
+                        </div>
+                        <p class="text-xs text-slate-300 mb-4 leading-relaxed">
+                            'ಊಷ್ಮ' ಎಂದರೆ ಬಿಸಿ ಉಸಿರು. ಬಾಯಿಯ ಒಳಭಾಗದಲ್ಲಿ ಗಾಳಿ ಉಜ್ಜಿಕೊಂಡು ಬಿಸಿ ಉಸಿರಿನಂತೆ ಹೊರಬರುವ ಅಕ್ಷರಗಳು.
+                        </p>
+                        <div class="grid grid-cols-4 gap-2 text-center">
+                            <button onclick="speakKannada('ಶ')" class="p-3 rounded-xl bg-rose-950 hover:bg-rose-800 border border-rose-600 text-2xl font-black text-white transition">ಶ</button>
+                            <button onclick="speakKannada('ಷ')" class="p-3 rounded-xl bg-rose-950 hover:bg-rose-800 border border-rose-600 text-2xl font-black text-white transition">ಷ</button>
+                            <button onclick="speakKannada('ಸ')" class="p-3 rounded-xl bg-rose-950 hover:bg-rose-800 border border-rose-600 text-2xl font-black text-white transition">ಸ</button>
+                            <button onclick="speakKannada('ಹ')" class="p-3 rounded-xl bg-rose-950 hover:bg-rose-800 border border-rose-600 text-2xl font-black text-white transition">ಹ</button>
+                        </div>
+                    </div>
+
+                    <!-- Group 3: Dravida Vishesha Akshara -->
+                    <div class="bg-slate-900/90 p-5 rounded-2xl border border-amber-500/40">
+                        <div class="flex justify-between items-center mb-3">
+                            <h4 class="font-extrabold text-amber-300 text-base">೩. ದ್ರಾವಿಡ ವಿಶೇಷ ಅಕ್ಷರ (ಕುಳ)</h4>
+                            <span class="px-2.5 py-0.5 bg-amber-900 text-amber-200 rounded-full text-xs font-bold">1 (+2 ಪ್ರಾಚೀನ)</span>
+                        </div>
+                        <p class="text-xs text-slate-300 mb-4 leading-relaxed">
+                            <strong>'ಳ'</strong> ಅಚ್ಚಕನ್ನಡ/ದ್ರಾವಿಡ ವಿಶೇಷ ಅಕ್ಷರ. ಹಳಗನ್ನಡದಲ್ಲಿ <strong>ಱ (ರಳ)</strong> ಮತ್ತು <strong>ೞ (ಕ್ಷಳ/ಳ್ಹ)</strong> ಕೂಡ ಬಳಕೆಯಲ್ಲಿದ್ದವು.
+                        </p>
+                        <div class="grid grid-cols-3 gap-2 text-center">
+                            <button onclick="speakKannada('ಳ, ಕುಳ')" class="p-2.5 rounded-xl bg-amber-950 hover:bg-amber-800 border border-amber-500 text-white transition">
+                                <div class="text-2xl font-black">ಳ</div>
+                                <div class="text-[10px] text-amber-300">ಕುಳ (ಪ್ರಸ್ತುತ)</div>
+                            </button>
+                            <button onclick="speakKannada('ಱ, ಶಕಟರೇಫ')" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-amber-200 transition">
+                                <div class="text-2xl font-black">ಱ</div>
+                                <div class="text-[10px] text-slate-400">ರಳ / ಶಕಟರೇಫ</div>
+                            </button>
+                            <button onclick="speakKannada('ೞ, ರಳ ಕುಳ ಕ್ಷಳ')" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-amber-200 transition">
+                                <div class="text-2xl font-black">ೞ</div>
+                                <div class="text-[10px] text-slate-400">ಕ್ಷಳ (ಹಳಗನ್ನಡ)</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="articulation" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+            <span class="px-3 py-1 rounded-full bg-red-100 text-red-900 font-bold text-xs uppercase tracking-wider">ಅಧ್ಯಾಯ ೫ : ಧ್ವನಿಶಾಸ್ತ್ರ ಮತ್ತು ಉಚ್ಚಾರಣಾ ಸ್ಥಾನಗಳು</span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-2 serif-heading">ಅಕ್ಷರಗಳ ಉತ್ಪತ್ತಿ ಸ್ಥಾನಗಳು (Interactive Vocal Tract)</h2>
+            <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                ಶ್ವಾಸಕೋಶದಿಂದ ಹೊರಟ ಗಾಳಿಯು ಗಂಟಲು, ದವಡೆ, ಅಂಗುಳ, ಒಸಡು, ಹಲ್ಲು, ತುಟಿ ಮತ್ತು ಮೂಗುಗಳಲ್ಲಿ ತಡೆದು ಅಕ್ಷರಗಳಾಗಿ ಹೊರಹೊಮ್ಮುತ್ತದೆ. ಚಿತ್ರದಲ್ಲಿರುವ ಬಿಂದುಗಳ ಮೇಲೆ ಅಥವಾ ಬಲಭಾಗದ ಸ್ಥಾನಗಳ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ!
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200">
+            <!-- Left 5 Cols: Interactive SVG Human Vocal Tract -->
+            <div class="lg:col-span-5 flex flex-col items-center">
+                <div class="w-full max-w-sm bg-gradient-to-b from-slate-900 to-slate-800 rounded-3xl p-4 border-2 border-[#D4AF37] shadow-2xl relative">
+                    <div class="text-center text-xs font-bold text-amber-300 mb-2">ಮಾನವನ ಧ್ವನ್ಯಂಗಗಳ ನಕ್ಷೆ (ಕ್ಲಿಕ್ ಮಾಡಿ)</div>
+                    
+                    <svg viewBox="0 0 360 380" class="w-full h-auto select-none">
+                        <!-- Head & Neck Silhouette -->
+                        <path d="M120,30 C190,25 260,55 275,120 C285,165 275,215 255,255 L245,355 L135,355 L135,295 C105,290 85,275 80,255 C75,235 90,225 85,215 C75,205 68,195 75,185 C82,175 60,165 55,150 C50,135 80,105 85,80 C90,50 100,32 120,30 Z" 
+                              fill="#334155" stroke="#94A3B8" stroke-width="2.5"/>
+                        
+                        <!-- Nasal Cavity (ನಾಸಿಕಾ ವಿವರ) -->
+                        <path d="M65,150 Q125,130 185,155 Q195,165 180,175 Q125,165 82,172 Z" fill="#1E293B" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="3,2"/>
+                        
+                        <!-- Oral Cavity & Palate & Throat Airway -->
+                        <path d="M80,205 Q130,175 185,185 Q215,195 215,245 L215,345 L180,345 L180,255 Q175,230 135,230 L85,222 Z" fill="#0F172A" stroke="#F59E0B" stroke-width="1.5"/>
+
+                        <!-- Tongue (ನಾಲಿಗೆ) -->
+                        <path d="M92,222 Q135,200 175,220 Q190,235 180,255 Q140,245 92,222 Z" fill="#E11D48" opacity="0.75"/>
+
+                        <!-- Animated Airflow Path -->
+                        <path id="svgAirflowPath" d="M198,340 L198,230 Q195,195 140,198 L80,208" fill="none" stroke="#FBBF24" stroke-width="3" stroke-dasharray="6,6">
+                            <animate attributeName="stroke-dashoffset" from="24" to="0" dur="1s" repeatCount="indefinite"/>
+                        </path>
+
+                        <!-- 1. Kanthya (ಕಂಠ್ಯ - Throat) -->
+                        <g class="cursor-pointer" onclick="selectArticulation('kanthya')">
+                            <circle id="ring-kanthya" cx="198" cy="285" r="14" fill="#EF4444" opacity="0.4" class="pulse-circle"/>
+                            <circle id="dot-kanthya" cx="198" cy="285" r="9" fill="#EF4444" stroke="#FFF" stroke-width="2"/>
+                            <text x="216" y="289" fill="#FDE047" font-size="12" font-weight="bold">೧. ಕಂಠ್ಯ (ಗಂಟಲು)</text>
+                        </g>
+
+                        <!-- 2. Talavya (ತಾಲವ್ಯ - Hard/Soft Palate) -->
+                        <g class="cursor-pointer" onclick="selectArticulation('talavya')">
+                            <circle id="ring-talavya" cx="172" cy="190" r="14" fill="#F59E0B" opacity="0" class="pulse-circle"/>
+                            <circle id="dot-talavya" cx="172" cy="190" r="8" fill="#F59E0B" stroke="#FFF" stroke-width="2"/>
+                            <text x="186" y="192" fill="#E2E8F0" font-size="11" font-weight="bold">೨. ತಾಲವ್ಯ (ದವಡೆ)</text>
+                        </g>
+
+                        <!-- 3. Murdhanya (ಮೂರ್ಧನ್ಯ - Roof of Mouth) -->
+                        <g class="cursor-pointer" onclick="selectArticulation('murdhanya')">
+                            <circle id="ring-murdhanya" cx="135" cy="182" r="14" fill="#10B981" opacity="0" class="pulse-circle"/>
+                            <circle id="dot-murdhanya" cx="135" cy="182" r="8" fill="#10B981" stroke="#FFF" stroke-width="2"/>
+                            <text x="115" y="168" fill="#E2E8F0" font-size="11" font-weight="bold">೩. ಮೂರ್ಧನ್ಯ (ಅಂಗುಳ)</text>
+                        </g>
+
+                        <!-- 4. Dantya (ದಂತ್ಯ - Teeth) -->
+                        <g class="cursor-pointer" onclick="selectArticulation('dantya')">
+                            <circle id="ring-dantya" cx="95" cy="202" r="14" fill="#06B6D4" opacity="0" class="pulse-circle"/>
+                            <circle id="dot-dantya" cx="95" cy="202" r="8" fill="#06B6D4" stroke="#FFF" stroke-width="2"/>
+                            <text x="12" y="200" fill="#E2E8F0" font-size="11" font-weight="bold">೪. ದಂತ್ಯ (ಹಲ್ಲು)</text>
+                        </g>
+
+                        <!-- 5. Oshthya (ಓಷ್ಠ್ಯ - Lips) -->
+                        <g class="cursor-pointer" onclick="selectArticulation('oshthya')">
+                            <circle id="ring-oshthya" cx="75" cy="218" r="14" fill="#EC4899" opacity="0" class="pulse-circle"/>
+                            <circle id="dot-oshthya" cx="75" cy="218" r="8" fill="#EC4899" stroke="#FFF" stroke-width="2"/>
+                            <text x="8" y="238" fill="#E2E8F0" font-size="11" font-weight="bold">೫. ಓಷ್ಠ್ಯ (ತುಟಿ)</text>
+                        </g>
+
+                        <!-- 6. Nasikya (ನಾಸಿಕ್ಯ - Nose) -->
+                        <g class="cursor-pointer" onclick="selectArticulation('nasikya')">
+                            <circle id="ring-nasikya" cx="90" cy="148" r="14" fill="#38BDF8" opacity="0" class="pulse-circle"/>
+                            <circle id="dot-nasikya" cx="90" cy="148" r="8" fill="#38BDF8" stroke="#FFF" stroke-width="2"/>
+                            <text x="10" y="135" fill="#38BDF8" font-size="11" font-weight="bold">೬. ನಾಸಿಕ್ಯ (ಮೂಗು)</text>
+                        </g>
+                    </svg>
+
+                    <div class="text-center text-[11px] text-slate-300 mt-1">
+                        💡 ಚಿತ್ರದ ಮೇಲಿರುವ ಬಣ್ಣದ ಬಿಂದುಗಳನ್ನು ಒತ್ತಿರಿ
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right 7 Cols: Articulation Place Selector & Active Detail Box -->
+            <div class="lg:col-span-7 space-y-5">
+                <!-- Selector Buttons for All 9 Places of Articulation -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                    <button onclick="selectArticulation('kanthya')" id="art-btn-kanthya" class="art-btn active-filter-btn p-3 rounded-xl border border-slate-300 bg-slate-50 text-left transition">
+                        <div class="text-xs font-extrabold">೧. ಕಂಠ್ಯ (Throat)</div>
+                        <div class="text-[11px] opacity-80">ಅ, ಆ, ಕ-ವರ್ಗ, ಹ, ಃ</div>
+                    </button>
+                    <button onclick="selectArticulation('talavya')" id="art-btn-talavya" class="art-btn p-3 rounded-xl border border-slate-300 bg-slate-50 text-left transition">
+                        <div class="text-xs font-extrabold">೨. ತಾಲವ್ಯ (Palate)</div>
+                        <div class="text-[11px] opacity-80">ಇ, ಈ, ಚ-ವರ್ಗ, ಯ, ಶ</div>
+                    </button>
+                    <button onclick="selectArticulation('murdhanya')" id="art-btn-murdhanya" class="art-btn p-3 rounded-xl border border-slate-300 bg-slate-50 text-left transition">
+                        <div class="text-xs font-extrabold">೩. ಮೂರ್ಧನ್ಯ (Retroflex)</div>
+                        <div class="text-[11px] opacity-80">ಋ, ಟ-ವರ್ಗ, ರ, ಷ, ಳ</div>
+                    </button>
+                    <button onclick="selectArticulation('dantya')" id="art-btn-dantya" class="art-btn p-3 rounded-xl border border-slate-300 bg-slate-50 text-left transition">
+                        <div class="text-xs font-extrabold">೪. ದಂತ್ಯ (Teeth)</div>
+                        <div class="text-[11px] opacity-80">ತ-ವರ್ಗ, ಲ, ಸ</div>
+                    </button>
+                    <button onclick="selectArticulation('oshthya')" id="art-btn-oshthya" class="art-btn p-3 rounded-xl border border-slate-300 bg-slate-50 text-left transition">
+                        <div class="text-xs font-extrabold">೫. ಓಷ್ಠ್ಯ (Lips)</div>
+                        <div class="text-[11px] opacity-80">ಉ, ಊ, ಪ-ವರ್ಗ</div>
+                    </button>
+                    <button onclick="selectArticulation('nasikya')" id="art-btn-nasikya" class="art-btn p-3 rounded-xl border border-slate-300 bg-slate-50 text-left transition">
+                        <div class="text-xs font-extrabold">೬. ಅನುನಾಸಿಕ (Nasal)</div>
+                        <div class="text-[11px] opacity-80">ಙ, ಞ, ಣ, ನ, ಮ, ಂ</div>
+                    </button>
+                    <button onclick="selectArticulation('kanthatalavya')" id="art-btn-kanthatalavya" class="art-btn p-3 rounded-xl border border-slate-300 bg-slate-50 text-left transition">
+                        <div class="text-xs font-extrabold">೭. ಕಂಠತಾಲವ್ಯ</div>
+                        <div class="text-[11px] opacity-80">ಎ, ಏ, ಐ (ಕಂಠ+ದವಡೆ)</div>
+                    </button>
+                    <button onclick="selectArticulation('kanthoshthya')" id="art-btn-kanthoshthya" class="art-btn p-3 rounded-xl border border-slate-300 bg-slate-50 text-left transition">
+                        <div class="text-xs font-extrabold">೮. ಕಂಠೋಷ್ಠ್ಯ</div>
+                        <div class="text-[11px] opacity-80">ಒ, ಓ, ಔ (ಕಂಠ+ತುಟಿ)</div>
+                    </button>
+                    <button onclick="selectArticulation('dantoshthya')" id="art-btn-dantoshthya" class="art-btn p-3 rounded-xl border border-slate-300 bg-slate-50 text-left transition">
+                        <div class="text-xs font-extrabold">೯. ದಂತೋಷ್ಠ್ಯ</div>
+                        <div class="text-[11px] opacity-80">ವ (ಹಲ್ಲು + ತುಟಿ)</div>
+                    </button>
+                </div>
+
+                <!-- Dynamic Details Display Box -->
+                <div id="articulationDetailCard" class="bg-gradient-to-br from-red-950 to-slate-900 text-white p-6 rounded-2xl border-2 border-[#D4AF37] shadow-lg">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-red-800 pb-3 mb-4">
+                        <div>
+                            <span id="artSutraBadge" class="px-2.5 py-0.5 rounded bg-amber-400 text-red-950 font-bold text-xs">ಸೂತ್ರ: ಅಕುಹವಿಸರ್ಜನೀಯಾನಾಂ ಕಂಠಃ</span>
+                            <h3 id="artTitle" class="text-xl sm:text-2xl font-black text-amber-300 mt-1">೧. ಕಂಠ್ಯ ವರ್ಣಗಳು (ಕಂಠಸ್ಥಾನ / ಗಂಟಲು)</h3>
+                        </div>
+                        <button onclick="speakCurrentArticulation()" class="px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-red-950 font-extrabold text-xs flex items-center space-x-1.5 shadow">
+                            <span>🔊</span>
+                            <span>ಉಚ್ಚರಿಸಿ ಕೇಳಿ</span>
+                        </button>
+                    </div>
+
+                    <p id="artExplanation" class="text-xs sm:text-sm text-amber-50/90 leading-relaxed mb-4">
+                        ಶ್ವಾಸಕೋಶದಿಂದ ಬರುವ ಗಾಳಿಯು ನೇರವಾಗಿ ಗಂಟಲಿನಲ್ಲಿ (ಕಂಠದಲ್ಲಿ) ತಡೆದು ಉತ್ಪತ್ತಿಯಾಗುವ ಅಕ್ಷರಗಳನ್ನು 'ಕಂಠ್ಯ ವರ್ಣಗಳು' ಎನ್ನುತ್ತಾರೆ.
+                    </p>
+
+                    <div class="bg-black/30 p-4 rounded-xl border border-amber-500/30">
+                        <div class="text-xs text-amber-300 font-bold mb-2">ಈ ಸ್ಥಾನದಲ್ಲಿ ಹುಟ್ಟುವ ಅಕ್ಷರಗಳು:</div>
+                        <div id="artLettersList" class="flex flex-wrap gap-2">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="lab" class="py-12 bg-amber-50/60 border-y border-amber-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="px-3 py-1 rounded-full bg-red-100 text-red-900 font-bold text-xs uppercase tracking-wider">ಅಧ್ಯಾಯ ೬ : ಸಂವಾದಾತ್ಮಕ ಪ್ರಯೋಗಶಾಲೆ (Interactive Lab)</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-2 serif-heading">ಗುಣಿತಾಕ್ಷರ ಮತ್ತು ಸಂಯುಕ್ತಾಕ್ಷರ (ಒತ್ತಕ್ಷರ) ನಿರ್ಮಾಣ</h2>
+                <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                    ವ್ಯಂಜನಕ್ಕೆ ಸ್ವರ ಸೇರಿದಾಗ <strong>ಗುಣಿತಾಕ್ಷರ (ಕಾಗುಣಿತ)</strong> ಹುಟ್ಟುತ್ತದೆ. ಎರಡು ಅಥವಾ ಹೆಚ್ಚಿನ ವ್ಯಂಜನಗಳಿಗೆ ಒಂದು ಸ್ವರ ಸೇರಿದಾಗ <strong>ಸಂಯುಕ್ತಾಕ್ಷರ (ಒತ್ತಕ್ಷರ)</strong> ಹುಟ್ಟುತ್ತದೆ.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Left Card: Gunitakshara Builder -->
+                <div class="bg-white rounded-3xl p-6 shadow-xl border-2 border-amber-300">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-4">
+                        <div>
+                            <span class="text-xs font-bold text-amber-800 uppercase">ಪ್ರಯೋಗಶಾಲೆ - ೧</span>
+                            <h3 class="text-xl font-black text-slate-900">ಗುಣಿತಾಕ್ಷರ (ಕಾಗುಣಿತ) ಸಂಯೋಜಕ</h3>
+                        </div>
+                        <span class="px-3 py-1 bg-amber-100 text-amber-900 rounded-lg text-xs font-bold">ವ್ಯಂಜನ + ಸ್ವರ = ಗುಣಿತಾಕ್ಷರ</span>
+                    </div>
+
+                    <p class="text-xs text-slate-600 mb-4">
+                        ⚠️ <strong>ಪರೀಕ್ಷಾ ನಿಯಮ:</strong> ಗುಣಿತಾಕ್ಷರಗಳಲ್ಲಿ ಯೋಗವಾಹಗಳನ್ನು (ಅಂ, ಅಃ) ಸೇರಿಸುವುದಿಲ್ಲ; ಕೇವಲ 13 ಸ್ವರಗಳು ಮಾತ್ರ ಸೇರುತ್ತವೆ. ಆದರೆ ಸಾಂಪ್ರದಾಯಿಕ ಕಾಗುಣಿತದಲ್ಲಿ (ಕ ರಿಂದ ಕಃ ವರೆಗೆ) 15 ಅಕ್ಷರಗಳಿರುತ್ತವೆ.
+                    </p>
+
+                    <!-- Step 1: Choose Base Consonant -->
+                    <div class="mb-4">
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">೧. ಮೂಲ ವ್ಯಂಜನವನ್ನು ಆರಿಸಿ:</label>
+                        <div id="gunitaConsonantList" class="flex flex-wrap gap-1.5">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Choose Vowel -->
+                    <div class="mb-5">
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">೨. ಸ್ವರವನ್ನು ಆರಿಸಿ (ಸ್ವರ ಚಿಹ್ನೆ ನೋಡಿ):</label>
+                        <div id="gunitaVowelList" class="flex flex-wrap gap-1.5">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Live Equation Output -->
+                    <div class="royal-gradient text-white p-5 rounded-2xl border-2 border-[#D4AF37] text-center">
+                        <div class="text-xs text-amber-200 font-bold mb-2">ಗುಣಿತಾಕ್ಷರ ಸಮೀಕರಣ ಮತ್ತು ಚಿಹ್ನೆಯ ಹೆಸರು</div>
+                        <div class="flex items-center justify-center space-x-3 sm:space-x-5 text-2xl sm:text-4xl font-black">
+                            <span id="gBaseHal" class="bg-black/30 px-3.5 py-2 rounded-xl border border-amber-400/40">ಕ್</span>
+                            <span class="text-amber-400">+</span>
+                            <span id="gVowelChar" class="bg-black/30 px-3.5 py-2 rounded-xl border border-amber-400/40">ಅ</span>
+                            <span class="text-amber-400">=</span>
+                            <span id="gResultChar" class="gold-gradient text-red-950 px-5 py-2 rounded-xl shadow-lg">ಕ</span>
+                        </div>
+                        <div id="gSignName" class="mt-3 text-xs sm:text-sm font-bold text-amber-300">
+                            ಸ್ವರ ಚಿಹ್ನೆ: ತಲೆಕಟ್ಟು (ಮೂಲ ವ್ಯಂಜನಕ್ಕೆ 'ಅ' ಸೇರಿದಾಗ ತಲೆಕಟ್ಟು ಬರುತ್ತದೆ)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Card: Ottakshara (Samyuktakshara) Lab -->
+                <div class="bg-white rounded-3xl p-6 shadow-xl border-2 border-red-300">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-4">
+                        <div>
+                            <span class="text-xs font-bold text-red-800 uppercase">ಪ್ರಯೋಗಶಾಲೆ - ೨</span>
+                            <h3 class="text-xl font-black text-slate-900">ಸಂಯುಕ್ತಾಕ್ಷರ (ಒತ್ತಕ್ಷರ) ಪರೀಕ್ಷಕ</h3>
+                        </div>
+                        <span class="px-3 py-1 bg-red-100 text-red-900 rounded-lg text-xs font-bold">ಸಜಾತೀಯ vs ವಿಜಾತೀಯ</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 text-xs">
+                        <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200">
+                            <div class="font-extrabold text-emerald-950">೧. ಸಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರ (ದ್ವಿತ್ವ)</div>
+                            <p class="text-emerald-800 mt-1">ಒಂದೇ ಜಾತಿಯ ಎರಡು ವ್ಯಂಜನಗಳು ಸೇರಿ ಆಗುವ ಒತ್ತಕ್ಷರ. (ಉದಾ: <strong>ಕ್ + ಕ್ + ಅ = ಕ್ಕ</strong>, ಅಮ್ಮ, ಅಜ್ಜ, ಹಗ್ಗ)</p>
+                        </div>
+                        <div class="p-3 rounded-xl bg-indigo-50 border border-indigo-200">
+                            <div class="font-extrabold text-indigo-950">೨. ವಿಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರ</div>
+                            <p class="text-indigo-800 mt-1">ಬೇರೆ ಬೇರೆ ಜಾತಿಯ ವ್ಯಂಜನಗಳು ಸೇರಿ ಆಗುವ ಒತ್ತಕ್ಷರ. (ಉದಾ: <strong>ಕ್ + ಷ್ + ಅ = ಕ್ಷ</strong>, ಭಕ್ತಿ, ಜ್ಞಾನ, ಕಾರ್ಯ)</p>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Word Breakdown Selector -->
+                    <div class="mb-4">
+                        <label class="block text-xs font-bold text-slate-700 mb-2">ಪರೀಕ್ಷೆಗಳಲ್ಲಿ ಅತಿ ಹೆಚ್ಚು ಕೇಳುವ ವಿಶೇಷ ಒತ್ತಕ್ಷರಗಳ ಬಿಡಿಸುವಿಕೆ (ಕ್ಲಿಕ್ ಮಾಡಿ):</label>
+                        <div class="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                            <button onclick="inspectOttakshara('ksha')" class="p-2.5 rounded-xl bg-slate-100 hover:bg-red-100 border border-slate-300 font-black text-base text-slate-900 transition">ಕ್ಷ (ಕ್ಷಮೆ)</button>
+                            <button onclick="inspectOttakshara('jna')" class="p-2.5 rounded-xl bg-slate-100 hover:bg-red-100 border border-slate-300 font-black text-base text-slate-900 transition">ಜ್ಞ (ಜ್ಞಾನ)</button>
+                            <button onclick="inspectOttakshara('arkavattu')" class="p-2.5 rounded-xl bg-slate-100 hover:bg-red-100 border border-slate-300 font-black text-base text-slate-900 transition">ರ್ಯ (ಕಾರ್ಯ)</button>
+                            <button onclick="inspectOttakshara('rape')" class="p-2.5 rounded-xl bg-slate-100 hover:bg-red-100 border border-slate-300 font-black text-base text-slate-900 transition">ಪ್ರ (ಪ್ರೇಮ)</button>
+                            <button onclick="inspectOttakshara('sajatiya_kka')" class="p-2.5 rounded-xl bg-slate-100 hover:bg-red-100 border border-slate-300 font-black text-base text-slate-900 transition">ಕ್ಕ (ಅಕ್ಕ)</button>
+                            <button onclick="inspectOttakshara('shri')" class="p-2.5 rounded-xl bg-slate-100 hover:bg-red-100 border border-slate-300 font-black text-base text-slate-900 transition">ಶ್ರೀ (ಶ್ರೀಮಂತ)</button>
+                            <button onclick="inspectOttakshara('stra')" class="p-2.5 rounded-xl bg-slate-100 hover:bg-red-100 border border-slate-300 font-black text-base text-slate-900 transition">ಸ್ತ್ರೀ (ಸ್ತ್ರೀ)</button>
+                            <button onclick="inspectOttakshara('lakshmi')" class="p-2.5 rounded-xl bg-slate-100 hover:bg-red-100 border border-slate-300 font-black text-base text-slate-900 transition">ಕ್ಷ್ಮಿ (ಲಕ್ಷ್ಮಿ)</button>
+                        </div>
+                    </div>
+
+                    <!-- Ottakshara Result Box -->
+                    <div id="ottaksharaResultBox" class="bg-slate-900 text-white p-5 rounded-2xl border-2 border-amber-400">
+                        <div class="flex items-center justify-between mb-2">
+                            <span id="ottaBadge" class="px-2.5 py-0.5 rounded bg-indigo-500 text-white text-xs font-bold">ವಿಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರ</span>
+                            <span id="ottaWord" class="text-amber-300 font-bold text-sm">ಉದಾಹರಣೆ: ಕ್ಷಮೆ, ಅಕ್ಷರ</span>
+                        </div>
+                        <div id="ottaFormula" class="text-2xl sm:text-3xl font-black text-center py-3 bg-slate-800 rounded-xl border border-slate-700 text-amber-300">
+                            ಕ್ + ಷ್ + ಅ = ಕ್ಷ
+                        </div>
+                        <p id="ottaNote" class="text-xs text-slate-300 mt-3 leading-relaxed">
+                            💡 <strong>ನೆನಪಿಡಿ:</strong> 'ಕ್ಷ' ಎಂಬುದು ಮೂಲಾಕ್ಷರವಲ್ಲ! ಇದು ಕ-ಕಾರ (ಕ್), ಷ-ಕಾರ (ಷ್) ಮತ್ತು ಅ-ಕಾರಗಳ ಸಂಯೋಗದಿಂದಾದ ವಿಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರ.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="upsc-kas" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+            <span class="px-3 py-1 rounded-full bg-amber-400 text-red-950 font-extrabold text-xs uppercase tracking-wider">ಅಧ್ಯಾಯ ೭ : UPSC / KAS / FDA / SDA / PSI ಬ್ರಹ್ಮಾಸ್ತ್ರ</span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-2 serif-heading">ಸ್ಪರ್ಧಾತ್ಮಕ ಪರೀಕ್ಷೆಗಳ ವಿಶೇಷ ತುಲನಾತ್ಮಕ ಕೋಷ್ಟಕ</h2>
+            <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                ಕೇಶಿರಾಜನ 'ಶಬ್ದಮಣಿದರ್ಪಣ', ನಾಗವರ್ಮನ 'ಕರ್ಣಾಟಕ ಭಾಷಾಭೂಷಣ' ಹಾಗೂ ಆಧುನಿಕ ಕನ್ನಡ ವರ್ಣಮಾಲೆಯ ನಡುವಿನ ವ್ಯತ್ಯಾಸಗಳು.
+            </p>
+        </div>
+
+        <!-- Comparative Cards for High-Level Exams -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+            <!-- Card 1: Keshiraja's 47 Letters -->
+            <div class="bg-white rounded-3xl p-6 shadow-lg border-t-4 border-red-800">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-lg font-extrabold text-slate-900">೧. ಕೇಶಿರಾಜನ ಶುದ್ಧಗೆ (೪೭ ಅಕ್ಷರ)</h3>
+                    <span class="px-2.5 py-1 bg-red-100 text-red-900 font-black rounded-lg text-xs">ಶಬ್ದಮಣಿದರ್ಪಣ</span>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                    ಕ್ರಿ.ಶ. 1260ರಲ್ಲಿ ಕೇಶಿರಾಜನು ರಚಿಸಿದ <strong>'ಶಬ್ದಮಣಿದರ್ಪಣ'</strong> ಕನ್ನಡದ ಅತ್ಯಂತ ಪ್ರಮಾಣಬದ್ಧ ವ್ಯಾಕರಣ ಗ್ರಂಥ. ಇವನ ಪ್ರಕಾರ ಸಂಸ್ಕೃತದ ೫೨ ಅಕ್ಷರಗಳಲ್ಲಿ ಕನ್ನಡಕ್ಕೆ ಒಗ್ಗದ ಅಕ್ಷರಗಳನ್ನು ಕಳೆದು, ದ್ರಾವಿಡ ವಿಶೇಷಗಳನ್ನು ಸೇರಿಸಿದಾಗ <strong>೪೭ ಶುದ್ಧಾಕ್ಷರಗಳು</strong> ಉಳಿಯುತ್ತವೆ:
+                </p>
+                <ul class="text-xs space-y-2 text-slate-700 font-medium">
+                    <li class="flex items-start space-x-2">
+                        <span class="text-red-700 font-bold">•</span>
+                        <span><strong>ಸ್ವರಗಳು (14):</strong> ಅ, ಆ, ಇ, ಈ, ಉ, ಊ, ಋ, ೠ, ಎ, ಏ, ಐ, ಒ, ಓ, ಔ (ಌ, ೡ ಕೈಬಿಡಲಾಗಿದೆ).</span>
+                    </li>
+                    <li class="flex items-start space-x-2">
+                        <span class="text-red-700 font-bold">•</span>
+                        <span><strong>ವರ್ಗೀಯ ವ್ಯಂಜನ (25):</strong> ಕ ವರ್ಗದಿಂದ ಪ ವರ್ಗದವರೆಗೆ (25).</span>
+                    </li>
+                    <li class="flex items-start space-x-2">
+                        <span class="text-red-700 font-bold">•</span>
+                        <span><strong>ಅವರ್ಗೀಯ (8):</strong> ಯ, ರ, ಲ, ವ, ಶ, ಷ, ಸ, ಹ (8).</span>
+                    </li>
+                    <li class="flex items-start space-x-2">
+                        <span class="text-red-700 font-bold">•</span>
+                        <span><strong>ದೇಸಿಯ ಅಕ್ಷರಗಳು (5):</strong> ಎ, ಒ (ಹ್ರಸ್ವ) ಹಾಗೂ <strong>ಱ (ರಳ), ಳ (ಕುಳ), ೞ (ಕ್ಷಳ)</strong> ಕನ್ನಡದ ವಿಶೇಷ ವರ್ಣಗಳು.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Card 2: Deshiya vs Sanskrit Letters -->
+            <div class="bg-white rounded-3xl p-6 shadow-lg border-t-4 border-amber-500">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-lg font-extrabold text-slate-900">೨. ಅಚ್ಚಕನ್ನಡದಲ್ಲಿ ಇಲ್ಲದ ಅಕ್ಷರಗಳು</h3>
+                    <span class="px-2.5 py-1 bg-amber-100 text-amber-900 font-black rounded-lg text-xs">KAS / FDA ಟ್ರಿಕ್ಸ್</span>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                    ಕನ್ನಡ ವರ್ಣಮಾಲೆಯ 49 ಅಕ್ಷರಗಳಲ್ಲಿ ಕೆಲವು ಅಕ್ಷರಗಳು ಕೇವಲ ಸಂಸ್ಕೃತದಿಂದ ಬಂದ (ತತ್ಸಮ) ಪದಗಳನ್ನು ಬರೆಯಲು ಮಾತ್ರ ಬಳಕೆಯಾಗುತ್ತವೆ. ಈ ಕೆಳಗಿನ ಅಕ್ಷರಗಳಿರುವ ಪದಗಳು <strong>ಸಂಸ್ಕೃತ ಪದಗಳು</strong>:
+                </p>
+                <div class="space-y-2 text-xs">
+                    <div class="p-2.5 rounded-xl bg-amber-50 border border-amber-200">
+                        <strong class="text-amber-950">೧. ಋ (ಸ್ವರ):</strong> ಋಷಿ, ಋತು, ಕೃಷಿ, ಪಿತೃ — ಇವೆಲ್ಲವೂ ಸಂಸ್ಕೃತ ಪದಗಳು.
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-amber-50 border border-amber-200">
+                        <strong class="text-amber-950">೨. ವಿಸರ್ಗ (ಃ):</strong> ದುಃಖ, ಅಂತಃಕರಣ, ಪುನಃ — ಸಂಸ್ಕೃತ ಪದಗಳು.
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-amber-50 border border-amber-200">
+                        <strong class="text-amber-950">೩. ಮಹಾಪ್ರಾಣಾಕ್ಷರಗಳು (10):</strong> ಖ, ಘ, ಛ, ಝ, ಠ, ಢ, ಥ, ಧ, ಫ, ಭ (ಅಚ್ಚಕನ್ನಡದ ಕೆಲವೇ ಅನುಕರಣ ಶಬ್ದಗಳನ್ನು ಹೊರತುಪಡಿಸಿ ಉಳಿದೆಲ್ಲವೂ ಸಂಸ್ಕೃತ).
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-amber-50 border border-amber-200">
+                        <strong class="text-amber-950">೪. ಶ ಮತ್ತು ಷ (ಊಷ್ಮ):</strong> ಶಾಂತಿ, ಶಂಕರ, ಕಷ್ಟ, ಪುರುಷ — ಸಂಸ್ಕೃತ ಪದಗಳು.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Quick Numbers Cheat Sheet -->
+            <div class="bg-white rounded-3xl p-6 shadow-lg border-t-4 border-emerald-600">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-lg font-extrabold text-slate-900">೩. ಅಂಕಿ-ಅಂಶಗಳ ಸಾರಾಂಶ (One-Liners)</h3>
+                    <span class="px-2.5 py-1 bg-emerald-100 text-emerald-900 font-black rounded-lg text-xs">ವೇಗದ ಪುನರಾವರ್ತನೆ</span>
+                </div>
+                <div class="divide-y divide-slate-100 text-xs">
+                    <div class="py-2 flex justify-between"><span>ಒಟ್ಟು ಮೂಲಾಕ್ಷರಗಳು:</span><strong class="text-slate-900">49</strong></div>
+                    <div class="py-2 flex justify-between"><span>ಒಟ್ಟು ಸ್ವರಗಳು (ಹ್ರಸ್ವ 6 + ದೀರ್ಘ 7):</span><strong class="text-slate-900">13</strong></div>
+                    <div class="py-2 flex justify-between"><span>ಸಂಧಿಸ್ವರಗಳು (ಏ, ಐ, ಓ, ಔ):</span><strong class="text-slate-900">04</strong></div>
+                    <div class="py-2 flex justify-between"><span>ಯೋಗವಾಹಗಳು (ಅನುಸ್ವಾರ, ವಿಸರ್ಗ):</span><strong class="text-slate-900">02</strong></div>
+                    <div class="py-2 flex justify-between"><span>ಒಟ್ಟು ವ್ಯಂಜನಗಳು (25 + 9):</span><strong class="text-slate-900">34</strong></div>
+                    <div class="py-2 flex justify-between"><span>ಅಲ್ಪಪ್ರಾಣ (10) + ಮಹಾಪ್ರಾಣ (10) + ಅನುನಾಸಿಕ (5):</span><strong class="text-slate-900">25</strong></div>
+                    <div class="py-2 flex justify-between"><span>ಅಂತಸ್ಥಗಳು (ಯ, ರ, ಲ, ವ):</span><strong class="text-slate-900">04</strong></div>
+                    <div class="py-2 flex justify-between"><span>ಊಷ್ಮಾಕ್ಷರಗಳು (ಶ, ಷ, ಸ, ಹ):</span><strong class="text-slate-900">04</strong></div>
+                    <div class="py-2 flex justify-between"><span>ಶ್ವಾಸಾಕ್ಷರಗಳು / ಅಘೋಷ (10 ವರ್ಗೀಯ + ಶ,ಷ,ಸ):</span><strong class="text-slate-900">13</strong></div>
+                    <div class="py-2 flex justify-between"><span>ನಾದಾಕ್ಷರಗಳು / ಘೋಷ (ವ್ಯಂಜನಗಳಲ್ಲಿ 15 + ಯ,ರ,ಲ,ವ,ಹ,ಳ):</span><strong class="text-slate-900">21 (+13 ಸ್ವರ)</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive 10-Question KAS/UPSC/FDA Quiz -->
+        <div id="quiz-section" class="bg-gradient-to-br from-slate-900 via-[#380606] to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-2xl border-2 border-[#D4AF37]">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-amber-500/30 pb-5 mb-6">
+                <div>
+                    <span class="px-3 py-1 rounded-full bg-amber-400 text-red-950 font-black text-xs uppercase">🎯 ಸ್ಪರ್ಧಾತ್ಮಕ ಪರೀಕ್ಷಾ ರಸಪ್ರಶ್ನೆ (Mock Test)</span>
+                    <h3 class="text-2xl sm:text-3xl font-black text-white mt-2 serif-heading">KAS / FDA / SDA / PSI / TET ಪ್ರಶ್ನೋತ್ತರ ಮಾಲಿಕೆ</h3>
+                </div>
+                <div class="flex items-center space-x-4 bg-black/40 px-4 py-2.5 rounded-2xl border border-amber-400/40">
+                    <div class="text-xs text-amber-200">ನಿಮ್ಮ ಅಂಕಗಳು:</div>
+                    <div id="quizScoreDisplay" class="text-2xl font-black text-amber-400">0 / 10</div>
+                    <button onclick="resetQuiz()" class="text-xs px-3 py-1.5 rounded-lg bg-red-800 hover:bg-red-700 text-white font-bold transition">ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ ↻</button>
+                </div>
+            </div>
+
+            <!-- Quiz Questions Container -->
+            <div id="quizContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#2A0202] text-amber-100/80 py-8 border-t-2 border-[#D4AF37] text-center text-xs sm:text-sm">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <div class="font-bold text-amber-300 text-base serif-heading">"ಸಿರಿಗನ್ನಡಂ ಗೆಲ್ಗೆ, ಸಿರಿಗನ್ನಡಂ ಬಾಳ್ಗೆ"</div>
+            <p>ಕನ್ನಡ ವರ್ಣಮಾಲೆ ಮತ್ತು ಧ್ವನಿಶಾಸ್ತ್ರದ ಸಮಗ್ರ ಡಿಜಿಟಲ್ ಕೈಪಿಡಿ — ಪ್ರಾಥಮಿಕ ಶಿಕ್ಷಣದಿಂದ UPSC / KPSC (KAS, FDA, SDA, PSI, TET) ಸ್ಪರ್ಧಾತ್ಮಕ ಪರೀಕ್ಷಾರ್ಥಿಗಳಿಗಾಗಿ.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Audio Synthesizer State
+        let audioEnabled = true;
+
+        function toggleAudioState() {
+            audioEnabled = !audioEnabled;
+            const icon = document.getElementById('soundIcon');
+            const label = document.getElementById('soundLabel');
+            if (audioEnabled) {
+                icon.textContent = '🔊';
+                label.textContent = 'ಧ್ವನಿ ಸಕ್ರಿಯ';
+            } else {
+                icon.textContent = '🔇';
+                label.textContent = 'ಧ್ವನಿ ನಿಷ್ಕ್ರಿಯ';
+                if ('speechSynthesis' in window) {
+                    window.speechSynthesis.cancel();
+                }
+            }
+        }
+
+        // Web Speech API + Web Audio Tone Fallback for Matra Duration
+        function speakKannada(text, durationMultiplier = 1) {
+            if (!audioEnabled) return;
+            try {
+                // Play a subtle musical harmonic chime matching Matra length
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (AudioCtx) {
+                    const ctx = new AudioCtx();
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(durationMultiplier === 1 ? 330 : (durationMultiplier === 2 ? 440 : 523.25), ctx.currentTime);
+                    gain.gain.setValueAtTime(0.08, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + (0.35 * durationMultiplier));
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start();
+                    osc.stop(ctx.currentTime + (0.35 * durationMultiplier));
+                }
+
+                if ('speechSynthesis' in window) {
+                    window.speechSynthesis.cancel();
+                    const utter = new SpeechSynthesisUtterance(text);
+                    utter.lang = 'kn-IN';
+                    utter.rate = durationMultiplier === 3 ? 0.65 : 0.85;
+                    window.speechSynthesis.speak(utter);
+                }
+            } catch (e) {
+                // Ignore audio context restrictions if not interacted
+            }
+        }
+
+        // 1. SWARAGALU DATA (13 Vowels)
+        const swarasData = [
+            { char: 'ಅ', category: 'hraswa', isSandhi: false, type: 'ಹ್ರಸ್ವಸ್ವರ (ಮೂಲಸ್ವರ)', matra: 1, place: 'ಕಂಠ್ಯ (ಗಂಟಲು)', examples: 'ಅರಸ, ಅಮ್ಮ, ಅಳಿಲು' },
+            { char: 'ಆ', category: 'deergha', isSandhi: false, type: 'ದೀರ್ಘಸ್ವರ', matra: 2, place: 'ಕಂಠ್ಯ (ಗಂಟಲು)', examples: 'ಆನೆ, ಆಕಾಶ, ಆಟ' },
+            { char: 'ಇ', category: 'hraswa', isSandhi: false, type: 'ಹ್ರಸ್ವಸ್ವರ (ಮೂಲಸ್ವರ)', matra: 1, place: 'ತಾಲವ್ಯ (ದವಡೆ)', examples: 'ಇಲಿ, ಇರುವೆ, ಇಂಚರ' },
+            { char: 'ಈ', category: 'deergha', isSandhi: false, type: 'ದೀರ್ಘಸ್ವರ', matra: 2, place: 'ತಾಲವ್ಯ (ದವಡೆ)', examples: 'ಈಶ್ವರ, ಈಜು, ಈಟಿ' },
+            { char: 'ಉ', category: 'hraswa', isSandhi: false, type: 'ಹ್ರಸ್ವಸ್ವರ (ಮೂಲಸ್ವರ)', matra: 1, place: 'ಓಷ್ಠ್ಯ (ತುಟಿ)', examples: 'ಉದಯ, ಉಂಗುರ, ಉಪ್ಪು' },
+            { char: 'ಊ', category: 'deergha', isSandhi: false, type: 'ದೀರ್ಘಸ್ವರ', matra: 2, place: 'ಓಷ್ಠ್ಯ (ತುಟಿ)', examples: 'ಊರು, ಊಟ, ಊಂಚಲು' },
+            { char: 'ಋ', category: 'hraswa', isSandhi: false, type: 'ಹ್ರಸ್ವಸ್ವರ (ಸಂಸ್ಕೃತ ಮೂಲ)', matra: 1, place: 'ಮೂರ್ಧನ್ಯ (ಅಂಗುಳ)', examples: 'ಋಷಿ, ಋತು, ಕೃಷಿ' },
+            { char: 'ಎ', category: 'hraswa', isSandhi: false, type: 'ಹ್ರಸ್ವಸ್ವರ (ದ್ರಾವಿಡ ವಿಶೇಷ)', matra: 1, place: 'ಕಂಠತಾಲವ್ಯ (ಗಂಟಲು+ದವಡೆ)', examples: 'ಎಲೆ, ಎಮ್ಮೆ, ಎರಡು' },
+            { char: 'ಏ', category: 'deergha', isSandhi: true, type: 'ದೀರ್ಘಸ್ವರ / ಸಂಧಿಸ್ವರ (ಅ+ಇ)', matra: 2, place: 'ಕಂಠತಾಲವ್ಯ (ಗಂಟಲು+ದವಡೆ)', examples: 'ಏಣಿ, ಏಡಿ, ಏಕತೆ' },
+            { char: 'ಐ', category: 'deergha', isSandhi: true, type: 'ದೀರ್ಘಸ್ವರ / ಸಂಧಿಸ್ವರ (ಅ+ಏ)', matra: 2, place: 'ಕಂಠತಾಲವ್ಯ (ಗಂಟಲು+ದವಡೆ)', examples: 'ಐದು, ಐರಾವತ, ಐಕ್ಯ' },
+            { char: 'ಒ', category: 'hraswa', isSandhi: false, type: 'ಹ್ರಸ್ವಸ್ವರ (ದ್ರಾವಿಡ ವಿಶೇಷ)', matra: 1, place: 'ಕಂಠೋಷ್ಠ್ಯ (ಗಂಟಲು+ತುಟಿ)', examples: 'ಒಂಟೆ, ಒಂದು, ಒ구' },
+            { char: 'ಓ', category: 'deergha', isSandhi: true, type: 'ದೀರ್ಘಸ್ವರ / ಸಂಧಿಸ್ವರ (ಅ+ಉ)', matra: 2, place: 'ಕಂಠೋಷ್ಠ್ಯ (ಗಂಟಲು+ತುಟಿ)', examples: 'ಓದು, ಓಟ, ಓಲೆ' },
+            { char: 'ಔ', category: 'deergha', isSandhi: true, type: 'ದೀರ್ಘಸ್ವರ / ಸಂಧಿಸ್ವರ (ಅ+ಓ)', matra: 2, place: 'ಕಂಠೋಷ್ಠ್ಯ (ಗಂಟಲು+ತುಟಿ)', examples: 'ಔಷಧ, ಔದಾರ್ಯ, ಔತಣ' }
+        ];
+
+        function renderSwaras(filter = 'all') {
+            const container = document.getElementById('swaraGridContainer');
+            container.innerHTML = '';
+
+            swarasData.forEach((item) => {
+                const isMatch = filter === 'all' || 
+                                (filter === 'hraswa' && item.category === 'hraswa') ||
+                                (filter === 'deergha' && item.category === 'deergha') ||
+                                (filter === 'sandhi' && item.isSandhi);
+
+                const card = document.createElement('button');
+                card.onClick = () => selectSwara(item);
+                card.setAttribute('onclick', `selectSwaraByChar('${item.char}')`);
+                
+                const badgeColor = item.category === 'hraswa' 
+                    ? 'bg-emerald-100 text-emerald-900 border-emerald-300' 
+                    : 'bg-amber-100 text-amber-900 border-amber-300';
+
+                card.className = `letter-card p-3 rounded-2xl border-2 text-center flex flex-col items-center justify-between transition ${
+                    isMatch 
+                        ? 'bg-white border-amber-400 shadow-md opacity-100 scale-100' 
+                        : 'bg-slate-100 border-slate-200 opacity-30 scale-95'
+                }`;
+
+                card.innerHTML = `
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full border ${badgeColor}">
+                        ${item.matra} ಮಾತ್ರೆ
+                    </span>
+                    <span class="text-3xl sm:text-4xl font-black text-slate-900 my-1.5">${item.char}</span>
+                    <span class="text-[11px] font-semibold text-slate-600">${item.category === 'hraswa' ? 'ಹ್ರಸ್ವ' : 'ದೀರ್ಘ'}</span>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterSwaras(type) {
+            document.querySelectorAll('.swara-filter').forEach(btn => btn.classList.remove('active-filter-btn'));
+            document.getElementById(`swara-btn-${type}`).classList.add('active-filter-btn');
+            renderSwaras(type);
+        }
+
+        function selectSwaraByChar(charStr) {
+            const item = swarasData.find(s => s.char === charStr);
+            if (!item) return;
+
+            document.getElementById('activeSwaraBadge').textContent = item.char;
+            document.getElementById('swaraTypeLabel').textContent = item.type;
+            document.getElementById('swaraMatraLabel').textContent = `${item.matra} ಮಾತ್ರಾಕಾಲ (${item.matra === 1 ? 'ಕಿರಿದಾದ ಉಚ್ಚಾರಣೆ' : 'ಎಳೆದು ಉಚ್ಚರಿಸುವುದು'})`;
+            document.getElementById('swaraPlaceLabel').textContent = item.place;
+            document.getElementById('swaraExampleLabel').textContent = item.examples;
+            document.getElementById('matraTimerCount').textContent = `${item.matra}.0 ಮಾತ್ರೆ`;
+
+            const bar = document.getElementById('matraProgressBar');
+            bar.style.width = item.matra === 1 ? '33%' : '66%';
+
+            speakKannada(`${item.char}`, item.matra);
+        }
+
+        function playPlutaDemo() {
+            document.getElementById('activeSwaraBadge').textContent = 'ಆऽऽ';
+            document.getElementById('swaraTypeLabel').textContent = 'ಪ್ಲುತಸ್ವರ (ದೂರದಿಂದ ಕರೆಯುವ ಸ್ವರ)';
+            document.getElementById('swaraMatraLabel').textContent = '೩ ಮಾತ್ರಾಕಾಲ (ಮೂರು ಮಾತ್ರೆಗಳ ಕಾಲ)';
+            document.getElementById('swaraPlaceLabel').textContent = 'ಸಂದರ್ಭಾನುಸಾರ ದೀರ್ಘ ಉಚ್ಚಾರಣೆ';
+            document.getElementById('swaraExampleLabel').textContent = 'ರಾಮಾऽऽऽ, ಅಮ್ಮಾऽऽऽ, ಬಾರೋऽऽऽ';
+            document.getElementById('matraTimerCount').textContent = '3.0 ಮಾತ್ರೆ (ಪ್ಲುತ)';
+            document.getElementById('matraProgressBar').style.width = '100%';
+            speakKannada('ರಾಮಾ ಆ ಆ, ಅಮ್ಮಾ ಆ ಆ', 3);
+        }
+
+        const vargiyaRows = [
+            {
+                varga: 'ಕ-ವರ್ಗ',
+                place: 'ಕಂಠ್ಯ (ಗಂಟಲು)',
+                letters: [
+                    { char: 'ಕ', col: 1, type: 'alpa', voice: 'shwasa', desc: 'ಕ-ವರ್ಗದ ಮೊದಲ ಅಲ್ಪಪ್ರಾಣ (ಶ್ವಾಸ)' },
+                    { char: 'ಖ', col: 2, type: 'maha', voice: 'shwasa', desc: 'ಕ-ವರ್ಗದ ಮಹಾಪ್ರಾಣ (ಶ್ವಾಸ)' },
+                    { char: 'ಗ', col: 3, type: 'alpa', voice: 'nada', desc: 'ಕ-ವರ್ಗದ ಅಲ್ಪಪ್ರಾಣ (ನಾದ)' },
+                    { char: 'ಘ', col: 4, type: 'maha', voice: 'nada', desc: 'ಕ-ವರ್ಗದ ಮಹಾಪ್ರಾಣ (ನಾದ)' },
+                    { char: 'ಙ', col: 5, type: 'anunasika', voice: 'nada', desc: 'ಕ-ವರ್ಗದ ಅನುನಾಸಿಕ (ಞ್ಞಂಗ)' }
+                ]
+            },
+            {
+                varga: 'ಚ-ವರ್ಗ',
+                place: 'ತಾಲವ್ಯ (ದವಡೆ)',
+                letters: [
+                    { char: 'ಚ', col: 1, type: 'alpa', voice: 'shwasa', desc: 'ಚ-ವರ್ಗದ ಅಲ್ಪಪ್ರಾಣ (ಶ್ವಾಸ)' },
+                    { char: 'ಛ', col: 2, type: 'maha', voice: 'shwasa', desc: 'ಚ-ವರ್ಗದ ಮಹಾಪ್ರಾಣ (ಶ್ವಾಸ)' },
+                    { char: 'ಜ', col: 3, type: 'alpa', voice: 'nada', desc: 'ಚ-ವರ್ಗದ ಅಲ್ಪಪ್ರಾಣ (ನಾದ)' },
+                    { char: 'ಝ', col: 4, type: 'maha', voice: 'nada', desc: 'ಚ-ವರ್ಗದ ಮಹಾಪ್ರಾಣ (ನಾದ)' },
+                    { char: 'ಞ', col: 5, type: 'anunasika', voice: 'nada', desc: 'ಚ-ವರ್ಗದ ಅನುನಾಸಿಕ' }
+                ]
+            },
+            {
+                varga: 'ಟ-ವರ್ಗ',
+                place: 'ಮೂರ್ಧನ್ಯ (ಅಂಗುಳ)',
+                letters: [
+                    { char: 'ಟ', col: 1, type: 'alpa', voice: 'shwasa', desc: 'ಟ-ವರ್ಗದ ಅಲ್ಪಪ್ರಾಣ (ಶ್ವಾಸ)' },
+                    { char: 'ಠ', col: 2, type: 'maha', voice: 'shwasa', desc: 'ಟ-ವರ್ಗದ ಮಹಾಪ್ರಾಣ (ಶ್ವಾಸ)' },
+                    { char: 'ಡ', col: 3, type: 'alpa', voice: 'nada', desc: 'ಟ-ವರ್ಗದ ಅಲ್ಪಪ್ರಾಣ (ನಾದ)' },
+                    { char: 'ಢ', col: 4, type: 'maha', voice: 'nada', desc: 'ಟ-ವರ್ಗದ ಮಹಾಪ್ರಾಣ (ನಾದ)' },
+                    { char: 'ಣ', col: 5, type: 'anunasika', voice: 'nada', desc: 'ಟ-ವರ್ಗದ ಅನುನಾಸಿಕ' }
+                ]
+            },
+            {
+                varga: 'ತ-ವರ್ಗ',
+                place: 'ದಂತ್ಯ (ಹಲ್ಲು)',
+                letters: [
+                    { char: 'ತ', col: 1, type: 'alpa', voice: 'shwasa', desc: 'ತ-ವರ್ಗದ ಅಲ್ಪಪ್ರಾಣ (ಶ್ವಾಸ)' },
+                    { char: 'ಥ', col: 2, type: 'maha', voice: 'shwasa', desc: 'ತ-ವರ್ಗದ ಮಹಾಪ್ರಾಣ (ಶ್ವಾಸ)' },
+                    { char: 'ದ', col: 3, type: 'alpa', voice: 'nada', desc: 'ತ-ವರ್ಗದ ಅಲ್ಪಪ್ರಾಣ (ನಾದ)' },
+                    { char: 'ಧ', col: 4, type: 'maha', voice: 'nada', desc: 'ತ-ವರ್ಗದ ಮಹಾಪ್ರಾಣ (ನಾದ)' },
+                    { char: 'ನ', col: 5, type: 'anunasika', voice: 'nada', desc: 'ತ-ವರ್ಗದ ಅನುನಾಸಿಕ' }
+                ]
+            },
+            {
+                varga: 'ಪ-ವರ್ಗ',
+                place: 'ಓಷ್ಠ್ಯ (ತುಟಿ)',
+                letters: [
+                    { char: 'ಪ', col: 1, type: 'alpa', voice: 'shwasa', desc: 'ಪ-ವರ್ಗದ ಅಲ್ಪಪ್ರಾಣ (ಶ್ವಾಸ)' },
+                    { char: 'ಫ', col: 2, type: 'maha', voice: 'shwasa', desc: 'ಪ-ವರ್ಗದ ಮಹಾಪ್ರಾಣ (ಶ್ವಾಸ)' },
+                    { char: 'ಬ', col: 3, type: 'alpa', voice: 'nada', desc: 'ಪ-ವರ್ಗದ ಅಲ್ಪಪ್ರಾಣ (ನಾದ)' },
+                    { char: 'ಭ', col: 4, type: 'maha', voice: 'nada', desc: 'ಪ-ವರ್ಗದ ಮಹಾಪ್ರಾಣ (ನಾದ)' },
+                    { char: 'ಮ', col: 5, type: 'anunasika', voice: 'nada', desc: 'ಪ-ವರ್ಗದ ಅನುನಾಸಿಕ' }
+                ]
+            }
+        ];
+
+        function renderVargiyaMatrix(filter = 'all') {
+            const container = document.getElementById('vargiyaMatrixContainer');
+            container.innerHTML = '';
+
+            vargiyaRows.forEach(row => {
+                const rowEl = document.createElement('div');
+                rowEl.className = 'grid grid-cols-6 gap-2 items-center';
+
+                // Row Header
+                const headerEl = document.createElement('div');
+                headerEl.className = 'p-2 rounded-xl bg-slate-900 border border-slate-700 text-center';
+                headerEl.innerHTML = `
+                    <div class="font-extrabold text-amber-400 text-xs sm:text-sm">${row.varga}</div>
+                    <div class="text-[10px] text-slate-400">${row.place}</div>
+                `;
+                rowEl.appendChild(headerEl);
+
+                // 5 Letters in the Varga
+                row.letters.forEach(item => {
+                    const isHighlighted = filter === 'all' ||
+                                          (filter === 'alpa' && item.type === 'alpa') ||
+                                          (filter === 'maha' && item.type === 'maha') ||
+                                          (filter === 'anunasika' && item.type === 'anunasika') ||
+                                          (filter === 'shwasa' && item.voice === 'shwasa') ||
+                                          (filter === 'nada' && item.voice === 'nada');
+
+                    let colorStyle = 'bg-slate-900 border-slate-700 text-white';
+                    if (item.type === 'alpa') colorStyle = 'bg-emerald-950/90 border-emerald-500/60 text-emerald-100';
+                    if (item.type === 'maha') colorStyle = 'bg-orange-950/90 border-orange-500/60 text-orange-100';
+                    if (item.type === 'anunasika') colorStyle = 'bg-sky-950/90 border-sky-500/60 text-sky-100';
+
+                    const btn = document.createElement('button');
+                    btn.setAttribute('onclick', `speakKannada('${item.char}')`);
+                    btn.className = `letter-card p-2.5 sm:p-3 rounded-xl border-2 text-center transition ${colorStyle} ${
+                        isHighlighted ? 'opacity-100 scale-100 ring-1 ring-amber-400/30' : 'opacity-20 scale-90'
+                    }`;
+                    btn.innerHTML = `
+                        <div class="text-2xl sm:text-3xl font-black">${item.char}</div>
+                        <div class="text-[9px] sm:text-[10px] opacity-75 mt-0.5">${item.char}್ + ಅ</div>
+                    `;
+                    rowEl.appendChild(btn);
+                });
+
+                container.appendChild(rowEl);
+            });
+        }
+
+        function filterVyanjana(filterType) {
+            document.querySelectorAll('.vy-filter').forEach(btn => btn.classList.remove('active-filter-btn'));
+            document.getElementById(`vy-btn-${filterType}`).classList.add('active-filter-btn');
+            renderVargiyaMatrix(filterType);
+
+            const titleEl = document.getElementById('vyFilterTitle');
+            const descEl = document.getElementById('vyFilterDesc');
+
+            const explanations = {
+                all: {
+                    title: 'ಎಲ್ಲಾ ವರ್ಗೀಯ ವ್ಯಂಜನಗಳು (೨೫)',
+                    desc: 'ಕ-ವರ್ಗ, ಚ-ವರ್ಗ, ಟ-ವರ್ಗ, ತ-ವರ್ಗ ಮತ್ತು ಪ-ವರ್ಗಗಳಲ್ಲಿ ತಲಾ 5 ಅಕ್ಷರಗಳಂತೆ ಒಟ್ಟು 25 ವರ್ಗೀಯ ವ್ಯಂಜನಗಳಿವೆ. ಇವುಗಳನ್ನು ಸ್ಪರ್ಶ ವ್ಯಂಜನಗಳೆಂದೂ ಕರೆಯುತ್ತಾರೆ.'
+                },
+                alpa: {
+                    title: '🌱 ಅಲ್ಪಪ್ರಾಣಾಕ್ಷರಗಳು (೧೦ ಅಕ್ಷರಗಳು)',
+                    desc: 'ಕಡಿಮೆ ಉಸಿರಿನ ಸಹಾಯದಿಂದ ಉಚ್ಚರಿಸುವ ವ್ಯಂಜನಗಳು. ಪ್ರತಿ ವರ್ಗದ 1ನೇ ಮತ್ತು 3ನೇ ಅಕ್ಷರಗಳು: ಕ, ಗ | ಚ, ಜ | ಟ, ಡ | ತ, ದ | ಪ, ಬ (ಒಟ್ಟು 10).'
+                },
+                maha: {
+                    title: '🔥 ಮಹಾಪ್ರಾಣಾಕ್ಷರಗಳು (೧೦ ಅಕ್ಷರಗಳು)',
+                    desc: 'ಹೆಚ್ಚು ಉಸಿರಿನ ಒತ್ತಡದಿಂದ ಉಚ್ಚರಿಸುವ ವ್ಯಂಜನಗಳು. ಪ್ರತಿ ವರ್ಗದ 2ನೇ ಮತ್ತು 4ನೇ ಅಕ್ಷರಗಳು: ಖ, ಘ | ಛ, ಝ | ಠ, ಢ | ಥ, ಧ | ಫ, ಭ (ಒಟ್ಟು 10).'
+                },
+                anunasika: {
+                    title: '👃 ಅನುನಾಸಿಕಾಕ್ಷರಗಳು (೫ ಅಕ್ಷರಗಳು)',
+                    desc: 'ಮೂಗಿನ ಸಹಾಯದಿಂದ ಉಚ್ಚರಿಸುವ ವ್ಯಂಜನಗಳು. ಪ್ರತಿ ವರ್ಗದ 5ನೇ (ಕೊನೆಯ) ಅಕ್ಷರಗಳು: ಙ, ಞ, ಣ, ನ, ಮ (ಒಟ್ಟು 5).'
+                },
+                shwasa: {
+                    title: '💨 ಶ್ವಾಸಾಕ್ಷರಗಳು / ಅಘೋಷ ವರ್ಣಗಳು (೧೦)',
+                    desc: 'ಗಂಟಲಿನಲ್ಲಿ ಧ್ವನಿ ತಂತುಗಳ ಕಂಪನವಿಲ್ಲದೆ ಕೇವಲ ಶ್ವಾಸದಿಂದ (ಉಸಿರಿನಿಂದ) ಹುಟ್ಟುವ ಅಕ್ಷರಗಳು. ಪ್ರತಿ ವರ್ಗದ 1 ಮತ್ತು 2ನೇ ಸಾಲು: ಕ, ಖ, ಚ, ಛ, ಟ, ಠ, ತ, ಥ, ಪ, ಫ (ಜೊತೆಗೆ ಶ, ಷ, ಸ).'
+                },
+                nada: {
+                    title: '🔔 ನಾದಾಕ್ಷರಗಳು / ಘೋಷ ವರ್ಣಗಳು (೧೫)',
+                    desc: 'ಗಂಟಲಿನ ಧ್ವನಿಪೆಟ್ಟಿಗೆಯಲ್ಲಿ ನಾದ/ಕಂಪನ ಉಂಟಾಗಿ ಹುಟ್ಟುವ ಅಕ್ಷರಗಳು. ಪ್ರತಿ ವರ್ಗದ 3, 4 ಮತ್ತು 5ನೇ ಸಾಲಿನ ಅಕ್ಷರಗಳು (ಗ, ಘ, ಙ, ಜ, ಝ, ಞ, ಡ, ಢ, ಣ, ದ, ಧ, ನ, ಬ, ಭ, ಮ).'
+                }
+            };
+
+            titleEl.textContent = explanations[filterType].title;
+            descEl.textContent = explanations[filterType].desc;
+        }
+
+        const articulationData = {
+            kanthya: {
+                sutra: 'ಸೂತ್ರ: ಅಕುಹವಿಸರ್ಜನೀಯಾನಾಂ ಕಂಠಃ',
+                title: '೧. ಕಂಠ್ಯ ವರ್ಣಗಳು (ಗಂಟಲು / ಕಂಠಸ್ಥಾನ)',
+                explanation: 'ಶ್ವಾಸಕೋಶದಿಂದ ಹೊರಡುವ ಉಸಿರು ನೇರವಾಗಿ ಗಂಟಲಿನಲ್ಲಿ (ಕಂಠದಲ್ಲಿ) ತಡೆದು ಉತ್ಪತ್ತಿಯಾಗುವ ಅಕ್ಷರಗಳನ್ನು ಕಂಠ್ಯ ವರ್ಣಗಳೆನ್ನುತ್ತಾರೆ.',
+                letters: ['ಅ', 'ಆ', 'ಕ', 'ಖ', 'ಗ', 'ಘ', 'ಙ', 'ಹ', 'ಃ (ವಿಸರ್ಗ)'],
+                svgRing: 'ring-kanthya'
+            },
+            talavya: {
+                sutra: 'ಸೂತ್ರ: ಇಚುಯಶಾನಾಂ ತಾಲುಃ',
+                title: '೨. ತಾಲವ್ಯ ವರ್ಣಗಳು (ತಾಲು / ದವಡೆ ಸ್ಥಾನ)',
+                explanation: 'ನಾಲಿಗೆಯ ಮಧ್ಯಭಾಗವು ಬಾಯಿಯ ಮೇಲ್ಭಾಗದ ಕಠಿಣ ದವಡೆಯನ್ನು (ತಾಲು) ಸ್ಪರ್ಶಿಸಿದಾಗ ಹುಟ್ಟುವ ಅಕ್ಷರಗಳನ್ನು ತಾಲವ್ಯಗಳೆನ್ನುತ್ತಾರೆ.',
+                letters: ['ಇ', 'ಈ', 'ಚ', 'ಛ', 'ಜ', 'ಝ', 'ಞ', 'ಯ', 'ಶ'],
+                svgRing: 'ring-talavya'
+            },
+            murdhanya: {
+                sutra: 'ಸೂತ್ರ: ಋಟುರಷಾಣಾಂ ಮೂರ್ಧಾ (+ ಳ)',
+                title: '೩. ಮೂರ್ಧನ್ಯ ವರ್ಣಗಳು (ಮೂರ್ಧನ್ / ಮೇಲಂಗುಳ)',
+                explanation: 'ನಾಲಿಗೆಯ ತುದಿಯು ಮೇಲ್ಮುಖವಾಗಿ ಮಡಚಿ ಬಾಯಿಯ ಮೇಲ್ಭಾಗದ ಅಂಗುಳನ್ನು (ಮೂರ್ಧ) ತಾಗಿದಾಗ ಹುಟ್ಟುವ ಗಂಭೀರ ಧ್ವನಿಗಳಿವು.',
+                letters: ['ಋ', 'ಟ', 'ಠ', 'ಡ', 'ಢ', 'ಣ', 'ರ', 'ಷ', 'ಳ'],
+                svgRing: 'ring-murdhanya'
+            },
+            dantya: {
+                sutra: 'ಸೂತ್ರ: ಲೃತೂಲಸಾನಾಂ ದಂತಾಃ',
+                title: '೪. ದಂತ್ಯ ವರ್ಣಗಳು (ಹಲ್ಲುಗಳ ಸಾಲು)',
+                explanation: 'ನಾಲಿಗೆಯ ತುದಿಯು ಮೇಲಿನ ಹಲ್ಲುಗಳ ಹಿಂಭಾಗವನ್ನು ಸ್ಪರ್ಶಿಸಿದಾಗ ಉತ್ಪತ್ತಿಯಾಗುವ ಅಕ್ಷರಗಳಿಗೆ ದಂತ್ಯ ವರ್ಣಗಳೆನ್ನುತ್ತಾರೆ.',
+                letters: ['ತ', 'ಥ', 'ದ', 'ಧ', 'ನ', 'ಲ', 'ಸ'],
+                svgRing: 'ring-dantya'
+            },
+            oshthya: {
+                sutra: 'ಸೂತ್ರ: ಉಪೂಪಧ್ಮಾನೀಯಾನಾಂ ಓಷ್ಠೌ',
+                title: '೫. ಓಷ್ಠ್ಯ ವರ್ಣಗಳು (ಎರಡು ತುಟಿಗಳು)',
+                explanation: 'ಮೇಲಿನ ಮತ್ತು ಕೆಳಗಿನ ತುಟಿಗಳು ಪರಸ್ಪರ ಕೂಡುವುದರಿಂದ ಅಥವಾ ದುಂಡಗಾಗುವುದರಿಂದ ಹುಟ್ಟುವ ಅಕ್ಷರಗಳಿಗೆ ಓಷ್ಠ್ಯ ವರ್ಣಗಳೆನ್ನುತ್ತಾರೆ.',
+                letters: ['ಉ', 'ಊ', 'ಪ', 'ಫ', 'ಬ', 'ಭ', 'ಮ'],
+                svgRing: 'ring-oshthya'
+            },
+            nasikya: {
+                sutra: 'ಸೂತ್ರ: ಞಮಙಣನಾನಾಂ ನಾಸಿಕಾ ಚ',
+                title: '೬. ನಾಸಿಕ್ಯ / ಅನುನಾಸಿಕ ವರ್ಣಗಳು (ಮೂಗು)',
+                explanation: 'ತಮ್ಮ ತಮ್ಮ ವರ್ಗದ ಸ್ಥಾನಗಳ ಜೊತೆಗೆ ಮೂಗಿನ ಹೊಳ್ಳೆಗಳ ಮೂಲಕ ಉಸಿರು ಹಾದುಹೋಗಿ ಉಚ್ಚಾರಣೆಗೊಳ್ಳುವ ಅಕ್ಷರಗಳಿವು.',
+                letters: ['ಙ', 'ಞ', 'ಣ', 'ನ', 'ಮ', 'ಂ (ಅನುಸ್ವಾರ)'],
+                svgRing: 'ring-nasikya'
+            },
+            kanthatalavya: {
+                sutra: 'ಸೂತ್ರ: ಏದೈತೋಃ ಕಂಠತಾಲು (ಎ, ಏ, ಐ)',
+                title: '೭. ಕಂಠತಾಲವ್ಯ ವರ್ಣಗಳು (ಕಂಠ + ದವಡೆ)',
+                explanation: 'ಅ (ಕಂಠ್ಯ) ಮತ್ತು ಇ (ತಾಲವ್ಯ) ಸ್ವರಗಳ ಸಂಯೋಗದಿಂದ ಹುಟ್ಟುವುದರಿಂದ ಎ, ಏ, ಐ ಸ್ವರಗಳಿಗೆ ಕಂಠ ಮತ್ತು ತಾಲುಗಳೆರಡೂ ಉತ್ಪತ್ತಿ ಸ್ಥಾನಗಳಾಗಿವೆ.',
+                letters: ['ಎ', 'ಏ', 'ಐ'],
+                svgRing: 'ring-talavya'
+            },
+            kanthoshthya: {
+                sutra: 'ಸೂತ್ರ: ಓದೌತೋಃ ಕಂಠೋಷ್ಠಮ್ (ಒ, ಓ, ಔ)',
+                title: '೮. ಕಂಠೋಷ್ಠ್ಯ ವರ್ಣಗಳು (ಕಂಠ + ತುಟಿ)',
+                explanation: 'ಅ (ಕಂಠ್ಯ) ಮತ್ತು ಉ (ಓಷ್ಠ್ಯ) ಸ್ವರಗಳ ಸಂಯೋಗದಿಂದ ಹುಟ್ಟುವುದರಿಂದ ಒ, ಓ, ಔ ಸ್ವರಗಳಿಗೆ ಗಂಟಲು ಮತ್ತು ತುಟಿಗಳೆರಡೂ ಉತ್ಪತ್ತಿ ಸ್ಥಾನಗಳಾಗಿವೆ.',
+                letters: ['ಒ', 'ಓ', 'ಔ'],
+                svgRing: 'ring-oshthya'
+            },
+            dantoshthya: {
+                sutra: 'ಸೂತ್ರ: ವಕಾರಸ್ಯ ದಂತೋಷ್ಠಮ್ (ವ)',
+                title: '೯. ದಂತೋಷ್ಠ್ಯ ವರ್ಣ (ಹಲ್ಲು + ತುಟಿ = ವ)',
+                explanation: 'ಮೇಲಿನ ಹಲ್ಲುಗಳು ಕೆಳಗಿನ ತುಟಿಯನ್ನು ಸ್ಪರ್ಶಿಸಿದಾಗ ಉಚ್ಚಾರವಾಗುವ ಏಕೈಕ ವಿಶೇಷ ಅಕ್ಷರ "ವ". (ಇದು KAS/FDA ಪರೀಕ್ಷೆಯ ಅತ್ಯಂತ ಜನಪ್ರಿಯ ಪ್ರಶ್ನೆ!).',
+                letters: ['ವ'],
+                svgRing: 'ring-dantya'
+            }
+        };
+
+        let currentArtKey = 'kanthya';
+
+        function selectArticulation(key) {
+            currentArtKey = key;
+            const data = articulationData[key];
+
+            // Update buttons
+            document.querySelectorAll('.art-btn').forEach(btn => btn.classList.remove('active-filter-btn'));
+            const activeBtn = document.getElementById(`art-btn-${key}`);
+            if (activeBtn) activeBtn.classList.add('active-filter-btn');
+
+            // Update SVG Pulse Rings
+            ['kanthya', 'talavya', 'murdhanya', 'dantya', 'oshthya', 'nasikya'].forEach(r => {
+                const el = document.getElementById(`ring-${r}`);
+                if (el) el.setAttribute('opacity', '0');
+            });
+            const activeRing = document.getElementById(data.svgRing);
+            if (activeRing) activeRing.setAttribute('opacity', '0.5');
+
+            // Update Text Card
+            document.getElementById('artSutraBadge').textContent = data.sutra;
+            document.getElementById('artTitle').textContent = data.title;
+            document.getElementById('artExplanation').textContent = data.explanation;
+
+            const lettersContainer = document.getElementById('artLettersList');
+            lettersContainer.innerHTML = '';
+            data.letters.forEach(ch => {
+                const span = document.createElement('button');
+                span.setAttribute('onclick', `speakKannada('${ch}')`);
+                span.className = 'px-3.5 py-2 rounded-xl gold-gradient text-red-950 font-black text-lg shadow hover:scale-105 transition';
+                span.textContent = ch;
+                lettersContainer.appendChild(span);
+            });
+
+            speakKannada(data.title);
+        }
+
+        function speakCurrentArticulation() {
+            const data = articulationData[currentArtKey];
+            speakKannada(`${data.title}. ಅಕ್ಷರಗಳು: ${data.letters.join(', ')}`);
+        }
+
+        const sampleConsonants = ['ಕ', 'ಗ', 'ಚ', 'ಜ', 'ಟ', 'ಡ', 'ತ', 'ದ', 'ನ', 'ಪ', 'ಬ', 'ಮ', 'ಯ', 'ರ', 'ಲ', 'ವ', 'ಶ', 'ಸ', 'ಹ', 'ಳ'];
+        const vowelSigns = [
+            { vowel: 'ಅ', sign: '', name: 'ತಲೆಕಟ್ಟು (ಅ-ಕಾರ)' },
+            { vowel: 'ಆ', sign: 'ಾ', name: 'ಇಳಿರು / ಇಳಿ (ಆ-ಕಾರ)' },
+            { vowel: 'ಇ', sign: 'ಿ', name: 'ಗುಡಿಸು (ಇ-ಕಾರ)' },
+            { vowel: 'ಈ', sign: 'ೀ', name: 'ಗುಡಿಸಿನ ದೀರ್ಘ (ಈ-ಕಾರ)' },
+            { vowel: 'ಉ', sign: 'ು', name: 'ಕೊಂಬು (ಉ-ಕಾರ)' },
+            { vowel: 'ಊ', sign: 'ೂ', name: 'ಕೊಂಬಿನ ದೀರ್ಘ (ಊ-ಕಾರ)' },
+            { vowel: 'ಋ', sign: 'ೃ', name: 'ವಟ್ರುಸುಳಿ (ಋ-ಕಾರ)' },
+            { vowel: 'ಎ', sign: 'ೆ', name: 'ಎತ್ವ (ಎ-ಕಾರ)' },
+            { vowel: 'ಏ', sign: 'ೇ', name: 'ಏತ್ವ ದೀರ್ಘ (ಏ-ಕಾರ)' },
+            { vowel: 'ಐ', sign: 'ೈ', name: 'ಐತ್ವ (ಐ-ಕಾರ)' },
+            { vowel: 'ಒ', sign: 'ೊ', name: 'ಒತ್ವ (ಒ-ಕಾರ)' },
+            { vowel: 'ಓ', sign: 'ೋ', name: 'ಓತ್ವ ದೀರ್ಘ (ಓ-ಕಾರ)' },
+            { vowel: 'ಔ', sign: 'ೌ', name: 'ಔತ್ವ (ಔ-ಕಾರ)' }
+        ];
+
+        let selectedConsonant = 'ಕ';
+        let selectedVowelObj = vowelSigns[0];
+
+        function initGunitaLab() {
+            const cList = document.getElementById('gunitaConsonantList');
+            const vList = document.getElementById('gunitaVowelList');
+
+            sampleConsonants.forEach(c => {
+                const btn = document.createElement('button');
+                btn.textContent = `${c}್`;
+                btn.className = `gunita-c-btn px-2.5 py-1.5 rounded-lg border text-sm font-bold transition ${
+                    c === selectedConsonant ? 'bg-red-800 text-white border-red-900' : 'bg-slate-100 text-slate-800 border-slate-300 hover:bg-amber-100'
+                }`;
+                btn.onclick = () => {
+                    selectedConsonant = c;
+                    updateGunitaDisplay();
+                    initGunitaLabUI();
+                };
+                cList.appendChild(btn);
+            });
+
+            vowelSigns.forEach((vObj) => {
+                const btn = document.createElement('button');
+                btn.textContent = vObj.vowel;
+                btn.className = `gunita-v-btn px-2.5 py-1.5 rounded-lg border text-sm font-bold transition ${
+                    vObj.vowel === selectedVowelObj.vowel ? 'bg-amber-600 text-white border-amber-700' : 'bg-slate-100 text-slate-800 border-slate-300 hover:bg-amber-100'
+                }`;
+                btn.onclick = () => {
+                    selectedVowelObj = vObj;
+                    updateGunitaDisplay();
+                    initGunitaLabUI();
+                };
+                vList.appendChild(btn);
+            });
+        }
+
+        function initGunitaLabUI() {
+            document.getElementById('gunitaConsonantList').innerHTML = '';
+            document.getElementById('gunitaVowelList').innerHTML = '';
+            initGunitaLab();
+        }
+
+        function updateGunitaDisplay() {
+            const combined = selectedConsonant + selectedVowelObj.sign;
+            document.getElementById('gBaseHal').textContent = `${selectedConsonant}್`;
+            document.getElementById('gVowelChar').textContent = selectedVowelObj.vowel;
+            document.getElementById('gResultChar').textContent = combined;
+            document.getElementById('gSignName').textContent = `ಸ್ವರ ಚಿಹ್ನೆ: ${selectedVowelObj.name}`;
+            speakKannada(combined);
+        }
+
+        const ottaksharaExamples = {
+            ksha: {
+                badge: 'ವಿಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರ',
+                word: 'ಉದಾಹರಣೆ: ಕ್ಷಮೆ, ಅಕ್ಷರ, ಶಿಕ್ಷಣ',
+                formula: 'ಕ್ + ಷ್ + ಅ = ಕ್ಷ',
+                note: '💡 ನೆನಪಿಡಿ: "ಕ್ಷ" ವರ್ಣಮಾಲೆಯ ಮೂಲಾಕ್ಷರವಲ್ಲ! ಇದು ಕ-ಕಾರ (ಕ್) ಮತ್ತು ಷ-ಕಾರ (ಷ್) ಎಂಬ ಎರಡು ಭಿನ್ನ ವ್ಯಂಜನಗಳ ಜೊತೆಗೆ "ಅ" ಸ್ವರ ಸೇರಿ ಆದ ವಿಜಾತೀಯ ಒತ್ತಕ್ಷರ.'
+            },
+            jna: {
+                badge: 'ವಿಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರ (ಅತಿ ಮುಖ್ಯ!)',
+                word: 'ಉದಾಹರಣೆ: ಜ್ಞಾನ, ವಿಜ್ಞಾನ, ಯಜ್ಞ',
+                formula: 'ಜ್ + ಞ್ + ಅ = ಜ್ಞ',
+                note: '💡 KAS/FDA ಪರೀಕ್ಷೆಯಲ್ಲಿ ಪದೇ ಪದೇ ಕೇಳುವ ಪ್ರಶ್ನೆ: "ಜ್ಞ" ಅಕ್ಷರದಲ್ಲಿರುವ ವ್ಯಂಜನಗಳು ಜ್ ಮತ್ತು ಞ್ (ಚ-ವರ್ಗದ ಅನುನಾಸಿಕ).'
+            },
+            arkavattu: {
+                badge: 'ವಿಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರ (ಅರ್ಕಾವತ್ತು ನಿಯಮ)',
+                word: 'ಉದಾಹರಣೆ: ಕಾರ್ಯ, ಸೂರ್ಯ, ಧೈರ್ಯ',
+                formula: 'ರ್ + ಯ್ + ಅ = ರ್ಯ (ರ‍್ಯ)',
+                note: '💡 ಅರ್ಕಾವತ್ತು ನಿಯಮ: ರೇಫದ (ರ್) ಮುಂದೆ ವ್ಯಂಜನ ಬಂದಾಗ, ಮೊದಲಿನ "ರ್" ಅಕ್ಷರವು ಅರ್ಕಾವತ್ತು ಚಿಹ್ನೆಯಾಗಿ ಬಲಗಡೆ ಬರೆಯಲ್ಪಡುತ್ತದೆ, ಆದರೆ ಉಚ್ಚಾರಣೆಯಲ್ಲಿ ಮೊದಲು "ರ್" ಧ್ವನಿಯೇ ಬರುತ್ತದೆ!'
+            },
+            rape: {
+                badge: 'ವಿಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರ (ರ-ಒತ್ತು)',
+                word: 'ಉದಾಹರಣೆ: ಪ್ರೇಮ, ಗ್ರಾಮ, ಚಕ್ರ',
+                formula: 'ಪ್ + ರ್ + ಅ = ಪ್ರ',
+                note: '💡 ವ್ಯಂಜನದ ನಂತರ "ರ್" ಬಂದಾಗ ರ-ಒತ್ತು ಕೆಳಗೆ ಬರುತ್ತದೆ (ಪ್ + ರ್ + ಅ = ಪ್ರ). ಆದರೆ "ರ್" ಮೊದಲು ಬಂದರೆ ಅರ್ಕಾವತ್ತು ಆಗುತ್ತದೆ (ರ್ + ಪ್ + ಅ = ರ್ಪ).'
+            },
+            sajatiya_kka: {
+                badge: 'ಸಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರ (ದ್ವಿತ್ವಾಕ್ಷರ)',
+                word: 'ಉದಾಹರಣೆ: ಅಕ್ಕ, ಚಿಕ್ಕ, ಸಕ್ಕರೆ',
+                formula: 'ಕ್ + ಕ್ + ಅ = ಕ್ಕ',
+                note: '💡 ಒಂದೇ ಜಾತಿಯ ಎರಡು ವ್ಯಂಜನಗಳು (ಕ್ + ಕ್) ಸೇರಿ ಉಂಟಾಗುವ ಒತ್ತಕ್ಷರವನ್ನು "ಸಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರ" ಅಥವಾ "ದ್ವಿತ್ವ" ಎನ್ನುತ್ತಾರೆ.'
+            },
+            shri: {
+                badge: 'ವಿಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರ',
+                word: 'ಉದಾಹರಣೆ: ಶ್ರೀಮಂತ, ಗೌರಿಶ್ರೀ',
+                formula: 'ಶ್ + ರ್ + ಈ = ಶ್ರೀ',
+                note: '💡 "ಶ್ರೀ" ಅಕ್ಷರವು ಶ-ಕಾರ (ಶ್), ರ-ಕಾರ (ರ್) ಮತ್ತು ದೀರ್ಘಸ್ವರ (ಈ) ಸೇರಿ ನಿರ್ಮಾಣವಾಗಿದೆ.'
+            },
+            stra: {
+                badge: 'ಮೂರು ವ್ಯಂಜನಗಳ ವಿಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರ',
+                word: 'ಉದಾಹರಣೆ: ಸ್ತ್ರೀ, ಶಾಸ್ತ್ರ, ಅಸ್ತ್ರ',
+                formula: 'ಸ್ + ತ್ + ರ್ + ಈ = ಸ್ತ್ರೀ',
+                note: '💡 ಇಲ್ಲಿ ಮೂರು ಭಿನ್ನ ವ್ಯಂಜನಗಳು (ಸ್ + ತ್ + ರ್) ಮತ್ತು ಒಂದು ದೀರ್ಘಸ್ವರ (ಈ) ಸೇರಿವೆ.'
+            },
+            lakshmi: {
+                badge: 'ಮೂರು ವ್ಯಂಜನಗಳ ವಿಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರ',
+                word: 'ಉದಾಹರಣೆ: ಲಕ್ಷ್ಮಿ, ಸೂಕ್ಷ್ಮ',
+                formula: 'ಕ್ + ಷ್ + ಮ್ + ಇ = ಕ್ಷ್ಮಿ',
+                note: '💡 "ಕ್ಷ್ಮಿ" ಯಲ್ಲಿ ಕ್, ಷ್, ಮ್ ಎಂಬ ಮೂರು ವ್ಯಂಜನಗಳು ಹಾಗೂ "ಇ" ಹ್ರಸ್ವಸ್ವರವಿದೆ.'
+            }
+        };
+
+        function inspectOttakshara(key) {
+            const item = ottaksharaExamples[key];
+            document.getElementById('ottaBadge').textContent = item.badge;
+            document.getElementById('ottaWord').textContent = item.word;
+            document.getElementById('ottaFormula').textContent = item.formula;
+            document.getElementById('ottaNote').textContent = item.note;
+            speakKannada(item.formula);
+        }
+
+        const quizQuestions = [
+            {
+                q: '೧. ಕೇಶಿರಾಜನ "ಶಬ್ದಮಣಿದರ್ಪಣ" ಗ್ರಂಥದ ಪ್ರಕಾರ ಶುದ್ಧ ಕನ್ನಡ ವರ್ಣಮಾಲೆಯಲ್ಲಿರುವ ಒಟ್ಟು ಅಕ್ಷರಗಳ ಸಂಖ್ಯೆ ಎಷ್ಟು?',
+                options: ['49 ಅಕ್ಷರಗಳು', '47 ಅಕ್ಷರಗಳು', '52 ಅಕ್ಷರಗಳು', '48 ಅಕ್ಷರಗಳು'],
+                correct: 1,
+                explanation: 'ಸರಿಯಾದ ಉತ್ತರ: 47 ಅಕ್ಷರಗಳು ("ಶುದ್ಧಗೆಯೊಳ್ ನಾಲ್ವತ್ತೇಳು ಅಕ್ಷರಂ"). ಆಧುನಿಕ ಕನ್ನಡದಲ್ಲಿ 49 ಅಕ್ಷರಗಳಿವೆ.'
+            },
+            {
+                q: '೨. ಕನ್ನಡ ವರ್ಣಮಾಲೆಯಲ್ಲಿರುವ ನಾಲ್ಕು "ಸಂಧಿಸ್ವರ"ಗಳನ್ನು (ಸಂಯುಕ್ತ ಸ್ವರಗಳನ್ನು) ಗುರುತಿಸಿ:',
+                options: ['ಅ, ಇ, ಉ, ಋ', 'ಆ, ಈ, ಊ, ಏ', 'ಏ, ಐ, ಓ, ಔ', 'ಎ, ಏ, ಒ, ಓ'],
+                correct: 2,
+                explanation: 'ಸರಿಯಾದ ಉತ್ತರ: ಏ, ಐ, ಓ, ಔ. ಇವು ಎರಡು ಭಿನ್ನ ಸ್ವರಗಳ ಸಂಧಿಸುವಿಕೆಯಿಂದ (ಅ+ಇ=ಏ, ಅ+ಉ=ಓ ಇತ್ಯಾದಿ) ಹುಟ್ಟಿರುವುದರಿಂದ ಸಂಧಿಸ್ವರಗಳೆನಿಸಿವೆ.'
+            },
+            {
+                q: '೩. ಧ್ವನಿಶಾಸ್ತ್ರದ ಪ್ರಕಾರ "ವ" ಎಂಬ ವ್ಯಂಜನಾಕ್ಷರದ ಉಚ್ಚಾರಣಾ ಸ್ಥಾನ ಯಾವುದು? (KAS / FDA ಪ್ರಶ್ನೆ)',
+                options: ['ಕಂಠತಾಲವ್ಯ', 'ಕಂಠೋಷ್ಠ್ಯ', 'ದಂತೋಷ್ಠ್ಯ (ಹಲ್ಲು ಮತ್ತು ತುಟಿ)', 'ಮೂರ್ಧನ್ಯ'],
+                correct: 2,
+                explanation: 'ಸರಿಯಾದ ಉತ್ತರ: ದಂತೋಷ್ಠ್ಯ ("ವಕಾರಸ್ಯ ದಂತೋಷ್ಠಮ್"). ಮೇಲಿನ ಹಲ್ಲು ಮತ್ತು ಕೆಳಗಿನ ತುಟಿಯ ಸಹಾಯದಿಂದ "ವ" ಹುಟ್ಟುತ್ತದೆ.'
+            },
+            {
+                q: '೪. "ಜ್ಞಾನ" ಎಂಬ ಪದದಲ್ಲಿರುವ "ಜ್ಞ" ಸಂಯುಕ್ತಾಕ್ಷರವನ್ನು ಸರಿಯಾಗಿ ಬಿಡಿಸಿ ಬರೆದ ರೂಪ ಯಾವುದು?',
+                options: ['ಗ್ + ನ್ಯ + ಅ', 'ಜ್ + ಞ್ + ಅ', 'ಜ್ + ನ + ಅ', 'ದ್ + ನ್ಯ + ಅ'],
+                correct: 1,
+                explanation: 'ಸರಿಯಾದ ಉತ್ತರ: ಜ್ + ಞ್ + ಅ = ಜ್ಞ. ಇದು ಚ-ವರ್ಗದ "ಜ್" ಮತ್ತು ಅನುನಾಸಿಕ "ಞ್" ಸೇರಿ ಆಗುವ ವಿಜಾತೀಯ ಸಂಯುಕ್ತಾಕ್ಷರ.'
+            },
+            {
+                q: '೫. ವರ್ಗೀಯ ವ್ಯಂಜನಗಳಲ್ಲಿ ಪ್ರತಿ ವರ್ಗದ 1ನೇ ಮತ್ತು 2ನೇ ಅಕ್ಷರಗಳನ್ನು (ಕ, ಖ, ಚ, ಛ...) ಧ್ವನಿಯ ಆಧಾರದ ಮೇಲೆ ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?',
+                options: ['ನಾದಾಕ್ಷರಗಳು (ಘೋಷ)', 'ಶ್ವಾಸಾಕ್ಷರಗಳು (ಅಘೋಷ)', 'ಅಂತಸ್ಥಗಳು', 'ಅನುನಾಸಿಕಗಳು'],
+                correct: 1,
+                explanation: 'ಸರಿಯಾದ ಉತ್ತರ: ಶ್ವಾಸಾಕ್ಷರಗಳು (ಅಘೋಷ). ಇವು ಧ್ವನಿಪೆಟ್ಟಿಗೆಯ ಕಂಪನವಿಲ್ಲದೆ ಕೇವಲ ಉಸಿರಿನಿಂದ (ಶ್ವಾಸದಿಂದ) ಹುಟ್ಟುತ್ತವೆ.'
+            },
+            {
+                q: '೬. ಈ ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು "ಊಷ್ಮಾಕ್ಷರ"ಗಳ (ಘರ್ಷಣಾಕ್ಷರಗಳ) ಗುಂಪಾಗಿದೆ?',
+                options: ['ಯ, ರ, ಲ, ವ', 'ಙ, ಞ, ಣ, ನ, ಮ', 'ಶ, ಷ, ಸ, ಹ', 'ಕ, ಚ, ಟ, ತ, ಪ'],
+                correct: 2,
+                explanation: 'ಸರಿಯಾದ ಉತ್ತರ: ಶ, ಷ, ಸ, ಹ. ಬಿಸಿ ಉಸಿರು ಘರ್ಷಣೆಯಿಂದ ಹೊರಬರುವ ಕಾರಣ ಇವಕ್ಕೆ ಊಷ್ಮಾಕ್ಷರಗಳೆನ್ನುವರು (ಯ,ರ,ಲ,ವ - ಅಂತಸ್ಥಗಳು).'
+            },
+            {
+                q: '೭. "ಚ, ಛ, ಜ, ಝ, ಞ, ಇ, ಈ, ಯ, ಶ" — ಈ ಅಕ್ಷರಗಳ ಉತ್ಪತ್ತಿ ಸ್ಥಾನ ಯಾವುದು?',
+                options: ['ಕಂಠ್ಯ (ಗಂಟಲು)', 'ತಾಲವ್ಯ (ದವಡೆ)', 'ಮೂರ್ಧನ್ಯ (ಅಂಗುಳ)', 'ದಂತ್ಯ (ಹಲ್ಲು)'],
+                correct: 1,
+                explanation: 'ಸರಿಯಾದ ಉತ್ತರ: ತಾಲವ್ಯ ("ಇಚುಯಶಾನಾಂ ತಾಲುಃ"). ಇವು ನಾಲಿಗೆಯು ದವಡೆಯನ್ನು (ತಾಲು) ಸ್ಪರ್ಶಿಸಿದಾಗ ಹುಟ್ಟುತ್ತವೆ.'
+            },
+            {
+                q: '೮. ಎರಡು ಮಾತ್ರೆಗಳಿಗಿಂತ ಹೆಚ್ಚಿನ ಕಾಲ (೩ ಮಾತ್ರಾಕಾಲ) ಎಳೆದು ಉಚ್ಚರಿಸುವ ಸ್ವರವನ್ನು ಏನೆಂದು ಕರೆಯುತ್ತಾರೆ?',
+                options: ['ಹ್ರಸ್ವಸ್ವರ', 'ದೀರ್ಘಸ್ವರ', 'ಪ್ಲುತಸ್ವರ', 'ಯೋಗವಾಹ'],
+                correct: 2,
+                explanation: 'ಸರಿಯಾದ ಉತ್ತರ: ಪ್ಲುತಸ್ವರ. ದೂರದಲ್ಲಿರುವವರನ್ನು ಕರೆಯುವಾಗ (ಉದಾ: ಅಮ್ಮಾऽऽऽ) 3 ಮಾತ್ರಾಕಾಲ ಬಳಸಲಾಗುತ್ತದೆ.'
+            },
+            {
+                q: '೯. ಹಳಗನ್ನಡ ಮತ್ತು ನಡುಗನ್ನಡ ಕಾವ್ಯಗಳಲ್ಲಿ ಕಂಡುಬರುವ ದ್ರಾವಿಡ ವಿಶೇಷ ಅಕ್ಷರಗಳಾದ "ರಳ, ಕುಳ, ಕ್ಷಳ" ಸಂಕೇತಗಳು ಯಾವುವು?',
+                options: ['ರ, ಲ, ಳ', 'ಱ, ಳ, ೞ', 'ಶ, ಷ, ಸ', 'ಂ, ಃ, ಳ'],
+                correct: 1,
+                explanation: 'ಸರಿಯಾದ ಉತ್ತರ: ಱ (ರಳ/ಶಕಟರೇಫ), ಳ (ಕುಳ), ೞ (ಕ್ಷಳ). ಇವು ಸಂಸ್ಕೃತದಲ್ಲಿಲ್ಲದ ದ್ರಾವಿಡ ಭಾಷೆಯ ವಿಶೇಷ ಅಕ್ಷರಗಳು.'
+            },
+            {
+                q: '೧೦. "ಕಾರ್ಯ" ಪದದಲ್ಲಿರುವ "ರ್ಯ" ಒತ್ತಕ್ಷರದಲ್ಲಿ ಮೊದಲು ಉಚ್ಚಾರವಾಗುವ ವ್ಯಂಜನ ಯಾವುದು?',
+                options: ['ಯ್ ವ್ಯಂಜನ', 'ರ್ (ರೇಫ) ವ್ಯಂಜನ', 'ಕ ವ್ಯಂಜನ', 'ಅ ಸ್ವರ'],
+                correct: 1,
+                explanation: 'ಸರಿಯಾದ ಉತ್ತರ: ರ್ (ರೇಫ) ವ್ಯಂಜನ. ಅರ್ಕಾವತ್ತು ನಿಯಮದಂತೆ (ರ್ + ಯ್ + ಅ = ರ್ಯ) ರೇಫವೇ ಮೊದಲು ಉಚ್ಚರಿಸಲ್ಪಡುತ್ತದೆ.'
+            }
+        ];
+
+        let userScore = 0;
+        let answeredMap = {};
+
+        function renderQuiz() {
+            const container = document.getElementById('quizContainer');
+            container.innerHTML = '';
+
+            quizQuestions.forEach((item, qIndex) => {
+                const qCard = document.createElement('div');
+                qCard.className = 'bg-slate-800/90 p-5 rounded-2xl border border-slate-700 flex flex-col justify-between';
+
+                let optionsHTML = '';
+                item.options.forEach((opt, optIndex) => {
+                    optionsHTML += `
+                        <button id="q${qIndex}-opt${optIndex}" onclick="answerQuiz(${qIndex}, ${optIndex})" 
+                                class="w-full text-left p-3 rounded-xl bg-slate-900 hover:bg-slate-700 border border-slate-600 text-xs sm:text-sm font-medium text-slate-200 transition flex items-center justify-between">
+                            <span>${opt}</span>
+                            <span id="q${qIndex}-icon${optIndex}"></span>
+                        </button>
+                    `;
+                });
+
+                qCard.innerHTML = `
+                    <div>
+                        <h4 class="font-bold text-sm sm:text-base text-amber-200 mb-3 leading-snug">${item.q}</h4>
+                        <div class="space-y-2">${optionsHTML}</div>
+                    </div>
+                    <div id="q${qIndex}-exp" class="hidden mt-3 p-3 rounded-xl text-xs font-medium leading-relaxed"></div>
+                `;
+                container.appendChild(qCard);
+            });
+        }
+
+        function answerQuiz(qIndex, selectedOpt) {
+            if (answeredMap[qIndex] !== undefined) return; // Already answered
+            answeredMap[qIndex] = selectedOpt;
+
+            const qObj = quizQuestions[qIndex];
+            const isCorrect = selectedOpt === qObj.correct;
+
+            if (isCorrect) {
+                userScore++;
+                document.getElementById('quizScoreDisplay').textContent = `${userScore} / ${quizQuestions.length}`;
+            }
+
+            // Style buttons
+            qObj.options.forEach((_, idx) => {
+                const btn = document.getElementById(`q${qIndex}-opt${idx}`);
+                const icon = document.getElementById(`q${qIndex}-icon${idx}`);
+                btn.disabled = true;
+
+                if (idx === qObj.correct) {
+                    btn.className = 'w-full text-left p-3 rounded-xl bg-emerald-900/80 border-2 border-emerald-400 text-xs sm:text-sm font-bold text-white flex items-center justify-between';
+                    icon.textContent = '✅';
+                } else if (idx === selectedOpt && !isCorrect) {
+                    btn.className = 'w-full text-left p-3 rounded-xl bg-red-900/80 border-2 border-red-400 text-xs sm:text-sm font-bold text-white flex items-center justify-between';
+                    icon.textContent = '❌';
+                }
+            });
+
+            // Show explanation
+            const expBox = document.getElementById(`q${qIndex}-exp`);
+            expBox.classList.remove('hidden');
+            expBox.className = `mt-3 p-3 rounded-xl text-xs font-medium leading-relaxed ${
+                isCorrect ? 'bg-emerald-950 text-emerald-200 border border-emerald-600' : 'bg-amber-950 text-amber-200 border border-amber-600'
+            }`;
+            expBox.textContent = qObj.explanation;
+        }
+
+        function resetQuiz() {
+            userScore = 0;
+            answeredMap = {};
+            document.getElementById('quizScoreDisplay').textContent = `0 / ${quizQuestions.length}`;
+            renderQuiz();
+        }
+
+        // Initialize all modules on page load
+        window.onload = function() {
+            renderSwaras('all');
+            renderVargiyaMatrix('all');
+            selectArticulation('kanthya');
+            initGunitaLab();
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
